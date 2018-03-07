@@ -1,21 +1,22 @@
 
-US X - Título da História de Usuário
+US X - Issue title
 
-## Descrição - O que o _Pull Request_ faz
-Breve descrição sobre os arquivos alterados, com seus 
-respectivos motivos
+## Description - _<what this pull request does?>_
+Short description of all changes and its reasons.
+This section can be written using files changes.
 
-[Referência para a descrição do UC/US](#)
+[Reference for the US/UC](#)
 
-## Porque o _Pull Request_ é necessário
-Pois permite ao coordenador acessar formulários pela pagina principal. 
+## Why is this pull request necessary?
+Explain why it is necessary, for example:
+_It allows a developer to get fresh coffee every morning._
 
-## Critérios
+## Criterias
 
 Ex: 
-- [x] Testes criados
-- [x] Testes passando
-- [x] Build passando
-- [x] Não existem conflitos com a `master` - Se sim utilize do `git rebase`
+- [x] Created tests
+- [x] Tests passing
+- [x] Building
+- [x] No conflicts with master
 
-resolve #Número da US.
+resolves #IssueNumber
