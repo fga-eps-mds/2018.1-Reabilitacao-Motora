@@ -1,14 +1,18 @@
-# US X - Título da Issue
+# US X - Issue Title
 ---
-### Descrição:
-Descrição sucinta da Issue.
+### Description:
+Short and useful issue's description.
 
-### Critérios de aceitação
-Critérios de Aceitação para Issue sem marcada como concluída 
-- [ ] 
-- [ ] 
-- [ ] 
+### Acceptance criteria
+Acceptance criteria for the issue being accepted. 
+- [ ] Unit Tests passing
+- [ ] Something else
+- [ ] No creativity here
 
 
-### Tarefas
-Tarefas necessárias para concluir a US. 
+### Tasks
+Section for more complex issues. All the tasks the issue must guarantee is working.
+- [ ] Login is redirecting to last page
+- [ ] Developers are getting coffee constantly
+- [ ] Login page has _forgot password_ link
+- [ ] No animals mistreated
