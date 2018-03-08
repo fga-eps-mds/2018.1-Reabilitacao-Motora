@@ -182,8 +182,18 @@ Data|Versão|Descrição|Autor
 ``` csharp
 
     // Good example
+    void RegisterGameObject(GameObject player)
+    {
+      print("omg im so happy that im going to write a giant
+      bible here check this out guys omg i cant believe that
+      i registered a player object!!!");
+    }
 
     // Bad example
+    void RegisterGameObject(GameObject player)
+    {
+      print("omg im so happy that im going to write a giant bible here check this out guys omg i cant believe that i registered a player object!!!");
+    }
 
 
 ```
@@ -210,7 +220,8 @@ Data|Versão|Descrição|Autor
 ``` csharp
 
     // Good example
-    void Update () {
+    void Update ()
+    {
       float h = Input.GetAxis("Horizontal");
       float xPos = h * range;
 
@@ -219,7 +230,8 @@ Data|Versão|Descrição|Autor
     }
 
     // Bad example
-    void Update () {
+    void Update ()
+    {
       float h=Input.GetAxis("Horizontal");
       float xPos=h*range;
 
