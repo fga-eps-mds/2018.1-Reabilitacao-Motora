@@ -4,7 +4,7 @@
 Short and useful issue's description.
 
 ### Acceptance criteria
-Acceptance criteria for the issue being accepted. 
+Acceptance criteria for the issue being accepted.
 - [ ] Unit Tests passing
 - [ ] Something else
 - [ ] No creativity here

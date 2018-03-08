@@ -13,7 +13,7 @@ _It allows a developer to get fresh coffee every morning._
 
 ## Criterias
 
-Ex: 
+Ex:
 - [x] Created tests
 - [x] Tests passing
 - [x] Building
