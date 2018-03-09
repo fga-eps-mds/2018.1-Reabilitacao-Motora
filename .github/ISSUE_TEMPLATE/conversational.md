@@ -1,5 +1,3 @@
-
-
 * **Estou enviando um ...**
   - [ ] Bug
   - [ ] Requisição de nova funcionalidade

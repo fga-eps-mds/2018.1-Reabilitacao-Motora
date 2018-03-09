@@ -1,1 +1,0 @@
-[teste01](https://github.com/RomeuCarvalhoAntunes/2018.1-Reabilitacao-Motora/issues/new?template=us.md)
