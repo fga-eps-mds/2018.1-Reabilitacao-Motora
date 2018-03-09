@@ -1,78 +1,77 @@
 <p align="justify"> &emsp;&emsp; </p>
 
-## Comment blocks for C-like languages (C/C++/C#/Objective-C/PHP/Java)
+## Blocos de comentários para linguagens C-like (C/C++/C#/Objective-C/PHP/Java)
 
-<p align="justify"> &emsp;&emsp;For each entity in the code there are two (or in some cases three) types of descriptions, which together form the documentation for that entity; a brief description and detailed description, both are optional. For methods and functions there is also a third type of description, the so called in body description, which consists of the concatenation of all comment blocks found within the body of the method or function.</p>
+<p align="justify"> &emsp;&emsp;Para cada entidade no código, existem dois (ou três, em alguns casos) tipos de descrição que, juntas, formam a documentação para aquela entidade:  uma breve descrição e uma descrição detalhada, ambas opcionais. Para métodos e funções também existe um terceiro tipo, que consiste na concatenação de todos os blocos de comentário encontrados entro do corpo do método ou da função.</p>
 
-<p align="justify"> &emsp;&emsp;Having more than one brief or detailed description is allowed (but not recommended, as the order in which the descriptions will appear is not specified).</p>
+<p align="justify"> &emsp;&emsp;Ter mais de uma breve descrição ou descrição detalhada é permitido mas não recomendado, pois a ordem na qual as descrições vão ser dispostas não é especificada.</p>
 
-<p align="justify"> &emsp;&emsp;As the name suggest, a brief description is a short one-liner, whereas the detailed description provides longer, more detailed documentation. An "in body" description can also act as a detailed description or can describe a collection of implementation details. For the HTML output brief descriptions are also used to provide tooltips at places where an item is referenced.</p>
+<p align="justify"> &emsp;&emsp;Como o nome sugere, uma descrição breve deve ser curta, preferencialmente não excedendo uma linha, já que a descrição detalhada vai fornecer documentação mais detalhada. Uma descrição dentro do corpo do método ou função também pode ter características de uma descrição detalhada ou descrever um detalhe de implementação. No output HTML, breves descrições também são usadas para prover informações onde o item é referenciado.</p>
 
-#### There are several ways to mark a comment block as a detailed description:
+#### Existem diversos modos de marcar um comentário como uma descrição detalhada, mas vamos mostrar apenas um:
 
-* You can use the JavaDoc style, which consist of a C-style comment block starting with two *'s, like this:
+* Você pode usar o estilo JavaDoc, que consiste em um bloco de comentário C-style começando com dois asteriscos, como:
 ``` C++
 /**
- * ... text ...
+ * ... texto ...
  */
 ```
 
-#### For the brief description there are also several possibilities:
+#### Para a descrição breve, existem várias possibilidades:
 
-<p align="justify"> &emsp;&emsp;One could use the @brief command with one of the above comment blocks. This command ends at the end of a paragraph, so the detailed description follows after an empty line.</p>
+<p align="justify"> &emsp;&emsp;É possível usar o comando @brief com a possibilidade acima. Este comando termina com o fim do parágrafo, então a descrição detalhada segue após uma linha em branco.</p>
 
-Here is an example:
+Por exemplo:
 ```C++
-/** @brief Brief description.
- *         Brief description continued.
+/** @brief Breve descrição.
+ *         Breve descrição continua.
  *
- *  Detailed description starts here.
+ *  Descrição detalhada começa aqui.
  */
 ```
-If JAVADOC_AUTOBRIEF is set to YES in the configuration file, then using JavaDoc style comment blocks will automatically start a brief description which ends at the first dot followed by a space or new line. Here is an example:
+Se JAVADOC_AUTOBRIEF é setada para YES nos arquivos de configuração, então usar o estilo de comentário de bloco JavaDoc irá iniciar automaticamente uma breve descrição que termina no primeiro ponto final seguido de um espaço ou quebra de linha. Exemplo:
 
 ```C++
-/** Brief description which ends at this dot. Details follow
- *  here.
+/** Breve descrição começa aqui e termina aqui. Descrição detalhada começa aqui
+ *  e continua aqui.
  */
 ```
 
-
-Here is the same piece of code as shown above, this time documented using the JavaDoc style and JAVADOC_AUTOBRIEF set to YES:
+Aqui está o mesmo trecho de código mostrado acima, mas, dessa vez, documentado utilizando o estilo JavaDoc e com JAVADOC_AUTOBRIEF setado para YES:
 ```C++
 /**
- *  A test class. A more elaborate class description.
+ *  Uma classe de testes. Uma descrição mais elaborada da classe de testes.
  */
 class Javadoc_Test
 {
   public:
     /**
-     * An enum.
-     * More detailed enum description.
+     * Um enum.
+     * Mais detalhes sobre o enum.
      */
     enum TEnum {
-          TVal1, /**< enum value TVal1. */
-          TVal2, /**< enum value TVal2. */
-          TVal3  /**< enum value TVal3. */
+          TVal1, /**< valor TVal1. do enum */
+          TVal2, /**< valor TVal2. do enum */
+          TVal3  /**< valor TVal3. do enum */
          }
-       *enumPtr, /**< enum pointer. Details. */
-       enumVar;  /**< enum variable. Details. */
+       *enumPtr, /**< Ponteiro do enum. Detalhes. */
+       enumVar;  /**< Variável enum. Detalhes. */
 
       /**
-       * A constructor.
-       * A more elaborate description of the constructor.
+       * Um construtor.
+       * Uma desrição mais elaborada do construtor.
        */
       Javadoc_Test();
       /**
-       * A destructor.
-       * A more elaborate description of the destructor.
+       * Um destrutor.
+       * Uma descrição mais elaborada do destrutor.
        */
      ~Javadoc_Test();
 
       /**
-       * a normal member taking two arguments and returning an integer value.
-       * @param a an integer argument.
-       * @param s a constant character pointer.
+       * Um membro normal pegando dois argumentos e retornando um valor inteiro.
+       * @param a, um argumento int.
+       * @param s, um ponteiro para const char.
        * @see Javadoc_Test()
        * @see ~Javadoc_Test()
        * @see testMeToo()
@@ -82,122 +81,126 @@ class Javadoc_Test
        int testMe(int a,const char *s);
 
       /**
-       * A pure virtual member.
+       * Um membro virtual puro.
        * @see testMe()
-       * @param c1 the first argument.
-       * @param c2 the second argument.
+       * @param c1, o primeiro argumento.
+       * @param c2, o segundo argumento.
        */
        virtual void testMeToo(char c1,char c2) = 0;
 
       /**
-       * a public variable.
-       * Details.
+       * Uma variável pública.
+       * Detalhes.
        */
        int publicVar;
 
       /**
-       * a function variable.
-       * Details.
+       * Uma variável de função.
+       * Detalhes.
        */
        int (*handler)(int a,int b);
 };
 ```
 
-#### Documentation at other places
+#### Documentação em outros lugares
 
-<p align="justify"> &emsp;&emsp;In the examples in the previous section the comment blocks were always located in front of the declaration or definition of a file, class or namespace or in front or after one of its members. Although this is often comfortable, there may sometimes be reasons to put the documentation somewhere else. For documenting a file this is even required since there is no such thing as "in front of a file".</p>
+<p align="justify"> &emsp;&emsp;Nos exemplos da seção anterior, os blocos de comentário estavam sempre localizados na frente da declaração ou da definição de um arquivo, classe ou namespace ou na frente de um de seus membros. Entretanto, isso pode causar desconforto, já que há vezes em que há razões para se colocar a documentação em outro lugar. Para documentar um arquivos, isto é um requerimento, já que não existe como colocar um comentário "na frente de um arquivo".</p>
 
-<p align="justify"> &emsp;&emsp;Doxygen allows you to put your documentation blocks practically anywhere (the exception is inside the body of a function or inside a normal C style comment block).</p>
+<p align="justify"> &emsp;&emsp;O Doxygen permite com que seja possível colocar seus blocos de documentação praticamente em qualquer lugar (a exceção é: dentro dos corpos das funções ou dentro de um bloco de comentário C-like).</p>
 
-<p align="justify"> &emsp;&emsp;The price you pay for not putting the documentation block directly before (or after) an item is the need to put a structural command inside the documentation block, which leads to some duplication of information. So in practice you should avoid the use of structural commands unless other requirements force you to do so.</p>
+<p align="justify"> &emsp;&emsp;O preço que você paga por não colocar o bloco de documentação diretamente antes (ou depois) de um item é a necessidade de colocar um comando estrutural dentro do bloco de documentação, o que levaria a redundância de informação. Então, na prática, você deve evitar utilizar comandos estruturais a não ser que forças maiores exijam que isso seja feito.</p>
 
-<p align="justify"> &emsp;&emsp;Structural commands (like all other commands) start with a backslash (\), or an at-sign (@) if you prefer JavaDoc style, followed by a command name and one or more parameters. For instance, if you want to document the class Test in the example above, you could have also put the following documentation block somewhere in the input that is read by doxygen:</p>
+<p align="justify"> &emsp;&emsp;Comandos estruturais, tais como todos os outros comandos, começam com "\" ou "@", se você preferir o estilo JavaDoc, seguido do nome do comando e de um ou mais parâmetros. Por exemplo, se você deseja documentar a classe Test no exemplo acima, é possível inserir o bloco de documentação em qualquer outro lugar, desde que este sirva de input para ser lido pelo Doxygen:</p>
 
 ```C++
 /** @class Test
- *  @brief A test class.
+ *  @brief Uma classe de testes.
  *
- *  A more detailed class description.
+ *  Descrição mais detalhada sobre a classe.
  */
 ```
-<p align="justify"> &emsp;&emsp;Here the special command \class is used to indicate that the comment block contains documentation for the class Test. Other structural commands are:</p>
+<p align="justify"> &emsp;&emsp;Aqui, o comando especial \class é usado para indicar que o bloco de comentário contém documentação para a classe Test. Outros comandos estuturais são:</p>
 
-* **@struct** to document a C-struct.
-* **@union** to document a union.
-* **@enum** to document an enumeration type.
-* **@fn** to document a function.
-* **@var** to document a variable or typedef or enum value.
-* **@def** to document a #define.
-* **@typedef** to document a type definition.
-* **@file** to document a file.
-* **@namespace** to document a namespace.
-* **@package** to document a Java package.
-* **@interface** to document an IDL interface.
+* **@struct** para documentar uma struct C.
+* **@union** para documentar uma union.
+* **@enum** para documentar uma implementação enum.
+* **@fn** para documentar uma função.
+* **@var** para documentar uma variável ou typedef ou valor de enum.
+* **@def** para documentar um #define.
+* **@typedef** para documentar um typedef.
+* **@file** para documentar um arquivo.
+* **@namespace** para documentar um namespace.
+* **@package** para documentar um pacote java.
+* **@interface** para documentar uma interface IDL.
 
-<p align="justify"> &emsp;&emsp;See section Special Commands for detailed information about these and many other commands.</p>
+<p align="justify"> &emsp;&emsp;Veja a seção de Special Commands do Doxygen para mais informações sobre esses e outros comandos.</p>
 
-<p align="justify"> &emsp;&emsp;To document a member of a C++ class, you must also document the class itself. The same holds for namespaces. To document a global C function, typedef, enum or preprocessor definition you must first document the file that contains it (usually this will be a header file, because that file contains the information that is exported to other source files).</p>
+<p align="justify"> &emsp;&emsp;Para documentar um membro de uma classe C++, você deve também documentar a classe inteira. O mesmo ocorre com namespaces. Para documentar uma função global do C, typedef, enum ou definição de preprocessor, você deve primeiro documentar o arquivo que a contém (normalmente isso será o header file, já que este é o arquivo que contém toda a informação que é exportada para outros arquivos fonte).</p>
 
-#### Attention
+
+#### Atenção
 
 <p align="justify"> &emsp;&emsp;Let's repeat that, because it is often overlooked: to document global objects (functions, typedefs, enum, macros, etc), you must document the file in which they are defined. In other words, there must at least be a</p>
+
+<p align="justify"> &emsp;&emsp; Vamos repetir isso, já que é comumente mal lido: para documentar um objeto global (funções, typedefs, enum, macros, etc), você deve documentar o arquivo no qual ele está definido. Em outras palavras, deve haver pelo menos um</p>
 
 ```C++
 /** @file */
 ```
 
-line in this file.
+no arquivo.
 
-<p align="justify"> &emsp;&emsp;Here is an example of a C header named structcmd.h that is documented using structural commands:</p>
+<p align="justify"> &emsp;&emsp;Segue um exemplo de um header em C nomeado structcmd.h que é documentado pelo uso de comandos estruturais:</p>
+
 
 ```C++
 
 /** @file structcmd.h
- *  @brief A Documented file.
+ *  @brief Um arquivo documentado.
  *
- *  Details.
+ *  Detalhes.
  */
 
 /** @def MAX(a,b)
- *  @brief A macro that returns the maximum of \a a and \a b.
+ *  @brief Uma macro que retorna o valor máximo de  "a" e "b".
  *
- *  Details.
+ *  Detalhes.
  */
 
 /** @var typedef unsigned int UINT32
- *  @brief A type definition for a .
+ *  @brief Uma breve descrição de "a" .
  *
  *  Details.
  */
 
 /** @var int errno
- *  @brief Contains the last error code.
- *  @warning Not thread safe!
+ *  @brief Contém o último código de erro.
+ *  @warning Não é seguro usar com threads!
  */
 
 /** @fn int open(const char *pathname,int flags)
- *  @brief Opens a file descriptor.
- *  @param pathname The name of the descriptor.
- *  @param flags Opening flags.
+ *  @brief Abre um arquivo.
+ *  @param pathname Nome/caminho do arquivo.
+ *  @param flags Flags de abertura.
  */
 
 /** @fn int close(int fd)
- *  @brief Closes the file descriptor \a fd.
- *  @param fd The descriptor to close.
+ *  @brief Fecha o arquivo e encerra sua leitura.
+ *  @param fd referência ao arquivo que deve ser fechado.
  */
 
 /** @fn size_t write(int fd,const char *buf, size_t count)
- *  @brief Writes \a count bytes from \a buf to the filedescriptor \a fd.
- *  @param fd The descriptor to write to.
- *  @param buf The data buffer to write.
- *  @param count The number of bytes to write.
+ *  @brief escreve "count" bytes de um buffer "buf" em um arquivo referenciado por "fd".
+ *  @param fd Qual arquivo que será modificado.
+ *  @param buf Buffer de dados a ser escrito.
+ *  @param count Número de bytes a ser coletado do buffer e escrito no arquivo.
  */
 
 /** @fn int read(int fd,char *buf,size_t count)
- *  @brief Read bytes from a file descriptor.
- *  @param fd The descriptor to read from.
- *  @param buf The buffer to read into.
- *  @param count The number of bytes to read.
+ *  @brief Lê bytes de um arquivo.
+ *  @param fd Referência do arquivo a ser lido.
+ *  @param buf Buffer a ser usado para manter os dados.
+ *  @param count Número de bytes a serem lidos.
  */
 #define MAX(a,b) (((a)>(b))?(a):(b))
 typedef unsigned int UINT32;
@@ -208,13 +211,17 @@ size_t write(int,const char *, size_t);
 int read(int,char *,size_t);
 ```
 
-<p align="justify"> &emsp;&emsp;When you place a comment block in a file with one of the following extensions .dox, .txt, or .doc then doxygen will hide this file from the file list.</p>
+<p align="justify"> &emsp;&emsp;Quando você coloca um bloco de comentário em um arquivo com uma das seguinte extensões: .dox, .txt ou .doc, o Doxygen irá remover este arquivo da lista de arquivos.</p>
+
 
 <p align="justify"> &emsp;&emsp;If you have a file that doxygen cannot parse but still would like to document it, you can show it as-is using \verbinclude, e.g.</p>
 
+<p align="justify"> &emsp;&emsp;Se você possui arquivos que o Doxygen não consegue identificar mas, mesmo assim, deseja documentá-lo, você pode mostrá-lo com o comando \verbinclude, por exemplo:</p>
+
+
 ```C++
 /** @file myscript.sh
- *  Look at this nice script:
+ *  Olhe este script interessante:
  *  @verbinclude myscript.sh
  */
 ```

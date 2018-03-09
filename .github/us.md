@@ -1,18 +1,18 @@
-# US X - Issue Title
+# US X - Título da issue
 ---
-### Description:
-Short and useful issue's description.
+### Descrição:
+Descrição útil e curta sobre a issue.
 
-### Acceptance criteria
-Acceptance criteria for the issue being accepted.
-- [ ] Unit Tests passing
-- [ ] Something else
-- [ ] No creativity here
+### Critérios de aceitação
+Critérios de aceitação para a issue ser considerada fechada.
+- [ ] Testes passando
+- [ ] Algo a mais
+- [ ] Coisas relevantes para o fechamento da issue
 
 
 ### Tasks
-Section for more complex issues. All the tasks the issue must guarantee is working.
-- [ ] Login is redirecting to last page
-- [ ] Developers are getting coffee constantly
-- [ ] Login page has _forgot password_ link
-- [ ] No animals mistreated
+Seção para issues mais complexas. Todas as tarefas que devem estar funcionando no fim da issue:
+- [ ] Login está redirecionando para o fim da página
+- [ ] Devs estão satisfeitos com o café
+- [ ] Página de login possui botão _esqueci minha senha_
+- [ ] Nenhum animal foi ferido
