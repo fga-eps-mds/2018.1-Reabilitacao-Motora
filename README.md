@@ -1,90 +1,88 @@
 
 
-# Project Title
+# Reabilitação Motora
 
-<p align="justify"> This work proposes the development of a platform for capturing and estimating movements capable not only of monitoring the exercises performed during a session of physiotherapy but also of evaluating them automatically, delivering quantitative and numerical results to the physiotherapist or to other applications that use a unit of processing of this system. 
+<p align="justify"> Este trabalho propõe o desenvolvimento de uma plataforma de captura, monitoramento e avaliação de movimentos realizados em sessões de fisioterapia. Os dados coletados são fornecidos ao fisioterapeuta ou a qualquer outra aplicação capaz de operar o produto em questão.
 </p>
 
-## Getting Started
+## Guia inicial
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+_Estas são instruções de como configurar o ambiente de testes e desenvolvimento na máquina do leitor_
 
-### Prerequisites
+### Pré-requisitos
 
-What things you need to install the software and how to install them
-
-```
-Give examples
-```
-
-### Installing
-
-A step by step series of examples that tell you have to get a development env running
-
-Say what the step will be
+_O que o leitor precisa para instalar o software_
 
 ```
-Give the example
+Escreva exemplos aqui
 ```
 
-And repeat
+### Instalação
+
+_Um passo a passo do que deve ser feito para rodar o ambiente de desenvolvimento_
+
+_Dê um exemplo de passo_
 
 ```
-until finished
+Escreva o exemplo
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
+_E repita_
 
 ```
-Give an example
+Escreva o exemplo seguinte, até o fim do processo.
 ```
 
-### And coding style tests
+_Finalize com um exemplo de uso do sofware. Colete dados ou realize uma pequena demonstração._
 
-Explain what these tests test and why
+## Rodando os testes
+
+_Explique como funcionam os testes automatizados para esta plataforma_
+
+### Especifique cada tipo de teste
+
+_Explique o que está sendo testado e o porquê_
 
 ```
-Give an example
+Dê um exemplo.
 ```
 
-## Deployment
+### Especifique os testes que validam a folha de estilo
 
-Add additional notes about how to deploy this on a live system
+_Explique o que estes testes fazem e o porquê_
 
-## Built With
+```
+Dê um exemplo.
+```
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+## Intalação em ambiente de produção
 
-## Contributing
+_Adicione anotações sobre como subir o ambiente de produção_
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+## Dependências
 
-## Versioning
+* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - _O framework utilizado_
+* [Maven](https://maven.apache.org/) - _O gerenciador de dependências_
+* [ROME](https://rometools.github.io/rome/) - _Plataforma usada pra gerar feed RSS_
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+## Como contribuir para o projeto
 
-## Authors
+Para contribuir com o projeto, verifique as instruções contidas nos arquivos CONTRIBUTING.md e codeOfConduct.md, na pasta docs do repositório.
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+## Versionamento
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+Todo o versionamento do projeto é realizado neste repositório, tanto da documentação quanto do código. Sinta-se livre para contribuir com ambos.
 
-## License
+## Authores
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+_Listar autores e disponibilizar link para a lista de contribuidores (docs/CONTRIBUTORS.md)_
 
-## Acknowledgments
+## Licença
 
-* Hat tip to anyone who's code was used
-* Inspiration
-* etc
+_Sinalizar a licença do projeto e disponibilizar link para o LICENSE.md_
+
+## Considerações
+
+* _Menção aos autores cujos códigos foram usados_
+* _Inspirações_
+* _etc_

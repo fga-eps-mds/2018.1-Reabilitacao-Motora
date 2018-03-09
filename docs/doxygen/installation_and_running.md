@@ -1,4 +1,4 @@
-# Installation
+# Instalação
 
 ### Doxygen
 ```
@@ -6,21 +6,21 @@ sudo apt-get install doxygen
 ```
 
 ### Doxygen GUI
-* This is a visual doxygen.
+* Versão visual do Doxygen.
 ```
 sudo apt-get install doxygen-gui
 ```
 
-# Running
+# Rodando
 
-### Generate the index file.
-* Inside the mindscape folder run:
+### Gere o arquivo index.
+* Dentro da pasta do projeto, execute:
 ```
 doxygen Doxyfile
 ```
 
-### Output folder.
-* To open the Documentation run the root above.
+### Pasta de saída.
+* Para abrir a documentação, abra o arquivo index.
 ```
 ../doxygen/html/index.html
 ```

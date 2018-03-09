@@ -15,49 +15,49 @@ Data|Versão|Descrição|Autor
 
 -----
 
-## 1. Naming
+## 1. Nomes
 
-**1.1.** Use **CamelCase** to name attributes and parameters.
+**1.1.** Use **CamelCase** para dar nome a atributos e parâmetros.
 
 ``` csharp
 
-    // Good example
+    // Bom exemplo
     string studentName;
 
 
-    // Bad example
+    // Mau exemplo
     string student_name;
 
 ```
 
-**1.2.** Use **PascalCase** to name methods.
+**1.2.** Use **PascalCase** para dar nome a métodos.
 
 ``` csharp
 
-    // Good example
+    // Bom exemplo
     void SetGameObject(int studentName)
     {
         this.studentName = studentName;
     }
 
-    // Bad example
+    // Mau exemplo
     void setgameObject(int studentname)
     {
         this.student_name = studentname;
     }
 ```
 
-**1.3.** Every method name must express verbally what it does.
+**1.3.** Os nomes dos métodos devem bem representar o que é realizado.
 
 ``` csharp
 
-    // Good example
+    // Bom exemplo
     void RegisterGameObject(GameObject player)
     {
           print(player.name);
     }
 
-    // Bad example
+    // Mau exemplo
     void game_object_registration(GameObject player)
     {
           print(player.name);
@@ -65,88 +65,88 @@ Data|Versão|Descrição|Autor
 
 ```
 
-**1.4.** Use **PascalCase** to name classes and interfaces.
+**1.4.** Use **PascalCase** para dar nome a classes e interfaces.
 
 ``` csharp
 
-    // Good example
+    // Bom exemplo
     public class PlayerMovement
     {
       /*...*/
     }
 
-    // Bad example
+    // Mau exemplo
     public class playermovement
     {
         /*...*/
     }
 ```
 
-**1.5.** Use significative names on attributes. Abbreviations must not be used.
+**1.5.** Use nomes significativos em atributos. Abreviações NÃO devem ser usadas.
 
 ``` csharp
 
-    // Good example
+    // Bom exemplo
     Vector3 playerVelocity;
 
-    // Bad example
+    // Mau exemplo
     Vector3 pv;
 
 ```
 
-**1.6.**  There must not be attributes named with a single character, like `a`, `b`, `c`. The only exception is `i` on loops.
+**1.6.**  Não deve existir variáveis nomeadas com letras únicas, como `a`, `b`, `c`. A única exceção é o uso de `i` em estruturas de repetição (loop).
 
 ``` csharp
 
-    // Good example
+    // Bom exemplo
     Rigidbody rigidbody = GetComponent<Rigidbody>();
 
-    // Bad example
+    // Mau exemplo
     Rigidbody r = GetComponent<Rigidbody>();
 
 ```
 
-**1.7.** Constants must be written on SCREAMING_SNAKE_CASE.
+**1.7.** Constantes devem ser escritas no padrão SCREAMING_SNAKE_CASE.
 
 ``` csharp
 
-    // Good example
+    // Bom exemplo
     public const int MINIMUM_PASSWORD_HEIGHT = 6;
 
-    // Bad example
+    // Mau exemplo
     public const int MINIMUMPASSWORDHEIGHT = 6;
 
 ```
 
-**1.8.** Treat acronyms as words.
+**1.8.** Trate acrônimos como palavras.
 
 ``` csharp
 
-    // Good example
+    // Bom exemplo
     string urlPost = "https://google/api/save";
 
-    // Bad example
+    // Mau exemplo
     string URLPost = "https://google/api/save";
 
 ```
 
-**[[Back to top|Style-Sheet]]**
+**[[Voltar ao topo|Style-Sheet]]**
 
 -----
-## 2. Formatting
+## 2. Formatação
 
-**2.1.** Use TABs to indent.
+**2.1.** Use TABs para indentar.
 
 ``` csharp
 
-    // Good example
+    // Bom exemplo
     bool GetPlayerVelocity()
     {
         Rigidbody rigidBody = GetComponent<Rigidbody>();
         return rigidBody.velocity;
     }
 
-    // Bad example
+    // Mau exemplo
     bool GetPlayerVelocity()
     {
     Rigidbody rigidBody = GetComponent<Rigidbody>();
@@ -154,11 +154,11 @@ Data|Versão|Descrição|Autor
     }
 ```
 
-**2.2.** Skip a line to separate logical groups.
+**2.2.** Pule uma linha para separar blocos lógicos.
 
 ``` csharp
 
-    // Good example
+    // Bom exemplo
     public float moveSpeed = 10f;
     public float turnSpeed = 50f;
 
@@ -167,7 +167,7 @@ Data|Versão|Descrição|Autor
       transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
     }
 
-    // Bad example
+    // Mau exemplo
     public float moveSpeed = 10f;
     public float turnSpeed = 50f;
     if(transform.position.x > 0.0f)
@@ -177,11 +177,11 @@ Data|Versão|Descrição|Autor
 
 ```
 
-**2.3.** Single line expressions must not have more than 80 characters.
+**2.3.** Cada linha não deve apresentar mais do que 80 caracteres.
 
 ``` csharp
 
-    // Good example
+    // Bom exemplo
     void RegisterGameObject(GameObject player)
     {
       print("omg im so happy that im going to write a giant
@@ -189,7 +189,7 @@ Data|Versão|Descrição|Autor
       i registered a player object!!!");
     }
 
-    // Bad example
+    // Mau exemplo
     void RegisterGameObject(GameObject player)
     {
       print("omg im so happy that im going to write a giant bible here check this out guys omg i cant believe that i registered a player object!!!");
@@ -198,28 +198,28 @@ Data|Versão|Descrição|Autor
 
 ```
 
-**2.4.** Always skip a line to open a bracket that belongs to a method, loop or conditional structure. The closing bracket must have the same indentation level as its own structure.
+**2.4.** Sempre pule uma linha para abrir o escopo de um método, estrutura de repetição ou estrutura condicional. A chave que fecha o escopo deve ter a mesma indentação daquela que o abriu.
 
 ``` csharp
 
-    // Good example
+    // Bom exemplo
     void MovePlayer ()
     {
       transform.Translate(Vector3.forward * 5f * Time.deltaTime);
     }
 
-    // Bad example
+    // Mau exemplo
     void MovePlayer () {
       transform.Translate(Vector3.forward * 5f * Time.deltaTime);
     }
 
 ```
 
-**2.5.** There must be a space between operators.
+**2.5.** Deve haver espaços entre os operadores.
 
 ``` csharp
 
-    // Good example
+    // Bom exemplo
     void Update ()
     {
       float h = Input.GetAxis("Horizontal");
@@ -229,7 +229,7 @@ Data|Versão|Descrição|Autor
       textOutput.text = "Value Returned: " + h.ToString("F2");
     }
 
-    // Bad example
+    // Mau exemplo
     void Update ()
     {
       float h=Input.GetAxis("Horizontal");
@@ -241,11 +241,11 @@ Data|Versão|Descrição|Autor
 
 ```
 
-**2.6.** There must not be any space after `(`, `[` and before `)`, `]`, **except** after funtions declarations.
+**2.6.** Não deve haver espaço após `(`, `[` e antes de `)`, `]`, **exceto** após declarações de métodos.
 
 ``` csharp
 
-    // Good example
+    // Bom exemplo
     void Update ()
     {
         if(Input.GetKey(KeyCode.Space))
@@ -254,7 +254,7 @@ Data|Versão|Descrição|Autor
         }
     }
 
-    // Bad example
+    // Mau exemplo
     void Update ()
     {
         if( Input.GetKey ( KeyCode.Space ) )
@@ -265,11 +265,11 @@ Data|Versão|Descrição|Autor
 
 ```
 
-**2.7.** In loops. there must not be a line after `}`.
+**2.7.** Em estruturas de repetição, Não deve haver quebra de linha após fechar o escopo com `}`.
 
 ``` csharp
 
-    // Good example
+    // Bom exemplo
     for (i = 0; i < players.size(); i++)
     {
         for (int j = 0; j < players.size() - 1; j++)
@@ -281,7 +281,7 @@ Data|Versão|Descrição|Autor
 	      }
     }
 
-    // Bad example
+    // Mau exemplo
     for (i = 0; i < players.size(); i++)
     {
         for (int j = 0; j < players.size() - 1; j++)
@@ -295,11 +295,11 @@ Data|Versão|Descrição|Autor
 
     }
 ```
-**2.8.** There must not be a space after a method name, `for`, `if`, `else if` and `switch`.
+**2.8.** Não deve haver espaço após `for`, `if`, `else if` e `switch`.
 
 ``` csharp
 
-    // Good example
+    // Bom exemplo
     void TemperatureTest ()
     {
         if(coffeeTemperature > hotLimitTemperature)
@@ -316,7 +316,7 @@ Data|Versão|Descrição|Autor
         }
     }
 
-    // Bad example
+    // Mau exemplo
     void TemperatureTest ()
     {
         if (coffeeTemperature > hotLimitTemperature)
@@ -337,4 +337,4 @@ Data|Versão|Descrição|Autor
 ```
 
 
-**[[Back to top|Style-Sheet]]**
+**[[Voltar ao topo|Style-Sheet]]**

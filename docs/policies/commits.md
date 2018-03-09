@@ -1,11 +1,11 @@
-# Commits Policy
+# Política de commits
 
-* Commits must use the following model:
+* Os commits devem utilizar o seguinte modelo:
 ```
-[TAG] Brief description
+[TAG] Breve descrição
 ```
 
-* Practical Example:
+* Exemplo prático:
 ```
-[BUG] Recover input movement
+[BUG] Corrige captura de movimento
 ```

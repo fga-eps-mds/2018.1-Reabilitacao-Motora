@@ -1,22 +1,22 @@
 
-US X - Issue title
+US X - Nome da issue
 
-## Description - _<what this pull request does?>_
-Short description of all changes and its reasons.
-This section can be written using files changes.
+## Descrição - _<para que serve este pull request?>_
+Curta explicação sobre o que foi mudado e o porquê.
+Esta seção pode ser escrita usando as modificações dos arquivos.
 
-[Reference for the US/UC](#)
+[Link para a/o US/UC](#)
 
-## Why is this pull request necessary?
-Explain why it is necessary, for example:
-_It allows a developer to get fresh coffee every morning._
+## Qual a necessidade deste pull request?
+Explique o porquê deste pull request, por exemplo:
+_Permite que os desenvolvedores possam tomar um café quente todas as manhãs._
 
-## Criterias
+## Critérios de aceitação
 
 Ex:
-- [x] Created tests
-- [x] Tests passing
-- [x] Building
-- [x] No conflicts with master
+- [x] Testes criados
+- [x] Testes passando
+- [x] A etapa de _build_ está funcionando
+- [x] Não há conflitos a serem resolvidos
 
-resolves #IssueNumber
+resolve #NumeroDaIssue

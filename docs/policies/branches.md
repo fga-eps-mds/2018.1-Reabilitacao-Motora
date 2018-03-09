@@ -1,27 +1,26 @@
-# Branches creation
+# Criação de branches
 
-
-* To create a branch, the following model must be applied:
+* Para criar uma branch, o seguinte modelo deve ser aplicado:
 ```
-TagIfExists-BranchName
-```
-
-* Branch with no TAG:
-```
-BranchName
+TagSeExistir-NomeDaBranch
 ```
 
-* All spaces in **TAG** must be filled with **"_"**:
+* Branch sem tag TAG:
 ```
-Issue_Number-BranchName
-```
-
-* Branch name must not have spaces:
-```
-Issue_Number-BranchName
+NomeDaBranch
 ```
 
-### Practical Example:
+* Todos os espaços na **TAG** devem ser **"_"**:
 ```
-Issue_64-FixPhysicsLateUpdate
+Numero_da_issue-NomeDaBranch
+```
+
+* Os nomes das branches não deves ter espaços:
+```
+Numero_da_issue-NomeDaBranch
+```
+
+### Exemplo prático:
+```
+Issue_64-CorrigePhysicsLateUpdate
 ```
