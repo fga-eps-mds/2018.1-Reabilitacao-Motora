@@ -1,2 +1,0 @@
-[Histórias de Usuário](https://github.com/RomeuCarvalhoAntunes/2018.1-Reabilitacao-Motora/issues/new?template=userStories.md)</br>
-[Issues conversacionais](https://github.com/RomeuCarvalhoAntunes/2018.1-Reabilitacao-Motora/issues/new?template=conversational.md)</br>
