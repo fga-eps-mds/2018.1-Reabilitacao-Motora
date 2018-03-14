@@ -8,9 +8,9 @@
 
 ## 2. Papéis
 
-| <img src="" width="200" height="200"/> | <img src="" width="200" height="200"/> |
+| <img src="https://github.com/RomeuCarvalhoAntunes/2018.1-Reabilitacao-Motora/blob/master/docs/imagens/grupo/Romeu_Antunes.png" width="200" height="200"/> | <img src="https://github.com/RomeuCarvalhoAntunes/2018.1-Reabilitacao-Motora/blob/master/docs/imagens/grupo/Lucas_Malta.png" width="200" height="200"/> |
 |:--:|:--:|
-| **Scrum Master / Tracker** | **Product Owner** |
+| **Scrum Master** | **Product Owner** |
 
 | Time de Desenvolvimento |
 |:--:|
