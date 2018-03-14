@@ -3,6 +3,7 @@
 Data|Versão|Descrição|Autor
 -|-|-|-
 14/03|1.0.0|Criação do Documento|Djorkaeff Alexandre
+14/03|1.0.1|Adição da Introdução - Tópico 1|Djorkaeff Alexandre
 
 # Sumário
 
@@ -37,17 +38,38 @@ ___
 
 ##### 1.1	<a name ="1_1">Propósito</a>
 
-<p align = "justify"></p>
+<p align = "justify">Este documento tem por objetivo estabelecer um posicionamento geral sobre a aplicação de Reabilitação motora, definindo suas principais funcionalidade e seus requisitos.</p>
 
 ##### 1.2	<a name="1_2">Escopo</a>
 
-<p align = "justify"></p>
+<p align = "justify">Este projeto tem como finalidade auxiliar na recuperação de movimento dos membros superiores de vítimas de AVC, esse auxílio será feito de forma a sistematizar a amostragem de resultados de movimentos e facilitar a visualização desses para o fisioterapeuta responsável.</p>
 
 ##### 1.3	<a name=1_3>Definições, acrônimos e abreviações</a>
 
+* FGA - Faculdade do Gama (UnB)
+* UnB - Universidade de Brasília
+* MDS - Métodos de Desenvolvimento de Software
+* EPS - Engenharia de Produto de Software
+
 ##### 1.4 <a name="1_4">	Referências:</a>
 
+
+IBM Knowledge Center - Documento de Visão: A estrutura de tópicos do documento de visão. Disponível em: https://www.ibm.com/support/knowledgecenter/pt-br/SSWMEQ_3.0.1/com.ibm.rational.rrm.help.doc/topics/r_vision_doc.htm. Acesso em: 07 mar. 2018;
+
+CHAVES, Felipe; SILVA, Guilherme; HORINOUCHI, Lucas; DOS SANTOS, Lucas; NÓBREGA, Lucas; DE CAMARGO, Michel; QUEIROZ, Natália. Receituário Médico: Documento de Visão.
+Disponível em: https://github.com/fga-gpp-mds/2017.2-Receituario-Medico/wiki. Acesso em 07 mar. 2018;
+
 ##### 1.5 <a name="1_5">Visão geral</a>
+ Este documento é dividido em 7 tópicos descrevendo os detalhes das características do software proposto.
+Sendo dividido em:
+
+* **Introdução:** no qual é introduzido os detalhes gerais sobre a visão do projeto;
+* **Posicionamento:** descrevendo o problema e a oportunidade de negócio;
+* **Descrições dos Envolvidos e dos Usuários:** esta seção descreve o perfil das partes interessadas no projeto;
+* **Visão Geral do Produto:** Esta seção fornece uma visualização de alto nível das capacidades do produto, interfaces para outros aplicativos e configurações dos sistemas;
+* **Recursos do Produto:** breve descrição dos recursos do produto;
+* **Restrições:** as restrições de *design*, restrições externas, como requisitos operacionais ou regulamentares;
+
 ___
 
 ### 2. <a name="2">Posicionamento</a>
