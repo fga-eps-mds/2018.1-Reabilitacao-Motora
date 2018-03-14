@@ -46,8 +46,4 @@
 
 ## 6. Quadro de Conhecimento
 
-<<<<<<< HEAD
-![Conhecimento](docs/imagens/Quadro_Conhecimento_00.png)
-=======
 ![Conhecimento](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/blob/development/docs/imagens/Quadro_Conhecimento_00.png)
->>>>>>> Resultado Sprint 00
