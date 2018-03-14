@@ -10,7 +10,7 @@
 
 | <img src="" width="200" height="200"/> | <img src="" width="200" height="200"/> |
 |:--:|:--:|
-| **Scrum Master / Tracker** | **Product Owner** |
+| **Scrum Master** | **Product Owner** |
 
 | Time de Desenvolvimento |
 |:--:|

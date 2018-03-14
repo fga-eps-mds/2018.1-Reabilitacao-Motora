@@ -12,7 +12,10 @@
 
 | ID | Issue | Status |
 |:--:| ------- | :----: |
-
+| 4 | [Criar outros modelos de Issue](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/4) | Fechada |
+| 5 | [Tradução Commits, Branch e Style Sheet Wiki](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/5) | Fechada |
+| 6 | [Treinamento de Scrum](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/6) | Fechada |
+| 7 | [Treinamento de Git](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/7) | Fechada |
 
 ### 2.3 Pontuação Final
 
@@ -43,4 +46,4 @@
 
 ## 6. Quadro de Conhecimento
 
-![Conhecimento](docs/imagens/Quadro_Conhecimento_00.png)
+![Conhecimento](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/blob/development/docs/imagens/Quadro_Conhecimento_00.png)
