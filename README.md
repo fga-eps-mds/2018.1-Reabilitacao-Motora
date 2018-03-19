@@ -2,8 +2,7 @@
 
 # Reabilitação Motora
 
-<p align="justify"> Este trabalho propõe o desenvolvimento de uma plataforma de captura, monitoramento e avaliação de movimentos realizados em sessões de fisioterapia. Os dados coletados são fornecidos ao fisioterapeuta ou a qualquer outra aplicação capaz de operar o produto em questão.
-</p>
+<p align="justify">&emsp;&emsp;Este trabalho propõe o desenvolvimento de uma plataforma de captura, monitoramento e avaliação de movimentos realizados em sessões de fisioterapia. Os dados coletados são fornecidos ao fisioterapeuta ou a qualquer outra aplicação capaz de operar o produto em questão.</p>
 
 ## Guia inicial
 
@@ -55,7 +54,7 @@ _Explique o que estes testes fazem e o porquê_
 Dê um exemplo.
 ```
 
-## Intalação em ambiente de produção
+## Instalação em ambiente de produção
 
 _Adicione anotações sobre como subir o ambiente de produção_
 
@@ -73,13 +72,16 @@ Para contribuir com o projeto, verifique as instruções contidas nos arquivos C
 
 Todo o versionamento do projeto é realizado neste repositório, tanto da documentação quanto do código. Sinta-se livre para contribuir com ambos.
 
-## Authores
+## Autores
 
 _Listar autores e disponibilizar link para a lista de contribuidores (docs/CONTRIBUTORS.md)_
 
 ## Licença
 
-_Sinalizar a licença do projeto e disponibilizar link para o LICENSE.md_
+MIT License </br>
+Copyright (c) 2018 GPP/MDS
+
+[Licença](https://github.com/RomeuCarvalhoAntunes/2018.1-Reabilitacao-Motora/blob/master/LICENSE.md)
 
 ## Considerações
 
