@@ -6,7 +6,7 @@
 
 
 ## _Epics, suas user stories e tasks_
-#### **EP01** - Como fisioterapeuta, eu desejo que o sistema tenha saídas de dados padrão para possibilitar portabilidade.
+#### [**EP01** - Como fisioterapeuta, eu desejo que o sistema tenha saídas de dados padrão para possibilitar portabilidade.](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/31)
 
 |ID | Tema | Eu, como | Desejo | Para | Notas | Prioridade | Status |
 | - | ---- | -------- | ------ | -------- | ----- | ---------- | ------ |
@@ -40,7 +40,7 @@
 
 ---
 
-#### **EP03** - Como fisioterapeuta, eu desejo captar movimentos do meu paciente para avaliar a sua evolução.
+#### [**EP03** - Como fisioterapeuta, eu desejo captar movimentos do meu paciente para avaliar a sua evolução.](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/32)
 
 |ID | Tema | Eu, como | Desejo | Para | Notas | Prioridade | Status |
 | - | ---- | -------- | ------ | -------- | ----- | ---------- | ------ |
@@ -65,7 +65,7 @@
 
 ---
 
-#### **EP04** - Como fisioterapeuta, eu desejo utilizar interface gráfica para configurar o sistema.
+#### [**EP04** - Como fisioterapeuta, eu desejo utilizar interface gráfica para configurar o sistema.](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/33)
 
 |ID | Tema | Eu, como | Desejo | Para | Notas | Prioridade | Status |
 | - | ---- | -------- | ------ | -------- | ----- | ---------- | ------ |
@@ -86,7 +86,7 @@
 
 ---
 
-#### **EP05** - Como fisioterapeuta, eu desejo manter o cadastro do meu paciente para melhor avaliá-lo.
+#### [**EP05** - Como fisioterapeuta, eu desejo manter o cadastro do meu paciente para melhor avaliá-lo.](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/34)
 
 |ID | Tema | Eu, como | Desejo | Para | Notas | Prioridade | Status |
 | ---- | ---- | -------- | ------ | -------- | ----- | ---------- | ------ |
@@ -106,7 +106,7 @@
 
 ---
 
-#### **EP06** - Como fisioterapeuta, eu desejo ter acesso a um ambiente de suporte para me auxiliar na operação do software.
+#### [**EP06** - Como fisioterapeuta, eu desejo ter acesso a um ambiente de suporte para me auxiliar na operação do software.](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/35)
 
 |ID | Tema | Eu, como | Desejo | Para | Notas | Prioridade | Status |
 | - | ---- | -------- | ------ | -------- | ----- | ---------- | ------ |
