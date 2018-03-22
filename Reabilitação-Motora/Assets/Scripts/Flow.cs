@@ -15,21 +15,23 @@ public class Flow : MonoBehaviour {
 		#if UNITY_EDITOR
 		UnityEditor.EditorApplication.isPlaying = false;
 		#else
-		Application.Quit ();
+		Application.Quit();
 		#endif
 	}
 
 	/**
  	 * Leva para scene de função não implementada.
  	 */
-	public void NotImplemented() {
-		SceneManager.LoadScene ("NotImplemented");
+	public void NotImplemented() 
+	{
+		SceneManager.LoadScene("NotImplemented");
 	}
 
 	/**
  	 * Volta para o menu.
  	 */
-	public void BackToMenu() {
-		SceneManager.LoadScene ("Menu");
+	public void BackToMenu() 
+	{
+		SceneManager.LoadScene("Menu");
 	}
 }
