@@ -6,7 +6,7 @@
 ------------
 
 ## 2. Fechamento da _Sprint_
-<p align="justify">&emsp;&emsp; Programamos as atividades para a sprint e elas foram executadas com êxito, a falta do código fonte original do projeto pode ter nos atrasado no planejamento pois queríamos que MDS começasse a implementação do código logo da <i>Sprint</i> 01  no entanto como não ocorreu como o planejado MDS iniciou o aprendizado da estrutura básica do _Unity_ por meio dos tutoriais da ferramenta, iniciou-se também a construção do Documento de Visão do projeto</p>
+<p align="justify">&emsp;&emsp; Programamos as atividades para a sprint e elas foram executadas com êxito, a falta do código fonte original do projeto pode ter nos atrasado no planejamento pois queríamos que MDS começasse a implementação do código logo da <i>Sprint</i> 01  no entanto como não ocorreu como o planejado. MDS iniciou o aprendizado da estrutura básica do _Unity_ por meio dos tutoriais da ferramenta, iniciou-se também a construção do Documento de Visão do projeto</p>
 
 ### 2.1 Backlog da Sprint
 
