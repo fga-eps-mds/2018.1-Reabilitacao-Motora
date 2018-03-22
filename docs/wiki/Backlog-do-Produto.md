@@ -10,19 +10,19 @@
 
 |ID | Tema | Eu, como | Desejo | Para | Notas | Prioridade | Status |
 | - | ---- | -------- | ------ | -------- | ----- | ---------- | ------ |
-| [US17]() | Gerenciamento de Movimentos | fisioterapeuta | conectar um sensor ao sistema | possibilitar a captura de movimentos | 3 | 1 | Não implementado |
+| [US17](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/28) | Gerenciamento de Movimentos | fisioterapeuta | conectar um sensor ao sistema | possibilitar a captura de movimentos | 3 | 1 | Não implementado |
 
 #### Tasks
 |  ID  | Descrição | User stories relacionadas |
 | ---- | --------- | ------------------------- |
-| TK01 | Verificar se o esqueleto está sendo movido pelo sensor | [US17]() |
-| TK02 | Validar dados recebidos pelo sensor no console do Unity | [US17]() |
-| TK08 | Verificar e documentar limitações do sensor utilizado | [US17]() |
+| TK01 | Verificar se o esqueleto está sendo movido pelo sensor | [US17](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/28) |
+| TK02 | Validar dados recebidos pelo sensor no console do Unity | [US17](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/28) |
+| TK08 | Verificar e documentar limitações do sensor utilizado | [US17](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/28) |
 
 ##### _Features envolvidas_
 |  ID  | Descrição | User stories relacionadas |
 | ---- | --------- | ------------------------- |
-| FT01 | Gerenciamento de Movimentos | [US01](), [US02](), [US03](), [US04](), [US05](), [US06](), [US12](), [US13]() e [US17]() |  
+| FT01 | Gerenciamento de Movimentos | [US01](), [US02](), [US03](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/29), [US04](), [US05](), [US06](), [US12](), [US13]() e [US17](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/28) |  
 
 ---
 
@@ -46,7 +46,7 @@
 | - | ---- | -------- | ------ | -------- | ----- | ---------- | ------ |
 | US01 | Gerenciamento de Movimentos | fisioterapeuta | cadastrar movimentos | fornecer um modelo de movimento ao sistema | 34 | 1 | Não implementado |
 | US02 | Gerenciamento de Movimentos | fisioterapeuta | atualizar movimentos | corrigir um modelo de movimento cadastrado | 34 | 3 | Não implementado |
-| US03 | Gerenciamento de Movimentos | fisioterapeuta | executar movimentos | espelhar virtualmente a atividade em um modelo tridimensional | 8 | 2 | Não implementado |
+| [US03](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/29) | Gerenciamento de Movimentos | fisioterapeuta | executar movimentos | espelhar virtualmente a atividade em um modelo tridimensional | 8 | 2 | Não implementado |
 | US04 | Gerenciamento de Movimentos | fisioterapeuta | remover movimentos | eliminar um modelo de movimento no sistema | 34 | 3 | Não implementado |
 | US05 | Gerenciamento de Movimentos | fisioterapeuta | rotular movimento | dividir o movimento em etapas | 21 | 1 | Não implementado |
 | US06 | Gerenciamento de Movimentos | fisioterapeuta | visualizar movimento | ver melhor representação da ação | 13 | 3 | Não implementado |
@@ -55,13 +55,13 @@
 #### Tasks
 |  ID  | Descrição | User stories relacionadas |
 | ---- | --------- | ------------------------- |
-| TK06 | Inserir modelo tridimensional que seja compatível com o esqueleto movido pelo sensor | [US03]() |
-| TK07 | Validar movimentação do modelo com feedback em tempo real | [US03]() |
+| TK06 | Inserir modelo tridimensional que seja compatível com o esqueleto movido pelo sensor | [US03](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/29) |
+| TK07 | Validar movimentação do modelo com feedback em tempo real | [US03](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/29) |
 
 ##### _Features envolvidas_
 |  ID  | Descrição | User stories relacionadas |
 | ---- | --------- | ------------------------- |
-| FT01 | Gerenciamento de Movimentos | [US01](), [US02](), [US03](), [US04](), [US05](), [US06](), [US12](), [US13]() e [US17]() |
+| FT01 | Gerenciamento de Movimentos | [US01](), [US02](), [US03](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/29), [US04](), [US05](), [US06](), [US12](), [US13]() e [US17](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/28) |
 
 ---
 
@@ -69,20 +69,20 @@
 
 |ID | Tema | Eu, como | Desejo | Para | Notas | Prioridade | Status |
 | - | ---- | -------- | ------ | -------- | ----- | ---------- | ------ |
-| US14 | Gerenciamento de Interface Gráfica | fisioterapeuta | que o sistema contenha um menu | facilitar a navegação entre as funcionalidades do sistema | 3 | 1 | Não implementado |
+| [US14](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/30) | Gerenciamento de Interface Gráfica | fisioterapeuta | que o sistema contenha um menu | facilitar a navegação entre as funcionalidades do sistema | 3 | 1 | Não implementado |
 | US15 | Gerenciamento de Interface Gráfica | fisioterapeuta | configurar o ambiente gráfico | melhor adaptar às condições do tratamento | 13 | 4 | Não implementado |
 
 #### Tasks
 |  ID  | Descrição | User stories relacionadas |
 | ---- | --------- | ------------------------- |
-| TK03 | Criar menu principal que dá acesso a todas as features | [US14]() |
-| TK04 | Criar feedback de feature não implementada quando se aplicar tal situação | [US14]() |
-| TK05 | Definir identidade visual e seguí-la na criação da interface | [US14]() |
+| TK03 | Criar menu principal que dá acesso a todas as features | [US14](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/30) |
+| TK04 | Criar feedback de feature não implementada quando se aplicar tal situação | [US14](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/30) |
+| TK05 | Definir identidade visual e seguí-la na criação da interface | [US14](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/30) |
 
 ##### _Features envolvidas_
 |  ID  | Descrição | User stories relacionadas |
 | ---- | --------- | ------------------------- |
-| FT03 | Gerenciamento de Interface Gráfica | [US14]() e [US15]() |
+| FT03 | Gerenciamento de Interface Gráfica | [US14](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/30) e [US15]() |
 
 ---
 
@@ -101,7 +101,7 @@
 ##### _Features envolvidas_
 |  ID  | Descrição | User stories relacionadas |
 | ---- | --------- | ------------------------- |
-| FT01 | Gerenciamento de Movimentos | [US01](), [US02](), [US03](), [US04](), [US05](), [US06](), [US12](), [US13]() e [US17]() |
+| FT01 | Gerenciamento de Movimentos | [US01](), [US02](), [US03](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/29), [US04](), [US05](), [US06](), [US12](), [US13]() e [US17](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/28) |
 | FT02 | Gerenciamento de Pacientes | [US07](), [US08](), [US09](), [US10]() e [US11]() |
 
 ---
@@ -122,19 +122,19 @@
 ## Features
 |  ID  | Descrição | User stories relacionadas |
 | ---- | --------- | ------------------------- |
-| FT01 | Gerenciamento de movimentos | [US01](), [US02](), [US03](), [US04](), [US05]() e [US06]() |
+| FT01 | Gerenciamento de movimentos | [US01](), [US02](), [US03](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/29), [US04](), [US05]() e [US06]() |
 | FT02 | Gerenciamento de pacientes | [US07](), [US08](), [US09](), [US10](), [US11]() e [US12]()|
-| FT03 | Gerenciamento de interface gráfica | [US13](), [US14]() e [US15]()|
-| FT04 | Suporte | [US16]() e [US17]() |
+| FT03 | Gerenciamento de interface gráfica | [US13](), [US14](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/30) e [US15]()|
+| FT04 | Suporte | [US16]() e [US17](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/28) |
 
 #### Tasks
 |  ID  | Descrição | User stories relacionadas |
 | ---- | --------- | ------------------------- |
-| TK01 | Verificar se o esqueleto está sendo movido pelo sensor | [US17]() |
-| TK02 | Validar dados recebidos pelo sensor no console do Unity | [US17]() |
-| TK03 | Criar menu principal que dá acesso a todas as features | [US14]() |
-| TK04 | Criar feedback de feature não implementada quando se aplicar tal situação | [US14]() |
-| TK05 | Definir identidade visual e seguí-la na criação da interface | [US14]() |
-| TK06 | Inserir modelo tridimensional que seja compatível com o esqueleto movido pelo sensor | [US03]() |
-| TK07 | Validar movimentação do modelo com feedback em tempo real | [US03]() |
-| TK08 | Verificar e documentar limitações do sensor utilizado | [US17]() |
+| TK01 | Verificar se o esqueleto está sendo movido pelo sensor | [US17](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/28) |
+| TK02 | Validar dados recebidos pelo sensor no console do Unity | [US17](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/28) |
+| TK03 | Criar menu principal que dá acesso a todas as features | [US14](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/30) |
+| TK04 | Criar feedback de feature não implementada quando se aplicar tal situação | [US14](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/30) |
+| TK05 | Definir identidade visual e seguí-la na criação da interface | [US14](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/30) |
+| TK06 | Inserir modelo tridimensional que seja compatível com o esqueleto movido pelo sensor | [US03](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/29) |
+| TK07 | Validar movimentação do modelo com feedback em tempo real | [US03](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/29) |
+| TK08 | Verificar e documentar limitações do sensor utilizado | [US17](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/28) |
