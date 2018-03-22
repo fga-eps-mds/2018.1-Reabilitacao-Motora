@@ -1,6 +1,6 @@
 ## 1. Relato da _Sprint_
 
-<p align="justify">&emsp;&emsp;Para a _Sprint_ 1 fomos orientados a definir os papéis que o grupo de EPS iria desempenhar durante a execução do projeto de MDS, como EPS fica responsável pela gerencia os papéis foram distribuídos da seguinte forma. _Scrum Master_ - Romeu Carvalho,  _Product Owner_ - Lucas Malta, _DevOps_ Victor Moura, _Arquitetura_ Vitor Falcão e _Joker_ Arthur Diniz. Durante esta _Sprint_ recebemos o código fonte do projeto e podemos analisa-lo melhor, foi realizada também uma reunião com o cliente para que fosse definido um escopo para o projeto, escopo que se encontra no [_Product Backlog_]() e posteriormente se encontrará também em uma matriz de rastreabilidade para que possa haver um melhor controle sobre os requisitos e suas dependencias. Foi realizado também os primeiros eventos do Scrum **Retrospectiva**, **Review**, e o **Planejamento** sendo este não ocorreu pois o _time box_ foi excedido durante os outros eventos causando exaustão. No mesmo dia dos eventos foi realizado também  a pontuação das **Histórias de Usuário**, esta que também se encontra no [_Product Backlog_]().  
+<p align="justify">&emsp;&emsp;Para a _Sprint_ 1 fomos orientados a definir os papéis que o grupo de EPS iria desempenhar durante a execução do projeto de MDS, como EPS fica responsável pela gerencia os papéis foram distribuídos da seguinte forma. _Scrum Master_ - Romeu Carvalho,  _Product Owner_ - Lucas Malta, _DevOps_ Victor Moura, _Arquitetura_ Vitor Falcão e _Joker_ Arthur Diniz. Durante esta _Sprint_ recebemos o código fonte do projeto e podemos analisá-lo melhor, foi realizada também uma reunião com o cliente para que fosse definido um escopo para o projeto, escopo que se encontra no [_Product Backlog_](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/blob/development/docs/wiki/Backlog-do-Produto.md) e posteriormente se encontrará também em uma matriz de rastreabilidade para que possa haver um melhor controle sobre os requisitos e suas dependências. Foi realizado também os primeiros eventos do Scrum **Retrospectiva**, **Review**, e o **Planejamento** sendo este não ocorreu pois o _time box_ foi excedido durante os outros eventos causando exaustão. No mesmo dia dos eventos foi realizado também  a pontuação das **Histórias de Usuário**, esta que também se encontra no [_Product Backlog_](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/blob/development/docs/wiki/Backlog-do-Produto.md).  
  </p>
 
 #### Papéis
@@ -20,19 +20,19 @@
 ------------
 
 ## 2. Fechamento da _Sprint_
-<p align="justify">&emsp;&emsp; As tarefas propostas foram realizadas com sucesso, não ouveram contratempos durante essa sprint.
+<p align="justify">&emsp;&emsp; As tarefas propostas foram realizadas com sucesso, não houveram contratempos durante essa sprint.
 
 ### 2.1 Backlog da Sprint
 
 | ID | Issue | Status | Pontos |
 |:--:| ------- | :----: | :----: |
-| 9  | [Treinamento de C# e Unity]()    | Fechada | 3 |
-| 19 | [Backlog do Produto]()    | Fechada | 5 |
-| 25 | [Organização Wiki e pasta Docs]()    | Fechada | 2 |
-| 21 | [Modelo de Atas de Reunião]()    | Fechada | 1 |
-| 22 | [Modelo de Atas de Dojo ]()    | Fechada | 1 |
-| 28 | [Acesso ao Código da Solução ]()    | Fechada | 5 |
-| 16 | [Alteração de Idioma]()    | Fechada | 1 |
+| 9  | [Treinamento de C# e Unity](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/9)    | Fechada | 3 |
+| 19 | [Backlog do Produto](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/19)    | Fechada | 5 |
+| 25 | [Organização Wiki e pasta Docs](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/25)    | Fechada | 2 |
+| 21 | [Modelo de Atas de Reunião](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/21)    | Fechada | 1 |
+| 22 | [Modelo de Atas de Dojo ](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/22)    | Fechada | 1 |
+| 28 | [Acesso ao Código da Solução ](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/12)    | Fechada | 5 |
+| 16 | [Alteração de Idioma](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/16)    | Fechada | 1 |
 
 
 ### 2.3 Pontuação Final
@@ -45,23 +45,18 @@
 
 ## 3. _Burndown Chart_
 
-> Não existe Burndown pelo fato de não existirem pontos planejados na Sprint
+> O _Burndown_ se encontra disponível neste [link](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/milestone/2#reports?report=burndown&milestoneId=3179753&showPRs=false)
 
 
 ------------
 
-## 4. Velocity
 
-> Não existe Velocity pelo fato de não existirem pontos planejados na Sprint
+## 4. Retrospectiva da _Sprint_
 
-------------
-
-## 5. Retrospectiva da _Sprint_
-
-> Por ser a primeira sprint e a adaptação de MDS não foi realizada uma retrospectiva.
+> A Retrospectiva da Sprint se encontra neste [link](https://raw.githubusercontent.com/RomeuCarvalhoAntunes/2018.1-Reabilitacao-Motora/master/docs/imagens/Retrospectiva/Retrospectiva_Sprint01.png)
 
 ------------
 
-## 6. Quadro de Conhecimento
+## 5. Quadro de Conhecimento
 
-![Conhecimento](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/blob/development/docs/imagens/Quadro_Conhecimento_00.png)
+> O quadro de conhecimento se encontra disponível neste [link](https://raw.githubusercontent.com/RomeuCarvalhoAntunes/2018.1-Reabilitacao-Motora/master/docs/imagens/Quadro%20de%20Conhecimento/Quadro_Conhecimento_01.png)

@@ -38,12 +38,11 @@
 
 ## 4. Pareamento
 
-<img src="" />
-
+O Quadro de pareamento está disponível no [Link](https://raw.githubusercontent.com/RomeuCarvalhoAntunes/2018.1-Reabilitacao-Motora/master/docs/imagens/Quadro%20de%20Pareamento/Quadro_de_Pareamento.png)
 
 ## 5. Sprint Backlog
 
-A Milestone desta Sprint encontra-se neste [link](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/milestone/1)
+A Milestone desta Sprint encontra-se neste [link](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/milestone/3)
 
 -------
 
