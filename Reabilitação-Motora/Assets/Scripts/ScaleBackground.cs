@@ -12,8 +12,9 @@ public class ScaleBackground : MonoBehaviour
 	public float screenWidth;
 	public float screenHeight;
 	private float xAxis;
+
 	/**
-     * Inicia as váriaves A e B com altura e comprimento da tela.
+     * Inicia as váriaves width e height com altura e comprimento da tela.
      */
 	void Start() 
 	{
