@@ -5,7 +5,8 @@ using UnityEngine.SceneManagement;
 /**
  * Escala o tamanho dos componentes da scene conforme o tamanho da tela.
  */
-public class Flow : MonoBehaviour {
+public class Flow : MonoBehaviour 
+	{
 
 	/**
  	 * Finaliza o programa ao clicar em sair.
