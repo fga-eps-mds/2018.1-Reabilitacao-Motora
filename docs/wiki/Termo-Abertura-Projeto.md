@@ -72,13 +72,25 @@ Prover uma análise não superficial durante o atendimento de reabilitação de 
 
 
 ## 4. Requisitos de alto nível
-
+<p align="justify">
+ - Cadastro e gerenciamento de pacientes
+ - Consulta de pacientes com a utilização de captura de movimento
+ </p>
 
 ## 5. Premissas
-
+<p align="justify">
+ - O fisioterapeuta tem conhecimentos básicos de computação
+ - A clínica do fisioterapeuta contém ao menos um computador e um sensor de movimento
+ - A clínica do fisioterapeuta contém espaço suficiente para o sensor de movimento funcionar adequadamente
+ - 
+ </p>
 
 ## 6. Restrições
-
+<p align="justify">
+ - O projeto deve ser concluído no período letivo de 2018/1 da Universidade de Brasília
+ - O projeto só pode utilizar de recursos disponíveis pelos próprios membros
+ - O projeto deve ser concluído somente pela equipe de gestão e desenvolvimento do projeto, com consultas somente ao cliente do mesmo. 
+ </p>
 
 ## 7. Limites do Projeto
 
