@@ -6,19 +6,19 @@ using UnityEngine;
  * Escala o tamanho dos componentes da scene conforme o tamanho da tela.
  */
 public class ScaleBackground : MonoBehaviour 
-{
-	public float A;
-	public float B;
+	{
+	public float width;
+	public float height;
 	public float screenWidth;
 	public float screenHeight;
-
+	private float xAxis;
 	/**
      * Inicia as váriaves A e B com altura e comprimento da tela.
      */
 	void Start() 
 	{
-		A = transform.localScale.x;
-		B = transform.localScale.y;
+		width = transform.localScale.x;
+		height = transform.localScale.y;
 	}
 
 	/**
@@ -28,6 +28,7 @@ public class ScaleBackground : MonoBehaviour
 	{
 		screenWidth = Screen.width;
 		screenHeight = Screen.height;
-		transform.localScale = new Vector3((A * screenWidth / screenHeight), transform.localScale.y, transform.localScale.z);
+		xAxis = (width * screenWidth / screenHeight);
+		transform.localScale = new Vector3(xAxis, transform.localScale.y, transform.localScale.z);
 	}
 }
