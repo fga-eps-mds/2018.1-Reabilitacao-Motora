@@ -7,19 +7,19 @@ using UnityEngine;
  */
 public class ScaleBackground : MonoBehaviour 
 	{
-	public float width;
-	public float height;
+	public float objectLocalScaleX;
+	public float objectLocalScaleY;
 	public float screenWidth;
 	public float screenHeight;
 	private float xAxis;
 
 	/**
-     * Inicia as váriaves width e height com altura e comprimento da tela.
+     * Inicia as váriaves objectLocalScaleX e objectLocalScaleY com altura e comprimento da tela.
      */
 	void Start() 
 	{
-		width = transform.localScale.x;
-		height = transform.localScale.y;
+		objectLocalScaleX = transform.localScale.x;
+		objectLocalScaleY = transform.localScale.y;
 	}
 
 	/**
@@ -29,7 +29,7 @@ public class ScaleBackground : MonoBehaviour
 	{
 		screenWidth = Screen.width;
 		screenHeight = Screen.height;
-		xAxis = (width * screenWidth / screenHeight);
+		xAxis = (objectLocalScaleX * screenWidth / screenHeight);
 		transform.localScale = new Vector3(xAxis, transform.localScale.y, transform.localScale.z);
 	}
 }
