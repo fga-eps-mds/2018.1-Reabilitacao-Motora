@@ -29,5 +29,13 @@ public class CharacterAnimation : MonoBehaviour
 		{
 			anim.SetBool("Pointing", false);
 		}
+		if (Input.GetKey (KeyCode.S)) 
+		{
+			anim.SetBool ("Arm Gesture", true);
+		}
+		if (Input.GetKeyUp (KeyCode.S)) 
+		{
+			anim.SetBool ("Arm Gesture", false);
+		}
 	}
 }
