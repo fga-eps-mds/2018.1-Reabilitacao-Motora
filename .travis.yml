@@ -1,0 +1,11 @@
+language: objective-c
+osx_image: xcode8.1
+rvm:
+- 2.2
+before_install:
+- chmod a+x ./Reabilitação-Motora/Assets/Scripts/travis_install.sh
+- chmod a+x ./Reabilitação-Motora/Assets/Scripts/travis_build.sh
+install:
+- ./Reabilitação-Motora/Assets/Scripts/travis_install.sh
+script:
+- ./Reabilitação-Motora/Assets/Scripts/travis_build.sh
