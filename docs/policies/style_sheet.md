@@ -203,13 +203,13 @@ Data|Versão|Descrição|Autor
 ``` csharp
 
     // Bom exemplo
-    void MovePlayer ()
+    void MovePlayer()
     {
       transform.Translate(Vector3.forward * 5f * Time.deltaTime);
     }
 
     // Mau exemplo
-    void MovePlayer () {
+    void MovePlayer() {
       transform.Translate(Vector3.forward * 5f * Time.deltaTime);
     }
 
@@ -220,7 +220,7 @@ Data|Versão|Descrição|Autor
 ``` csharp
 
     // Bom exemplo
-    void Update ()
+    void Update()
     {
       float h = Input.GetAxis("Horizontal");
       float xPos = h * range;
@@ -230,7 +230,7 @@ Data|Versão|Descrição|Autor
     }
 
     // Mau exemplo
-    void Update ()
+    void Update()
     {
       float h=Input.GetAxis("Horizontal");
       float xPos=h*range;
@@ -241,12 +241,12 @@ Data|Versão|Descrição|Autor
 
 ```
 
-**2.6.** Não deve haver espaço após `(`, `[` e antes de `)`, `]`, **exceto** após declarações de métodos.
+**2.6.** Não deve haver espaço após `(`, `[` e antes de `)`, `]`.
 
 ``` csharp
 
     // Bom exemplo
-    void Update ()
+    void Update()
     {
         if(Input.GetKey(KeyCode.Space))
         {
@@ -255,7 +255,7 @@ Data|Versão|Descrição|Autor
     }
 
     // Mau exemplo
-    void Update ()
+    void Update()
     {
         if( Input.GetKey ( KeyCode.Space ) )
         {
@@ -270,11 +270,11 @@ Data|Versão|Descrição|Autor
 ``` csharp
 
     // Bom exemplo
-    for (i = 0; i < players.size(); i++)
+    for(i = 0; i < players.size(); i++)
     {
-        for (int j = 0; j < players.size() - 1; j++)
+        for(int j = 0; j < players.size() - 1; j++)
         {
-            if (player.get(j) > player.Get(j + 1))
+            if(player.get(j) > player.Get(j + 1))
             {
 	              Player auxiliarPlayer = player.Get(j);
 	          }
@@ -282,11 +282,11 @@ Data|Versão|Descrição|Autor
     }
 
     // Mau exemplo
-    for (i = 0; i < players.size(); i++)
+    for(i = 0; i < players.size(); i++)
     {
-        for (int j = 0; j < players.size() - 1; j++)
+        for(int j = 0; j < players.size() - 1; j++)
         {
-            if (player.get(j) > player.get(j + 1))
+            if(player.get(j) > player.get(j + 1))
             {
 	              Player auxiliarPlayer = player.get(j);
 	          }
@@ -300,7 +300,7 @@ Data|Versão|Descrição|Autor
 ``` csharp
 
     // Bom exemplo
-    void TemperatureTest ()
+    void TemperatureTest()
     {
         if(coffeeTemperature > hotLimitTemperature)
         {
@@ -317,7 +317,7 @@ Data|Versão|Descrição|Autor
     }
 
     // Mau exemplo
-    void TemperatureTest ()
+    void TemperatureTest()
     {
         if (coffeeTemperature > hotLimitTemperature)
         {
