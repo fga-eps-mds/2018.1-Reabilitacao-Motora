@@ -27,7 +27,6 @@ Todos os contribuidores do projeto devem seguir os seguintes passos:
   3. Faça as suas contribuições
 
 ## Documentação
-More documentation is always appreciated and it's something that you can contribute to from the GitHub web interface.  This might be a great start point if you are new to Open Source and GitHub!
 
 Mais documentação é sempre apreciada e é algo que você pode contribuir de forma simples:
 
