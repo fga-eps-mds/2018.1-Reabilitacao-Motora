@@ -21,6 +21,14 @@ public class Flow : MonoBehaviour
 	}
 
 	/**
+ 	 * Leva para scene de gravar um movimento.
+ 	 */
+	public void RecordMove() 
+	{
+		SceneManager.LoadScene("Clinic");
+	}
+
+	/**
  	 * Leva para scene de função não implementada.
  	 */
 	public void NotImplemented() 
