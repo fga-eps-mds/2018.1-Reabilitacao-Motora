@@ -1,21 +1,18 @@
 ## 1. Relato da _Sprint_
 
-<p align="justify">&emsp;&emsp;Para a _Sprint_ 1 fomos orientados a definir os papéis que o grupo de EPS iria desempenhar durante a execução do projeto de MDS, como EPS fica responsável pela gerencia os papéis foram distribuídos da seguinte forma. _Scrum Master_ - Romeu Carvalho,  _Product Owner_ - Lucas Malta, _DevOps_ Victor Moura, _Arquitetura_ Vitor Falcão e _Joker_ Arthur Diniz. Durante esta _Sprint_ recebemos o código fonte do projeto e podemos analisá-lo melhor, foi realizada também uma reunião com o cliente para que fosse definido um escopo para o projeto, escopo que se encontra no [_Product Backlog_](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/blob/development/docs/wiki/Backlog-do-Produto.md) e posteriormente se encontrará também em uma matriz de rastreabilidade para que possa haver um melhor controle sobre os requisitos e suas dependências. Foi realizado também os primeiros eventos do Scrum **Retrospectiva**, **Review**, e o **Planejamento** sendo este não ocorreu pois o _time box_ foi excedido durante os outros eventos causando exaustão. No mesmo dia dos eventos foi realizado também  a pontuação das **Histórias de Usuário**, esta que também se encontra no [_Product Backlog_](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/blob/development/docs/wiki/Backlog-do-Produto.md).  
- </p>
+<p align="justify">&emsp;&emsp; Para a <i>Sprint</i> 1 fomos orientados a definir os papéis que o grupo de EPS iria desempenhar durante a execução do projeto de MDS, como EPS fica responsável pela gerencia os papéis foram distribuídos da seguinte forma. <i>Scrum Master</i> - Romeu Carvalho,  <i>Product Owner</i> - Lucas Malta, <i>DevOps</i> Victor Moura, <i>Arquitetura</i> Vitor Falcão e <i>Joker</i> Arthur Diniz. Durante esta <i>Sprint</i> recebemos o código fonte do projeto e podemos analisá-lo melhor, foi realizada também uma reunião com o cliente para que fosse definido um escopo para o projeto, escopo que se encontra no <a href ="https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/blob/development/docs/wiki/Backlog-do-Produto.md"> Product Backlog </a> e posteriormente se encontrará também em uma matriz de rastreabilidade para que possa haver um melhor controle sobre os requisitos e suas dependências. Foi realizado também os primeiros eventos do <i>Scrum</i> <b>Retrospectiva</b>, <b>Review</b>, e o <b>Planejamento</b> sendo este não ocorreu pois o <i>time box</i> foi excedido durante os outros eventos causando exaustão. No mesmo dia dos eventos foi realizado também  a pontuação das <b>Histórias de Usuário</b>, esta que também se encontra no <a href ="https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/blob/development/docs/wiki/Backlog-do-Produto.md"> Product Backlog </a>.  
 
 #### Papéis
 
-> __Scrum Master__ Facilitador e Moderador dos eventos do scrum, garantindo que a metodologia seja seguida.
+> **_Scrum Master_** Facilitador e Moderador dos eventos do scrum, garantindo que a metodologia seja seguida.
 
-> __Product Owner__ Responsável pelas tomadas de decisões a respeito do projeto.
+> **_Product Owner_** Responsável pelas tomadas de decisões a respeito do projeto.
 
-> __DevOps__ Resposável pela automatização da parte operacional do projeto.
+> **_DevOps_** Resposável pela automatização da parte operacional do projeto.
 
-> __Arquitetura__ Responsável por encabeçar o pensamento arquitetural do projeto.
+> **_Arquitetura_** Responsável por encabeçar o pensamento arquitetural do projeto.
 
-> __Joker__ Reponsável por auxiliar em todos os papéis acima caso ocorra algum tipo de imprevisto.
-
-
+> **_Joker_** Reponsável por auxiliar em todos os papéis acima caso ocorra algum tipo de imprevisto.
 
 ------------
 
@@ -37,26 +34,40 @@
 
 ### 2.3 Pontuação Final
 
-* __Pontuação Total:__ 18
-* __Pontos Concluídos:__ 18
-* __Pontos Não Agregados:__ 0
+* **Pontuação Total:** 18
+* **Pontos Concluídos:** 18
+* **Pontos Não Agregados:** 0
 
 ------------
 
 ## 3. _Burndown Chart_
 
-> O _Burndown_ se encontra disponível neste [link](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/milestone/2#reports?report=burndown&milestoneId=3179753&showPRs=false)
+![](https://raw.githubusercontent.com/RomeuCarvalhoAntunes/2018.1-Reabilitacao-Motora/master/docs/imagens/Burndown/Sprint_01.png)
+
+> O _Burndown_ se encontra disponível neste [Link](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/milestone/2#reports?report=burndown&milestoneId=3179753&showPRs=false)
 
 
 ------------
 
+## 5. Velocity
 
-## 4. Retrospectiva da _Sprint_
-
-> A Retrospectiva da Sprint se encontra neste [link](https://raw.githubusercontent.com/RomeuCarvalhoAntunes/2018.1-Reabilitacao-Motora/master/docs/imagens/Retrospectiva/Retrospectiva_Sprint01.png)
+> O _Velocity_ desta _sprint_ : 15.5 pontos
 
 ------------
 
-## 5. Quadro de Conhecimento
 
-> O quadro de conhecimento se encontra disponível neste [link](https://raw.githubusercontent.com/RomeuCarvalhoAntunes/2018.1-Reabilitacao-Motora/master/docs/imagens/Quadro%20de%20Conhecimento/Quadro_Conhecimento_01.png)
+## 6. Retrospectiva da _Sprint_
+
+![](https://raw.githubusercontent.com/RomeuCarvalhoAntunes/2018.1-Reabilitacao-Motora/master/docs/imagens/Retrospectiva/Retrospectiva_Sprint01.png)
+
+ >[Link](https://raw.githubusercontent.com/RomeuCarvalhoAntunes/2018.1-Reabilitacao-Motora/master/docs/imagens/Retrospectiva/Retrospectiva_Sprint01.png)
+
+------------
+
+## 7. Quadro de Conhecimento
+
+![](https://raw.githubusercontent.com/RomeuCarvalhoAntunes/2018.1-Reabilitacao-Motora/master/docs/imagens/Quadro%20de%20Conhecimento/Quadro_Conhecimento_01.png)
+
+## 8. Visão do _Scrum Master_
+
+<p align="justify">&emsp;&emsp; Sendo essa de fato a primeira <i>sprint</i> de MDS e EPS após os devidos treinamentos, foi decidido aderirmos aos eventos da metodologia do <i>Scrum</i> então foi criada uma planilha de monitoramento de presença dos eventos, mais especificamente da <i>Daily</i>, foram criados também modelos de atas de reunião e de dojos, conseguimos ter acesso ao código fonte do projeto o que será de suma importância para a próxima <i>sprint</i>.

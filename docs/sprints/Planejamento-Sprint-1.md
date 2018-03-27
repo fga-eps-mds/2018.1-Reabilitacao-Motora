@@ -3,7 +3,7 @@
 <p align="justify">Esta <i>Sprint</i> tem como objetivo:</p>
 
 - Definição dos Papéis de EPS
-- Organização e controle sobre os eventos do Scrum
+- Organização e controle sobre os eventos do _Scrum_
 - Receber o código fonte do projeto para iniciar o entendimento.
 
 ## 2. Papéis
@@ -28,12 +28,13 @@
 | Data de Início | 11/03/2018 |
 |:--|:--:|
 | **Data de Término** | **18/03/2018** |
+| ** Pontos Planejados ** | **18**|
 | **Duração** | **7 dias** |
 
 
 ## 4. Pareamento
 
-> Não Haverá pareamento na Sprint
+> Não Haverá pareamento na _Sprint_
 
 
 ## 5. Sprint Backlog
