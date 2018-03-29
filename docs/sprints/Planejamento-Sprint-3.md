@@ -33,6 +33,7 @@
 | Data de Início | 25/03/2018 |
 |:--|:--:|
 | **Data de Término** | **31/03/2018** |
+| **Pontos Planejados** | **45**|
 | **Duração** | **7 dias** |
 
 
@@ -67,8 +68,24 @@ A *Milestone* desta Sprint encontra-se neste [link](https://github.com/fga-gpp-m
 
 ---
 
-## US 13 GERAR GRÁFICOS
+### [US13 - Gerar Gráficos de Movimentos](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/46)
 
+#### Descrição:
+**Eu, como** fisioterapeuta **desejo**  que o sistema gere gráficos dos movimentos **para** que eu possa aplicar metodologias científicas no processo de recuperação do paciente.
+
+#### Critérios de Aceitação
+Critérios de aceitação para a Issue ser aceita.
+- [ ] Testes Unit passando.
+
+#### Tarefas
+Seção para tarefas de Issues mais complexas. As tarefas devem garantir o perfeito funcionamento da Issue.
+- [ ] Mocar dado de posição.
+- [ ] Gerar o gráfico.
+- [ ] Mostrar visualmente esse gráfico no botão do menu.
+
+**Pontos:** 05
+
+**Responsáveis:** Alexandre Djorkaeff e Guilherme Siqueira
 
 ---
 
@@ -84,15 +101,15 @@ A *Milestone* desta Sprint encontra-se neste [link](https://github.com/fga-gpp-m
 - Validar dados recebidos pelo sensor no console do Unity.
 - Verificar e documentar limitações do sensor utilizado.
 
-**Pontos:** 03
+**Pontos:** 21
 
-**Responsáveis:** João Lucas e Guilherme de Lyra
+**Responsáveis:** Davi Alves e Guilherme de Lyra
 
 ---
 
 ## 7. Tarefas Importantes
 
-### Levantamento para o armazenamento e modelagem de Banco de Dados
+### [Levantamento para o armazenamento e modelagem de Banco de Dados](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/38)
 
 #### Descrição
 É preciso fazer um levantamento do Banco de Dados, de forma que seja possível pensar na linguagem, nas entidades, atributos e relacionamentos que serão trabalhados futuramente.
@@ -109,6 +126,18 @@ A *Milestone* desta Sprint encontra-se neste [link](https://github.com/fga-gpp-m
 **Pontos:** 08
 
 ---
+### [Criação do Roadmap](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/63)
+
+#### Descrição:
+Documento para mostrar a timeline e andamento do projeto até a release 1.
+
+#### Critérios de Aceitação
+- [ ] Descrição de todas as sprints até a release 1.
 
 
-## TASK ROADMAP
+#### Tarefas
+- [x] Equilibrar roadmap a fins de evitar sobrecarga de MDS.
+- [x] Entregar MVP até a release 1.
+
+
+**Pontos:** 03
