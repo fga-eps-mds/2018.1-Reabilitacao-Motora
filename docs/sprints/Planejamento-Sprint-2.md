@@ -24,7 +24,7 @@
 | Davi Alves |
 | Guilherme de Lyra |
 | Guilherme Siqueira |
-| João Lucas
+| João Lucas |
 
 
 ## 3. Tamanho da _Sprint_
