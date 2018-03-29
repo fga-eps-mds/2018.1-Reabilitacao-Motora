@@ -24,7 +24,7 @@
 | Davi Alves |
 | Guilherme de Lyra |
 | Guilherme Siqueira |
-| João Lucas
+| João Lucas |
 
 
 ## 3. Tamanho da _Sprint_
@@ -49,7 +49,7 @@ A Milestone desta Sprint encontra-se neste [link](https://github.com/fga-gpp-mds
 ## 6. Histórias de Usuário
 
 
-### US 03 - Executar movimentos
+### [US 03 - Executar movimentos](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/29)
 #### Descrição:
 **Eu, como** fisioterapeuta **desejo** executar movimentos **para** espelhar virtualmente a atividade em um modelo tridimensional .
 
@@ -66,7 +66,7 @@ A Milestone desta Sprint encontra-se neste [link](https://github.com/fga-gpp-mds
 
 ---
 
-### US14 - Menu do Sistema
+### [US14 - Menu do Sistema](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/30)
 #### Descrição:
 
  **Eu, como** fisioterapeuta **desejo** que o sistema contenha um menu **para** facilitar a navegação entre as funcionalidades do sistema.
@@ -85,7 +85,7 @@ A Milestone desta Sprint encontra-se neste [link](https://github.com/fga-gpp-mds
 
 ---
 
-### US17 - Conectar um Sensor ao Sistema
+### [US17 - Conectar um Sensor ao Sistema](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/28)
 #### Descrição:
 **Eu, como**  fisioterapeuta, **desejo** conectar um sensor ao sistema  **para** possibilitar a captura de movimentos.
 
@@ -106,7 +106,7 @@ A Milestone desta Sprint encontra-se neste [link](https://github.com/fga-gpp-mds
 
 ## 7. Tarefas Importantes
 
-### Levantamento para o armazenamento e modelagem de Banco de Dados
+### [Levantamento para o armazenamento e modelagem de Banco de Dados](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/38)
 
 #### Descrição
 É preciso fazer um levantamento do Banco de Dados, de forma que seja possível pensar na linguagem, nas entidades, atributos e relacionamentos que serão trabalhados futuramente.
