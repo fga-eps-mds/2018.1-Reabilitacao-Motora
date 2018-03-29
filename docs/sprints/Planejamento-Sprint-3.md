@@ -50,8 +50,7 @@ A *Milestone* desta Sprint encontra-se neste [link](https://github.com/fga-gpp-m
 
 ## 6. Histórias de Usuário
 
-
-### US 03 - Executar movimentos
+### [US 03 - Executar movimentos](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/29)
 #### Descrição:
 **Eu, como** fisioterapeuta **desejo** executar movimentos **para** espelhar virtualmente a atividade em um modelo tridimensional .
 
@@ -72,7 +71,8 @@ A *Milestone* desta Sprint encontra-se neste [link](https://github.com/fga-gpp-m
 
 
 ---
-### US17 - Conectar um Sensor ao Sistema
+
+### [US17 - Conectar um Sensor ao Sistema](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/28)
 #### Descrição:
 **Eu, como**  fisioterapeuta, **desejo** conectar um sensor ao sistema  **para** possibilitar a captura de movimentos.
 
