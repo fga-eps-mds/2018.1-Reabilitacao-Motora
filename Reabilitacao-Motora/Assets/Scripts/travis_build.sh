@@ -1,7 +1,11 @@
 #! /bin/sh
+project="Reabilitacao-Motora"
 
-project="Reabilitação-Motora"
+echo "Initializing Build Script for $project"
+echo "========================================"
 
+echo "The current path is $(pwd)"
+echo "========================================"
 echo "Attempting to build $project for Windows"
 /Applications/Unity/Unity.app/Contents/MacOS/Unity 
   -batchmode 
