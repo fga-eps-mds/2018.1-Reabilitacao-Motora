@@ -2,9 +2,10 @@
 
 |    Data    | Versão |                             Alteração                             |                    Autor                    |
 |:----------:|:------:|:-----------------------------------------------------------------:|:-------------------------------------------:|
-| 19/03/2017 |   0.1  | Criação do documento e elaboração das sprints 2 e 3 |                Arthur Diniz                 |
-| 28/03/2017 |   0.2  | Atualização das sprints 2 e 3 e finalização da release 1 |                Arthur Diniz                 |
-
+| 19/03/2018 |   0.1  | Criação do documento e elaboração das sprints 2 e 3 |                Arthur Diniz                 |
+| 26/03/2018 |   0.2  | Definição do Roadmap para Release 1  |  Arthur Diniz, Lucas Malta, Romeu Antunes, Victor Moura |
+| 28/03/2018 |   0.3  | Atualização do documento |                Arthur Diniz                 |
+| 31/03/2018 |   0.4  | Revisão do Documento | Romeu Antunes |
 
 # Release 1
 
