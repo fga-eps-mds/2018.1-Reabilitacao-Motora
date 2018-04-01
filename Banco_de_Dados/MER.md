@@ -1,8 +1,10 @@
 
 ## ENTIDADES
-**Fisioterapeuta** (idFisio, nomeFisio)
+**Pessoa** (idPessoa, nomePessoa, sexo, dataNascimento, {telefone})
 
-**Paciente** (idPaciente, cpfPaciente, nomePaciente, numeroSessoes, dataNascimento, {telefone})
+**Fisioterapeuta** (idFisio, crefito, regiao)
+
+**Paciente** (idPaciente, observacoes)
 
 **Movimento** (idMovimento, nomeMovimento, musculosTrabalhados, movimentoExecutor, graficoResultado, rotuloMovimento)
 
@@ -10,6 +12,8 @@
 
 
 ## RELACIONAMENTOS
+**Pessoa** especializa totalmente em **Fisioterapeuta** ou **Paciente**, pois ambas as entidades compartilham vários atributos em comum; além de possuírem uma particularidade, também, em comum: ambas realizam movimentos.
+
 **fisioterapeuta** -- atende -- **paciente** <br />
 _Um fisioterapeuta atende vários pacientes, assim como um paciente pode se consultar com vários
 fisioterapeutas._ (cardinalidade n:m)  <br />
