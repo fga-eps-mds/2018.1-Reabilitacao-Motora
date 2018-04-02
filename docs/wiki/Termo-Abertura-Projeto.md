@@ -4,6 +4,7 @@
 |:----------:|:------:|:-----------------------------------------------------------------:|:-------------------------------------------:|
 | 15/03/2018 |   0.1  | Criação do documento e elaboração dos tópicos 11, 13, 14 e 15 |                Arthur Diniz                 |
 | 20/03/2018 |   0.2  | Inserção dos tópicos 1 e 2 | Vitor Falcão |
+| 02/04/2018 |   0.3  | Inserção dos tópicos 3 e 7. Modificações no tópico 4 | Victor Moura |
 
 
 ----
@@ -68,12 +69,15 @@ Em cada atendimento será efetuado as avaliações de acordo com movimentos prev
 Prover uma análise não superficial durante o atendimento de reabilitação de um paciente ajudando o fisioterapeuta a tomar melhores decisões médicas em relação a ele. A recuperação mais rápida do paciente se torna um dos objetivos e uma das consequências do método de espelhamento utilizado.
 </p>
 
-## 3. Descrição do Projeto em alto nível
-
+## 3. Descrição do Projeto
+<p align="justify">
+O projeto em questão é um software com interface tridimensional que servirá de apoio em sessões de fisioterapia. A interface irá reproduzir, em um modelo digital, os movimentos que serão captados por um sensor enquanto o paciente os executa. O movimento executado pelo paciente será baseado em outro movimento anteriormente cadastrado pelo fisioterapeuta. O grande foco do projeto é permitir que o paciente tenha o controle de movimentos de um modelo digital, abrindo possibilidade para uma futura implementação de um sistema gamificado. Os movimentos cadastrados pelo fisioterapeuta serão rotulados com o auxílio de um gráfico gerado automaticamente. O gráfico mostra a relação entre o ângulo de junta da articulação pelo tempo, ou seja, a curva acompanha os movimentos de extensão e contração do membro mapeado. A partir do gráfico gerado, o fisioterapeuta fará a rotulação de cada parte da curva, possibilitando a divisão do movimento completo em etapas menores. A divisão das etapas do movimento completo permite que o profissional possa identificar em qual etapa o paciente está apresentando mais dificuldade ou facilidade.
+</p>
 
 ## 4. Requisitos de alto nível
  - Cadastro e gerenciamento de pacientes
- - Consulta de pacientes com a utilização de captura de movimento
+ - Sessões de fisioterapia assistidas por sensor de captura de movimentos
+ - Rotulação dos movimentos cadastrados por profissional de fisioterapia
 
 
 ## 5. Premissas
@@ -84,9 +88,12 @@ Prover uma análise não superficial durante o atendimento de reabilitação de 
 ## 6. Restrições
  - O projeto deve ser concluído no período letivo de 2018/1 da Universidade de Brasília
  - O projeto só pode utilizar de recursos disponíveis pelos próprios membros
- - O projeto deve ser concluído somente pela equipe de gestão e desenvolvimento do projeto, com consultas somente ao cliente do mesmo. 
+ - O projeto deve ser concluído somente pela equipe de gestão e desenvolvimento do projeto, com consultas somente ao cliente do mesmo.
 
 ## 7. Limites do Projeto
+<p align="justify">
+Como limitações do projeto, temos o uso de sistemas externos que irão ser responsáveis pela interpretação dos sinais captados. O escopo do projeto foi definido levando em consideração que a integração com o sistema externo será possível. Pela falta de disponibilidade de tempo, caso haja grandes dificuldades em se integrar os sistemas, coloca-se em risco a qualidade do produto final. Além disso, a baixa confiabilidade da tecnologia selecionada quando utilizada em sistema operacional que não seja da Microsoft ou da Apple exige que a equipe utilize Windows ou OSX como ambiente de desenvolvimento. Tal limitação dos sistemas operacionais afeta, também, a configuração dos ambientes de integração/*deploy* contínuo, podendo afetar a qualidade final do *pipeline* de desenvolvimento.
+</p>
 
 ## 8. Riscos de alto nível
 
