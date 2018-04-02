@@ -4,6 +4,7 @@
 |:----------:|:------:|:-----------------------------------------------------------------:|:-------------------------------------------:|
 | 15/03/2018 |   0.1  | Criação do documento e elaboração dos tópicos 11, 13, 14 e 15 |                Arthur Diniz                 |
 | 20/03/2018 |   0.2  | Inserção dos tópicos 1 e 2 | Vitor Falcão |
+| 02/04/2018 |   0.3  | Elaboração dos tópicos 8 e 9 | Arthur Diniz |
 
 
 ----
@@ -23,9 +24,9 @@
 
 [7. Limites do Projeto](#7-limites-do-projeto)
 
-[8. Riscos de alto nível](#8-riscos-de-alto-nível)
+[8. Riscos](#8-riscos)
 
-[9. Resumo do cronograma de marcos](#9-resumo-do-cronograma-de-marcos)
+[9. Cronograma e Marcos](#9-cronograma-e-marcos)
 
 [10. Resumo do orçamento](#10-resumo-do-orçamento)
 
@@ -49,7 +50,7 @@
 
 ----
 
-## 1. Propósito ou Justificativa do Projeto
+## 1. Justificativa do Projeto
 <p align="justify">
 O Acidente Vascular Cerebral (AVC), popularmente conhecido como derrame, é a segunda maior causa de mortes atualmente no Brasil. Sua causa é problemas na irrigação sanguínea do cérebro causando morte celular, como consequência há um mal funcionamento do cérebro. Como resultado temos os sintomas de dificuldade de movimento ou percepção em um dos lados do corpo, dificuldades em falar ou compreender, perda de visão em um dos lados e sensação de que os objetos a sua volta estão se movimentando.
 </p>
@@ -84,17 +85,58 @@ Prover uma análise não superficial durante o atendimento de reabilitação de 
 ## 6. Restrições
  - O projeto deve ser concluído no período letivo de 2018/1 da Universidade de Brasília
  - O projeto só pode utilizar de recursos disponíveis pelos próprios membros
- - O projeto deve ser concluído somente pela equipe de gestão e desenvolvimento do projeto, com consultas somente ao cliente do mesmo. 
+ - O projeto deve ser concluído somente pela equipe de gestão e desenvolvimento do projeto, com consultas somente ao cliente do mesmo.
 
 ## 7. Limites do Projeto
 
-## 8. Riscos de alto nível
+## 8. Riscos
+
+<p align = "justify">
+Existem inúmeros riscos que envolvem o desenvolvimento de software, Riscos são situações de incertezas que envolvem escolhas relacionadas com decisões que estão ligadas diretamente aos riscos.
+Uma vez conhecidos os riscos, as decisões podem reduzir perdas, aumentar ganhos ou, o contrário, levando a prejuízos.
+</p>
+
+<p align = "justify">
+Os principais riscos do projeto envolvem a equipe e a tecnologia a ser utilizada. Esses riscos exigem um plano de ação para se obter o sucesso do projeto, que são:
+</p>
+
+**Riscos** | **Plano de Ação**
+-----------|------------|
+O tamanho da equipe, que dificulta a comunicação e o gerenciamento dos membros | Manter uma boa integração da equipe para que o gap da comunicação seja amenizado, assim como a utilização de meios de comunicação eficientes para todos, reuniões semanais e acompanhamento dos membros
+Tecnologia nova e nunca antes implementada na disciplina | Pelo fato da tecnologia sair dos padrões da disciplina sendo usado assim um motor gráfico é necessário realizar treinamentos com a equipe de desenvolvimento sobre as tecnologias a serem utilizadas e buscar pessoas capacitadas que possam ajudar a sanar dúvidas.
+A falta ou desistência de algum membro | Adequar os horários e realocar as tarefas entre os membros sem sobrecarregar nenhum membro.
+Um membro da equipe não possuir notebook ou aparelhos periféricos | Organizar reuniões onde tenha a possibilidade de usar um desktop ou um notebook para que todos trabalhem, no mesmo caso de aparelhos periféricos, ou pegar emprestado um notebook que atenda as necessidades das reuniões.
+Periféricos externos como o kinect ou sensor, dificultam ainda mais a implementação  | Analisar o seu acoplamento o quanto antes e manter o conhecimento atualizado em todo o time.
+Falta de conhecimento sobre git e da metodologia SCRUM por parte da equipe de MDS  | Fazer dojos sobre o assunto e dar o máximo de apoio para que os integrantes de MDS tenham uma curva de aprendizado acentuada.
+
+## 9. Cronograma e Marcos
+
+<p align = "justify">
+O cronograma de planejamento foi necessário para manter o controle das tarefas e seus fluxos, nele foram detalhados minuciosamente as atividades a serem executadas durante um período estimado.
+<p>
+<p align = "justify"> O cronograma do projeto começou no  início ao semestre letivo das disciplinas de Métodos de Desenvolvimento de Software e Engenharia do Produto de Software.
+</p>
+
+- Marco inicial no dia 05/03/2018.
+
+- Marco final no dia XX/06/2017.
+
+<p align = "justify">
+Entre essas datas acontece uma primeira entrega parcial, onde devem ser apresentados os casos de uso priorizados,toda documentação de gerenciamento do projeto, além de 30% de cobertura de testes sobre o sistema e a entrega final, com uma cobertura de testes maior ou igual a 90%, como segue o quadro: </p>
+
+<p align = "justify">
+Obs: No caso do nosso projeto será cobrado apenas a cobertura de testes unitários já que a tecnologia usada não cobre os outros tipos de teste. </p>
+
+ **Pontos de Controles**     | **Data**          |  **Resumo**
+-----------------------------|-------------------|-----------
+Release 01                   | 05/03/18 e 19/04/18 | Entrega dos documentos de gerenciamento e entrega parcial do sistema
+Release 02                   | 20/04/18 a 25/06/18 | Entrega total do sistema
 
 
-## 9. Resumo do cronograma de marcos
-
-
-## 10. Resumo do orçamento
+## 10. Resumo do Custo estimado
+### 10.1. Recursos Humanos
+### 10.2. Equipamentos e Serviços
+### 10.3. Custo Total
 
 
 ## 11. Lista das partes interessadas
