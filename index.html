@@ -1,16 +1,417 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <title>2018.1-Reabilitacao-Motora</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</head>
-<body>
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<h1>2018.1-Reabilitacao-Motora</h1>
 
-</body>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="import" href="bower_components/vaadin-charts/vaadin-chart.html">
+
+    <title>Reabilitacao Motora</title>
+  </head>
+  <style>
+
+    .box-up {
+      background-color: #FFF;
+      margin-bottom: 15px;
+      margin-top: 15px;
+      /* height: 335px; */
+    }
+
+    .box-down {
+      background-color: #FFF;
+      margin-bottom: 15px;
+      margin-top: 15px;
+      height: 400px;
+    }
+
+    .indicator-item {
+      padding: 12px 30px;
+      display: flex;
+      width: 100%;
+      margin-bottom: 0;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+      -ms-flex-align: center;
+      align-items: center;
+      border-bottom: 1px solid #e6e5e5;
+    }
+
+    .indicator-item-icon {
+      padding: 12px 30px;
+      display: flex;
+      width: 100%;
+      margin-bottom: 0;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+      -ms-flex-align: center;
+      align-items: center;
+
+    }
+
+    .indicator-number{
+
+
+    }
+
+    .statistic-number{
+      font-size: 25px;
+    }
+
+    .user-stats {
+      padding: 0;
+      background-color: #FFF;
+      margin-bottom: 29px;
+    }
+
+    .user-stats-id {
+      padding: 32px;
+      display: flex;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+      -ms-flex-align: center;
+      align-items: center;
+    }
+
+    .user-title {
+      padding-top: 32px;
+      padding-left: 32px;
+      display: flex;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+      -ms-flex-align: center;
+      align-items: center;
+    }
+
+    .user-stats-avatar {
+      position: relative;
+      margin-right: 12px;
+    }
+
+    .user-stats-info {
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+      flex-direction: column;
+    }
+
+    .user-stats-indicators {
+      padding: 5px 32px 32px;
+    }
+
+    .user-stats-indicator-counter {
+      font-size: 1.23077rem;
+      color: #2cc185;
+    }
+
+    .user-stats-indicator {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: justify;
+      -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+      justify-content: space-between;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+      -ms-flex-align: center;
+      align-items: center;
+      padding: .615385rem 0;
+    }
+
+    .user-stats-milestone {
+      padding: 6px 32px 51.2px;
+    }
+
+    .user-stats-more-details {
+      display: block;
+      padding: 18px 32px;
+      font-size: 1.077rem;
+      text-align: center;
+      color: #545454;
+      background-color: #fafafa;
+    }
+
+    .user-stats-avatar img {
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+    }
+
+    .user-stats-status-indicator.online {
+        background-color: #2cc185;
+    }
+
+    .project-list-title {
+      font-size: 1.38462rem;
+      margin-bottom: 28px;
+    }
+
+    .project-item {
+      position: relative;
+      display: flex;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+      -ms-flex-align: center;
+      align-items: center;
+      background-color: #FFF;
+      padding: 23px;
+      margin-bottom: .923077rem;
+    }
+
+    .project-item-title {
+      display: flex;
+      -webkit-box-flex: 0;
+      -webkit-flex: 0 1 20%;
+      -ms-flex: 0 1 20%;
+      flex: 0 1 20%;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      padding-right: 5px;
+    }
+
+    .project-item-user {
+        display: flex;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-flex: 0;
+        -webkit-flex: 0 1 25%;
+        -ms-flex: 0 1 25%;
+        flex: 0 1 25%;
+        padding-right: 5px;
+    }
+
+    .project-item-user .user-avatar {
+      margin-right: 12px;
+    }
+
+    .project-item-user .user-avatar img {
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+    }
+
+    .project-item-user .user-info {
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
+    }
+
+    ul {
+      list-style-type: none;
+
+    }
+
+    body {
+      background-color: #f4f4f4;
+    }
+
+    img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+
+    p{
+      display: inline-block;
+      margin: 0;
+    }
+
+  </style>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light " style="background-color: #32C084;">
+      <a class="navbar-brand" href="https://fga-gpp-mds.github.io/2018.1-Reabilitacao-Motora/index">Reabilitação Motora</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="https://fga-gpp-mds.github.io/2018.1-Reabilitacao-Motora/index">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://fga-gpp-mds.github.io/2018.1-Reabilitacao-Motora/documentos">Documentos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora">Git</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Sobre</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Outros
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </li>
+
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-7">
+          <div class="box-up">
+            <img src="https://user-images.githubusercontent.com/18387694/38214732-ef0b20ce-369b-11e8-8aab-6072771fe83b.png" alt="Chart">
+          </div>
+        </div>
+        <div class="col-md-5">
+          <div class="box-up">
+
+            <div class="indicator-item">
+              <div class="indicator-item-icon">
+                <div class="icon">
+                  <i class="fas fa-code-branch" style="font-size: 30px; color: #32C084"></i>
+                </div>
+              </div>
+              <div class="indicator-number">
+                <p class="statistic-number">26</p>
+                <p>Forks</p>
+              </div>
+            </div>
+
+            <div class="indicator-item">
+              <div class="indicator-item-icon">
+                <div class="icon">
+                  <i class="far fa-file-code" style="font-size: 30px; color: #32C084"></i>
+                </div>
+              </div>
+              <div class="indicator-number">
+                <p class="statistic-number">67</p>
+                <p>Commits</p>
+              </div>
+            </div>
+
+            <div class="indicator-item">
+              <div class="indicator-item-icon">
+                <div class="icon">
+                  <i class="fas fa-bolt" style="font-size: 30px; color: #32C084"></i>
+                </div>
+              </div>
+              <div class="indicator-number">
+                <p class="statistic-number">0.49</p>
+                <p>Versão</p>
+              </div>
+            </div>
+
+            <div class="indicator-item">
+              <div class="indicator-item-icon">
+                <div class="icon">
+                  <i class="fas fa-download" style="font-size: 30px; color: #32C084"></i>
+                </div>
+              </div>
+              <div class="indicator-number">
+                <p class="statistic-number">3</p>
+                <p>Downloads</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-4">
+
+            <div class="user-stats">
+              <div class="user-title">Top Commiter</div>
+              <div class="user-stats-id">
+                <div class="user-stats-avatar"><img src="https://avatars0.githubusercontent.com/u/26290053?s=400&v=4" alt="avatar"><span class="user-stats-status-indicator online"></span></div>
+                <div class="user-stats-info"><span class="user-stats-name">Victor Moura</span><span class="user-stats-position">EPS</span></div>
+              </div>
+              <div class="user-stats-indicators">
+                <div class="user-stats-indicator"><span class="user-stats-indicator-title">Commits</span><span data-toggle="counter" data-end="173" class="user-stats-indicator-counter">173</span></div>
+                <div class="user-stats-indicator"><span class="user-stats-indicator-title">Linhas de Codigo</span><span data-toggle="counter" data-end="367" class="user-stats-indicator-counter">367</span></div>
+                <!-- <div class="user-stats-indicator"><span class="user-stats-indicator-title">Services</span><span data-toggle="counter" data-end="724" class="user-stats-indicator-counter">724</span></div>
+                <div class="user-stats-indicator"><span class="user-stats-indicator-title">Total Sales</span><span data-toggle="counter" data-end="1264" class="user-stats-indicator-counter">1,264</span></div> -->
+              </div>
+
+              <a href="#" class="user-stats-more-details">More Details</a>
+            </div>
+
+        </div>
+        <div class="col-md 6 col-lg-4">
+          <div style="background-color: #fff; height: 100%;">
+          </div>
+        </div>
+        <div class="col-md 6 col-lg-4">
+          <div style="background-color: #fff; height: 100%;">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <div class="project-list">
+            <div class="project-list-title">Ultimos Commits</div>
+
+            <div class="project-item">
+              <div class="project-item-user">
+                <div class="user-avatar"><img src="https://avatars0.githubusercontent.com/u/26290053?s=400&v=4" alt="avatar"></div>
+                <div class="user-info"><span class="name">Victor Moura</span><span class="position description">EPS</span></div>
+              </div>
+              <div class="project-item-title"><span class="name">Commit message</span></div>
+              <div class="project-item-date"><span class="date">May 6, 2018</span></div>
+            </div>
+            <div class="project-item">
+              <div class="project-item-user">
+                <div class="user-avatar"><img src="https://avatars0.githubusercontent.com/u/26290053?s=400&v=4" alt="avatar"></div>
+                <div class="user-info"><span class="name">Victor Moura</span><span class="position description">EPS</span></div>
+              </div>
+              <div class="project-item-title"><span class="name">Commit message</span></div>
+              <div class="project-item-date"><span class="date">May 6, 2018</span></div>
+            </div>
+            <div class="project-item">
+              <div class="project-item-user">
+                <div class="user-avatar"><img src="https://avatars0.githubusercontent.com/u/26290053?s=400&v=4" alt="avatar"></div>
+                <div class="user-info"><span class="name">Victor Moura</span><span class="position description">EPS</span></div>
+              </div>
+              <div class="project-item-title"><span class="name">Commit message</span></div>
+              <div class="project-item-date"><span class="date">May 6, 2018</span></div>
+            </div>
+            <div class="project-item">
+              <div class="project-item-user">
+                <div class="user-avatar"><img src="https://avatars0.githubusercontent.com/u/26290053?s=400&v=4" alt="avatar"></div>
+                <div class="user-info"><span class="name">Victor Moura</span><span class="position description">EPS</span></div>
+              </div>
+              <div class="project-item-title"><span class="name">Commit message</span></div>
+              <div class="project-item-date"><span class="date">May 6, 2018</span></div>
+            </div>
+
+          </div>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
 </html>

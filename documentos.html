@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="import" href="bower_components/vaadin-charts/vaadin-chart.html">
+
+    <title>Reabilitacao Motora</title>
+  </head>
+  <style>
+
+    .box-up {
+      background-color: #FFF;
+      margin-bottom: 15px;
+      margin-top: 15px;
+      /* height: 335px; */
+    }
+
+    .box-down {
+      background-color: #FFF;
+      margin-bottom: 15px;
+      margin-top: 15px;
+      height: 400px;
+    }
+
+
+    .indicator-item {
+      padding: 12px 30px;
+      display: flex;
+      width: 100%;
+      margin-bottom: 0;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+      -ms-flex-align: center;
+      align-items: center;
+      border-bottom: 1px solid #e6e5e5;
+    }
+
+    .indicator-item-icon {
+      padding: 12px 30px;
+      display: flex;
+      width: 100%;
+      margin-bottom: 0;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+      -ms-flex-align: center;
+      align-items: center;
+
+    }
+
+    .indicator-number{
+
+
+    }
+
+    .statistic-number{
+      font-size: 25px;
+    }
+
+    .user-stats {
+      padding: 0;
+      background-color: #FFF;
+      margin-bottom: 29px;
+    }
+
+    .user-stats-id {
+      padding: 32px;
+      display: flex;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+      -ms-flex-align: center;
+      align-items: center;
+    }
+
+    .user-stats-avatar {
+      position: relative;
+      margin-right: 12px;
+    }
+
+    .user-stats-info {
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+      flex-direction: column;
+    }
+
+    .user-stats-indicators {
+      padding: 5px 32px 32px;
+    }
+
+    .user-stats-indicator-counter {
+      font-size: 1.23077rem;
+      color: #2cc185;
+    }
+
+    .user-stats-indicator {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: justify;
+      -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+      justify-content: space-between;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+      -ms-flex-align: center;
+      align-items: center;
+      padding: .615385rem 0;
+    }
+
+    .user-stats-milestone {
+      padding: 6px 32px 51.2px;
+    }
+
+    .user-stats-more-details {
+      display: block;
+      padding: 18px 32px;
+      font-size: 1.077rem;
+      text-align: center;
+      color: #545454;
+      background-color: #fafafa;
+    }
+
+    .user-stats-avatar img {
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+    }
+
+    .user-stats-status-indicator.online {
+        background-color: #2cc185;
+    }
+
+    .project-list-title {
+      background-color: #32C084;
+      font-size: 1.38462rem;
+      /* margin-bottom: 28px; */
+
+    }
+    .project-list-title  p{
+      margin-left: 5%;
+      color: #fff;
+    }
+
+    .project-item {
+      position: relative;
+      display: flex;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+      -ms-flex-align: center;
+      align-items: center;
+      background-color: #FFF;
+      padding: 23px;
+      margin-bottom: .923077rem;
+    }
+
+    .project-item-title {
+      display: flex;
+      -webkit-box-flex: 0;
+      /* -webkit-flex: 0 1 20%; */
+      -ms-flex: 0 1 20%;
+      /* flex: 0 1 20%; */
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      padding-right: 5px;
+    }
+
+    .project-item-user {
+        display: flex;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-flex: 0;
+        -webkit-flex: 0 1 25%;
+        -ms-flex: 0 1 25%;
+        flex: 0 1 25%;
+        padding-right: 5px;
+    }
+
+    .project-item-user .user-avatar {
+      margin-right: 12px;
+    }
+
+    .project-item-user .user-avatar img {
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+    }
+
+    .project-item-user .user-info {
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
+    }
+
+    .row {
+      margin-bottom: 20px;
+      margin-top: 10px;
+    }
+
+    ul {
+      list-style-type: none;
+
+    }
+
+    body {
+      background-color: #f4f4f4;
+    }
+
+    img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+
+    p{
+      text-align: justify;
+    text-justify: inter-word;
+      display: inline-block;
+      margin: 0;
+    }
+
+  </style>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light " style="background-color: #32C084;">
+      <a class="navbar-brand" href="https://fga-gpp-mds.github.io/2018.1-Reabilitacao-Motora/index">Reabilitação Motora</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="https://fga-gpp-mds.github.io/2018.1-Reabilitacao-Motora/index">Home</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="https://fga-gpp-mds.github.io/2018.1-Reabilitacao-Motora/documentos">Documentos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora">Git</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Sobre</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Outros
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main>
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <h2>Documentos projeto</h2>
+            <div class="row">
+              <div class="col-6">
+                <div class="project-list-title"><p>Engenharia de Produto de Software</p></div>
+
+                <div class="list-group">
+                  <a href="" class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-between">
+                      <h5 class="mb-1">Estrutura Analitica de Projeto</h5>
+                      <small>1 dias atrás</small>
+                    </div>
+                    <p class="mb-1">Em Gerência de projetos, uma Estrutura Analítica de Projetos (EAP), do Inglês, Work breakdown structure (WBS) é um processo de subdivisão das entregas e do trabalho do projeto em componentes menores e mais facilmente gerenciáveis.</p>
+                    <small>Completo</small>
+                  </a>
+                  <a href="https://fga-gpp-mds.github.io/2018.1-Reabilitacao-Motora/docs/wiki/Termo-Abertura-Projeto" class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-between">
+                      <h5 class="mb-1">Termo de Abertura de Projeto</h5>
+                      <small class="text-muted">3 dias atrás</small>
+                    </div>
+                    <p class="mb-1">O termo de abertura do projeto, também muito conhecido como Project Charter (inglês), é o documento que autoriza formalmente o início do projeto.</p>
+                    <small class="text-muted">Em progresso</small>
+                  </a>
+                </div>
+
+
+              </div>
+
+              <div class="col-6">
+                <div class="project-list-title"><p>Método de Desenvolvimento de Software</p></div>
+
+                <div class="list-group">
+                  <a href="https://fga-gpp-mds.github.io/2018.1-Reabilitacao-Motora/docs/wiki/Documento-de-Visão" class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-between">
+                      <h5 class="mb-1">Documento de Visão</h5>
+                      <small>4 dias atrás</small>
+                    </div>
+                    <p class="mb-1">O documento de visão define o escopo de alto nível e o propósito de um programa, produto ou projeto. Uma instrução clara do problema, solução proposta e os recursos de alto nível do produto ajudam a estabelecer expectativas e a reduzir riscos.</p>
+                    <small>Em progresso</small>
+                  </a>
+                  <a href="" class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-between">
+                      <h5 class="mb-1">Documento de Arquitetura</h5>
+                      <small class="text-muted">1 dias atrás</small>
+                    </div>
+                    <p class="mb-1">O documento de arquitetura de software fornece uma visão geral de arquitetura abrangente do sistema de software. Ele serve como um meio de comunicação entre o arquiteto de software e outros membros da equipe do projeto com relação a decisões significativas do ponto de vista da arquitetura, tomadas a respeito do projeto.</p>
+                    <small class="text-muted">Em progresso</small>
+                  </a>
+                </div>
+
+              </div>
+            </div>
+
+
+          <div class="col-12">
+
+            <h2>Release 1</h2>
+            <div class="row">
+              <div class="col-6">
+                <div class="project-list-title"><p>Planejamento</p></div>
+
+                <div class="list-group">
+                  <a href="https://fga-gpp-mds.github.io/2018.1-Reabilitacao-Motora/docs/sprints/Planejamento-Sprint-0" class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-between">
+                      <h5 class="mb-1">Planejamento Sprint 0</h5>
+                      <small>29 dias atrás</small>
+                    </div>
+                    <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                    <small>Concluida</small>
+                  </a>
+
+                  <a href="https://fga-gpp-mds.github.io/2018.1-Reabilitacao-Motora/docs/sprints/Planejamento-Sprint-1" class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-between">
+                      <h5 class="mb-1">Planejamento Sprint 1</h5>
+                      <small class="text-muted">3 dias atrás</small>
+                    </div>
+                    <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                    <small class="text-muted">Concluida</small>
+                  </a>
+
+                  <a href="https://fga-gpp-mds.github.io/2018.1-Reabilitacao-Motora/docs/sprints/Planejamento-Sprint-2" class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-between">
+                      <h5 class="mb-1">Planejamento Sprint 2</h5>
+                      <small class="text-muted">3 dias atrás</small>
+                    </div>
+                    <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                    <small class="text-muted">Concluida</small>
+                  </a>
+
+                  <a href="https://fga-gpp-mds.github.io/2018.1-Reabilitacao-Motora/docs/sprints/Planejamento-Sprint-3" class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-between">
+                      <h5 class="mb-1">Planejamento Sprint 3</h5>
+                      <small class="text-muted">3 dias atrás</small>
+                    </div>
+                    <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                    <small class="text-muted">Concluida</small>
+                  </a>
+
+                  <a href="https://fga-gpp-mds.github.io/2018.1-Reabilitacao-Motora/docs/sprints/Planejamento-Sprint-4" class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-between">
+                      <h5 class="mb-1">Planejamento Sprint 4</h5>
+                      <small class="text-muted">2 dias atrás</small>
+                    </div>
+                    <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                    <small class="text-muted">Em andamento</small>
+                  </a>
+
+                </div>
+
+
+              </div>
+
+              <div class="col-6">
+                <div class="project-list-title"><p>Resultados</p></div>
+                <div class="list-group">
+
+                  <a href="https://fga-gpp-mds.github.io/2018.1-Reabilitacao-Motora/docs/sprints/Resultado-Sprint-0" class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-between">
+                      <h5 class="mb-1">Resultado Sprint 0</h5>
+                      <small>4 dias atrás</small>
+                    </div>
+                    <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                    <small>Concluida</small>
+                  </a>
+
+                  <a href="https://fga-gpp-mds.github.io/2018.1-Reabilitacao-Motora/docs/sprints/Resultado-Sprint-1" class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-between">
+                      <h5 class="mb-1">Resultado Sprint 1</h5>
+                      <small class="text-muted">4 dias atrás</small>
+                    </div>
+                    <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                    <small class="text-muted">Concluida</small>
+                  </a>
+
+                  <a href="https://fga-gpp-mds.github.io/2018.1-Reabilitacao-Motora/docs/sprints/Resultado-Sprint-2" class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-between">
+                      <h5 class="mb-1">Resultado Sprint 2</h5>
+                      <small class="text-muted">4 dias atrás</small>
+                    </div>
+                    <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                    <small class="text-muted">Concluida</small>
+                  </a>
+
+                  <a href="https://fga-gpp-mds.github.io/2018.1-Reabilitacao-Motora/docs/sprints/Resultado-Sprint-3" class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-between">
+                      <h5 class="mb-1">Resultado Sprint 3</h5>
+                      <small class="text-muted">4 dias atrás</small>
+                    </div>
+                    <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                    <small class="text-muted">Concluida</small>
+                  </a>
+
+                  <a href="https://fga-gpp-mds.github.io/2018.1-Reabilitacao-Motora/docs/sprints/Resultado-Sprint-4" class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-between">
+                      <h5 class="mb-1">Resultado Sprint 4</h5>
+                      <small class="text-muted">4 dias atrás</small>
+                    </div>
+                    <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                    <small class="text-muted">Em andamento</small>
+                  </a>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+      </div>
+    </div>
+  </main>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>
