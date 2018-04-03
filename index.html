@@ -5,6 +5,7 @@
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="scripts/fetchData.js" ></script>
+    <script src="scripts/odometer.js" ></script>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -13,12 +14,14 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/odometer-theme-default.css">
+
 
     <title>Reabilitacao Motora</title>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light " style="background-color: #32C084;">
-      <a id="main-title" class="navbar-brand" href="https://fga-gpp-mds.github.io/2018.1-Reabilitacao-Motora/index">loading...</a>
+      <a id="main-title" class="navbar-brand" href="index.html">loading...</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -26,10 +29,10 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="https://fga-gpp-mds.github.io/2018.1-Reabilitacao-Motora/index">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="https://fga-gpp-mds.github.io/2018.1-Reabilitacao-Motora/documentos">Documentos</a>
+            <a class="nav-link" href="documentos.html">Documentos</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora">Git</a>
@@ -74,7 +77,7 @@
                 </div>
               </div>
               <div class="indicator-number">
-                <p id="forks" class="statistic-number">loading...</p>
+                <p id="forks" class="statistic-number odometer">Loading...</p>
                 <p>Forks</p>
               </div>
             </div>
@@ -86,7 +89,7 @@
                 </div>
               </div>
               <div class="indicator-number">
-                <p id="commits" class="statistic-number">loading...</p>
+                <p id="commits" class="statistic-number odometer">Loading...</p>
                 <p>Commits</p>
               </div>
             </div>
@@ -98,20 +101,20 @@
                 </div>
               </div>
               <div class="indicator-number">
-                <p class="statistic-number">0.49</p>
-                <p>Versão</p>
+                <p id="language" class="statistic-number"></p>
+                <p>Linguagem</p>
               </div>
             </div>
 
             <div class="indicator-item">
               <div class="indicator-item-icon">
                 <div class="icon">
-                  <i class="fas fa-download" style="font-size: 30px; color: #32C084"></i>
+                  <i class="fas fa-bug" style="font-size: 30px; color: #32C084"></i>
                 </div>
               </div>
               <div class="indicator-number">
-                <p class="statistic-number">3</p>
-                <p>Downloads</p>
+                <p id="issues" class="statistic-number odometer">Loading...</p>
+                <p>Issues</p>
               </div>
             </div>
 
