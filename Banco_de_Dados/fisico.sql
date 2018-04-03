@@ -15,16 +15,15 @@ CREATE TABLE IF NOT EXISTS PESSOA (
 CREATE TABLE IF NOT EXISTS TELEFONE (
 	idPessoa BIGINT not null,
 	telefone BIGINT not null,
-	constraint TELEFONE_PK primary key (idPessoa),
-	constraint TELEFONE_PESSOA_FK foreign key (idPessoa) references PESSOA (idPessoa)
+	constraint TELEFONE_PK primary key (idPessoa, telefone)
 ) ENGINE = innoDB;
 
 
 CREATE TABLE IF NOT EXISTS FISIOTERAPEUTA (
 	idFisioterapeuta BIGINT not null AUTO_INCREMENT,
 	idPessoa BIGINT not null,
-	regiao VARCHAR (30),
-	crefito VARCHAR (30),
+	regiao VARCHAR (2),
+	crefito BIGINT,
 	constraint FISIOTERAPEUTA_PK primary key (idFisioterapeuta),
 	constraint FISIOTERAPEUTA_PESSOA_FK foreign key (idPessoa) references PESSOA (idPessoa)
 ) ENGINE = innoDB;
@@ -48,12 +47,14 @@ CREATE TABLE IF NOT EXISTS MUSCULO (
 
 CREATE TABLE IF NOT EXISTS MOVIMENTO (
 	idMovimento BIGINT not null AUTO_INCREMENT,
+	idMovimentoPai BIGINT,
 	idPessoa BIGINT not null,
-	nomeMovimento VARCHAR (50) not null,
-	graficoResultado VARCHAR (256) not null,
-	movimentoExecutor VARCHAR (256) not null,
-	rotuloMovimento VARCHAR (256) not null,
+	nomeMovimento VARCHAR (50),
+	graficoResultado VARCHAR (256),
+	movimentoExecutor VARCHAR (256),
+	rotuloMovimento VARCHAR (256),
 	constraint MOVIMENTO_PK primary key (idMovimento),
+	constraint MOVIMENTO_PAI_FK foreign key (idMovimentoPai) references MOVIMENTO (idMovimento),
 	constraint MOVIMENTO_PESSOA_FK foreign key (idPessoa) references PESSOA (idPessoa)
 ) ENGINE = innoDB;
 
@@ -76,53 +77,3 @@ CREATE TABLE IF NOT EXISTS SESSAO (
 	constraint SESSAO_PACIENTE_FK foreign key (idPaciente) references PACIENTE (idPaciente),
 	constraint SESSAO_FISIOTERAPEUTA_FK foreign key (idFisioterapeuta) references FISIOTERAPEUTA (idFisioterapeuta)
 ) ENGINE = innoDB;
-
-/*
-CREATE TABLE IF NOT EXISTS possui (
-	idSessao BIGINT not null,
-	idPaciente BIGINT not null,
-	constraint possui_SESSAO_FK foreign key (idSessao) references SESSAO (idSessao),
-	constraint possui_PACIENTE_FK foreign key (idPaciente) references PACIENTE (idPaciente)
-) ENGINE = innoDB;
-
-CREATE TABLE IF NOT EXISTS possui (
-	idSessao BIGINT not null,
-	idFisioterapeuta BIGINT not null,
-	constraint possui_SESSAO_FK foreign key (idSessao) references SESSAO (idSessao),
-	constraint possui_FISIOTERAPEUTA_FK foreign key (idFisioterapeuta) references FISIOTERAPEUTA (idFisioterapeuta)
-) ENGINE = innoDB;
-
-CREATE TABLE IF NOT EXISTS possui (
-	idSessao BIGINT not null,
-	idMovimento BIGINT not null,
-	constraint possui_SESSAO_FK foreign key (idSessao) references SESSAO (idSessao),
-	constraint possui_MOVIMENTO_FK foreign key (idMovimento) references MOVIMENTO (idMovimento)
-) ENGINE = innoDB;
-
-CREATE TABLE IF NOT EXISTS cadastra (
-	idFisioterapeuta BIGINT not null,
-	idMovimento BIGINT not null,
-	constraint cadastra_FISIOTERAPEUTA_FK foreign key (idFisioterapeuta) references FISIOTERAPEUTA (idFisioterapeuta),
-	constraint cadastra_MOVIMENTO_FK foreign key (idMovimento) references MOVIMENTO (idMovimento)
-) ENGINE = innoDB;
-
-CREATE TABLE IF NOT EXISTS pratica (
-	idPaciente BIGINT not null,
-	idMovimento BIGINT not null,
-	constraint pratica_PACIENTE_FK foreign key (idPaciente) references PACIENTE (idPaciente),
-	constraint pratica_MOVIMENTO_FK foreign key (idMovimento) references MOVIMENTO (idMovimento)
-) ENGINE = innoDB;
-
-CREATE TABLE IF NOT EXISTS atende (
-	idFisioterapeuta BIGINT not null,
-	idPaciente BIGINT not null,
-	constraint atende_FISIOTERAPEUTA_FK foreign key (idFisioterapeuta) references FISIOTERAPEUTA (idFisioterapeuta),
-	constraint atende_PACIENTE_FK foreign key (idPaciente) references PACIENTE (idPaciente)
-) ENGINE = innoDB;
-
-CREATE TABLE IF NOT EXISTS baseia (
-	idMovimento BIGINT not null,
-	constraint atende_FISIOTERAPEUTA_FK foreign key (idFisioterapeuta) references FISIOTERAPEUTA (idFisioterapeuta),
-	constraint atende_PACIENTE_FK foreign key (idPaciente) references PACIENTE (idPaciente)
-) ENGINE = innoDB;
-*/
