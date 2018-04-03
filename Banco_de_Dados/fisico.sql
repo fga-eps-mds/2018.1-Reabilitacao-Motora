@@ -2,6 +2,7 @@
 CREATE DATABASE IF NOT EXISTS fisiotech;
 USE fisiotech;
 
+
 CREATE TABLE IF NOT EXISTS PESSOA (
 	idPessoa BIGINT not null AUTO_INCREMENT,
 	nomePessoa VARCHAR (30) not null,
@@ -10,12 +11,14 @@ CREATE TABLE IF NOT EXISTS PESSOA (
 	constraint PESSOA_PK primary key (idPessoa)
 ) ENGINE = innoDB;
 
+
 CREATE TABLE IF NOT EXISTS TELEFONE (
 	idPessoa BIGINT not null,
 	telefone BIGINT not null,
 	constraint TELEFONE_PK primary key (idPessoa),
 	constraint TELEFONE_PESSOA_FK foreign key (idPessoa) references PESSOA (idPessoa)
 ) ENGINE = innoDB;
+
 
 CREATE TABLE IF NOT EXISTS FISIOTERAPEUTA (
 	idFisioterapeuta BIGINT not null AUTO_INCREMENT,
@@ -26,6 +29,7 @@ CREATE TABLE IF NOT EXISTS FISIOTERAPEUTA (
 	constraint FISIOTERAPEUTA_PESSOA_FK foreign key (idPessoa) references PESSOA (idPessoa)
 ) ENGINE = innoDB;
 
+
 CREATE TABLE IF NOT EXISTS PACIENTE (
 	idPaciente BIGINT not null AUTO_INCREMENT,
 	idPessoa BIGINT not null,
@@ -34,6 +38,14 @@ CREATE TABLE IF NOT EXISTS PACIENTE (
 	constraint PACIENTE_PESSOA_FK foreign key (idPessoa) references PESSOA (idPessoa)
 ) ENGINE = innoDB;
 
+
+CREATE TABLE IF NOT EXISTS MUSCULO (
+	idMusculo BIGINT not null AUTO_INCREMENT,
+	nomeMusculo VARCHAR (20) not null,
+	constraint MUSCULO_PK primary key (idMusculo)
+) ENGINE = innoDB;
+
+
 CREATE TABLE IF NOT EXISTS MOVIMENTO (
 	idMovimento BIGINT not null AUTO_INCREMENT,
 	idPessoa BIGINT not null,
@@ -41,10 +53,19 @@ CREATE TABLE IF NOT EXISTS MOVIMENTO (
 	graficoResultado VARCHAR (256) not null,
 	movimentoExecutor VARCHAR (256) not null,
 	rotuloMovimento VARCHAR (256) not null,
-	musculosTrabalhados VARCHAR (50) not null,
 	constraint MOVIMENTO_PK primary key (idMovimento),
 	constraint MOVIMENTO_PESSOA_FK foreign key (idPessoa) references PESSOA (idPessoa)
 ) ENGINE = innoDB;
+
+
+CREATE TABLE IF NOT EXISTS MOVIMENTOMUSCULO (
+	idMusculo BIGINT not null,
+	idMovimento BIGINT not null,
+	constraint MOVIMENTOMUSCULO_PK primary key (idMusculo, idMovimento),
+	constraint MOVIMENTOMUSCULO_MOVIMENTO_FK foreign key (idMovimento) references MOVIMENTO (idMovimento),
+	constraint MOVIMENTOMUSCULO_MUSCULO_FK foreign key (idMusculo) references MUSCULO (idMusculo)
+) ENGINE = innoDB;
+
 
 CREATE TABLE IF NOT EXISTS SESSAO (
 	idSessao BIGINT not null AUTO_INCREMENT,
