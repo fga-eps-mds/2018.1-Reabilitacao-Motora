@@ -1,8 +1,14 @@
+const token_api = "";
 const base_url = "https://api.github.com"
+
 
 let basicInfo = {};
 const getBasicInfo = () => {
-    axios.get(`${base_url}/repos/fga-gpp-mds/2018.1-Reabilitacao-Motora`)
+    axios.get(`${base_url}/repos/fga-gpp-mds/2018.1-Reabilitacao-Motora`, {
+        headers: {
+            Authorization: `token ${token_api}`
+        }
+    })
         .then(function (response) {
             console.log(response.data);
             basicInfo = response.data;
@@ -22,11 +28,23 @@ const setBasicDynamicData = () => {
     let forks = document.getElementById("forks");
     forks.innerHTML = basicInfo.forks_count;
 
+    //language
+    let language = document.getElementById("language");
+    language.innerHTML = basicInfo.language;
+
+    //issues
+    let issues = document.getElementById("issues");
+    issues.innerHTML = basicInfo.open_issues;
+
 }
 
 let statisticInfo = {};
 const getStatisticInfo = () => {
-    axios.get(`${base_url}/repos/fga-gpp-mds/2018.1-Reabilitacao-Motora/stats/contributors`)
+    axios.get(`${base_url}/repos/fga-gpp-mds/2018.1-Reabilitacao-Motora/stats/contributors`, {
+        headers: {
+            Authorization: `token ${token_api}`
+        }
+    })
         .then(function (response) {
             console.log(response.data);
             statisticInfo = response.data;
@@ -37,7 +55,11 @@ const getStatisticInfo = () => {
 
 let totalCommits = [];
 const getCommits = (pageCounter) => {
-    axios.get(`${base_url}/repos/fga-gpp-mds/2018.1-Reabilitacao-Motora/commits?page=${pageCounter}`)
+    axios.get(`${base_url}/repos/fga-gpp-mds/2018.1-Reabilitacao-Motora/commits?page=${pageCounter}`, {
+        headers: {
+            Authorization: `token ${token_api}`
+        }
+    })
         .then(function (response) {
             if (response.data.length !== 0) {
                 totalCommits.push(response.data);
@@ -54,11 +76,13 @@ const getCommits = (pageCounter) => {
 const setCommitData = () => {
     let commits = document.getElementById("commits");
     let counter = 0;
-    for(let commit in totalCommits){
+    for (let commit in totalCommits) {
         counter += totalCommits[commit].length;
     }
     commits.innerHTML = counter;
 }
+
+
 
 window.onload = () => {
     getBasicInfo();
