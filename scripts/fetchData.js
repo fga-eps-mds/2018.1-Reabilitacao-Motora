@@ -3,7 +3,6 @@ function reverseString(s) {
 }
 
 const token_api = reverseString("fb4d5a12cb16327536d9a8dbba29d7f75e42f6bf");
-console.log(token_api);
 const base_url = "https://api.github.com"
 
 
@@ -15,7 +14,6 @@ const getBasicInfo = () => {
         }
     })
         .then(function (response) {
-            console.log(response.data);
             basicInfo = response.data;
             setBasicDynamicData();
         }).catch(function (error) {
@@ -51,7 +49,6 @@ const getStatisticInfo = () => {
         }
     })
         .then(function (response) {
-            console.log(response.data);
             statisticInfo = response.data;
         }).catch(function (error) {
             console.log(error);
@@ -68,7 +65,6 @@ const getCommits = (pageCounter) => {
         .then(function (response) {
             if (response.data.length !== 0) {
                 totalCommits.push(response.data);
-                console.log(totalCommits);
                 getCommits(pageCounter + 1);
             } else {
                 setCommitData();
