@@ -17,7 +17,7 @@ _Um fisioterapeuta atende vários pacientes, assim como um paciente pode se cons
 fisioterapeutas._ (cardinalidade n:m)  <br />
 
 **movimento** -- trabalha -- **musculo** <br />
-_Um movimento estimula, obrigatoriamente, um ou mais músculos._ (cardinalidade 1:n) <br />
+_Um movimento estimula, obrigatoriamente, um ou mais músculos; e, um musculo, é estimulado por vários tipos de movimentos._ (cardinalidade n:m) <br />
 
 **movimento** -- baseia -- **movimento** <br />
 _O movimento, realizado pelo paciente, é baseado num movimento ideal, sendo este o cadastrado pelo fisioterapeuta._ (cardinalidade 1:1)  <br />
