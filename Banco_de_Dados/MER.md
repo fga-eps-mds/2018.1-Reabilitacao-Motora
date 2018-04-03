@@ -6,7 +6,9 @@
 
 **Paciente** (idPaciente, observacoes)
 
-**Movimento** (idMovimento, nomeMovimento, musculosTrabalhados, movimentoExecutor, graficoResultado, rotuloMovimento)
+**Movimento** (idMovimento, nomeMovimento, descricao, movimentoExecutor, graficoResultado, rotuloMovimento)
+
+**Musculo** (idMusculo, nomeMusculo)
 
 **Sessao** (idSessao, dataSessao)
 
@@ -18,14 +20,14 @@
 _Um fisioterapeuta atende vários pacientes, assim como um paciente pode se consultar com vários
 fisioterapeutas._ (cardinalidade n:m)  <br />
 
-**fisioterapeuta** -- cadastra -- **movimento**  <br />
-_O fisioterapeuta é responsável por popular o banco de dados com os movimentos ideais_ (cardinalidade 1:n)  <br />
+**movimento** -- trabalha -- **musculo** <br />
+_Um movimento estimula, obrigatoriamente, um ou mais músculos._ (cardinalidade 1:n) <br />
 
 **movimento** -- baseia -- **movimento** <br />
 _O movimento, realizado pelo paciente, é baseado num movimento ideal, sendo este o cadastrado pelo fisioterapeuta._ (cardinalidade 1:1)  <br />
 
-**paciente** -- pratica -- **movimento** <br />
-_Um paciente, numa sessão, pratica um ou vários movimentos._ (cardinalidade 1:n)  <br />
+**pessoa** -- pratica -- **movimento** <br />
+_Uma pessoa pratica, otimamente ou não, um ou vários movimentos._ (cardinalidade 1:n)  <br />
 
 **sessao** -- possui -- **movimento** <br />
 _Numa sessão, múltiplos movimentos são realizados_ (cardinalidade 1:n)
