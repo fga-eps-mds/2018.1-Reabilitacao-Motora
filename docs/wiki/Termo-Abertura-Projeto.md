@@ -2,7 +2,8 @@
 
 |    Data    | Versão |                             Alteração                             |                    Autor                    |
 |:----------:|:------:|:-----------------------------------------------------------------:|:-------------------------------------------:|
-| 15/03/2017 |   1.0  | Criação do documento e elaboração dos tópicos 11, 13, 14 e 15 |                Arthur Diniz                 |
+| 15/03/2018 |   0.1  | Criação do documento e elaboração dos tópicos 11, 13, 14 e 15 |                Arthur Diniz                 |
+| 20/03/2018 |   0.2  | Inserção dos tópicos 1 e 2 | Vitor Falcão |
 
 
 ----
@@ -49,21 +50,41 @@
 ----
 
 ## 1. Propósito ou Justificativa do Projeto
-
+<p align="justify">
+O Acidente Vascular Cerebral (AVC), popularmente conhecido como derrame, é a segunda maior causa de mortes atualmente no Brasil. Sua causa é problemas na irrigação sanguínea do cérebro causando morte celular, como consequência há um mal funcionamento do cérebro. Como resultado temos os sintomas de dificuldade de movimento ou percepção em um dos lados do corpo, dificuldades em falar ou compreender, perda de visão em um dos lados e sensação de que os objetos a sua volta estão se movimentando.
+</p>
+<p align="justify">
+Um dos problemas enfrentados é a reabilitação dos pacientes que sofreram AVC, ela se torna um desafio quando focamos na reabilitação motora do paciente que teve como sintoma a dificuldade de movimentação em um dos lados. Um fisioterapeuta se baseia em medições empíricas ao análisar o estado e evolução de um paciente, não tendo um devido mapeamento do empírico para o formal.
+</p>
+<p align="justify">
+O projeto tem como foco contornar este problema com medições bem mapeadas, ou seja, quando um paciente tem dificuldade de contração de um dos braços podemos medir facilmente a angulação entre seu antebraço e o eixo que passa do ombro ao cotovelo e então analisar sua evolução por atendimento feito.
+</p>
+<p align="justify">
+Em cada atendimento será efetuado as avaliações de acordo com movimentos previamente gravados pelo fisioterapeuta, então o paciente tentará reproduzí-lo e os dados relacionados a esta tentativa (angulação pelo tempo) será gravado em um banco de dados relacionado a este paciente ou apenas apresentado ao fisioterapeuta responsável para que haja uma análise mais profissional e com mais precisão.
+</p>
 
 ## 2. Objetivos do Projeto
+<p align="justify">
+Prover uma análise não superficial durante o atendimento de reabilitação de um paciente ajudando o fisioterapeuta a tomar melhores decisões médicas em relação a ele. A recuperação mais rápida do paciente se torna um dos objetivos e uma das consequências do método de espelhamento utilizado.
+</p>
 
 ## 3. Descrição do Projeto em alto nível
 
 
 ## 4. Requisitos de alto nível
+ - Cadastro e gerenciamento de pacientes
+ - Consulta de pacientes com a utilização de captura de movimento
 
 
 ## 5. Premissas
-
+ - O fisioterapeuta tem conhecimentos básicos de computação
+ - A clínica do fisioterapeuta contém ao menos um computador e um sensor de movimento
+ - A clínica do fisioterapeuta contém espaço suficiente para o sensor de movimento funcionar adequadamente
 
 ## 6. Restrições
-
+ - O projeto deve ser concluído no período letivo de 2018/1 da Universidade de Brasília
+ - O projeto só pode utilizar de recursos disponíveis pelos próprios membros
+ - O projeto deve ser concluído somente pela equipe de gestão e desenvolvimento do projeto, com consultas somente ao cliente do mesmo. 
 
 ## 7. Limites do Projeto
 
