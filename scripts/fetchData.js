@@ -1,4 +1,9 @@
-const token_api = "";
+function reverseString(s) {
+    return s.split("").reverse().join("");
+}
+
+const token_api = reverseString("fb4d5a12cb16327536d9a8dbba29d7f75e42f6bf");
+console.log(token_api);
 const base_url = "https://api.github.com"
 
 
