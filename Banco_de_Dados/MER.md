@@ -2,11 +2,13 @@
 ## ENTIDADES
 **Pessoa** (idPessoa, nomePessoa, sexo, dataNascimento, {telefone})
 
-**Fisioterapeuta** (idFisio, crefito, regiao)
+**Fisioterapeuta** (idFisioterapeuta, crefito, regiao)
 
 **Paciente** (idPaciente, observacoes)
 
-**Movimento** (idMovimento, nomeMovimento, descricao, movimentoExecutor, graficoResultado, rotuloMovimento)
+**Movimento** (idMovimento, nomeMovimento, descricaoMovimento, movimentoFisioterapeuta, graficoResultadoIdeal, rotuloMovimentoFisioterapeuta)
+
+**Exercicio** (idExercicio, descricaoExercicio, movimentoPaciente, graficoResultadoPaciente, rotuloMovimentoPaciente)
 
 **Musculo** (idMusculo, nomeMusculo)
 
@@ -14,26 +16,25 @@
 
 
 ## RELACIONAMENTOS
-**Pessoa** especializa totalmente em **Fisioterapeuta** ou **Paciente**, pois ambas as entidades compartilham vários atributos em comum; além de possuírem uma particularidade, também, em comum: ambas realizam movimentos.
+**Pessoa** especializa totalmente em **Fisioterapeuta** ou **Paciente**, pois ambas as entidades compartilham vários atributos em comum.
 
-**fisioterapeuta** -- atende -- **paciente** <br />
-_Um fisioterapeuta atende vários pacientes, assim como um paciente pode se consultar com vários
-fisioterapeutas._ (cardinalidade n:m)  <br />
-
-**movimento** -- trabalha -- **musculo** <br />
+**movimento** -- estimula -- **musculo** <br />
 _Um movimento estimula, obrigatoriamente, um ou mais músculos; e, um musculo, é estimulado por vários tipos de movimentos._ (cardinalidade n:m) <br />
 
-**movimento** -- baseia -- **movimento** <br />
-_O movimento, realizado pelo paciente, é baseado num movimento ideal, sendo este o cadastrado pelo fisioterapeuta._ (cardinalidade 1:1)  <br />
+**movimento** -- baseia -- **exercicio** <br />
+_O exercicio, realizado pelo paciente, é baseado num movimento ideal._ (cardinalidade 1:n)  <br />
 
-**pessoa** -- pratica -- **movimento** <br />
-_Uma pessoa pratica, otimamente ou não, um ou vários movimentos._ (cardinalidade 1:n)  <br />
+**fisioterapeuta** -- cadastra -- **movimento** <br />
+_Um fisioterapeuta cadastra um ou vários movimentos._ (cardinalidade 1:n)  <br />
 
-**sessao** -- possui -- **movimento** <br />
-_Numa sessão, múltiplos movimentos são realizados_ (cardinalidade 1:n)
+**paciente** -- realiza -- **exercicio** <br />
+_Um paciente realiza um ou vários movimentos._ (cardinalidade 1:n)  <br />
 
-**sessao** -- possui -- **paciente** <br />
-_Numa sessão, há necessariamente um paciente_ (cardinalidade 1:1)
+**sessao** -- possui -- **exercicio** <br />
+_Numa sessão, múltiplos exercícios são realizados._ (cardinalidade 1:n)
 
-**sessao** -- possui -- **fisioterapeuta** <br />
-_Numa sessão, há necessariamente um fisioterapeuta_ (cardinalidade 1:1)
+**paciente** -- participa -- **sessao** <br />
+_Um paciente participa de uma ou várias sessões._ (cardinalidade 1:n)
+
+**fisioterapeuta** -- conduz -- **sessao** <br />
+_Um fisioterapeuta conduz uma ou variás sessões._ (cardinalidade 1:n)

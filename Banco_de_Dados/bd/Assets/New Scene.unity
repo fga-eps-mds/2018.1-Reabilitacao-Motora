@@ -271,48 +271,58 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c457b68395474e4cbfa654118b76da6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tableNames:
-  - tableName: FISIOTERAPEUTA
-    stringArray:
-    - idFisioterapeuta
-    - idPessoa
-    - regiao
-    - crefito
-  - tableName: MOVIMENTO
-    stringArray:
-    - idMovimento
-    - idMovimentoPai
-    - idPessoa
-    - nomeMovimento
-    - graficoResultado
-    - movimentoExecutor
-    - rotuloMovimento
-  - tableName: MUSCULO
-    stringArray:
-    - idMusculo
-    - nomeMusculo
-  - tableName: PACIENTE
-    stringArray:
-    - idPaciente
-    - idPessoa
-    - observacoes
+  TABLES:
   - tableName: PESSOA
-    stringArray:
+    colName:
     - idPessoa
     - nomePessoa
     - sexo
     - dataNascimento
+  - tableName: TELEFONE
+    colName:
+    - idPessoa
+    - telefone
+  - tableName: FISIOTERAPEUTA
+    colName:
+    - idFisioterapeuta
+    - idPessoa
+    - regiao
+    - crefito
+  - tableName: PACIENTE
+    colName:
+    - idPaciente
+    - idPessoa
+    - observacoes
+  - tableName: MUSCULO
+    colName:
+    - idMusculo
+    - nomeMusculo
+  - tableName: MOVIMENTO
+    colName:
+    - idMovimento
+    - idFisioterapeuta
+    - nomeMovimento
+    - descricaoMovimento
+    - graficoResultadoFisioterapeuta
+    - movimentoFisioterapeuta
+    - rotuloMovimentoFisioterapeuta
   - tableName: SESSAO
-    stringArray:
+    colName:
     - idSessao
     - idFisioterapeuta
     - idPaciente
     - dataSessao
-  - tableName: TELEFONE
-    stringArray:
-    - idPessoa
-    - telefone
+  - tableName: EXERCICIO
+    colName:
+    - idExercicio
+    - idPaciente
+    - idMovimento
+    - idSessao
+    - descricaoExercicio
+    - graficoResultadoPaciente
+    - movimentoPaciente
+    - rotuloMovimentoPaciente
   - tableName: MOVIMENTOMUSCULO
-    stringArray:
+    colName:
     - idMusculo
     - idMovimento
