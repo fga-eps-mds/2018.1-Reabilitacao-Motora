@@ -189,7 +189,6 @@ GameObject:
   - component: {fileID: 1621093985}
   - component: {fileID: 1621093984}
   - component: {fileID: 1621093983}
-  - component: {fileID: 1621093987}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -260,69 +259,45 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1621093987
-MonoBehaviour:
+--- !u!1001 &2042184278
+Prefab:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1621093982}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c457b68395474e4cbfa654118b76da6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TABLES:
-  - tableName: PESSOA
-    colName:
-    - idPessoa
-    - nomePessoa
-    - sexo
-    - dataNascimento
-  - tableName: TELEFONE
-    colName:
-    - idPessoa
-    - telefone
-  - tableName: FISIOTERAPEUTA
-    colName:
-    - idFisioterapeuta
-    - idPessoa
-    - regiao
-    - crefito
-  - tableName: PACIENTE
-    colName:
-    - idPaciente
-    - idPessoa
-    - observacoes
-  - tableName: MUSCULO
-    colName:
-    - idMusculo
-    - nomeMusculo
-  - tableName: MOVIMENTO
-    colName:
-    - idMovimento
-    - idFisioterapeuta
-    - nomeMovimento
-    - descricaoMovimento
-    - graficoResultadoFisioterapeuta
-    - movimentoFisioterapeuta
-    - rotuloMovimentoFisioterapeuta
-  - tableName: SESSAO
-    colName:
-    - idSessao
-    - idFisioterapeuta
-    - idPaciente
-    - dataSessao
-  - tableName: EXERCICIO
-    colName:
-    - idExercicio
-    - idPaciente
-    - idMovimento
-    - idSessao
-    - descricaoExercicio
-    - graficoResultadoPaciente
-    - movimentoPaciente
-    - rotuloMovimentoPaciente
-  - tableName: MOVIMENTOMUSCULO
-    colName:
-    - idMusculo
-    - idMovimento
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4430150689894910, guid: d1319705018ce2341bca03e7e95f8470, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4430150689894910, guid: d1319705018ce2341bca03e7e95f8470, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4430150689894910, guid: d1319705018ce2341bca03e7e95f8470, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4430150689894910, guid: d1319705018ce2341bca03e7e95f8470, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4430150689894910, guid: d1319705018ce2341bca03e7e95f8470, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4430150689894910, guid: d1319705018ce2341bca03e7e95f8470, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4430150689894910, guid: d1319705018ce2341bca03e7e95f8470, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4430150689894910, guid: d1319705018ce2341bca03e7e95f8470, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: d1319705018ce2341bca03e7e95f8470, type: 2}
+  m_IsPrefabParent: 0

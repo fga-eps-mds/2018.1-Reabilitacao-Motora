@@ -20,7 +20,7 @@ public class bd : MonoBehaviour
              }
          }
     }
-    public MultiDimensionalString [] TABLES = new MultiDimensionalString[9];
+    public MultiDimensionalString [] TABLES = new MultiDimensionalString[13];
 
     IDbConnection dbconn;
     IDbCommand dbcmd;
@@ -28,7 +28,7 @@ public class bd : MonoBehaviour
     void Start()
     {
         conn = "URI=file:" + Application.dataPath + "/Plugins/fisiotech.db"; //Path to database.
-        insertTablePessoa ("foi, num foi? fala qfoi", "M", "1956-11-22"); 
+        //insertTablePessoa ("foi, num foi? fala qfoi", "M", "1956-11-22"); 
         readerPessoa ();
         readerFisioterapeuta ();
         readerMovimento();
@@ -38,6 +38,10 @@ public class bd : MonoBehaviour
         readerTelefone();
         readerMovimentoMusculo();
         readerExercicio ();
+        readerPontosMovimentoFisioterapeuta();
+        readerPontosRotuloFisioterapeuta();
+        readerPontosMovimentoPaciente();
+        readerPontosRotuloPaciente();
     }
     
     private void insertTableFisioterapeuta (int idPessoa, 
@@ -67,7 +71,6 @@ public class bd : MonoBehaviour
         }
     }
 
-
     private void updateTableFisioterapeuta (int id,
                                             int idPessoa, 
                                             string regiao, 
@@ -95,10 +98,7 @@ public class bd : MonoBehaviour
 
     private void insertTableMovimento (int idFisioterapeuta,
                                        string nomeMovimento,
-                                       string descricaoFisioterapeuta,
-                                       string graficoResultadoFisioterapeuta,
-                                       string movimentoFisioterapeuta,
-                                       string rotuloMovimentoFisioterapeuta)
+                                       string descricaoFisioterapeuta)
     {
         using (dbconn = new SqliteConnection(conn))
         {
@@ -113,12 +113,9 @@ public class bd : MonoBehaviour
                 sqlQuery += (TABLES[5].colName[i] + aux);
             }
 
-            sqlQuery += string.Format(" values (\"{0}\",\"{1}\",\"{2}\",\"{3}\",\"{4}\",\"{5}\")", idFisioterapeuta,
-                                                                                                   nomeMovimento,
-                                                                                                   descricaoFisioterapeuta,
-                                                                                                   graficoResultadoFisioterapeuta,
-                                                                                                   movimentoFisioterapeuta,
-                                                                                                   rotuloMovimentoFisioterapeuta);
+            sqlQuery += string.Format(" values (\"{0}\",\"{1}\",\"{2}\")", idFisioterapeuta,
+                                                                           nomeMovimento,
+                                                                           descricaoFisioterapeuta);
             
             dbcmd.CommandText = sqlQuery;
             dbcmd.ExecuteScalar();
@@ -126,14 +123,10 @@ public class bd : MonoBehaviour
         }
     }
 
-
     private void updateTableMovimento (int id,
                                        int idFisioterapeuta,
                                        string nomeMovimento,
-                                       string descricaoFisioterapeuta,
-                                       string graficoResultadoFisioterapeuta,
-                                       string movimentoFisioterapeuta,
-                                       string rotuloMovimentoFisioterapeuta)
+                                       string descricaoFisioterapeuta)
     {
         using (dbconn = new SqliteConnection(conn))
         {
@@ -145,9 +138,6 @@ public class bd : MonoBehaviour
             sqlQuery += string.Format("\"{0}\"=\"{1}\",", TABLES[5].colName[1], idFisioterapeuta);
             sqlQuery += string.Format("\"{0}\"=\"{1}\",", TABLES[5].colName[2], nomeMovimento);
             sqlQuery += string.Format("\"{0}\"=\"{1}\",", TABLES[5].colName[3], descricaoFisioterapeuta);
-            sqlQuery += string.Format("\"{0}\"=\"{1}\",", TABLES[5].colName[4], graficoResultadoFisioterapeuta);
-            sqlQuery += string.Format("\"{0}\"=\"{1}\",", TABLES[5].colName[5], movimentoFisioterapeuta);
-            sqlQuery += string.Format("\"{0}\"=\"{1}\" ", TABLES[5].colName[6], rotuloMovimentoFisioterapeuta);
 
             sqlQuery += string.Format("WHERE \"{0}\" = \"{1}\"", TABLES[5].colName[0], id);
 
@@ -180,7 +170,6 @@ public class bd : MonoBehaviour
             dbconn.Close();
         }
     }
-
 
     private void updateTableMusculo (int id, 
                                      string nomeMusculo)
@@ -228,7 +217,6 @@ public class bd : MonoBehaviour
         }
     }
 
-
     private void updateTablePaciente (int id,
                                       int idPessoa,
                                       string observacoes)
@@ -250,7 +238,6 @@ public class bd : MonoBehaviour
             dbconn.Close();
         }
     }
-
 
 
     private void insertTablePessoa (string nomePessoa,
@@ -280,7 +267,6 @@ public class bd : MonoBehaviour
         }
     }
 
-
     private void updateValuePessoa (int id,
                                     string nomePessoa,
                                     string sexo,
@@ -308,7 +294,8 @@ public class bd : MonoBehaviour
 
     private void insertTableSessao (int idFisioterapeuta,
                                     int idPaciente,
-                                    string dataSessao)
+                                    string dataSessao,
+                                    string observacaoSessao)
     {
         using (dbconn = new SqliteConnection(conn))
         {
@@ -323,9 +310,10 @@ public class bd : MonoBehaviour
                 sqlQuery += (TABLES[6].colName[i] + aux);
             }
 
-            sqlQuery += string.Format(" values (\"{0}\",\"{1}\",\"{2}\")", idFisioterapeuta,
-                                                                           idPaciente,
-                                                                           dataSessao);
+            sqlQuery += string.Format(" values (\"{0}\",\"{1}\",\"{2}\",\"{3}\")", idFisioterapeuta,
+                                                                                   idPaciente,
+                                                                                   dataSessao,
+                                                                                   observacaoSessao);
             
             dbcmd.CommandText = sqlQuery;
             dbcmd.ExecuteScalar();
@@ -333,11 +321,11 @@ public class bd : MonoBehaviour
         }
     }
 
-
     private void updateTableSessao (int id,
                                     int idFisioterapeuta,
                                     int idPaciente,
-                                    string dataSessao)
+                                    string dataSessao,
+                                    string observacaoSessao)
     {
         using (dbconn = new SqliteConnection(conn))
         {
@@ -348,7 +336,8 @@ public class bd : MonoBehaviour
 
             sqlQuery += string.Format("\"{0}\"=\"{1}\",", TABLES[6].colName[1], idFisioterapeuta);
             sqlQuery += string.Format("\"{0}\"=\"{1}\",", TABLES[6].colName[2], idPaciente);
-            sqlQuery += string.Format("\"{0}\"=\"{1}\" ", TABLES[6].colName[3], dataSessao);
+            sqlQuery += string.Format("\"{0}\"=\"{1}\",", TABLES[6].colName[3], dataSessao);
+            sqlQuery += string.Format("\"{0}\"=\"{1}\" ", TABLES[6].colName[4], observacaoSessao);
 
             sqlQuery += string.Format("WHERE \"{0}\" = \"{1}\"", TABLES[6].colName[0], id);
 
@@ -383,7 +372,6 @@ public class bd : MonoBehaviour
             dbconn.Close();
         }
     }
-
 
     private void updateTableTelefone (int id,
                                       int idPessoa,
@@ -433,7 +421,6 @@ public class bd : MonoBehaviour
         }
     }
 
-
     private void updateTableMovimentoMusculo (int id,
                                               int idMusculo,
                                               int idMovimento)
@@ -456,13 +443,11 @@ public class bd : MonoBehaviour
         }
     }
 
+
     private void insertTableExercicio (int idPaciente,
                                        int idMovimento,
                                        int idSessao,
-                                       string descricaoExercicio,
-                                       string graficoResultadoPaciente,
-                                       string movimentoPaciente,
-                                       string rotuloMovimentoPaciente)
+                                       string descricaoExercicio)
     {
         using (dbconn = new SqliteConnection(conn))
         {
@@ -477,29 +462,22 @@ public class bd : MonoBehaviour
                 sqlQuery += (TABLES[7].colName[i] + aux);
             }
 
-            sqlQuery += string.Format(" values (\"{0}\",\"{1}\",\"{2}\",\"{3}\",\"{4}\",\"{5}\",\"{6}\")", idPaciente,
-                                                                                                           idMovimento,
-                                                                                                           idSessao,
-                                                                                                           descricaoExercicio,
-                                                                                                           graficoResultadoPaciente,
-                                                                                                           movimentoPaciente,
-                                                                                                           rotuloMovimentoPaciente);
+            sqlQuery += string.Format(" values (\"{0}\",\"{1}\",\"{2}\",\"{3}\")", idPaciente,
+                                                                                   idMovimento,
+                                                                                   idSessao,
+                                                                                   descricaoExercicio);
             
             dbcmd.CommandText = sqlQuery;
             dbcmd.ExecuteScalar();
             dbconn.Close();
         }
     }
-    
 
     private void updateTableExercicio (int id,
                                        int idPaciente,
                                        int idMovimento,
                                        int idSessao,
-                                       string descricaoExercicio,
-                                       string graficoResultadoPaciente,
-                                       string movimentoPaciente,
-                                       string rotuloMovimentoPaciente)
+                                       string descricaoExercicio)
     {
         using (dbconn = new SqliteConnection(conn))
         {
@@ -511,11 +489,8 @@ public class bd : MonoBehaviour
             sqlQuery += string.Format("\"{0}\"=\"{1}\",", TABLES[7].colName[1], idPaciente);
             sqlQuery += string.Format("\"{0}\"=\"{1}\",", TABLES[7].colName[2], idMovimento);
             sqlQuery += string.Format("\"{0}\"=\"{1}\",", TABLES[7].colName[3], idSessao);
-            sqlQuery += string.Format("\"{0}\"=\"{1}\",", TABLES[7].colName[4], descricaoExercicio);
-            sqlQuery += string.Format("\"{0}\"=\"{1}\",", TABLES[7].colName[5], graficoResultadoPaciente);
-            sqlQuery += string.Format("\"{0}\"=\"{1}\",", TABLES[7].colName[6], movimentoPaciente);
-            sqlQuery += string.Format("\"{0}\"=\"{1}\" ", TABLES[7].colName[7], rotuloMovimentoPaciente);
-
+            sqlQuery += string.Format("\"{0}\"=\"{1}\" ", TABLES[7].colName[4], descricaoExercicio);
+            
             sqlQuery += string.Format("WHERE \"{0}\" = \"{1}\"", TABLES[7].colName[0], id);
 
             dbcmd.CommandText = sqlQuery;
@@ -523,16 +498,217 @@ public class bd : MonoBehaviour
             dbconn.Close();
         }
     }
-    
-    private void deleteValue(string name, int tableid, int id)
+
+
+    private void insertTablePontosMovimentoFisioterapeuta (int idMovimento,
+                                                           int movimentoFisioPosX,
+                                                           int movimentoFisioPosY)
     {
         using (dbconn = new SqliteConnection(conn))
         {
             dbconn.Open();
             dbcmd = dbconn.CreateCommand();
-            sqlQuery = string.Format("delete from \"{0}\" WHERE \"{1}\" = \"{2}\"", name, 
-                                                                                    TABLES[tableid].colName[0], 
-                                                                                    id);
+            sqlQuery = "insert into EXERCICIO (";
+
+            int tableSize = TABLES[8].Length;
+
+            for (int i = 1; i < tableSize; ++i) {
+                string aux = (i+1 == tableSize) ? (")") : (",");
+                sqlQuery += (TABLES[8].colName[i] + aux);
+            }
+
+            sqlQuery += string.Format(" values (\"{0}\",\"{1}\",\"{2}\")", idMovimento,
+                                                                           movimentoFisioPosX,
+                                                                           movimentoFisioPosY);
+            
+            dbcmd.CommandText = sqlQuery;
+            dbcmd.ExecuteScalar();
+            dbconn.Close();
+        }
+    }
+    
+    private void updateTablePontosMovimentoFisioterapeuta (int id,
+                                                           int idMovimento,
+                                                           int movimentoFisioPosX,
+                                                           int movimentoFisioPosY)
+    {
+        using (dbconn = new SqliteConnection(conn))
+        {
+            dbconn.Open();
+            dbcmd = dbconn.CreateCommand();
+
+            sqlQuery = string.Format("UPDATE \"{0}\" set ", TABLES[8].tableName);
+
+            sqlQuery += string.Format("\"{0}\"=\"{1}\",", TABLES[8].colName[1], idMovimento);
+            sqlQuery += string.Format("\"{0}\"=\"{1}\",", TABLES[8].colName[2], movimentoFisioPosX);
+            sqlQuery += string.Format("\"{0}\"=\"{1}\",", TABLES[8].colName[3], movimentoFisioPosY);
+            
+            sqlQuery += string.Format("WHERE \"{0}\" = \"{1}\"", TABLES[8].colName[0], id);
+
+            dbcmd.CommandText = sqlQuery;
+            dbcmd.ExecuteScalar();
+            dbconn.Close();
+        }
+    }
+
+
+    private void insertTablePontosRotuloFisioterapeuta (int idMovimento,
+                                                        string estagioMovimentoFisio,
+                                                        int rotuloFisioPosX,
+                                                        int rotuloFisioPosY)
+    {
+        using (dbconn = new SqliteConnection(conn))
+        {
+            dbconn.Open();
+            dbcmd = dbconn.CreateCommand();
+            sqlQuery = "insert into EXERCICIO (";
+
+            int tableSize = TABLES[9].Length;
+
+            for (int i = 1; i < tableSize; ++i) {
+                string aux = (i+1 == tableSize) ? (")") : (",");
+                sqlQuery += (TABLES[9].colName[i] + aux);
+            }
+
+            sqlQuery += string.Format(" values (\"{0}\",\"{1}\",\"{2}\",\"{3}\")", idMovimento,
+                                                                                   estagioMovimentoFisio,
+                                                                                   rotuloFisioPosX,
+                                                                                   rotuloFisioPosY);
+            
+            dbcmd.CommandText = sqlQuery;
+            dbcmd.ExecuteScalar();
+            dbconn.Close();
+        }
+    }
+
+    private void updateTablePontosRotuloFisioterapeuta (int id,
+                                                        int idMovimento,
+                                                        string estagioMovimentoFisio,
+                                                        int rotuloFisioPosX,
+                                                        int rotuloFisioPosY)
+    {
+        using (dbconn = new SqliteConnection(conn))
+        {
+            dbconn.Open();
+            dbcmd = dbconn.CreateCommand();
+
+            sqlQuery = string.Format("UPDATE \"{0}\" set ", TABLES[9].tableName);
+
+            sqlQuery += string.Format("\"{0}\"=\"{1}\",", TABLES[9].colName[1], idMovimento);
+            sqlQuery += string.Format("\"{0}\"=\"{1}\",", TABLES[9].colName[2], estagioMovimentoFisio);
+            sqlQuery += string.Format("\"{0}\"=\"{1}\",", TABLES[9].colName[3], rotuloFisioPosX);
+            sqlQuery += string.Format("\"{0}\"=\"{1}\",", TABLES[9].colName[4], rotuloFisioPosY);
+            
+            sqlQuery += string.Format("WHERE \"{0}\" = \"{1}\"", TABLES[9].colName[0], id);
+
+            dbcmd.CommandText = sqlQuery;
+            dbcmd.ExecuteScalar();
+            dbconn.Close();
+        }
+    }
+
+
+    private void insertTablePontosMovimentoPaciente (int idMovimento,
+                                                           int movimentoPacientePosX,
+                                                           int movimentoPacientePosY)
+    {
+        using (dbconn = new SqliteConnection(conn))
+        {
+            dbconn.Open();
+            dbcmd = dbconn.CreateCommand();
+            sqlQuery = "insert into EXERCICIO (";
+
+            int tableSize = TABLES[10].Length;
+
+            for (int i = 1; i < tableSize; ++i) {
+                string aux = (i+1 == tableSize) ? (")") : (",");
+                sqlQuery += (TABLES[10].colName[i] + aux);
+            }
+
+            sqlQuery += string.Format(" values (\"{0}\",\"{1}\",\"{2}\")", idMovimento,
+                                                                           movimentoPacientePosX,
+                                                                           movimentoPacientePosY);
+            
+            dbcmd.CommandText = sqlQuery;
+            dbcmd.ExecuteScalar();
+            dbconn.Close();
+        }
+    }
+    
+    private void updateTablePontosMovimentoPaciente (int id,
+                                                           int idMovimento,
+                                                           int movimentoPacientePosX,
+                                                           int movimentoPacientePosY)
+    {
+        using (dbconn = new SqliteConnection(conn))
+        {
+            dbconn.Open();
+            dbcmd = dbconn.CreateCommand();
+
+            sqlQuery = string.Format("UPDATE \"{0}\" set ", TABLES[10].tableName);
+
+            sqlQuery += string.Format("\"{0}\"=\"{1}\",", TABLES[10].colName[1], idMovimento);
+            sqlQuery += string.Format("\"{0}\"=\"{1}\",", TABLES[10].colName[2], movimentoPacientePosX);
+            sqlQuery += string.Format("\"{0}\"=\"{1}\",", TABLES[10].colName[3], movimentoPacientePosY);
+            
+            sqlQuery += string.Format("WHERE \"{0}\" = \"{1}\"", TABLES[10].colName[0], id);
+
+            dbcmd.CommandText = sqlQuery;
+            dbcmd.ExecuteScalar();
+            dbconn.Close();
+        }
+    }
+
+
+    private void insertTablePontosRotuloPaciente (int idMovimento,
+                                                  string estagioMovimentoPaciente,
+                                                  int rotuloPacientePosXinicial,
+                                                  int rotuloPacientePosXfinal)
+    {
+        using (dbconn = new SqliteConnection(conn))
+        {
+            dbconn.Open();
+            dbcmd = dbconn.CreateCommand();
+            sqlQuery = "insert into EXERCICIO (";
+
+            int tableSize = TABLES[11].Length;
+
+            for (int i = 1; i < tableSize; ++i) {
+                string aux = (i+1 == tableSize) ? (")") : (",");
+                sqlQuery += (TABLES[11].colName[i] + aux);
+            }
+
+            sqlQuery += string.Format(" values (\"{0}\",\"{1}\",\"{2}\",\"{3}\")", idMovimento,
+                                                                                   estagioMovimentoPaciente,
+                                                                                   rotuloPacientePosXinicial,
+                                                                                   rotuloPacientePosXfinal);
+            
+            dbcmd.CommandText = sqlQuery;
+            dbcmd.ExecuteScalar();
+            dbconn.Close();
+        }
+    }
+
+    private void updateTablePontosRotuloPaciente (int id,
+                                                        int idMovimento,
+                                                        string estagioMovimentoPaciente,
+                                                        int rotuloPacientePosXinicial,
+                                                        int rotuloPacientePosXfinal)
+    {
+        using (dbconn = new SqliteConnection(conn))
+        {
+            dbconn.Open();
+            dbcmd = dbconn.CreateCommand();
+
+            sqlQuery = string.Format("UPDATE \"{0}\" set ", TABLES[11].tableName);
+
+            sqlQuery += string.Format("\"{0}\"=\"{1}\",", TABLES[11].colName[1], idMovimento);
+            sqlQuery += string.Format("\"{0}\"=\"{1}\",", TABLES[11].colName[2], estagioMovimentoPaciente);
+            sqlQuery += string.Format("\"{0}\"=\"{1}\",", TABLES[11].colName[3], rotuloPacientePosXinicial);
+            sqlQuery += string.Format("\"{0}\"=\"{1}\",", TABLES[11].colName[4], rotuloPacientePosXfinal);
+            
+            sqlQuery += string.Format("WHERE \"{0}\" = \"{1}\"", TABLES[11].colName[0], id);
+
             dbcmd.CommandText = sqlQuery;
             dbcmd.ExecuteScalar();
             dbconn.Close();
@@ -592,25 +768,16 @@ public class bd : MonoBehaviour
                 int idFisioterapeuta = 0;
                 string nomeMovimento = "null";
                 string descricaoFisioterapeuta = "null";
-                string graficoResultadoFisioterapeuta = "null";
-                string movimentoFisioterapeuta = "null";
-                string rotuloMovimentoFisioterapeuta = "null";
 
                 if (!reader.IsDBNull(0)) idMovimento = reader.GetInt32(0);
                 if (!reader.IsDBNull(1)) idFisioterapeuta = reader.GetInt32(1);
                 if (!reader.IsDBNull(2)) nomeMovimento = reader.GetString(2);
                 if (!reader.IsDBNull(3)) descricaoFisioterapeuta = reader.GetString(3);
-                if (!reader.IsDBNull(4)) graficoResultadoFisioterapeuta = reader.GetString(4);
-                if (!reader.IsDBNull(5)) movimentoFisioterapeuta = reader.GetString(5);
-                if (!reader.IsDBNull(6)) rotuloMovimentoFisioterapeuta = reader.GetString(6);
 
                 Debug.Log (string.Format("\"{0}\" = ", TABLES[5].colName[0]) + idMovimento +
                            string.Format(" \"{0}\" = ", TABLES[5].colName[1]) + idFisioterapeuta +
                            string.Format(" \"{0}\" = ", TABLES[5].colName[2]) + nomeMovimento +
-                           string.Format(" \"{0}\" = ", TABLES[5].colName[3]) + descricaoFisioterapeuta +
-                           string.Format(" \"{0}\" = ", TABLES[5].colName[4]) + graficoResultadoFisioterapeuta +
-                           string.Format(" \"{0}\" = ", TABLES[5].colName[5]) + movimentoFisioterapeuta +
-                           string.Format(" \"{0}\" = ", TABLES[5].colName[6]) + rotuloMovimentoFisioterapeuta);
+                           string.Format(" \"{0}\" = ", TABLES[5].colName[3]) + descricaoFisioterapeuta);
             }
             reader.Close();
             reader = null;
@@ -620,6 +787,7 @@ public class bd : MonoBehaviour
             dbconn = null;
         }
     }
+
 
     private void readerExercicio()
     {
@@ -637,27 +805,18 @@ public class bd : MonoBehaviour
                 int idMovimento = 0;
                 int idSessao = 0;
                 string descricaoExercicio = "null";
-                string graficoResultadoPaciente = "null";
-                string movimentoPaciente = "null";
-                string rotuloMovimentoPaciente = "null";
 
                 if (!reader.IsDBNull(0)) idExercicio = reader.GetInt32(0);
                 if (!reader.IsDBNull(1)) idPaciente = reader.GetInt32(1);
                 if (!reader.IsDBNull(2)) idMovimento = reader.GetInt32(2);
                 if (!reader.IsDBNull(3)) idSessao = reader.GetInt32(3);
                 if (!reader.IsDBNull(4)) descricaoExercicio = reader.GetString(4);
-                if (!reader.IsDBNull(5)) graficoResultadoPaciente = reader.GetString(5);
-                if (!reader.IsDBNull(6)) movimentoPaciente = reader.GetString(6);
-                if (!reader.IsDBNull(7)) rotuloMovimentoPaciente = reader.GetString(7);
 
                 Debug.Log (string.Format("\"{0}\" = ", TABLES[7].colName[0]) + idExercicio +
                            string.Format(" \"{0}\" = ", TABLES[7].colName[1]) + idPaciente +
                            string.Format(" \"{0}\" = ", TABLES[7].colName[2]) + idMovimento +
                            string.Format(" \"{0}\" = ", TABLES[7].colName[3]) + idSessao +
-                           string.Format(" \"{0}\" = ", TABLES[7].colName[4]) + descricaoExercicio +
-                           string.Format(" \"{0}\" = ", TABLES[7].colName[5]) + graficoResultadoPaciente +
-                           string.Format(" \"{0}\" = ", TABLES[7].colName[6]) + movimentoPaciente +
-                           string.Format(" \"{0}\" = ", TABLES[7].colName[7]) + rotuloMovimentoPaciente);
+                           string.Format(" \"{0}\" = ", TABLES[7].colName[4]) + descricaoExercicio);
             }
             reader.Close();
             reader = null;
@@ -784,16 +943,19 @@ public class bd : MonoBehaviour
                 int idFisioterapeuta = 0;
                 int idPaciente = 0;
                 string dataSessao = "";
+                string observacaoSessao = "";
 
                 if (!reader.IsDBNull(0)) idSessao = reader.GetInt32(0);
                 if (!reader.IsDBNull(1)) idFisioterapeuta = reader.GetInt32(1);
                 if (!reader.IsDBNull(2)) idPaciente = reader.GetInt32(2);
                 if (!reader.IsDBNull(3)) dataSessao = reader.GetString(3);
+                if (!reader.IsDBNull(4)) observacaoSessao = reader.GetString(4);
 
                 Debug.Log (string.Format("\"{0}\" = ", TABLES[6].colName[0]) + idSessao +
                            string.Format(" \"{0}\" = ", TABLES[6].colName[1]) + idFisioterapeuta +
                            string.Format(" \"{0}\" = ", TABLES[6].colName[2]) + idPaciente +
-                           string.Format(" \"{0}\" = ", TABLES[6].colName[3]) + dataSessao);
+                           string.Format(" \"{0}\" = ", TABLES[6].colName[3]) + dataSessao +
+                           string.Format(" \"{0}\" = ", TABLES[6].colName[4]) + observacaoSessao);
             }
             reader.Close();
             reader = null;
@@ -863,4 +1025,171 @@ public class bd : MonoBehaviour
             dbconn = null;
         }
     }
+
+
+    private void readerPontosMovimentoFisioterapeuta()
+    {
+        using (dbconn = new SqliteConnection(conn))
+        {
+            dbconn.Open();
+            dbcmd = dbconn.CreateCommand();
+            sqlQuery = "SELECT * " + "FROM PONTOSMOVIMENTOFISIOTERAPEUTA";
+            dbcmd.CommandText = sqlQuery;
+            IDataReader reader = dbcmd.ExecuteReader();
+            while (reader.Read())
+            {
+                int idMovimentoFisioterapeuta = 0;
+                int idMovimento = 0;
+                int movimentoFisioPosX = 0;
+                int movimentoFisioPosY = 0;
+
+                if (!reader.IsDBNull(0)) idMovimentoFisioterapeuta = reader.GetInt32(0);
+                if (!reader.IsDBNull(1)) idMovimento = reader.GetInt32(1);
+                if (!reader.IsDBNull(2)) movimentoFisioPosX = reader.GetInt32(2);
+                if (!reader.IsDBNull(3)) movimentoFisioPosY = reader.GetInt32(3);
+
+                Debug.Log (string.Format("\"{0}\" = ", TABLES[9].colName[0]) + idMovimentoFisioterapeuta +
+                           string.Format(" \"{0}\" = ", TABLES[9].colName[1]) + idMovimento +
+                           string.Format(" \"{0}\" = ", TABLES[9].colName[2]) + movimentoFisioPosX +
+                           string.Format(" \"{0}\" = ", TABLES[9].colName[3]) + movimentoFisioPosY);
+            }
+            reader.Close();
+            reader = null;
+            dbcmd.Dispose();
+            dbcmd = null;
+            dbconn.Close();
+            dbconn = null;
+        }
+    }
+    
+
+    private void readerPontosRotuloFisioterapeuta()
+    {
+        using (dbconn = new SqliteConnection(conn))
+        {
+            dbconn.Open();
+            dbcmd = dbconn.CreateCommand();
+            sqlQuery = "SELECT * " + "FROM PONTOSROTULOFISIOTERAPEUTA";
+            dbcmd.CommandText = sqlQuery;
+            IDataReader reader = dbcmd.ExecuteReader();
+            while (reader.Read())
+            {
+                int idRotuloFisioterapeuta = 0;
+                int idMovimento = 0;
+                string estagioMovimentoFisio = "null";
+                int rotuloFisioPosX = 0;
+                int rotuloFisioPosY = 0;
+
+                if (!reader.IsDBNull(0)) idRotuloFisioterapeuta = reader.GetInt32(0);
+                if (!reader.IsDBNull(1)) idMovimento = reader.GetInt32(1);
+                if (!reader.IsDBNull(2)) estagioMovimentoFisio = reader.GetString(2);
+                if (!reader.IsDBNull(3)) rotuloFisioPosX = reader.GetInt32(3);
+                if (!reader.IsDBNull(4)) rotuloFisioPosY = reader.GetInt32(4);
+
+                Debug.Log (string.Format("\"{0}\" = ", TABLES[10].colName[0]) + idRotuloFisioterapeuta +
+                           string.Format(" \"{0}\" = ", TABLES[10].colName[1]) + idMovimento +
+                           string.Format(" \"{0}\" = ", TABLES[10].colName[2]) + estagioMovimentoFisio +
+                           string.Format(" \"{0}\" = ", TABLES[10].colName[3]) + rotuloFisioPosX +
+                           string.Format(" \"{0}\" = ", TABLES[10].colName[4]) + rotuloFisioPosY);
+            }
+            reader.Close();
+            reader = null;
+            dbcmd.Dispose();
+            dbcmd = null;
+            dbconn.Close();
+            dbconn = null;
+        }
+    }
+
+
+    private void readerPontosMovimentoPaciente()
+    {
+        using (dbconn = new SqliteConnection(conn))
+        {
+            dbconn.Open();
+            dbcmd = dbconn.CreateCommand();
+            sqlQuery = "SELECT * " + "FROM PONTOSMOVIMENTOPACIENTE";
+            dbcmd.CommandText = sqlQuery;
+            IDataReader reader = dbcmd.ExecuteReader();
+            while (reader.Read())
+            {
+                int idMovimentoPaciente = 0;
+                int idExercicio = 0;
+                int movimentoPacientePosX = 0;
+                int movimentoPacientePosY = 0;
+
+                if (!reader.IsDBNull(0)) idMovimentoPaciente = reader.GetInt32(0);
+                if (!reader.IsDBNull(1)) idExercicio = reader.GetInt32(1);
+                if (!reader.IsDBNull(2)) movimentoPacientePosX = reader.GetInt32(2);
+                if (!reader.IsDBNull(3)) movimentoPacientePosY = reader.GetInt32(3);
+
+                Debug.Log (string.Format("\"{0}\" = ", TABLES[11].colName[0]) + idMovimentoPaciente +
+                           string.Format(" \"{0}\" = ", TABLES[11].colName[1]) + idExercicio +
+                           string.Format(" \"{0}\" = ", TABLES[11].colName[2]) + movimentoPacientePosX +
+                           string.Format(" \"{0}\" = ", TABLES[11].colName[3]) + movimentoPacientePosY);
+            }
+            reader.Close();
+            reader = null;
+            dbcmd.Dispose();
+            dbcmd = null;
+            dbconn.Close();
+            dbconn = null;
+        }
+    }
+    
+
+    private void readerPontosRotuloPaciente()
+    {
+        using (dbconn = new SqliteConnection(conn))
+        {
+            dbconn.Open();
+            dbcmd = dbconn.CreateCommand();
+            sqlQuery = "SELECT * " + "FROM PONTOSROTULOPACIENTE";
+            dbcmd.CommandText = sqlQuery;
+            IDataReader reader = dbcmd.ExecuteReader();
+            while (reader.Read())
+            {
+                int idRotuloPaciente = 0;
+                int idMovimento = 0;
+                string estagioMovimentoPaciente = "null";
+                int rotuloPacientePosXinicial = 0;
+                int rotuloPacientePosXfinal = 0;
+
+                if (!reader.IsDBNull(0)) idRotuloPaciente = reader.GetInt32(0);
+                if (!reader.IsDBNull(1)) idMovimento = reader.GetInt32(1);
+                if (!reader.IsDBNull(2)) estagioMovimentoPaciente = reader.GetString(2);
+                if (!reader.IsDBNull(3)) rotuloPacientePosXinicial = reader.GetInt32(3);
+                if (!reader.IsDBNull(4)) rotuloPacientePosXfinal = reader.GetInt32(4);
+
+                Debug.Log (string.Format("\"{0}\" = ", TABLES[12].colName[0]) + idRotuloPaciente +
+                           string.Format(" \"{0}\" = ", TABLES[12].colName[1]) + idMovimento +
+                           string.Format(" \"{0}\" = ", TABLES[12].colName[2]) + estagioMovimentoPaciente +
+                           string.Format(" \"{0}\" = ", TABLES[12].colName[3]) + rotuloPacientePosXinicial +
+                           string.Format(" \"{0}\" = ", TABLES[12].colName[4]) + rotuloPacientePosXfinal);
+            }
+            reader.Close();
+            reader = null;
+            dbcmd.Dispose();
+            dbcmd = null;
+            dbconn.Close();
+            dbconn = null;
+        }
+    }
+
+
+    private void deleteValue(string name, int tableid, int id)
+    {
+        using (dbconn = new SqliteConnection(conn))
+        {
+            dbconn.Open();
+            dbcmd = dbconn.CreateCommand();
+            sqlQuery = string.Format("delete from \"{0}\" WHERE \"{1}\" = \"{2}\"", name, 
+                                                                                    TABLES[tableid].colName[0], 
+                                                                                    id);
+            dbcmd.CommandText = sqlQuery;
+            dbcmd.ExecuteScalar();
+            dbconn.Close();
+        }
+    }
+
 }

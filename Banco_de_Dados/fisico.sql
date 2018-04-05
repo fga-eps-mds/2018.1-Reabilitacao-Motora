@@ -2,7 +2,6 @@
 CREATE DATABASE IF NOT EXISTS fisiotech;
 USE fisiotech;
 
-
 CREATE TABLE IF NOT EXISTS PESSOA (
 	idPessoa INTEGER primary key AUTOINCREMENT,
 	nomePessoa VARCHAR (30) not null,
@@ -10,14 +9,12 @@ CREATE TABLE IF NOT EXISTS PESSOA (
 	dataNascimento DATE not null
 );
 
-
 CREATE TABLE IF NOT EXISTS TELEFONE (
 	idPessoa INTEGER not null,
 	telefone VARCHAR (18) not null,
 	foreign key (idPessoa) references PESSOA (idPessoa),
 	primary key (idPessoa, telefone)
 );
-
 
 CREATE TABLE IF NOT EXISTS FISIOTERAPEUTA (
 	idFisioterapeuta INTEGER primary key AUTOINCREMENT,
@@ -28,7 +25,6 @@ CREATE TABLE IF NOT EXISTS FISIOTERAPEUTA (
 	constraint crefito_regiao UNIQUE (crefito, regiao)
 );
 
-
 CREATE TABLE IF NOT EXISTS PACIENTE (
 	idPaciente INTEGER primary key AUTOINCREMENT,
 	idPessoa INTEGER not null,
@@ -36,21 +32,16 @@ CREATE TABLE IF NOT EXISTS PACIENTE (
 	foreign key (idPessoa) references PESSOA (idPessoa)
 );
 
-
 CREATE TABLE IF NOT EXISTS MUSCULO (
 	idMusculo INTEGER primary key AUTOINCREMENT,
 	nomeMusculo VARCHAR (20) not null
 );
-
 
 CREATE TABLE IF NOT EXISTS MOVIMENTO (
 	idMovimento INTEGER primary key AUTOINCREMENT,
 	idFisioterapeuta INTEGER not null,
 	nomeMovimento VARCHAR (50) not null,
 	descricaoMovimento VARCHAR (150),
-	graficoResultadoFisioterapeuta VARCHAR (256),
-	movimentoFisioterapeuta VARCHAR (256),
-	rotuloMovimentoFisioterapeuta VARCHAR (256),
 	foreign key (idFisioterapeuta) references FISIOTERAPEUTA (idFisioterapeuta)
 );
 
@@ -59,6 +50,7 @@ CREATE TABLE IF NOT EXISTS SESSAO (
 	idFisioterapeuta INTEGER not null,
 	idPaciente INTEGER not null,
 	dataSessao DATE not null,
+	observacaoSessao VARCHAR (300),
 	foreign key (idPaciente) references PACIENTE (idPaciente),
 	foreign key (idFisioterapeuta) references FISIOTERAPEUTA (idFisioterapeuta)
 );
@@ -69,14 +61,10 @@ CREATE TABLE IF NOT EXISTS EXERCICIO (
 	idMovimento INTEGER not null,
 	idSessao INTEGER not null,
 	descricaoExercicio VARCHAR (150),
-	graficoResultadoPaciente VARCHAR (256),
-	movimentoPaciente VARCHAR (256),
-	rotuloMovimentoPaciente VARCHAR (256),
 	foreign key (idSessao) references SESSAO (idSessao),
 	foreign key (idMovimento) references MOVIMENTO (idMovimento),
 	foreign key (idPaciente) references PACIENTE (idPaciente)
 );
-
 
 CREATE TABLE IF NOT EXISTS MOVIMENTOMUSCULO (
 	idMusculo INTEGER not null,
@@ -86,3 +74,37 @@ CREATE TABLE IF NOT EXISTS MOVIMENTOMUSCULO (
 	primary key (idMusculo, idMovimento)
 );
 
+CREATE TABLE IF NOT EXISTS PONTOSMOVIMENTOFISIOTERAPEUTA (
+	idMovimentoFisioterapeuta INTEGER primary key AUTOINCREMENT,
+	idMovimento INTEGER not null,
+	movimentoFisioPosX INTEGER not null,
+	movimentoFisioPosY INTEGER not null,
+	foreign key (idMovimento) references MOVIMENTO (idMovimento)
+);
+
+CREATE TABLE IF NOT EXISTS PONTOSROTULOFISIOTERAPEUTA (
+	idRotuloFisioterapeuta INTEGER primary key AUTOINCREMENT,
+	idMovimento INTEGER not null,
+	estagioMovimentoFisio INTEGER not null,
+	rotuloFisioPosXinicial INTEGER not null,
+	rotuloFisioPosXfinal INTEGER not null,
+	foreign key (idMovimento) references MOVIMENTO (idMovimento)
+);
+
+
+CREATE TABLE IF NOT EXISTS PONTOSMOVIMENTOPACIENTE (
+	idMovimentoPaciente INTEGER primary key AUTOINCREMENT,
+	idExercicio INTEGER not null,
+	movimentoPacientePosX INTEGER not null,
+	movimentoPacientePosY INTEGER not null,
+	foreign key (idExercicio) references EXERCICIO (idExercicio)
+);
+
+CREATE TABLE IF NOT EXISTS PONTOSROTULOPACIENTE (
+	idRotuloPaciente INTEGER primary key AUTOINCREMENT,
+	idExercicio INTEGER not null,
+	estagioMovimentoPaciente INTEGER not null,
+	rotuloPacientePosXinicial INTEGER not null,
+	rotuloPacientePosXfinal INTEGER not null,
+	foreign key (idExercicio) references EXERCICIO (idExercicio)
+);
