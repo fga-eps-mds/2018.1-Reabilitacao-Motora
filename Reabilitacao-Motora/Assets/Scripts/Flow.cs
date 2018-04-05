@@ -37,6 +37,14 @@ public class Flow : MonoBehaviour
 	}
 
 	/**
+ 	 * Leva para scene de gráficos.
+ 	 */
+	public void Graphs() 
+	{
+		SceneManager.LoadScene("Graphs2");
+	}
+
+	/**
  	 * Volta para o menu.
  	 */
 	public void BackToMenu() 
