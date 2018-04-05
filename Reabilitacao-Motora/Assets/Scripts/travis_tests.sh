@@ -7,14 +7,22 @@ echo "========================================"
 echo "Opening $project in order to update meta files"
 /Applications/Unity/Unity.app/Contents/MacOS/Unity \
 -batchmode \
+-silent-crashes \
 -logFile $(pwd)/$project/unity.log \
 -projectPath $(pwd)/$project \
--executeMethod TravisBuildSceneSelector.Perform \
+-runEditorTests \
+-editorTestsResultFile $(pwd)/$project/test.xml \
 -quit
-echo "========================================"
+rc0=$?
 
-echo 'Logs from build'
+echo "========================================"
+echo "Unity logs"
 cat $(pwd)/$project/unity.log
+echo "========================================"
+echo "Test logs"
+cat $(pwd)/$project/test.xml
+# exit if tests failed
+if [ $rc0 -ne 0 ]; then { echo "Failed unit tests"; exit $rc0; } fi
 
 # echo "Attempting to build $project for Windows"
 # /Applications/Unity/Unity.app/Contents/MacOS/Unity \

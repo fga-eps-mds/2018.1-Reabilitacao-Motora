@@ -5,7 +5,8 @@ rvm:
 before_install:
 - chmod a+x ./Reabilitacao-Motora/Assets/Scripts/travis_install.sh
 - chmod a+x ./Reabilitacao-Motora/Assets/Scripts/travis_build.sh
+- chmod a+x ./Reabilitacao-Motora/Assets/Scripts/travis_tests.sh
 install:
 - ./Reabilitacao-Motora/Assets/Scripts/travis_install.sh
 script:
-- ./Reabilitacao-Motora/Assets/Scripts/travis_build.sh
+- ./Reabilitacao-Motora/Assets/Scripts/travis_tests.sh
