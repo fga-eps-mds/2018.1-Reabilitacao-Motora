@@ -7,7 +7,7 @@
 
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="scripts/fetchDocumentation.js" ></script>
+    <script src="scripts/fetchRepository.js" ></script>
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
 
@@ -152,7 +152,7 @@
 
     }
     .project-list-title  p{
-      margin-left: 5%;
+      margin-left: 2%;
       color: #fff;
     }
 
@@ -224,6 +224,10 @@
       height: 500px;
     }
 
+    #doxygen-list {
+      height: 250px;
+    }
+
     ul {
       list-style-type: none;
 
@@ -258,10 +262,10 @@
           <li class="nav-item">
             <a class="nav-link" href="https://fga-gpp-mds.github.io/2018.1-Reabilitacao-Motora/index">Home</a>
           </li>
-          <li class="nav-item active">
+          <li class="nav-item">
             <a class="nav-link" href="https://fga-gpp-mds.github.io/2018.1-Reabilitacao-Motora/documentos">Documentos</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item active">
             <a class="nav-link" href="https://fga-gpp-mds.github.io/2018.1-Reabilitacao-Motora/repositorio">Repositório</a>
           </li>
           <li class="nav-item">
@@ -287,34 +291,17 @@
 
     <main>
       <div class="container">
+        <h2>Repositório</h2>
         <div class="row">
           <div class="col-12">
-            <h2>Documentos projeto</h2>
-            <div class="row">
-              <div class="col-6">
-                <div class="project-list-title"><p>Engenharia de Produto de Software</p></div>
-                <div id="eps-list" class="list-group"></div>
-              </div>
-              <div class="col-6">
-                <div class="project-list-title"><p>Método de Desenvolvimento de Software</p></div>
-                <div id="mds-list" class="list-group"></div>
-              </div>
-            </div>
+            <div class="project-list-title"><p>Doxygen</p></div>
+            <div id="doxygen-list"></div>
           </div>
         </div>
         <div class="row">
           <div class="col-12">
-            <h2>Release 1</h2>
-            <div class="row">
-              <div class="col-6">
-                <div class="project-list-title"><p>Planejamento</p></div>
-                <div id="release-1-planning" class="list-group"></div>
-              </div>
-              <div class="col-6">
-                <div class="project-list-title"><p>Resultados</p></div>
-                <div id="release-1-review" class="list-group"></div>
-              </div>
-            </div>
+            <div class="project-list-title"><p>Politicas</p></div>
+            <div id="policies-list" class="list-group"></div>
           </div>
         </div>
       </div>
