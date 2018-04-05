@@ -77,17 +77,17 @@ CREATE TABLE IF NOT EXISTS MOVIMENTOMUSCULO (
 CREATE TABLE IF NOT EXISTS PONTOSMOVIMENTOFISIOTERAPEUTA (
 	idMovimentoFisioterapeuta INTEGER primary key AUTOINCREMENT,
 	idMovimento INTEGER not null,
-	movimentoFisioPosX INTEGER not null,
-	movimentoFisioPosY INTEGER not null,
+	tempo REAL not null,
+	anguloDeJunta REAL not null,
 	foreign key (idMovimento) references MOVIMENTO (idMovimento)
 );
 
 CREATE TABLE IF NOT EXISTS PONTOSROTULOFISIOTERAPEUTA (
 	idRotuloFisioterapeuta INTEGER primary key AUTOINCREMENT,
 	idMovimento INTEGER not null,
-	estagioMovimentoFisio INTEGER not null,
-	rotuloFisioPosXinicial INTEGER not null,
-	rotuloFisioPosXfinal INTEGER not null,
+	estagioMovimentoFisio VARCHAR (30) not null,
+	tempoInicial REAL not null,
+	tempoFinal REAL not null,
 	foreign key (idMovimento) references MOVIMENTO (idMovimento)
 );
 
@@ -95,16 +95,16 @@ CREATE TABLE IF NOT EXISTS PONTOSROTULOFISIOTERAPEUTA (
 CREATE TABLE IF NOT EXISTS PONTOSMOVIMENTOPACIENTE (
 	idMovimentoPaciente INTEGER primary key AUTOINCREMENT,
 	idExercicio INTEGER not null,
-	movimentoPacientePosX INTEGER not null,
-	movimentoPacientePosY INTEGER not null,
+	tempo REAL not null,
+	anguloDeJunta REAL not null,
 	foreign key (idExercicio) references EXERCICIO (idExercicio)
 );
 
 CREATE TABLE IF NOT EXISTS PONTOSROTULOPACIENTE (
 	idRotuloPaciente INTEGER primary key AUTOINCREMENT,
 	idExercicio INTEGER not null,
-	estagioMovimentoPaciente INTEGER not null,
-	rotuloPacientePosXinicial INTEGER not null,
-	rotuloPacientePosXfinal INTEGER not null,
+	estagioMovimentoPaciente VARCHAR (30) not null,
+	tempoInicial REAL not null,
+	tempoFinal REAL not null,
 	foreign key (idExercicio) references EXERCICIO (idExercicio)
 );

@@ -56,28 +56,28 @@ insert into MOVIMENTOMUSCULO (idMusculo, idMovimento) values
 (3, 3),
 (4, 3);
 
-insert into PONTOSMOVIMENTOFISIOTERAPEUTA (idMovimento, movimentoFisioPosX, movimentoFisioPosY) values
+insert into PONTOSMOVIMENTOFISIOTERAPEUTA (idMovimento, tempo, anguloDeJunta) values
 (1, 0, 0),
 (1, 10, 10),
 (1, 20, 10),
 (1, 30, 5),
 (1, 40, 0);
 
-insert into PONTOSROTULOFISIOTERAPEUTA (idMovimento, estagioMovimentoFisio, rotuloFisioPosXinicial, rotuloFisioPosXfinal) values
+insert into PONTOSROTULOFISIOTERAPEUTA (idMovimento, estagioMovimentoFisio, tempoInicial, tempoFinal) values
 (1, 'braço estendido', 0, 0),
 (1, 'contraindo musculo', 0, 10),
 (1, 'musculo contraido', 10, 20),
 (1, 'estendendo braço', 20, 30),
 (1, 'braço estendido', 30, 40);
 
-insert into PONTOSMOVIMENTOPACIENTE (idExercicio, movimentoPacientePosX, movimentoPacientePosY) values
+insert into PONTOSMOVIMENTOPACIENTE (idExercicio, tempo, anguloDeJunta) values
 (1, 0, 0),
 (1, 13, 9),
 (1, 17, 8),
 (1, 31, 2),
 (1, 40, 0);
 
-insert into PONTOSROTULOPACIENTE (idExercicio, estagioMovimentoPaciente, rotuloPacientePosXinicial, rotuloPacientePosXfinal) values
+insert into PONTOSROTULOPACIENTE (idExercicio, estagioMovimentoPaciente, tempoInicial, tempoFinal) values
 (1, 'braço estendido', 0, 0),
 (1, 'contraindo musculo', 0, 10),
 (1, 'musculo contraido', 10, 20),

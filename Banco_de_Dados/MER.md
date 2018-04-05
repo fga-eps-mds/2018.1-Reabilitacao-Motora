@@ -14,13 +14,13 @@
 
 **Sessao** (idSessao, dataSessao, observacaoSessao)
 
-**Pontos Movimento Fisioterapeuta** (idMovimentoFisioterapeuta, movimentoFisioPosX, movimentoFisioPosY)
+**Pontos Movimento Fisioterapeuta** (idMovimentoFisioterapeuta, tempo, anguloDeJunta)
 
-**Pontos Rotulo Fisioterapeuta** (idRotuloFisioterapeuta, rotuloFisioPosXinicial, rotuloFisioPosYfinal, estagioMovimentoFisio)
+**Pontos Rotulo Fisioterapeuta** (idRotuloFisioterapeuta, tempoInicial, tempoFinal, estagioMovimentoFisio)
 
-**Pontos Movimento Paciente** (idMovimentoPaciente, movimentoPacientePosX, movimentoPacientePosY)
+**Pontos Movimento Paciente** (idMovimentoPaciente, tempo, anguloDeJunta)
 
-**Pontos Rotulo Paciente** (idRotuloPaciente, rotuloPacientePosXinicial, rotuloPacientePosYfinal, estagioMovimentoPaciente)
+**Pontos Rotulo Paciente** (idRotuloPaciente, tempoInicial, tempoFinal, estagioMovimentoPaciente)
 
 ## RELACIONAMENTOS
 **Pessoa** especializa totalmente em **Fisioterapeuta** ou **Paciente**, pois ambas as entidades compartilham vários atributos em comum.
