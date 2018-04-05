@@ -5,6 +5,8 @@ using System.Collections.Generic;
 
 public class LineGraphManager : MonoBehaviour {
 
+	public GameObject character;
+
 	public GameObject linerenderer;
 	public GameObject pointer;
 
@@ -37,6 +39,9 @@ public class LineGraphManager : MonoBehaviour {
 
 
 	void Start(){
+
+		// AQUI ESTA O TRANSFORM QUE EU QUERO REPRODUZIR NO GRÁFICO
+		print(character.transform.position);
 
 		// adding random data
 		int index = Random.Range(20,120);
