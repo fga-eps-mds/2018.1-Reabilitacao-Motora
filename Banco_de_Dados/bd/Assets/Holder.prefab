@@ -111,25 +111,25 @@ MonoBehaviour:
     colName:
     - idMovimentoFisioterapeuta
     - idMovimento
-    - movimentoFisioPosX
-    - movimentoFisioPosY
+    - tempo
+    - anguloDeJunta
   - tableName: PONTOSROTULOFISIOTERAPEUTA
     colName:
     - idRotuloFisioterapeuta
     - idMovimento
     - estagioMovimentoFisio
-    - rotuloFisioPosXinicial
-    - rotuloFisioPosXfinal
+    - tempoInicial
+    - tempoFinal
   - tableName: PONTOSMOVIMENTOPACIENTE
     colName:
     - idMovimentoPaciente
     - idExercicio
-    - movimentoPacientePosX
-    - movimentoPacientePosY
+    - tempo
+    - anguloDeJunta
   - tableName: PONTOSROTULOPACIENTE
     colName:
     - idRotuloPaciente
     - idExercicio
     - estagioMovimentoPaciente
-    - rotuloPacientePosXinicial
-    - rotuloPacientePosXfinal
+    - tempoInicial
+    - tempoFinal
