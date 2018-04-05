@@ -49,10 +49,42 @@ const getStatisticInfo = () => {
         }
     })
         .then(function (response) {
+            console.log(response.data);
             statisticInfo = response.data;
+            setTopCommiter();
         }).catch(function (error) {
             console.log(error);
         });
+}
+
+
+const setTopCommiter = () => {
+    let topCommit = 0;
+    let topCommitter = "";
+    let topLines = 0;
+    let topAvatar = "";
+    for(let user in statisticInfo){
+        if(statisticInfo[user].weeks.slice(-1)[0].c > topCommit){
+            topCommit = statisticInfo[user].weeks.slice(-1)[0].c;
+            topCommitter = statisticInfo[user].author.login;
+            topLines = statisticInfo[user].weeks.slice(-1)[0].a + statisticInfo[user].weeks.slice(-1)[0].d;
+            topAvatar = statisticInfo[user].author.avatar_url;
+        }
+        // console.log(statisticInfo[user].author.login);
+        // console.log(statisticInfo[user].weeks.slice(-1)[0].c);
+        // console.log(statisticInfo[user].weeks.slice(-1)[0].a + statisticInfo[user].weeks.slice(-1)[0].d);
+    }
+    let div = document.getElementById("top-committer");
+    let avatar = document.getElementById("top-avatar");
+    let divCommmit = document.getElementById("top-commit");
+    let divLines = document.getElementById("top-lines");
+    let divLink = document.getElementById("top-link");
+
+    div.innerHTML = topCommitter;
+    divCommmit.innerHTML = topCommit;
+    divLines.innerHTML = topLines;
+    avatar.src = topAvatar;
+    divLink.href = `https://github.com/${topCommitter}`;
 }
 
 let totalCommits = [];
