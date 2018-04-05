@@ -39,7 +39,7 @@
 
 ## 4. Pareamento
 
-O Quadro de pareamento está disponível no [Link](https://raw.githubusercontent.com/RomeuCarvalhoAntunes/2018.1-Reabilitacao-Motora/master/docs/imagens/Quadro%20de%20Pareamento/Quadro_de_Pareamento.png)
+O Quadro de pareamento está disponível no [Link](https://raw.githubusercontent.com/RomeuCarvalhoAntunes/2018.1-Reabilitacao-Motora/master/docs/imagens/Quadro%20de%20Pareamento/Quadro_de_Pareamento_Sprint03.png)
 
 > Como muitas histórias de usuário não foram realizadas na *Sprint* passada o pareamento permaneceu o mesmo
 

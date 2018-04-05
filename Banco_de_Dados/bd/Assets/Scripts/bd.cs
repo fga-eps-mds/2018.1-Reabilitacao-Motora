@@ -501,8 +501,8 @@ public class bd : MonoBehaviour
 
 
     private void insertTablePontosMovimentoFisioterapeuta (int idMovimento,
-                                                           int tempo,
-                                                           int anguloDeJunta)
+                                                           double tempo,
+                                                           double anguloDeJunta)
     {
         using (dbconn = new SqliteConnection(conn))
         {
@@ -529,8 +529,8 @@ public class bd : MonoBehaviour
     
     private void updateTablePontosMovimentoFisioterapeuta (int id,
                                                            int idMovimento,
-                                                           int tempo,
-                                                           int anguloDeJunta)
+                                                           double tempo,
+                                                           double anguloDeJunta)
     {
         using (dbconn = new SqliteConnection(conn))
         {
@@ -554,8 +554,8 @@ public class bd : MonoBehaviour
 
     private void insertTablePontosRotuloFisioterapeuta (int idMovimento,
                                                         string estagioMovimentoFisio,
-                                                        int tempo,
-                                                        int anguloDeJunta)
+                                                        double tempo,
+                                                        double anguloDeJunta)
     {
         using (dbconn = new SqliteConnection(conn))
         {
@@ -584,8 +584,8 @@ public class bd : MonoBehaviour
     private void updateTablePontosRotuloFisioterapeuta (int id,
                                                         int idMovimento,
                                                         string estagioMovimentoFisio,
-                                                        int tempo,
-                                                        int anguloDeJunta)
+                                                        double tempo,
+                                                        double anguloDeJunta)
     {
         using (dbconn = new SqliteConnection(conn))
         {
@@ -609,8 +609,8 @@ public class bd : MonoBehaviour
 
 
     private void insertTablePontosMovimentoPaciente (int idMovimento,
-                                                           int tempo,
-                                                           int anguloDeJunta)
+                                                           double tempo,
+                                                           double anguloDeJunta)
     {
         using (dbconn = new SqliteConnection(conn))
         {
@@ -637,8 +637,8 @@ public class bd : MonoBehaviour
     
     private void updateTablePontosMovimentoPaciente (int id,
                                                            int idMovimento,
-                                                           int tempo,
-                                                           int anguloDeJunta)
+                                                           double tempo,
+                                                           double anguloDeJunta)
     {
         using (dbconn = new SqliteConnection(conn))
         {
@@ -662,8 +662,8 @@ public class bd : MonoBehaviour
 
     private void insertTablePontosRotuloPaciente (int idMovimento,
                                                   string estagioMovimentoPaciente,
-                                                  int tempoInicial,
-                                                  int tempoFinal)
+                                                  double tempoInicial,
+                                                  double tempoFinal)
     {
         using (dbconn = new SqliteConnection(conn))
         {
@@ -692,8 +692,8 @@ public class bd : MonoBehaviour
     private void updateTablePontosRotuloPaciente (int id,
                                                   int idMovimento,
                                                   string estagioMovimentoPaciente,
-                                                  int tempoInicial,
-                                                  int tempoFinal)
+                                                  double tempoInicial,
+                                                  double tempoFinal)
     {
         using (dbconn = new SqliteConnection(conn))
         {
@@ -1040,13 +1040,13 @@ public class bd : MonoBehaviour
             {
                 int idMovimentoFisioterapeuta = 0;
                 int idMovimento = 0;
-                int tempo = 0;
-                int anguloDeJunta = 0;
+                double tempo = 0;
+                double anguloDeJunta = 0;
 
                 if (!reader.IsDBNull(0)) idMovimentoFisioterapeuta = reader.GetInt32(0);
                 if (!reader.IsDBNull(1)) idMovimento = reader.GetInt32(1);
-                if (!reader.IsDBNull(2)) tempo = reader.GetInt32(2);
-                if (!reader.IsDBNull(3)) anguloDeJunta = reader.GetInt32(3);
+                if (!reader.IsDBNull(2)) tempo = reader.GetDouble(2);
+                if (!reader.IsDBNull(3)) anguloDeJunta = reader.GetDouble(3);
 
                 Debug.Log (string.Format("\"{0}\" = ", TABLES[9].colName[0]) + idMovimentoFisioterapeuta +
                            string.Format(" \"{0}\" = ", TABLES[9].colName[1]) + idMovimento +
@@ -1077,20 +1077,20 @@ public class bd : MonoBehaviour
                 int idRotuloFisioterapeuta = 0;
                 int idMovimento = 0;
                 string estagioMovimentoFisio = "null";
-                int tempo = 0;
-                int anguloDeJunta = 0;
+                double tempoInicial = 0;
+                double tempoFinal = 0;
 
                 if (!reader.IsDBNull(0)) idRotuloFisioterapeuta = reader.GetInt32(0);
                 if (!reader.IsDBNull(1)) idMovimento = reader.GetInt32(1);
                 if (!reader.IsDBNull(2)) estagioMovimentoFisio = reader.GetString(2);
-                if (!reader.IsDBNull(3)) tempo = reader.GetInt32(3);
-                if (!reader.IsDBNull(4)) anguloDeJunta = reader.GetInt32(4);
+                if (!reader.IsDBNull(3)) tempoInicial = reader.GetDouble(3);
+                if (!reader.IsDBNull(4)) tempoFinal = reader.GetDouble(4);
 
                 Debug.Log (string.Format("\"{0}\" = ", TABLES[10].colName[0]) + idRotuloFisioterapeuta +
                            string.Format(" \"{0}\" = ", TABLES[10].colName[1]) + idMovimento +
                            string.Format(" \"{0}\" = ", TABLES[10].colName[2]) + estagioMovimentoFisio +
-                           string.Format(" \"{0}\" = ", TABLES[10].colName[3]) + tempo +
-                           string.Format(" \"{0}\" = ", TABLES[10].colName[4]) + anguloDeJunta);
+                           string.Format(" \"{0}\" = ", TABLES[10].colName[3]) + tempoInicial +
+                           string.Format(" \"{0}\" = ", TABLES[10].colName[4]) + tempoFinal);
             }
             reader.Close();
             reader = null;
@@ -1115,13 +1115,13 @@ public class bd : MonoBehaviour
             {
                 int idMovimentoPaciente = 0;
                 int idExercicio = 0;
-                int tempo = 0;
-                int anguloDeJunta = 0;
+                double tempo = 0;
+                double anguloDeJunta = 0;
 
                 if (!reader.IsDBNull(0)) idMovimentoPaciente = reader.GetInt32(0);
                 if (!reader.IsDBNull(1)) idExercicio = reader.GetInt32(1);
-                if (!reader.IsDBNull(2)) tempo = reader.GetInt32(2);
-                if (!reader.IsDBNull(3)) anguloDeJunta = reader.GetInt32(3);
+                if (!reader.IsDBNull(2)) tempo = reader.GetDouble(2);
+                if (!reader.IsDBNull(3)) anguloDeJunta = reader.GetDouble(3);
 
                 Debug.Log (string.Format("\"{0}\" = ", TABLES[11].colName[0]) + idMovimentoPaciente +
                            string.Format(" \"{0}\" = ", TABLES[11].colName[1]) + idExercicio +
@@ -1152,14 +1152,14 @@ public class bd : MonoBehaviour
                 int idRotuloPaciente = 0;
                 int idMovimento = 0;
                 string estagioMovimentoPaciente = "null";
-                int tempoInicial = 0;
-                int tempoFinal = 0;
+                double tempoInicial = 0;
+                double tempoFinal = 0;
 
                 if (!reader.IsDBNull(0)) idRotuloPaciente = reader.GetInt32(0);
                 if (!reader.IsDBNull(1)) idMovimento = reader.GetInt32(1);
                 if (!reader.IsDBNull(2)) estagioMovimentoPaciente = reader.GetString(2);
-                if (!reader.IsDBNull(3)) tempoInicial = reader.GetInt32(3);
-                if (!reader.IsDBNull(4)) tempoFinal = reader.GetInt32(4);
+                if (!reader.IsDBNull(3)) tempoInicial = reader.GetDouble(3);
+                if (!reader.IsDBNull(4)) tempoFinal = reader.GetDouble(4);
 
                 Debug.Log (string.Format("\"{0}\" = ", TABLES[12].colName[0]) + idRotuloPaciente +
                            string.Format(" \"{0}\" = ", TABLES[12].colName[1]) + idMovimento +
