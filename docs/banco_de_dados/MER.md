@@ -4,14 +4,21 @@
 
 **Paciente** (idPaciente, cpfPaciente, nomePaciente, numeroSessoes, dataNascimento, {telefone})
 
-**Movimento** (idMovimento, nomeMovimento, descricaoMovimento, movimentoFisioterapeuta, graficoResultadoIdeal, rotuloMovimentoFisioterapeuta)
+**Movimento** (idMovimento, nomeMovimento, descricaoMovimento)
 
-**Exercicio** (idExercicio, descricaoExercicio, movimentoPaciente, graficoResultadoPaciente, rotuloMovimentoPaciente)
+**Exercicio** (idExercicio, descricaoExercicio)
 
 **Musculo** (idMusculo, nomeMusculo)
 
-**Sessao** (idSessao, dataSessao)
+**Sessao** (idSessao, dataSessao, observacaoSessao)
 
+**Pontos Movimento Fisioterapeuta** (idMovimentoFisioterapeuta, movimentoFisioPosX, movimentoFisioPosY)
+
+**Pontos Rotulo Fisioterapeuta** (idRotuloFisioterapeuta, rotuloFisioPosXinicial, rotuloFisioPosYfinal, estagioMovimentoFisio)
+
+**Pontos Movimento Paciente** (idMovimentoPaciente, movimentoPacientePosX, movimentoPacientePosY)
+
+**Pontos Rotulo Paciente** (idRotuloPaciente, rotuloPacientePosXinicial, rotuloPacientePosYfinal, estagioMovimentoPaciente)
 
 ## RELACIONAMENTOS
 **fisioterapeuta** -- atende -- **paciente** <br />
@@ -38,3 +45,15 @@ _Um paciente participa de uma ou várias sessões._ (cardinalidade 1:n)
 
 **fisioterapeuta** -- conduz -- **sessao** <br />
 _Um fisioterapeuta conduz uma ou variás sessões._ (cardinalidade 1:n)
+
+**movimento** -- gera -- **pontos movimento fisioterapeuta** <br />
+_Um movimento gera n pontos nos eixos x e y._ (cardinalidade 1:n)
+
+**movimento** -- gera -- **pontos rotulo fisioterapeuta** <br />
+_Um movimento gera n pontos nos eixos x e y._ (cardinalidade 1:n)
+
+**exercicio** -- gera -- **pontos movimento paciente** <br />
+_Um exercicio gera n pontos nos eixos x e y._ (cardinalidade 1:n)
+
+**exercicio** -- gera -- **pontos rotulo paciente** <br />
+_Um exercicio gera n pontos nos eixos x e y._ (cardinalidade 1:n)
