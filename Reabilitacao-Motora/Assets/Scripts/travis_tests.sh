@@ -4,23 +4,17 @@ project="Reabilitacao-Motora"
 echo "Initializing Build Script for $project"
 echo "========================================"
 
+cd Reabilitacao-Motora
+
 echo "Opening $project in order to update meta files"
-/Applications/Unity/Unity.app/Contents/MacOS/Unity \
--batchmode \
--nographics \
--silent-crashes \
--logFile $(pwd)/$project/unity.log \
--projectPath $(pwd)/$project \
--runEditorTests \
--editorTestsResultFile $(pwd)/$project/test.xml \
-rc0=$?
+/Applications/Unity/Unity.app/Contents/MacOS/Unity -batchmode -nographics -logFile unity.log -projectPath . -runEditorTests -editorTestsResultFile test.xml rc0=$?
 
 echo "========================================"
 echo "Unity logs"
-cat $(pwd)/$project/unity.log
+cat unity.log
 echo "========================================"
 echo "Test logs"
-cat $(pwd)/$project/test.xml
+cat test.xml
 # exit if tests failed
 if [ $rc0 -ne 0 ]; then { echo "Failed unit tests"; exit $rc0; } fi
 
