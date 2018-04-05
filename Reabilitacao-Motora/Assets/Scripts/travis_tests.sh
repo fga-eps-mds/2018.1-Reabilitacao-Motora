@@ -7,12 +7,12 @@ echo "========================================"
 echo "Opening $project in order to update meta files"
 /Applications/Unity/Unity.app/Contents/MacOS/Unity \
 -batchmode \
+-nographics \
 -silent-crashes \
 -logFile $(pwd)/$project/unity.log \
 -projectPath $(pwd)/$project \
 -runEditorTests \
 -editorTestsResultFile $(pwd)/$project/test.xml \
--quit
 rc0=$?
 
 echo "========================================"

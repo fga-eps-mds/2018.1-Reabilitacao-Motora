@@ -9,7 +9,7 @@ public class SampleTest {
 	[Test]
 	public void SampleTestSimplePasses() {
 		// Use the Assert class to test conditions.
-		Assert.AreEqual(1, 0);
+		Assert.AreEqual(1, 1);
 	}
 
 	// A UnityTest behaves like a coroutine in PlayMode
