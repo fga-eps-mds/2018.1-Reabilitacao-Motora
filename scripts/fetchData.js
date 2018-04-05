@@ -22,10 +22,6 @@ const getBasicInfo = () => {
 }
 
 const setBasicDynamicData = () => {
-    // main title
-    document.title = basicInfo.name;
-    let mainTitle = document.getElementById("main-title");
-    mainTitle.innerHTML = basicInfo.name;
 
     //forks
     let forks = document.getElementById("forks");
