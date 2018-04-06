@@ -14,8 +14,6 @@ using movimento;
 using sessao;
 using exercicio;
 using movimentomusculo;
-using pontosmovimentofisioterapeuta;
-using pontosmovimentopaciente;
 using pontosrotulofisioterapeuta;
 using pontosrotulopaciente;
 
@@ -32,9 +30,7 @@ public class bd : MonoBehaviour
     Sessao tableSessao;
     Exercicio tableExercicio;
     MovimentoMusculo tableMovimentoMusculo;
-    PontosMovimentoFisioterapeuta  tablePMF;
     PontosRotuloFisioterapeuta tablePRF;
-    PontosMovimentoPaciente tablePMP;
     PontosRotuloPaciente tablePRP;
 
 
@@ -64,9 +60,7 @@ public class bd : MonoBehaviour
         tableSessao = new Sessao (path);
         tableExercicio = new Exercicio (path);
         tableMovimentoMusculo = new MovimentoMusculo (path);
-        tablePMF = new PontosMovimentoFisioterapeuta (path);
         tablePRF = new PontosRotuloFisioterapeuta (path);
-        tablePMP = new PontosMovimentoPaciente (path);
         tablePRP = new PontosRotuloPaciente (path);
     }
 
@@ -74,17 +68,15 @@ public class bd : MonoBehaviour
     {
         tablePessoa.Insert ("mateus", "m", "1995-11-04"); // id = 5
         tablePessoa.Insert ("carlos", "m", "1997-01-11"); // id = 6
-        tableTel.Insert (5, "+55 44 9998 1717"); // 6 = mateus
+        //tableTel.Insert (5, "+55 44 9998 1717"); // 6 = mateus
         tableFisio.Insert (5); // mateus = fisioterapeuta, id = 3
         tablePaciente.Insert (6, "semi top"); // carlos = paciente, id = 3
         tableMusculo.Insert ("deltoide"); // id = 5
-        tableMovimento.Insert (3, "levantando peso pra cima", "utilizando um halter levante-o ate altura do ombro"); //mateus cadastra movimento, id = 4
+        tableMovimento.Insert (3, "levantando peso pra cima", "utilizando um halter levante-o ate altura do ombro", "MVtest5.txt"); //mateus cadastra movimento, id = 4
         tableSessao.Insert (3, 3, "2018-05-04", "carlos realizou o exercicio x bem"); // id = 10
-        tableExercicio.Insert (3, 4, 10, "leve dificuldade no começo mas dps show de bola"); // id = 5
+        tableExercicio.Insert (3, 4, 10, "leve dificuldade no começo mas dps show de bola", "EXtest5.txt"); // id = 5
         tableMovimentoMusculo.Insert (5, 4);
-        tablePMF.Insert (4, 1.2, 1.5); // id = 6
         tablePRF.Insert (4, "ascençao do braço", 0, 1); // id = 6
-        tablePMP.Insert (5, 0.7, 1.5); // id = 6
         tablePRP.Insert (5, "ascençao do braço", 0, 1); // id = 6*/
     }
 
@@ -92,24 +84,22 @@ public class bd : MonoBehaviour
     {
         tablePessoa.Update (5, "mathews", "m", "1995-11-04"); //mateus cansou do nome brasileiro plebeu 
         tablePessoa.Update (6, "carlos martins", "m", "1997-01-11"); //carlos se casou com a ana (martins) 
-        tableTel.Update (5, "+55 44 9900 1515"); //mathews começou a ser assediado por paparazis e mudou de cel
+        //tableTel.Update (5, "+55 44 9900 1515"); //mathews começou a ser assediado por paparazis e mudou de cel
         tableFisio.Update (3, 5, "PR", "13183128"); //mathews nao é mais um mero estagiario
         tablePaciente.Update (3, 6, "100% top"); //carlos martins recuperou movimento do braço
         tableMusculo.Update (5, "deltóide"); //reforma ortografica
-        tableMovimento.Update (4, 3, "halter deltoide", "levantar halter ate altura do ombro");
+        tableMovimento.Update (4, 3, "halter deltoide", "levantar halter ate altura do ombro", "mv_halterdeltoide_5.txt");
         tableSessao.Update (10, 3, 3, "2018-05-04", "carlos realizou o exercicio x excepcionalmente bem");
-        tableExercicio.Update (5, 3, 4, 10, "sem cutcharra alguma");
-        tablePMF.Update (6, 4, 1.1, 1.6);
+        tableExercicio.Update (5, 3, 4, 10, "sem cutcharra alguma", "ex_2018-05-04_5.txt");
         tablePRF.Update (6, 4, "ascençao do braço", 0, 1);
-        tablePMP.Update (6, 5, 1.0, 1.5);
-        tablePRP.Update (6, 5, "subimento do braço", 0, 1);
+        tablePRP.Update (6, 5, "subimento do braço", 0, 1); //*/
     }
 
     void Deletions () 
     {
         tablePessoa.DeleteValue (5);
         tablePessoa.DeleteValue (6);
-        tableTel.DeleteValue (5, "+55 44 9900 1515");
+        //tableTel.DeleteValue (5, "+55 44 9998 1717"); //ja q n ta updatando...
         tableFisio.DeleteValue (3);
         tablePaciente.DeleteValue (3);
         tableMusculo.DeleteValue (5);
@@ -117,9 +107,7 @@ public class bd : MonoBehaviour
         tableSessao.DeleteValue (10);
         tableExercicio.DeleteValue (5);
         tableMovimentoMusculo.DeleteValue (5, 4);
-        tablePMF.DeleteValue (6);
         tablePRF.DeleteValue (6);
-        tablePMP.DeleteValue (6);
         tablePRP.DeleteValue (6);
     }
 
@@ -134,9 +122,7 @@ public class bd : MonoBehaviour
         tableSessao.Read ();
         tableExercicio.Read ();
         tableMovimentoMusculo.Read ();
-        tablePMF.Read ();
         tablePRF.Read ();
-        tablePMP.Read ();
         tablePRP.Read ();
     }
 

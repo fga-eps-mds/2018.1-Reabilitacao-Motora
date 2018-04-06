@@ -8,7 +8,7 @@ using System.Data;
 namespace pontosrotulopaciente {    
     public class PontosRotuloPaciente
     {
-        int tableId = 12;
+        int tableId = 10;
         bdConnection banco = new bdConnection ();
         MDS tt = new MDS ();
         string path;

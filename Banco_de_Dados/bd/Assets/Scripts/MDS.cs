@@ -14,7 +14,7 @@ namespace MuDiSt {
             }
         }
 
-        public MultiDimensionalString[] TABLES = new MultiDimensionalString[13];
+        public MultiDimensionalString[] TABLES = new MultiDimensionalString[11];
 
         public MDS () {
 
@@ -54,12 +54,13 @@ namespace MuDiSt {
             TABLES[4].colName[1] = "nomeMusculo";
 
             TABLES[5] = new MultiDimensionalString();
-            TABLES[5].colName = new string[4];
+            TABLES[5].colName = new string[5];
             TABLES[5].tableName = "MOVIMENTO";
             TABLES[5].colName[0] = "idMovimento";
             TABLES[5].colName[1] = "idFisioterapeuta";
             TABLES[5].colName[2] = "nomeMovimento";
             TABLES[5].colName[3] = "descricaoMovimento";
+            TABLES[5].colName[4] = "pontosMovimento";
 
             TABLES[6] = new MultiDimensionalString();
             TABLES[6].colName = new string[5];
@@ -71,13 +72,14 @@ namespace MuDiSt {
             TABLES[6].colName[4] = "observacaoSessao";
 
             TABLES[7] = new MultiDimensionalString();
-            TABLES[7].colName = new string[5];
+            TABLES[7].colName = new string[6];
             TABLES[7].tableName = "EXERCICIO";
             TABLES[7].colName[0] = "idExercicio";
             TABLES[7].colName[1] = "idPaciente";
             TABLES[7].colName[2] = "idMovimento";
             TABLES[7].colName[3] = "idSessao";
             TABLES[7].colName[4] = "descricaoExercicio";
+            TABLES[7].colName[5] = "pontosExercicio";
 
             TABLES[8] = new MultiDimensionalString();
             TABLES[8].colName = new string[2];
@@ -86,38 +88,22 @@ namespace MuDiSt {
             TABLES[8].colName[1] = "idMovimento";
 
             TABLES[9] = new MultiDimensionalString();
-            TABLES[9].colName = new string[4];
-            TABLES[9].tableName = "PONTOSMOVIMENTOFISIOTERAPEUTA";
-            TABLES[9].colName[0] = "idMovimentoFisioterapeuta";
+            TABLES[9].colName = new string[5];
+            TABLES[9].tableName = "PONTOSROTULOFISIOTERAPEUTA";
+            TABLES[9].colName[0] = "idRotuloFisioterapeuta";
             TABLES[9].colName[1] = "idMovimento";
-            TABLES[9].colName[2] = "tempo";
-            TABLES[9].colName[3] = "anguloDeJunta";
+            TABLES[9].colName[2] = "estagioMovimentoFisio";
+            TABLES[9].colName[3] = "tempoInicial";
+            TABLES[9].colName[4] = "tempoFinal";
 
             TABLES[10] = new MultiDimensionalString();
             TABLES[10].colName = new string[5];
-            TABLES[10].tableName = "PONTOSROTULOFISIOTERAPEUTA";
-            TABLES[10].colName[0] = "idRotuloFisioterapeuta";
-            TABLES[10].colName[1] = "idMovimento";
-            TABLES[10].colName[2] = "estagioMovimentoFisio";
+            TABLES[10].tableName = "PONTOSROTULOPACIENTE";
+            TABLES[10].colName[0] = "idRotuloPaciente";
+            TABLES[10].colName[1] = "idExercicio";
+            TABLES[10].colName[2] = "estagioMovimentoPaciente";
             TABLES[10].colName[3] = "tempoInicial";
             TABLES[10].colName[4] = "tempoFinal";
-
-            TABLES[11] = new MultiDimensionalString();
-            TABLES[11].colName = new string[4];
-            TABLES[11].tableName = "PONTOSMOVIMENTOPACIENTE";
-            TABLES[11].colName[0] = "idMovimentoPaciente";
-            TABLES[11].colName[1] = "idExercicio";
-            TABLES[11].colName[2] = "tempo";
-            TABLES[11].colName[3] = "anguloDeJunta";
-
-            TABLES[12] = new MultiDimensionalString();
-            TABLES[12].colName = new string[5];
-            TABLES[12].tableName = "PONTOSROTULOPACIENTE";
-            TABLES[12].colName[0] = "idRotuloPaciente";
-            TABLES[12].colName[1] = "idExercicio";
-            TABLES[12].colName[2] = "estagioMovimentoPaciente";
-            TABLES[12].colName[3] = "tempoInicial";
-            TABLES[12].colName[4] = "tempoFinal";
         }
     }
 }

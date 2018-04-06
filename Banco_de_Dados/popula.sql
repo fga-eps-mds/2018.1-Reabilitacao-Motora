@@ -25,11 +25,6 @@ insert into MUSCULO (nomeMusculo) values
 ('triceps'),
 ('antebraço');
 
-insert into MOVIMENTO (idFisioterapeuta, nomeMovimento) values 
-(1, 'rosca martelo com halteres'),
-(2, 'barra fixa'),
-(2, 'triceps frances');
-
 insert into SESSAO (idFisioterapeuta, idPaciente, dataSessao) values 
 (1, 2, '2017-02-02'),
 (1, 2, '2017-02-09'),
@@ -41,11 +36,17 @@ insert into SESSAO (idFisioterapeuta, idPaciente, dataSessao) values
 (2, 1, '2017-03-14'),
 (2, 1, '2017-03-24'); 
 
-insert into EXERCICIO (idPaciente, idMovimento, idSessao) values 
-(1, 1, 1),
-(1, 1, 2),
-(2, 3, 3),
-(1, 2, 4);
+
+insert into MOVIMENTO (idFisioterapeuta, nomeMovimento, pontosMovimento) values 
+(1, 'rosca martelo com halteres', 'MVtest1.txt'),
+(2, 'barra fixa', 'MVtest2.txt'),
+(2, 'triceps frances', 'MVtest3.txt');
+
+insert into EXERCICIO (idPaciente, idMovimento, idSessao, pontosExercicio) values 
+(1, 1, 1, 'EXtest1.txt'),
+(1, 1, 2, 'EXtest2.txt'),
+(2, 3, 3, 'EXtest3.txt'),
+(1, 2, 4, 'EXtext4.txt');
 
 insert into MOVIMENTOMUSCULO (idMusculo, idMovimento) values 
 (1, 1),
@@ -55,28 +56,28 @@ insert into MOVIMENTOMUSCULO (idMusculo, idMovimento) values
 (4, 2),
 (3, 3),
 (4, 3);
-
+/*
 insert into PONTOSMOVIMENTOFISIOTERAPEUTA (idMovimento, tempo, anguloDeJunta) values
 (1, 0, 0),
 (1, 10, 10),
 (1, 20, 10),
 (1, 30, 5),
 (1, 40, 0);
-
+*/
 insert into PONTOSROTULOFISIOTERAPEUTA (idMovimento, estagioMovimentoFisio, tempoInicial, tempoFinal) values
 (1, 'braço estendido', 0, 0),
 (1, 'contraindo musculo', 0, 10),
 (1, 'musculo contraido', 10, 20),
 (1, 'estendendo braço', 20, 30),
 (1, 'braço estendido', 30, 40);
-
+/*
 insert into PONTOSMOVIMENTOPACIENTE (idExercicio, tempo, anguloDeJunta) values
 (1, 0, 0),
 (1, 13, 9),
 (1, 17, 8),
 (1, 31, 2),
 (1, 40, 0);
-
+*/
 insert into PONTOSROTULOPACIENTE (idExercicio, estagioMovimentoPaciente, tempoInicial, tempoFinal) values
 (1, 'braço estendido', 0, 0),
 (1, 'contraindo musculo', 0, 10),
