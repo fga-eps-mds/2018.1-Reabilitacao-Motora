@@ -62,13 +62,15 @@ namespace telefone
                 banco.conn.Open();
                 banco.cmd = banco.conn.CreateCommand();
 
-                banco.sqlQuery = string.Format("UPDATE \"{0}\" set ", tt.TABLES[tableId].tableName);
+                banco.sqlQuery = string.Format("UPDATE \"{0}\" SET ", tt.TABLES[tableId].tableName);
 
                 banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",", tt.TABLES[tableId].colName[0], idPessoa);
                 banco.sqlQuery += string.Format("\"{0}\"=\"{1}\" ", tt.TABLES[tableId].colName[1], telefone);
 
-                banco.sqlQuery += string.Format("WHERE (\"{0}\" = \"{1}\" AND \"{1}\"", tt.TABLES[tableId].colName[0], idPessoa, tt.TABLES[tableId].colName[1], telefone);
+                banco.sqlQuery += string.Format("WHERE \"{0}\" = \"{1}\" AND \"{2}\" = \"{3}\"", tt.TABLES[tableId].colName[0], idPessoa, tt.TABLES[tableId].colName[1], telefone);
 
+                //update TELEFONE set idPessoa = 5, telefone = '+55 44 0000 1234' WHERE (idPessoa = 5, telefone = '+55 44 9998 1717'
+                
                 banco.cmd.CommandText = banco.sqlQuery;
                 banco.cmd.ExecuteScalar();
                 banco.conn.Close();
@@ -110,7 +112,7 @@ namespace telefone
                 banco.conn.Open();
                 banco.cmd = banco.conn.CreateCommand();
 
-                banco.sqlQuery = string.Format("delete from \"{0}\" WHERE (\"{1}\" = \"{2}\" AND \"{3}\" = \"{4}\"", tt.TABLES[tableId].tableName, tt.TABLES[tableId].colName[0], id1, tt.TABLES[tableId].colName[1], id2);
+                banco.sqlQuery = string.Format("delete from \"{0}\" WHERE \"{1}\" = \"{2}\" AND \"{3}\" = \"{4}\"", tt.TABLES[tableId].tableName, tt.TABLES[tableId].colName[0], id1, tt.TABLES[tableId].colName[1], id2);
 
                 banco.cmd.CommandText = banco.sqlQuery;
                 banco.cmd.ExecuteScalar();

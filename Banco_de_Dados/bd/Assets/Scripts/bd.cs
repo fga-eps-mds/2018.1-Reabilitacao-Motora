@@ -43,11 +43,8 @@ public class bd : MonoBehaviour
         path = "URI=file:" + Application.dataPath + "/Plugins/fisiotech.db";
         
         Initialize ();
-        
-        ReadAll ();
-        
+                
         Insertions ();
-        ReadAll ();
 
         Updates ();
         ReadAll ();
@@ -75,11 +72,11 @@ public class bd : MonoBehaviour
 
     void Insertions () 
     {
-        tablePessoa.Insert ("mateus", "m", "1995-11-04"); // id = 12
-        /*tablePessoa.Insert ("carlos", "m", "1997-01-11"); // id = 13
-        tableTel.Insert (12, "+55 44 9998 1717"); // 12 = mateus
-        tableFisio.Insert (12); // mateus = fisioterapeuta, id = 3
-        tablePaciente.Insert (13, "semi top"); // carlos = paciente, id = 3
+        tablePessoa.Insert ("mateus", "m", "1995-11-04"); // id = 5
+        tablePessoa.Insert ("carlos", "m", "1997-01-11"); // id = 6
+        tableTel.Insert (5, "+55 44 9998 1717"); // 6 = mateus
+        tableFisio.Insert (5); // mateus = fisioterapeuta, id = 3
+        tablePaciente.Insert (6, "semi top"); // carlos = paciente, id = 3
         tableMusculo.Insert ("deltoide"); // id = 5
         tableMovimento.Insert (3, "levantando peso pra cima", "utilizando um halter levante-o ate altura do ombro"); //mateus cadastra movimento, id = 4
         tableSessao.Insert (3, 3, "2018-05-04", "carlos realizou o exercicio x bem"); // id = 10
@@ -93,11 +90,11 @@ public class bd : MonoBehaviour
 
     void Updates () 
     {
-        tablePessoa.Update (12, "mathews", "m", "1995-11-04"); //mateus cansou do nome brasileiro plebeu 
-       /* tablePessoa.Update (13, "carlos martins", "m", "1997-01-11"); //carlos se casou com a ana (martins) 
-        tableTel.Update (12, "+55 44 9900 1515"); //mathews começou a ser assediado por paparazis e mudou de cel
-        tableFisio.Update (3, 12, "PR", "13183128"); //mathews nao é mais um mero estagiario
-        tablePaciente.Update (3, 13, "100% top"); //carlos martins recuperou movimento do braço
+        tablePessoa.Update (5, "mathews", "m", "1995-11-04"); //mateus cansou do nome brasileiro plebeu 
+        tablePessoa.Update (6, "carlos martins", "m", "1997-01-11"); //carlos se casou com a ana (martins) 
+        tableTel.Update (5, "+55 44 9900 1515"); //mathews começou a ser assediado por paparazis e mudou de cel
+        tableFisio.Update (3, 5, "PR", "13183128"); //mathews nao é mais um mero estagiario
+        tablePaciente.Update (3, 6, "100% top"); //carlos martins recuperou movimento do braço
         tableMusculo.Update (5, "deltóide"); //reforma ortografica
         tableMovimento.Update (4, 3, "halter deltoide", "levantar halter ate altura do ombro");
         tableSessao.Update (10, 3, 3, "2018-05-04", "carlos realizou o exercicio x excepcionalmente bem");
@@ -105,14 +102,14 @@ public class bd : MonoBehaviour
         tablePMF.Update (6, 4, 1.1, 1.6);
         tablePRF.Update (6, 4, "ascençao do braço", 0, 1);
         tablePMP.Update (6, 5, 1.0, 1.5);
-        tablePRP.Update (6, 5, "ascençao do braço", 0, 1);*/
+        tablePRP.Update (6, 5, "subimento do braço", 0, 1);
     }
 
     void Deletions () 
     {
-        tablePessoa.DeleteValue (12);
-       /* tablePessoa.DeleteValue (13);
-        tableTel.DeleteValue (12, "+55 44 9900 1515");
+        tablePessoa.DeleteValue (5);
+        tablePessoa.DeleteValue (6);
+        tableTel.DeleteValue (5, "+55 44 9900 1515");
         tableFisio.DeleteValue (3);
         tablePaciente.DeleteValue (3);
         tableMusculo.DeleteValue (5);
@@ -123,13 +120,13 @@ public class bd : MonoBehaviour
         tablePMF.DeleteValue (6);
         tablePRF.DeleteValue (6);
         tablePMP.DeleteValue (6);
-        tablePRP.DeleteValue (6);*/
+        tablePRP.DeleteValue (6);
     }
 
     void ReadAll () 
     {
         tablePessoa.Read ();
-       /* tableTel.Read ();
+        tableTel.Read ();
         tableFisio.Read ();
         tablePaciente.Read ();
         tableMusculo.Read ();
@@ -140,7 +137,7 @@ public class bd : MonoBehaviour
         tablePMF.Read ();
         tablePRF.Read ();
         tablePMP.Read ();
-        tablePRP.Read ();*/
+        tablePRP.Read ();
     }
 
 }
