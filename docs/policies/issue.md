@@ -13,7 +13,7 @@
 
 #### 1º Passo
 
-![](LinkDaImagem de Issue)
+![](https://raw.githubusercontent.com/RomeuCarvalhoAntunes/2018.1-Reabilitacao-Motora/master/docs/imagens/Tutoriais/Tutorial_Issue_01.png)
 
 - Preencher o Título da _Issue_, uma sucinta descrição a respeito da _Issue_.
 - Selecionar o devido _template_ para a _Issue_ (História de Usuário ou Conversacional)
@@ -21,14 +21,14 @@
 
 #### 2º Passo
 
-![](Link da Imagem aqui)
+![](https://raw.githubusercontent.com/RomeuCarvalhoAntunes/2018.1-Reabilitacao-Motora/master/docs/imagens/Tutoriais/Tutorial_Issue_02.png)
 
 - Selecione a _Pipeline_ correspondente para _Issue_.
 - Pipelines disponíveis: _Backlog, To Do, Doing, Test, Review, Stand By, Done_.
 
 #### 3º Passo
 
-![](LINK DA IMAGEM AQUI)
+![](https://raw.githubusercontent.com/RomeuCarvalhoAntunes/2018.1-Reabilitacao-Motora/master/docs/imagens/Tutoriais/Tutorial_Issue_03.png)
 
 - _Assignees_: São os responsáveis pelo fechamento da _Issue_.
 - Assinalar conforme o conhecimento do membro
@@ -36,7 +36,7 @@
 
 #### 4º Passo
 
-![](LINK DA IMAGEM AQUI)
+![](https://raw.githubusercontent.com/RomeuCarvalhoAntunes/2018.1-Reabilitacao-Motora/master/docs/imagens/Tutoriais/Tutorial_Issue_04.png)
 
 - Passo importantíssimo para a organização da _Issue_ dentro do repositório.
 - Deverá ser Assinalada com a menor quantidade de _Labels_ possível de forma que se torne auto explicativa.
@@ -44,18 +44,19 @@
 - Respondendo a todas essas perguntas o usuário deve ser capaz de assinalar com uma quantidade mínima de _labels_ e de forma padronizada, garantindo a organização do repositório.
 - Caso sinta a necessidade qualquer membro poderá criar uma nova _label_.
 
-![](INSERIR IMAGEM DAS LABELS JÁ CRIADAS)
-![](INSERIR IMAGEM DAS LABELS JÁ CRIADAS)
+![](https://raw.githubusercontent.com/RomeuCarvalhoAntunes/2018.1-Reabilitacao-Motora/master/docs/imagens/Tutoriais/Tutorial_Issue_08.png)
+![](https://raw.githubusercontent.com/RomeuCarvalhoAntunes/2018.1-Reabilitacao-Motora/master/docs/imagens/Tutoriais/Tutorial_Issue_09.png)
 
 #### 5º Passo
 
+![](https://raw.githubusercontent.com/RomeuCarvalhoAntunes/2018.1-Reabilitacao-Motora/master/docs/imagens/Tutoriais/Tutorial_Issue_05.png)
 
 - Assinalar a _Milestone_ correspondente.
 - _Sprint_ atual, ou _Release_ atual.
 
 #### 6º Passo
 
-![](INSERIR IMAGEM DAS LABELS JÁ CRIADAS)
+![](https://raw.githubusercontent.com/RomeuCarvalhoAntunes/2018.1-Reabilitacao-Motora/master/docs/imagens/Tutoriais/Tutorial_Issue_06.png)
 
 - Caso a _Issue_ em criação seja uma nova funcionalidade, assinalar o **Épico** correspondente.
 - No atual projeto existem apenas 5 **Épicos**
@@ -68,7 +69,7 @@
 
 #### 7º Passo
 
-![](INSERIR IMAGEM DAS LABELS JÁ CRIADAS)
+![](https://raw.githubusercontent.com/RomeuCarvalhoAntunes/2018.1-Reabilitacao-Motora/master/docs/imagens/Tutoriais/Tutorial_Issue_07.png)
 
 - Assinalar a quantidade de pontos planejados para a _Issue_
 - Caso já tenha sido definido a quantidade de pontos com o time, atribuí-la.
