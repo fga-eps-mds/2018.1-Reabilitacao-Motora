@@ -9,7 +9,7 @@ namespace pontosrotulofisioterapeuta
 {
     public class PontosRotuloFisioterapeuta
     {
-        int tableId = 10;
+        int tableId = 9;
         bdConnection banco = new bdConnection ();
         MDS tt = new MDS ();
         string path;
