@@ -1,4 +1,4 @@
-Cores usadas na identidade visual:
+#Cores usadas na identidade visual (hexadecimais):
 	#3746D5
 	#55E6FB
 	#51B2E8
