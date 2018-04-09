@@ -13,3 +13,4 @@
 	- Titulo menu: [Ubuntu-Title-fr](https://www.dafont.com/pt/ubuntu-title.font) - Tamanho: 150 pt
 	- Botões "Voltar" e "Gráficos do Paciente": [Ubuntu-Title-fr](https://www.dafont.com/pt/ubuntu-title.font) - Tamanho: 20
 	- Titulo do Gráfico: [Open Sans Bold](https://www.fontsquirrel.com/fonts/open-sans) - Tamanho: 30
+	- Textos dos paneis: cour
