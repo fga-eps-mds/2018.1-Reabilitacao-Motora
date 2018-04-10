@@ -3,6 +3,7 @@
 Data|Versão|Descrição|Autor
 -|-|-|-
 09/04|1.0.0|Início do Documento | João Lucas
+09/04|1.1.0|Adição do subitem 1.5 e item 3| Davi Alves
 
 # Sumário
 ----------------
@@ -42,10 +43,19 @@ Desenvolvido pelos alunos das disciplinas de Engenharia de Produto de Software e
 ### 1.4 Referências
 
 ### 1.5 Visão Geral
+<p align = "justify">Este documento descreve e detalha as características de arquitetura do software a ser desenvolvido, identificando e especificando os possíveis problemas assim como também, aprofundar e classificar os escopos do projeto. Inicialmente será apresentada a arquitetura da solução e logo em seguida serão descritas as metas estabelecidas e as restrições da arquitetura proposta. Depois serão definidas diversas visões sobre fundamentos da arquitetura. Enfim serão apresentados todos recursos que são referentes ao tamanho, desempenho e também a qualidade do software.</p>
 
 ## 2. Representação da Arquitetura
 
 ## 3. Metas e Restrições de Arquitetura
+### 3.1 Metas
+<p align = "justify">O sistema deve ter uma plataforma de captura, monitoramento e avaliação de movimentos. Os dados dos movimentos serão salvos e fornecidos ao usuario par que possa ser operado.</p>
+
+### 3.2 Restrições
+
+<p align = "justify">O sistema a ser desenvolvido tera como base de sua arquitetura e inteface grafica a ultilização da IDE Unity 3D. Um asset do unity especifico para o sensor deve está devidamente contido nos assets para a captura e sincronismo do movimento humano no sistema.<br />
+O projeto tera sua implementação ultilizando a linguagem de programação C#(C-Sharp).
+Devera ser ultilizadoo ambiente Windows 10, porem, as versões superiores a Windows 7.0 poderão suportar o programa.</p>
 
 ## 4. Visão de Casos de Uso
 
