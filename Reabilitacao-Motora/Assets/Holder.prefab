@@ -1,0 +1,135 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1393948349689596}
+  m_IsPrefabParent: 1
+--- !u!1 &1393948349689596
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4430150689894910}
+  - component: {fileID: 114326225976004164}
+  m_Layer: 0
+  m_Name: Holder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4430150689894910
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1393948349689596}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114326225976004164
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1393948349689596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c457b68395474e4cbfa654118b76da6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TABLES:
+  - tableName: PESSOA
+    colName:
+    - idPessoa
+    - nomePessoa
+    - sexo
+    - dataNascimento
+  - tableName: TELEFONE
+    colName:
+    - idPessoa
+    - telefone
+  - tableName: FISIOTERAPEUTA
+    colName:
+    - idFisioterapeuta
+    - idPessoa
+    - regiao
+    - crefito
+  - tableName: PACIENTE
+    colName:
+    - idPaciente
+    - idPessoa
+    - observacoes
+  - tableName: MUSCULO
+    colName:
+    - idMusculo
+    - nomeMusculo
+  - tableName: MOVIMENTO
+    colName:
+    - idMovimento
+    - idFisioterapeuta
+    - nomeMovimento
+    - descricaoMovimento
+    - graficoResultadoFisioterapeuta
+    - movimentoFisioterapeuta
+    - rotuloMovimentoFisioterapeuta
+  - tableName: SESSAO
+    colName:
+    - idSessao
+    - idFisioterapeuta
+    - idPaciente
+    - dataSessao
+    - observacaoSessao
+  - tableName: EXERCICIO
+    colName:
+    - idExercicio
+    - idPaciente
+    - idMovimento
+    - idSessao
+    - descricaoExercicio
+    - graficoResultadoPaciente
+    - movimentoPaciente
+    - rotuloMovimentoPaciente
+  - tableName: MOVIMENTOMUSCULO
+    colName:
+    - idMusculo
+    - idMovimento
+  - tableName: PONTOSMOVIMENTOFISIOTERAPEUTA
+    colName:
+    - idMovimentoFisioterapeuta
+    - idMovimento
+    - tempo
+    - anguloDeJunta
+  - tableName: PONTOSROTULOFISIOTERAPEUTA
+    colName:
+    - idRotuloFisioterapeuta
+    - idMovimento
+    - estagioMovimentoFisio
+    - tempoInicial
+    - tempoFinal
+  - tableName: PONTOSMOVIMENTOPACIENTE
+    colName:
+    - idMovimentoPaciente
+    - idExercicio
+    - tempo
+    - anguloDeJunta
+  - tableName: PONTOSROTULOPACIENTE
+    colName:
+    - idRotuloPaciente
+    - idExercicio
+    - estagioMovimentoPaciente
+    - tempoInicial
+    - tempoFinal
