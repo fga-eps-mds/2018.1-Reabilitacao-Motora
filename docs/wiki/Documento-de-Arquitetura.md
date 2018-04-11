@@ -14,6 +14,7 @@ Data|Versão|Descrição|Autor
 11/04|1.6.1|Revisão dos subitens 1.3, 4.2, 5.1.1, 8 e 9| Guilherme de Lyra
 11/04|1.7.0|Adição dos subitens 4.1 e 4.3| Guilherme de Lyra
 11/04|1.8.0|Revisão e Complementação do item 2|João Lucas
+11/02|1.8.1|Revisão dos itens 2, 7 e subitem 4.1| Davi Alves
 
 # Sumário
 ----------------
@@ -69,6 +70,7 @@ Abreviação|Significado
 <p align = "justify">A arquitetura utilizada no projeto é a arquitetura denominada "Entity Component System" (ECS, "entidade-componente-sistema"), a escolha dessa arquitetura foi feita por vários motivos, dentre eles a sua facilidade de aplicação dentro do Unity 3D e também por ser a arquitetura mais utilizada em jogos eletrônicos e sistemas com interface gráfica 3D nos tempos atuais. Essa arquitetura tem como princípio a "composição ao invés de herança", o que permite uma flexibilidade maior na criação de novas entidades. Com a ECS, criamos um sistema de hierarquia entre as entidades e seus componentes, podendo assim reutilizar os componentes e dar o mesmo comportamento específico para diversas entidades que tem fins totalmente diferentes. Cada entidade consiste de um ou mais componentes que adicionam comportamento ou funcionalidade para a mesma, portanto o comportamento de uma entidade qualquer pode ser alterado durante o tempo de execução simplesmente adicionando ou removendo um componente da mesma. Isso elimina os problemas de ambiguidade que eram gerados nas hierarquias feitas por heranças profundas e vastas, que se tornam difíceis de entender, manter e estender. </p>
 
 ![Entity-Component-System](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/doc_arq/docs/banco_de_dados/ECS.png)
+**Figura 1**- Diagrama de classes</p>
 [Clique aqui para visualizar a imagem](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/doc_arq/docs/banco_de_dados/ECS.png)
 
 <p align = "justify">Adam Martin, um desenvolvedor de jogos MMO, criou a terminologia mais utilizada de jogos. Em jogos, a arquitetura trabalha com "sistemas" que seriam como funções que interagem com outras entidades que tenham componentes físicos e visíveis. Entidade é o objeto que consiste apenas de uma identificação única, Componentes são os dados brutos do aspecto do objeto e como interage com o mundo e Sistema são *threads* que executam ações das entidades que possuem mesmos componentes.
@@ -89,6 +91,7 @@ Deverá ser ultilizado o ambiente Windows 10, porém, as versões superiores a W
 ### 4.1 Diagrama de Casos de Uso
 
 ![DiagramaCasoDeUso](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/doc_arq/docs/banco_de_dados/Casos_de_uso.png)
+**Figura 2**- Diagrama de casos de uso</p>
 [Clique aqui para visualizar a imagem](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/doc_arq/docs/banco_de_dados/Casos_de_uso.png)
 
 ### 4.2 Atores de Casos de Uso
@@ -123,10 +126,12 @@ Para melhor visualização da relação entre os componentes no Unity, segue um 
 
 ## 7. Visão de Dados
 ### 7.1 DER
-![DER](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/database/Banco_de_Dados/der.png)    
+![DER](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/database/Banco_de_Dados/der.png)
+**Figura 3**- Diagrama Entidade Relacionamento</p>
 [Clique aqui para visualizar a imagem](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/database/Banco_de_Dados/der.png)
 ### 7.2 LÓGICO
-![LÓGICO](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/database/Banco_de_Dados/logico.png)    
+![LÓGICO](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/database/Banco_de_Dados/logico.png)
+**Figura 4**- Diagrama ME-R Lógico</p>
 [Clique aqui para visualizar a imagem](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/database/Banco_de_Dados/logico.png)
 
 
