@@ -66,3 +66,7 @@
 | Moderada | 3 | 6 | 9 | 12 | 15 |
 | Alta | 4 | 8 | 12 | 16 | 20 |
 | Muito alta | 5 | 10 | 15 | 20 | 25 |
+
+## Gerência de Riscos
+
+Além das tabelas presentes neste documento, temos as [planilhas no Google Drive](https://docs.google.com/spreadsheets/d/1EIi_RUSnb4NRGk6ByyrqA3ADAQUBa38AiujRxv7egA0/edit?usp=sharing) que possuem o registro por sprint e os gráficos de burndown.
