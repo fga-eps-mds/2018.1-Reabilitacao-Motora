@@ -59,7 +59,6 @@ const setTopCommiter = () => {
     let topCommitter = "";
     let topLines = 0;
     let topAvatar = "";
-    console.log(statisticInfo);
     for (let user in statisticInfo) {
         if (statisticInfo[user].weeks.slice(-2)[0].c > topCommit) {
             topCommit = statisticInfo[user].weeks.slice(-2)[0].c;
@@ -67,11 +66,7 @@ const setTopCommiter = () => {
             topLines = statisticInfo[user].weeks.slice(-2)[0].a + statisticInfo[user].weeks.slice(-2)[0].d;
             topAvatar = statisticInfo[user].author.avatar_url;
         }
-        // console.log(statisticInfo[user].author.login);
-        // console.log(statisticInfo[user].weeks.slice(-1)[0].c);
-        // console.log(statisticInfo[user].weeks.slice(-1)[0].a + statisticInfo[user].weeks.slice(-1)[0].d);
     }
-    // console.log(topCommitter);
     let div = document.getElementById("top-committer");
     let avatar = document.getElementById("top-avatar");
     let divCommmit = document.getElementById("top-commit");
@@ -107,7 +102,6 @@ const getCommits = (pageCounter) => {
 const setCommitData = () => {
     let commits = document.getElementById("commits");
     let counter = 0;
-    console.log(totalCommits);
     for (let commit in totalCommits) {
         counter += totalCommits[commit].length;
     }
@@ -127,9 +121,6 @@ const setCommitData = () => {
     }
 
     for (let i = 0; i < 5; i++) {
-        console.log(totalCommits[0][i].commit.author.name);
-        console.log(totalCommits[0][i].commit.message);
-        console.log(totalCommits[0][i].commit.author.date);
         let author = totalCommits[0][i].commit.author.name;
         let message = totalCommits[0][i].commit.message;
         let date = totalCommits[0][i].commit.author.date;
