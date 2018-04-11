@@ -29,6 +29,55 @@ public class Flow : MonoBehaviour
 	}
 
 	/**
+ 	 * Leva para scene de detalhe de paciente.
+ 	 */
+	public void Patient() 
+	{
+		SceneManager.LoadScene("Patient");
+	}
+
+	/**
+ 	 * Leva para scene de lista de pacientes.
+ 	 */
+	public void Patients() 
+	{
+		SceneManager.LoadScene("Patients");
+	}
+
+	/**
+ 	 * Leva para scene de lista de movimentos.
+ 	 */
+	public void Movements() 
+	{
+		SceneManager.LoadScene("Movements");
+	}
+
+	/**
+ 	 * Leva para scene de registrar novo paciente.
+ 	 */
+	public void NewPatient() 
+	{
+		SceneManager.LoadScene("NewPatient");
+	}
+
+	/**
+ 	 * Leva para scene de detalhes de sessão.
+ 	 */
+	public void Session() 
+	{
+		SceneManager.LoadScene("Session");
+	}
+
+	/**
+ 	 * Leva para scene de lista de sessões.
+ 	 */
+	public void Sessions() 
+	{
+		SceneManager.LoadScene("Sessions");
+	}
+
+
+	/**
  	 * Leva para scene de função não implementada.
  	 */
 	public void NotImplemented() 
