@@ -7,6 +7,9 @@ Data|Versão|Descrição|Autor
 10/04|1.2.0|Adição do tópico 2| Djorkaeff Alexandre Vilela Pereira
 10/04|1.2.1|Revisão e correção dos itens 1.1, 1.2, 2, 3.1 e 3.2| Guilherme de Lyra
 10/04|1.3.0|Adição do subitem 1.3| Guilherme de Lyra
+10/04|1.3.1|Revisão do subitem 1.3| Guilherme de Lyra
+10/04|1.4.0|Adição do item 7| Guilherme de Lyra
+
 
 # Sumário
 ----------------
@@ -45,6 +48,8 @@ Desenvolvido pelos alunos das disciplinas de Engenharia de Produto de Software e
 Abreviação|Significado
 :-:|:-:
 |**ECS**| Entity Component System (em tradução livre: "sistema entidade componente")
+|**MDS**| Métodos de Desenvolvimento de Software
+|**EPS**| Engenharia de Produto de Software
 
 ### 1.4 Referências
 
@@ -81,5 +86,12 @@ Deverá ser ultilizado o ambiente Windows 10, porém, as versões superiores a W
 ## 6. Visão de Processos
 
 ## 7. Visão de Dados
+### 7.1 DER
+![DER](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/database/Banco_de_Dados/der.png)    
+[Clique aqui para visualizar a imagem](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/database/Banco_de_Dados/der.png)
+### 7.2 LÓGICO
+![LÓGICO](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/database/Banco_de_Dados/logico.png)    
+[Clique aqui para visualizar a imagem](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/database/Banco_de_Dados/logico.png)
+
 
 ## 8. Tamanho e Desempenho
