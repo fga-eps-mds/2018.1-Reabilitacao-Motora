@@ -60,8 +60,8 @@ const setTopCommiter = () => {
     let topLines = 0;
     let topAvatar = "";
     console.log(statisticInfo);
-    for(let user in statisticInfo){
-        if(statisticInfo[user].weeks.slice(-2)[0].c > topCommit){
+    for (let user in statisticInfo) {
+        if (statisticInfo[user].weeks.slice(-2)[0].c > topCommit) {
             topCommit = statisticInfo[user].weeks.slice(-2)[0].c;
             topCommitter = statisticInfo[user].author.login;
             topLines = statisticInfo[user].weeks.slice(-2)[0].a + statisticInfo[user].weeks.slice(-2)[0].d;
@@ -107,10 +107,41 @@ const getCommits = (pageCounter) => {
 const setCommitData = () => {
     let commits = document.getElementById("commits");
     let counter = 0;
+    console.log(totalCommits);
     for (let commit in totalCommits) {
         counter += totalCommits[commit].length;
     }
     commits.innerHTML = counter;
+
+    const template = (author, message, date, avatar_url) => {
+        return (
+            `
+                <div class="project-item-user">
+                    <div class="user-avatar"><img src="${avatar_url}" alt="avatar"></div>
+                    <div class="user-info"><span class="name">${author}</span></div>
+                </div>
+                <div class="project-item-title"><span class="name">${message}</span></div>
+                <div class="project-item-date"><span class="date">${date}</span></div>
+            `
+        )
+    }
+
+    for (let i = 0; i < 5; i++) {
+        console.log(totalCommits[0][i].commit.author.name);
+        console.log(totalCommits[0][i].commit.message);
+        console.log(totalCommits[0][i].commit.author.date);
+        let author = totalCommits[0][i].commit.author.name;
+        let message = totalCommits[0][i].commit.message;
+        let date = totalCommits[0][i].commit.author.date;
+        let avatar_url = totalCommits[0][i].author.avatar_url;
+        let list = document.getElementById("project-list");
+        let oneElement = document.createElement("div");
+        oneElement.className = "project-item";
+        oneElement.innerHTML = template(author, message, date, avatar_url);
+        list.appendChild(oneElement);
+    }
+
+
 }
 
 
