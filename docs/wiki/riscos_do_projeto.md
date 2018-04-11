@@ -3,6 +3,7 @@
 |    Data    | Versão |                             Alteração                             |                    Autor                    |
 |:----------:|:------:|:-----------------------------------------------------------------:|:-------------------------------------------:|
 | 10/04/2018 |   0.1  | Criação do documento | Victor Moura |
+| 10/04/2018 |   0.2  | Adicionando referência de quantificação | Victor Moura |
 
 ## Levantamento de Riscos Negativos
 
@@ -33,3 +34,35 @@
 | R18 | Estabilidade técnica dos pipelines de produção | Com os pipelines estáveis, tem-se mais tempo para ser dedicado às outras atividades pertinentes ao projeto | - | - |
 | R19 | Arquitetura estar bem definida | Com uma arquitetura bem definida, menos mudanças impactantes ocorrem e, portanto, ocorre menos retrabalho | - | - |
 | R20 | Satisfação do cliente | O sucesso do projeto possui como um dos principais indicadores a satisfação do cliente | - | - |
+
+## Probabilidade x Impacto
+
+### Tabela de probabilidades
+
+| Probabilidade | Intervalo | Nível |
+| ------------- | --------- | ----- |
+| Muito baixa | Menos de 20% | 1 |
+| Baixa | 21% a 40% | 2 |
+| Moderada | 41% a 60% | 3 |
+| Alta | 61% a 80% | 4 |
+| Muito alta | Mais de 80% | 5 |
+
+### Tabela de impactos
+
+| Probabilidade | Intervalo | Nível |
+| ------------- | --------- | ----- |
+| Muito baixo | Impacto não significativo | 1 |
+| Baixo | Impacto de baixa influência | 2 |
+| Moderado | Impacto notável com poucas consequências | 3 |
+| Alto | Impacto que compromete o andamento do projeto | 4 |
+| Muito alto | Impacto que inviabiliza o andamento do projeto | 5 |
+
+### Matriz de quantificação dos riscos
+
+| Probabilidade/Impacto | Muito baixo | Baixo | Moderado | Alto | Muito alto |
+| --------------------- | ----------- | ----- | -------- | ---- | ---------- |
+| Muito baixa | 1 | 2 | 3 | 4 | 5 |
+| Baixa | 2 | 4 | 6 | 8 | 10 |
+| Moderada | 3 | 6 | 9 | 12 | 15 |
+| Alta | 4 | 8 | 12 | 16 | 20 |
+| Muito alta | 5 | 10 | 15 | 20 | 25 |
