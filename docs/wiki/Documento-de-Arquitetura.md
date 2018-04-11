@@ -15,6 +15,7 @@ Data|Versão|Descrição|Autor
 11/04|1.7.0|Adição dos subitens 4.1 e 4.3| Guilherme de Lyra
 11/04|1.8.0|Revisão e Complementação do item 2|João Lucas
 11/02|1.8.1|Revisão dos itens 2, 7 e subitem 4.1| Davi Alves
+11/04|1.9.0|Adição do subitem 6.1| João Lucas
 
 # Sumário
 ----------------
@@ -34,9 +35,12 @@ Data|Versão|Descrição|Autor
     * 5.1 [Pacotes de Design Significativos do Ponto de Vista da Arquitetura](#5_1)
     * 5.1.1 [Classe](#5_1_1)
     * 5.1.2 [Pacotes](#5_1_2)
-* 6. [Visão de Processos](#6)
-* 7. [Visão de Dados](#7)
-* 8. [Tamanho e Desempenho](#8)
+* 6. [Visão de Dados](#6)
+    * 6.1 [MER](#6_1)
+    * 6.2 [DER](#6_2)
+    * 6.3 [Diagrama Lógico](#6_3)
+* 7. [Tamanho e Desempenho](#7)
+* 8. [Qualidade](#8)
 
 Documento de Arquitetura de Software
 ------------------------------------
@@ -58,6 +62,8 @@ Abreviação|Significado
 |**EPS**| Engenharia de Produto de Software
 |**kB**| Kilobyte
 |**MMO**| Massive Multiplayer Online Game - Jogo Online em Massa de Multijogadores
+|**MER**| Modelo Entidade-Relacionamento
+|**DER**| Diagrama Entidade-Relacionamento
 
 ### 1.4 Referências
 <p align = "justify">LINS DE ALBUQUERQUE, Leonardo. **Plataforma para captura e estimação de movimentos em membro superior utilizando Sistemas Dinâmicos Lineares Chaveados**. 150 f. Tese (Monografia) - Departamento de Engenharia Elétrica, Universidade de Brasília, 2017 </p>
@@ -69,7 +75,7 @@ Abreviação|Significado
 ## 2. Representação da Arquitetura
 <p align = "justify">A arquitetura utilizada no projeto é a arquitetura denominada "Entity Component System" (ECS, "entidade-componente-sistema"), a escolha dessa arquitetura foi feita por vários motivos, dentre eles a sua facilidade de aplicação dentro do Unity 3D e também por ser a arquitetura mais utilizada em jogos eletrônicos e sistemas com interface gráfica 3D nos tempos atuais. Essa arquitetura tem como princípio a "composição ao invés de herança", o que permite uma flexibilidade maior na criação de novas entidades. Com a ECS, criamos um sistema de hierarquia entre as entidades e seus componentes, podendo assim reutilizar os componentes e dar o mesmo comportamento específico para diversas entidades que tem fins totalmente diferentes. Cada entidade consiste de um ou mais componentes que adicionam comportamento ou funcionalidade para a mesma, portanto o comportamento de uma entidade qualquer pode ser alterado durante o tempo de execução simplesmente adicionando ou removendo um componente da mesma. Isso elimina os problemas de ambiguidade que eram gerados nas hierarquias feitas por heranças profundas e vastas, que se tornam difíceis de entender, manter e estender. </p>
 
-![Entity-Component-System](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/doc_arq/docs/banco_de_dados/ECS.png)
+![Entity-Component-System](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/doc_arq/docs/banco_de_dados/ECS.png) </p>
 **Figura 1**- Diagrama de classes</p>
 [Clique aqui para visualizar a imagem](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/doc_arq/docs/banco_de_dados/ECS.png)
 
@@ -122,23 +128,38 @@ Deverá ser ultilizado o ambiente Windows 10, porém, as versões superiores a W
 Para melhor visualização da relação entre os componentes no Unity, segue um diagrama:   
 ![Diagrama Componentes](http://oi64.tinypic.com/23hsntc.jpg)
 
-## 6. Visão de Processos
+## 6. Visão de Dados
 
-## 7. Visão de Dados
-### 7.1 DER
+### 6.1 MER
+
+![MER-1](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/database/Banco_de_Dados/MER-1.png) </p>
+**Figura 3**- Entidades </p>
+[Clique aqui para visualizar a imagem](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/database/Banco_de_Dados/MER-1.png) </p>
+
+![MER-2](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/database/Banco_de_Dados/MER-2.png) </p>
+
+![MER-3](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/database/Banco_de_Dados/MER-3.png) </p>
+
+**Figura 4**- Relacionamentos </p>
+
+[Clique aqui para visualizar a imagem](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/database/Banco_de_Dados/MER-2.png)
+
+[Clique aqui para visualizar a imagem](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/database/Banco_de_Dados/MER-3.png)
+
+### 6.2 DER
 ![DER](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/database/Banco_de_Dados/der.png)
-**Figura 3**- Diagrama Entidade Relacionamento</p>
+**Figura 6**- Diagrama Entidade-Relacionamento</p>
 [Clique aqui para visualizar a imagem](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/database/Banco_de_Dados/der.png)
-### 7.2 LÓGICO
+### 6.3 Diagrama Lógico
 ![LÓGICO](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/database/Banco_de_Dados/logico.png)
-**Figura 4**- Diagrama ME-R Lógico</p>
+**Figura 7**- Diagrama ME-R Lógico</p>
 [Clique aqui para visualizar a imagem](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/database/Banco_de_Dados/logico.png)
 
 
-## 8. Tamanho e Desempenho
+## 7. Tamanho e Desempenho
 
 <p align = "justify">Estimamos que um movimento de duração de 15 segundos gera, em média, aproximadamente 750 pontos (o que, salvo num arquivo, dá aproximadamente 6kB); tendo em vista que em uma sessão poucos movimentos serão realizados de forma monitorada (já que o sensor tem a finalidade de mapear e estimar a situação do paciente, e que, após isso, o fisioterapeuta conduzirá os movimentos necessários), pode-se inferir que o sistema não processará uma grande quantidade de dados — principalmente por se tratar de um sistema local/*offline*. Seu desempenho será determinado, principalmente, pelo computador utilizado pelo operador.</p>
 
-## 9. Qualidade
+## 8. Qualidade
 
 <p align = "justify">O sistema irá utilizar padrões de interface gráfica desktop desenvolvido na linguagem C# em paralelo com o software Unity 3D. Também deverá ser compatível com os principais sistemas operacionais. Além disso, os desenvolvedores deverão adotar boas práticas para que o sistema como um todo venha ser desenvolvido com qualidade satisfatória.</p>
