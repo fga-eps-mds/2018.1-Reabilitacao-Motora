@@ -9,6 +9,7 @@ Data|Versão|Descrição|Autor
 10/04|1.3.0|Adição do subitem 1.3| Guilherme de Lyra
 10/04|1.3.1|Revisão do subitem 1.3| Guilherme de Lyra
 10/04|1.4.0|Adição do item 7| Guilherme de Lyra
+10/04|1.5.0|Adição do subitem 4.1 e itens 8 e 9| Davi Alves
 
 
 # Sumário
@@ -65,15 +66,21 @@ Abreviação|Significado
 
 ### 3.2 Restrições
 
-<p align = "justify">O sistema a ser desenvolvido terá como base de sua arquitetura e interface gráfica a utilização da IDE Unity 3D. Um asset do Unity, específico para o sensor, deve estar devidamente contido nos Assets para a captura e sincronismo do movimento humano no sistema.</p><br />
+<p align = "justify">O sistema a ser desenvolvido terá como base de sua arquitetura e interface gráfica a utilização da IDE Unity 3D. Um asset do Unity, específico para o sensor, deve estar devidamente contido nos Assets para a captura e sincronismo do movimento humano no sistema.<br />
 O projeto tera sua implementação utilizando a linguagem de programação C#(C-Sharp).
-Deverá ser ultilizado o ambiente Windows 10, porém, as versões superiores a Windows 7.0 possivelmente poderão suportar o programa.</p><br />
+Deverá ser ultilizado o ambiente Windows 10, porém, as versões superiores a Windows 7.0 possivelmente poderão suportar o programa.</p>
 
 ## 4. Visão de Casos de Uso
 
-### 4.1 Atores de Casos de Uso
+### 4.1 Atores
 
-### 4.2 Descrições de Casos de Uso
+**Terapeuta**|<p align = "justify">Os profissionais responsáveis pela reabilitação estarão hábeis a se cadastrarem no sistema e criarem cadastros de pacientes.  Após esse cadastro eles farão a captura e o monitoramento dos movimentos do paciente viabilizando assim, uma futura avaliação desses movimentos salvos.
+-|-
+</p>
+
+### 4.2 Diagrama de Casos de Usos
+
+### 4.3 Descrições de Casos de Uso
 
 ## 5. Visão Lógica
 
@@ -95,3 +102,9 @@ Deverá ser ultilizado o ambiente Windows 10, porém, as versões superiores a W
 
 
 ## 8. Tamanho e Desempenho
+
+<p align = "justify"> O desempenho do sistema poderá ser afetado por fatores como uma possível imprecisão do sensor ou o ambiente operacional usado. O sistema também deve permitir acesso ao banco de dados para a demanda de usuários.</p>
+
+## 9. Qualidade
+
+<p align = "justify">O sistema irá utilizar padrões de interface gráfica desktop desenvolvido na linguagem c# em paralelo com o software Unity 3D. Também devera ser compatível com os principais sistemas operacionais. Além disso, os desenvolvedores deverão adotar boas práticas para que o sistema como um todo venha ser desenvolvido com qualidade satisfatória.</p>
