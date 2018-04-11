@@ -10,7 +10,7 @@ Data|Versão|Descrição|Autor
 10/04|1.3.1|Revisão do subitem 1.3| Guilherme de Lyra
 10/04|1.4.0|Adição do item 7| Guilherme de Lyra
 10/04|1.5.0|Adição do subitem 4.1 e itens 8 e 9| Davi Alves
-
+10/04|1.6.0|Adição do item 5| Guilherme Siqueira
 
 # Sumário
 ----------------
@@ -86,9 +86,12 @@ Deverá ser ultilizado o ambiente Windows 10, porém, as versões superiores a W
 
 ### 5.1 Pacotes de design Significativos do Ponto de Vista da Arquitetura
 
-#### 5.1.1 Classe
+#### 5.1.1 GameObjects e Componentes
+<p align = "justify">Devido à arquitetura de componentes do Unity, tudo que há no projeto é um GameObject. O GameObject é uma combinação de componentes. Ou seja: ele é a base para a adição de componentes ao objeto da scene, determinando o comportamento do mesmo nela. Basicamente tudo no Unity é um componente. Desde scripts a câmeras. Quando um componente ou um script é adicionado a um GameObject, esse componente adicionado pode ser acessado através da função GetComponent da classe GameObject. Uma vez que o GameObject é destruído, todos os componentes abaixo da sua hierarquia são destruídos.</p><br />
+<p align = "justify">Dentro de todo GameObject há componentes, sendo exemplos deles Transform (representa a posição, rotação e escala do objeto na scene), RigidBody (dá propriedade fisicas ao GameObject), Renderers (componentes que permitem exibição dos GameObjects em cena), etc.</p><br />
 
-#### 5.1.2 Pacotes
+Para melhor visualização da relação entre os componentes no Unity, segue um diagrama:   
+![Diagrama Componentes](http://oi64.tinypic.com/23hsntc.jpg)
 
 ## 6. Visão de Processos
 
