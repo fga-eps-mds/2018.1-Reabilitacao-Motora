@@ -9,9 +9,10 @@ Data|Versão|Descrição|Autor
 10/04|1.3.0|Adição do subitem 1.3| Guilherme de Lyra
 10/04|1.3.1|Revisão do subitem 1.3| Guilherme de Lyra
 10/04|1.4.0|Adição do item 7| Guilherme de Lyra
-10/04|1.5.0|Adição do subitem 4.1 e itens 8 e 9| Davi Alves
+10/04|1.5.0|Adição do subitem 4.2 e itens 8 e 9| Davi Alves
 10/04|1.6.0|Adição do item 5| Guilherme Siqueira
-11/04|1.6.1|Revisão dos subitens 1.3, 4.1, 5.1.1, 8 e 9| Guilherme de Lyra
+11/04|1.6.1|Revisão dos subitens 1.3, 4.2, 5.1.1, 8 e 9| Guilherme de Lyra
+11/04|1.6.2|Adição dos subitens 4.1 e 4.3| Guilherme de Lyra
 
 # Sumário
 ----------------
@@ -23,9 +24,10 @@ Data|Versão|Descrição|Autor
     * 1.5 [Visão Geral](#1_5)
 * 2. [Representação da Arquitetura](#2)
 * 3. [Metas e Restrições de Arquitetura](#3)
-* 4. [Visão de Casos de Uso](#4)
-    * 4.1 [Atores de Casos de Uso](#4_1)
-    * 4.2 [Descrições de Casos de Uso](#4_2)
+* 4. [Visão dos Casos de Uso](#4)
+    * 4.1 [Diagrama de Casos de Uso](#4_1)
+    * 4.2 [Atores de Casos de Uso](#4_2)
+    * 4.3 [Descrições de Casos de Uso](#4_3)
 * 5. [Visão Lógica](#5)
     * 5.1 [Pacotes de Design Significativos do Ponto de Vista da Arquitetura](#5_1)
     * 5.1.1 [Classe](#5_1_1)
@@ -72,15 +74,29 @@ Abreviação|Significado
 O projeto tera sua implementação utilizando a linguagem de programação C#(C-Sharp).
 Deverá ser ultilizado o ambiente Windows 10, porém, as versões superiores a Windows 7.0 possivelmente poderão suportar o programa.</p>
 
-## 4. Visão de Casos de Uso
+## 4. Visão dos Casos de Uso
 
-### 4.1 Atores
+### 4.1 Diagrama de Casos de Uso
 
+![DiagramaCasoDeUso](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/doc_arq/docs/banco_de_dados/Casos_de_uso.png)
+[Clique aqui para visualizar a imagem](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/doc_arq/docs/banco_de_dados/Casos_de_uso.png)
+
+### 4.2 Atores de Casos de Uso
+
+|**Ator**|**Descrição**
+:-:|:-:
 |**Fisioterapeuta/Operador**|<p align = "justify">Os profissionais responsáveis pela reabilitação estarão hábeis a cadastrarem-se no sistema e, também, a cadastrar pacientes. Após isso, numa sessão, poderão captar os movimentos do paciente, visualizar gráficos e dados concretos acerca do movimento realizado, e, também, salvar essas informações para acessá-las novamente quando necessário for; viabilizando, portanto, uma análise muito mais precisa e objetiva sobre a condição e evolução do paciente.</p>
 
-### 4.2 Diagrama de Casos de Usos
-
 ### 4.3 Descrições de Casos de Uso
+
+| **Caso de uso** | **Descrição** |
+:-:|:-:
+| **UC01 - Manter movimento** | Criar, alterar ou deletar um movimento. |
+| **UC02 - Manter paciente** | Criar, alterar ou deletar um paciente. |
+| **UC03 - Manter fisioterapeuta** | Criar, alterar ou deletar um fisioterapeuta. |
+| **UC04 - Consultar pessoa** | Acessar informações relevantes (nome, etc) e movimentos realizados pelo mesmo. |
+| **UC05 - Consultar movimento** | Visualizar reprodução do movimento, gráfico rotulado gerado e/ou descrição. |
+
 
 ## 5. Visão Lógica
 
