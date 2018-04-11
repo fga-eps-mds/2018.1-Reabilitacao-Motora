@@ -11,6 +11,7 @@ Data|Versão|Descrição|Autor
 10/04|1.4.0|Adição do item 7| Guilherme de Lyra
 10/04|1.5.0|Adição do subitem 4.1 e itens 8 e 9| Davi Alves
 10/04|1.6.0|Adição do item 5| Guilherme Siqueira
+11/04|1.6.1|Revisão dos subitens 1.3, 4.1, 5.1.1, 8 e 9| Guilherme de Lyra
 
 # Sumário
 ----------------
@@ -51,6 +52,7 @@ Abreviação|Significado
 |**ECS**| Entity Component System (em tradução livre: "sistema entidade componente")
 |**MDS**| Métodos de Desenvolvimento de Software
 |**EPS**| Engenharia de Produto de Software
+|**kB**| Kilobyte
 
 ### 1.4 Referências
 
@@ -74,9 +76,7 @@ Deverá ser ultilizado o ambiente Windows 10, porém, as versões superiores a W
 
 ### 4.1 Atores
 
-**Terapeuta**|<p align = "justify">Os profissionais responsáveis pela reabilitação estarão hábeis a se cadastrarem no sistema e criarem cadastros de pacientes.  Após esse cadastro eles farão a captura e o monitoramento dos movimentos do paciente viabilizando assim, uma futura avaliação desses movimentos salvos.
--|-
-</p>
+|**Fisioterapeuta/Operador**|<p align = "justify">Os profissionais responsáveis pela reabilitação estarão hábeis a cadastrarem-se no sistema e, também, a cadastrar pacientes. Após isso, numa sessão, poderão captar os movimentos do paciente, visualizar gráficos e dados concretos acerca do movimento realizado, e, também, salvar essas informações para acessá-las novamente quando necessário for; viabilizando, portanto, uma análise muito mais precisa e objetiva sobre a condição e evolução do paciente.</p>
 
 ### 4.2 Diagrama de Casos de Usos
 
@@ -87,7 +87,7 @@ Deverá ser ultilizado o ambiente Windows 10, porém, as versões superiores a W
 ### 5.1 Pacotes de design Significativos do Ponto de Vista da Arquitetura
 
 #### 5.1.1 GameObjects e Componentes
-<p align = "justify">Devido à arquitetura de componentes do Unity, tudo que há no projeto é um GameObject. O GameObject é uma combinação de componentes. Ou seja: ele é a base para a adição de componentes ao objeto da scene, determinando o comportamento do mesmo nela. Basicamente tudo no Unity é um componente. Desde scripts a câmeras. Quando um componente ou um script é adicionado a um GameObject, esse componente adicionado pode ser acessado através da função GetComponent da classe GameObject. Uma vez que o GameObject é destruído, todos os componentes abaixo da sua hierarquia são destruídos.</p><br />
+<p align = "justify">Devido à arquitetura de componentes inerente ao Unity, tudo que há no projeto é um GameObject. O GameObject é uma combinação de componentes. Ou seja: ele é a base para a adição de componentes ao objeto da scene, determinando o comportamento do mesmo nela. Basicamente tudo no Unity é um componente. Desde scripts a câmeras. Quando um componente ou um script é adicionado a um GameObject, esse componente adicionado pode ser acessado através da função GetComponent da classe GameObject. Uma vez que o GameObject é destruído, todos os componentes abaixo da sua hierarquia são destruídos.</p><br />
 <p align = "justify">Dentro de todo GameObject há componentes, sendo exemplos deles Transform (representa a posição, rotação e escala do objeto na scene), RigidBody (dá propriedade fisicas ao GameObject), Renderers (componentes que permitem exibição dos GameObjects em cena), etc.</p><br />
 
 Para melhor visualização da relação entre os componentes no Unity, segue um diagrama:   
@@ -106,8 +106,8 @@ Para melhor visualização da relação entre os componentes no Unity, segue um 
 
 ## 8. Tamanho e Desempenho
 
-<p align = "justify"> O desempenho do sistema poderá ser afetado por fatores como uma possível imprecisão do sensor ou o ambiente operacional usado. O sistema também deve permitir acesso ao banco de dados para a demanda de usuários.</p>
+<p align = "justify">Estimamos que um movimento de duração de 15 segundos gera, em média, aproximadamente 750 pontos (o que, salvo num arquivo, dá aproximadamente 6kB); tendo em vista que em uma sessão poucos movimentos serão realizados de forma monitorada (já que o sensor tem a finalidade de mapear e estimar a situação do paciente, e que, após isso, o fisioterapeuta conduzirá os movimentos necessários), pode-se inferir que o sistema não processará uma grande quantidade de dados — principalmente por se tratar de um sistema local/*offline*. Seu desempenho será determinado, principalmente, pelo computador utilizado pelo operador.</p>
 
 ## 9. Qualidade
 
-<p align = "justify">O sistema irá utilizar padrões de interface gráfica desktop desenvolvido na linguagem c# em paralelo com o software Unity 3D. Também devera ser compatível com os principais sistemas operacionais. Além disso, os desenvolvedores deverão adotar boas práticas para que o sistema como um todo venha ser desenvolvido com qualidade satisfatória.</p>
+<p align = "justify">O sistema irá utilizar padrões de interface gráfica desktop desenvolvido na linguagem C# em paralelo com o software Unity 3D. Também deverá ser compatível com os principais sistemas operacionais. Além disso, os desenvolvedores deverão adotar boas práticas para que o sistema como um todo venha ser desenvolvido com qualidade satisfatória.</p>
