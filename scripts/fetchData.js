@@ -55,21 +55,23 @@ const getStatisticInfo = () => {
 
 
 const setTopCommiter = () => {
-    let topCommit = 0;
+    let topCommit = -1;
     let topCommitter = "";
     let topLines = 0;
     let topAvatar = "";
+    console.log(statisticInfo);
     for(let user in statisticInfo){
-        if(statisticInfo[user].weeks.slice(-1)[0].c > topCommit){
-            topCommit = statisticInfo[user].weeks.slice(-1)[0].c;
+        if(statisticInfo[user].weeks.slice(-2)[0].c > topCommit){
+            topCommit = statisticInfo[user].weeks.slice(-2)[0].c;
             topCommitter = statisticInfo[user].author.login;
-            topLines = statisticInfo[user].weeks.slice(-1)[0].a + statisticInfo[user].weeks.slice(-1)[0].d;
+            topLines = statisticInfo[user].weeks.slice(-2)[0].a + statisticInfo[user].weeks.slice(-2)[0].d;
             topAvatar = statisticInfo[user].author.avatar_url;
         }
         // console.log(statisticInfo[user].author.login);
         // console.log(statisticInfo[user].weeks.slice(-1)[0].c);
         // console.log(statisticInfo[user].weeks.slice(-1)[0].a + statisticInfo[user].weeks.slice(-1)[0].d);
     }
+    // console.log(topCommitter);
     let div = document.getElementById("top-committer");
     let avatar = document.getElementById("top-avatar");
     let divCommmit = document.getElementById("top-commit");
