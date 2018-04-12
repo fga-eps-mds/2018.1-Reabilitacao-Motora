@@ -20,3 +20,6 @@ Ex:
 - [x] Sem conflitos com a Branch Master
 
 Resolve #Número_da_Issue.
+
+
+![](Insira o link do GIF Aqui) 

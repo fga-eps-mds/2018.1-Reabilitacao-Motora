@@ -2,7 +2,7 @@
 
 <p align="justify">Esta <i>Sprint</i> tem como objetivo:</p>
 
-- Dar uma visão mais ampla do projeto e da metodologia Scrum pra MDS
+- Dar uma visão mais ampla do projeto e da metodologia _Scrum_ pra MDS
 - Equiparar o conhecimento na tecnologia por parte dos integrantes do grupo
 - Arrumar o máximo possível do repositório com o pouco de informação que temos
 
