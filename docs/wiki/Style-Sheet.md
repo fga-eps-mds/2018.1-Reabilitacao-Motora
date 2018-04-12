@@ -194,13 +194,13 @@ Data|Versão|Descrição|Autor
 ``` csharp
 
     // Good example
-    void MovePlayer ()
+    void MovePlayer()
     {
       transform.Translate(Vector3.forward * 5f * Time.deltaTime);
     }
 
     // Bad example
-    void MovePlayer () {
+    void MovePlayer() {
       transform.Translate(Vector3.forward * 5f * Time.deltaTime);
     }
 
@@ -211,7 +211,7 @@ Data|Versão|Descrição|Autor
 ``` csharp
 
     // Good example
-    void Update ()
+    void Update()
     {
       float h = Input.GetAxis("Horizontal");
       float xPos = h * range;
@@ -221,7 +221,7 @@ Data|Versão|Descrição|Autor
     }
 
     // Bad example
-    void Update () 
+    void Update() 
     {
       float h=Input.GetAxis("Horizontal");
       float xPos=h*range;
@@ -237,7 +237,7 @@ Data|Versão|Descrição|Autor
 ``` csharp
 
     // Good example
-    void Update ()
+    void Update()
     {
         if(Input.GetKey(KeyCode.Space))
         {
@@ -246,7 +246,7 @@ Data|Versão|Descrição|Autor
     }
 
     // Bad example
-    void Update ()
+    void Update()
     {
         if( Input.GetKey ( KeyCode.Space ) )
         {
@@ -261,11 +261,11 @@ Data|Versão|Descrição|Autor
 ``` csharp
 
     // Good example
-    for (i = 0; i < players.size(); i++)
+    for(i = 0; i < players.size(); i++)
     {
-        for (int j = 0; j < players.size() - 1; j++)
+        for(int j = 0; j < players.size() - 1; j++)
         {
-            if (player.get(j) > player.Get(j + 1))
+            if(player.get(j) > player.Get(j + 1))
             {
 	              Player auxiliarPlayer = player.Get(j);
 	    }
@@ -273,11 +273,11 @@ Data|Versão|Descrição|Autor
     }
 
     // Bad example
-    for (i = 0; i < players.size(); i++)
+    for(i = 0; i < players.size(); i++)
     {
-        for (int j = 0; j < players.size() - 1; j++)
+        for(int j = 0; j < players.size() - 1; j++)
         {
-            if (player.get(j) > player.get(j + 1))
+            if(player.get(j) > player.get(j + 1))
             {
 	              Player auxiliarPlayer = player.get(j);
 	    }
@@ -291,7 +291,7 @@ Data|Versão|Descrição|Autor
 ``` csharp
 
     // Good example
-    void TemperatureTest ()
+    void TemperatureTest()
     {
         if(coffeeTemperature > hotLimitTemperature)
         {
@@ -308,13 +308,13 @@ Data|Versão|Descrição|Autor
     }
 
     // Bad example
-    void TemperatureTest ()
+    void TemperatureTest()
     {
-        if (coffeeTemperature > hotLimitTemperature)
+        if(coffeeTemperature > hotLimitTemperature)
         {
             print("Coffee is too hot.");
         }
-        else if (coffeeTemperature < coldLimitTemperature)
+        else if(coffeeTemperature < coldLimitTemperature)
         {
             print("Coffee is too cold.");
         }
