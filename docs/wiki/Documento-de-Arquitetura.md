@@ -16,6 +16,7 @@ Data|Versão|Descrição|Autor
 11/04|1.8.0|Revisão e Complementação do item 2|João Lucas
 11/02|1.8.1|Revisão dos itens 2, 7 e subitem 4.1| Davi Alves
 11/04|1.9.0|Adição do subitem 6.1| João Lucas
+11/04|1.9.1|Revisão do subitem 3.2| Davi Alves
 
 # Sumário
 ----------------
@@ -88,9 +89,8 @@ Abreviação|Significado
 
 ### 3.2 Restrições
 
-<p align = "justify">O sistema a ser desenvolvido terá como base de sua arquitetura e interface gráfica a utilização da IDE Unity 3D. Um asset do Unity, específico para o sensor, deve estar devidamente contido nos Assets para a captura e sincronismo do movimento humano no sistema.<br />
-O projeto tera sua implementação utilizando a linguagem de programação C#(C-Sharp).
-Deverá ser ultilizado o ambiente Windows 10, porém, as versões superiores a Windows 7.0 possivelmente poderão suportar o programa.</p>
+<p align = "justify">O sistema a ser desenvolvido terá como base de sua arquitetura e interface gráfica a utilização da game engine Unity 3D. Um asset do Unity, específico para o sensor, deve estar devidamente contido nos Assets para a captura e sincronismo do movimento humano no sistema.<br />
+O projeto tera sua implementação utilizando a linguagem de programação C#(C-Sharp).Ele Deverá ser ultilizado no ambiente Windows 10.</p>
 
 ## 4. Visão dos Casos de Uso
 
