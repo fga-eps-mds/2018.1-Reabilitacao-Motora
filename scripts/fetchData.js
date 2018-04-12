@@ -134,40 +134,75 @@ const setCommitData = () => {
 
 }
 
+let commitsPerDay = [];
+const getCommitPerDay = () => {
+    axios.get(`${base_url}/repos/fga-gpp-mds/2018.1-Reabilitacao-Motora/stats/commit_activity`, {
+        headers: {
+            Authorization: `token ${token_api}`
+        }
+    })
+        .then(function (response) {
+            console.log(response.data);
+            commitsPerDay = response.data;
+            startChart();
+        }).catch(function (error) {
+            console.log(error);
+        });
+}
+
 
 const startChart = () => {
-    var ctx = document.getElementById("commit-chart").getContext('2d');
-var myChart = new Chart(ctx, {
-    type: 'line',
-    data: {
-        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-        datasets: [{
-            label: 'Commits/Por dia',
-            data: [12, 19, 3, 5, 2, 3],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255,99,132,1)'
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero:true
-                }
-            }]
-        }
+    let commitData = [];
+    for (let i = 5; i >= 1; i--) {
+        let time = new Date((commitsPerDay.slice(-i)[0].week) * 1000)
+        let week = { commits: commitsPerDay.slice(-i)[0].total, start: time }
+        commitData.push(week);
     }
-});
+
+    let ctx = document.getElementById("commit-chart").getContext('2d');
+    let myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: [
+                commitData[0].start.toString().substring(4, 15), 
+                commitData[1].start.toString().substring(4, 15), 
+                commitData[2].start.toString().substring(4, 15),
+                commitData[3].start.toString().substring(4, 15),
+                commitData[4].start.toString().substring(4, 15) 
+            ],
+            datasets: [{
+                label: 'Commits/Semana',
+                data: [
+                    commitData[0].commits,
+                    commitData[1].commits,
+                    commitData[2].commits,
+                    commitData[3].commits,
+                    commitData[4].commits
+                ],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255,99,132,1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
 }
 
 window.onload = () => {
     getBasicInfo();
     getStatisticInfo();
     getCommits(1);
-    startChart();
+    getCommitPerDay();
 }
