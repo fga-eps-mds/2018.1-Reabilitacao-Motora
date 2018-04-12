@@ -114,10 +114,18 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!4 &33588531 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400068, guid: f5e05f20199c880499cc033d19de1bcd, type: 3}
+  m_PrefabInternal: {fileID: 383774748}
 --- !u!4 &172986997 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400072, guid: 0ed08faf6b2c64f13ae389013c74d2d7, type: 3}
   m_PrefabInternal: {fileID: 317759022}
+--- !u!4 &275382387 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400022, guid: f5e05f20199c880499cc033d19de1bcd, type: 3}
+  m_PrefabInternal: {fileID: 383774748}
 --- !u!1001 &317759022
 Prefab:
   m_ObjectHideFlags: 0
@@ -167,7 +175,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100004, guid: 0ed08faf6b2c64f13ae389013c74d2d7, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9500000, guid: 0ed08faf6b2c64f13ae389013c74d2d7, type: 3}
       propertyPath: m_Enabled
@@ -481,7 +489,11 @@ Prefab:
       objectReference: {fileID: 2100000, guid: 74986b24e75eca34c9f6d7ca8ebdb7ba, type: 2}
     - target: {fileID: 100004, guid: f5e05f20199c880499cc033d19de1bcd, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: f5e05f20199c880499cc033d19de1bcd, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f5e05f20199c880499cc033d19de1bcd, type: 3}
@@ -516,9 +528,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 123a59e63faa6354c93c5ebb2ec9ffa2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mao: {fileID: 0}
-  cotovelo: {fileID: 0}
-  ombro: {fileID: 0}
+  mao: {fileID: 1663316761}
+  cotovelo: {fileID: 275382387}
+  ombro: {fileID: 33588531}
 --- !u!1 &489022732
 GameObject:
   m_ObjectHideFlags: 0
@@ -894,6 +906,7 @@ Camera:
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -1405,9 +1418,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Convex: 0
-  m_InflateMesh: 0
+  m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!33 &1367192275
@@ -1754,6 +1767,10 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1660637856}
+--- !u!4 &1663316761 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400024, guid: f5e05f20199c880499cc033d19de1bcd, type: 3}
+  m_PrefabInternal: {fileID: 383774748}
 --- !u!1 &1742593544
 GameObject:
   m_ObjectHideFlags: 0
