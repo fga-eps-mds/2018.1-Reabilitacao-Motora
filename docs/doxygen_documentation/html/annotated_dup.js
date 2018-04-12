@@ -1,0 +1,28 @@
+var annotated_dup =
+[
+    [ "AvatarController", "class_avatar_controller.html", "class_avatar_controller" ],
+    [ "AvatarControllerClassic", "class_avatar_controller_classic.html", "class_avatar_controller_classic" ],
+    [ "bd", "classbd.html", "classbd" ],
+    [ "BoneOrientationsConstraint", "class_bone_orientations_constraint.html", "class_bone_orientations_constraint" ],
+    [ "BoneOrientationsFilter", "class_bone_orientations_filter.html", "class_bone_orientations_filter" ],
+    [ "CharacterAnimation", "class_character_animation.html", null ],
+    [ "ClippedLegsFilter", "class_clipped_legs_filter.html", "class_clipped_legs_filter" ],
+    [ "CubemanController", "class_cubeman_controller.html", "class_cubeman_controller" ],
+    [ "Flow", "class_flow.html", "class_flow" ],
+    [ "FollowUserRotation", "class_follow_user_rotation.html", null ],
+    [ "GetJointPositionDemo", "class_get_joint_position_demo.html", "class_get_joint_position_demo" ],
+    [ "JointPositionsFilter", "class_joint_positions_filter.html", "class_joint_positions_filter" ],
+    [ "KinectGestures", "class_kinect_gestures.html", "class_kinect_gestures" ],
+    [ "KinectHelper", "class_kinect_helper.html", null ],
+    [ "KinectManager", "class_kinect_manager.html", "class_kinect_manager" ],
+    [ "KinectWrapper", "class_kinect_wrapper.html", "class_kinect_wrapper" ],
+    [ "LineGraphManager", "class_line_graph_manager.html", "class_line_graph_manager" ],
+    [ "LoadMainLevel", "class_load_main_level.html", null ],
+    [ "MouseControl", "class_mouse_control.html", "class_mouse_control" ],
+    [ "ScaleBackground", "class_scale_background.html", "class_scale_background" ],
+    [ "SelfIntersectionConstraint", "class_self_intersection_constraint.html", "class_self_intersection_constraint" ],
+    [ "SetSceneAvatars", "class_set_scene_avatars.html", null ],
+    [ "SimpleGestureListener", "class_simple_gesture_listener.html", "class_simple_gesture_listener" ],
+    [ "TimedLerp", "class_timed_lerp.html", "class_timed_lerp" ],
+    [ "TrackingStateFilter", "class_tracking_state_filter.html", "class_tracking_state_filter" ]
+];
