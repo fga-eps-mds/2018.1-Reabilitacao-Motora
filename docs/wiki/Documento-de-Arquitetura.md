@@ -19,7 +19,8 @@ Data|Versão|Descrição|Autor
 11/04|1.9.1|Revisão do subitem 3.2| Davi Alves
 12/04|1.9.2|Atualização o Diagrama de Casos de Uso | Guilherme de Lyra
 12/04|1.9.3|Revisão e Pequenas Alterações| João Lucas
-12/04|1.10.0|Modificação o subitem 6.1| João Lucas
+12/04|1.10.0|Modificação do subitem 6.1| João Lucas
+12/04|1.10.1|Revisão do Documento| João Lucas
 
 # Sumário
 ----------------
@@ -96,7 +97,7 @@ Abreviação|Significado
 
 ### 3.2 Restrições
 
-<p align = "justify">O sistema a ser desenvolvido terá como base de sua arquitetura e interface gráfica a utilização da *game engine* Unity 3D. Um asset do Unity, específico para o sensor, deve estar devidamente contido nos Assets para a captura e sincronismo do movimento humano no sistema.<br />
+<p align = "justify">O sistema a ser desenvolvido terá como base de sua arquitetura e interface gráfica a utilização da *game engine* Unity 3D. Um *asset* do Unity, específico para o sensor, deve estar devidamente contido nos *Assets* para a captura e sincronismo do movimento humano no sistema.<br />
 A implementação do projeto será a linguagem de programação C# (C-Sharp).Ele Deverá ser utilizado no ambiente Windows 10.</p>
 
 ## 4. Visão dos Casos de Uso
@@ -129,8 +130,8 @@ A implementação do projeto será a linguagem de programação C# (C-Sharp).Ele
 ### 5.1 Pacotes de design Significativos do Ponto de Vista da Arquitetura
 
 #### 5.1.1 GameObjects e Componentes
-<p align = "justify">Devido à arquitetura de componentes inerente ao Unity, tudo que há no projeto é um GameObject. O GameObject é uma combinação de componentes. Ou seja: ele é a base para a adição de componentes ao objeto da scene, determinando o comportamento do mesmo nela. Basicamente tudo no Unity é um componente. Desde scripts a câmeras. Quando um componente ou um script é adicionado a um GameObject, esse componente adicionado pode ser acessado através da função GetComponent da classe GameObject. Uma vez que o GameObject é destruído, todos os componentes abaixo da sua hierarquia são destruídos.</p><br />
-<p align = "justify">Dentro de todo GameObject há componentes, sendo exemplos deles Transform (representa a posição, rotação e escala do objeto na scene), RigidBody (dá propriedade fisicas ao GameObject), Renderers (componentes que permitem exibição dos GameObjects em cena), etc.</p><br />
+<p align = "justify">Devido à arquitetura de componentes inerente ao Unity, tudo que há no projeto é um *GameObject*. O *GameObject* é uma combinação de componentes. Ou seja: ele é a base para a adição de componentes ao objeto da *scene*, determinando o comportamento do mesmo nela. Basicamente tudo no Unity é um componente. Desde scripts a câmeras. Quando um componente ou um script é adicionado a um *GameObject*, esse componente adicionado pode ser acessado através da função *GetComponent* da classe *GameObject*. Uma vez que o *GameObject* é destruído, todos os componentes abaixo da sua hierarquia são destruídos.</p><br />
+<p align = "justify">Dentro de todo *GameObject* há componentes, sendo exemplos deles *Transform* (representa a posição, rotação e escala do objeto na *scene*), *RigidBody* (dá propriedade físicas ao *GameObject*), Renderers (componentes que permitem exibição dos *GameObjects* em cena), etc.</p><br />
 
 Para melhor visualização da relação entre os componentes no Unity, segue um diagrama:   </p>
 ![Diagrama Componentes](http://oi64.tinypic.com/23hsntc.jpg) </p>
