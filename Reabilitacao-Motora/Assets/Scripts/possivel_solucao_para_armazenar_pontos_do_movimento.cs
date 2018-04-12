@@ -4,8 +4,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class possivel_solucao_para_armazenar_pontos_do_movimento : MonoBehaviour {
-
+/**
+ * Descrever aqui o que essa classe realiza.
+ */
+public class possivel_solucao_para_armazenar_pontos_do_movimento : MonoBehaviour
+{
 	public static float hypot(float a, float b)
 	{
 		return Mathf.Sqrt(Mathf.Pow(a, 2) + Mathf.Pow(b, 2));
@@ -31,16 +34,25 @@ public class possivel_solucao_para_armazenar_pontos_do_movimento : MonoBehaviour
 	float current_time_movement = 0;
 	bool t = false;
 
+	/**
+	 * Descrever aqui o que esse método realiza.
+	 */
 	void Start () {
 //		tempo_anguloDeJunta = new List<Vector2> ();
 	}
 
+	/**
+	 * Descrever aqui o que esse método realiza.
+	 */
 	void Update () {
 		if (Input.GetKeyDown(KeyCode.Space)) {
 			t = true;
 		}
 	}
-	
+
+	/**
+	 * Descrever aqui o que esse método realiza.
+	 */
 	void FixedUpdate () {
 		if (t) {
 			current_time_movement += Time.fixedDeltaTime;

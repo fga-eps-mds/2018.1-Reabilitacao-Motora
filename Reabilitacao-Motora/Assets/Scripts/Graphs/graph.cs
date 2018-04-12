@@ -2,18 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class graph : MonoBehaviour {
-
+/**
+ * Descrever aqui o que essa classe realiza.
+ */
+public class graph : MonoBehaviour
+	{
 	public Transform pointPrefab;
 	[Range(10, 750)]
 	public int resolution = 10;
 	List <Vector3> points1, points2;
 	public float lineWidth = 0.05f;
 	LineRenderer lineRenderer;
-    public Color c1 = Color.yellow;
-    public Color c2 = Color.red;
+  public Color c1 = Color.yellow;
+  public Color c2 = Color.red;
 
-
+	/**
+	 * Descrever aqui o que esse método realiza.
+	 */
 	public void LoadData(string[] lines)
     {
         foreach (var line in lines)
@@ -26,22 +31,24 @@ public class graph : MonoBehaviour {
     }
 
 
-	// Use this for initialization
-	void Awake () 
+		/**
+		 * Descrever aqui o que esse método realiza.
+		 */
+	void Awake()
 	{
 		lineRenderer = gameObject.AddComponent<LineRenderer>();
-        lineRenderer.material = new Material(Shader.Find("Particles/Additive"));
-        lineRenderer.widthMultiplier = 0.2f;
-        lineRenderer.positionCount = 750;
+    lineRenderer.material = new Material(Shader.Find("Particles/Additive"));
+    lineRenderer.widthMultiplier = 0.2f;
+    lineRenderer.positionCount = 750;
 
-        // A simple 2 color gradient with a fixed alpha of 1.0f.
-        float alpha = 1.0f;
-        Gradient gradient = new Gradient();
-        gradient.SetKeys(
-            new GradientColorKey[] { new GradientColorKey(c1, 0.0f), new GradientColorKey(c2, 1.0f) },
-            new GradientAlphaKey[] { new GradientAlphaKey(alpha, 0.0f), new GradientAlphaKey(alpha, 1.0f) }
-            );
-        lineRenderer.colorGradient = gradient;
+    // A simple 2 color gradient with a fixed alpha of 1.0f.
+    float alpha = 1.0f;
+    Gradient gradient = new Gradient();
+    gradient.SetKeys(
+    new GradientColorKey[] { new GradientColorKey(c1, 0.0f), new GradientColorKey(c2, 1.0f) },
+    new GradientAlphaKey[] { new GradientAlphaKey(alpha, 0.0f), new GradientAlphaKey(alpha, 1.0f) }
+    );
+    lineRenderer.colorGradient = gradient;
 
 
 		points1 = new List<Vector3>();
@@ -63,12 +70,14 @@ public class graph : MonoBehaviour {
 			point.SetParent (transform, false);
 
 			points2.Add (point.position);
-		}	
+		}
 
 		lineRenderer.SetPositions (points2.ToArray());
 	}
-	
-	// Update is called once per frame
+
+	/**
+	 * Descrever aqui o que esse método realiza.
+	 */
 	void Update () {
 
 	}
