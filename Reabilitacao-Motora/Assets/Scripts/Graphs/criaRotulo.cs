@@ -4,20 +4,31 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
 
-public class criaRotulo : MonoBehaviour {
-
+/**
+ * Descrever aqui o que essa classe realiza.
+ */
+public class criaRotulo : MonoBehaviour
+	{
 	public rotulo rotuloPrefab;
 	public string[] labels;
 	public Vector2[] vals;
 
 	float chartHeight;
 
-	void Start () {
-		displaygraph ();
+	/**
+	 * Descrever aqui o que esse método realiza.
+	 */
+	void Start()
+	{
+		displaygraph();
 	}
 
-	void displaygraph () {
-		for (int i = 0; i < vals.Length; ++i) { 
+	/**
+	 * Descrever aqui o que esse método realiza.
+	 */
+	void displaygraph()
+	{
+		for (int i = 0; i < vals.Length; ++i) {
 			rotulo newRotulo = Instantiate (rotuloPrefab) as rotulo;
 			newRotulo.transform.localPosition = new Vector3 (0f, 0f, 0f);
 			newRotulo.transform.SetParent (transform, false);
