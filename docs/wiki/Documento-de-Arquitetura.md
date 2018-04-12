@@ -138,19 +138,19 @@ Para melhor visualização da relação entre os componentes no Unity, segue um 
 
 ### 6.1 MER
 
-![MER](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/database/imagens/Arquitetura/MER.png) </p>
+![MER](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/database/imagens/Arquitetura/MER-1.png) </p>
 **Figura 3**- Entidades </p>
-[Clique aqui para visualizar a imagem](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/docs/imagens/Arquitetura/MER.png) </p>
+[Clique aqui para visualizar a imagem](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/docs/imagens/Arquitetura/MER-1.png) </p>
 
-![Relacionamento](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/docs/imagens/Arquitetura/Relacionamento.png) </p>
+![MER](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/docs/imagens/Arquitetura/MER-2.png) </p>
 
-![MER-3](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/docs/imagens/Arquitetura/Relacionamento2.png) </p>
+![MER](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/docs/imagens/Arquitetura/MER-3.png) </p>
 
 **Figura 4**- Relacionamentos </p>
 
-[Clique aqui para visualizar a imagem](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/docs/imagens/Arquitetura/Relacionamento.png)
+[Clique aqui para visualizar a imagem](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/docs/imagens/Arquitetura/MER-2.png)
 
-[Clique aqui para visualizar a imagem](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/docs/imagens/Arquitetura/RRelacionamento2.png)
+[Clique aqui para visualizar a imagem](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/docs/imagens/Arquitetura/MER-3.png)
 
 ### 6.2 DER
 ![DER](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/database/Banco_de_Dados/der.png)
