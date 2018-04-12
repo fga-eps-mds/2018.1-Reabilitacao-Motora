@@ -17,8 +17,9 @@ Data|Versão|Descrição|Autor
 11/02|1.8.1|Revisão dos itens 2, 7 e subitem 4.1| Davi Alves
 11/04|1.9.0|Adição do subitem 6.1| João Lucas
 11/04|1.9.1|Revisão do subitem 3.2| Davi Alves
-12/04|1.9.2|Atualizando o Diagrama de Casos de Uso | Guilherme de Lyra
+12/04|1.9.2|Atualização o Diagrama de Casos de Uso | Guilherme de Lyra
 12/04|1.9.3|Revisão e Pequenas Alterações| João Lucas
+12/04|1.10.0|Modificação o subitem 6.1| João Lucas
 
 # Sumário
 ----------------
@@ -138,27 +139,149 @@ Para melhor visualização da relação entre os componentes no Unity, segue um 
 
 ### 6.1 MER
 
-![MER](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/database/imagens/Arquitetura/MER-1.png) </p>
-**Figura 3**- Entidades </p>
-[Clique aqui para visualizar a imagem](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/docs/imagens/Arquitetura/MER-1.png) </p>
+#### 6.1.1 Entidades
 
-![MER](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/docs/imagens/Arquitetura/MER-2.png) </p>
+**PESSOA** </p>
 
-![MER](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/docs/imagens/Arquitetura/MER-3.png) </p>
+Atributo|Propriedade|Tipo|Descrição
+-|-|-|-
+**idPessoa** | Chave Primária </p> Obrigatório | INTEGER | Identificação da Pessoa
+**nomePessoa** | Obrigatório | VARCHAR(30) | Nome da Pessoa
+**sexo** | Obrigatório | CHAR(1) | Sexo da Pessoa
+**dataNascimento** | Obrigatório | DATE | Data de Nascimento da Pessoa
 
-**Figura 4**- Relacionamentos </p>
+**TELEFONE** </p>
 
-[Clique aqui para visualizar a imagem](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/docs/imagens/Arquitetura/MER-2.png)
+Atributo|Propriedade|Tipo|Descrição
+-|-|-|-
+**idPessoa** | Chave Estrangeira </p> Obrigatório | INTEGER | Identificação da Pessoa
+**telefone** | Obrigatório | VARCHAR(18) | Número do Telefone da Pessoa
 
-[Clique aqui para visualizar a imagem](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/docs/imagens/Arquitetura/MER-3.png)
+**FISIOTERAPEUTA** </p>
+
+Atributo|Propriedade|Tipo|Descrição
+-|-|-|-
+**idFisioterapeuta** | Chave Primária </p> Obrigatório | INTEGER | Identificação de um Fisioterapeuta
+**idPessoa** | Chave Estrangeira </p> Obrigatório | INTEGER | Identificação da Pessoa
+**regiao** | Opcional | VARCHAR(2) | Região de tratamento do Fisioterapeuta
+**crefito** | Opcional | VARCHAR(10) | Identificação do CREFITO do Fisioterapeuta
+
+**PACIENTE** </p>
+
+Atributo|Propriedade|Tipo|Descrição
+-|-|-|-
+**idPaciente** | Chave Primária </p> Obrigatório | INTEGER | Identificação de um Paciente
+**idPessoa** | Chave Estrangeira </p> Obrigatório | INTEGER | Identificação da Pessoa
+**observacoes** | Opcional | VARCHAR(300) | Observações do Paciente
+
+
+**MÚSCULO** </p>
+
+Atributo|Propriedade|Tipo|Descrição
+-|-|-|-
+**idMusculo** | Chave Primária </p> Obrigatório | INTEGER | Identificação de um Músculo
+**nomeMusculo** | Obrigatório | VARCHAR(20) | Nome do Músculo
+
+
+**SESSÃO** </p>
+
+Atributo|Propriedade|Tipo|Descrição
+-|-|-|-
+**idSessao** | Chave Primária </p> Obrigatório | INTEGER | Identificação da Sessão
+**idFisioterapeuta** | Chave Estrangeira </p> Obrigatório | INTEGER | Identificação de um Fisioterapeuta
+**idPaciente** | Chave Estrangeira </p> Obrigatório | INTEGER | Identificação de um Paciente
+**dataSessao** | Obrigatório | DATE | Data da realização da Sessão de Exercícios
+**observacaoSessao** | Opcional | VARCHAR(300) | Observação da Sessão
+
+**MOVIMENTO** </p>
+
+Atributo|Propriedade|Tipo|Descrição
+-|-|-|-
+**idMovimento** | Chave Primária </p> Obrigatório | INTEGER | Identificação do Movimento
+**idFisioterapeuta** | Chave Estrangeira </p> Obrigatório | INTEGER | Identificação de um Fisioterapeuta
+**nomeMovimento** | Obrigatório | VARCHAR(50) | Nome do Movimento
+**descricaoMovimento** | Opcional | VARCHAR(150) | Descrição do Movimento
+**pontosMovimento** | Obrigatório | VARCHAR(150) | Pontos do Movimento
+
+**EXERCÍCIO** </p>
+
+Atributo|Propriedade|Tipo|Descrição
+-|-|-|-
+**idExercicio** | Chave Primária </p> Obrigatório | INTEGER | Identificação do Exercício
+**idPaciente** | Chave Estrangeira </p> Obrigatório | INTEGER | Identificação de um Paciente
+**idMovimento** | Chave Estrangeira </p> Obrigatório | INTEGER | Identificação do Movimento
+**idSessao** | Chave Estrangeira </p> Obrigatório | INTEGER | Identificação da Sessão
+**descricaoExercicio** | Opcional | VARCHAR(150) | Descrição do Exercício
+**pontosExercicio** | Obrigatório | VARCHAR(150) | Pontos do Exercícios
+
+**PONTOS RÓTULO FISIOTERAPEUTA** </p>
+
+Atributo|Propriedade|Tipo|Descrição
+-|-|-|-
+**idRotuloFisioterapeuta** | Chave Primária </p> Obrigatório | INTEGER | Identificação dos Pontos de Rótulo do Fisioterapeuta
+**idMovimento** | Chave Estrangeira </p> Obrigatório | INTEGER | Identificação do Movimento
+**estagioMovimentoFisio** | Obrigatório | VARCHAR(30) | Estagio do Movimento do Fisioterapeuta solicita
+**tempoInicial** | Obrigatório | REAL | Tempo Inicial do Movimento
+**tempoFinal** | Obrigatório | REAL | Tempo Final do Movimento
+
+**PONTOS RÓTULO PACIENTE** </p>
+
+Atributo|Propriedade|Tipo|Descrição
+-|-|-|-
+**idRotuloPaciente** | Chave Primária </p> Obrigatório | INTEGER | Identificação dos Pontos de Rótulo do Paciente
+**idExercicio** | Chave Estrangeira </p> Obrigatório | INTEGER | Identificação do Exercício
+**estagioMovimentoPaciente** | Obrigatório | VARCHAR(30) | Estagio do Movimento que o Paciente executa
+**tempoInicial** | Obrigatório | REAL | Tempo Inicial do Movimento
+**tempoFinal** | Obrigatório | REAL | Tempo Final do Movimento
+
+#### 6.1.2 Relacionamentos
+
+**PESSOA** especializa totalmente em **FISIOTERAPEUTA** ou **PACIENTE**, pois ambas as entidades compartilham vários atributos em comum.
+
+**MOVIMENTO** -- estimula – **MÚSCULO**
+Um movimento estimula, obrigatoriamente, um ou mais músculos; e, um músculo, é estimulado por vários tipos de movimentos.
+(Cardinalidade n:m)
+
+**MOVIMENTO** -- baseia -- **EXERCÍCIO**
+O exercício, realizado pelo paciente, é baseado num movimento ideal.
+(Cardinalidade 1:n)
+
+**FISIOTERAPEUTA** -- cadastra -- **MOVIMENTO**
+Um fisioterapeuta cadastra um ou vários movimentos.
+(Cardinalidade 1:n)
+
+**PACIENTE** -- realiza – **EXERCÍCIO**
+Um paciente realiza um ou vários movimentos.
+(Cardinalidade 1:n)
+
+**SESSÃO** -- possui -- **EXERCÍCIO**
+Numa sessão, múltiplos exercícios são realizados.
+(Cardinalidade 1:n)
+
+**PACIENTE** -- participa -- **SESSÃO**
+Um paciente participa de uma ou várias sessões.
+(Cardinalidade 1:n)
+
+**FISIOTERAPEUTA** -- conduz -- **SESSÃO**
+Um fisioterapeuta conduz uma ou varias sessões.
+(Cardinalidade 1:n
+
+**MOVIMENTO** -- gera – **PONTOS RÓTULO FISIOTERAPEUTA**
+Um movimento gera n pontos nos eixos x e y.
+(Cardinalidade 1:n)
+
+**EXERCÍCIO** -- gera – **PONTOS RÓTULO PACIENTE**
+Um exercício gera n pontos nos eixos x e y.
+(Cardinalidade 1:n)
+
 
 ### 6.2 DER
 ![DER](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/database/Banco_de_Dados/der.png)
-**Figura 6**- Diagrama Entidade-Relacionamento</p>
+**Figura 3**- Diagrama Entidade-Relacionamento</p>
 [Clique aqui para visualizar a imagem](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/database/Banco_de_Dados/der.png)
 ### 6.3 Diagrama Lógico
 ![LÓGICO](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/database/Banco_de_Dados/logico.png)
-**Figura 7**- Diagrama ME-R Lógico</p>
+**Figura 4**- Diagrama ME-R Lógico</p>
 [Clique aqui para visualizar a imagem](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/database/Banco_de_Dados/logico.png)
 
 
