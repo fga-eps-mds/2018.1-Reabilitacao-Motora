@@ -9,11 +9,12 @@ public class GenerateLineChart : MonoBehaviour
 {
 	public Transform pointPrefab;
 	[Range(10, 750)]
-	public int resolution = 10;
+	public int resolution = 750;
+
 	List <Vector3> points1, points2;
-	public float lineWidth = 0.05f;
+
 	LineRenderer lineRenderer;
-	public Color c1 = Color.yellow;
+	public Color c1 = Color.black;
 	public Color c2 = Color.red;
 
 	/**
@@ -37,7 +38,7 @@ public class GenerateLineChart : MonoBehaviour
 	void Awake()
 	{
 		lineRenderer = gameObject.AddComponent<LineRenderer>();
-		lineRenderer.material = new Material(Shader.Find("Particles/Additive"));
+		lineRenderer.material = new Material(Shader.Find("Particles/Multiply (Double)"));
 		lineRenderer.widthMultiplier = 0.2f;
 		lineRenderer.positionCount = 750;
 
@@ -61,7 +62,8 @@ public class GenerateLineChart : MonoBehaviour
 		Vector3 scale = Vector3.one * step;
 		Vector3 position = Vector3.zero;
 
-		for (int i = 0; i < resolution; ++i) {
+		for (int i = 0; i < resolution; ++i) 
+		{
 			Transform point = Instantiate(pointPrefab);
 			position.x = (points1[i].x) + 0.05f;
 			position.y = (points1[i].y/24);

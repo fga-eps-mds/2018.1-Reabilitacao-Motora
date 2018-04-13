@@ -8,5 +8,6 @@ using UnityEngine;
 public class Label : MonoBehaviour
 {
 	public TextMesh Description;
-	public float InitialX, FinalX;
+	[Range(0, 15)]
+	public float InitialX = 0, FinalX = 0;
 }
