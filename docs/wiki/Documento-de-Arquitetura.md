@@ -120,9 +120,8 @@ A implementação do projeto será a linguagem de programação C# (C-Sharp).Ele
 :-:|:-:
 | **UC01 - Manter movimento** | Criar, alterar ou deletar um movimento. |
 | **UC02 - Manter paciente** | Criar, alterar ou deletar um paciente. |
-| **UC03 - Manter fisioterapeuta** | Criar, alterar ou deletar um fisioterapeuta. |
-| **UC04 - Consultar pessoa** | Acessar informações relevantes (nome, etc) e movimentos realizados pelo mesmo. |
-| **UC05 - Consultar movimento** | Visualizar reprodução do movimento, gráfico rotulado gerado e/ou descrição. |
+| **UC03 - Manter rótulo** | Criar, alterar ou deletar um rótulo de um movimento. |
+| **UC04 - Manter fisioterapeuta** | Criar, alterar ou deletar um fisioterapeuta. |
 
 
 ## 5. Visão Lógica
