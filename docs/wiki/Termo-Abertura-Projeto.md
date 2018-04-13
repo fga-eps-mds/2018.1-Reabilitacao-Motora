@@ -5,7 +5,7 @@
 | 15/03/2018 |   0.1  | Criação do documento e elaboração dos tópicos 11, 13, 14 e 15 |                Arthur Diniz                 |
 | 20/03/2018 |   0.2  | Inserção dos tópicos 1 e 2 | Vitor Falcão |
 | 02/04/2018 |   0.3  | Inserção dos tópicos 3 e 7. Modificações no tópico 4 | Victor Moura |
-| 02/04/2018 |   0.3  | Elaboração dos tópicos 8 e 9 | Arthur Diniz |
+| 02/04/2018 |   0.4  | Elaboração dos tópicos 8 e 9 | Arthur Diniz
 
 
 ----
