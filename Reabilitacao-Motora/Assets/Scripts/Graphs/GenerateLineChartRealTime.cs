@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /**
-* Descrever aqui o que essa classe realiza.
+* Pega pontos do movimento para o gráfico estático.
 */
 public class GenerateLineChartRealTime : MonoBehaviour
 {
 	public Transform x_axis;
 	public Transform pointPrefab;
 	public int resolution = 750;
-	public Transform mao, cotovelo, ombro; //o ponto final de mao é o inicial de cotovelo, o final de cotovelo é o inicial de ombro; ou seja, sao apenas 2 retas
+	public Transform mao, cotovelo, ombro;
 	Vector2 m_p, c_p, o_p, grafico;
 	float current_time_movement = 0;
 	bool t = false;
@@ -20,11 +20,17 @@ public class GenerateLineChartRealTime : MonoBehaviour
 	public Color c2 = Color.red;
 	public List <Vector3> points2;
 
+	/**
+	* Calcula a hipotenusa.
+	*/
 	public static float hypot(float a, float b)
 	{
 		return Mathf.Sqrt(Mathf.Pow(a, 2) + Mathf.Pow(b, 2));
 	}
 
+	/**
+	* Calcula o ângulo entre mão, ombro e cotovelo.
+	*/
 	float angle(Vector2 P, Vector2 Q, Vector2 R, Vector2 S)
 	{
 		float ux = P.x - Q.x;
@@ -39,6 +45,9 @@ public class GenerateLineChartRealTime : MonoBehaviour
 		return (Mathf.Acos(num / den) * (180.0f / Mathf.PI));
 	}
 
+	/**
+		* Quando a tecla espaço é pressionada, este método é chamado.
+	 */
 	void Update () {
 		if (Input.GetKeyDown(KeyCode.Space)) {
 			t = !t;
@@ -46,8 +55,11 @@ public class GenerateLineChartRealTime : MonoBehaviour
 	}
 
 
+	/**
+	 * Captura os dados do movimento realizado pelo usuário e capturado pelo kinect.
+	 */
 	void FixedUpdate () {
-		if (t) 
+		if (t)
 		{
 			current_time_movement += Time.fixedDeltaTime;
 			m_p = new Vector2 (mao.position.x, mao.position.y);
@@ -82,10 +94,10 @@ public class GenerateLineChartRealTime : MonoBehaviour
 
 
 	/**
-	* Descrever aqui o que esse método realiza.
+	* Carrega materials e prefabs para plotagem do gráfico.
 	*/
 	void Awake()
-	{	
+	{
 		points2 = new List<Vector3>();
 		t = new bool();
 		t = false;
@@ -94,7 +106,6 @@ public class GenerateLineChartRealTime : MonoBehaviour
 		lineRenderer.widthMultiplier = 0.2f;
 		lineRenderer.positionCount = 750;
 
-	// A simple 2 color gradient with a fixed alpha of 1.0f.
 		float alpha = 1.0f;
 		Gradient gradient = new Gradient();
 		gradient.SetKeys(
@@ -103,8 +114,4 @@ public class GenerateLineChartRealTime : MonoBehaviour
 			);
 		lineRenderer.colorGradient = gradient;
 	}
-
-	/**
-	* Descrever aqui o que esse método realiza.
-	*/
 }

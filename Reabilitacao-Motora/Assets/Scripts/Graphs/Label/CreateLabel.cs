@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using System.Linq;
 
 /**
- * Descrever aqui o que essa classe realiza.
+ * Cria o rótulo para a rotulação dos movimentos no gráfico.
  */
 public class CreateLabel : MonoBehaviour
 {
@@ -16,7 +16,7 @@ public class CreateLabel : MonoBehaviour
 	float chartHeight;
 
 	/**
-	 * Descrever aqui o que esse método realiza.
+	 * Mostra o rótulo quando inicia a scene do gráfico.
 	 */
 	void Start()
 	{
@@ -24,11 +24,11 @@ public class CreateLabel : MonoBehaviour
 	}
 
 	/**
-	 * Descrever aqui o que esse método realiza.
+	 * Caracteriza o rótulo usando as barras que o delimitam.
 	 */
 	void displaygraph()
 	{
-		for (int i = 0; i < vals.Length; ++i) 
+		for (int i = 0; i < vals.Length; ++i)
 		{
 			Label newLabel = Instantiate (labelPrefab) as Label;
 			newLabel.transform.localPosition = new Vector3 (0f, 0f, 0f);

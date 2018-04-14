@@ -113,6 +113,10 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!4 &4050727 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400072, guid: 0ed08faf6b2c64f13ae389013c74d2d7, type: 3}
+  m_PrefabInternal: {fileID: 1131394359}
 --- !u!1001 &171050573
 Prefab:
   m_ObjectHideFlags: 0
@@ -218,7 +222,7 @@ Prefab:
     - target: {fileID: 114874109260913476, guid: 184deb3dde3eaaf44a893367924f55a9,
         type: 2}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4978420556809028, guid: 184deb3dde3eaaf44a893367924f55a9, type: 2}
       propertyPath: m_LocalScale.y
@@ -232,6 +236,10 @@ Prefab:
     - {fileID: 114465755511827398, guid: 184deb3dde3eaaf44a893367924f55a9, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 184deb3dde3eaaf44a893367924f55a9, type: 2}
   m_IsPrefabParent: 0
+--- !u!4 &263162608 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400026, guid: 0ed08faf6b2c64f13ae389013c74d2d7, type: 3}
+  m_PrefabInternal: {fileID: 1131394359}
 --- !u!1 &280847597 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1628030909591862, guid: 184deb3dde3eaaf44a893367924f55a9,
@@ -249,12 +257,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   x_axis: {fileID: 2040425430}
-  pointPrefab: {fileID: 4656512534540884, guid: a4f789d83ab98b945b53862a4ed28fb1,
-    type: 2}
+  pointPrefab: {fileID: 388580562}
   resolution: 750
-  mao: {fileID: 1565764616}
-  cotovelo: {fileID: 620342130}
-  ombro: {fileID: 1578784869}
+  mao: {fileID: 522856483}
+  cotovelo: {fileID: 263162608}
+  ombro: {fileID: 4050727}
   c1: {r: 0, g: 0, b: 0, a: 1}
   c2: {r: 1, g: 0, b: 0, a: 1}
   points2: []
@@ -371,6 +378,11 @@ RectTransform:
   m_AnchoredPosition: {x: -502.2423, y: 59.827713}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!4 &388580562 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4194136618830534, guid: 184deb3dde3eaaf44a893367924f55a9,
+    type: 2}
+  m_PrefabInternal: {fileID: 171050573}
 --- !u!1 &398323072
 GameObject:
   m_ObjectHideFlags: 0
@@ -445,9 +457,9 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 398323072}
---- !u!4 &620342130 stripped
+--- !u!4 &522856483 stripped
 Transform:
-  m_PrefabParentObject: {fileID: 400082, guid: f5e05f20199c880499cc033d19de1bcd, type: 3}
+  m_PrefabParentObject: {fileID: 400024, guid: f5e05f20199c880499cc033d19de1bcd, type: 3}
   m_PrefabInternal: {fileID: 1885446794}
 --- !u!1 &640624059
 GameObject:
@@ -1040,14 +1052,6 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!4 &1565764616 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 400084, guid: f5e05f20199c880499cc033d19de1bcd, type: 3}
-  m_PrefabInternal: {fileID: 1885446794}
---- !u!4 &1578784869 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 400128, guid: f5e05f20199c880499cc033d19de1bcd, type: 3}
-  m_PrefabInternal: {fileID: 1885446794}
 --- !u!1 &1614553691
 GameObject:
   m_ObjectHideFlags: 0
@@ -1203,6 +1207,7 @@ Camera:
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -1390,9 +1395,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73a782cf2f0c1eb49878ce16a61dfe13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mao: {fileID: 1565764616}
-  cotovelo: {fileID: 620342130}
-  ombro: {fileID: 1578784869}
+  mao: {fileID: 0}
+  cotovelo: {fileID: 0}
+  ombro: {fileID: 0}
 --- !u!4 &2040425430 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4978420556809028, guid: 184deb3dde3eaaf44a893367924f55a9,

@@ -5,15 +5,21 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 /**
- * Descrever aqui o que essa classe realiza.
+* Pega pontos do movimento para o gráfico estático.
  */
 public class GetMovementPoints : MonoBehaviour
 {
+	/**
+	* Calcula a hipotenusa.
+	*/
 	public static float hypot(float a, float b)
 	{
 		return Mathf.Sqrt(Mathf.Pow(a, 2) + Mathf.Pow(b, 2));
 	}
 
+	/**
+	* Calcula o ângulo entre mão, ombro e cotovelo.
+	*/
 	float angle(Vector2 P, Vector2 Q, Vector2 R, Vector2 S)
 	{
 		float ux = P.x - Q.x;
@@ -28,21 +34,13 @@ public class GetMovementPoints : MonoBehaviour
 		return (Mathf.Acos(num / den) * (180.0f / Mathf.PI));
 	}
 
-	public Transform mao, cotovelo, ombro; //o ponto final de mao é o inicial de cotovelo, o final de cotovelo é o inicial de ombro; ou seja, sao apenas 2 retas
-//	List<Vector2> tempo_anguloDeJunta;
+	public Transform mao, cotovelo, ombro;
 	Vector2 m_p, c_p, o_p, grafico;
 	float current_time_movement = 0;
 	bool t = false;
 
 	/**
-	 * Descrever aqui o que esse método realiza.
-	 */
-	void Start () {
-		//tempo_anguloDeJunta = new List<Vector2> ();
-	}
-
-	/**
-	 * Descrever aqui o que esse método realiza.
+		* Quando a tecla espaço é pressionada, este método é chamado.
 	 */
 	void Update () {
 		if (Input.GetKeyDown(KeyCode.Space)) {
@@ -52,20 +50,16 @@ public class GetMovementPoints : MonoBehaviour
 
 
 	/**
-	 * Descrever aqui o que esse método realiza.
+	 * Captura os dados do movimento realizado pelo usuário e capturado pelo kinect.
 	 */
-	void FixedUpdate () 
+	void FixedUpdate ()
 	{
-		if (t) 
+		if (t)
 		{
 			current_time_movement += Time.fixedDeltaTime;
 			m_p = new Vector2 (mao.position.x, mao.position.y);
 			c_p = new Vector2 (cotovelo.position.x, cotovelo.position.y);
 			o_p = new Vector2 (ombro.position.x, ombro.position.y);
-			//print (string.Format("LOCAL = mao X = \"{0}\" mao Y = \"{1}\"  ------ WORLD mao X = \"{2}\"  mao Y = \"{3}\"", mao.localPosition.x, mao.localPosition.y, mao.position.x, mao.position.y));
-			//print (string.Format("LOCAL = cotovelo X = \"{0}\" cotovelo Y = \"{1}\"  ------ WORLD cotovelo X = \"{2}\"  cotovelo Y = \"{3}\"", cotovelo.localPosition.x, cotovelo.localPosition.y, cotovelo.position.x, cotovelo.position.y));
-			//print (string.Format("LOCAL = ombro X = \"{0}\" ombro Y = \"{1}\"  ------ WORLD ombro X = \"{2}\"  ombro Y = \"{3}\"", ombro.localPosition.x, ombro.localPosition.y, ombro.position.x, ombro.position.y));
-
 
 			grafico = new Vector2 (current_time_movement, angle (m_p, c_p, c_p, o_p));
 
@@ -73,6 +67,5 @@ public class GetMovementPoints : MonoBehaviour
 			sb.Append(grafico.x).Append(" ").Append(grafico.y).Append("\n");
 			System.IO.File.AppendAllText("Assets/points", sb.ToString());
 		}
-		//tempo_anguloDeJunta.Add (grafico);
 	}
 }
