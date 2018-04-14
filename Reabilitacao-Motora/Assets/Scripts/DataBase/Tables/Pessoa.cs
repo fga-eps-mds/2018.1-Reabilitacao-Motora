@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using DataBaseTables;
 using DataBaseAttributes;
 using Mono.Data.Sqlite;
@@ -19,7 +20,23 @@ namespace pessoa
         string path;
 
         /**
-        * Cria a relação para pessoas, contendo um id gerado automaticamente pelo banco como chave primária.
+         * Classe com todos os atributos de uma pessoa.
+         */
+        public class Pessoas
+        {
+            public int idPessoa;
+            public string nomePessoa, sexo, dataNascimento;
+            public Pessoas (int id, string nome, string s, string d)
+            {
+                this.idPessoa = id;
+                this.nomePessoa = nome;
+                this.sexo = s;
+                this.dataNascimento = d;
+            }
+        }
+
+        /**
+         * Cria a relação para pessoas, contendo um id gerado automaticamente pelo banco como chave primária.
          */
         public Pessoa(string caminho)
         {
@@ -96,9 +113,9 @@ namespace pessoa
         }
 
         /**
-        * Função que lê dados já cadastrados anteriormente na relação de pessoas.
+        * Função que retorna dados já cadastrados anteriormente na relação de pessoas.
          */
-        public void Read()
+        public List<Pessoas> Read()
         {
             using (banco.conn = new SqliteConnection(path))
             {
@@ -107,6 +124,8 @@ namespace pessoa
                 banco.sqlQuery = "SELECT * " + "FROM PESSOA";
                 banco.cmd.CommandText = banco.sqlQuery;
                 IDataReader reader = banco.cmd.ExecuteReader();
+                List<Pessoas> p = new List<Pessoas>();
+
                 while (reader.Read())
                 {
                     int idPessoa = 0;
@@ -118,11 +137,8 @@ namespace pessoa
                     if (!reader.IsDBNull(1)) nomePessoa = reader.GetString(1);
                     if (!reader.IsDBNull(2)) sexo = reader.GetString(2);
                     if (!reader.IsDBNull(3)) dataNascimento = reader.GetString(3);
-
-                    Debug.Log (string.Format("\"{0}\" = ", tt.TABLES[tableId].colName[0]) + idPessoa +
-                        string.Format(" \"{0}\" = ", tt.TABLES[tableId].colName[1]) + nomePessoa +
-                        string.Format(" \"{0}\" = ", tt.TABLES[tableId].colName[2]) + sexo +
-                        string.Format(" \"{0}\" = ", tt.TABLES[tableId].colName[3]) + dataNascimento);
+                    Pessoas x = new Pessoas(idPessoa, nomePessoa, sexo, dataNascimento);
+                    p.Add(x);
                 }
                 reader.Close();
                 reader = null;
@@ -130,6 +146,8 @@ namespace pessoa
                 banco.cmd = null;
                 banco.conn.Close();
                 banco.conn = null;
+
+                return p;
             }
         }
 
