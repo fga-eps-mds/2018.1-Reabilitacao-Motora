@@ -5,7 +5,11 @@ using DataBaseAttributes;
 using Mono.Data.Sqlite;
 using System.Data;
 
-namespace pontosrotulopaciente {    
+namespace pontosrotulopaciente {  
+
+    /**
+    * Cria relação para cadastro dos pontosrotulopaciente a serem cadastrados pelo programa.
+     */  
     public class PontosRotuloPaciente
     {
         int tableId = 10;
@@ -13,6 +17,9 @@ namespace pontosrotulopaciente {
         TableNameColumn tt = new TableNameColumn ();
         string path;
 
+        /**
+        * Cria a relação para pontosrotulopaciente, contendo um id gerado automaticamente pelo banco como chave primária.
+         */
         public PontosRotuloPaciente (string caminho)
         {
             path = caminho;
@@ -29,6 +36,9 @@ namespace pontosrotulopaciente {
             }
         }
 
+        /**
+        * Função que insere dados na tabela de pontosrotulopaciente.
+         */
         public void Insert (int idMovimento,
             string estagioMovimentoPaciente,
             double tempoInicial,
@@ -58,6 +68,9 @@ namespace pontosrotulopaciente {
             }
         }
 
+        /**
+        * Função que atualiza dados já cadastrados anteriormente na relação de pontosrotulopaciente.
+         */
         public void Update (int id,
             int idMovimento,
             string estagioMovimentoPaciente,
@@ -84,6 +97,9 @@ namespace pontosrotulopaciente {
             }
         }
 
+        /**
+        * Função que lê dados já cadastrados anteriormente na relação de pontosrotulopaciente.
+         */
         public void Read ()
         {
             using (banco.conn = new SqliteConnection(path))
@@ -121,6 +137,10 @@ namespace pontosrotulopaciente {
                 banco.conn = null;
             }
         }
+
+        /**
+        * Função que deleta dados cadastrados anteriormente na relação de pontosrotulopaciente.
+         */
         public void DeleteValue (int id)
         {
             using (banco.conn = new SqliteConnection(path))
@@ -136,6 +156,9 @@ namespace pontosrotulopaciente {
             }
         }
 
+        /**
+        * Função que apaga a relação de pontosrotulopaciente inteira de uma vez.
+         */
         public void Drop ()
         {
             using (banco.conn = new SqliteConnection(path))

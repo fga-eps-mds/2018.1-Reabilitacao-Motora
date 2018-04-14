@@ -7,6 +7,10 @@ using System.Data;
 
 namespace pessoa 
 {
+
+    /**
+    * Cria relação para cadastro das pessoas a serem cadastrados pelo programa.
+     */
     public class Pessoa
     {
         int tableId = 0;
@@ -14,6 +18,9 @@ namespace pessoa
         TableNameColumn tt = new TableNameColumn ();
         string path;
 
+        /**
+        * Cria a relação para pessoas, contendo um id gerado automaticamente pelo banco como chave primária.
+         */
         public Pessoa (string caminho)
         {
             path = caminho;  
@@ -30,6 +37,9 @@ namespace pessoa
             }
         }
 
+        /**
+        * Função que insere dados na tabela de pessoas.
+         */
         public void Insert (
             string nomePessoa,
             string sexo,
@@ -58,6 +68,9 @@ namespace pessoa
             }
         }
 
+        /**
+        * Função que atualiza dados já cadastrados anteriormente na relação de pessoas.
+         */
         public void Update (int id,
             string nomePessoa,
             string sexo,
@@ -82,6 +95,9 @@ namespace pessoa
             }
         }
 
+        /**
+        * Função que lê dados já cadastrados anteriormente na relação de pessoas.
+         */
         public void Read ()
         {
             using (banco.conn = new SqliteConnection(path))
@@ -116,6 +132,10 @@ namespace pessoa
                 banco.conn = null;
             }
         }
+
+        /**
+        * Função que deleta dados cadastrados anteriormente na relação de pessoas.
+         */
         public void DeleteValue (int id)
         {
             using (banco.conn = new SqliteConnection(path))
@@ -131,6 +151,9 @@ namespace pessoa
             }
         }
 
+        /**
+        * Função que apaga a relação de pessoas inteira de uma vez.
+         */
         public void Drop ()
         {
             using (banco.conn = new SqliteConnection(path))
