@@ -5,16 +5,22 @@ using DataBaseAttributes;
 using Mono.Data.Sqlite;
 using System.Data;
 
-namespace fisioterapeuta   
+namespace fisioterapeuta
 {
+  /**
+   * Cria relação para cadastro dos fisioterapeutas a serem cadastrados pelo programa.
+   */
     public class Fisioterapeuta
     {
         int tableId = 2;
-        DataBase banco = new DataBase ();
-        TableNameColumn tt = new TableNameColumn ();
+        DataBase banco = new DataBase();
+        TableNameColumn tt = new TableNameColumn();
         string path;
 
-        public Fisioterapeuta (string caminho)
+        /**
+         * Cria a relação para fisioterapeuta, contendo um id gerado automaticamente pelo banco como chave primária.
+         */
+        public Fisioterapeuta(string caminho)
         {
             path = caminho;
             using (banco.conn = new SqliteConnection(path))
@@ -30,7 +36,10 @@ namespace fisioterapeuta
             }
         }
 
-        public void Insert (int idPessoa) 
+        /**
+         * Função que insere dados necessários para cadastro dos fisioterapeutas na relação fisioterapeuta.
+         */
+        public void Insert(int idPessoa)
         {
             using (banco.conn = new SqliteConnection(path))
             {
@@ -39,7 +48,7 @@ namespace fisioterapeuta
                 banco.sqlQuery = "insert into FISIOTERAPEUTA (";
 
                 int tableSize = tt.TABLES[tableId].Length;
-                string regiao = "null"; 
+                string regiao = "null";
                 string crefito = "null";
 
                 for (int i = 1; i < tableSize; ++i) {
@@ -47,8 +56,8 @@ namespace fisioterapeuta
                     banco.sqlQuery += (tt.TABLES[tableId].colName[i] + aux);
                 }
 
-                banco.sqlQuery += string.Format(" values (\"{0}\",\"{1}\",\"{2}\")", idPessoa, 
-                    regiao, 
+                banco.sqlQuery += string.Format(" values (\"{0}\",\"{1}\",\"{2}\")", idPessoa,
+                    regiao,
                     crefito);
 
                 banco.cmd.CommandText = banco.sqlQuery;
@@ -57,9 +66,12 @@ namespace fisioterapeuta
             }
         }
 
-        public void Insert (int idPessoa, 
-            string regiao, 
-            string crefito ) 
+        /**
+         * Função que insere dados necessários para cadastro dos pacientes do fisioterapeuta na relação fisioterapeuta.
+         */
+        public void Insert(int idPessoa,
+            string regiao,
+            string crefito )
         {
             using (banco.conn = new SqliteConnection(path))
             {
@@ -74,8 +86,8 @@ namespace fisioterapeuta
                     banco.sqlQuery += (tt.TABLES[tableId].colName[i] + aux);
                 }
 
-                banco.sqlQuery += string.Format(" values (\"{0}\",\"{1}\",\"{2}\")", idPessoa, 
-                    regiao, 
+                banco.sqlQuery += string.Format(" values (\"{0}\",\"{1}\",\"{2}\")", idPessoa,
+                    regiao,
                     crefito);
 
                 banco.cmd.CommandText = banco.sqlQuery;
@@ -84,10 +96,13 @@ namespace fisioterapeuta
             }
         }
 
-        public void Update (int id,
-            int idPessoa, 
-            string regiao, 
-            string crefito) 
+        /**
+         * Função que atualiza dados já cadastrados anteriormente na relação fisioterapeuta.
+         */
+        public void Update(int id,
+            int idPessoa,
+            string regiao,
+            string crefito)
         {
             using (banco.conn = new SqliteConnection(path))
             {
@@ -108,7 +123,10 @@ namespace fisioterapeuta
             }
         }
 
-        public void Read ()
+        /**
+         * Função que lê dados já cadastrados anteriormente na relação fisioterapeuta.
+         */
+        public void Read()
         {
             using (banco.conn = new SqliteConnection(path))
             {
@@ -142,9 +160,12 @@ namespace fisioterapeuta
                 banco.conn.Close();
                 banco.conn = null;
             }
-        } 
+        }
 
-        public void DeleteValue (int id)
+        /**
+         * Função que deleta dados cadastrados anteriormente na relação fisioterapeuta.
+         */
+        public void DeleteValue(int id)
         {
             using (banco.conn = new SqliteConnection(path))
             {
@@ -159,7 +180,10 @@ namespace fisioterapeuta
             }
         }
 
-        public void Drop ()
+        /**
+         * Função que apaga a relação fisioterapeuta inteira de uma vez.
+         */
+        public void Drop()
         {
             using (banco.conn = new SqliteConnection(path))
             {

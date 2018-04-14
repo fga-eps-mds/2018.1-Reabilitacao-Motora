@@ -5,16 +5,22 @@ using DataBaseAttributes;
 using Mono.Data.Sqlite;
 using System.Data;
 
-namespace exercicio 
+namespace exercicio
 {
+  /**
+   * Cria relação para cadastro dos exercicios a serem cadastrados pelo programa.
+   */
     public class Exercicio
     {
         int tableId = 7;
-        DataBase banco = new DataBase ();
-        TableNameColumn tt = new TableNameColumn ();
+        DataBase banco = new DataBase();
+        TableNameColumn tt = new TableNameColumn();
         string path;
 
-        public Exercicio (string caminho)
+        /**
+         * Cria a relação para exercicios, contendo um id gerado automaticamente pelo banco como chave primária.
+         */
+        public Exercicio(string caminho)
         {
             path = caminho;
             using (banco.conn = new SqliteConnection(path))
@@ -30,7 +36,10 @@ namespace exercicio
             }
         }
 
-        public void Insert (int idPaciente,
+        /**
+         * Função que insere dados na tabela de exercicios.
+         */
+        public void Insert(int idPaciente,
             int idMovimento,
             int idSessao,
             string descricaoExercicio,
@@ -61,7 +70,10 @@ namespace exercicio
             }
         }
 
-        public void Update (int id,
+        /**
+         * Função que atualiza dados já cadastrados anteriormente na relação de exercicios.
+         */
+        public void Update(int id,
             int idPaciente,
             int idMovimento,
             int idSessao,
@@ -89,7 +101,10 @@ namespace exercicio
             }
         }
 
-        public void Read ()
+        /**
+         * Função que lê dados já cadastrados anteriormente na relação de exercicios.
+         */
+        public void Read()
         {
             using (banco.conn = new SqliteConnection(path))
             {
@@ -130,7 +145,10 @@ namespace exercicio
             }
         }
 
-        public void DeleteValue (int id)
+        /**
+         * Função que deleta dados cadastrados anteriormente na relação de exercicios.
+         */
+        public void DeleteValue(int id)
         {
             using (banco.conn = new SqliteConnection(path))
             {
@@ -145,7 +163,10 @@ namespace exercicio
             }
         }
 
-        public void Drop ()
+        /**
+         * Função que apaga a relação de exercicios inteira de uma vez.
+         */
+        public void Drop()
         {
             using (banco.conn = new SqliteConnection(path))
             {
@@ -158,6 +179,6 @@ namespace exercicio
                 banco.cmd.ExecuteScalar();
                 banco.conn.Close();
             }
-        }              
+        }
     }
 }

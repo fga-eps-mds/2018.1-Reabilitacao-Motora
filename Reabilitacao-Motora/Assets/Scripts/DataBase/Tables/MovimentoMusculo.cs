@@ -5,16 +5,22 @@ using DataBaseAttributes;
 using Mono.Data.Sqlite;
 using System.Data;
 
-namespace movimentomusculo 
+namespace movimentomusculo
 {
+  /**
+   * Cria relação para cadastro de movimentos dos musculos a serem cadastrados pelo programa.
+   */
     public class MovimentoMusculo
     {
         int tableId = 8;
-        DataBase banco = new DataBase ();
-        TableNameColumn tt = new TableNameColumn ();
+        DataBase banco = new DataBase();
+        TableNameColumn tt = new TableNameColumn();
         string path;
 
-        public MovimentoMusculo (string caminho)
+        /**
+         * Cria a relação para cadastro dos movimento do musculo, contendo um id que vem da relação de outra tabela (musculo) como chave primária e estrangeira, assim como idMovimento, que vem da relação movimento.
+         */
+        public MovimentoMusculo(string caminho)
         {
             path = caminho;
             using (banco.conn = new SqliteConnection(path))
@@ -30,7 +36,10 @@ namespace movimentomusculo
             }
         }
 
-        public void Insert (int idMusculo,
+        /**
+         * Função que insere dados necessários para cadastro de movimentos dos musculos na relação MovimentoMusculo.
+         */
+        public void Insert(int idMusculo,
             int idMovimento)
         {
             using (banco.conn = new SqliteConnection(path))
@@ -55,7 +64,10 @@ namespace movimentomusculo
             }
         }
 
-        public void Update (int idMusculo, int idMovimento)
+        /**
+         * Função que atualiza dados já cadastrados anteriormente na relação MovimentoMusculo.
+         */
+        public void Update(int idMusculo, int idMovimento)
         {
             using (banco.conn = new SqliteConnection(path))
             {
@@ -75,7 +87,10 @@ namespace movimentomusculo
             }
         }
 
-        public void Read ()
+        /**
+         * Função que lê dados já cadastrados anteriormente na relação MovimentoMusculo.
+         */
+        public void Read()
         {
             using (banco.conn = new SqliteConnection(path))
             {
@@ -102,8 +117,12 @@ namespace movimentomusculo
                 banco.conn.Close();
                 banco.conn = null;
             }
-        }              
-        public void DeleteValue (int id1, int id2)
+        }
+
+        /**
+         * Função que deleta dados cadastrados anteriormente na relação MovimentoMusculo.
+         */
+        public void DeleteValue(int id1, int id2)
         {
             using (banco.conn = new SqliteConnection(path))
             {
@@ -118,7 +137,10 @@ namespace movimentomusculo
             }
         }
 
-        public void Drop ()
+        /**
+         * Função que apaga a relação MovimentoMusculo inteira de uma vez.
+         */
+        public void Drop()
         {
             using (banco.conn = new SqliteConnection(path))
             {

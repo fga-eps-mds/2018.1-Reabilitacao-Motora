@@ -5,8 +5,11 @@ using DataBaseAttributes;
 using Mono.Data.Sqlite;
 using System.Data;
 
-namespace movimento 
+namespace movimento
 {
+  /**
+   * Classe que cria relação para cadastro de movimentos a serem cadastrados pelo programa.
+   */
     public class Movimento
     {
         int tableId = 5;
@@ -14,7 +17,10 @@ namespace movimento
         TableNameColumn tt = new TableNameColumn ();
         string path;
 
-        public Movimento (string caminho)
+        /**
+         * Cria a relação para movimento, contendo um id gerado automaticamente pelo banco como chave primária.
+         */
+        public Movimento(string caminho)
         {
             path = caminho;
             using (banco.conn = new SqliteConnection(path))
@@ -30,7 +36,10 @@ namespace movimento
             }
         }
 
-        public void Insert (int idFisioterapeuta,
+        /**
+         * Função que insere dados necessários para cadastro de movimentos na relação movimento.
+         */
+        public void Insert(int idFisioterapeuta,
             string nomeMovimento,
             string descricaoFisioterapeuta,
             string pontosMovimento)
@@ -59,7 +68,10 @@ namespace movimento
             }
         }
 
-        public void Update (int id,
+        /**
+         * Função que atualiza dados já cadastrados anteriormente na relação movimento.
+         */
+        public void Update(int id,
             int idFisioterapeuta,
             string nomeMovimento,
             string descricaoFisioterapeuta,
@@ -85,7 +97,10 @@ namespace movimento
             }
         }
 
-        public void Read ()
+        /**
+         * Função que lê dados já cadastrados anteriormente na relação movimento.
+         */
+        public void Read()
         {
             using (banco.conn = new SqliteConnection(path))
             {
@@ -122,9 +137,12 @@ namespace movimento
                 banco.conn.Close();
                 banco.conn = null;
             }
-        }                  
+        }
 
-        public void DeleteValue (int id)
+        /**
+         * Função que deleta dados cadastrados anteriormente na relação movimento.
+         */
+        public void DeleteValue(int id)
         {
             using (banco.conn = new SqliteConnection(path))
             {
@@ -139,7 +157,10 @@ namespace movimento
             }
         }
 
-        public void Drop ()
+        /**
+         * Função que apaga a relação movimento inteira de uma vez.
+         */
+        public void Drop()
         {
             using (banco.conn = new SqliteConnection(path))
             {

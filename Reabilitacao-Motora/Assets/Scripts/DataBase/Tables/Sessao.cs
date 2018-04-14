@@ -5,7 +5,7 @@ using DataBaseAttributes;
 using Mono.Data.Sqlite;
 using System.Data;
 
-namespace sessao 
+namespace sessao
 {
   /**
   * Cria relação para cadastro dos sessão a serem cadastrados pelo programa.
@@ -13,14 +13,14 @@ namespace sessao
     public class Sessao
     {
         int tableId = 6;
-        DataBase banco = new DataBase ();
-        TableNameColumn tt = new TableNameColumn ();
+        DataBase banco = new DataBase();
+        TableNameColumn tt = new TableNameColumn();
         string path;
 
         /**
         * Cria a relação para sessão, contendo um id gerado automaticamente pelo banco como chave primária.
          */
-        public Sessao (string caminho)
+        public Sessao(string caminho)
         {
             path = caminho;
             using (banco.conn = new SqliteConnection(path))
@@ -39,7 +39,7 @@ namespace sessao
         /**
         * Função que insere dados na tabela de sessão.
          */
-        public void Insert (int idFisioterapeuta,
+        public void Insert(int idFisioterapeuta,
             int idPaciente,
             string dataSessao,
             string observacaoSessao)
@@ -71,7 +71,7 @@ namespace sessao
         /**
         * Função que atualiza dados já cadastrados anteriormente na relação de sessão.
          */
-        public void Update (int id,
+        public void Update(int id,
             int idFisioterapeuta,
             int idPaciente,
             string dataSessao,
@@ -100,7 +100,7 @@ namespace sessao
         /**
         * Função que lê dados já cadastrados anteriormente na relação de sessão.
          */
-        public void Read ()
+        public void Read()
         {
             using (banco.conn = new SqliteConnection(path))
             {
@@ -136,12 +136,12 @@ namespace sessao
                 banco.conn.Close();
                 banco.conn = null;
             }
-        } 
+        }
 
         /**
         * Função que deleta dados cadastrados anteriormente na relação de sessão.
-         */                         
-        public void DeleteValue (int id)
+         */
+        public void DeleteValue(int id)
         {
             using (banco.conn = new SqliteConnection(path))
             {
@@ -159,7 +159,7 @@ namespace sessao
         /**
         * Função que apaga a relação de sessão inteira de uma vez.
          */
-        public void Drop ()
+        public void Drop()
         {
             using (banco.conn = new SqliteConnection(path))
             {
@@ -167,7 +167,7 @@ namespace sessao
                 banco.cmd = banco.conn.CreateCommand();
 
                 banco.sqlQuery = string.Format("DROP TABLE IF EXISTS \"{0}\"", tt.TABLES[tableId].tableName);
-                
+
                 banco.cmd.CommandText = banco.sqlQuery;
                 banco.cmd.ExecuteScalar();
                 banco.conn.Close();

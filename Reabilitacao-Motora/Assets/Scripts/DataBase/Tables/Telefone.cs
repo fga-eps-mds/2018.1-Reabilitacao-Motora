@@ -5,22 +5,22 @@ using DataBaseAttributes;
 using Mono.Data.Sqlite;
 using System.Data;
 
-namespace telefone 
+namespace telefone
 {
     /**
-    * Cria relação para cadastro dos telefone a serem cadastrados pelo programa.
+     * Cria relação para cadastro dos telefone a serem cadastrados pelo programa.
      */
     public class Telefone
     {
         int tableId = 1;
-        DataBase banco = new DataBase ();
-        TableNameColumn tt = new TableNameColumn ();
+        DataBase banco = new DataBase();
+        TableNameColumn tt = new TableNameColumn();
         string path;
 
         /**
-        * Cria a relação para telefone, sendo a chave primária composta pelo telefone e a chave estrangeira advinda de Pessoa.
+         * Cria a relação para telefone, sendo a chave primária composta pelo telefone e a chave estrangeira advinda de Pessoa.
          */
-        public Telefone (string caminho)
+        public Telefone(string caminho)
         {
             path = caminho;
             using (banco.conn = new SqliteConnection(path))
@@ -37,9 +37,9 @@ namespace telefone
         }
 
         /**
-        * Função que insere dados na tabela de telefone.
-         */        
-        public void Insert (int idPessoa,
+         * Função que insere dados na tabela de telefone.
+         */
+        public void Insert(int idPessoa,
             string telefone)
         {
             using (banco.conn = new SqliteConnection(path))
@@ -65,9 +65,9 @@ namespace telefone
         }
 
         /**
-        * Função que atualiza dados já cadastrados anteriormente na relação de telefone.
+         * Função que atualiza dados já cadastrados anteriormente na relação de telefone.
          */
-        public void Update (int idPessoa, string telefone)
+        public void Update(int idPessoa, string telefone)
         {
             using (banco.conn = new SqliteConnection(path))
             {
@@ -82,7 +82,7 @@ namespace telefone
                 banco.sqlQuery += string.Format("WHERE \"{0}\"=\"{1}\" AND \"{2}\"=\"{3}\"", tt.TABLES[tableId].colName[0], idPessoa, tt.TABLES[tableId].colName[1], telefone);
 
                 //update TELEFONE set idPessoa = 5, telefone = '+55 44 0000 1234' WHERE (idPessoa = 5, telefone = '+55 44 9998 1717'
-                
+
                 banco.cmd.CommandText = banco.sqlQuery;
                 banco.cmd.ExecuteScalar();
                 banco.conn.Close();
@@ -90,9 +90,9 @@ namespace telefone
         }
 
         /**
-        * Função que lê dados já cadastrados anteriormente na relação de telefone.
+         * Função que lê dados já cadastrados anteriormente na relação de telefone.
          */
-        public void Read ()
+        public void Read()
         {
             using (banco.conn = new SqliteConnection(path))
             {
@@ -119,12 +119,12 @@ namespace telefone
                 banco.conn.Close();
                 banco.conn = null;
             }
-        } 
+        }
 
         /**
-        * Função que deleta dados cadastrados anteriormente na relação de telefone.
-         */         
-        public void DeleteValue (int id1, string id2)
+         * Função que deleta dados cadastrados anteriormente na relação de telefone.
+         */
+        public void DeleteValue(int id1, string id2)
         {
             using (banco.conn = new SqliteConnection(path))
             {
@@ -140,9 +140,9 @@ namespace telefone
         }
 
         /**
-        * Função que apaga a relação de telefone inteira de uma vez.
-         */        
-        public void Drop ()
+         * Função que apaga a relação de telefone inteira de uma vez.
+         */
+        public void Drop()
         {
             using (banco.conn = new SqliteConnection(path))
             {
@@ -157,5 +157,4 @@ namespace telefone
             }
         }
     }
-
 }
