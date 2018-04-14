@@ -5,16 +5,22 @@ using DataBaseAttributes;
 using Mono.Data.Sqlite;
 using System.Data;
 
-namespace paciente 
+namespace paciente
 {
+  /**
+   * Classe que cria relação para cadastro de Pacientes a serem registrados pelo sistema.
+   */
     public class Paciente
     {
         int tableId = 3;
-        DataBase banco = new DataBase ();
-        TableNameColumn tt = new TableNameColumn ();
+        DataBase banco = new DataBase();
+        TableNameColumn tt = new TableNameColumn();
         string path;
 
-        public Paciente (string caminho)
+        /**
+         * Cria a relação para paciente, contendo um id gerado automaticamente pelo banco como chave primária.
+         */
+        public Paciente(string caminho)
         {
             path = caminho;
             using (banco.conn = new SqliteConnection(path))
@@ -30,7 +36,10 @@ namespace paciente
             }
         }
 
-        public void Insert (int idPessoa,
+        /**
+         * Função que insere dados necessários para cadastro de pacientes na relação musculo.
+         */
+        public void Insert(int idPessoa,
             string observacoes)
         {
             using (banco.conn = new SqliteConnection(path))
@@ -55,7 +64,10 @@ namespace paciente
             }
         }
 
-        public void Update (int id,
+        /**
+         * Função que atualiza dados já cadastrados anteriormente na relação paciente.
+         */
+        public void Update(int id,
             int idPessoa,
             string observacoes)
         {
@@ -77,7 +89,10 @@ namespace paciente
             }
         }
 
-        public void Read ()
+        /**
+         * Função que lê dados já cadastrados anteriormente na relação paciente.
+         */
+        public void Read()
         {
             using (banco.conn = new SqliteConnection(path))
             {
@@ -107,8 +122,12 @@ namespace paciente
                 banco.conn.Close();
                 banco.conn = null;
             }
-        }          
-        public void DeleteValue (int id)
+        }
+
+        /**
+         * Função que deleta dados cadastrados anteriormente na relação paciente.
+         */
+        public void DeleteValue(int id)
         {
             using (banco.conn = new SqliteConnection(path))
             {
@@ -123,7 +142,10 @@ namespace paciente
             }
         }
 
-        public void Drop ()
+        /**
+         * Função que apaga a relação paciente inteira de uma vez.
+         */
+        public void Drop()
         {
             using (banco.conn = new SqliteConnection(path))
             {
@@ -138,5 +160,4 @@ namespace paciente
             }
         }
     }
-
 }

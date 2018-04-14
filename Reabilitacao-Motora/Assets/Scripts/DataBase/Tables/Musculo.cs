@@ -5,16 +5,22 @@ using DataBaseAttributes;
 using Mono.Data.Sqlite;
 using System.Data;
 
-namespace musculo 
+namespace musculo
 {
+  /**
+   * Classe que cria relação para cadastro de musculos a serem cadastrados pelo programa.
+   */
     public class Musculo
     {
         int tableId = 4;
-        DataBase banco = new DataBase ();
-        TableNameColumn tt = new TableNameColumn ();
+        DataBase banco = new DataBase();
+        TableNameColumn tt = new TableNameColumn();
         string path;
 
-        public Musculo (string caminho)
+        /**
+         * Cria a relação para musculo, contendo um id gerado automaticamente pelo banco como chave primária.
+         */
+        public Musculo(string caminho)
         {
             path = caminho;
             using (banco.conn = new SqliteConnection(path))
@@ -29,7 +35,10 @@ namespace musculo
             }
         }
 
-        public void Insert (string nomeMusculo)
+        /**
+         * Função que insere dados necessários para cadastro de musculos na relação musculo.
+         */
+        public void Insert(string nomeMusculo)
         {
             using (banco.conn = new SqliteConnection(path))
             {
@@ -52,7 +61,10 @@ namespace musculo
             }
         }
 
-        public void Update (int id, 
+        /**
+         * Função que atualiza dados já cadastrados anteriormente na relação musculo.
+         */
+        public void Update(int id,
             string nomeMusculo)
         {
             using (banco.conn = new SqliteConnection(path))
@@ -72,7 +84,10 @@ namespace musculo
             }
         }
 
-        public void Read ()
+        /**
+         * Função que lê dados já cadastrados anteriormente na relação musculo.
+         */
+        public void Read()
         {
             using (banco.conn = new SqliteConnection(path))
             {
@@ -100,8 +115,12 @@ namespace musculo
                 banco.conn.Close();
                 banco.conn = null;
             }
-        }          
-        public void DeleteValue (int id)
+        }
+
+        /**
+         * Função que deleta dados cadastrados anteriormente na relação musculo.
+         */
+        public void DeleteValue(int id)
         {
             using (banco.conn = new SqliteConnection(path))
             {
@@ -116,7 +135,10 @@ namespace musculo
             }
         }
 
-        public void Drop ()
+        /**
+         * Função que apaga a relação musculo inteira de uma vez.
+         */
+        public void Drop()
         {
             using (banco.conn = new SqliteConnection(path))
             {
@@ -124,12 +146,11 @@ namespace musculo
                 banco.cmd = banco.conn.CreateCommand();
 
                 banco.sqlQuery = string.Format("DROP TABLE IF EXISTS \"{0}\"", tt.TABLES[tableId].tableName);
-                
+
                 banco.cmd.CommandText = banco.sqlQuery;
                 banco.cmd.ExecuteScalar();
                 banco.conn.Close();
             }
         }
     }
-
 }

@@ -14,14 +14,14 @@ namespace pontosrotulofisioterapeuta
     public class PontosRotuloFisioterapeuta
     {
         int tableId = 9;
-        DataBase banco = new DataBase ();
-        TableNameColumn tt = new TableNameColumn ();
+        DataBase banco = new DataBase();
+        TableNameColumn tt = new TableNameColumn();
         string path;
 
         /**
         * Cria a relação para pontosrotulofisioterapeuta, contendo um id gerado automaticamente pelo banco como chave primária.
          */
-        public PontosRotuloFisioterapeuta (string caminho)
+        public PontosRotuloFisioterapeuta(string caminho)
         {
             path = caminho;
             using (banco.conn = new SqliteConnection(path))
@@ -40,7 +40,7 @@ namespace pontosrotulofisioterapeuta
         /**
         * Função que insere dados na tabela de pontosrotulofisioterapeuta.
          */
-        public void Insert (int idMovimento,
+        public void Insert(int idMovimento,
             string estagioMovimentoFisio,
             double tempo,
             double anguloDeJunta)
@@ -72,7 +72,7 @@ namespace pontosrotulofisioterapeuta
         /**
         * Função que atualiza dados já cadastrados anteriormente na relação de pontosrotulofisioterapeuta.
          */
-        public void Update (int id,
+        public void Update(int id,
             int idMovimento,
             string estagioMovimentoFisio,
             double tempo,
@@ -101,7 +101,7 @@ namespace pontosrotulofisioterapeuta
         /**
         * Função que lê dados já cadastrados anteriormente na relação de pontosrotulofisioterapeuta.
          */
-        public void Read ()
+        public void Read()
         {
             using (banco.conn = new SqliteConnection(path))
             {
@@ -142,7 +142,7 @@ namespace pontosrotulofisioterapeuta
         /**
         * Função que deleta dados cadastrados anteriormente na relação de pontosrotulofisioterapeuta.
          */
-        public void DeleteValue (int id)
+        public void DeleteValue(int id)
         {
             using (banco.conn = new SqliteConnection(path))
             {
@@ -160,7 +160,7 @@ namespace pontosrotulofisioterapeuta
         /**
         * Função que apaga a relação de pontosrotulofisioterapeuta inteira de uma vez.
          */
-        public void Drop ()
+        public void Drop()
         {
             using (banco.conn = new SqliteConnection(path))
             {
@@ -175,5 +175,4 @@ namespace pontosrotulofisioterapeuta
             }
         }
     }
-
 }

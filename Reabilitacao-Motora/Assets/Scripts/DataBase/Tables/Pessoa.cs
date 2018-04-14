@@ -5,7 +5,7 @@ using DataBaseAttributes;
 using Mono.Data.Sqlite;
 using System.Data;
 
-namespace pessoa 
+namespace pessoa
 {
 
     /**
@@ -14,16 +14,16 @@ namespace pessoa
     public class Pessoa
     {
         int tableId = 0;
-        DataBase banco = new DataBase ();
-        TableNameColumn tt = new TableNameColumn ();
+        DataBase banco = new DataBase();
+        TableNameColumn tt = new TableNameColumn();
         string path;
 
         /**
         * Cria a relação para pessoas, contendo um id gerado automaticamente pelo banco como chave primária.
          */
-        public Pessoa (string caminho)
+        public Pessoa(string caminho)
         {
-            path = caminho;  
+            path = caminho;
             using (banco.conn = new SqliteConnection(path))
             {
                 banco.conn.Open();
@@ -40,7 +40,7 @@ namespace pessoa
         /**
         * Função que insere dados na tabela de pessoas.
          */
-        public void Insert (
+        public void Insert(
             string nomePessoa,
             string sexo,
             string dataNascimento)
@@ -71,7 +71,7 @@ namespace pessoa
         /**
         * Função que atualiza dados já cadastrados anteriormente na relação de pessoas.
          */
-        public void Update (int id,
+        public void Update(int id,
             string nomePessoa,
             string sexo,
             string dataNascimento)
@@ -98,7 +98,7 @@ namespace pessoa
         /**
         * Função que lê dados já cadastrados anteriormente na relação de pessoas.
          */
-        public void Read ()
+        public void Read()
         {
             using (banco.conn = new SqliteConnection(path))
             {
@@ -136,7 +136,7 @@ namespace pessoa
         /**
         * Função que deleta dados cadastrados anteriormente na relação de pessoas.
          */
-        public void DeleteValue (int id)
+        public void DeleteValue(int id)
         {
             using (banco.conn = new SqliteConnection(path))
             {
@@ -154,7 +154,7 @@ namespace pessoa
         /**
         * Função que apaga a relação de pessoas inteira de uma vez.
          */
-        public void Drop ()
+        public void Drop()
         {
             using (banco.conn = new SqliteConnection(path))
             {
@@ -162,12 +162,11 @@ namespace pessoa
                 banco.cmd = banco.conn.CreateCommand();
 
                 banco.sqlQuery = string.Format("DROP TABLE IF EXISTS \"{0}\"", tt.TABLES[tableId].tableName);
-                
+
                 banco.cmd.CommandText = banco.sqlQuery;
                 banco.cmd.ExecuteScalar();
                 banco.conn.Close();
             }
         }
     }
-
 }

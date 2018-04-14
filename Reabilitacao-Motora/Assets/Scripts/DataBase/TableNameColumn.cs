@@ -2,6 +2,9 @@ using System;
 using UnityEngine;
 
 namespace DataBaseTables {
+    /**
+    * Essa classe nomeia as colunas da relação
+    */
     public class TableNameColumn
     {
         [System.Serializable]
@@ -16,7 +19,10 @@ namespace DataBaseTables {
 
         public MultiDimensionalString[] TABLES = new MultiDimensionalString[11];
 
-        public TableNameColumn () 
+        /**
+        * Cada coluna da relação recebe um respectivo nome.
+        */
+        public TableNameColumn()
         {
             TABLES[0] = new MultiDimensionalString();
             TABLES[0].colName = new string[4];
