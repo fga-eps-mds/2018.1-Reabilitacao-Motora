@@ -3,14 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /**
- * Centraliza o rótulo.
+ * Descrever aqui o que essa classe realiza.
  */
 public class CenterText : MonoBehaviour
 	{
 	public Transform line1, line2;
 
 	/**
-	 * Coloca o texto do rótulo no centro de duas barras.
+	 * Descrever aqui o que esse método realiza.
+	 */
+	void Start()
+	{
+
+	}
+
+	/**
+	 * Descrever aqui o que esse método realiza.
 	 */
 	void Update()
 	{

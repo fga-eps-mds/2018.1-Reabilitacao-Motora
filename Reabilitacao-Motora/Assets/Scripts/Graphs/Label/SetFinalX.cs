@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /**
- * Dita a posição final no eixo x da barra de rótulo.
+ * Descrever aqui o que essa classe realiza.
  */
 public class SetFinalX : MonoBehaviour
 {
 	public Label prefab;
 
 	/**
-	 * Cria a barra vertical para plotagem no gráfico e rotulação.
+	 * Descrever aqui o que esse método realiza.
 	 */
 	void Update()
 	{

@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /**
-* Pega pontos do movimento para o gráfico estático.
+* Descrever aqui o que essa classe realiza.
 */
 public class GenerateLineChartRealTime : MonoBehaviour
 {
 	public Transform x_axis;
 	public Transform pointPrefab;
 	public int resolution = 750;
-	public Transform mao, cotovelo, ombro;
+	public Transform mao, cotovelo, ombro; //o ponto final de mao é o inicial de cotovelo, o final de cotovelo é o inicial de ombro; ou seja, sao apenas 2 retas
 	Vector2 m_p, c_p, o_p, grafico;
 	float current_time_movement = 0;
 	bool t = false;
@@ -18,19 +18,16 @@ public class GenerateLineChartRealTime : MonoBehaviour
 	LineRenderer lineRenderer;
 	public Color c1 = Color.black;
 	public Color c2 = Color.red;
-	public List <Vector3> points2;
+	List <Vector3> points2;
 
-	/**
-	* Calcula a hipotenusa.
-	*/
+	public Transform mainCamera, xEnd;
+	private int mdelta = 4;
+
 	public static float hypot(float a, float b)
 	{
 		return Mathf.Sqrt(Mathf.Pow(a, 2) + Mathf.Pow(b, 2));
 	}
 
-	/**
-	* Calcula o ângulo entre mão, ombro e cotovelo.
-	*/
 	float angle(Vector2 P, Vector2 Q, Vector2 R, Vector2 S)
 	{
 		float ux = P.x - Q.x;
@@ -45,9 +42,6 @@ public class GenerateLineChartRealTime : MonoBehaviour
 		return (Mathf.Acos(num / den) * (180.0f / Mathf.PI));
 	}
 
-	/**
-		* Quando a tecla espaço é pressionada, este método é chamado.
-	 */
 	void Update () {
 		if (Input.GetKeyDown(KeyCode.Space)) {
 			t = !t;
@@ -55,11 +49,8 @@ public class GenerateLineChartRealTime : MonoBehaviour
 	}
 
 
-	/**
-	 * Captura os dados do movimento realizado pelo usuário e capturado pelo kinect.
-	 */
 	void FixedUpdate () {
-		if (t)
+		if (t) 
 		{
 			current_time_movement += Time.fixedDeltaTime;
 			m_p = new Vector2 (mao.position.x, mao.position.y);
@@ -68,17 +59,22 @@ public class GenerateLineChartRealTime : MonoBehaviour
 
 			grafico = new Vector2 (current_time_movement, angle (m_p, c_p, c_p, o_p));
 
-			if (i > 750) {
+			if (i >= 750) {
 				x_axis.localScale = new Vector3 (x_axis.localScale.x, x_axis.localScale.y + 0.02f, x_axis.localScale.z);
 				x_axis.localPosition = new Vector3 (x_axis.localScale.y/2f, x_axis.localPosition.y, x_axis.localPosition.z);
 				lineRenderer.positionCount++;
 				resolution++;
+				Vector3 pos = Camera.main.WorldToScreenPoint(xEnd.transform.position);
+
+				if (pos.x >= Screen.width - mdelta) {
+					mainCamera.position = new Vector3 (mainCamera.position.x + 6f, mainCamera.position.y, mainCamera.position.z);
+				}
 			}
 
 	        float divScale = (70 * resolution)/750f;
 			float step = 2f / divScale;
 			Vector3 scale = Vector3.one * step;
-			Vector3 position = Vector3.zero;
+			Vector3 position = new Vector3 (0f,0f,12);
 			Transform point = Instantiate(pointPrefab);
 			position.x = (grafico.x) + 0.05f;
 			position.y = (grafico.y/24);
@@ -94,18 +90,19 @@ public class GenerateLineChartRealTime : MonoBehaviour
 
 
 	/**
-	* Carrega materials e prefabs para plotagem do gráfico.
+	* Descrever aqui o que esse método realiza.
 	*/
 	void Awake()
-	{
+	{	
 		points2 = new List<Vector3>();
 		t = new bool();
 		t = false;
 		lineRenderer = gameObject.AddComponent<LineRenderer>();
 		lineRenderer.material = new Material(Shader.Find("Particles/Multiply (Double)"));
-		lineRenderer.widthMultiplier = 0.2f;
-		lineRenderer.positionCount = 750;
+		lineRenderer.widthMultiplier = 0.4f;
+		lineRenderer.positionCount = 5000;
 
+	// A simple 2 color gradient with a fixed alpha of 1.0f.
 		float alpha = 1.0f;
 		Gradient gradient = new Gradient();
 		gradient.SetKeys(
@@ -114,4 +111,8 @@ public class GenerateLineChartRealTime : MonoBehaviour
 			);
 		lineRenderer.colorGradient = gradient;
 	}
+
+	/**
+	* Descrever aqui o que esse método realiza.
+	*/
 }
