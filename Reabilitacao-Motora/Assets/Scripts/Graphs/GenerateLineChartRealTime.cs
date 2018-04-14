@@ -18,7 +18,10 @@ public class GenerateLineChartRealTime : MonoBehaviour
 	LineRenderer lineRenderer;
 	public Color c1 = Color.black;
 	public Color c2 = Color.red;
-	public List <Vector3> points2;
+	List <Vector3> points2;
+
+	public Transform mainCamera, xEnd;
+	private int mdelta = 4;
 
 	public static float hypot(float a, float b)
 	{
@@ -56,17 +59,22 @@ public class GenerateLineChartRealTime : MonoBehaviour
 
 			grafico = new Vector2 (current_time_movement, angle (m_p, c_p, c_p, o_p));
 
-			if (i > 750) {
+			if (i >= 750) {
 				x_axis.localScale = new Vector3 (x_axis.localScale.x, x_axis.localScale.y + 0.02f, x_axis.localScale.z);
 				x_axis.localPosition = new Vector3 (x_axis.localScale.y/2f, x_axis.localPosition.y, x_axis.localPosition.z);
 				lineRenderer.positionCount++;
 				resolution++;
+				Vector3 pos = Camera.main.WorldToScreenPoint(xEnd.transform.position);
+
+				if (pos.x >= Screen.width - mdelta) {
+					mainCamera.position = new Vector3 (mainCamera.position.x + 6f, mainCamera.position.y, mainCamera.position.z);
+				}
 			}
 
 	        float divScale = (70 * resolution)/750f;
 			float step = 2f / divScale;
 			Vector3 scale = Vector3.one * step;
-			Vector3 position = Vector3.zero;
+			Vector3 position = new Vector3 (0f,0f,12);
 			Transform point = Instantiate(pointPrefab);
 			position.x = (grafico.x) + 0.05f;
 			position.y = (grafico.y/24);
@@ -91,8 +99,8 @@ public class GenerateLineChartRealTime : MonoBehaviour
 		t = false;
 		lineRenderer = gameObject.AddComponent<LineRenderer>();
 		lineRenderer.material = new Material(Shader.Find("Particles/Multiply (Double)"));
-		lineRenderer.widthMultiplier = 0.2f;
-		lineRenderer.positionCount = 750;
+		lineRenderer.widthMultiplier = 0.4f;
+		lineRenderer.positionCount = 5000;
 
 	// A simple 2 color gradient with a fixed alpha of 1.0f.
 		float alpha = 1.0f;

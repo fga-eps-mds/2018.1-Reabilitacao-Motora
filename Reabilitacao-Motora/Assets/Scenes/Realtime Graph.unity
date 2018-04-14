@@ -210,54 +210,29 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 114465755511827398, guid: 184deb3dde3eaaf44a893367924f55a9,
+    - target: {fileID: 114713327204589952, guid: 184deb3dde3eaaf44a893367924f55a9,
         type: 2}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114874109260913476, guid: 184deb3dde3eaaf44a893367924f55a9,
+      propertyPath: mao
+      value: 
+      objectReference: {fileID: 1565764616}
+    - target: {fileID: 114713327204589952, guid: 184deb3dde3eaaf44a893367924f55a9,
         type: 2}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4978420556809028, guid: 184deb3dde3eaaf44a893367924f55a9, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 16
-      objectReference: {fileID: 0}
-    - target: {fileID: 4978420556809028, guid: 184deb3dde3eaaf44a893367924f55a9, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 8
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 114465755511827398, guid: 184deb3dde3eaaf44a893367924f55a9, type: 2}
+      propertyPath: cotovelo
+      value: 
+      objectReference: {fileID: 620342130}
+    - target: {fileID: 114713327204589952, guid: 184deb3dde3eaaf44a893367924f55a9,
+        type: 2}
+      propertyPath: ombro
+      value: 
+      objectReference: {fileID: 1578784869}
+    - target: {fileID: 114713327204589952, guid: 184deb3dde3eaaf44a893367924f55a9,
+        type: 2}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 1857454617}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 184deb3dde3eaaf44a893367924f55a9, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &280847597 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1628030909591862, guid: 184deb3dde3eaaf44a893367924f55a9,
-    type: 2}
-  m_PrefabInternal: {fileID: 171050573}
---- !u!114 &280847601
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 280847597}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6acad5343919bf24f8e376117e2a4035, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  x_axis: {fileID: 2040425430}
-  pointPrefab: {fileID: 4656512534540884, guid: a4f789d83ab98b945b53862a4ed28fb1,
-    type: 2}
-  resolution: 750
-  mao: {fileID: 1565764616}
-  cotovelo: {fileID: 620342130}
-  ombro: {fileID: 1578784869}
-  c1: {r: 0, g: 0, b: 0, a: 1}
-  c2: {r: 1, g: 0, b: 0, a: 1}
-  points2: []
 --- !u!1 &297421263
 GameObject:
   m_ObjectHideFlags: 0
@@ -1393,11 +1368,6 @@ MonoBehaviour:
   mao: {fileID: 1565764616}
   cotovelo: {fileID: 620342130}
   ombro: {fileID: 1578784869}
---- !u!4 &2040425430 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4978420556809028, guid: 184deb3dde3eaaf44a893367924f55a9,
-    type: 2}
-  m_PrefabInternal: {fileID: 171050573}
 --- !u!1 &2131226005
 GameObject:
   m_ObjectHideFlags: 0
