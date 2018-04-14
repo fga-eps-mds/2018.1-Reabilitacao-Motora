@@ -7,6 +7,9 @@ using System.Data;
 
 namespace sessao 
 {
+  /**
+  * Cria relação para cadastro dos sessão a serem cadastrados pelo programa.
+   */
     public class Sessao
     {
         int tableId = 6;
@@ -14,6 +17,9 @@ namespace sessao
         TableNameColumn tt = new TableNameColumn ();
         string path;
 
+        /**
+        * Cria a relação para sessão, contendo um id gerado automaticamente pelo banco como chave primária.
+         */
         public Sessao (string caminho)
         {
             path = caminho;
@@ -30,6 +36,9 @@ namespace sessao
             }
         }
 
+        /**
+        * Função que insere dados na tabela de sessão.
+         */
         public void Insert (int idFisioterapeuta,
             int idPaciente,
             string dataSessao,
@@ -59,6 +68,9 @@ namespace sessao
             }
         }
 
+        /**
+        * Função que atualiza dados já cadastrados anteriormente na relação de sessão.
+         */
         public void Update (int id,
             int idFisioterapeuta,
             int idPaciente,
@@ -85,6 +97,9 @@ namespace sessao
             }
         }
 
+        /**
+        * Função que lê dados já cadastrados anteriormente na relação de sessão.
+         */
         public void Read ()
         {
             using (banco.conn = new SqliteConnection(path))
@@ -121,7 +136,11 @@ namespace sessao
                 banco.conn.Close();
                 banco.conn = null;
             }
-        }                  
+        } 
+
+        /**
+        * Função que deleta dados cadastrados anteriormente na relação de sessão.
+         */                         
         public void DeleteValue (int id)
         {
             using (banco.conn = new SqliteConnection(path))
@@ -137,6 +156,9 @@ namespace sessao
             }
         }
 
+        /**
+        * Função que apaga a relação de sessão inteira de uma vez.
+         */
         public void Drop ()
         {
             using (banco.conn = new SqliteConnection(path))

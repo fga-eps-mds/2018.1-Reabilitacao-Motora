@@ -7,6 +7,9 @@ using System.Data;
 
 namespace telefone 
 {
+    /**
+    * Cria relação para cadastro dos telefone a serem cadastrados pelo programa.
+     */
     public class Telefone
     {
         int tableId = 1;
@@ -14,6 +17,9 @@ namespace telefone
         TableNameColumn tt = new TableNameColumn ();
         string path;
 
+        /**
+        * Cria a relação para telefone, sendo a chave primária composta pelo telefone e a chave estrangeira advinda de Pessoa.
+         */
         public Telefone (string caminho)
         {
             path = caminho;
@@ -30,6 +36,9 @@ namespace telefone
             }
         }
 
+        /**
+        * Função que insere dados na tabela de telefone.
+         */        
         public void Insert (int idPessoa,
             string telefone)
         {
@@ -55,6 +64,9 @@ namespace telefone
             }
         }
 
+        /**
+        * Função que atualiza dados já cadastrados anteriormente na relação de telefone.
+         */
         public void Update (int idPessoa, string telefone)
         {
             using (banco.conn = new SqliteConnection(path))
@@ -77,6 +89,9 @@ namespace telefone
             }
         }
 
+        /**
+        * Função que lê dados já cadastrados anteriormente na relação de telefone.
+         */
         public void Read ()
         {
             using (banco.conn = new SqliteConnection(path))
@@ -104,7 +119,11 @@ namespace telefone
                 banco.conn.Close();
                 banco.conn = null;
             }
-        }  
+        } 
+
+        /**
+        * Função que deleta dados cadastrados anteriormente na relação de telefone.
+         */         
         public void DeleteValue (int id1, string id2)
         {
             using (banco.conn = new SqliteConnection(path))
@@ -120,6 +139,9 @@ namespace telefone
             }
         }
 
+        /**
+        * Função que apaga a relação de telefone inteira de uma vez.
+         */        
         public void Drop ()
         {
             using (banco.conn = new SqliteConnection(path))
