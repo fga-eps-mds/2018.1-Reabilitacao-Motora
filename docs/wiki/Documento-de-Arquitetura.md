@@ -21,6 +21,7 @@ Data|Versão|Descrição|Autor
 12/04|1.9.3|Revisão e Pequenas Alterações| João Lucas
 12/04|1.10.0|Modificação do subitem 6.1| João Lucas
 12/04|1.10.1|Revisão do Documento| João Lucas
+14/04|1.11.0| Adição de Diagrama Geral | João Lucas
 
 # Sumário
 ----------------
@@ -42,6 +43,8 @@ Data|Versão|Descrição|Autor
     * 5.1.2 [Pacotes](#5_1_2)
  6. [Visão de Dados](#6)
     * 6.1 [MER](#6_1)
+    * 6.1.1 [Entidades](#6_1_1)
+    * 6.1.2 [Relacionamentos](#6_1_2)
     * 6.2 [DER](#6_2)
     * 6.3 [Diagrama Lógico](#6_3)
  7. [Tamanho e Desempenho](#7)
@@ -69,6 +72,9 @@ Abreviação|Significado
 |**MMO**| Massive Multiplayer Online Game - Jogo Online em Massa de Multijogadores
 |**MER**| Modelo Entidade-Relacionamento
 |**DER**| Diagrama Entidade-Relacionamento
+|**OUI**| Object Ubity Interface
+|**GO**| GameObject
+
 
 ### 1.4 Referências
 <p align = "justify"> Este documento faz referência ao seguinte link e  documento.
@@ -97,15 +103,15 @@ Abreviação|Significado
 
 ### 3.2 Restrições
 
-<p align = "justify">O sistema a ser desenvolvido terá como base de sua arquitetura e interface gráfica a utilização da *game engine* Unity 3D. Um *asset* do Unity, específico para o sensor, deve estar devidamente contido nos *Assets* para a captura e sincronismo do movimento humano no sistema.<br />
+<p align = "justify">O sistema a ser desenvolvido terá como base de sua arquitetura e interface gráfica a utilização da _game engine_ Unity 3D. Um _asset_ do Unity, específico para o sensor, deve estar devidamente contido nos _Assets_ para a captura e sincronismo do movimento humano no sistema.<br />
 A implementação do projeto será a linguagem de programação C# (C-Sharp).Ele Deverá ser utilizado no ambiente Windows 10.</p>
 
 ## 4. Visão dos Casos de Uso
 
 ### 4.1 Diagrama de Casos de Uso
 
-![DiagramaCasoDeUso](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/doc_arq/docs/imagens/Arquitetura/Casos_de_uso.png)
-**Figura 2**- Diagrama de casos de uso</p>
+![DiagramaCasoDeUso](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/doc_arq/docs/imagens/Arquitetura/Casos_de_uso.png)</p>
+**Figura 2**- Diagrama de casos de uso </p>
 [Clique aqui para visualizar a imagem](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/doc_arq/docs/imagens/Arquitetura/Casos_de_uso.png)
 
 ### 4.2 Atores de Casos de Uso
@@ -129,8 +135,17 @@ A implementação do projeto será a linguagem de programação C# (C-Sharp).Ele
 ### 5.1 Pacotes de design Significativos do Ponto de Vista da Arquitetura
 
 #### 5.1.1 GameObjects e Componentes
-<p align = "justify">Devido à arquitetura de componentes inerente ao Unity, tudo que há no projeto é um *GameObject*. O *GameObject* é uma combinação de componentes. Ou seja: ele é a base para a adição de componentes ao objeto da *scene*, determinando o comportamento do mesmo nela. Basicamente tudo no Unity é um componente. Desde scripts a câmeras. Quando um componente ou um script é adicionado a um *GameObject*, esse componente adicionado pode ser acessado através da função *GetComponent* da classe *GameObject*. Uma vez que o *GameObject* é destruído, todos os componentes abaixo da sua hierarquia são destruídos.</p><br />
-<p align = "justify">Dentro de todo *GameObject* há componentes, sendo exemplos deles *Transform* (representa a posição, rotação e escala do objeto na *scene*), *RigidBody* (dá propriedade físicas ao *GameObject*), Renderers (componentes que permitem exibição dos *GameObjects* em cena), etc.</p><br />
+<p align = "justify">Devido à arquitetura de componentes inerente ao Unity, tudo que há no projeto é um _GameObject_. O _GameObject_ é uma combinação de componentes. Ou seja: ele é a base para a adição de componentes ao objeto da _scene_, determinando o comportamento do mesmo nela. Basicamente tudo no Unity é um componente. Desde scripts a câmeras. Quando um componente ou um script é adicionado a um _GameObject_, esse componente adicionado pode ser acessado através da função _GetComponent_ da classe _GameObject_. Uma vez que o _GameObject_ é destruído, todos os componentes abaixo da sua hierarquia são destruídos.</p><br />
+
+![DiagramaGeral](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/doc_arq/docs/imagens/Arquitetura/geral.png)</p>
+**Figura 3**- Diagrama Geral de Componentes </p>
+[Clique aqui para visualizar a imagem](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/doc_arq/docs/imagens/Arquitetura/geral.png) </p>
+
+<p align = "justify">Dentro de todo _GameObject_ há componentes, sendo exemplos deles _Transform_ (representa a posição, rotação e escala do objeto na _scene_), _RigidBody_ (dá propriedade físicas ao _GameObject_), Renderers (componentes que permitem exibição dos _GameObjects_ em cena), etc.</p><br />
+
+![GameObject](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/doc_arq/docs/imagens/Arquitetura/unity.png)</p>
+**Figura 4**- Representação de relação GameObject e Componentes </p>
+[Clique aqui para visualizar a imagem](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/doc_arq/docs/imagens/Arquitetura/unity.png) </p>
 
 Para melhor visualização da relação entre os componentes no Unity, segue um diagrama:   </p>
 ![Diagrama Componentes](http://oi64.tinypic.com/23hsntc.jpg) </p>
@@ -287,7 +302,7 @@ Um exercício gera n pontos nos eixos x e y.
 
 ## 7. Tamanho e Desempenho
 
-<p align = "justify">Estimamos que um movimento de duração de 15 segundos gera, em média, aproximadamente 750 pontos (o que, salvo num arquivo, dá aproximadamente 6kB); tendo em vista que em uma sessão poucos movimentos serão realizados de forma monitorada (já que o sensor tem a finalidade de mapear e estimar a situação do paciente, e que, após isso, o fisioterapeuta conduzirá os movimentos necessários), pode-se inferir que o sistema não processará uma grande quantidade de dados — principalmente por se tratar de um sistema local/*offline*. Seu desempenho será determinado, principalmente, pelo computador utilizado pelo operador.</p>
+<p align = "justify">Estimamos que um movimento de duração de 15 segundos gera, em média, aproximadamente 750 pontos (o que, salvo num arquivo, dá aproximadamente 6kB); tendo em vista que em uma sessão poucos movimentos serão realizados de forma monitorada (já que o sensor tem a finalidade de mapear e estimar a situação do paciente, e que, após isso, o fisioterapeuta conduzirá os movimentos necessários), pode-se inferir que o sistema não processará uma grande quantidade de dados — principalmente por se tratar de um sistema local/_offline_. Seu desempenho será determinado, principalmente, pelo computador utilizado pelo operador.</p>
 
 ## 8. Qualidade
 
