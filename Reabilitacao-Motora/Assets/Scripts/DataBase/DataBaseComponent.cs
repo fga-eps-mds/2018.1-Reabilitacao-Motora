@@ -88,7 +88,7 @@ public class DataBaseComponent : MonoBehaviour
         tableExercicio.Insert(3, 4, 10, "leve dificuldade no começo", "EXtest5.txt");
         tableMovimentoMusculo.Insert(5, 4);
         tablePRF.Insert(4, "ascensao do braço", 0, 1);
-        tablePRP.Insert(5, "ascensao do braço", 0, 1); /
+        tablePRP.Insert(5, "ascensao do braço", 0, 1);
     }
 
     /**
