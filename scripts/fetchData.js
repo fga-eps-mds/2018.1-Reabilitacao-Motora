@@ -25,15 +25,18 @@ const setBasicDynamicData = () => {
 
     //forks
     let forks = document.getElementById("forks");
+    forks.classList.remove("loader");
     forks.innerHTML = basicInfo.forks_count;
     
 
     //language
     let language = document.getElementById("language");
+    language.classList.remove("loader");
     language.innerHTML = basicInfo.language;
 
     //issues
     let issues = document.getElementById("issues");
+    issues.classList.remove("loader");
     issues.innerHTML = basicInfo.open_issues;
 
 }
@@ -106,6 +109,7 @@ const setCommitData = () => {
     for (let commit in totalCommits) {
         counter += totalCommits[commit].length;
     }
+    commits.classList.remove("loader");
     commits.innerHTML = counter;
 
     const template = (author, message, date, avatar_url) => {
@@ -161,6 +165,7 @@ const startChart = () => {
     }
 
     let ctx = document.getElementById("commit-chart").getContext('2d');
+    document.getElementById("commit-chart").classList.remove("big-loader");
     let myChart = new Chart(ctx, {
         type: 'line',
         data: {
