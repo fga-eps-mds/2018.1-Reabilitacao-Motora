@@ -21,9 +21,10 @@ Data|Versão|Descrição|Autor
 12/04|1.9.3|Revisão e Pequenas Alterações| João Lucas
 12/04|1.10.0|Modificação do subitem 6.1| João Lucas
 12/04|1.10.1|Revisão do Documento| João Lucas
-14/04|1.11.0|Adição de Diagrama Geral| João Lucas
+14/04|1.11.0|Adição de Diagrama Geral| João Lucas e Vitor Falcão
 15/04|1.11.1|Revisão do Documento| João Lucas
-15/04|1.12.0|Adição do item 5| João Lucas
+15/04|1.12.0|Adição do item 5| João Lucas, Victor Moura e Vitor Falcão
+15/04|1.12.1|Revisão do item 5| João Lucas, Victor Moura e Vitor Falcão
 
 # Sumário
 ----------------
@@ -77,7 +78,7 @@ Abreviação|Significado
 |**OUI**| Object Ubity Interface
 |**GO**| GameObject
 |**BB**| Black Box
-
+|**Adapter**| Adaptador
 
 ### 1.4 Referências
 <p align = "justify"> Este documento faz referência ao seguinte link e  documento.
@@ -135,6 +136,9 @@ A implementação do projeto será a linguagem de programação C# (C-Sharp).Ele
 
 ## 5. Visão Lógica
 
+<p align = "justify">Em visão lógica, o Diagrama Geral da Arquitetura demonstra como será o funcionamento do projeto. Inicialmente, através de um sensor, o usuário executará um movimento para que seja capturado e através de um adapter, que deve atender as exigências de acoplamento, envia ao programa em Unity 3D. O KINECT, diferente dos outros sensores, já possui integração feita de forma nativa no software, portanto não exige o uso do adapter. </p>
+<p align = "justify"> A Black Box (pode ser considerado um plugin que realiza processamentos externos) é uma unidade de processamento, podendo ser escrita em qualquer linguagem de programação, que receberá dados do movimento e poderá utilizá-los para realizar cálculos não abordados pelo sistema. A sua comunicação com o software também é feita por meio de um adapter. </p>
+
 ![Diagrama](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/doc_arq/docs/imagens/Arquitetura/diagrama.png)</p>
 **Figura 3**- Diagrama Geral da Arquitetura </p>
 [Clique aqui para visualizar a imagem](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/doc_arq/docs/imagens/Arquitetura/diagrama.png) </p>
@@ -187,6 +191,9 @@ Atributo|Propriedade|Tipo|Descrição
 **idPessoa** | Chave Estrangeira </p> Obrigatório | INTEGER | Identificação da Pessoa
 **regiao** | Opcional | VARCHAR(2) | Região de tratamento do Fisioterapeuta
 **crefito** | Opcional | VARCHAR(10) | Identificação do CREFITO do Fisioterapeuta
+**login** | Obrigatório | VARCHAR(255) | Login do Fisioterapeuta
+**senha** | Obrigatório | VARCHAR(255) | Senha do Fisioterapeuta
+
 
 **PACIENTE** </p>
 
@@ -298,13 +305,13 @@ Um exercício gera n pontos nos eixos x e y.
 
 
 ### 6.2 DER
-![DER](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/database/Banco_de_Dados/der.png)
+![DER](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/doc_arq/docs/imagens/Arquitetura/der.png)
 **Figura 6**- Diagrama Entidade-Relacionamento</p>
-[Clique aqui para visualizar a imagem](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/database/Banco_de_Dados/der.png)
+[Clique aqui para visualizar a imagem](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/doc_arq/docs/imagens/Arquitetura/der.png)
 ### 6.3 Diagrama Lógico
-![LÓGICO](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/database/Banco_de_Dados/logico.png)
+![LÓGICO](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/doc_arq/docs/imagens/Arquitetura/logico.png)
 **Figura 7**- Diagrama ME-R Lógico</p>
-[Clique aqui para visualizar a imagem](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/database/Banco_de_Dados/logico.png)
+[Clique aqui para visualizar a imagem](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/doc_arq/docs/imagens/Arquitetura/logico.png)
 
 
 ## 7. Tamanho e Desempenho
