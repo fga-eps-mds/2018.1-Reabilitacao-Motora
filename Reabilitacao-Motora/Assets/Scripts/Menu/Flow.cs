@@ -45,9 +45,17 @@ public class Flow : MonoBehaviour
 	}
 
 	/**
+ 	 * Leva para scene de tela de login.
+ 	 */
+	public void Login() 
+	{
+		SceneManager.LoadScene("Login");
+	}
+
+    /**
  	 * Leva para scene de lista de movimentos.
  	 */
-	public void Movements() 
+    public void Movements() 
 	{
 		SceneManager.LoadScene("Movements");
 	}
@@ -58,6 +66,15 @@ public class Flow : MonoBehaviour
 	public void NewPatient() 
 	{
 		SceneManager.LoadScene("NewPatient");
+	}
+
+    
+    /**
+ 	 * Leva para scene de registrar novo paciente.
+ 	 */
+	public void NewPhysiotherapist() 
+	{
+		SceneManager.LoadScene("NewPhysiotherapist");
 	}
 
 	/**
@@ -76,7 +93,6 @@ public class Flow : MonoBehaviour
 		SceneManager.LoadScene("Sessions");
 	}
 
-
 	/**
  	 * Leva para scene de função não implementada.
  	 */
@@ -91,6 +107,14 @@ public class Flow : MonoBehaviour
 	public void Graphs() 
 	{
 		SceneManager.LoadScene("Graphs2");
+	}
+
+    /**
+ 	 * Leva para scene de gráficos.
+ 	 */
+	public void RealTimeGraphs() 
+	{
+		SceneManager.LoadScene("Realtime Graph");
 	}
 
 	/**

@@ -19,6 +19,8 @@ CREATE TABLE IF NOT EXISTS TELEFONE (
 CREATE TABLE IF NOT EXISTS FISIOTERAPEUTA (
 	idFisioterapeuta INTEGER primary key AUTOINCREMENT,
 	idPessoa INTEGER not null,
+	login VARCHAR (255) not null,
+	senha VARCHAR (255) not null,
 	regiao VARCHAR (2),
 	crefito VARCHAR (10),
 	foreign key (idPessoa) references PESSOA (idPessoa),

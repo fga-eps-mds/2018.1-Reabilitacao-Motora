@@ -39,12 +39,14 @@ namespace DataBaseTables {
             TABLES[1].colName[1] = "telefone";
 
             TABLES[2] = new MultiDimensionalString();
-            TABLES[2].colName = new string[4];
+            TABLES[2].colName = new string[6];
             TABLES[2].tableName = "FISIOTERAPEUTA";
             TABLES[2].colName[0] = "idFisioterapeuta";
             TABLES[2].colName[1] = "idPessoa";
-            TABLES[2].colName[2] = "regiao";
-            TABLES[2].colName[3] = "crefito";
+            TABLES[2].colName[2] = "login";
+            TABLES[2].colName[3] = "senha";
+            TABLES[2].colName[4] = "regiao";
+            TABLES[2].colName[5] = "crefito";
 
             TABLES[3] = new MultiDimensionalString();
             TABLES[3].colName = new string[3];
