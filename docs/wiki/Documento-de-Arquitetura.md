@@ -21,7 +21,9 @@ Data|Versão|Descrição|Autor
 12/04|1.9.3|Revisão e Pequenas Alterações| João Lucas
 12/04|1.10.0|Modificação do subitem 6.1| João Lucas
 12/04|1.10.1|Revisão do Documento| João Lucas
-14/04|1.11.0| Adição de Diagrama Geral | João Lucas
+14/04|1.11.0|Adição de Diagrama Geral| João Lucas
+15/04|1.11.1|Revisão do Documento| João Lucas
+15/04|1.12.0|Adição do item 5| João Lucas
 
 # Sumário
 ----------------
@@ -74,6 +76,7 @@ Abreviação|Significado
 |**DER**| Diagrama Entidade-Relacionamento
 |**OUI**| Object Ubity Interface
 |**GO**| GameObject
+|**BB**| Black Box
 
 
 ### 1.4 Referências
@@ -94,7 +97,7 @@ Abreviação|Significado
 **Figura 1**- Diagrama de classes</p>
 [Clique aqui para visualizar a imagem](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/doc_arq/docs/imagens/Arquitetura/ECS.png)
 
-<p align = "justify">Adam Martin, um desenvolvedor de jogos MMO, criou a terminologia mais utilizada de jogos. Em jogos, a arquitetura trabalha com "sistemas" que seriam como funções que interagem com outras entidades que tenham componentes físicos e visíveis. Entidade é o objeto que consiste apenas de uma identificação única, Componentes são os dados brutos do aspecto do objeto e como interage com o mundo e Sistema são *threads* que executam ações das entidades que possuem mesmos componentes.
+<p align = "justify">Adam Martin, um desenvolvedor de jogos MMO, criou a terminologia mais utilizada de jogos. Em jogos, a arquitetura trabalha com "sistemas" que seriam como funções que interagem com outras entidades que tenham componentes físicos e visíveis. Entidade é o objeto que consiste apenas de uma identificação única, Componentes são os dados brutos do aspecto do objeto e como interage com o mundo e Sistema são threads que executam ações das entidades que possuem mesmos componentes.
 </p>
 
 ## 3. Metas e Restrições de Arquitetura
@@ -103,7 +106,7 @@ Abreviação|Significado
 
 ### 3.2 Restrições
 
-<p align = "justify">O sistema a ser desenvolvido terá como base de sua arquitetura e interface gráfica a utilização da _game engine_ Unity 3D. Um _asset_ do Unity, específico para o sensor, deve estar devidamente contido nos _Assets_ para a captura e sincronismo do movimento humano no sistema.<br />
+<p align = "justify">O sistema a ser desenvolvido terá como base de sua arquitetura e interface gráfica a utilização da game engine Unity 3D. Um asset do Unity, específico para o sensor, deve estar devidamente contido nos Assets para a captura e sincronismo do movimento humano no sistema.<br />
 A implementação do projeto será a linguagem de programação C# (C-Sharp).Ele Deverá ser utilizado no ambiente Windows 10.</p>
 
 ## 4. Visão dos Casos de Uso
@@ -132,19 +135,23 @@ A implementação do projeto será a linguagem de programação C# (C-Sharp).Ele
 
 ## 5. Visão Lógica
 
+![DiagramaGeral](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/doc_arq/docs/imagens/Arquitetura/diagrama.png)</p>
+**Figura 3**- Diagrama Geral da Arquitetura </p>
+[Clique aqui para visualizar a imagem](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/doc_arq/docs/imagens/Arquitetura/diagrama.png) </p>
+
+![DiagramaGeral](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/doc_arq/docs/imagens/Arquitetura/kinect.png)</p>
+**Figura 4**- Diagrama Geral da Arquitetura com o KINECT como sensor </p>
+[Clique aqui para visualizar a imagem](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/doc_arq/docs/imagens/Arquitetura/kinect.png) </p>
+
 ### 5.1 Pacotes de design Significativos do Ponto de Vista da Arquitetura
 
 #### 5.1.1 GameObjects e Componentes
-<p align = "justify">Devido à arquitetura de componentes inerente ao Unity, tudo que há no projeto é um _GameObject_. O _GameObject_ é uma combinação de componentes. Ou seja: ele é a base para a adição de componentes ao objeto da _scene_, determinando o comportamento do mesmo nela. Basicamente tudo no Unity é um componente. Desde scripts a câmeras. Quando um componente ou um script é adicionado a um _GameObject_, esse componente adicionado pode ser acessado através da função _GetComponent_ da classe _GameObject_. Uma vez que o _GameObject_ é destruído, todos os componentes abaixo da sua hierarquia são destruídos.</p><br />
+<p align = "justify">Devido à arquitetura de componentes inerente ao Unity, tudo que há no projeto é um GameObject. O GameObject é uma combinação de componentes. Ou seja: ele é a base para a adição de componentes ao objeto da scene, determinando o comportamento do mesmo nela. Basicamente tudo no Unity é um componente. Desde scripts a câmeras. Quando um componente ou um script é adicionado a um GameObject, esse componente adicionado pode ser acessado através da função GetComponent da classe GameObject. Uma vez que o GameObject é destruído, todos os componentes abaixo da sua hierarquia são destruídos.</p><br />
 
-![DiagramaGeral](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/doc_arq/docs/imagens/Arquitetura/geral.png)</p>
-**Figura 3**- Diagrama Geral de Componentes </p>
-[Clique aqui para visualizar a imagem](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/doc_arq/docs/imagens/Arquitetura/geral.png) </p>
-
-<p align = "justify">Dentro de todo _GameObject_ há componentes, sendo exemplos deles _Transform_ (representa a posição, rotação e escala do objeto na _scene_), _RigidBody_ (dá propriedade físicas ao _GameObject_), Renderers (componentes que permitem exibição dos _GameObjects_ em cena), etc.</p><br />
+<p align = "justify">Dentro de todo GameObject há componentes, sendo exemplos deles Transform (representa a posição, rotação e escala do objeto na scene), RigidBody (dá propriedade físicas ao GameObject), Renderers (componentes que permitem exibição dos GameObjects em cena), etc.</p><br />
 
 ![GameObject](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/doc_arq/docs/imagens/Arquitetura/unity.png)</p>
-**Figura 4**- Representação de relação GameObject e Componentes </p>
+**Figura 5**- Representação de relação GameObject e Componentes </p>
 [Clique aqui para visualizar a imagem](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/doc_arq/docs/imagens/Arquitetura/unity.png) </p>
 
 Para melhor visualização da relação entre os componentes no Unity, segue um diagrama:   </p>
@@ -292,11 +299,11 @@ Um exercício gera n pontos nos eixos x e y.
 
 ### 6.2 DER
 ![DER](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/database/Banco_de_Dados/der.png)
-**Figura 3**- Diagrama Entidade-Relacionamento</p>
+**Figura 6**- Diagrama Entidade-Relacionamento</p>
 [Clique aqui para visualizar a imagem](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/database/Banco_de_Dados/der.png)
 ### 6.3 Diagrama Lógico
 ![LÓGICO](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/database/Banco_de_Dados/logico.png)
-**Figura 4**- Diagrama ME-R Lógico</p>
+**Figura 7**- Diagrama ME-R Lógico</p>
 [Clique aqui para visualizar a imagem](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/database/Banco_de_Dados/logico.png)
 
 
