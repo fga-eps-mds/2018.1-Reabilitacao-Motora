@@ -1,0 +1,118 @@
+var class_kinect_wrapper =
+[
+    [ "ColorBuffer", "struct_kinect_wrapper_1_1_color_buffer.html", "struct_kinect_wrapper_1_1_color_buffer" ],
+    [ "ColorCust", "struct_kinect_wrapper_1_1_color_cust.html", "struct_kinect_wrapper_1_1_color_cust" ],
+    [ "DepthBuffer", "struct_kinect_wrapper_1_1_depth_buffer.html", "struct_kinect_wrapper_1_1_depth_buffer" ],
+    [ "INuiFrameTexture", "interface_kinect_wrapper_1_1_i_nui_frame_texture.html", "interface_kinect_wrapper_1_1_i_nui_frame_texture" ],
+    [ "NuiImageBuffer", "class_kinect_wrapper_1_1_nui_image_buffer.html", "class_kinect_wrapper_1_1_nui_image_buffer" ],
+    [ "NuiImageFrame", "struct_kinect_wrapper_1_1_nui_image_frame.html", "struct_kinect_wrapper_1_1_nui_image_frame" ],
+    [ "NuiImageViewArea", "struct_kinect_wrapper_1_1_nui_image_view_area.html", "struct_kinect_wrapper_1_1_nui_image_view_area" ],
+    [ "NuiLockedRect", "struct_kinect_wrapper_1_1_nui_locked_rect.html", "struct_kinect_wrapper_1_1_nui_locked_rect" ],
+    [ "NuiSkeletonBoneOrientation", "struct_kinect_wrapper_1_1_nui_skeleton_bone_orientation.html", "struct_kinect_wrapper_1_1_nui_skeleton_bone_orientation" ],
+    [ "NuiSkeletonBoneRotation", "struct_kinect_wrapper_1_1_nui_skeleton_bone_rotation.html", "struct_kinect_wrapper_1_1_nui_skeleton_bone_rotation" ],
+    [ "NuiSkeletonData", "struct_kinect_wrapper_1_1_nui_skeleton_data.html", "struct_kinect_wrapper_1_1_nui_skeleton_data" ],
+    [ "NuiSkeletonFrame", "struct_kinect_wrapper_1_1_nui_skeleton_frame.html", "struct_kinect_wrapper_1_1_nui_skeleton_frame" ],
+    [ "NuiSurfaceDesc", "struct_kinect_wrapper_1_1_nui_surface_desc.html", "struct_kinect_wrapper_1_1_nui_surface_desc" ],
+    [ "NuiTransformSmoothParameters", "struct_kinect_wrapper_1_1_nui_transform_smooth_parameters.html", "struct_kinect_wrapper_1_1_nui_transform_smooth_parameters" ],
+    [ "FrameEdges", "class_kinect_wrapper.html#a70fa40d94bc2a6e7bdfe7a07d26ee535", [
+      [ "None", "class_kinect_wrapper.html#a70fa40d94bc2a6e7bdfe7a07d26ee535a6adf97f83acf6453d4a6a4b1070f3754", null ],
+      [ "Right", "class_kinect_wrapper.html#a70fa40d94bc2a6e7bdfe7a07d26ee535a92b09c7c48c520c3c55e497875da437c", null ],
+      [ "Left", "class_kinect_wrapper.html#a70fa40d94bc2a6e7bdfe7a07d26ee535a945d5e233cf7d6240f6b783b36a374ff", null ],
+      [ "Top", "class_kinect_wrapper.html#a70fa40d94bc2a6e7bdfe7a07d26ee535aa4ffdcf0dc1f31b9acaf295d75b51d00", null ],
+      [ "Bottom", "class_kinect_wrapper.html#a70fa40d94bc2a6e7bdfe7a07d26ee535a2ad9d63b69c4a10a5cc9cad923133bc4", null ]
+    ] ],
+    [ "NuiErrorCodes", "class_kinect_wrapper.html#a556dfab4f288c786036c4a48c5a57799", [
+      [ "FrameNoData", "class_kinect_wrapper.html#a556dfab4f288c786036c4a48c5a57799afacf6a666add739fc7712003c7cf6aa1", null ],
+      [ "StreamNotEnabled", "class_kinect_wrapper.html#a556dfab4f288c786036c4a48c5a57799a326445662699ab1ecdff967f82e471d8", null ],
+      [ "ImageStreamInUse", "class_kinect_wrapper.html#a556dfab4f288c786036c4a48c5a57799a50f4196a2c3172dd00afcbccbbcbe029", null ],
+      [ "FrameLimitExceeded", "class_kinect_wrapper.html#a556dfab4f288c786036c4a48c5a57799a062653700ba899628b41609d00290457", null ],
+      [ "FeatureNotInitialized", "class_kinect_wrapper.html#a556dfab4f288c786036c4a48c5a57799a7a8313dc681cf33d1855b15219bed252", null ],
+      [ "DeviceNotGenuine", "class_kinect_wrapper.html#a556dfab4f288c786036c4a48c5a57799aff870845605fb0063a95f8d77b442e37", null ],
+      [ "InsufficientBandwidth", "class_kinect_wrapper.html#a556dfab4f288c786036c4a48c5a57799a1293d85c5e3dd6d79a4c7094d4287c7d", null ],
+      [ "DeviceNotSupported", "class_kinect_wrapper.html#a556dfab4f288c786036c4a48c5a57799aaa6c5cee4bac5f31521b5436239f053a", null ],
+      [ "DeviceInUse", "class_kinect_wrapper.html#a556dfab4f288c786036c4a48c5a57799aab1e0f933d8936fa6c4429a58d0ce1c0", null ],
+      [ "DatabaseNotFound", "class_kinect_wrapper.html#a556dfab4f288c786036c4a48c5a57799ab7797dc27ba45828ab17ef9130b97486", null ],
+      [ "DatabaseVersionMismatch", "class_kinect_wrapper.html#a556dfab4f288c786036c4a48c5a57799ae879012de1a0150d5cfac9a7a5bdf691", null ],
+      [ "HardwareFeatureUnavailable", "class_kinect_wrapper.html#a556dfab4f288c786036c4a48c5a57799a18e4dee163ec928d25aafbab897cdd28", null ],
+      [ "DeviceNotConnected", "class_kinect_wrapper.html#a556dfab4f288c786036c4a48c5a57799adb418e03fbe730e343ac59dcad6a9320", null ],
+      [ "DeviceNotReady", "class_kinect_wrapper.html#a556dfab4f288c786036c4a48c5a57799adefaa9a1c360cae76328f75343f05f24", null ],
+      [ "SkeletalEngineBusy", "class_kinect_wrapper.html#a556dfab4f288c786036c4a48c5a57799a0215b9d15055daceef0ac9fc83490571", null ],
+      [ "DeviceNotPowered", "class_kinect_wrapper.html#a556dfab4f288c786036c4a48c5a57799ae066635dfee1c69db6dff5ce6a46e0ac", null ]
+    ] ],
+    [ "NuiImageResolution", "class_kinect_wrapper.html#acef333d357f10c9b9b2e623ac4238470", [
+      [ "resolutionInvalid", "class_kinect_wrapper.html#acef333d357f10c9b9b2e623ac4238470a9011bc6258c58386aa788f7eeda1101f", null ],
+      [ "resolution80x60", "class_kinect_wrapper.html#acef333d357f10c9b9b2e623ac4238470ac7c9f22b519de4dfb4a9ce60540b53e9", null ],
+      [ "resolution320x240", "class_kinect_wrapper.html#acef333d357f10c9b9b2e623ac4238470a66cbda6db3a128ccca7b593e83aaab3c", null ],
+      [ "resolution640x480", "class_kinect_wrapper.html#acef333d357f10c9b9b2e623ac4238470ad268e3bcc46294795fa63d00711c1d82", null ],
+      [ "resolution1280x960", "class_kinect_wrapper.html#acef333d357f10c9b9b2e623ac4238470a0f7a7a09ef7c16b0d5e44530a10d73a8", null ]
+    ] ],
+    [ "NuiImageStreamFlags", "class_kinect_wrapper.html#ac51a99482e85bf5ea85af0e7e3bb25bd", [
+      [ "None", "class_kinect_wrapper.html#ac51a99482e85bf5ea85af0e7e3bb25bda6adf97f83acf6453d4a6a4b1070f3754", null ],
+      [ "SupressNoFrameData", "class_kinect_wrapper.html#ac51a99482e85bf5ea85af0e7e3bb25bdab88310cdb6e0d5203a5e25bb243cdf89", null ],
+      [ "EnableNearMode", "class_kinect_wrapper.html#ac51a99482e85bf5ea85af0e7e3bb25bda02e13c0e51cf990918d50f4482e4fba5", null ],
+      [ "TooFarIsNonZero", "class_kinect_wrapper.html#ac51a99482e85bf5ea85af0e7e3bb25bdae022158a7fd8233ee972fb78beada97b", null ]
+    ] ],
+    [ "NuiImageType", "class_kinect_wrapper.html#a0126bd0303d23d562566d2ae99927335", [
+      [ "DepthAndPlayerIndex", "class_kinect_wrapper.html#a0126bd0303d23d562566d2ae99927335acf7c96f2564f6e81b4a39d1a00d83483", null ],
+      [ "Color", "class_kinect_wrapper.html#a0126bd0303d23d562566d2ae99927335acb5feb1b7314637725a2e73bdc9f7295", null ],
+      [ "ColorYUV", "class_kinect_wrapper.html#a0126bd0303d23d562566d2ae99927335af2deaa334ab1679aa0d9752b0331f949", null ],
+      [ "ColorRawYUV", "class_kinect_wrapper.html#a0126bd0303d23d562566d2ae99927335a2b9c87e4ed5a0b0913f856b62f010265", null ],
+      [ "Depth", "class_kinect_wrapper.html#a0126bd0303d23d562566d2ae99927335a675056ad1441b6375b2c5abd48c27ef1", null ]
+    ] ],
+    [ "NuiInitializeFlags", "class_kinect_wrapper.html#aa14891c91bfa8c6fe4761146055656da", [
+      [ "UsesAudio", "class_kinect_wrapper.html#aa14891c91bfa8c6fe4761146055656daa5801da2f346d93f21b62eb88f9b45a07", null ],
+      [ "UsesDepthAndPlayerIndex", "class_kinect_wrapper.html#aa14891c91bfa8c6fe4761146055656daae7cabc598437ffc860b9b07bc39e03c6", null ],
+      [ "UsesColor", "class_kinect_wrapper.html#aa14891c91bfa8c6fe4761146055656daadee956c7b793347104622cf77f5c6f51", null ],
+      [ "UsesSkeleton", "class_kinect_wrapper.html#aa14891c91bfa8c6fe4761146055656daa99681ce65d8d822c8342bd0a6e4c2ed9", null ],
+      [ "UsesDepth", "class_kinect_wrapper.html#aa14891c91bfa8c6fe4761146055656daa51ef1e7b6ba48e1f848df92605653738", null ],
+      [ "UsesHighQualityColor", "class_kinect_wrapper.html#aa14891c91bfa8c6fe4761146055656daac429a251f2e406767eb281a58a6da4c0", null ]
+    ] ],
+    [ "NuiSkeletonPositionIndex", "class_kinect_wrapper.html#ad73682163ab4e6f554501574ab835f1c", [
+      [ "HipCenter", "class_kinect_wrapper.html#ad73682163ab4e6f554501574ab835f1ca0fc30f467303ddec085a1bb75b2d0159", null ],
+      [ "Spine", "class_kinect_wrapper.html#ad73682163ab4e6f554501574ab835f1ca299a20601891812eff26320b63f3b4fe", null ],
+      [ "ShoulderCenter", "class_kinect_wrapper.html#ad73682163ab4e6f554501574ab835f1ca56cea710a533a062602a009f5cd4a960", null ],
+      [ "Head", "class_kinect_wrapper.html#ad73682163ab4e6f554501574ab835f1ca98921133d10fbdb0fb6dbb7b2648befe", null ],
+      [ "ShoulderLeft", "class_kinect_wrapper.html#ad73682163ab4e6f554501574ab835f1ca6f06420ba820e90993137a63f10146c2", null ],
+      [ "ElbowLeft", "class_kinect_wrapper.html#ad73682163ab4e6f554501574ab835f1ca62d7fd05a5c965ae80e4d59a5434f383", null ],
+      [ "WristLeft", "class_kinect_wrapper.html#ad73682163ab4e6f554501574ab835f1ca588e9efafd75b6a1fe22a9960c44181e", null ],
+      [ "HandLeft", "class_kinect_wrapper.html#ad73682163ab4e6f554501574ab835f1ca558c4cce30e979b441f36bcac58692c3", null ],
+      [ "ShoulderRight", "class_kinect_wrapper.html#ad73682163ab4e6f554501574ab835f1caa1a480b34eb3460ee2772c38bfb4bf1c", null ],
+      [ "ElbowRight", "class_kinect_wrapper.html#ad73682163ab4e6f554501574ab835f1ca43b4a26b475222d959bb0f57d788387c", null ],
+      [ "WristRight", "class_kinect_wrapper.html#ad73682163ab4e6f554501574ab835f1caa06437c22d077beaecbbe4508d9e41c8", null ],
+      [ "HandRight", "class_kinect_wrapper.html#ad73682163ab4e6f554501574ab835f1cadb75ce9c367c69e8af461ee43d8efdad", null ],
+      [ "HipLeft", "class_kinect_wrapper.html#ad73682163ab4e6f554501574ab835f1cade45c3616b3d2a7e4cb8ad9c58142f15", null ],
+      [ "KneeLeft", "class_kinect_wrapper.html#ad73682163ab4e6f554501574ab835f1ca6800dcd4b31600a45f0fe66124306219", null ],
+      [ "AnkleLeft", "class_kinect_wrapper.html#ad73682163ab4e6f554501574ab835f1caf5893586463424ab0c18d2fc7871b191", null ],
+      [ "FootLeft", "class_kinect_wrapper.html#ad73682163ab4e6f554501574ab835f1cac0957ad259802f0a919c8c12dd06ed0d", null ],
+      [ "HipRight", "class_kinect_wrapper.html#ad73682163ab4e6f554501574ab835f1cacdceb34e21b59759e52c7ec25d6dfd54", null ],
+      [ "KneeRight", "class_kinect_wrapper.html#ad73682163ab4e6f554501574ab835f1ca64e50376713b14d2cea2fb4246182ef8", null ],
+      [ "AnkleRight", "class_kinect_wrapper.html#ad73682163ab4e6f554501574ab835f1ca8ec71e2ee0963607d88fa7fa9605dd78", null ],
+      [ "FootRight", "class_kinect_wrapper.html#ad73682163ab4e6f554501574ab835f1cacce96a8bcdfeab497541a73c3f06d10e", null ],
+      [ "Count", "class_kinect_wrapper.html#ad73682163ab4e6f554501574ab835f1cae93f994f01c537c4e2f7d8528c3eb5e9", null ]
+    ] ],
+    [ "NuiSkeletonPositionTrackingState", "class_kinect_wrapper.html#a2aa1ef02e1edc9d3bcb5dc78cc41e173", [
+      [ "NotTracked", "class_kinect_wrapper.html#a2aa1ef02e1edc9d3bcb5dc78cc41e173a90cec99cb3d475323540596ef1e2f5dc", null ],
+      [ "Inferred", "class_kinect_wrapper.html#a2aa1ef02e1edc9d3bcb5dc78cc41e173aba05d28b1409e52082555f5921119665", null ],
+      [ "Tracked", "class_kinect_wrapper.html#a2aa1ef02e1edc9d3bcb5dc78cc41e173a5e1b39ae9fac0eab832877bd5cd01690", null ]
+    ] ],
+    [ "NuiSkeletonTrackingState", "class_kinect_wrapper.html#a9d527d2064187b8e50453a8fa4158e49", [
+      [ "NotTracked", "class_kinect_wrapper.html#a9d527d2064187b8e50453a8fa4158e49a90cec99cb3d475323540596ef1e2f5dc", null ],
+      [ "PositionOnly", "class_kinect_wrapper.html#a9d527d2064187b8e50453a8fa4158e49aae729b97e00ca6e39722e1ecb6247b75", null ],
+      [ "SkeletonTracked", "class_kinect_wrapper.html#a9d527d2064187b8e50453a8fa4158e49adf69af7edcfb3cc10bbe02ff3226ae7e", null ]
+    ] ],
+    [ "NuiCameraElevationGetAngle", "class_kinect_wrapper.html#aaaf8d63c9fabe873fe171f3a3e5f7ec7", null ],
+    [ "NuiCameraElevationSetAngle", "class_kinect_wrapper.html#ae6798571cfc956305dc31020c72bf7ce", null ],
+    [ "NuiGetSensorCount", "class_kinect_wrapper.html#a7d786c97adcf86b866e4c5233b63f5fd", null ],
+    [ "NuiImageGetColorPixelCoordinatesFromDepthPixelAtResolution", "class_kinect_wrapper.html#ac026341b4cf4127a4a84b24fa5547e59", null ],
+    [ "NuiImageResolutionToSize", "class_kinect_wrapper.html#a387a5aef9e0ba9490e7c953acd662bf4", null ],
+    [ "NuiImageStreamGetNextFrame", "class_kinect_wrapper.html#a85917a9af5cac4b8ea42756bb0f58a1a", null ],
+    [ "NuiImageStreamOpen", "class_kinect_wrapper.html#aa3d8db2048200771211ebf49f2e6ca47", null ],
+    [ "NuiImageStreamReleaseFrame", "class_kinect_wrapper.html#a881c04a93c8760da24c3e0d989675f7d", null ],
+    [ "NuiImageStreamSetImageFrameFlags", "class_kinect_wrapper.html#aa781107969acc314e12407f42fd9a886", null ],
+    [ "NuiInitialize", "class_kinect_wrapper.html#a2fdd21af7c89b1d15bb20c412577ac29", null ],
+    [ "NuiShutdown", "class_kinect_wrapper.html#ab80346c061343035f00f42dc89bb6e2e", null ],
+    [ "NuiSkeletonCalculateBoneOrientations", "class_kinect_wrapper.html#a6aa2e92ea435aff8b2b529f9af865a17", null ],
+    [ "NuiSkeletonGetNextFrame", "class_kinect_wrapper.html#a07d73b189c89e8f98ee9e03623b95de3", null ],
+    [ "NuiSkeletonTrackingEnable", "class_kinect_wrapper.html#a3e8731807ba8636cd10ae1b8cc7a7e4f", null ],
+    [ "NuiTransformSmooth", "class_kinect_wrapper.html#ab6c258db8ad4d3927af93397450ac30f", null ]
+];
