@@ -135,11 +135,11 @@ A implementação do projeto será a linguagem de programação C# (C-Sharp).Ele
 
 ## 5. Visão Lógica
 
-![DiagramaGeral](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/doc_arq/docs/imagens/Arquitetura/diagrama.png)</p>
+![Diagrama](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/doc_arq/docs/imagens/Arquitetura/diagrama.png)</p>
 **Figura 3**- Diagrama Geral da Arquitetura </p>
 [Clique aqui para visualizar a imagem](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/doc_arq/docs/imagens/Arquitetura/diagrama.png) </p>
 
-![DiagramaGeral](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/doc_arq/docs/imagens/Arquitetura/kinect.png)</p>
+![Kinect](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/doc_arq/docs/imagens/Arquitetura/kinect.png)</p>
 **Figura 4**- Diagrama Geral da Arquitetura com o KINECT como sensor </p>
 [Clique aqui para visualizar a imagem](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/doc_arq/docs/imagens/Arquitetura/kinect.png) </p>
 
