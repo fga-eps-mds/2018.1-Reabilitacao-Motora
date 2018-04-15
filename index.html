@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- babel transpiler, axios, graphs and fetching -->
+    <!-- babel transpiler, axios, graphs, loader and fetching -->
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
     <script src="scripts/fetchData.js" ></script>
     <script src="scripts/odometer.js" ></script>
+    <link rel="stylesheet" href="css/loader.css">
 
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -71,7 +72,7 @@
       <div class="row">
         <div class="col-md-7">
           <div class="box-up">
-          <canvas id="commit-chart" width="400" height="230"></canvas>
+          <canvas id="commit-chart" class="loader" width="400" height="230"></canvas>
           </div>
         </div>
         <div class="col-md-5">
@@ -84,7 +85,7 @@
                 </div>
               </div>
               <div class="indicator-number">
-                <p id="forks" class="statistic-number odometer">Loading...</p>
+                <p id="forks" class="statistic-number loader"></p>
                 <p>Forks</p>
               </div>
             </div>
@@ -96,7 +97,7 @@
                 </div>
               </div>
               <div class="indicator-number">
-                <p id="commits" class="statistic-number odometer">Loading...</p>
+                <p id="commits" class="statistic-number loader"></p>
                 <p>Commits</p>
               </div>
             </div>
@@ -108,7 +109,7 @@
                 </div>
               </div>
               <div class="indicator-number">
-                <p id="language" class="statistic-number"></p>
+                <p id="language" class="statistic-number loader"></p>
                 <p>Linguagem</p>
               </div>
             </div>
@@ -120,7 +121,7 @@
                 </div>
               </div>
               <div class="indicator-number">
-                <p id="issues" class="statistic-number odometer">Loading...</p>
+                <p id="issues" class="statistic-number loader"></p>
                 <p>Issues</p>
               </div>
             </div>
@@ -136,11 +137,11 @@
               <div class="user-title">Top Commiter</div>
               <div class="user-stats-id">
                 <div class="user-stats-avatar"><img id="top-avatar"><span class="user-stats-status-indicator online"></span></div>
-                <div id="top-committer" class="user-stats-info"><span class="user-stats-name">Loading...</span><span class="user-stats-position">EPS</span></div>
+                <div id="top-committer" class="user-stats-info"><span class="user-stats-name"></span><span class="user-stats-position loader"></span></div>
               </div>
               <div class="user-stats-indicators">
-                <div class="user-stats-indicator"><span class="user-stats-indicator-title">Commits</span><span id="top-commit" data-toggle="counter" data-end="173" class="user-stats-indicator-counter odometer">loading...</span></div>
-                <div class="user-stats-indicator"><span class="user-stats-indicator-title">Linhas de Codigo</span><span id="top-lines" data-toggle="counter" data-end="367" class="user-stats-indicator-counter odometer">loading...</span></div>
+                <div class="user-stats-indicator"><span class="user-stats-indicator-title">Commits</span><span id="top-commit" data-toggle="counter" data-end="173" class="user-stats-indicator-counter"></span></div>
+                <div class="user-stats-indicator"><span class="user-stats-indicator-title">Linhas de Codigo</span><span id="top-lines" data-toggle="counter" data-end="367" class="user-stats-indicator-counter odometer"></span></div>
                 <!-- <div class="user-stats-indicator"><span class="user-stats-indicator-title">Services</span><span data-toggle="counter" data-end="724" class="user-stats-indicator-counter">724</span></div>
                 <div class="user-stats-indicator"><span class="user-stats-indicator-title">Total Sales</span><span data-toggle="counter" data-end="1264" class="user-stats-indicator-counter">1,264</span></div> -->
               </div>

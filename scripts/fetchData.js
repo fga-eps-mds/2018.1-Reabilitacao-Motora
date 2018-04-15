@@ -26,6 +26,7 @@ const setBasicDynamicData = () => {
     //forks
     let forks = document.getElementById("forks");
     forks.innerHTML = basicInfo.forks_count;
+    
 
     //language
     let language = document.getElementById("language");
