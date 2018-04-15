@@ -17,6 +17,13 @@ const setDocumentsDynamicData = () => {
     setMdsDocuments()
     setRelease1Planning()
     setRelease1Review()
+    let elements = document.getElementsByClassName("big-loader");
+    console.log(elements);
+    console.log(elements.length);
+    for(let i=elements.length-1; i >= 0; i--){
+      elements[i].remove();
+      // console.log(elements[i]);
+    }
 }
 
 const setEpsDocuments = () => {
