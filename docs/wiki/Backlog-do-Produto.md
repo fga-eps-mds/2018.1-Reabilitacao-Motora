@@ -10,7 +10,7 @@
 
 |ID | Tema | Eu, como | Desejo | Para | Notas | Prioridade | Status |
 | - | ---- | -------- | ------ | -------- | ----- | ---------- | ------ |
-| [US17](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/28) | Gerenciamento de Movimentos | fisioterapeuta | conectar um sensor ao sistema | possibilitar a captura de movimentos | 3 | 1 | Não implementado |
+| [US17](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/28) | Gerenciamento de Movimentos | fisioterapeuta | conectar um sensor ao sistema | possibilitar a captura de movimentos | 21 | 2 | Não implementado |
 
 #### Tasks
 |  ID  | Descrição | User stories relacionadas |
@@ -22,7 +22,7 @@
 ##### _Features envolvidas_
 |  ID  | Descrição | User stories relacionadas |
 | ---- | --------- | ------------------------- |
-| FT01 | Gerenciamento de Movimentos | [US01](), [US02](), [US03](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/29), [US04](), [US05](), [US06](), [US12](), [US13]() e [US17](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/28) |  
+| FT01 | Gerenciamento de Movimentos | [US01](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/96), [US02](), [US03](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/29), [US04](), [US05](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/88), [US06](), [US12](), [US13](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/46) e [US17](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/28) |  
 
 ---
 
@@ -44,13 +44,13 @@
 
 |ID | Tema | Eu, como | Desejo | Para | Notas | Prioridade | Status |
 | - | ---- | -------- | ------ | -------- | ----- | ---------- | ------ |
-| US01 | Gerenciamento de Movimentos | fisioterapeuta | cadastrar movimentos | fornecer um modelo de movimento ao sistema | 34 | 1 | Não implementado |
+| [US01](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/96) | Gerenciamento de Movimentos | fisioterapeuta | cadastrar movimentos | fornecer um modelo de movimento ao sistema | 21 | 1 | Não implementado |
 | US02 | Gerenciamento de Movimentos | fisioterapeuta | atualizar movimentos | corrigir um modelo de movimento cadastrado | 34 | 3 | Não implementado |
 | [US03](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/29) | Gerenciamento de Movimentos | fisioterapeuta | executar movimentos | espelhar virtualmente a atividade em um modelo tridimensional | 8 | 2 | Não implementado |
 | US04 | Gerenciamento de Movimentos | fisioterapeuta | remover movimentos | eliminar um modelo de movimento no sistema | 34 | 3 | Não implementado |
-| US05 | Gerenciamento de Movimentos | fisioterapeuta | rotular movimento | dividir o movimento em etapas | 21 | 1 | Não implementado |
+| [US05](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/88) | Gerenciamento de Movimentos | fisioterapeuta | rotular movimento | dividir o movimento em etapas | 34 | 1 | Não implementado |
 | US06 | Gerenciamento de Movimentos | fisioterapeuta | visualizar movimento | ver melhor representação da ação | 13 | 3 | Não implementado |
-| US13 | Gerenciamento de Movimentos | fisioterapeuta | que o sistema gere gráficos dos movimentos | que eu possa aplicar metodologias científicas no processo de recuperação do paciente | 5 | 1 | Não implementado |
+| [US13](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/46) | Gerenciamento de Movimentos | fisioterapeuta | que o sistema gere gráficos dos movimentos | que eu possa aplicar metodologias científicas no processo de recuperação do paciente | 21 | 1 | Não implementado |
 
 #### Tasks
 |  ID  | Descrição | User stories relacionadas |
@@ -61,7 +61,7 @@
 ##### _Features envolvidas_
 |  ID  | Descrição | User stories relacionadas |
 | ---- | --------- | ------------------------- |
-| FT01 | Gerenciamento de Movimentos | [US01](), [US02](), [US03](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/29), [US04](), [US05](), [US06](), [US12](), [US13]() e [US17](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/28) |
+| FT01 | Gerenciamento de Movimentos | [US01](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/96), [US02](), [US03](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/29), [US04](), [US05](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/88), [US06](), [US12](), [US13](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/46) e [US17](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/28) |
 
 ---
 
@@ -90,7 +90,7 @@
 
 |ID | Tema | Eu, como | Desejo | Para | Notas | Prioridade | Status |
 | ---- | ---- | -------- | ------ | -------- | ----- | ---------- | ------ |
-| US07 | Gerenciamento de Pacientes | fisioterapeuta | cadastrar paciente | inserir dados de um novo paciente no sistema | 5 | 2 | Não implementado |
+| [US07](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/95) | Gerenciamento de Pacientes | fisioterapeuta | cadastrar paciente | inserir dados de um novo paciente no sistema | 5 | 2 | Não implementado |
 | US08 | Gerenciamento de Pacientes | fisioterapeuta | atualizar paciente | modificar dados de um paciente cadastrado | 5 | 3 | Não implementado |
 | US09 | Gerenciamento de Pacientes | fisioterapeuta | visualizar perfil do paciente | ter acesso aos dados de um paciente cadastrado | 3 | 2 | Não implementado |
 | US10 | Gerenciamento de Pacientes | fisioterapeuta | remover paciente | melhor utilizar os recursos de armazenamento do sistema | 5 | 3 | Não implementado |
@@ -101,8 +101,8 @@
 ##### _Features envolvidas_
 |  ID  | Descrição | User stories relacionadas |
 | ---- | --------- | ------------------------- |
-| FT01 | Gerenciamento de Movimentos | [US01](), [US02](), [US03](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/29), [US04](), [US05](), [US06](), [US12](), [US13]() e [US17](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/28) |
-| FT02 | Gerenciamento de Pacientes | [US07](), [US08](), [US09](), [US10]() e [US11]() |
+| FT01 | Gerenciamento de Movimentos | [US01](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/96), [US02](), [US03](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/29), [US04](), [US05](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/88), [US06](), [US12](), [US13](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/46) e [US17](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/28) |
+| FT02 | Gerenciamento de Pacientes | [US07](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/95), [US08](), [US09](), [US10]() e [US11]() |
 
 ---
 
@@ -122,9 +122,9 @@
 ## Features
 |  ID  | Descrição | User stories relacionadas |
 | ---- | --------- | ------------------------- |
-| FT01 | Gerenciamento de movimentos | [US01](), [US02](), [US03](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/29), [US04](), [US05]() e [US06]() |
-| FT02 | Gerenciamento de pacientes | [US07](), [US08](), [US09](), [US10](), [US11]() e [US12]()|
-| FT03 | Gerenciamento de interface gráfica | [US13](), [US14](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/30) e [US15]()|
+| FT01 | Gerenciamento de movimentos | [US01](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/96), [US02](), [US03](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/29), [US04](), [US05](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/88) e [US06]() |
+| FT02 | Gerenciamento de pacientes | [US07](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/95), [US08](), [US09](), [US10](), [US11]() e [US12]()|
+| FT03 | Gerenciamento de interface gráfica | [US13](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/46), [US14](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/30) e [US15]()|
 | FT04 | Suporte | [US16]() e [US17](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/28) |
 
 #### Tasks
