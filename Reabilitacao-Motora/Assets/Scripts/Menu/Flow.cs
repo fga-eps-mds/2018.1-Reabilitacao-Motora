@@ -100,4 +100,22 @@ public class Flow : MonoBehaviour
 	{
 		SceneManager.LoadScene("Menu");
 	}
+
+	/**
+ 	 * Volta para o menu inicial.
+ 	 */
+	public void BackToHomeMenu()
+	{
+		SceneManager.LoadScene("HomeMenu");
+	}
+
+	public void NewPhysiotherapist()
+	{
+		SceneManager.LoadScene("NewPhysiotherapist");
+	}
+
+	public void RealtimeGraph()
+	{
+		SceneManager.LoadScene("Realtime Graph");
+	}
 }
