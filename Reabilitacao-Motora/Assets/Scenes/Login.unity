@@ -591,6 +591,34 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 396557610}
+--- !u!1 &413763707
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 413763708}
+  m_Layer: 0
+  m_Name: GlobalController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &413763708
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 413763707}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 194.62839, y: 199.16, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &605418247
 GameObject:
   m_ObjectHideFlags: 0
@@ -1151,7 +1179,7 @@ GameObject:
   - component: {fileID: 1352733823}
   - component: {fileID: 1352733822}
   m_Layer: 5
-  m_Name: BackBt
+  m_Name: RegisterBt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1405,7 +1433,7 @@ GameObject:
   - component: {fileID: 1543820247}
   - component: {fileID: 1543820246}
   m_Layer: 5
-  m_Name: BackBt (1)
+  m_Name: QuitBt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2182,7 +2210,7 @@ GameObject:
   - component: {fileID: 2134066878}
   - component: {fileID: 2134066877}
   m_Layer: 5
-  m_Name: SaveBt
+  m_Name: EnterBt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

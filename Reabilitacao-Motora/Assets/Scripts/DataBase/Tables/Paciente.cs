@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using DataBaseTables;
 using DataBaseAttributes;
 using Mono.Data.Sqlite;
@@ -16,6 +17,21 @@ namespace paciente
         DataBase banco = new DataBase();
         TableNameColumn tt = new TableNameColumn();
         string path;
+
+        /**
+         * Classe com todos os atributos de um paciente.
+         */
+        public class Pacientes
+        {
+            public int idPaciente, idPessoa;
+            public string observacoes;
+            public Pacientes (int idpa, int idpe, string obs)
+            {
+                this.idPaciente = idpa;
+                this.idPessoa = idpe;
+                this.observacoes = obs;
+            }
+        }
 
         /**
          * Cria a relação para paciente, contendo um id gerado automaticamente pelo banco como chave primária.
@@ -92,7 +108,7 @@ namespace paciente
         /**
          * Função que lê dados já cadastrados anteriormente na relação paciente.
          */
-        public void Read()
+        public List<Pacientes> Read()
         {
             using (banco.conn = new SqliteConnection(path))
             {
@@ -101,6 +117,9 @@ namespace paciente
                 banco.sqlQuery = "SELECT * " + "FROM PACIENTE";
                 banco.cmd.CommandText = banco.sqlQuery;
                 IDataReader reader = banco.cmd.ExecuteReader();
+
+                List<Pacientes> p = new List<Pacientes>();
+
                 while (reader.Read())
                 {
                     int idPaciente = 0;
@@ -111,9 +130,8 @@ namespace paciente
                     if (!reader.IsDBNull(1)) idPessoa = reader.GetInt32(1);
                     if (!reader.IsDBNull(2)) observacoes = reader.GetString(2);
 
-                    Debug.Log (string.Format("\"{0}\" = ", tt.TABLES[tableId].colName[0]) + idPaciente +
-                        string.Format(" \"{0}\" = ", tt.TABLES[tableId].colName[1]) + idPessoa +
-                        string.Format(" \"{0}\" = ", tt.TABLES[tableId].colName[2]) + observacoes);
+                    Pacientes x = new Pacientes(idPaciente, idPessoa, observacoes);
+                    p.Add(x);
                 }
                 reader.Close();
                 reader = null;
@@ -121,6 +139,7 @@ namespace paciente
                 banco.cmd = null;
                 banco.conn.Close();
                 banco.conn = null;
+                return p;
             }
         }
 

@@ -26,7 +26,7 @@ public class createPhysiotherapist : MonoBehaviour
 	public InputField login;
 	public InputField pass;
 	public InputField confirmPass;
-	string wrongConfirmation = "FF7E7EFF";
+	string wrongConfirmation = "FF7E7EFF", success = "87E580FF";
      
 	public static Color hexToColor(string hex)
 	{
@@ -48,6 +48,11 @@ public class createPhysiotherapist : MonoBehaviour
 	public void savePhysiotherapist()
 	{
 		if (pass.text == confirmPass.text) {
+			ColorBlock cb = confirmPass.colors;
+			cb.normalColor = hexToColor(success);
+			confirmPass.colors = cb;
+			pass.colors = cb;
+
 			path = "URI=file:" + Application.dataPath + "/Plugins/fisiotech.db";
 			var trip = date.text.Split('/');
 			var dateFormate = trip[2] + "/" + trip[1] + "/" + trip[0];
@@ -65,6 +70,7 @@ public class createPhysiotherapist : MonoBehaviour
 			print("As senhas não condizem!");
 			ColorBlock cb = confirmPass.colors;
 			cb.normalColor = hexToColor(wrongConfirmation);
+			pass.colors = cb;
 			confirmPass.colors = cb;
 		}
 	}

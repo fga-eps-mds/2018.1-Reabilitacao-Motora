@@ -18,6 +18,9 @@ namespace fisioterapeuta
         TableNameColumn tt = new TableNameColumn();
         string path;
 
+        /**
+         * Classe com todos os atributos de um fisioterapeuta.
+         */
         public class Fisioterapeutas
         {
             public int idFisioterapeuta, idPessoa;

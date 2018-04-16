@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using DataBaseTables;
 using DataBaseAttributes;
 using Mono.Data.Sqlite;
@@ -17,6 +18,24 @@ namespace pontosrotulofisioterapeuta
         DataBase banco = new DataBase();
         TableNameColumn tt = new TableNameColumn();
         string path;
+
+        /**
+         * Classe com todos os atributos de um pontosrotulofisioterapeuta.
+         */
+        public class PontosRotuloFisioterapeutas
+        {
+            public int idRotuloFisioterapeuta, idMovimento;
+            public double tempoInicial, tempoFinal;
+            public string estagioMovimentoFisio;
+            public PontosRotuloFisioterapeutas (int idrf, int idm, double ti, double tf, string e)
+            {
+                this.idRotuloFisioterapeuta = idrf;
+                this.idMovimento = idm;
+                this.tempoInicial = ti;
+                this.tempoFinal = tf;
+                this.estagioMovimentoFisio = e;
+            }
+        }
 
         /**
         * Cria a relação para pontosrotulofisioterapeuta, contendo um id gerado automaticamente pelo banco como chave primária.
@@ -101,7 +120,7 @@ namespace pontosrotulofisioterapeuta
         /**
         * Função que lê dados já cadastrados anteriormente na relação de pontosrotulofisioterapeuta.
          */
-        public void Read()
+        public List<PontosRotuloFisioterapeutas> Read()
         {
             using (banco.conn = new SqliteConnection(path))
             {
@@ -110,6 +129,9 @@ namespace pontosrotulofisioterapeuta
                 banco.sqlQuery = "SELECT * " + "FROM PONTOSROTULOFISIOTERAPEUTA";
                 banco.cmd.CommandText = banco.sqlQuery;
                 IDataReader reader = banco.cmd.ExecuteReader();
+
+                List<PontosRotuloFisioterapeutas> prf = new List<PontosRotuloFisioterapeutas>();
+
                 while (reader.Read())
                 {
                     int idRotuloFisioterapeuta = 0;
@@ -124,11 +146,8 @@ namespace pontosrotulofisioterapeuta
                     if (!reader.IsDBNull(3)) tempoInicial = reader.GetDouble(3);
                     if (!reader.IsDBNull(4)) tempoFinal = reader.GetDouble(4);
 
-                    Debug.Log (string.Format("\"{0}\" = ", tt.TABLES[tableId].colName[0]) + idRotuloFisioterapeuta +
-                        string.Format(" \"{0}\" = ", tt.TABLES[tableId].colName[1]) + idMovimento +
-                        string.Format(" \"{0}\" = ", tt.TABLES[tableId].colName[2]) + estagioMovimentoFisio +
-                        string.Format(" \"{0}\" = ", tt.TABLES[tableId].colName[3]) + tempoInicial +
-                        string.Format(" \"{0}\" = ", tt.TABLES[tableId].colName[4]) + tempoFinal);
+                    PontosRotuloFisioterapeutas x = new PontosRotuloFisioterapeutas(idRotuloFisioterapeuta,idMovimento,tempoInicial,tempoFinal,estagioMovimentoFisio);
+                    prf.Add(x);
                 }
                 reader.Close();
                 reader = null;
@@ -136,6 +155,7 @@ namespace pontosrotulofisioterapeuta
                 banco.cmd = null;
                 banco.conn.Close();
                 banco.conn = null;
+                return prf;
             }
         }
 

@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using DataBaseTables;
 using DataBaseAttributes;
 using Mono.Data.Sqlite;
@@ -16,6 +17,23 @@ namespace movimento
         DataBase banco = new DataBase ();
         TableNameColumn tt = new TableNameColumn ();
         string path;
+
+        /**
+         * Classe com todos os atributos de um movimento.
+         */
+        public class Movimentos
+        {
+            public int idMovimento, idFisioterapeuta;
+            public string nomeMovimento, descricaoMovimento, pontosMovimento;
+            public Movimentos (int idm, int idf, string nm, string dm, string pm)
+            {
+                this.idMovimento = idm;
+                this.idFisioterapeuta = idf;
+                this.nomeMovimento = nm;
+                this.descricaoMovimento = dm;
+                this.pontosMovimento = pm;
+            }
+        }
 
         /**
          * Cria a relação para movimento, contendo um id gerado automaticamente pelo banco como chave primária.
@@ -100,7 +118,7 @@ namespace movimento
         /**
          * Função que lê dados já cadastrados anteriormente na relação movimento.
          */
-        public void Read()
+        public List<Movimentos> Read()
         {
             using (banco.conn = new SqliteConnection(path))
             {
@@ -109,6 +127,8 @@ namespace movimento
                 banco.sqlQuery = "SELECT * " + "FROM MOVIMENTO";
                 banco.cmd.CommandText = banco.sqlQuery;
                 IDataReader reader = banco.cmd.ExecuteReader();
+
+                List<Movimentos> m = new List<Movimentos>();
                 while (reader.Read())
                 {
                     int idMovimento = 0;
@@ -123,12 +143,8 @@ namespace movimento
                     if (!reader.IsDBNull(3)) descricaoFisioterapeuta = reader.GetString(3);
                     if (!reader.IsDBNull(4)) pontosMovimento = reader.GetString(4);
 
-                    Debug.Log (string.Format("\"{0}\" = ", tt.TABLES[tableId].colName[0]) + idMovimento +
-                        string.Format(" \"{0}\" = ", tt.TABLES[tableId].colName[1]) + idFisioterapeuta +
-                        string.Format(" \"{0}\" = ", tt.TABLES[tableId].colName[2]) + nomeMovimento +
-                        string.Format(" \"{0}\" = ", tt.TABLES[tableId].colName[3]) + descricaoFisioterapeuta +
-                        string.Format(" \"{0}\" = ", tt.TABLES[tableId].colName[4]) + pontosMovimento);
-
+                    Movimentos x = new Movimentos(idMovimento, idFisioterapeuta, nomeMovimento, descricaoFisioterapeuta, pontosMovimento);
+                    m.Add(x);
                 }
                 reader.Close();
                 reader = null;
@@ -136,6 +152,7 @@ namespace movimento
                 banco.cmd = null;
                 banco.conn.Close();
                 banco.conn = null;
+                return m;
             }
         }
 

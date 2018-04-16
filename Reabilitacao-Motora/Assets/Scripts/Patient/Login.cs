@@ -15,9 +15,11 @@ public class Login : MonoBehaviour
 	string path;
 	Fisioterapeuta tableFisioterapeuta;
 
+	GlobalController gC;
+
 	public InputField login;
 	public InputField pass;
-	string wrongConfirmation = "FF7E7EFF";
+	string wrongConfirmation = "FF7E7EFF", success = "87E580FF";
      
 	public static Color hexToColor(string hex)
 	{
@@ -38,7 +40,15 @@ public class Login : MonoBehaviour
  	 */
 	public void Flow()
 	{
-		if (CheckLoginPass()) {
+		Fisioterapeuta.Fisioterapeutas idcheck = CheckLoginPass();
+		if (idcheck != null) {
+			ColorBlock cb = pass.colors;
+			cb.normalColor = hexToColor(success);
+			login.colors = cb;
+			pass.colors = cb;
+
+			gC.admin = idcheck;
+
 			SceneManager.LoadScene("Menu");
 		} else {
 			print("A combinação login+senha está incorreta!");
@@ -49,7 +59,7 @@ public class Login : MonoBehaviour
 		}
 	}
 
-	bool CheckLoginPass () 
+	Fisioterapeuta.Fisioterapeutas CheckLoginPass () 
 	{
 		path = "URI=file:" + Application.dataPath + "/Plugins/fisiotech.db";
 		tableFisioterapeuta = new Fisioterapeuta(path);
@@ -57,8 +67,8 @@ public class Login : MonoBehaviour
 
 		foreach (var fisio in p) 
 		{			
-			if (fisio.login == login.text && fisio.senha == pass.text) return true;
+			if (fisio.login == login.text && fisio.senha == pass.text) return fisio;
 		}
-		return false;
+		return null;
 	}
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 using Mono.Data.Sqlite;
 using System.Data;
 using System;
+using System.IO;
 
 using pessoa;
 using telefone;
@@ -22,7 +23,7 @@ using pontosrotulopaciente;
 */
 public class DataBaseComponent : MonoBehaviour
 {
-    string path;
+    string path, pathEx, pathMv;
     Pessoa tablePessoa;
     Telefone tableTel;
     Fisioterapeuta tableFisio;
@@ -42,6 +43,12 @@ public class DataBaseComponent : MonoBehaviour
     void Start()
     {
         path = "URI=file:" + Application.dataPath + "/Plugins/fisiotech.db";
+
+        pathEx = "URI=file:" + Application.dataPath + "/Exercicios";
+        pathMv = "URI=file:" + Application.dataPath + "/Movimentos";
+
+        Directory.CreateDirectory(pathEx);
+        Directory.CreateDirectory(pathMv);
 
         Initialize();
     }

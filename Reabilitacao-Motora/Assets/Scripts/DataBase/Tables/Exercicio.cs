@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using DataBaseTables;
 using DataBaseAttributes;
 using Mono.Data.Sqlite;
@@ -16,6 +17,24 @@ namespace exercicio
         DataBase banco = new DataBase();
         TableNameColumn tt = new TableNameColumn();
         string path;
+
+        /**
+         * Classe com todos os atributos de um exercicio.
+         */
+        public class Exercicios
+        {
+            public int idExercicio, idPaciente, idMovimento, idSessao;
+            public string descricaoExercicio, pontosExercicio;
+            public Exercicios (int ide, int idp, int idm, int ids, string de, string pe)
+            {
+                this.idExercicio = ide;
+                this.idPaciente = idp;
+                this.idMovimento = idm;
+                this.idSessao = ids;
+                this.descricaoExercicio = de;
+                this.pontosExercicio = pe;
+            }
+        }
 
         /**
          * Cria a relação para exercicios, contendo um id gerado automaticamente pelo banco como chave primária.
@@ -104,7 +123,7 @@ namespace exercicio
         /**
          * Função que lê dados já cadastrados anteriormente na relação de exercicios.
          */
-        public void Read()
+        public List<Exercicios> Read()
         {
             using (banco.conn = new SqliteConnection(path))
             {
@@ -113,6 +132,9 @@ namespace exercicio
                 banco.sqlQuery = "SELECT * " + "FROM EXERCICIO";
                 banco.cmd.CommandText = banco.sqlQuery;
                 IDataReader reader = banco.cmd.ExecuteReader();
+
+                List<Exercicios> e = new List<Exercicios>();
+
                 while (reader.Read())
                 {
                     int idExercicio = 0;
@@ -129,12 +151,8 @@ namespace exercicio
                     if (!reader.IsDBNull(4)) descricaoExercicio = reader.GetString(4);
                     if (!reader.IsDBNull(5)) pontosExercicio = reader.GetString(5);
 
-                    Debug.Log (string.Format("\"{0}\" = ", tt.TABLES[tableId].colName[0]) + idExercicio +
-                        string.Format(" \"{0}\" = ", tt.TABLES[tableId].colName[1]) + idPaciente +
-                        string.Format(" \"{0}\" = ", tt.TABLES[tableId].colName[2]) + idMovimento +
-                        string.Format(" \"{0}\" = ", tt.TABLES[tableId].colName[3]) + idSessao +
-                        string.Format(" \"{0}\" = ", tt.TABLES[tableId].colName[4]) + descricaoExercicio +
-                        string.Format(" \"{0}\" = ", tt.TABLES[tableId].colName[5]) + pontosExercicio);
+                    Exercicios x = new Exercicios (idExercicio,idPaciente,idMovimento,idSessao,descricaoExercicio,pontosExercicio);
+                    e.Add(x);
                 }
                 reader.Close();
                 reader = null;
@@ -142,6 +160,7 @@ namespace exercicio
                 banco.cmd = null;
                 banco.conn.Close();
                 banco.conn = null;
+                return e;
             }
         }
 
