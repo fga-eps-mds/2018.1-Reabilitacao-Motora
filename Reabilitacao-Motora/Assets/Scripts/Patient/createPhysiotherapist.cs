@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.IO;
 
 using pessoa;
 using fisioterapeuta;
@@ -13,7 +14,7 @@ using telefone;
  */
 public class createPhysiotherapist : MonoBehaviour 
 {
-	string path;
+	string path, pathnamephysio;
 	Pessoa tablePessoa;
 	Fisioterapeuta tableFisioterapeuta;
 	Telefone tableTelefone;
@@ -54,6 +55,7 @@ public class createPhysiotherapist : MonoBehaviour
 			pass.colors = cb;
 
 			path = "URI=file:" + Application.dataPath + "/Plugins/fisiotech.db";
+
 			var trip = date.text.Split('/');
 			var dateFormate = trip[2] + "/" + trip[1] + "/" + trip[0];
 			
@@ -64,6 +66,9 @@ public class createPhysiotherapist : MonoBehaviour
 			List<Pessoa.Pessoas> p = tablePessoa.Read();
 			
 			tableFisioterapeuta.Insert(p[p.Count -1].idPessoa, login.text, pass.text, crefito.text, regiao.text);
+
+			pathnamephysio = "URI=file:" + Application.dataPath + "/Movimentos/" + string.Format("\"{0}\"", name.text);
+			Directory.CreateDirectory(pathnamephysio);
 
 			SceneManager.LoadScene("Login");
 		} else {

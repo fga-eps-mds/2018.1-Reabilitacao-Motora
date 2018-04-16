@@ -159,6 +159,42 @@ namespace pontosrotulofisioterapeuta
             }
         }
 
+        public PontosRotuloFisioterapeutas ReadValue (int id)
+        {
+            using (banco.conn = new SqliteConnection(path))
+            {
+                banco.conn.Open();
+                banco.cmd = banco.conn.CreateCommand();
+                banco.sqlQuery = "SELECT * " + string.Format("FROM \"{0}\" WHERE \"{1}\" = \"{2}\";", tt.TABLES[tableId].tableName, 
+                    tt.TABLES[tableId].colName[0], 
+                    id);
+                banco.cmd.CommandText = banco.sqlQuery;
+                IDataReader reader = banco.cmd.ExecuteReader();
+
+                int idRotuloFisioterapeuta = 0;
+                int idMovimento = 0;
+                string estagioMovimentoFisio = "null";
+                double tempoInicial = 0;
+                double tempoFinal = 0;
+
+                if (!reader.IsDBNull(0)) idRotuloFisioterapeuta = reader.GetInt32(0);
+                if (!reader.IsDBNull(1)) idMovimento = reader.GetInt32(1);
+                if (!reader.IsDBNull(2)) estagioMovimentoFisio = reader.GetString(2);
+                if (!reader.IsDBNull(3)) tempoInicial = reader.GetDouble(3);
+                if (!reader.IsDBNull(4)) tempoFinal = reader.GetDouble(4);
+
+                PontosRotuloFisioterapeutas x = new PontosRotuloFisioterapeutas (idRotuloFisioterapeuta,idMovimento,tempoInicial,tempoFinal,estagioMovimentoFisio);
+
+                reader.Close();
+                reader = null;
+                banco.cmd.Dispose();
+                banco.cmd = null;
+                banco.conn.Close();
+                banco.conn = null;
+                return x;
+            }
+        }
+
         /**
         * Função que deleta dados cadastrados anteriormente na relação de pontosrotulofisioterapeuta.
          */

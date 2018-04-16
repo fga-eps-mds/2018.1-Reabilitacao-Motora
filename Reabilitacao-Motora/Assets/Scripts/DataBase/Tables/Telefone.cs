@@ -140,6 +140,37 @@ namespace telefone
             }
         }
 
+        public Telefones ReadValue (int id)
+        {
+            using (banco.conn = new SqliteConnection(path))
+            {
+                banco.conn.Open();
+                banco.cmd = banco.conn.CreateCommand();
+                banco.sqlQuery = "SELECT * " + string.Format("FROM \"{0}\" WHERE \"{1}\" = \"{2}\";", tt.TABLES[tableId].tableName, 
+                    tt.TABLES[tableId].colName[0], 
+                    id);
+                banco.cmd.CommandText = banco.sqlQuery;
+                IDataReader reader = banco.cmd.ExecuteReader();
+
+                int idPessoa = 0;
+                string telefone = "null";
+
+                if (!reader.IsDBNull(0)) idPessoa = reader.GetInt32(0);
+                if (!reader.IsDBNull(1)) telefone = reader.GetString(1);
+
+                Telefones x = new Telefones(idPessoa, telefone);
+
+                reader.Close();
+                reader = null;
+                banco.cmd.Dispose();
+                banco.cmd = null;
+                banco.conn.Close();
+                banco.conn = null;
+                return x;
+            }
+        }
+
+
         /**
          * Função que deleta dados cadastrados anteriormente na relação de telefone.
          */

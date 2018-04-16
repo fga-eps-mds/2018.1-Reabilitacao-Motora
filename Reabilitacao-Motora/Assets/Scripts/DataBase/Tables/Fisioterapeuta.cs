@@ -5,6 +5,7 @@ using DataBaseTables;
 using DataBaseAttributes;
 using Mono.Data.Sqlite;
 using System.Data;
+using pessoa;
 
 namespace fisioterapeuta
 {
@@ -25,6 +26,8 @@ namespace fisioterapeuta
         {
             public int idFisioterapeuta, idPessoa;
             public string login, senha, regiao, crefito;
+            public Pessoa.Pessoas persona;
+            public Pessoa temp;
             public Fisioterapeutas (int idp, int idf, string l, string s, string r, string c)
             {
                 this.idPessoa = idp;
@@ -33,6 +36,7 @@ namespace fisioterapeuta
                 this.senha = s;
                 this.regiao = r;
                 this.crefito = c;
+                this.persona = temp.ReadValue(idp);
             }
         }
 
@@ -212,6 +216,44 @@ namespace fisioterapeuta
                 banco.conn.Close();
                 banco.conn = null;
                 return f;
+            }
+        }
+
+        public Fisioterapeutas ReadValue (int id)
+        {
+            using (banco.conn = new SqliteConnection(path))
+            {
+                banco.conn.Open();
+                banco.cmd = banco.conn.CreateCommand();
+                banco.sqlQuery = "SELECT * " + string.Format("FROM \"{0}\" WHERE \"{1}\" = \"{2}\";", tt.TABLES[tableId].tableName, 
+                    tt.TABLES[tableId].colName[0], 
+                    id);
+                banco.cmd.CommandText = banco.sqlQuery;
+                IDataReader reader = banco.cmd.ExecuteReader();
+
+                int idFisioterapeuta = 0;
+                int idPessoa = 0;
+                string login = "null";
+                string senha = "null";
+                string regiao = "null";
+                string crefito = "null";
+
+                if (!reader.IsDBNull(0)) idFisioterapeuta = reader.GetInt32(0);
+                if (!reader.IsDBNull(1)) idPessoa = reader.GetInt32(1);
+                if (!reader.IsDBNull(2)) login = reader.GetString(2);
+                if (!reader.IsDBNull(3)) senha = reader.GetString(3);
+                if (!reader.IsDBNull(4)) regiao = reader.GetString(4);
+                if (!reader.IsDBNull(5)) crefito = reader.GetString(5);
+
+                Fisioterapeutas x = new Fisioterapeutas (idFisioterapeuta,idPessoa,login,senha,regiao,crefito);
+
+                reader.Close();
+                reader = null;
+                banco.cmd.Dispose();
+                banco.cmd = null;
+                banco.conn.Close();
+                banco.conn = null;
+                return x;
             }
         }
 

@@ -164,6 +164,44 @@ namespace exercicio
             }
         }
 
+        public Exercicios ReadValue (int id)
+        {
+            using (banco.conn = new SqliteConnection(path))
+            {
+                banco.conn.Open();
+                banco.cmd = banco.conn.CreateCommand();
+                banco.sqlQuery = "SELECT * " + string.Format("FROM \"{0}\" WHERE \"{1}\" = \"{2}\";", tt.TABLES[tableId].tableName, 
+                    tt.TABLES[tableId].colName[0], 
+                    id);
+                banco.cmd.CommandText = banco.sqlQuery;
+                IDataReader reader = banco.cmd.ExecuteReader();
+
+                int idExercicio = 0;
+                int idPaciente = 0;
+                int idMovimento = 0;
+                int idSessao = 0;
+                string descricaoExercicio = "null";
+                string pontosExercicio = "null";
+
+                if (!reader.IsDBNull(0)) idExercicio = reader.GetInt32(0);
+                if (!reader.IsDBNull(1)) idPaciente = reader.GetInt32(1);
+                if (!reader.IsDBNull(2)) idMovimento = reader.GetInt32(2);
+                if (!reader.IsDBNull(3)) idSessao = reader.GetInt32(3);
+                if (!reader.IsDBNull(4)) descricaoExercicio = reader.GetString(4);
+                if (!reader.IsDBNull(5)) pontosExercicio = reader.GetString(5);
+
+                Exercicios x = new Exercicios (idExercicio,idPaciente,idMovimento,idSessao,descricaoExercicio,pontosExercicio);
+
+                reader.Close();
+                reader = null;
+                banco.cmd.Dispose();
+                banco.cmd = null;
+                banco.conn.Close();
+                banco.conn = null;
+                return x;
+            }
+        }
+
         /**
          * Função que deleta dados cadastrados anteriormente na relação de exercicios.
          */
