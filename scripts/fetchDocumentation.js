@@ -22,7 +22,6 @@ const setDocumentsDynamicData = () => {
     console.log(elements.length);
     for(let i=elements.length-1; i >= 0; i--){
       elements[i].remove();
-      // console.log(elements[i]);
     }
 }
 
