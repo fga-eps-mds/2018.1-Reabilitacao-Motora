@@ -43,9 +43,8 @@ public class DataBaseComponent : MonoBehaviour
     void Start()
     {
         path = "URI=file:" + Application.dataPath + "/Plugins/fisiotech.db";
-
-        pathEx = "URI=file:" + Application.dataPath + "/Exercicios";
-        pathMv = "URI=file:" + Application.dataPath + "/Movimentos";
+        pathEx = "Assets\\Exercicios";
+        pathMv = "Assets\\Movimentos";
 
         Directory.CreateDirectory(pathEx);
         Directory.CreateDirectory(pathMv);

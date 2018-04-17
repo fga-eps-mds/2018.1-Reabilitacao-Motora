@@ -15,10 +15,9 @@ public class Login : MonoBehaviour
 	string path;
 	Fisioterapeuta tableFisioterapeuta;
 
-	GlobalController gC;
-
 	public InputField login;
 	public InputField pass;
+	
 	string wrongConfirmation = "FF7E7EFF", success = "87E580FF";
      
 	public static Color hexToColor(string hex)
@@ -47,7 +46,7 @@ public class Login : MonoBehaviour
 			login.colors = cb;
 			pass.colors = cb;
 
-			gC.admin = idcheck;
+			GlobalController.instance.admin = idcheck;
 
 			SceneManager.LoadScene("Menu");
 		} else {
@@ -67,7 +66,11 @@ public class Login : MonoBehaviour
 
 		foreach (var fisio in p) 
 		{			
-			if (fisio.login == login.text && fisio.senha == pass.text) return fisio;
+			print(string.Format("fl {0} fs {1}", fisio.login, fisio.senha));
+			print(string.Format("l {0} s {1}", login.text, pass.text));
+			if (fisio.login == login.text && fisio.senha == pass.text) {
+				return fisio;
+			}
 		}
 		return null;
 	}

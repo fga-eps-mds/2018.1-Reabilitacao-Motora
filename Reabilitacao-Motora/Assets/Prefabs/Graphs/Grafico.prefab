@@ -189,7 +189,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224359362859171566}
   - component: {fileID: 114874109260913476}
-  - component: {fileID: 114713327204589952}
+  - component: {fileID: 114748919888657380}
   m_Layer: 0
   m_Name: Grafico
   m_TagString: Untagged
@@ -1365,7 +1365,7 @@ TextMesh:
   m_Color:
     serializedVersion: 2
     rgba: 4278190080
---- !u!114 &114713327204589952
+--- !u!114 &114748919888657380
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1373,20 +1373,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1628030909591862}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6acad5343919bf24f8e376117e2a4035, type: 3}
+  m_Script: {fileID: 11500000, guid: da7cf1c2515c58f48a300f1d8e35c207, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  x_axis: {fileID: 4978420556809028}
   pointPrefab: {fileID: 4656512534540884, guid: a4f789d83ab98b945b53862a4ed28fb1,
     type: 2}
-  resolution: 750
   mao: {fileID: 0}
-  cotovelo: {fileID: 0}
   ombro: {fileID: 0}
+  cotovelo: {fileID: 0}
+  resolution: 0
   c1: {r: 0, g: 0, b: 0, a: 1}
   c2: {r: 1, g: 0, b: 0, a: 1}
-  mainCamera: {fileID: 0}
-  xEnd: {fileID: 4326802183595418}
 --- !u!114 &114874109260913476
 MonoBehaviour:
   m_ObjectHideFlags: 1

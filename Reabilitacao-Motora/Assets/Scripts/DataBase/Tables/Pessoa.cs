@@ -26,6 +26,7 @@ namespace pessoa
         {
             public int idPessoa;
             public string nomePessoa, sexo, dataNascimento;
+            public Pessoas(){}
             public Pessoas (int id, string nome, string s, string d)
             {
                 this.idPessoa = id;
@@ -163,17 +164,22 @@ namespace pessoa
                 banco.cmd.CommandText = banco.sqlQuery;
                 IDataReader reader = banco.cmd.ExecuteReader();
 
-                int idPessoa = 0;
-                string nomePessoa = "null";
-                string sexo = "null";
-                string dataNascimento = "null";
+                Pessoas x = new Pessoas();
 
-                if (!reader.IsDBNull(0)) idPessoa = reader.GetInt32(0);
-                if (!reader.IsDBNull(1)) nomePessoa = reader.GetString(1);
-                if (!reader.IsDBNull(2)) sexo = reader.GetString(2);
-                if (!reader.IsDBNull(3)) dataNascimento = reader.GetString(3);
+                while (reader.Read())
+                {
+                    int idPessoa = 0;
+                    string nomePessoa = "null";
+                    string sexo = "null";
+                    string dataNascimento = "null";
 
-                Pessoas x = new Pessoas (idPessoa,nomePessoa,sexo,dataNascimento);
+                    if (!reader.IsDBNull(0)) idPessoa = reader.GetInt32(0);
+                    if (!reader.IsDBNull(1)) nomePessoa = reader.GetString(1);
+                    if (!reader.IsDBNull(2)) sexo = reader.GetString(2);
+                    if (!reader.IsDBNull(3)) dataNascimento = reader.GetString(3);
+
+                    x = new Pessoas (idPessoa,nomePessoa,sexo,dataNascimento);
+                }
 
                 reader.Close();
                 reader = null;

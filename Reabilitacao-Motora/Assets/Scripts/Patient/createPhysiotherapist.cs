@@ -19,7 +19,7 @@ public class createPhysiotherapist : MonoBehaviour
 	Fisioterapeuta tableFisioterapeuta;
 	Telefone tableTelefone;
 
-	public InputField name;
+	public InputField namePhysio;
 	public InputField date;
 	public InputField phone;
 	public InputField crefito;
@@ -61,13 +61,16 @@ public class createPhysiotherapist : MonoBehaviour
 			
 			tablePessoa = new Pessoa(path);
 			tableFisioterapeuta = new Fisioterapeuta(path);
-			tablePessoa.Insert(name.text, "f", dateFormate);
+			tablePessoa.Insert(namePhysio.text, "f", dateFormate);
 
 			List<Pessoa.Pessoas> p = tablePessoa.Read();
 			
 			tableFisioterapeuta.Insert(p[p.Count -1].idPessoa, login.text, pass.text, crefito.text, regiao.text);
 
-			pathnamephysio = "URI=file:" + Application.dataPath + "/Movimentos/" + string.Format("\"{0}\"", name.text);
+			string namePhysioUnderscored = (namePhysio.text).Replace(' ', '_');
+
+			pathnamephysio = "Assets\\Movimentos\\" + string.Format("{0}-{1}", p[p.Count-1].idPessoa, namePhysioUnderscored);
+
 			Directory.CreateDirectory(pathnamephysio);
 
 			SceneManager.LoadScene("Login");

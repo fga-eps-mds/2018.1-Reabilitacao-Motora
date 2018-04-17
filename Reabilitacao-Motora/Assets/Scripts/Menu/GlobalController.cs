@@ -16,20 +16,19 @@ using pontosrotulopaciente;
 
 public class GlobalController : MonoBehaviour {
 
-	static GlobalController instance;
+	public static GlobalController instance;
 
 	public Pessoa.Pessoas personPhysio;
 	public Pessoa.Pessoas personPatient;
 	public Telefone.Telefones phone;
 	public Fisioterapeuta.Fisioterapeutas admin;
 	public Paciente.Pacientes user;
-	public Musculo.Musculos muscle;
 	public Movimento.Movimentos movement;
 	public Sessao.Sessoes session;
 	public Exercicio.Exercicios exercise;
-	public MovimentoMusculo.MovimentoMusculos musclemovement;
 	public PontosRotuloFisioterapeuta.PontosRotuloFisioterapeutas labelPhysioPoints;
 	public PontosRotuloPaciente.PontosRotuloPacientes labelPatientPoints;
+	public string path;
 
 	// Use this for initialization
 	void Awake () {
@@ -41,6 +40,7 @@ public class GlobalController : MonoBehaviour {
 		{
 			instance = this;
 			DontDestroyOnLoad(gameObject);
+			instance.path = "URI=file:" + Application.dataPath + "/Plugins/fisiotech.db";
 		}
 	}
 	

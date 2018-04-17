@@ -12,7 +12,7 @@ insert into TELEFONE (idPessoa, telefone) values
 (2, '+55 61 9489-4205'),
 (4, '+55 61 9066-4195');
 
-insert into FISIOTERAPEUTA (idPessoa, login, senha, regiao, crefito, ) values (1, 'abcdef', '12213', 'DF', '11234567');
+insert into FISIOTERAPEUTA (idPessoa, login, senha, regiao, crefito) values (1, 'abcdef', '12213', 'DF', '11234567');
 insert into FISIOTERAPEUTA (idPessoa, login, senha) values (3, 'qwerty', 'uiops');
 
 insert into PACIENTE (idPessoa, observacoes) values 

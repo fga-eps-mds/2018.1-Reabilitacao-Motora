@@ -17,7 +17,7 @@ public class createPatient : MonoBehaviour
 	Paciente tablePaciente;
 	Telefone tableTelefone;
 
-	public InputField name;
+	public InputField namePatient;
 	public InputField date;
 	public InputField phone;
 	public InputField notes;
@@ -34,7 +34,7 @@ public class createPatient : MonoBehaviour
 		
 		tablePessoa = new Pessoa(path);
 		tablePaciente = new Paciente(path);
-		tablePessoa.Insert(name.text, "f", dateFormate);
+		tablePessoa.Insert(namePatient.text, "f", dateFormate);
 
 		List<Pessoa.Pessoas> p = tablePessoa.Read();
 		

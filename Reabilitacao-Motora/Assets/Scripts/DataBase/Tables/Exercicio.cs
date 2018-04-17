@@ -72,7 +72,7 @@ namespace exercicio
 
                 int tableSize = tt.TABLES[tableId].Length;
 
-                for (int i = 1; i < tableSize; ++i) {
+                for (int i = 0; i < tableSize; ++i) {
                     string aux = (i+1 == tableSize) ? (")") : (",");
                     banco.sqlQuery += (tt.TABLES[tableId].colName[i] + aux);
                 }

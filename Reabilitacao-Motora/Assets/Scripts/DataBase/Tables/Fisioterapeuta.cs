@@ -28,14 +28,15 @@ namespace fisioterapeuta
             public string login, senha, regiao, crefito;
             public Pessoa.Pessoas persona;
             public Pessoa temp;
-            public Fisioterapeutas (int idp, int idf, string l, string s, string r, string c)
+            public Fisioterapeutas (int idf, int idp, string l, string s, string r, string c)
             {
-                this.idPessoa = idp;
                 this.idFisioterapeuta = idf;
+                this.idPessoa = idp;
                 this.login = l;
                 this.senha = s;
                 this.regiao = r;
                 this.crefito = c;
+                temp = new Pessoa(GlobalController.instance.path);
                 this.persona = temp.ReadValue(idp);
             }
         }
@@ -51,7 +52,7 @@ namespace fisioterapeuta
                 banco.conn.Open();
                 banco.cmd = banco.conn.CreateCommand();
 
-                banco.sqlQuery = "CREATE TABLE IF NOT EXISTS FISIOTERAPEUTA (idFisioterapeuta INTEGER primary key AUTOINCREMENT,idPessoa INTEGER not null,login VARCHAR (255) not null,senha VARCHAR (255) not null,regiao VARCHAR (2),crefito VARCHAR (10),foreign key (idPessoa) references PESSOA (idPessoa),constraint crefito_regiao UNIQUE (crefito, regiao));";
+                banco.sqlQuery = "CREATE TABLE IF NOT EXISTS FISIOTERAPEUTA (idFisioterapeuta INTEGER primary key AUTOINCREMENT,idPessoa INTEGER not null,login VARCHAR (255) not null,senha VARCHAR (255) not null,regiao VARCHAR (2),crefito VARCHAR (10),foreign key (idPessoa) references PESSOA (idPessoa),constraint crefito_regiao UNIQUE (crefito, regiao), constraint login_senha UNIQUE (login, senha));";
 
                 banco.cmd.CommandText = banco.sqlQuery;
                 banco.cmd.ExecuteScalar();

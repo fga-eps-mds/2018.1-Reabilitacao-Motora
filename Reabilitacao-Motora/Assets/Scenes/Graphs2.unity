@@ -210,6 +210,21 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 114748919888657380, guid: 184deb3dde3eaaf44a893367924f55a9,
+        type: 2}
+      propertyPath: mao
+      value: 
+      objectReference: {fileID: 1885446799}
+    - target: {fileID: 114748919888657380, guid: 184deb3dde3eaaf44a893367924f55a9,
+        type: 2}
+      propertyPath: ombro
+      value: 
+      objectReference: {fileID: 1885446798}
+    - target: {fileID: 114748919888657380, guid: 184deb3dde3eaaf44a893367924f55a9,
+        type: 2}
+      propertyPath: cotovelo
+      value: 
+      objectReference: {fileID: 1885446797}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 184deb3dde3eaaf44a893367924f55a9, type: 2}
   m_IsPrefabParent: 0
@@ -1235,7 +1250,7 @@ Prefab:
       objectReference: {fileID: 2100000, guid: e758bb15770be874fa4554dd156c9d79, type: 2}
     - target: {fileID: 100006, guid: f5e05f20199c880499cc033d19de1bcd, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 13700008, guid: f5e05f20199c880499cc033d19de1bcd, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -1257,28 +1272,25 @@ Prefab:
       propertyPath: m_ApplyRootMotion
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: f5e05f20199c880499cc033d19de1bcd, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f5e05f20199c880499cc033d19de1bcd, type: 3}
   m_IsPrefabParent: 0
---- !u!1 &1885446795 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 100004, guid: f5e05f20199c880499cc033d19de1bcd, type: 3}
+--- !u!4 &1885446797 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400022, guid: f5e05f20199c880499cc033d19de1bcd, type: 3}
   m_PrefabInternal: {fileID: 1885446794}
---- !u!114 &1885446796
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1885446795}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21d009565a343ca46888bb2b74c7ef3d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mirroredMovement: 0
-  verticalMovement: 0
-  smoothFactor: 5
-  offsetRelativeToSensor: 0
+--- !u!4 &1885446798 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400068, guid: f5e05f20199c880499cc033d19de1bcd, type: 3}
+  m_PrefabInternal: {fileID: 1885446794}
+--- !u!4 &1885446799 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400024, guid: f5e05f20199c880499cc033d19de1bcd, type: 3}
+  m_PrefabInternal: {fileID: 1885446794}
 --- !u!1 &2131226005
 GameObject:
   m_ObjectHideFlags: 0

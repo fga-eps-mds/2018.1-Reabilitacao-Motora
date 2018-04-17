@@ -24,7 +24,8 @@ CREATE TABLE IF NOT EXISTS FISIOTERAPEUTA (
 	regiao VARCHAR (2),
 	crefito VARCHAR (10),
 	foreign key (idPessoa) references PESSOA (idPessoa),
-	constraint crefito_regiao UNIQUE (crefito, regiao)
+	constraint crefito_regiao UNIQUE (crefito, regiao),
+	constraint login_senha UNIQUE (login, senha)
 );
 
 CREATE TABLE IF NOT EXISTS PACIENTE (
@@ -36,7 +37,8 @@ CREATE TABLE IF NOT EXISTS PACIENTE (
 
 CREATE TABLE IF NOT EXISTS MUSCULO (
 	idMusculo INTEGER primary key AUTOINCREMENT,
-	nomeMusculo VARCHAR (20) not null
+	nomeMusculo VARCHAR (20) not null,
+	constraint musculo UNIQUE (nomeMusculo)
 );
 
 

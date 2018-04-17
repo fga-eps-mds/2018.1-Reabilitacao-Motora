@@ -33,6 +33,7 @@ namespace paciente
                 this.idPaciente = idpa;
                 this.idPessoa = idpe;
                 this.observacoes = obs;
+                temp = new Pessoa(GlobalController.instance.path);
                 this.persona = temp.ReadValue (idpe);
             }
         }
