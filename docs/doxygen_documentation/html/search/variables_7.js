@@ -11,7 +11,5 @@ var searchData=
   ['hip_5fleft',['Hip_Left',['../class_cubeman_controller.html#a8da663e72ba0608259276ce8d5f7feb2',1,'CubemanController']]],
   ['hip_5fright',['Hip_Right',['../class_cubeman_controller.html#a364f94bcbf2244a207b0ac785b4ae243',1,'CubemanController']]],
   ['hipcenter',['HipCenter',['../class_avatar_controller_classic.html#a97381312097be4061e4c96bbe4ba3e68',1,'AvatarControllerClassic']]],
-  ['hipextend',['HipExtend',['../class_self_intersection_constraint.html#ac723559a2cd2b3f563b5b857b1357299',1,'SelfIntersectionConstraint']]],
-  ['holder',['holder',['../class_line_graph_manager.html#af6baff77b342364d37c6c33a572a04df',1,'LineGraphManager']]],
-  ['holderprefb',['HolderPrefb',['../class_line_graph_manager.html#a63fae14c20e484c7af6220fa13a719e7',1,'LineGraphManager']]]
+  ['hipextend',['HipExtend',['../class_self_intersection_constraint.html#ac723559a2cd2b3f563b5b857b1357299',1,'SelfIntersectionConstraint']]]
 ];

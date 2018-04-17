@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['exercicio',['Exercicio',['../classbd_1_1_exercicio.html',1,'bd']]]
+  ['exercicio',['Exercicio',['../classexercicio_1_1_exercicio.html',1,'exercicio']]]
 ];

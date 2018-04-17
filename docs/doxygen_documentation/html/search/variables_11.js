@@ -20,6 +20,7 @@ var searchData=
   ['specindex2jointmap',['specIndex2JointMap',['../class_avatar_controller.html#a8143c80aaad868c53ca674b41759d82b',1,'AvatarController']]],
   ['specindex2mirrorjointmap',['specIndex2MirrorJointMap',['../class_avatar_controller.html#ad954ba1369590ca3534bd206eb8bd72a',1,'AvatarController']]],
   ['spine',['Spine',['../class_avatar_controller_classic.html#a075622ff023b9e9aa3a46ceeb9282ffe',1,'AvatarControllerClassic.Spine()'],['../class_cubeman_controller.html#a3ee406ee6cfb60eaff989d75968db021',1,'CubemanController.Spine()']]],
+  ['sqlquery',['sqlQuery',['../class_data_base_attributes_1_1_data_base.html#a10af2f85e1edcccf9f28eee8b5c22242',1,'DataBaseAttributes::DataBase']]],
   ['startjoint',['startJoint',['../struct_kinect_wrapper_1_1_nui_skeleton_bone_orientation.html#a040cf3d6ae0183a745da2bc3a854cd76',1,'KinectWrapper::NuiSkeletonBoneOrientation']]],
   ['starttrackingattime',['startTrackingAtTime',['../struct_kinect_gestures_1_1_gesture_data.html#a108cda0a71bed75455eef681344db6c4',1,'KinectGestures::GestureData']]],
   ['state',['state',['../struct_kinect_gestures_1_1_gesture_data.html#a7f27c5e9bb6d3cd1252d2673f7688b11',1,'KinectGestures::GestureData']]]

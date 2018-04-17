@@ -29,7 +29,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Reabilitação Motora
-   &#160;<span id="projectnumber">1.0</span>
+   &#160;<span id="projectnumber">0.1</span>
    </div>
   </td>
  </tr>
@@ -95,32 +95,162 @@ $(document).ready(function(){initNavTree('class_bone_orientations_constraint.htm
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:a1f4aa21ffa8dbc27a16143698d71e63d"><td class="memItemLeft" align="right" valign="top"><a id="a1f4aa21ffa8dbc27a16143698d71e63d"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>ConstraintAxis</b> { <b>X</b> = 0, 
-<b>Y</b> = 1, 
-<b>Z</b> = 2
+<tr class="memitem:a1f4aa21ffa8dbc27a16143698d71e63d"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bone_orientations_constraint.html#a1f4aa21ffa8dbc27a16143698d71e63d">ConstraintAxis</a> { <a class="el" href="class_bone_orientations_constraint.html#a1f4aa21ffa8dbc27a16143698d71e63da02129bb861061d1a052c592e2dc6b383">ConstraintAxis.X</a> = 0, 
+<a class="el" href="class_bone_orientations_constraint.html#a1f4aa21ffa8dbc27a16143698d71e63da57cec4137b614c87cb4e24a3d003a3e0">ConstraintAxis.Y</a> = 1, 
+<a class="el" href="class_bone_orientations_constraint.html#a1f4aa21ffa8dbc27a16143698d71e63da21c2e59531c8710156d34a3c30ac81d5">ConstraintAxis.Z</a> = 2
  }</td></tr>
 <tr class="separator:a1f4aa21ffa8dbc27a16143698d71e63d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a8f9232ef89117f7a5ea6977acf5ce622"><td class="memItemLeft" align="right" valign="top"><a id="a8f9232ef89117f7a5ea6977acf5ce622"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bone_orientations_constraint.html#a8f9232ef89117f7a5ea6977acf5ce622">BoneOrientationsConstraint</a> ()</td></tr>
-<tr class="memdesc:a8f9232ef89117f7a5ea6977acf5ce622"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a new instance of the BoneOrientationConstraints class. <br /></td></tr>
+<tr class="memitem:a8f9232ef89117f7a5ea6977acf5ce622"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bone_orientations_constraint.html#a8f9232ef89117f7a5ea6977acf5ce622">BoneOrientationsConstraint</a> ()</td></tr>
+<tr class="memdesc:a8f9232ef89117f7a5ea6977acf5ce622"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a new instance of the BoneOrientationConstraints class.  <a href="#a8f9232ef89117f7a5ea6977acf5ce622">More...</a><br /></td></tr>
 <tr class="separator:a8f9232ef89117f7a5ea6977acf5ce622"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab9dcd6608443e194a4c3a098baec5138"><td class="memItemLeft" align="right" valign="top"><a id="ab9dcd6608443e194a4c3a098baec5138"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>AddBoneOrientationConstraint</b> (int joint, ConstraintAxis axis, float angleMin, float angleMax)</td></tr>
+<tr class="memitem:ab9dcd6608443e194a4c3a098baec5138"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bone_orientations_constraint.html#ab9dcd6608443e194a4c3a098baec5138">AddBoneOrientationConstraint</a> (int joint, <a class="el" href="class_bone_orientations_constraint.html#a1f4aa21ffa8dbc27a16143698d71e63d">ConstraintAxis</a> axis, float angleMin, float angleMax)</td></tr>
 <tr class="separator:ab9dcd6608443e194a4c3a098baec5138"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9c6fb36deaa012c5ca393200ed273986"><td class="memItemLeft" align="right" valign="top"><a id="a9c6fb36deaa012c5ca393200ed273986"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>AddDefaultConstraints</b> ()</td></tr>
+<tr class="memitem:a9c6fb36deaa012c5ca393200ed273986"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bone_orientations_constraint.html#a9c6fb36deaa012c5ca393200ed273986">AddDefaultConstraints</a> ()</td></tr>
 <tr class="separator:a9c6fb36deaa012c5ca393200ed273986"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8387f8886926069be888c2aca2ddb1e8"><td class="memItemLeft" align="right" valign="top"><a id="a8387f8886926069be888c2aca2ddb1e8"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>Constrain</b> (ref Matrix4x4[] jointOrientations, ref bool[] jointTracked)</td></tr>
+<tr class="memitem:a8387f8886926069be888c2aca2ddb1e8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bone_orientations_constraint.html#a8387f8886926069be888c2aca2ddb1e8">Constrain</a> (ref Matrix4x4[] jointOrientations, ref bool[] jointTracked)</td></tr>
 <tr class="separator:a8387f8886926069be888c2aca2ddb1e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Filter to correct the joint locations and joint orientations to constraint to range of viable human motion. </p>
-</div><hr/>The documentation for this class was generated from the following file:<ul>
-<li>Assets/KinectScripts/Filters/BoneOrientationsConstraint.cs</li>
+</div><h2 class="groupheader">Member Enumeration Documentation</h2>
+<a id="a1f4aa21ffa8dbc27a16143698d71e63d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1f4aa21ffa8dbc27a16143698d71e63d">&#9670;&nbsp;</a></span>ConstraintAxis</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="class_bone_orientations_constraint.html#a1f4aa21ffa8dbc27a16143698d71e63d">BoneOrientationsConstraint.ConstraintAxis</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a1f4aa21ffa8dbc27a16143698d71e63da02129bb861061d1a052c592e2dc6b383"></a>X&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a1f4aa21ffa8dbc27a16143698d71e63da57cec4137b614c87cb4e24a3d003a3e0"></a>Y&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a1f4aa21ffa8dbc27a16143698d71e63da21c2e59531c8710156d34a3c30ac81d5"></a>Z&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a8f9232ef89117f7a5ea6977acf5ce622"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f9232ef89117f7a5ea6977acf5ce622">&#9670;&nbsp;</a></span>BoneOrientationsConstraint()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">BoneOrientationsConstraint.BoneOrientationsConstraint </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initializes a new instance of the BoneOrientationConstraints class. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="ab9dcd6608443e194a4c3a098baec5138"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab9dcd6608443e194a4c3a098baec5138">&#9670;&nbsp;</a></span>AddBoneOrientationConstraint()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BoneOrientationsConstraint.AddBoneOrientationConstraint </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>joint</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_bone_orientations_constraint.html#a1f4aa21ffa8dbc27a16143698d71e63d">ConstraintAxis</a>&#160;</td>
+          <td class="paramname"><em>axis</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>angleMin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>angleMax</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9c6fb36deaa012c5ca393200ed273986"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c6fb36deaa012c5ca393200ed273986">&#9670;&nbsp;</a></span>AddDefaultConstraints()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BoneOrientationsConstraint.AddDefaultConstraints </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8387f8886926069be888c2aca2ddb1e8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8387f8886926069be888c2aca2ddb1e8">&#9670;&nbsp;</a></span>Constrain()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BoneOrientationsConstraint.Constrain </td>
+          <td>(</td>
+          <td class="paramtype">ref Matrix4x4 []&#160;</td>
+          <td class="paramname"><em>jointOrientations</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ref bool []&#160;</td>
+          <td class="paramname"><em>jointTracked</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li>Reabilitacao-Motora/Assets/Scripts/KinectScripts/Filters/<a class="el" href="_bone_orientations_constraint_8cs.html">BoneOrientationsConstraint.cs</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

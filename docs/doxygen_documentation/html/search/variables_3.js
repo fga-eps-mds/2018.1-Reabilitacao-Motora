@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['description',['Description',['../class_label.html#ac48048533c8c22f899e7e5bd4355cd8e',1,'Label']]],
   ['detectclosestuser',['DetectClosestUser',['../class_kinect_manager.html#a92e937bb385e6e5f207e977a3088a0df',1,'KinectManager']]],
   ['displaycolormap',['DisplayColorMap',['../class_kinect_manager.html#ab31b9e8dd0c28a6a83b1015b56f98c5a',1,'KinectManager']]],
   ['displaymapswidthpercent',['DisplayMapsWidthPercent',['../class_kinect_manager.html#a395d0a5ec2e523353aab6b9990d3658d',1,'KinectManager']]],

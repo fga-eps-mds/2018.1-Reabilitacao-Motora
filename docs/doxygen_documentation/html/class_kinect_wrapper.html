@@ -29,7 +29,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Reabilitação Motora
-   &#160;<span id="projectnumber">1.0</span>
+   &#160;<span id="projectnumber">0.1</span>
    </div>
   </td>
  </tr>
@@ -127,205 +127,333 @@ Classes</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
 <tr class="memitem:aa14891c91bfa8c6fe4761146055656da"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_kinect_wrapper.html#aa14891c91bfa8c6fe4761146055656da">NuiInitializeFlags</a> : uint { <br />
-&#160;&#160;<b>UsesAudio</b> = 0x10000000, 
-<b>UsesDepthAndPlayerIndex</b> = 0x00000001, 
-<b>UsesColor</b> = 0x00000002, 
-<b>UsesSkeleton</b> = 0x00000008, 
+&#160;&#160;<a class="el" href="class_kinect_wrapper.html#aa14891c91bfa8c6fe4761146055656daa5801da2f346d93f21b62eb88f9b45a07">NuiInitializeFlags.UsesAudio</a> = 0x10000000, 
+<a class="el" href="class_kinect_wrapper.html#aa14891c91bfa8c6fe4761146055656daae7cabc598437ffc860b9b07bc39e03c6">NuiInitializeFlags.UsesDepthAndPlayerIndex</a> = 0x00000001, 
+<a class="el" href="class_kinect_wrapper.html#aa14891c91bfa8c6fe4761146055656daadee956c7b793347104622cf77f5c6f51">NuiInitializeFlags.UsesColor</a> = 0x00000002, 
+<a class="el" href="class_kinect_wrapper.html#aa14891c91bfa8c6fe4761146055656daa99681ce65d8d822c8342bd0a6e4c2ed9">NuiInitializeFlags.UsesSkeleton</a> = 0x00000008, 
 <br />
-&#160;&#160;<b>UsesDepth</b> = 0x00000020, 
-<b>UsesHighQualityColor</b> = 0x00000040
+&#160;&#160;<a class="el" href="class_kinect_wrapper.html#aa14891c91bfa8c6fe4761146055656daa51ef1e7b6ba48e1f848df92605653738">NuiInitializeFlags.UsesDepth</a> = 0x00000020, 
+<a class="el" href="class_kinect_wrapper.html#aa14891c91bfa8c6fe4761146055656daac429a251f2e406767eb281a58a6da4c0">NuiInitializeFlags.UsesHighQualityColor</a> = 0x00000040
 <br />
  }<tr class="memdesc:aa14891c91bfa8c6fe4761146055656da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structs and constants for interfacing C# with the Kinect.dll  <a href="class_kinect_wrapper.html#aa14891c91bfa8c6fe4761146055656da">More...</a><br /></td></tr>
 </td></tr>
 <tr class="separator:aa14891c91bfa8c6fe4761146055656da"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a556dfab4f288c786036c4a48c5a57799"><td class="memItemLeft" align="right" valign="top"><a id="a556dfab4f288c786036c4a48c5a57799"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>NuiErrorCodes</b> : uint { <br />
-&#160;&#160;<b>FrameNoData</b> = 0x83010001, 
-<b>StreamNotEnabled</b> = 0x83010002, 
-<b>ImageStreamInUse</b> = 0x83010003, 
-<b>FrameLimitExceeded</b> = 0x83010004, 
+<tr class="memitem:a556dfab4f288c786036c4a48c5a57799"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_kinect_wrapper.html#a556dfab4f288c786036c4a48c5a57799">NuiErrorCodes</a> : uint { <br />
+&#160;&#160;<a class="el" href="class_kinect_wrapper.html#a556dfab4f288c786036c4a48c5a57799afacf6a666add739fc7712003c7cf6aa1">NuiErrorCodes.FrameNoData</a> = 0x83010001, 
+<a class="el" href="class_kinect_wrapper.html#a556dfab4f288c786036c4a48c5a57799a326445662699ab1ecdff967f82e471d8">NuiErrorCodes.StreamNotEnabled</a> = 0x83010002, 
+<a class="el" href="class_kinect_wrapper.html#a556dfab4f288c786036c4a48c5a57799a50f4196a2c3172dd00afcbccbbcbe029">NuiErrorCodes.ImageStreamInUse</a> = 0x83010003, 
+<a class="el" href="class_kinect_wrapper.html#a556dfab4f288c786036c4a48c5a57799a062653700ba899628b41609d00290457">NuiErrorCodes.FrameLimitExceeded</a> = 0x83010004, 
 <br />
-&#160;&#160;<b>FeatureNotInitialized</b> = 0x83010005, 
-<b>DeviceNotGenuine</b> = 0x83010006, 
-<b>InsufficientBandwidth</b> = 0x83010007, 
-<b>DeviceNotSupported</b> = 0x83010008, 
+&#160;&#160;<a class="el" href="class_kinect_wrapper.html#a556dfab4f288c786036c4a48c5a57799a7a8313dc681cf33d1855b15219bed252">NuiErrorCodes.FeatureNotInitialized</a> = 0x83010005, 
+<a class="el" href="class_kinect_wrapper.html#a556dfab4f288c786036c4a48c5a57799aff870845605fb0063a95f8d77b442e37">NuiErrorCodes.DeviceNotGenuine</a> = 0x83010006, 
+<a class="el" href="class_kinect_wrapper.html#a556dfab4f288c786036c4a48c5a57799a1293d85c5e3dd6d79a4c7094d4287c7d">NuiErrorCodes.InsufficientBandwidth</a> = 0x83010007, 
+<a class="el" href="class_kinect_wrapper.html#a556dfab4f288c786036c4a48c5a57799aaa6c5cee4bac5f31521b5436239f053a">NuiErrorCodes.DeviceNotSupported</a> = 0x83010008, 
 <br />
-&#160;&#160;<b>DeviceInUse</b> = 0x83010009, 
-<b>DatabaseNotFound</b> = 0x8301000D, 
-<b>DatabaseVersionMismatch</b> = 0x8301000E, 
-<b>HardwareFeatureUnavailable</b> = 0x8301000F, 
+&#160;&#160;<a class="el" href="class_kinect_wrapper.html#a556dfab4f288c786036c4a48c5a57799aab1e0f933d8936fa6c4429a58d0ce1c0">NuiErrorCodes.DeviceInUse</a> = 0x83010009, 
+<a class="el" href="class_kinect_wrapper.html#a556dfab4f288c786036c4a48c5a57799ab7797dc27ba45828ab17ef9130b97486">NuiErrorCodes.DatabaseNotFound</a> = 0x8301000D, 
+<a class="el" href="class_kinect_wrapper.html#a556dfab4f288c786036c4a48c5a57799ae879012de1a0150d5cfac9a7a5bdf691">NuiErrorCodes.DatabaseVersionMismatch</a> = 0x8301000E, 
+<a class="el" href="class_kinect_wrapper.html#a556dfab4f288c786036c4a48c5a57799a18e4dee163ec928d25aafbab897cdd28">NuiErrorCodes.HardwareFeatureUnavailable</a> = 0x8301000F, 
 <br />
-&#160;&#160;<b>DeviceNotConnected</b> = 0x83010014, 
-<b>DeviceNotReady</b> = 0x83010015, 
-<b>SkeletalEngineBusy</b> = 0x830100AA, 
-<b>DeviceNotPowered</b> = 0x8301027F
+&#160;&#160;<a class="el" href="class_kinect_wrapper.html#a556dfab4f288c786036c4a48c5a57799adb418e03fbe730e343ac59dcad6a9320">NuiErrorCodes.DeviceNotConnected</a> = 0x83010014, 
+<a class="el" href="class_kinect_wrapper.html#a556dfab4f288c786036c4a48c5a57799adefaa9a1c360cae76328f75343f05f24">NuiErrorCodes.DeviceNotReady</a> = 0x83010015, 
+<a class="el" href="class_kinect_wrapper.html#a556dfab4f288c786036c4a48c5a57799a0215b9d15055daceef0ac9fc83490571">NuiErrorCodes.SkeletalEngineBusy</a> = 0x830100AA, 
+<a class="el" href="class_kinect_wrapper.html#a556dfab4f288c786036c4a48c5a57799ae066635dfee1c69db6dff5ce6a46e0ac">NuiErrorCodes.DeviceNotPowered</a> = 0x8301027F
 <br />
  }</td></tr>
 <tr class="separator:a556dfab4f288c786036c4a48c5a57799"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad73682163ab4e6f554501574ab835f1c"><td class="memItemLeft" align="right" valign="top"><a id="ad73682163ab4e6f554501574ab835f1c"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>NuiSkeletonPositionIndex</b> : int { <br />
-&#160;&#160;<b>HipCenter</b> = 0, 
-<b>Spine</b> = 1, 
-<b>ShoulderCenter</b> = 2, 
-<b>Head</b> = 3, 
+<tr class="memitem:ad73682163ab4e6f554501574ab835f1c"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_kinect_wrapper.html#ad73682163ab4e6f554501574ab835f1c">NuiSkeletonPositionIndex</a> : int { <br />
+&#160;&#160;<a class="el" href="class_kinect_wrapper.html#ad73682163ab4e6f554501574ab835f1ca0fc30f467303ddec085a1bb75b2d0159">NuiSkeletonPositionIndex.HipCenter</a> = 0, 
+<a class="el" href="class_kinect_wrapper.html#ad73682163ab4e6f554501574ab835f1ca299a20601891812eff26320b63f3b4fe">NuiSkeletonPositionIndex.Spine</a> = 1, 
+<a class="el" href="class_kinect_wrapper.html#ad73682163ab4e6f554501574ab835f1ca56cea710a533a062602a009f5cd4a960">NuiSkeletonPositionIndex.ShoulderCenter</a> = 2, 
+<a class="el" href="class_kinect_wrapper.html#ad73682163ab4e6f554501574ab835f1ca98921133d10fbdb0fb6dbb7b2648befe">NuiSkeletonPositionIndex.Head</a> = 3, 
 <br />
-&#160;&#160;<b>ShoulderLeft</b> = 4, 
-<b>ElbowLeft</b> = 5, 
-<b>WristLeft</b> = 6, 
-<b>HandLeft</b> = 7, 
+&#160;&#160;<a class="el" href="class_kinect_wrapper.html#ad73682163ab4e6f554501574ab835f1ca6f06420ba820e90993137a63f10146c2">NuiSkeletonPositionIndex.ShoulderLeft</a> = 4, 
+<a class="el" href="class_kinect_wrapper.html#ad73682163ab4e6f554501574ab835f1ca62d7fd05a5c965ae80e4d59a5434f383">NuiSkeletonPositionIndex.ElbowLeft</a> = 5, 
+<a class="el" href="class_kinect_wrapper.html#ad73682163ab4e6f554501574ab835f1ca588e9efafd75b6a1fe22a9960c44181e">NuiSkeletonPositionIndex.WristLeft</a> = 6, 
+<a class="el" href="class_kinect_wrapper.html#ad73682163ab4e6f554501574ab835f1ca558c4cce30e979b441f36bcac58692c3">NuiSkeletonPositionIndex.HandLeft</a> = 7, 
 <br />
-&#160;&#160;<b>ShoulderRight</b> = 8, 
-<b>ElbowRight</b> = 9, 
-<b>WristRight</b> = 10, 
-<b>HandRight</b> = 11, 
+&#160;&#160;<a class="el" href="class_kinect_wrapper.html#ad73682163ab4e6f554501574ab835f1caa1a480b34eb3460ee2772c38bfb4bf1c">NuiSkeletonPositionIndex.ShoulderRight</a> = 8, 
+<a class="el" href="class_kinect_wrapper.html#ad73682163ab4e6f554501574ab835f1ca43b4a26b475222d959bb0f57d788387c">NuiSkeletonPositionIndex.ElbowRight</a> = 9, 
+<a class="el" href="class_kinect_wrapper.html#ad73682163ab4e6f554501574ab835f1caa06437c22d077beaecbbe4508d9e41c8">NuiSkeletonPositionIndex.WristRight</a> = 10, 
+<a class="el" href="class_kinect_wrapper.html#ad73682163ab4e6f554501574ab835f1cadb75ce9c367c69e8af461ee43d8efdad">NuiSkeletonPositionIndex.HandRight</a> = 11, 
 <br />
-&#160;&#160;<b>HipLeft</b> = 12, 
-<b>KneeLeft</b> = 13, 
-<b>AnkleLeft</b> = 14, 
-<b>FootLeft</b> = 15, 
+&#160;&#160;<a class="el" href="class_kinect_wrapper.html#ad73682163ab4e6f554501574ab835f1cade45c3616b3d2a7e4cb8ad9c58142f15">NuiSkeletonPositionIndex.HipLeft</a> = 12, 
+<a class="el" href="class_kinect_wrapper.html#ad73682163ab4e6f554501574ab835f1ca6800dcd4b31600a45f0fe66124306219">NuiSkeletonPositionIndex.KneeLeft</a> = 13, 
+<a class="el" href="class_kinect_wrapper.html#ad73682163ab4e6f554501574ab835f1caf5893586463424ab0c18d2fc7871b191">NuiSkeletonPositionIndex.AnkleLeft</a> = 14, 
+<a class="el" href="class_kinect_wrapper.html#ad73682163ab4e6f554501574ab835f1cac0957ad259802f0a919c8c12dd06ed0d">NuiSkeletonPositionIndex.FootLeft</a> = 15, 
 <br />
-&#160;&#160;<b>HipRight</b> = 16, 
-<b>KneeRight</b> = 17, 
-<b>AnkleRight</b> = 18, 
-<b>FootRight</b> = 19, 
+&#160;&#160;<a class="el" href="class_kinect_wrapper.html#ad73682163ab4e6f554501574ab835f1cacdceb34e21b59759e52c7ec25d6dfd54">NuiSkeletonPositionIndex.HipRight</a> = 16, 
+<a class="el" href="class_kinect_wrapper.html#ad73682163ab4e6f554501574ab835f1ca64e50376713b14d2cea2fb4246182ef8">NuiSkeletonPositionIndex.KneeRight</a> = 17, 
+<a class="el" href="class_kinect_wrapper.html#ad73682163ab4e6f554501574ab835f1ca8ec71e2ee0963607d88fa7fa9605dd78">NuiSkeletonPositionIndex.AnkleRight</a> = 18, 
+<a class="el" href="class_kinect_wrapper.html#ad73682163ab4e6f554501574ab835f1cacce96a8bcdfeab497541a73c3f06d10e">NuiSkeletonPositionIndex.FootRight</a> = 19, 
 <br />
-&#160;&#160;<b>Count</b> = 20
+&#160;&#160;<a class="el" href="class_kinect_wrapper.html#ad73682163ab4e6f554501574ab835f1cae93f994f01c537c4e2f7d8528c3eb5e9">NuiSkeletonPositionIndex.Count</a> = 20
 <br />
  }</td></tr>
 <tr class="separator:ad73682163ab4e6f554501574ab835f1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2aa1ef02e1edc9d3bcb5dc78cc41e173"><td class="memItemLeft" align="right" valign="top"><a id="a2aa1ef02e1edc9d3bcb5dc78cc41e173"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>NuiSkeletonPositionTrackingState</b> { <b>NotTracked</b> = 0, 
-<b>Inferred</b>, 
-<b>Tracked</b>
+<tr class="memitem:a2aa1ef02e1edc9d3bcb5dc78cc41e173"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_kinect_wrapper.html#a2aa1ef02e1edc9d3bcb5dc78cc41e173">NuiSkeletonPositionTrackingState</a> { <a class="el" href="class_kinect_wrapper.html#a2aa1ef02e1edc9d3bcb5dc78cc41e173a90cec99cb3d475323540596ef1e2f5dc">NuiSkeletonPositionTrackingState.NotTracked</a> = 0, 
+<a class="el" href="class_kinect_wrapper.html#a2aa1ef02e1edc9d3bcb5dc78cc41e173aba05d28b1409e52082555f5921119665">NuiSkeletonPositionTrackingState.Inferred</a>, 
+<a class="el" href="class_kinect_wrapper.html#a2aa1ef02e1edc9d3bcb5dc78cc41e173a5e1b39ae9fac0eab832877bd5cd01690">NuiSkeletonPositionTrackingState.Tracked</a>
  }</td></tr>
 <tr class="separator:a2aa1ef02e1edc9d3bcb5dc78cc41e173"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9d527d2064187b8e50453a8fa4158e49"><td class="memItemLeft" align="right" valign="top"><a id="a9d527d2064187b8e50453a8fa4158e49"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>NuiSkeletonTrackingState</b> { <b>NotTracked</b> = 0, 
-<b>PositionOnly</b>, 
-<b>SkeletonTracked</b>
+<tr class="memitem:a9d527d2064187b8e50453a8fa4158e49"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_kinect_wrapper.html#a9d527d2064187b8e50453a8fa4158e49">NuiSkeletonTrackingState</a> { <a class="el" href="class_kinect_wrapper.html#a9d527d2064187b8e50453a8fa4158e49a90cec99cb3d475323540596ef1e2f5dc">NuiSkeletonTrackingState.NotTracked</a> = 0, 
+<a class="el" href="class_kinect_wrapper.html#a9d527d2064187b8e50453a8fa4158e49aae729b97e00ca6e39722e1ecb6247b75">NuiSkeletonTrackingState.PositionOnly</a>, 
+<a class="el" href="class_kinect_wrapper.html#a9d527d2064187b8e50453a8fa4158e49adf69af7edcfb3cc10bbe02ff3226ae7e">NuiSkeletonTrackingState.SkeletonTracked</a>
  }</td></tr>
 <tr class="separator:a9d527d2064187b8e50453a8fa4158e49"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0126bd0303d23d562566d2ae99927335"><td class="memItemLeft" align="right" valign="top"><a id="a0126bd0303d23d562566d2ae99927335"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>NuiImageType</b> { <br />
-&#160;&#160;<b>DepthAndPlayerIndex</b> = 0, 
-<b>Color</b>, 
-<b>ColorYUV</b>, 
-<b>ColorRawYUV</b>, 
+<tr class="memitem:a0126bd0303d23d562566d2ae99927335"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_kinect_wrapper.html#a0126bd0303d23d562566d2ae99927335">NuiImageType</a> { <br />
+&#160;&#160;<a class="el" href="class_kinect_wrapper.html#a0126bd0303d23d562566d2ae99927335acf7c96f2564f6e81b4a39d1a00d83483">NuiImageType.DepthAndPlayerIndex</a> = 0, 
+<a class="el" href="class_kinect_wrapper.html#a0126bd0303d23d562566d2ae99927335acb5feb1b7314637725a2e73bdc9f7295">NuiImageType.Color</a>, 
+<a class="el" href="class_kinect_wrapper.html#a0126bd0303d23d562566d2ae99927335af2deaa334ab1679aa0d9752b0331f949">NuiImageType.ColorYUV</a>, 
+<a class="el" href="class_kinect_wrapper.html#a0126bd0303d23d562566d2ae99927335a2b9c87e4ed5a0b0913f856b62f010265">NuiImageType.ColorRawYUV</a>, 
 <br />
-&#160;&#160;<b>Depth</b>
+&#160;&#160;<a class="el" href="class_kinect_wrapper.html#a0126bd0303d23d562566d2ae99927335a675056ad1441b6375b2c5abd48c27ef1">NuiImageType.Depth</a>
 <br />
  }</td></tr>
 <tr class="separator:a0126bd0303d23d562566d2ae99927335"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acef333d357f10c9b9b2e623ac4238470"><td class="memItemLeft" align="right" valign="top"><a id="acef333d357f10c9b9b2e623ac4238470"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>NuiImageResolution</b> { <br />
-&#160;&#160;<b>resolutionInvalid</b> = -1, 
-<b>resolution80x60</b> = 0, 
-<b>resolution320x240</b> = 1, 
-<b>resolution640x480</b> = 2, 
+<tr class="memitem:acef333d357f10c9b9b2e623ac4238470"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_kinect_wrapper.html#acef333d357f10c9b9b2e623ac4238470">NuiImageResolution</a> { <br />
+&#160;&#160;<a class="el" href="class_kinect_wrapper.html#acef333d357f10c9b9b2e623ac4238470a9011bc6258c58386aa788f7eeda1101f">NuiImageResolution.resolutionInvalid</a> = -1, 
+<a class="el" href="class_kinect_wrapper.html#acef333d357f10c9b9b2e623ac4238470ac7c9f22b519de4dfb4a9ce60540b53e9">NuiImageResolution.resolution80x60</a> = 0, 
+<a class="el" href="class_kinect_wrapper.html#acef333d357f10c9b9b2e623ac4238470a66cbda6db3a128ccca7b593e83aaab3c">NuiImageResolution.resolution320x240</a> = 1, 
+<a class="el" href="class_kinect_wrapper.html#acef333d357f10c9b9b2e623ac4238470ad268e3bcc46294795fa63d00711c1d82">NuiImageResolution.resolution640x480</a> = 2, 
 <br />
-&#160;&#160;<b>resolution1280x960</b> = 3
+&#160;&#160;<a class="el" href="class_kinect_wrapper.html#acef333d357f10c9b9b2e623ac4238470a0f7a7a09ef7c16b0d5e44530a10d73a8">NuiImageResolution.resolution1280x960</a> = 3
 <br />
  }</td></tr>
 <tr class="separator:acef333d357f10c9b9b2e623ac4238470"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac51a99482e85bf5ea85af0e7e3bb25bd"><td class="memItemLeft" align="right" valign="top"><a id="ac51a99482e85bf5ea85af0e7e3bb25bd"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>NuiImageStreamFlags</b> { <b>None</b> = 0x00000000, 
-<b>SupressNoFrameData</b> = 0x0001000, 
-<b>EnableNearMode</b> = 0x00020000, 
-<b>TooFarIsNonZero</b> = 0x0004000
+<tr class="memitem:ac51a99482e85bf5ea85af0e7e3bb25bd"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_kinect_wrapper.html#ac51a99482e85bf5ea85af0e7e3bb25bd">NuiImageStreamFlags</a> { <a class="el" href="class_kinect_wrapper.html#ac51a99482e85bf5ea85af0e7e3bb25bda6adf97f83acf6453d4a6a4b1070f3754">NuiImageStreamFlags.None</a> = 0x00000000, 
+<a class="el" href="class_kinect_wrapper.html#ac51a99482e85bf5ea85af0e7e3bb25bdab88310cdb6e0d5203a5e25bb243cdf89">NuiImageStreamFlags.SupressNoFrameData</a> = 0x0001000, 
+<a class="el" href="class_kinect_wrapper.html#ac51a99482e85bf5ea85af0e7e3bb25bda02e13c0e51cf990918d50f4482e4fba5">NuiImageStreamFlags.EnableNearMode</a> = 0x00020000, 
+<a class="el" href="class_kinect_wrapper.html#ac51a99482e85bf5ea85af0e7e3bb25bdae022158a7fd8233ee972fb78beada97b">NuiImageStreamFlags.TooFarIsNonZero</a> = 0x0004000
  }</td></tr>
 <tr class="separator:ac51a99482e85bf5ea85af0e7e3bb25bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a70fa40d94bc2a6e7bdfe7a07d26ee535"><td class="memItemLeft" align="right" valign="top"><a id="a70fa40d94bc2a6e7bdfe7a07d26ee535"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>FrameEdges</b> { <br />
-&#160;&#160;<b>None</b> = 0, 
-<b>Right</b> = 1, 
-<b>Left</b> = 2, 
-<b>Top</b> = 4, 
+<tr class="memitem:a70fa40d94bc2a6e7bdfe7a07d26ee535"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_kinect_wrapper.html#a70fa40d94bc2a6e7bdfe7a07d26ee535">FrameEdges</a> { <br />
+&#160;&#160;<a class="el" href="class_kinect_wrapper.html#a70fa40d94bc2a6e7bdfe7a07d26ee535a6adf97f83acf6453d4a6a4b1070f3754">FrameEdges.None</a> = 0, 
+<a class="el" href="class_kinect_wrapper.html#a70fa40d94bc2a6e7bdfe7a07d26ee535a92b09c7c48c520c3c55e497875da437c">FrameEdges.Right</a> = 1, 
+<a class="el" href="class_kinect_wrapper.html#a70fa40d94bc2a6e7bdfe7a07d26ee535a945d5e233cf7d6240f6b783b36a374ff">FrameEdges.Left</a> = 2, 
+<a class="el" href="class_kinect_wrapper.html#a70fa40d94bc2a6e7bdfe7a07d26ee535aa4ffdcf0dc1f31b9acaf295d75b51d00">FrameEdges.Top</a> = 4, 
 <br />
-&#160;&#160;<b>Bottom</b> = 8
+&#160;&#160;<a class="el" href="class_kinect_wrapper.html#a70fa40d94bc2a6e7bdfe7a07d26ee535a2ad9d63b69c4a10a5cc9cad923133bc4">FrameEdges.Bottom</a> = 8
 <br />
  }</td></tr>
 <tr class="separator:a70fa40d94bc2a6e7bdfe7a07d26ee535"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a2fdd21af7c89b1d15bb20c412577ac29"><td class="memItemLeft" align="right" valign="top"><a id="a2fdd21af7c89b1d15bb20c412577ac29"></a>
-static int&#160;</td><td class="memItemRight" valign="bottom"><b>NuiInitialize</b> (<a class="el" href="class_kinect_wrapper.html#aa14891c91bfa8c6fe4761146055656da">NuiInitializeFlags</a> dwFlags)</td></tr>
+<tr class="memitem:a2fdd21af7c89b1d15bb20c412577ac29"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_kinect_wrapper.html#a2fdd21af7c89b1d15bb20c412577ac29">NuiInitialize</a> (<a class="el" href="class_kinect_wrapper.html#aa14891c91bfa8c6fe4761146055656da">NuiInitializeFlags</a> dwFlags)</td></tr>
 <tr class="separator:a2fdd21af7c89b1d15bb20c412577ac29"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab80346c061343035f00f42dc89bb6e2e"><td class="memItemLeft" align="right" valign="top"><a id="ab80346c061343035f00f42dc89bb6e2e"></a>
-static void&#160;</td><td class="memItemRight" valign="bottom"><b>NuiShutdown</b> ()</td></tr>
+<tr class="memitem:ab80346c061343035f00f42dc89bb6e2e"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_kinect_wrapper.html#ab80346c061343035f00f42dc89bb6e2e">NuiShutdown</a> ()</td></tr>
 <tr class="separator:ab80346c061343035f00f42dc89bb6e2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae6798571cfc956305dc31020c72bf7ce"><td class="memItemLeft" align="right" valign="top"><a id="ae6798571cfc956305dc31020c72bf7ce"></a>
-static int&#160;</td><td class="memItemRight" valign="bottom"><b>NuiCameraElevationSetAngle</b> (int angle)</td></tr>
+<tr class="memitem:ae6798571cfc956305dc31020c72bf7ce"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_kinect_wrapper.html#ae6798571cfc956305dc31020c72bf7ce">NuiCameraElevationSetAngle</a> (int angle)</td></tr>
 <tr class="separator:ae6798571cfc956305dc31020c72bf7ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaaf8d63c9fabe873fe171f3a3e5f7ec7"><td class="memItemLeft" align="right" valign="top"><a id="aaaf8d63c9fabe873fe171f3a3e5f7ec7"></a>
-static int&#160;</td><td class="memItemRight" valign="bottom"><b>NuiCameraElevationGetAngle</b> (out int plAngleDegrees)</td></tr>
+<tr class="memitem:aaaf8d63c9fabe873fe171f3a3e5f7ec7"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_kinect_wrapper.html#aaaf8d63c9fabe873fe171f3a3e5f7ec7">NuiCameraElevationGetAngle</a> (out int plAngleDegrees)</td></tr>
 <tr class="separator:aaaf8d63c9fabe873fe171f3a3e5f7ec7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac026341b4cf4127a4a84b24fa5547e59"><td class="memItemLeft" align="right" valign="top"><a id="ac026341b4cf4127a4a84b24fa5547e59"></a>
-static int&#160;</td><td class="memItemRight" valign="bottom"><b>NuiImageGetColorPixelCoordinatesFromDepthPixelAtResolution</b> (NuiImageResolution eColorResolution, NuiImageResolution eDepthResolution, ref <a class="el" href="struct_kinect_wrapper_1_1_nui_image_view_area.html">NuiImageViewArea</a> pcViewArea, int lDepthX, int lDepthY, ushort sDepthValue, out int plColorX, out int plColorY)</td></tr>
+<tr class="memitem:ac026341b4cf4127a4a84b24fa5547e59"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_kinect_wrapper.html#ac026341b4cf4127a4a84b24fa5547e59">NuiImageGetColorPixelCoordinatesFromDepthPixelAtResolution</a> (<a class="el" href="class_kinect_wrapper.html#acef333d357f10c9b9b2e623ac4238470">NuiImageResolution</a> eColorResolution, <a class="el" href="class_kinect_wrapper.html#acef333d357f10c9b9b2e623ac4238470">NuiImageResolution</a> eDepthResolution, ref <a class="el" href="struct_kinect_wrapper_1_1_nui_image_view_area.html">NuiImageViewArea</a> pcViewArea, int lDepthX, int lDepthY, ushort sDepthValue, out int plColorX, out int plColorY)</td></tr>
 <tr class="separator:ac026341b4cf4127a4a84b24fa5547e59"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7d786c97adcf86b866e4c5233b63f5fd"><td class="memItemLeft" align="right" valign="top"><a id="a7d786c97adcf86b866e4c5233b63f5fd"></a>
-static int&#160;</td><td class="memItemRight" valign="bottom"><b>NuiGetSensorCount</b> (out int pCount)</td></tr>
+<tr class="memitem:a7d786c97adcf86b866e4c5233b63f5fd"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_kinect_wrapper.html#a7d786c97adcf86b866e4c5233b63f5fd">NuiGetSensorCount</a> (out int pCount)</td></tr>
 <tr class="separator:a7d786c97adcf86b866e4c5233b63f5fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3e8731807ba8636cd10ae1b8cc7a7e4f"><td class="memItemLeft" align="right" valign="top"><a id="a3e8731807ba8636cd10ae1b8cc7a7e4f"></a>
-static int&#160;</td><td class="memItemRight" valign="bottom"><b>NuiSkeletonTrackingEnable</b> (IntPtr hNextFrameEvent, uint dwFlags)</td></tr>
+<tr class="memitem:a3e8731807ba8636cd10ae1b8cc7a7e4f"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_kinect_wrapper.html#a3e8731807ba8636cd10ae1b8cc7a7e4f">NuiSkeletonTrackingEnable</a> (IntPtr hNextFrameEvent, uint dwFlags)</td></tr>
 <tr class="separator:a3e8731807ba8636cd10ae1b8cc7a7e4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a07d73b189c89e8f98ee9e03623b95de3"><td class="memItemLeft" align="right" valign="top"><a id="a07d73b189c89e8f98ee9e03623b95de3"></a>
-static int&#160;</td><td class="memItemRight" valign="bottom"><b>NuiSkeletonGetNextFrame</b> (uint dwMillisecondsToWait, ref <a class="el" href="struct_kinect_wrapper_1_1_nui_skeleton_frame.html">NuiSkeletonFrame</a> pSkeletonFrame)</td></tr>
+<tr class="memitem:a07d73b189c89e8f98ee9e03623b95de3"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_kinect_wrapper.html#a07d73b189c89e8f98ee9e03623b95de3">NuiSkeletonGetNextFrame</a> (uint dwMillisecondsToWait, ref <a class="el" href="struct_kinect_wrapper_1_1_nui_skeleton_frame.html">NuiSkeletonFrame</a> pSkeletonFrame)</td></tr>
 <tr class="separator:a07d73b189c89e8f98ee9e03623b95de3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab6c258db8ad4d3927af93397450ac30f"><td class="memItemLeft" align="right" valign="top"><a id="ab6c258db8ad4d3927af93397450ac30f"></a>
-static int&#160;</td><td class="memItemRight" valign="bottom"><b>NuiTransformSmooth</b> (ref <a class="el" href="struct_kinect_wrapper_1_1_nui_skeleton_frame.html">NuiSkeletonFrame</a> pSkeletonFrame, ref <a class="el" href="struct_kinect_wrapper_1_1_nui_transform_smooth_parameters.html">NuiTransformSmoothParameters</a> pSmoothingParams)</td></tr>
+<tr class="memitem:ab6c258db8ad4d3927af93397450ac30f"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_kinect_wrapper.html#ab6c258db8ad4d3927af93397450ac30f">NuiTransformSmooth</a> (ref <a class="el" href="struct_kinect_wrapper_1_1_nui_skeleton_frame.html">NuiSkeletonFrame</a> pSkeletonFrame, ref <a class="el" href="struct_kinect_wrapper_1_1_nui_transform_smooth_parameters.html">NuiTransformSmoothParameters</a> pSmoothingParams)</td></tr>
 <tr class="separator:ab6c258db8ad4d3927af93397450ac30f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6aa2e92ea435aff8b2b529f9af865a17"><td class="memItemLeft" align="right" valign="top"><a id="a6aa2e92ea435aff8b2b529f9af865a17"></a>
-static int&#160;</td><td class="memItemRight" valign="bottom"><b>NuiSkeletonCalculateBoneOrientations</b> (ref <a class="el" href="struct_kinect_wrapper_1_1_nui_skeleton_data.html">NuiSkeletonData</a> pSkeletonData, <a class="el" href="struct_kinect_wrapper_1_1_nui_skeleton_bone_orientation.html">NuiSkeletonBoneOrientation</a>[] pBoneOrientations)</td></tr>
+<tr class="memitem:a6aa2e92ea435aff8b2b529f9af865a17"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_kinect_wrapper.html#a6aa2e92ea435aff8b2b529f9af865a17">NuiSkeletonCalculateBoneOrientations</a> (ref <a class="el" href="struct_kinect_wrapper_1_1_nui_skeleton_data.html">NuiSkeletonData</a> pSkeletonData, <a class="el" href="struct_kinect_wrapper_1_1_nui_skeleton_bone_orientation.html">NuiSkeletonBoneOrientation</a>[] pBoneOrientations)</td></tr>
 <tr class="separator:a6aa2e92ea435aff8b2b529f9af865a17"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa3d8db2048200771211ebf49f2e6ca47"><td class="memItemLeft" align="right" valign="top"><a id="aa3d8db2048200771211ebf49f2e6ca47"></a>
-static int&#160;</td><td class="memItemRight" valign="bottom"><b>NuiImageStreamOpen</b> (NuiImageType eImageType, NuiImageResolution eResolution, uint dwImageFrameFlags_NotUsed, uint dwFrameLimit, IntPtr hNextFrameEvent, ref IntPtr phStreamHandle)</td></tr>
+<tr class="memitem:aa3d8db2048200771211ebf49f2e6ca47"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_kinect_wrapper.html#aa3d8db2048200771211ebf49f2e6ca47">NuiImageStreamOpen</a> (<a class="el" href="class_kinect_wrapper.html#a0126bd0303d23d562566d2ae99927335">NuiImageType</a> eImageType, <a class="el" href="class_kinect_wrapper.html#acef333d357f10c9b9b2e623ac4238470">NuiImageResolution</a> eResolution, uint dwImageFrameFlags_NotUsed, uint dwFrameLimit, IntPtr hNextFrameEvent, ref IntPtr phStreamHandle)</td></tr>
 <tr class="separator:aa3d8db2048200771211ebf49f2e6ca47"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a85917a9af5cac4b8ea42756bb0f58a1a"><td class="memItemLeft" align="right" valign="top"><a id="a85917a9af5cac4b8ea42756bb0f58a1a"></a>
-static int&#160;</td><td class="memItemRight" valign="bottom"><b>NuiImageStreamGetNextFrame</b> (IntPtr phStreamHandle, uint dwMillisecondsToWait, ref IntPtr ppcImageFrame)</td></tr>
+<tr class="memitem:a85917a9af5cac4b8ea42756bb0f58a1a"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_kinect_wrapper.html#a85917a9af5cac4b8ea42756bb0f58a1a">NuiImageStreamGetNextFrame</a> (IntPtr phStreamHandle, uint dwMillisecondsToWait, ref IntPtr ppcImageFrame)</td></tr>
 <tr class="separator:a85917a9af5cac4b8ea42756bb0f58a1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a881c04a93c8760da24c3e0d989675f7d"><td class="memItemLeft" align="right" valign="top"><a id="a881c04a93c8760da24c3e0d989675f7d"></a>
-static int&#160;</td><td class="memItemRight" valign="bottom"><b>NuiImageStreamReleaseFrame</b> (IntPtr phStreamHandle, IntPtr ppcImageFrame)</td></tr>
+<tr class="memitem:a881c04a93c8760da24c3e0d989675f7d"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_kinect_wrapper.html#a881c04a93c8760da24c3e0d989675f7d">NuiImageStreamReleaseFrame</a> (IntPtr phStreamHandle, IntPtr ppcImageFrame)</td></tr>
 <tr class="separator:a881c04a93c8760da24c3e0d989675f7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa781107969acc314e12407f42fd9a886"><td class="memItemLeft" align="right" valign="top"><a id="aa781107969acc314e12407f42fd9a886"></a>
-static int&#160;</td><td class="memItemRight" valign="bottom"><b>NuiImageStreamSetImageFrameFlags</b> (IntPtr phStreamHandle, NuiImageStreamFlags dvImageFrameFlags)</td></tr>
+<tr class="memitem:aa781107969acc314e12407f42fd9a886"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_kinect_wrapper.html#aa781107969acc314e12407f42fd9a886">NuiImageStreamSetImageFrameFlags</a> (IntPtr phStreamHandle, <a class="el" href="class_kinect_wrapper.html#ac51a99482e85bf5ea85af0e7e3bb25bd">NuiImageStreamFlags</a> dvImageFrameFlags)</td></tr>
 <tr class="separator:aa781107969acc314e12407f42fd9a886"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a387a5aef9e0ba9490e7c953acd662bf4"><td class="memItemLeft" align="right" valign="top"><a id="a387a5aef9e0ba9490e7c953acd662bf4"></a>
-static int&#160;</td><td class="memItemRight" valign="bottom"><b>NuiImageResolutionToSize</b> (NuiImageResolution eResolution, out uint frameWidth, out uint frameHeight)</td></tr>
+<tr class="memitem:a387a5aef9e0ba9490e7c953acd662bf4"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_kinect_wrapper.html#a387a5aef9e0ba9490e7c953acd662bf4">NuiImageResolutionToSize</a> (<a class="el" href="class_kinect_wrapper.html#acef333d357f10c9b9b2e623ac4238470">NuiImageResolution</a> eResolution, out uint frameWidth, out uint frameHeight)</td></tr>
 <tr class="separator:a387a5aef9e0ba9490e7c953acd662bf4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a3cb502bd9f349d6ed93d318e27f96062"><td class="memItemLeft" align="right" valign="top"><a id="a3cb502bd9f349d6ed93d318e27f96062"></a>
-static string&#160;</td><td class="memItemRight" valign="bottom"><b>GetNuiErrorString</b> (int hr)</td></tr>
+<tr class="memitem:a3cb502bd9f349d6ed93d318e27f96062"><td class="memItemLeft" align="right" valign="top">static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_kinect_wrapper.html#a3cb502bd9f349d6ed93d318e27f96062">GetNuiErrorString</a> (int hr)</td></tr>
 <tr class="separator:a3cb502bd9f349d6ed93d318e27f96062"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afd77e6475589c7e610922ff3e0dc655c"><td class="memItemLeft" align="right" valign="top"><a id="afd77e6475589c7e610922ff3e0dc655c"></a>
-static int&#160;</td><td class="memItemRight" valign="bottom"><b>GetDepthWidth</b> ()</td></tr>
+<tr class="memitem:afd77e6475589c7e610922ff3e0dc655c"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_kinect_wrapper.html#afd77e6475589c7e610922ff3e0dc655c">GetDepthWidth</a> ()</td></tr>
 <tr class="separator:afd77e6475589c7e610922ff3e0dc655c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a205e1fe831c2ea3eba4b46a0d3fbae73"><td class="memItemLeft" align="right" valign="top"><a id="a205e1fe831c2ea3eba4b46a0d3fbae73"></a>
-static int&#160;</td><td class="memItemRight" valign="bottom"><b>GetDepthHeight</b> ()</td></tr>
+<tr class="memitem:a205e1fe831c2ea3eba4b46a0d3fbae73"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_kinect_wrapper.html#a205e1fe831c2ea3eba4b46a0d3fbae73">GetDepthHeight</a> ()</td></tr>
 <tr class="separator:a205e1fe831c2ea3eba4b46a0d3fbae73"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a47574196fb217f80f0b4c348fc341758"><td class="memItemLeft" align="right" valign="top"><a id="a47574196fb217f80f0b4c348fc341758"></a>
-static int&#160;</td><td class="memItemRight" valign="bottom"><b>GetColorWidth</b> ()</td></tr>
+<tr class="memitem:a47574196fb217f80f0b4c348fc341758"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_kinect_wrapper.html#a47574196fb217f80f0b4c348fc341758">GetColorWidth</a> ()</td></tr>
 <tr class="separator:a47574196fb217f80f0b4c348fc341758"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a06b0c509ebf20b8528616234edd3d4f6"><td class="memItemLeft" align="right" valign="top"><a id="a06b0c509ebf20b8528616234edd3d4f6"></a>
-static int&#160;</td><td class="memItemRight" valign="bottom"><b>GetColorHeight</b> ()</td></tr>
+<tr class="memitem:a06b0c509ebf20b8528616234edd3d4f6"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_kinect_wrapper.html#a06b0c509ebf20b8528616234edd3d4f6">GetColorHeight</a> ()</td></tr>
 <tr class="separator:a06b0c509ebf20b8528616234edd3d4f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a68f55b015fa7916f593a4a4a18f9537e"><td class="memItemLeft" align="right" valign="top"><a id="a68f55b015fa7916f593a4a4a18f9537e"></a>
-static Vector3&#160;</td><td class="memItemRight" valign="bottom"><b>MapSkeletonPointToDepthPoint</b> (Vector3 skeletonPoint)</td></tr>
+<tr class="memitem:a68f55b015fa7916f593a4a4a18f9537e"><td class="memItemLeft" align="right" valign="top">static Vector3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_kinect_wrapper.html#a68f55b015fa7916f593a4a4a18f9537e">MapSkeletonPointToDepthPoint</a> (Vector3 skeletonPoint)</td></tr>
 <tr class="separator:a68f55b015fa7916f593a4a4a18f9537e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a206dc55a20ec2bdaa093df0b41ee81ad"><td class="memItemLeft" align="right" valign="top"><a id="a206dc55a20ec2bdaa093df0b41ee81ad"></a>
-static int&#160;</td><td class="memItemRight" valign="bottom"><b>GetSkeletonJointParent</b> (int jointIndex)</td></tr>
+<tr class="memitem:a206dc55a20ec2bdaa093df0b41ee81ad"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_kinect_wrapper.html#a206dc55a20ec2bdaa093df0b41ee81ad">GetSkeletonJointParent</a> (int jointIndex)</td></tr>
 <tr class="separator:a206dc55a20ec2bdaa093df0b41ee81ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2e121255ab87d3ba7c442635f48c313c"><td class="memItemLeft" align="right" valign="top"><a id="a2e121255ab87d3ba7c442635f48c313c"></a>
-static int&#160;</td><td class="memItemRight" valign="bottom"><b>GetSkeletonMirroredJoint</b> (int jointIndex)</td></tr>
+<tr class="memitem:a2e121255ab87d3ba7c442635f48c313c"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_kinect_wrapper.html#a2e121255ab87d3ba7c442635f48c313c">GetSkeletonMirroredJoint</a> (int jointIndex)</td></tr>
 <tr class="separator:a2e121255ab87d3ba7c442635f48c313c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a013c4895027fa5c64eca7351d21f738c"><td class="memItemLeft" align="right" valign="top"><a id="a013c4895027fa5c64eca7351d21f738c"></a>
-static bool&#160;</td><td class="memItemRight" valign="bottom"><b>PollSkeleton</b> (ref <a class="el" href="struct_kinect_wrapper_1_1_nui_transform_smooth_parameters.html">NuiTransformSmoothParameters</a> smoothParameters, ref <a class="el" href="struct_kinect_wrapper_1_1_nui_skeleton_frame.html">NuiSkeletonFrame</a> skeletonFrame)</td></tr>
+<tr class="memitem:a013c4895027fa5c64eca7351d21f738c"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_kinect_wrapper.html#a013c4895027fa5c64eca7351d21f738c">PollSkeleton</a> (ref <a class="el" href="struct_kinect_wrapper_1_1_nui_transform_smooth_parameters.html">NuiTransformSmoothParameters</a> smoothParameters, ref <a class="el" href="struct_kinect_wrapper_1_1_nui_skeleton_frame.html">NuiSkeletonFrame</a> skeletonFrame)</td></tr>
 <tr class="separator:a013c4895027fa5c64eca7351d21f738c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7432c928afbb7fae1bf3ed6b3efef0d7"><td class="memItemLeft" align="right" valign="top"><a id="a7432c928afbb7fae1bf3ed6b3efef0d7"></a>
-static bool&#160;</td><td class="memItemRight" valign="bottom"><b>PollColor</b> (IntPtr colorStreamHandle, ref byte[] videoBuffer, ref Color32[] colorImage)</td></tr>
+<tr class="memitem:a7432c928afbb7fae1bf3ed6b3efef0d7"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_kinect_wrapper.html#a7432c928afbb7fae1bf3ed6b3efef0d7">PollColor</a> (IntPtr colorStreamHandle, ref byte[] videoBuffer, ref Color32[] colorImage)</td></tr>
 <tr class="separator:a7432c928afbb7fae1bf3ed6b3efef0d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa489e01c830842c81e6ecaa15d773efb"><td class="memItemLeft" align="right" valign="top"><a id="aa489e01c830842c81e6ecaa15d773efb"></a>
-static bool&#160;</td><td class="memItemRight" valign="bottom"><b>PollDepth</b> (IntPtr depthStreamHandle, bool isNearMode, ref ushort[] depthPlayerData)</td></tr>
+<tr class="memitem:aa489e01c830842c81e6ecaa15d773efb"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_kinect_wrapper.html#aa489e01c830842c81e6ecaa15d773efb">PollDepth</a> (IntPtr depthStreamHandle, bool isNearMode, ref ushort[] depthPlayerData)</td></tr>
 <tr class="separator:aa489e01c830842c81e6ecaa15d773efb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7afb7682da9118353458bb6c5c0c9636"><td class="memItemLeft" align="right" valign="top"><a id="a7afb7682da9118353458bb6c5c0c9636"></a>
-static void&#160;</td><td class="memItemRight" valign="bottom"><b>GetSkeletonJointOrientation</b> (ref Vector3[] jointsPos, ref bool[] jointsTracked, ref Matrix4x4 [] jointOrients)</td></tr>
+<tr class="memitem:a7afb7682da9118353458bb6c5c0c9636"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_kinect_wrapper.html#a7afb7682da9118353458bb6c5c0c9636">GetSkeletonJointOrientation</a> (ref Vector3[] jointsPos, ref bool[] jointsTracked, ref Matrix4x4 [] jointOrients)</td></tr>
 <tr class="separator:a7afb7682da9118353458bb6c5c0c9636"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Enumeration Documentation</h2>
+<a id="a70fa40d94bc2a6e7bdfe7a07d26ee535"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a70fa40d94bc2a6e7bdfe7a07d26ee535">&#9670;&nbsp;</a></span>FrameEdges</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="class_kinect_wrapper.html#a70fa40d94bc2a6e7bdfe7a07d26ee535">KinectWrapper.FrameEdges</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a70fa40d94bc2a6e7bdfe7a07d26ee535a6adf97f83acf6453d4a6a4b1070f3754"></a>None&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a70fa40d94bc2a6e7bdfe7a07d26ee535a92b09c7c48c520c3c55e497875da437c"></a>Right&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a70fa40d94bc2a6e7bdfe7a07d26ee535a945d5e233cf7d6240f6b783b36a374ff"></a>Left&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a70fa40d94bc2a6e7bdfe7a07d26ee535aa4ffdcf0dc1f31b9acaf295d75b51d00"></a>Top&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a70fa40d94bc2a6e7bdfe7a07d26ee535a2ad9d63b69c4a10a5cc9cad923133bc4"></a>Bottom&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<a id="a556dfab4f288c786036c4a48c5a57799"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a556dfab4f288c786036c4a48c5a57799">&#9670;&nbsp;</a></span>NuiErrorCodes</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="class_kinect_wrapper.html#a556dfab4f288c786036c4a48c5a57799">KinectWrapper.NuiErrorCodes</a> : uint</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a556dfab4f288c786036c4a48c5a57799afacf6a666add739fc7712003c7cf6aa1"></a>FrameNoData&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a556dfab4f288c786036c4a48c5a57799a326445662699ab1ecdff967f82e471d8"></a>StreamNotEnabled&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a556dfab4f288c786036c4a48c5a57799a50f4196a2c3172dd00afcbccbbcbe029"></a>ImageStreamInUse&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a556dfab4f288c786036c4a48c5a57799a062653700ba899628b41609d00290457"></a>FrameLimitExceeded&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a556dfab4f288c786036c4a48c5a57799a7a8313dc681cf33d1855b15219bed252"></a>FeatureNotInitialized&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a556dfab4f288c786036c4a48c5a57799aff870845605fb0063a95f8d77b442e37"></a>DeviceNotGenuine&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a556dfab4f288c786036c4a48c5a57799a1293d85c5e3dd6d79a4c7094d4287c7d"></a>InsufficientBandwidth&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a556dfab4f288c786036c4a48c5a57799aaa6c5cee4bac5f31521b5436239f053a"></a>DeviceNotSupported&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a556dfab4f288c786036c4a48c5a57799aab1e0f933d8936fa6c4429a58d0ce1c0"></a>DeviceInUse&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a556dfab4f288c786036c4a48c5a57799ab7797dc27ba45828ab17ef9130b97486"></a>DatabaseNotFound&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a556dfab4f288c786036c4a48c5a57799ae879012de1a0150d5cfac9a7a5bdf691"></a>DatabaseVersionMismatch&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a556dfab4f288c786036c4a48c5a57799a18e4dee163ec928d25aafbab897cdd28"></a>HardwareFeatureUnavailable&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a556dfab4f288c786036c4a48c5a57799adb418e03fbe730e343ac59dcad6a9320"></a>DeviceNotConnected&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a556dfab4f288c786036c4a48c5a57799adefaa9a1c360cae76328f75343f05f24"></a>DeviceNotReady&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a556dfab4f288c786036c4a48c5a57799a0215b9d15055daceef0ac9fc83490571"></a>SkeletalEngineBusy&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a556dfab4f288c786036c4a48c5a57799ae066635dfee1c69db6dff5ce6a46e0ac"></a>DeviceNotPowered&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<a id="acef333d357f10c9b9b2e623ac4238470"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acef333d357f10c9b9b2e623ac4238470">&#9670;&nbsp;</a></span>NuiImageResolution</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="class_kinect_wrapper.html#acef333d357f10c9b9b2e623ac4238470">KinectWrapper.NuiImageResolution</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="acef333d357f10c9b9b2e623ac4238470a9011bc6258c58386aa788f7eeda1101f"></a>resolutionInvalid&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="acef333d357f10c9b9b2e623ac4238470ac7c9f22b519de4dfb4a9ce60540b53e9"></a>resolution80x60&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="acef333d357f10c9b9b2e623ac4238470a66cbda6db3a128ccca7b593e83aaab3c"></a>resolution320x240&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="acef333d357f10c9b9b2e623ac4238470ad268e3bcc46294795fa63d00711c1d82"></a>resolution640x480&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="acef333d357f10c9b9b2e623ac4238470a0f7a7a09ef7c16b0d5e44530a10d73a8"></a>resolution1280x960&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<a id="ac51a99482e85bf5ea85af0e7e3bb25bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac51a99482e85bf5ea85af0e7e3bb25bd">&#9670;&nbsp;</a></span>NuiImageStreamFlags</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="class_kinect_wrapper.html#ac51a99482e85bf5ea85af0e7e3bb25bd">KinectWrapper.NuiImageStreamFlags</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ac51a99482e85bf5ea85af0e7e3bb25bda6adf97f83acf6453d4a6a4b1070f3754"></a>None&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ac51a99482e85bf5ea85af0e7e3bb25bdab88310cdb6e0d5203a5e25bb243cdf89"></a>SupressNoFrameData&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ac51a99482e85bf5ea85af0e7e3bb25bda02e13c0e51cf990918d50f4482e4fba5"></a>EnableNearMode&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ac51a99482e85bf5ea85af0e7e3bb25bdae022158a7fd8233ee972fb78beada97b"></a>TooFarIsNonZero&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<a id="a0126bd0303d23d562566d2ae99927335"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0126bd0303d23d562566d2ae99927335">&#9670;&nbsp;</a></span>NuiImageType</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="class_kinect_wrapper.html#a0126bd0303d23d562566d2ae99927335">KinectWrapper.NuiImageType</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a0126bd0303d23d562566d2ae99927335acf7c96f2564f6e81b4a39d1a00d83483"></a>DepthAndPlayerIndex&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a0126bd0303d23d562566d2ae99927335acb5feb1b7314637725a2e73bdc9f7295"></a>Color&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a0126bd0303d23d562566d2ae99927335af2deaa334ab1679aa0d9752b0331f949"></a>ColorYUV&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a0126bd0303d23d562566d2ae99927335a2b9c87e4ed5a0b0913f856b62f010265"></a>ColorRawYUV&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a0126bd0303d23d562566d2ae99927335a675056ad1441b6375b2c5abd48c27ef1"></a>Depth&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
 <a id="aa14891c91bfa8c6fe4761146055656da"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa14891c91bfa8c6fe4761146055656da">&#9670;&nbsp;</a></span>NuiInitializeFlags</h2>
 
@@ -347,11 +475,926 @@ static void&#160;</td><td class="memItemRight" valign="bottom"><b>GetSkeletonJoi
 </div><div class="memdoc">
 
 <p>Structs and constants for interfacing C# with the Kinect.dll </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="aa14891c91bfa8c6fe4761146055656daa5801da2f346d93f21b62eb88f9b45a07"></a>UsesAudio&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="aa14891c91bfa8c6fe4761146055656daae7cabc598437ffc860b9b07bc39e03c6"></a>UsesDepthAndPlayerIndex&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="aa14891c91bfa8c6fe4761146055656daadee956c7b793347104622cf77f5c6f51"></a>UsesColor&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="aa14891c91bfa8c6fe4761146055656daa99681ce65d8d822c8342bd0a6e4c2ed9"></a>UsesSkeleton&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="aa14891c91bfa8c6fe4761146055656daa51ef1e7b6ba48e1f848df92605653738"></a>UsesDepth&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="aa14891c91bfa8c6fe4761146055656daac429a251f2e406767eb281a58a6da4c0"></a>UsesHighQualityColor&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<a id="ad73682163ab4e6f554501574ab835f1c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad73682163ab4e6f554501574ab835f1c">&#9670;&nbsp;</a></span>NuiSkeletonPositionIndex</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="class_kinect_wrapper.html#ad73682163ab4e6f554501574ab835f1c">KinectWrapper.NuiSkeletonPositionIndex</a> : int</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ad73682163ab4e6f554501574ab835f1ca0fc30f467303ddec085a1bb75b2d0159"></a>HipCenter&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ad73682163ab4e6f554501574ab835f1ca299a20601891812eff26320b63f3b4fe"></a>Spine&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ad73682163ab4e6f554501574ab835f1ca56cea710a533a062602a009f5cd4a960"></a>ShoulderCenter&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ad73682163ab4e6f554501574ab835f1ca98921133d10fbdb0fb6dbb7b2648befe"></a>Head&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ad73682163ab4e6f554501574ab835f1ca6f06420ba820e90993137a63f10146c2"></a>ShoulderLeft&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ad73682163ab4e6f554501574ab835f1ca62d7fd05a5c965ae80e4d59a5434f383"></a>ElbowLeft&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ad73682163ab4e6f554501574ab835f1ca588e9efafd75b6a1fe22a9960c44181e"></a>WristLeft&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ad73682163ab4e6f554501574ab835f1ca558c4cce30e979b441f36bcac58692c3"></a>HandLeft&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ad73682163ab4e6f554501574ab835f1caa1a480b34eb3460ee2772c38bfb4bf1c"></a>ShoulderRight&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ad73682163ab4e6f554501574ab835f1ca43b4a26b475222d959bb0f57d788387c"></a>ElbowRight&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ad73682163ab4e6f554501574ab835f1caa06437c22d077beaecbbe4508d9e41c8"></a>WristRight&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ad73682163ab4e6f554501574ab835f1cadb75ce9c367c69e8af461ee43d8efdad"></a>HandRight&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ad73682163ab4e6f554501574ab835f1cade45c3616b3d2a7e4cb8ad9c58142f15"></a>HipLeft&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ad73682163ab4e6f554501574ab835f1ca6800dcd4b31600a45f0fe66124306219"></a>KneeLeft&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ad73682163ab4e6f554501574ab835f1caf5893586463424ab0c18d2fc7871b191"></a>AnkleLeft&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ad73682163ab4e6f554501574ab835f1cac0957ad259802f0a919c8c12dd06ed0d"></a>FootLeft&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ad73682163ab4e6f554501574ab835f1cacdceb34e21b59759e52c7ec25d6dfd54"></a>HipRight&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ad73682163ab4e6f554501574ab835f1ca64e50376713b14d2cea2fb4246182ef8"></a>KneeRight&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ad73682163ab4e6f554501574ab835f1ca8ec71e2ee0963607d88fa7fa9605dd78"></a>AnkleRight&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ad73682163ab4e6f554501574ab835f1cacce96a8bcdfeab497541a73c3f06d10e"></a>FootRight&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ad73682163ab4e6f554501574ab835f1cae93f994f01c537c4e2f7d8528c3eb5e9"></a>Count&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<a id="a2aa1ef02e1edc9d3bcb5dc78cc41e173"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2aa1ef02e1edc9d3bcb5dc78cc41e173">&#9670;&nbsp;</a></span>NuiSkeletonPositionTrackingState</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="class_kinect_wrapper.html#a2aa1ef02e1edc9d3bcb5dc78cc41e173">KinectWrapper.NuiSkeletonPositionTrackingState</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a2aa1ef02e1edc9d3bcb5dc78cc41e173a90cec99cb3d475323540596ef1e2f5dc"></a>NotTracked&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a2aa1ef02e1edc9d3bcb5dc78cc41e173aba05d28b1409e52082555f5921119665"></a>Inferred&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a2aa1ef02e1edc9d3bcb5dc78cc41e173a5e1b39ae9fac0eab832877bd5cd01690"></a>Tracked&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<a id="a9d527d2064187b8e50453a8fa4158e49"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d527d2064187b8e50453a8fa4158e49">&#9670;&nbsp;</a></span>NuiSkeletonTrackingState</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="class_kinect_wrapper.html#a9d527d2064187b8e50453a8fa4158e49">KinectWrapper.NuiSkeletonTrackingState</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a9d527d2064187b8e50453a8fa4158e49a90cec99cb3d475323540596ef1e2f5dc"></a>NotTracked&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a9d527d2064187b8e50453a8fa4158e49aae729b97e00ca6e39722e1ecb6247b75"></a>PositionOnly&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a9d527d2064187b8e50453a8fa4158e49adf69af7edcfb3cc10bbe02ff3226ae7e"></a>SkeletonTracked&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a06b0c509ebf20b8528616234edd3d4f6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a06b0c509ebf20b8528616234edd3d4f6">&#9670;&nbsp;</a></span>GetColorHeight()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int KinectWrapper.GetColorHeight </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a47574196fb217f80f0b4c348fc341758"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a47574196fb217f80f0b4c348fc341758">&#9670;&nbsp;</a></span>GetColorWidth()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int KinectWrapper.GetColorWidth </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a205e1fe831c2ea3eba4b46a0d3fbae73"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a205e1fe831c2ea3eba4b46a0d3fbae73">&#9670;&nbsp;</a></span>GetDepthHeight()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int KinectWrapper.GetDepthHeight </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afd77e6475589c7e610922ff3e0dc655c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afd77e6475589c7e610922ff3e0dc655c">&#9670;&nbsp;</a></span>GetDepthWidth()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int KinectWrapper.GetDepthWidth </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3cb502bd9f349d6ed93d318e27f96062"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3cb502bd9f349d6ed93d318e27f96062">&#9670;&nbsp;</a></span>GetNuiErrorString()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static string KinectWrapper.GetNuiErrorString </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>hr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7afb7682da9118353458bb6c5c0c9636"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7afb7682da9118353458bb6c5c0c9636">&#9670;&nbsp;</a></span>GetSkeletonJointOrientation()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void KinectWrapper.GetSkeletonJointOrientation </td>
+          <td>(</td>
+          <td class="paramtype">ref Vector3 []&#160;</td>
+          <td class="paramname"><em>jointsPos</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ref bool []&#160;</td>
+          <td class="paramname"><em>jointsTracked</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ref Matrix4x4 []&#160;</td>
+          <td class="paramname"><em>jointOrients</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a206dc55a20ec2bdaa093df0b41ee81ad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a206dc55a20ec2bdaa093df0b41ee81ad">&#9670;&nbsp;</a></span>GetSkeletonJointParent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int KinectWrapper.GetSkeletonJointParent </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>jointIndex</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2e121255ab87d3ba7c442635f48c313c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e121255ab87d3ba7c442635f48c313c">&#9670;&nbsp;</a></span>GetSkeletonMirroredJoint()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int KinectWrapper.GetSkeletonMirroredJoint </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>jointIndex</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a68f55b015fa7916f593a4a4a18f9537e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a68f55b015fa7916f593a4a4a18f9537e">&#9670;&nbsp;</a></span>MapSkeletonPointToDepthPoint()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static Vector3 KinectWrapper.MapSkeletonPointToDepthPoint </td>
+          <td>(</td>
+          <td class="paramtype">Vector3&#160;</td>
+          <td class="paramname"><em>skeletonPoint</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aaaf8d63c9fabe873fe171f3a3e5f7ec7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaaf8d63c9fabe873fe171f3a3e5f7ec7">&#9670;&nbsp;</a></span>NuiCameraElevationGetAngle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int KinectWrapper.NuiCameraElevationGetAngle </td>
+          <td>(</td>
+          <td class="paramtype">out int&#160;</td>
+          <td class="paramname"><em>plAngleDegrees</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae6798571cfc956305dc31020c72bf7ce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae6798571cfc956305dc31020c72bf7ce">&#9670;&nbsp;</a></span>NuiCameraElevationSetAngle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int KinectWrapper.NuiCameraElevationSetAngle </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>angle</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7d786c97adcf86b866e4c5233b63f5fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7d786c97adcf86b866e4c5233b63f5fd">&#9670;&nbsp;</a></span>NuiGetSensorCount()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int KinectWrapper.NuiGetSensorCount </td>
+          <td>(</td>
+          <td class="paramtype">out int&#160;</td>
+          <td class="paramname"><em>pCount</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac026341b4cf4127a4a84b24fa5547e59"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac026341b4cf4127a4a84b24fa5547e59">&#9670;&nbsp;</a></span>NuiImageGetColorPixelCoordinatesFromDepthPixelAtResolution()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int KinectWrapper.NuiImageGetColorPixelCoordinatesFromDepthPixelAtResolution </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_kinect_wrapper.html#acef333d357f10c9b9b2e623ac4238470">NuiImageResolution</a>&#160;</td>
+          <td class="paramname"><em>eColorResolution</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_kinect_wrapper.html#acef333d357f10c9b9b2e623ac4238470">NuiImageResolution</a>&#160;</td>
+          <td class="paramname"><em>eDepthResolution</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ref <a class="el" href="struct_kinect_wrapper_1_1_nui_image_view_area.html">NuiImageViewArea</a>&#160;</td>
+          <td class="paramname"><em>pcViewArea</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>lDepthX</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>lDepthY</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ushort&#160;</td>
+          <td class="paramname"><em>sDepthValue</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">out int&#160;</td>
+          <td class="paramname"><em>plColorX</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">out int&#160;</td>
+          <td class="paramname"><em>plColorY</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a387a5aef9e0ba9490e7c953acd662bf4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a387a5aef9e0ba9490e7c953acd662bf4">&#9670;&nbsp;</a></span>NuiImageResolutionToSize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int KinectWrapper.NuiImageResolutionToSize </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_kinect_wrapper.html#acef333d357f10c9b9b2e623ac4238470">NuiImageResolution</a>&#160;</td>
+          <td class="paramname"><em>eResolution</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">out uint&#160;</td>
+          <td class="paramname"><em>frameWidth</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">out uint&#160;</td>
+          <td class="paramname"><em>frameHeight</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a85917a9af5cac4b8ea42756bb0f58a1a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a85917a9af5cac4b8ea42756bb0f58a1a">&#9670;&nbsp;</a></span>NuiImageStreamGetNextFrame()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int KinectWrapper.NuiImageStreamGetNextFrame </td>
+          <td>(</td>
+          <td class="paramtype">IntPtr&#160;</td>
+          <td class="paramname"><em>phStreamHandle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint&#160;</td>
+          <td class="paramname"><em>dwMillisecondsToWait</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ref IntPtr&#160;</td>
+          <td class="paramname"><em>ppcImageFrame</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa3d8db2048200771211ebf49f2e6ca47"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa3d8db2048200771211ebf49f2e6ca47">&#9670;&nbsp;</a></span>NuiImageStreamOpen()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int KinectWrapper.NuiImageStreamOpen </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_kinect_wrapper.html#a0126bd0303d23d562566d2ae99927335">NuiImageType</a>&#160;</td>
+          <td class="paramname"><em>eImageType</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_kinect_wrapper.html#acef333d357f10c9b9b2e623ac4238470">NuiImageResolution</a>&#160;</td>
+          <td class="paramname"><em>eResolution</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint&#160;</td>
+          <td class="paramname"><em>dwImageFrameFlags_NotUsed</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint&#160;</td>
+          <td class="paramname"><em>dwFrameLimit</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">IntPtr&#160;</td>
+          <td class="paramname"><em>hNextFrameEvent</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ref IntPtr&#160;</td>
+          <td class="paramname"><em>phStreamHandle</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a881c04a93c8760da24c3e0d989675f7d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a881c04a93c8760da24c3e0d989675f7d">&#9670;&nbsp;</a></span>NuiImageStreamReleaseFrame()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int KinectWrapper.NuiImageStreamReleaseFrame </td>
+          <td>(</td>
+          <td class="paramtype">IntPtr&#160;</td>
+          <td class="paramname"><em>phStreamHandle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">IntPtr&#160;</td>
+          <td class="paramname"><em>ppcImageFrame</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa781107969acc314e12407f42fd9a886"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa781107969acc314e12407f42fd9a886">&#9670;&nbsp;</a></span>NuiImageStreamSetImageFrameFlags()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int KinectWrapper.NuiImageStreamSetImageFrameFlags </td>
+          <td>(</td>
+          <td class="paramtype">IntPtr&#160;</td>
+          <td class="paramname"><em>phStreamHandle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_kinect_wrapper.html#ac51a99482e85bf5ea85af0e7e3bb25bd">NuiImageStreamFlags</a>&#160;</td>
+          <td class="paramname"><em>dvImageFrameFlags</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2fdd21af7c89b1d15bb20c412577ac29"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2fdd21af7c89b1d15bb20c412577ac29">&#9670;&nbsp;</a></span>NuiInitialize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int KinectWrapper.NuiInitialize </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_kinect_wrapper.html#aa14891c91bfa8c6fe4761146055656da">NuiInitializeFlags</a>&#160;</td>
+          <td class="paramname"><em>dwFlags</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab80346c061343035f00f42dc89bb6e2e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab80346c061343035f00f42dc89bb6e2e">&#9670;&nbsp;</a></span>NuiShutdown()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void KinectWrapper.NuiShutdown </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6aa2e92ea435aff8b2b529f9af865a17"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6aa2e92ea435aff8b2b529f9af865a17">&#9670;&nbsp;</a></span>NuiSkeletonCalculateBoneOrientations()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int KinectWrapper.NuiSkeletonCalculateBoneOrientations </td>
+          <td>(</td>
+          <td class="paramtype">ref <a class="el" href="struct_kinect_wrapper_1_1_nui_skeleton_data.html">NuiSkeletonData</a>&#160;</td>
+          <td class="paramname"><em>pSkeletonData</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="struct_kinect_wrapper_1_1_nui_skeleton_bone_orientation.html">NuiSkeletonBoneOrientation</a> []&#160;</td>
+          <td class="paramname"><em>pBoneOrientations</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a07d73b189c89e8f98ee9e03623b95de3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a07d73b189c89e8f98ee9e03623b95de3">&#9670;&nbsp;</a></span>NuiSkeletonGetNextFrame()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int KinectWrapper.NuiSkeletonGetNextFrame </td>
+          <td>(</td>
+          <td class="paramtype">uint&#160;</td>
+          <td class="paramname"><em>dwMillisecondsToWait</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ref <a class="el" href="struct_kinect_wrapper_1_1_nui_skeleton_frame.html">NuiSkeletonFrame</a>&#160;</td>
+          <td class="paramname"><em>pSkeletonFrame</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3e8731807ba8636cd10ae1b8cc7a7e4f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3e8731807ba8636cd10ae1b8cc7a7e4f">&#9670;&nbsp;</a></span>NuiSkeletonTrackingEnable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int KinectWrapper.NuiSkeletonTrackingEnable </td>
+          <td>(</td>
+          <td class="paramtype">IntPtr&#160;</td>
+          <td class="paramname"><em>hNextFrameEvent</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint&#160;</td>
+          <td class="paramname"><em>dwFlags</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab6c258db8ad4d3927af93397450ac30f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab6c258db8ad4d3927af93397450ac30f">&#9670;&nbsp;</a></span>NuiTransformSmooth()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int KinectWrapper.NuiTransformSmooth </td>
+          <td>(</td>
+          <td class="paramtype">ref <a class="el" href="struct_kinect_wrapper_1_1_nui_skeleton_frame.html">NuiSkeletonFrame</a>&#160;</td>
+          <td class="paramname"><em>pSkeletonFrame</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ref <a class="el" href="struct_kinect_wrapper_1_1_nui_transform_smooth_parameters.html">NuiTransformSmoothParameters</a>&#160;</td>
+          <td class="paramname"><em>pSmoothingParams</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7432c928afbb7fae1bf3ed6b3efef0d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7432c928afbb7fae1bf3ed6b3efef0d7">&#9670;&nbsp;</a></span>PollColor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static bool KinectWrapper.PollColor </td>
+          <td>(</td>
+          <td class="paramtype">IntPtr&#160;</td>
+          <td class="paramname"><em>colorStreamHandle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ref byte []&#160;</td>
+          <td class="paramname"><em>videoBuffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ref Color32 []&#160;</td>
+          <td class="paramname"><em>colorImage</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa489e01c830842c81e6ecaa15d773efb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa489e01c830842c81e6ecaa15d773efb">&#9670;&nbsp;</a></span>PollDepth()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static bool KinectWrapper.PollDepth </td>
+          <td>(</td>
+          <td class="paramtype">IntPtr&#160;</td>
+          <td class="paramname"><em>depthStreamHandle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>isNearMode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ref ushort []&#160;</td>
+          <td class="paramname"><em>depthPlayerData</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a013c4895027fa5c64eca7351d21f738c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a013c4895027fa5c64eca7351d21f738c">&#9670;&nbsp;</a></span>PollSkeleton()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static bool KinectWrapper.PollSkeleton </td>
+          <td>(</td>
+          <td class="paramtype">ref <a class="el" href="struct_kinect_wrapper_1_1_nui_transform_smooth_parameters.html">NuiTransformSmoothParameters</a>&#160;</td>
+          <td class="paramname"><em>smoothParameters</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ref <a class="el" href="struct_kinect_wrapper_1_1_nui_skeleton_frame.html">NuiSkeletonFrame</a>&#160;</td>
+          <td class="paramname"><em>skeletonFrame</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>Assets/KinectScripts/KinectWrapper.cs</li>
+<li>Reabilitacao-Motora/Assets/Scripts/KinectScripts/<a class="el" href="_kinect_wrapper_8cs.html">KinectWrapper.cs</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

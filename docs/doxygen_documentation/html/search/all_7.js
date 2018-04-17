@@ -1,6 +1,21 @@
 var searchData=
 [
-  ['init',['Init',['../class_bone_orientations_filter.html#a0cfdcfa52dc01bac029c04084dca64f2',1,'BoneOrientationsFilter.Init()'],['../class_joint_positions_filter.html#a3815ebb632cddd00240f03a8ba0b429a',1,'JointPositionsFilter.Init()'],['../class_tracking_state_filter.html#a04be8b493efd27ca4e283194b0c88345',1,'TrackingStateFilter.Init()']]],
-  ['inuiframetexture',['INuiFrameTexture',['../interface_kinect_wrapper_1_1_i_nui_frame_texture.html',1,'KinectWrapper']]],
-  ['islerpenabled',['IsLerpEnabled',['../class_timed_lerp.html#abfe1bf353d18a0fed4c9c83a665aa2fd',1,'TimedLerp']]]
+  ['hand_5fleft',['Hand_Left',['../class_cubeman_controller.html#a963f30db9c453565b36e630a3ddb56e4',1,'CubemanController']]],
+  ['hand_5fright',['Hand_Right',['../class_cubeman_controller.html#a1568192ea27941e0a12cbc99ef936d93',1,'CubemanController']]],
+  ['handcursor1',['HandCursor1',['../class_kinect_manager.html#a7be62988c680b23ea117075ec00328dd',1,'KinectManager']]],
+  ['handcursor2',['HandCursor2',['../class_kinect_manager.html#ad8ca02e3a607dba673506ed151d25f0c',1,'KinectManager']]],
+  ['handleft',['HandLeft',['../class_kinect_wrapper.html#ad73682163ab4e6f554501574ab835f1ca558c4cce30e979b441f36bcac58692c3',1,'KinectWrapper']]],
+  ['handright',['HandRight',['../class_kinect_wrapper.html#ad73682163ab4e6f554501574ab835f1cadb75ce9c367c69e8af461ee43d8efdad',1,'KinectWrapper']]],
+  ['hardwarefeatureunavailable',['HardwareFeatureUnavailable',['../class_kinect_wrapper.html#a556dfab4f288c786036c4a48c5a57799a18e4dee163ec928d25aafbab897cdd28',1,'KinectWrapper']]],
+  ['head',['Head',['../class_avatar_controller_classic.html#ae18ccea555fb7f7735be2c3e70b838ab',1,'AvatarControllerClassic.Head()'],['../class_cubeman_controller.html#a01a187776dece60ae5b10452eb63c0be',1,'CubemanController.Head()'],['../class_kinect_wrapper.html#ad73682163ab4e6f554501574ab835f1ca98921133d10fbdb0fb6dbb7b2648befe',1,'KinectWrapper.Head()']]],
+  ['height',['height',['../struct_kinect_wrapper_1_1_nui_surface_desc.html#a12cb7dbf93c38836a12d5e0b1909acbc',1,'KinectWrapper::NuiSurfaceDesc']]],
+  ['hierarchicalrotation',['hierarchicalRotation',['../struct_kinect_wrapper_1_1_nui_skeleton_bone_orientation.html#aa668c0486f370e2f8a9d58ed59fae259',1,'KinectWrapper::NuiSkeletonBoneOrientation']]],
+  ['hip_5fcenter',['Hip_Center',['../class_cubeman_controller.html#a640866fa9954109f89ac8e6d18d8f21a',1,'CubemanController']]],
+  ['hip_5fleft',['Hip_Left',['../class_cubeman_controller.html#a8da663e72ba0608259276ce8d5f7feb2',1,'CubemanController']]],
+  ['hip_5fright',['Hip_Right',['../class_cubeman_controller.html#a364f94bcbf2244a207b0ac785b4ae243',1,'CubemanController']]],
+  ['hipcenter',['HipCenter',['../class_avatar_controller_classic.html#a97381312097be4061e4c96bbe4ba3e68',1,'AvatarControllerClassic.HipCenter()'],['../class_kinect_wrapper.html#ad73682163ab4e6f554501574ab835f1ca0fc30f467303ddec085a1bb75b2d0159',1,'KinectWrapper.HipCenter()']]],
+  ['hipextend',['HipExtend',['../class_self_intersection_constraint.html#ac723559a2cd2b3f563b5b857b1357299',1,'SelfIntersectionConstraint']]],
+  ['hipleft',['HipLeft',['../class_kinect_wrapper.html#ad73682163ab4e6f554501574ab835f1cade45c3616b3d2a7e4cb8ad9c58142f15',1,'KinectWrapper']]],
+  ['hipright',['HipRight',['../class_kinect_wrapper.html#ad73682163ab4e6f554501574ab835f1cacdceb34e21b59759e52c7ec25d6dfd54',1,'KinectWrapper']]],
+  ['hypot',['hypot',['../class_generate_line_chart_real_time.html#a7027df6cbb5ea0e777c933d0390f7772',1,'GenerateLineChartRealTime.hypot()'],['../class_get_movement_points.html#a2c3f9dd3edb7696f7f53a51b0d4fa76d',1,'GetMovementPoints.hypot()']]]
 ];

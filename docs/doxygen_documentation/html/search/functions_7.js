@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['tick',['Tick',['../class_timed_lerp.html#a16a1d4a28fb9a621808f94e877e4e518',1,'TimedLerp']]],
-  ['trackingstatefilter',['TrackingStateFilter',['../class_tracking_state_filter.html#a5b6bbc0762bd99b07d858927149f8e99',1,'TrackingStateFilter']]]
+  ['hypot',['hypot',['../class_generate_line_chart_real_time.html#a7027df6cbb5ea0e777c933d0390f7772',1,'GenerateLineChartRealTime.hypot()'],['../class_get_movement_points.html#a2c3f9dd3edb7696f7f53a51b0d4fa76d',1,'GetMovementPoints.hypot()']]]
 ];

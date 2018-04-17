@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['nuiinitializeflags',['NuiInitializeFlags',['../class_kinect_wrapper.html#aa14891c91bfa8c6fe4761146055656da',1,'KinectWrapper']]]
+  ['constraintaxis',['ConstraintAxis',['../class_bone_orientations_constraint.html#a1f4aa21ffa8dbc27a16143698d71e63d',1,'BoneOrientationsConstraint']]]
 ];

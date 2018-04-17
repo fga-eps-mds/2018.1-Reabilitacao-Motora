@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['kinect2avatarpos',['Kinect2AvatarPos',['../class_avatar_controller.html#a8e275933bb7c53eb46449bd2aa9680f3',1,'AvatarController']]],
-  ['kinect2avatarrot',['Kinect2AvatarRot',['../class_avatar_controller.html#a0946ebc70d224589da85b0e629675fb6',1,'AvatarController']]]
+  ['jointpositionisvalid',['JointPositionIsValid',['../class_kinect_helper.html#a9363f32b91490038a17f0d976c179cab',1,'KinectHelper']]],
+  ['jointpositionsfilter',['JointPositionsFilter',['../class_joint_positions_filter.html#aab7201ee120c14aec70402cc6a7ac1f9',1,'JointPositionsFilter']]]
 ];

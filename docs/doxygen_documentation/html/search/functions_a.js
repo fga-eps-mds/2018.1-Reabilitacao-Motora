@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['lerpandapply',['LerpAndApply',['../class_kinect_helper.html#aa5094dc4f70d1f067e23aaefa2280d5e',1,'KinectHelper']]],
-  ['lockrect',['LockRect',['../interface_kinect_wrapper_1_1_i_nui_frame_texture.html#a220d82f521ec76fc83403c324c7cb797',1,'KinectWrapper::INuiFrameTexture']]]
+  ['kinect2avatarpos',['Kinect2AvatarPos',['../class_avatar_controller.html#a8e275933bb7c53eb46449bd2aa9680f3',1,'AvatarController']]],
+  ['kinect2avatarrot',['Kinect2AvatarRot',['../class_avatar_controller.html#a0946ebc70d224589da85b0e629675fb6',1,'AvatarController']]]
 ];

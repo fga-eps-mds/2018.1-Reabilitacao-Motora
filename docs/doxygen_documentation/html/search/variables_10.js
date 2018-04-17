@@ -2,6 +2,7 @@ var searchData=
 [
   ['r',['r',['../struct_kinect_wrapper_1_1_color_cust.html#a398cec0bca93e27ba4335267df2a0cda',1,'KinectWrapper::ColorCust']]],
   ['radiusmultiplier',['RadiusMultiplier',['../class_self_intersection_constraint.html#ac204dc28ae0a8e00165e46d64f4a5c78',1,'SelfIntersectionConstraint']]],
+  ['resolution',['resolution',['../class_generate_line_chart.html#af09ef3fdff0bfff1ecaa6a006058b8f7',1,'GenerateLineChart.resolution()'],['../class_generate_line_chart_real_time.html#a06165511982b038d6aa0b50be3b97caa',1,'GenerateLineChartRealTime.resolution()']]],
   ['right',['Right',['../struct_mouse_control_1_1_r_e_c_t.html#a46b31f875cda8c248915e845398f83a1',1,'MouseControl::RECT']]],
   ['rightclavicle',['RightClavicle',['../class_avatar_controller_classic.html#adf0861da2392d2985b40dc5f38e15d76',1,'AvatarControllerClassic']]],
   ['rightelbow',['RightElbow',['../class_avatar_controller_classic.html#a0cf9155892c5c20e4325fa60d7bd6c93',1,'AvatarControllerClassic']]],

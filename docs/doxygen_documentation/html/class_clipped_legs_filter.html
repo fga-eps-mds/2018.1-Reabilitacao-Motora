@@ -29,7 +29,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Reabilitação Motora
-   &#160;<span id="projectnumber">1.0</span>
+   &#160;<span id="projectnumber">0.1</span>
    </div>
   </td>
  </tr>
@@ -93,17 +93,81 @@ $(document).ready(function(){initNavTree('class_clipped_legs_filter.html','');})
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a8e0b851496095353a058f36677ec861c"><td class="memItemLeft" align="right" valign="top"><a id="a8e0b851496095353a058f36677ec861c"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>Reset</b> ()</td></tr>
+<tr class="memitem:a39c6e87bc51836361c2b48cb3729f9a9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_clipped_legs_filter.html#a39c6e87bc51836361c2b48cb3729f9a9">ClippedLegsFilter</a> ()</td></tr>
+<tr class="separator:a39c6e87bc51836361c2b48cb3729f9a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e0b851496095353a058f36677ec861c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_clipped_legs_filter.html#a8e0b851496095353a058f36677ec861c">Reset</a> ()</td></tr>
 <tr class="separator:a8e0b851496095353a058f36677ec861c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a044676e1e38b65570dc9fd47c7394317"><td class="memItemLeft" align="right" valign="top"><a id="a044676e1e38b65570dc9fd47c7394317"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>FilterSkeleton</b> (ref <a class="el" href="struct_kinect_wrapper_1_1_nui_skeleton_data.html">KinectWrapper.NuiSkeletonData</a> skeleton, float deltaNuiTime)</td></tr>
+<tr class="memitem:a044676e1e38b65570dc9fd47c7394317"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_clipped_legs_filter.html#a044676e1e38b65570dc9fd47c7394317">FilterSkeleton</a> (ref <a class="el" href="struct_kinect_wrapper_1_1_nui_skeleton_data.html">KinectWrapper.NuiSkeletonData</a> skeleton, float deltaNuiTime)</td></tr>
 <tr class="separator:a044676e1e38b65570dc9fd47c7394317"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>FilterClippedLegs smooths out leg joint positions when the skeleton is clipped by the bottom of the camera FOV. Inferred joint positions from the skeletal tracker can occasionally be noisy or erroneous, based on limited depth image pixels from the parts of the legs in view. This filter applies a lot of smoothing using a double exponential filter, letting through just enough leg movement to show a kick or high step. Based on the amount of leg that is clipped/inferred, the smoothed data is feathered into the skeleton output data. </p>
-</div><hr/>The documentation for this class was generated from the following file:<ul>
-<li>Assets/KinectScripts/Filters/ClippedLegsFilter.cs</li>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a39c6e87bc51836361c2b48cb3729f9a9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a39c6e87bc51836361c2b48cb3729f9a9">&#9670;&nbsp;</a></span>ClippedLegsFilter()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ClippedLegsFilter.ClippedLegsFilter </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a044676e1e38b65570dc9fd47c7394317"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a044676e1e38b65570dc9fd47c7394317">&#9670;&nbsp;</a></span>FilterSkeleton()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ClippedLegsFilter.FilterSkeleton </td>
+          <td>(</td>
+          <td class="paramtype">ref <a class="el" href="struct_kinect_wrapper_1_1_nui_skeleton_data.html">KinectWrapper.NuiSkeletonData</a>&#160;</td>
+          <td class="paramname"><em>skeleton</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>deltaNuiTime</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8e0b851496095353a058f36677ec861c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e0b851496095353a058f36677ec861c">&#9670;&nbsp;</a></span>Reset()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ClippedLegsFilter.Reset </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li>Reabilitacao-Motora/Assets/Scripts/KinectScripts/Filters/<a class="el" href="_clipped_legs_filter_8cs.html">ClippedLegsFilter.cs</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
