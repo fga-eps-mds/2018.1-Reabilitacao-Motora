@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /**
-* Gera gráfico estático.
+* Descrever aqui o que essa classe realiza.
 */
 public class GenerateLineChart : MonoBehaviour
 {
@@ -18,7 +18,7 @@ public class GenerateLineChart : MonoBehaviour
 	public Color c2 = Color.red;
 
 	/**
-	* Transforma pontos de string para float.
+	* Descrever aqui o que esse método realiza.
 	*/
 	public void LoadData(string[] lines)
 	{
@@ -33,7 +33,7 @@ public class GenerateLineChart : MonoBehaviour
 
 
 	/**
-	* Carrega materials e prefabs.
+	* Descrever aqui o que esse método realiza.
 	*/
 	void Awake()
 	{
@@ -42,6 +42,7 @@ public class GenerateLineChart : MonoBehaviour
 		lineRenderer.widthMultiplier = 0.2f;
 		lineRenderer.positionCount = 750;
 
+	// A simple 2 color gradient with a fixed alpha of 1.0f.
 		float alpha = 1.0f;
 		Gradient gradient = new Gradient();
 		gradient.SetKeys(
@@ -61,7 +62,7 @@ public class GenerateLineChart : MonoBehaviour
 		Vector3 scale = Vector3.one * step;
 		Vector3 position = Vector3.zero;
 
-		for (int i = 0; i < resolution; ++i)
+		for (int i = 0; i < resolution; ++i) 
 		{
 			Transform point = Instantiate(pointPrefab);
 			position.x = (points1[i].x) + 0.05f;
@@ -74,5 +75,12 @@ public class GenerateLineChart : MonoBehaviour
 		}
 
 		lineRenderer.SetPositions (points2.ToArray());
+	}
+
+	/**
+	* Descrever aqui o que esse método realiza.
+	*/
+	void Update () {
+
 	}
 }
