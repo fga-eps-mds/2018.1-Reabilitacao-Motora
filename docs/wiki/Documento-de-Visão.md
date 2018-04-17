@@ -217,17 +217,11 @@ Necessidade|Prioridade|Interesse|Solução Atual|Solução Proposta
 
 O sistema oferece as seguintes funcionalidades aos usuários:<br />
 * <p align = "justify">Gerenciar e manter usuários (pacientes): os profissionais de fisioterapia poderão cadastrar novos pacientes no sistema, atualizar os dados de um paciente e também remover um paciente.</p>
-<br />
 * <p align = "justify">Facilitar, para o fisioterapeuta, a visualização do progresso do paciente na movimentação dos membros superiores em questão e o controle dos seus pacientes.</p>
-<br />
 * <p align = "justify">Otimizar o tempo gasto pelo usuário profissional de fisioterapia ao analisar os movimentos feitos por um paciente de fisioterapia.</p>
-<br />
 * <p align = "justify">Disponibilizar ao fisioterapeuta as informações referentes a cada paciente cadastrado.</p>
-<br />
 * <p align = "justify">Possibilitar ao fisioterapeuta a criação de um padrão de movimento para que o paciente possa repetir esse movimento durante as sessões de fisioterapia, com o intuito de melhorar seus movimentos.</p>
-<br />
 * <p align = "justify">Possibilitar ao fisioterapeuta rotular os movimentos para sub-dividílos em fases.</p>
-<br />
 * <p align = "justify">Possibilitar ao fisioterapeuta atualizar, visualizar, remover e criar novos movimentos padrões.</p>
 <br />
 
