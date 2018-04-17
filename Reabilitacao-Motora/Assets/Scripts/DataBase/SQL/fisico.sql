@@ -6,7 +6,9 @@ CREATE TABLE IF NOT EXISTS PESSOA (
 	idPessoa INTEGER primary key AUTOINCREMENT,
 	nomePessoa VARCHAR (30) not null,
 	sexo CHAR (1) not null,
-	dataNascimento DATE not null
+	dataNascimento DATE not null,
+    telefone1 VARCHAR(11) NOT NULL,
+    telefone2 VARCHAR(11)
 );
 
 CREATE TABLE IF NOT EXISTS TELEFONE (

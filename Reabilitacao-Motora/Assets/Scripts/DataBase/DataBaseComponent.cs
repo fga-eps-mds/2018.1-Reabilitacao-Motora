@@ -77,8 +77,8 @@ public class DataBaseComponent : MonoBehaviour
     */
     void Insertions()
     {
-        tablePessoa.Insert("mateus", "m", "1995-11-04");
-        tablePessoa.Insert("carlos", "m", "1997-01-11");
+		tablePessoa.Insert("mateus", "m", "1995-11-04", "33581111", "33583333");
+		tablePessoa.Insert("carlos", "m", "1997-01-11", "33582222", "33587777");
         //tableTel.Insert (5, "+55 44 9998 1717");
         tableFisio.Insert(5);
         tablePaciente.Insert(6, "semi top");
@@ -96,8 +96,8 @@ public class DataBaseComponent : MonoBehaviour
     */
     void Updates()
     {
-        tablePessoa.Update(5, "mathews", "m", "1995-11-04");
-        tablePessoa.Update(6, "carlos martins", "m", "1997-01-11");
+		tablePessoa.Update(5, "mathews", "m", "1995-11-04", "44444444", "22281111");
+		tablePessoa.Update(6, "carlos martins", "m", "1997-01-11", "99999999", "33881111");
         //tableTel.Update (5, "+55 44 9900 1515");
         tableFisio.Update(3, 5, "PR", "13183128");
         tablePaciente.Update(3, 6, "100% top");
