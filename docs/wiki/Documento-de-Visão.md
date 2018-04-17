@@ -213,6 +213,23 @@ Necessidade|Prioridade|Interesse|Solução Atual|Solução Proposta
 ### 4. <a name="4">Visão Geral do Produto</a>
 <p align="justify"> &emsp;&emsp; A aplicação analisará de forma automática, com auxílio de sensores, o movimento do braço (desde o ombro até a mão) dos pacientes de sessões de fisioterapia, apresentando um modelo esqueleto completo do mesmo e dando para o usuário, em tempo real, os resultados da estimação dos movimentos realizados. Esses resultados são menos propensos a erros antrópicos, pois são analisados pelo software e resultados quantitativos e numéricos são entregues ao fisioterapeuta. </p>
 
+### 5. <a name="5">Recursos do Produto</a>
+
+O sistema oferece as seguintes funcionalidades aos usuários:<br />
+* <p align = "justify">Gerenciar e manter usuários (pacientes): os profissionais de fisioterapia poderão cadastrar novos pacientes no sistema, atualizar os dados de um paciente e também remover um paciente.</p>
+<br />
+* <p align = "justify">Facilitar, para o fisioterapeuta, a visualização do progresso do paciente na movimentação dos membros superiores em questão e o controle dos seus pacientes.</p>
+<br />
+* <p align = "justify">Otimizar o tempo gasto pelo usuário profissional de fisioterapia ao analisar os movimentos feitos por um paciente de fisioterapia.</p>
+<br />
+* <p align = "justify">Disponibilizar ao fisioterapeuta as informações referentes a cada paciente cadastrado.</p>
+<br />
+* <p align = "justify">Possibilitar ao fisioterapeuta a criação de um padrão de movimento para que o paciente possa repetir esse movimento durante as sessões de fisioterapia, com o intuito de melhorar seus movimentos.</p>
+<br />
+* <p align = "justify">Possibilitar ao fisioterapeuta rotular os movimentos para sub-dividílos em fases.</p>
+<br />
+* <p align = "justify">Possibilitar ao fisioterapeuta atualizar, visualizar, remover e criar novos movimentos padrões.</p>
+<br />
 
 ### 6. <a name="6">Restrições</a>
 
