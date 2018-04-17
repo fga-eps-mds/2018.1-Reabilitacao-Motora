@@ -40,6 +40,7 @@ public class GlobalController : MonoBehaviour {
 		{
 			instance = this;
 			DontDestroyOnLoad(gameObject);
+			path = "URI=file:" + Application.dataPath + "/Plugins/fisiotech.db";
 			instance.path = "URI=file:" + Application.dataPath + "/Plugins/fisiotech.db";
 		}
 	}

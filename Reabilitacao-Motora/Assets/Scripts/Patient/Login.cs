@@ -66,8 +66,6 @@ public class Login : MonoBehaviour
 
 		foreach (var fisio in p) 
 		{			
-			print(string.Format("fl {0} fs {1}", fisio.login, fisio.senha));
-			print(string.Format("l {0} s {1}", login.text, pass.text));
 			if (fisio.login == login.text && fisio.senha == pass.text) {
 				return fisio;
 			}

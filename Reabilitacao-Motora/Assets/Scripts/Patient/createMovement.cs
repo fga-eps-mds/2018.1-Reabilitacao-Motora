@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,6 +23,7 @@ public class createMovement : MonoBehaviour
 	public InputField nomeMovimento;
 	public InputField musculos;
 	public InputField descricao;
+
 
 	/**
  	 * Salva o paciente no banco.
@@ -47,15 +49,30 @@ public class createMovement : MonoBehaviour
 		tableMovimento.Insert (GlobalController.instance.admin.idFisioterapeuta, 
 							   nomeMovimento.text, descricao.text, pathSave);
 
-		List<Movimento.Movimentos> aux = tableMovimento.Read();
+		List<Movimento.Movimentos> auxMovi = tableMovimento.Read();
 
 		foreach (var tt in trip) {
-			tableMusculo.Insert(tt);
-			List<Musculo.Musculos> x = tableMusculo.Read();
-			tableMM.Insert(x[x.Count - 1].idMusculo, aux[aux.Count - 1].idMovimento);
+		name = new string((from c in tt where char.IsLetterOrDigit(c) select c).ToArray());
+			if (!checkMuscle (name)) {
+				tableMusculo.Insert(name);
+				List<Musculo.Musculos> x = tableMusculo.Read();
+				tableMM.Insert(x[x.Count - 1].idMusculo, auxMovi[auxMovi.Count - 1].idMovimento);
+			}
 		}
 
-		GlobalController.instance.movement = aux[aux.Count-1];
+		GlobalController.instance.movement = auxMovi[auxMovi.Count-1];
 		SceneManager.LoadScene("Clinic");
+	}
+
+	bool checkMuscle(string name)
+	{
+		List<Musculo.Musculos> auxMusc = tableMusculo.Read();
+
+		foreach (var x in auxMusc)
+		{
+			if(x.nomeMusculo == name) return true;
+		}
+
+		return false;
 	}
 }

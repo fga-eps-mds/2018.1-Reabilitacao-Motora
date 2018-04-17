@@ -116,7 +116,18 @@ public class GenerateLineChart : MonoBehaviour
 	*/
 	void Awake()
 	{
-		string[] p1 = System.IO.File.ReadAllLines(string.Format("Assets/Movements/{0}.points", GlobalController.instance.movement.pontosMovimento));
+		current_time = new List<float>();
+		f_mao_pos = new List<Vector3>();
+		f_mao_rot = new List<Vector3>();
+		f_ombro_pos = new List<Vector3>();
+		f_ombro_rot = new List<Vector3>();
+		f_cotovelo_pos = new List<Vector3>();
+		f_cotovelo_rot = new List<Vector3>();
+
+		points1 = new List<Vector3>();
+		points2 = new List<Vector3>();
+
+		string[] p1 = System.IO.File.ReadAllLines(string.Format("Assets/Movimentos/{0}.points", GlobalController.instance.movement.pontosMovimento));
 		LoadData (p1);
 
 		lineRenderer = gameObject.AddComponent<LineRenderer>();
@@ -133,18 +144,6 @@ public class GenerateLineChart : MonoBehaviour
 			new GradientAlphaKey[] { new GradientAlphaKey(alpha, 0.0f), new GradientAlphaKey(alpha, 1.0f) }
 			);
 		lineRenderer.colorGradient = gradient;
-
-		current_time = new List<float>();
-		f_mao_pos = new List<Vector3>();
-		f_mao_rot = new List<Vector3>();
-		f_ombro_pos = new List<Vector3>();
-		f_ombro_rot = new List<Vector3>();
-		f_cotovelo_pos = new List<Vector3>();
-		f_cotovelo_rot = new List<Vector3>();
-
-		points1 = new List<Vector3>();
-		points2 = new List<Vector3>();
-
 
 		generateGraphicPoints();		
 	}
