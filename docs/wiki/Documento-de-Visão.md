@@ -17,6 +17,8 @@ Data|Versão|Descrição|Autor
 21/03|2.0.0|Adição do tópico 5 e 6|Djorkaeff Alexandre
 17/04|2.1.0|Adição do tópico 3.3.3|João Lucas
 17/04|2.1.1|Revisão e Correção| João Lucas
+17/04|2.1.2|Estruturando o item 5| Djorkaeff Alexandre
+17/04|2.1.2|Correção de alguns tópicos| João Lucas
 
 # Sumário
 
@@ -60,7 +62,7 @@ ___
 
 ##### 1.2 <a name="1_2">Escopo</a>
 
-<p align="justify"> &emsp;&emsp; Este projeto tem como finalidade auxiliar na recuperação da movimentação dos membros superiores, esse auxílio será feito de forma a sistematizar a amostragem de resultados de movimentos e facilitar a visualização desses para o fisioterapeuta responsável.</p>
+<p align="justify"> &emsp;&emsp; Este projeto tem como finalidade auxiliar na recuperação, de pacientes que sofreram algum tipo de restrição dos movimentos dos membros superiores, com foco na espasticidade, esse auxílio será feito de forma a sistematizar a amostragem de resultados de movimentos e facilitar a visualização desses para o fisioterapeuta responsável.</p>
 
 ##### 1.3 <a name=1_3>Definições, acrônimos e abreviações</a>
 
@@ -83,12 +85,12 @@ Disponível em: https://github.com/fga-gpp-mds/2017.2-Receituario-Medico/wiki. A
 Sendo dividido em:</p>
 
 
-* **Introdução:** no qual é introduzido os detalhes gerais sobre a visão do projeto;
-* **Posicionamento:** descrevendo o problema e a oportunidade de negócio;
-* **Descrições dos Envolvidos e dos Usuários:** esta seção descreve o perfil das partes interessadas no projeto;
-* **Visão Geral do Produto:** <p align = "justify">Esta seção fornece uma visualização de alto nível das capacidades do produto, interfaces para outros aplicativos e configurações dos sistemas;
-* **Recursos do Produto:** breve descrição dos recursos do produto;
-* **Restrições:** as restrições de *design*, restrições externas, como requisitos operacionais ou regulamentares;
+* **Introdução:** No qual é introduzido os detalhes gerais sobre a visão do projeto;
+* **Posicionamento:** Descrevendo o problema e a oportunidade de negócio;
+* **Descrições dos Envolvidos e dos Usuários:** Esta seção descreve o perfil das partes interessadas no projeto;
+* **Visão Geral do Produto:** Esta seção fornece uma visualização de alto nível das capacidades do produto, interfaces para outros aplicativos e configurações dos sistemas;
+* **Recursos do Produto:** Breve descrição dos recursos do produto;
+* **Restrições:** As restrições de *design*, restrições externas, como requisitos operacionais ou regulamentares;
 
 ### 2. <a name="2">Posicionamento</a>
 
@@ -164,12 +166,12 @@ Representante|<p align = "justify">Arthur Diniz, Lucas Malta, Romeu Carvalho, Vi
 **Envolvimento**|Alto.
 **Problemas/Comentários**|<p align = "justify">Não familiarizados com o ambiente de desenvolvimento de aplicações com uso de sensores de movimento.</p>
 
-###### 3.3.3 Cliente
+###### 3.3.3 Clientes
 
-Representante|<p align = "justify"> Carla Silva Rocha Aguiar
+Representante|<p align = "justify"> Carla Silva Rocha Aguiar / Prof. Roberto Baptista
 -|-
-**Descrição**|Professora graduada em Engenharia Mecatrônica pela UnB. Experiência na área de Robótica, Mecatrônica e Automação, com ênfase em Realidade Virtual. </p>
-**Tipo**|<p align = "justify">Cliente idealizadora do projeto com grande interesse no seu desenvolvimento.
+**Descrição**|Professores da Universidade de Brasília Campus Gama. </p>
+**Tipo**|<p align = "justify">Clientes idealizadores do projeto e com grande interesse no seu desenvolvimento.
 **Responsabilidade**|<p align = "justify">Avaliar e validar o *software*.</p>
 **Critérios de Sucesso**|<p align = "justify"> O *software* deve apresentar todos os requisitos e metodologias das disciplinas de MDS e EPS.</p>
 **Envolvimento**|Alto.
@@ -180,7 +182,7 @@ Representante|<p align = "justify"> Carla Silva Rocha Aguiar
 
 Representante|Pacientes
 :-:|:-:
-|**Descrição**|Pacientes com sequelas do AVC.
+|**Descrição**|Pacientes com restrição na movimentação dos membros superiores.
 |**Tipo**|Pacientes que sofrem de paralisia no membro superior (causada pela espasticidade).
 |**Responsabilidade**| -
 |**Critérios de Sucesso**|Restaurar a movimentação do braço afetado.
