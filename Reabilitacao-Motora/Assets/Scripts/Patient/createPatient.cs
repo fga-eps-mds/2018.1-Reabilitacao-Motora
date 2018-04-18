@@ -47,7 +47,6 @@ public class createPatient : MonoBehaviour
 			List<Pessoa.Pessoas> p = tablePessoa.Read();
 			
 			tablePaciente.Insert(p[p.Count -1].idPessoa, notes.text);
-			//tableTelefone.Insert(p[p.Count -1].idPessoa, phone.text);
 		}
 	}
 }
