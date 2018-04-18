@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using DataBaseTables;
 using DataBaseAttributes;
 using Mono.Data.Sqlite;
@@ -16,6 +17,23 @@ namespace sessao
         DataBase banco = new DataBase();
         TableNameColumn tt = new TableNameColumn();
         string path;
+
+        /**
+         * Classe com todos os atributos de uma sessao.
+         */
+        public class Sessoes
+        {
+            public int idSessao, idFisioterapeuta, idPaciente;
+            public string dataSessao, observacaoSessao;
+            public Sessoes (int ids, int idf, int idp, string ds, string os)
+            {
+                this.idSessao = ids;
+                this.idFisioterapeuta = idf;
+                this.idPaciente = idp;
+                this.dataSessao = ds;
+                this.observacaoSessao = os;
+            }
+        }
 
         /**
         * Cria a relação para sessão, contendo um id gerado automaticamente pelo banco como chave primária.
@@ -100,7 +118,7 @@ namespace sessao
         /**
         * Função que lê dados já cadastrados anteriormente na relação de sessão.
          */
-        public void Read()
+        public List<Sessoes> Read()
         {
             using (banco.conn = new SqliteConnection(path))
             {
@@ -109,6 +127,9 @@ namespace sessao
                 banco.sqlQuery = "SELECT * " + "FROM SESSAO";
                 banco.cmd.CommandText = banco.sqlQuery;
                 IDataReader reader = banco.cmd.ExecuteReader();
+
+                List<Sessoes> s = new List<Sessoes>();
+
                 while (reader.Read())
                 {
                     int idSessao = 0;
@@ -123,11 +144,8 @@ namespace sessao
                     if (!reader.IsDBNull(3)) dataSessao = reader.GetString(3);
                     if (!reader.IsDBNull(4)) observacaoSessao = reader.GetString(4);
 
-                    Debug.Log (string.Format("\"{0}\" = ", tt.TABLES[tableId].colName[0]) + idSessao +
-                        string.Format(" \"{0}\" = ", tt.TABLES[tableId].colName[1]) + idFisioterapeuta +
-                        string.Format(" \"{0}\" = ", tt.TABLES[tableId].colName[2]) + idPaciente +
-                        string.Format(" \"{0}\" = ", tt.TABLES[tableId].colName[3]) + dataSessao +
-                        string.Format(" \"{0}\" = ", tt.TABLES[tableId].colName[4]) + observacaoSessao);
+                    Sessoes x = new Sessoes (idSessao, idFisioterapeuta, idPaciente, dataSessao, observacaoSessao);
+                    s.Add(x);
                 }
                 reader.Close();
                 reader = null;
@@ -135,6 +153,44 @@ namespace sessao
                 banco.cmd = null;
                 banco.conn.Close();
                 banco.conn = null;
+                return s;
+            }
+        }
+
+
+        public Sessoes ReadValue (int id)
+        {
+            using (banco.conn = new SqliteConnection(path))
+            {
+                banco.conn.Open();
+                banco.cmd = banco.conn.CreateCommand();
+                banco.sqlQuery = "SELECT * " + string.Format("FROM \"{0}\" WHERE \"{1}\" = \"{2}\";", tt.TABLES[tableId].tableName, 
+                    tt.TABLES[tableId].colName[0], 
+                    id);
+                banco.cmd.CommandText = banco.sqlQuery;
+                IDataReader reader = banco.cmd.ExecuteReader();
+
+                int idSessao = 0;
+                int idFisioterapeuta = 0;
+                int idPaciente = 0;
+                string dataSessao = "";
+                string observacaoSessao = "";
+
+                if (!reader.IsDBNull(0)) idSessao = reader.GetInt32(0);
+                if (!reader.IsDBNull(1)) idFisioterapeuta = reader.GetInt32(1);
+                if (!reader.IsDBNull(2)) idPaciente = reader.GetInt32(2);
+                if (!reader.IsDBNull(3)) dataSessao = reader.GetString(3);
+                if (!reader.IsDBNull(4)) observacaoSessao = reader.GetString(4);
+
+                Sessoes x = new Sessoes (idSessao, idFisioterapeuta, idPaciente, dataSessao, observacaoSessao);
+
+                reader.Close();
+                reader = null;
+                banco.cmd.Dispose();
+                banco.cmd = null;
+                banco.conn.Close();
+                banco.conn = null;
+                return x;
             }
         }
 

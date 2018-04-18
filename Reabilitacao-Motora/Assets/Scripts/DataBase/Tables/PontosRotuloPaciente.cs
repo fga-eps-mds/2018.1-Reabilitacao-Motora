@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using DataBaseTables;
 using DataBaseAttributes;
 using Mono.Data.Sqlite;
@@ -16,6 +17,24 @@ namespace pontosrotulopaciente {
         DataBase banco = new DataBase();
         TableNameColumn tt = new TableNameColumn();
         string path;
+
+        /**
+         * Classe com todos os atributos de um pontosrotulopaciente.
+         */
+        public class PontosRotuloPacientes
+        {
+            public int idRotuloPaciente, idExercicio;
+            public double tempoInicial, tempoFinal;
+            public string estagioMovimentoPaciente;
+            public PontosRotuloPacientes (int idrp, int ide, double ti, double tf, string e)
+            {
+                this.idRotuloPaciente = idrp;
+                this.idExercicio = ide;
+                this.tempoInicial = ti;
+                this.tempoFinal = tf;
+                this.estagioMovimentoPaciente = e;
+            }
+        }
 
         /**
         * Cria a relação para pontosrotulopaciente, contendo um id gerado automaticamente pelo banco como chave primária.
@@ -100,34 +119,34 @@ namespace pontosrotulopaciente {
         /**
         * Função que lê dados já cadastrados anteriormente na relação de pontosrotulopaciente.
          */
-        public void Read()
+        public List<PontosRotuloPacientes> Read()
         {
             using (banco.conn = new SqliteConnection(path))
             {
                 banco.conn.Open();
                 banco.cmd = banco.conn.CreateCommand();
-                banco.sqlQuery = "SELECT * " + "FROM PONTOSROTULOPACIENTE";
+                banco.sqlQuery = "SELECT * " + "FROM PONTOSROTULOFISIOTERAPEUTA";
                 banco.cmd.CommandText = banco.sqlQuery;
                 IDataReader reader = banco.cmd.ExecuteReader();
+
+                List<PontosRotuloPacientes> prp = new List<PontosRotuloPacientes>();
+
                 while (reader.Read())
                 {
                     int idRotuloPaciente = 0;
-                    int idMovimento = 0;
+                    int idExercicio = 0;
                     string estagioMovimentoPaciente = "null";
                     double tempoInicial = 0;
                     double tempoFinal = 0;
 
                     if (!reader.IsDBNull(0)) idRotuloPaciente = reader.GetInt32(0);
-                    if (!reader.IsDBNull(1)) idMovimento = reader.GetInt32(1);
+                    if (!reader.IsDBNull(1)) idExercicio = reader.GetInt32(1);
                     if (!reader.IsDBNull(2)) estagioMovimentoPaciente = reader.GetString(2);
                     if (!reader.IsDBNull(3)) tempoInicial = reader.GetDouble(3);
                     if (!reader.IsDBNull(4)) tempoFinal = reader.GetDouble(4);
 
-                    Debug.Log (string.Format("\"{0}\" = ", tt.TABLES[tableId].colName[0]) + idRotuloPaciente +
-                        string.Format(" \"{0}\" = ", tt.TABLES[tableId].colName[1]) + idMovimento +
-                        string.Format(" \"{0}\" = ", tt.TABLES[tableId].colName[2]) + estagioMovimentoPaciente +
-                        string.Format(" \"{0}\" = ", tt.TABLES[tableId].colName[3]) + tempoInicial +
-                        string.Format(" \"{0}\" = ", tt.TABLES[tableId].colName[4]) + tempoFinal);
+                    PontosRotuloPacientes x = new PontosRotuloPacientes(idRotuloPaciente,idExercicio,tempoInicial,tempoFinal,estagioMovimentoPaciente);
+                    prp.Add(x);
                 }
                 reader.Close();
                 reader = null;
@@ -135,6 +154,44 @@ namespace pontosrotulopaciente {
                 banco.cmd = null;
                 banco.conn.Close();
                 banco.conn = null;
+                return prp;
+            }
+        }
+
+
+        public PontosRotuloPacientes ReadValue (int id)
+        {
+            using (banco.conn = new SqliteConnection(path))
+            {
+                banco.conn.Open();
+                banco.cmd = banco.conn.CreateCommand();
+                banco.sqlQuery = "SELECT * " + string.Format("FROM \"{0}\" WHERE \"{1}\" = \"{2}\";", tt.TABLES[tableId].tableName, 
+                    tt.TABLES[tableId].colName[0], 
+                    id);
+                banco.cmd.CommandText = banco.sqlQuery;
+                IDataReader reader = banco.cmd.ExecuteReader();
+
+                int idRotuloPaciente = 0;
+                int idExercicio = 0;
+                string estagioMovimentoPaciente = "null";
+                double tempoInicial = 0;
+                double tempoFinal = 0;
+
+                if (!reader.IsDBNull(0)) idRotuloPaciente = reader.GetInt32(0);
+                if (!reader.IsDBNull(1)) idExercicio = reader.GetInt32(1);
+                if (!reader.IsDBNull(2)) estagioMovimentoPaciente = reader.GetString(2);
+                if (!reader.IsDBNull(3)) tempoInicial = reader.GetDouble(3);
+                if (!reader.IsDBNull(4)) tempoFinal = reader.GetDouble(4);
+
+                PontosRotuloPacientes x = new PontosRotuloPacientes (idRotuloPaciente,idExercicio,tempoInicial,tempoFinal,estagioMovimentoPaciente);
+
+                reader.Close();
+                reader = null;
+                banco.cmd.Dispose();
+                banco.cmd = null;
+                banco.conn.Close();
+                banco.conn = null;
+                return x;
             }
         }
 

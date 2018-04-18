@@ -16,7 +16,7 @@ public class createPatient : MonoBehaviour
 	Pessoa tablePessoa;
 	Paciente tablePaciente;
 
-	public InputField name;
+	public InputField namePatient;
 	public InputField date;
 	public InputField phone1;
 	public InputField phone2;
@@ -34,6 +34,7 @@ public class createPatient : MonoBehaviour
  	 */
 	public void savePatient()
 	{
+<<<<<<< HEAD
 		if(name.text == "" || date.text == "" || phone1.text == "" || (male.isOn == false && female.isOn == false)) {
 			if (name.text == "") {
 				validationName.text = "Campo obrigatório!";
@@ -47,6 +48,10 @@ public class createPatient : MonoBehaviour
 			if (male.isOn == false && female.isOn == false) {
 				validationSex.text = "Deve haver um selecionado!";
 			}
+=======
+		if(namePatient.text == "" || date.text == "" || phone1.text == "") {
+			
+>>>>>>> ad243b0691178f51cae726d3c06616e25baf4ea8
 		} else {
 			path = "URI=file:" + Application.dataPath + "/Plugins/fisiotech.db";
 
@@ -56,9 +61,9 @@ public class createPatient : MonoBehaviour
 			tablePessoa = new Pessoa(path);
 			tablePaciente = new Paciente(path);
 			if (male.isOn)
-				tablePessoa.Insert(name.text, "m", dateFormate, phone1.text, phone2.text);
+				tablePessoa.Insert(namePatient.text, "m", dateFormate, phone1.text, phone2.text);
 			else if(female.isOn)
-				tablePessoa.Insert(name.text, "f", dateFormate, phone1.text, phone2.text);
+				tablePessoa.Insert(namePatient.text, "f", dateFormate, phone1.text, phone2.text);
 
 			List<Pessoa.Pessoas> p = tablePessoa.Read();
 			

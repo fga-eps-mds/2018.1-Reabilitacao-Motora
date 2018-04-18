@@ -113,6 +113,14 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!4 &46466736 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400068, guid: f5e05f20199c880499cc033d19de1bcd, type: 3}
+  m_PrefabInternal: {fileID: 1885446794}
+--- !u!4 &88849257 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400022, guid: f5e05f20199c880499cc033d19de1bcd, type: 3}
+  m_PrefabInternal: {fileID: 1885446794}
 --- !u!1001 &171050573
 Prefab:
   m_ObjectHideFlags: 0
@@ -226,6 +234,26 @@ Prefab:
       value: 
       objectReference: {fileID: 1578784869}
     - target: {fileID: 114713327204589952, guid: 184deb3dde3eaaf44a893367924f55a9,
+        type: 2}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 1857454617}
+    - target: {fileID: 114134276876835728, guid: 184deb3dde3eaaf44a893367924f55a9,
+        type: 2}
+      propertyPath: ombro
+      value: 
+      objectReference: {fileID: 46466736}
+    - target: {fileID: 114134276876835728, guid: 184deb3dde3eaaf44a893367924f55a9,
+        type: 2}
+      propertyPath: cotovelo
+      value: 
+      objectReference: {fileID: 88849257}
+    - target: {fileID: 114134276876835728, guid: 184deb3dde3eaaf44a893367924f55a9,
+        type: 2}
+      propertyPath: mao
+      value: 
+      objectReference: {fileID: 1147544571}
+    - target: {fileID: 114134276876835728, guid: 184deb3dde3eaaf44a893367924f55a9,
         type: 2}
       propertyPath: mainCamera
       value: 
@@ -950,6 +978,10 @@ MonoBehaviour:
   verticalMovement: 0
   smoothFactor: 5
   offsetRelativeToSensor: 0
+--- !u!4 &1147544571 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400024, guid: f5e05f20199c880499cc033d19de1bcd, type: 3}
+  m_PrefabInternal: {fileID: 1885446794}
 --- !u!1 &1368203911
 GameObject:
   m_ObjectHideFlags: 0
@@ -1123,6 +1155,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1857454617}
   - component: {fileID: 1857454616}
+  - component: {fileID: 1857454619}
   - component: {fileID: 1857454615}
   - component: {fileID: 1857454614}
   - component: {fileID: 1857454618}
@@ -1237,6 +1270,18 @@ MonoBehaviour:
   HandCursor2: {fileID: 0}
   ControlMouseCursor: 0
   GesturesDebugText: {fileID: 0}
+--- !u!114 &1857454619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1857454613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54b9637035d55784cbbe08ec594f34d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GestureInfo: {fileID: 0}
 --- !u!1001 &1885446794
 Prefab:
   m_ObjectHideFlags: 0
@@ -1382,7 +1427,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2131226006
 Transform:
   m_ObjectHideFlags: 0
