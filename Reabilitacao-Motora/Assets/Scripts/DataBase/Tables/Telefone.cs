@@ -12,7 +12,7 @@ namespace telefone
      */
     public class Telefone
     {
-        int tableId = 1;
+        int tableId = 0;
         DataBase banco = new DataBase();
         TableNameColumn tt = new TableNameColumn();
         string path;
@@ -28,7 +28,7 @@ namespace telefone
                 banco.conn.Open();
                 banco.cmd = banco.conn.CreateCommand();
 
-                banco.sqlQuery = "CREATE TABLE IF NOT EXISTS TELEFONE (idPessoa INTEGER not null,telefone VARCHAR (18) not null,foreign key (idPessoa) references PESSOA (idPessoa),primary key (idPessoa, telefone));";
+                banco.sqlQuery = "CREATE TABLE IF NOT EXISTS TELEFONE (idPessoa INTEGER not null,telefone VARCHAR (18) not null,foreign key (idPessoa) references PESSOA (idPessoa));";
 
                 banco.cmd.CommandText = banco.sqlQuery;
                 banco.cmd.ExecuteScalar();
