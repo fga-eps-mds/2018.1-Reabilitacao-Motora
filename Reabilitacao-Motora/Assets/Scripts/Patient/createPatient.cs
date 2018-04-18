@@ -24,13 +24,29 @@ public class createPatient : MonoBehaviour
 	public Toggle male;
 	public Toggle female;
 
+	public Text validationName;
+	public Text validationDate;
+	public Text validationSex;
+	public Text validationPhone;
+
 	/**
  	 * Salva o paciente no banco.
  	 */
 	public void savePatient()
 	{
-		if(name.text == "" || date.text == "" || phone1.text == "") {
-			
+		if(name.text == "" || date.text == "" || phone1.text == "" || (male.isOn == false && female.isOn == false)) {
+			if (name.text == "") {
+				validationName.text = "Campo obrigatório!";
+			}
+			if (date.text == "") {
+				validationDate.text = "Campo obrigatório!";
+			}
+			if (phone1.text == "") {
+				validationPhone.text = "Campo obrigatório!";
+			}
+			if (male.isOn == false && female.isOn == false) {
+				validationSex.text = "Deve haver um selecionado!";
+			}
 		} else {
 			path = "URI=file:" + Application.dataPath + "/Plugins/fisiotech.db";
 
