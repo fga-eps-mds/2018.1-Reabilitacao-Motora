@@ -5,7 +5,8 @@
 | 15/03/2018 |   0.1  | Criação do documento e elaboração dos tópicos 11, 13, 14 e 15 |                Arthur Diniz                 |
 | 20/03/2018 |   0.2  | Inserção dos tópicos 1 e 2 | Vitor Falcão |
 | 02/04/2018 |   0.3  | Inserção dos tópicos 3 e 7. Modificações no tópico 4 | Victor Moura |
-| 02/04/2018 |   0.4  | Elaboração dos tópicos 8 e 9 | Arthur Diniz
+| 02/04/2018 |   0.4  | Elaboração dos tópicos 8 e 9 | Arthur Diniz |
+| 17/04/2018 |   0.5  | Concluindo e revisando o documento | Romeu Antunes |
 
 
 ----
@@ -142,9 +143,15 @@ Release 02                   | 20/04/18 a 25/06/18 | Entrega total do sistema
 
 ## 10. Resumo do Custo estimado
 ### 10.1. Recursos Humanos
-### 10.2. Equipamentos e Serviços
-### 10.3. Custo Total
+<p align="justify"> &emsp;&emsp; Os recursos humanos que estão sendo usados no desenvolvimento do projeto são, 5 pessoas para gerenciamento sendo os papéis definidos pelo <i>Framework Scrum</i> e sendo os papéis <i>Scrum Master</i>, <i>Product Owner</i>, <i>DevOps</i>, <i>Arquitetura</i> e joker. A parte de desenvolvimento do projeto está com o grupo de MDS que é constituído de 5 integrantes. Cada membro dos diferentes grupos deve disponibilizar o período de 10 horas semanais para se dedicar ao desenvolvimento do projeto. Utilizando esses dados estimamos quanto um aluno custa por mês para a Universidade de Brasília (UnB), para utilizarmos no calculo de valor do projeto e estimar o valor das nossas horas de trabalho. </p>
 
+### 10.2. Equipamentos e Serviços
+<p align="justify"> &emsp;&emsp; O custo de equipamentos utilizados pelos membros do grupo está no valor de R$ 33.618,00 este valor foi retirado com base nos valores de mercado dos notebooks pessoais dos membros. Na parte de serviços foi utilizada uma média de consumo elétrico dos notebooks pessoais dos membros para estimar um valor para uma conta de luz onde seria o local de trabalho do grupo, acrescemos também um valor de uma franquia de internet que julgamos suficientes para suportar os 10 membros trabalhando juntos ao mesmo tempo.  </p>
+
+### 10.3. Custo Total
+![](https://raw.githubusercontent.com/RomeuCarvalhoAntunes/2018.1-Reabilitacao-Motora/449db6c1815f5857c99fa32370849b2835e9366b/docs/imagens/EVM/Custos_do_Projeto.png)
+
+> O Custo total do projeto esta no valor de R$ 98.174,78.
 
 ## 11. Lista das partes interessadas
 ### 11.1 Desenvolvedor da Sistema e do Software de Reabilitação
@@ -186,6 +193,7 @@ Release 02                   | 20/04/18 a 25/06/18 | Entrega total do sistema
 
 
 ## 12. Requisitos para aprovação do Projeto
+<p align="justify"> &emsp;&emsp;  Para considerar o projeto aprovado ele deverá estar de acordo com as especificações dos nossos <i>Stakeholders</i> externos que são: Prof. Carla Silva Rocha Aguiar e Prof. Roberto. O projeto deverá captar o movimento do paciente e gerar o gráfico de linha a respeito do mesmo movimento, o fisioterapeuta deverá poder marcar no gráfico pontos para que haja a rotulação de movimento o projeto deve se comunicar com outras plataformas por meio de uma interface TCP para que o cliente não fique dependendo de um sensor especifico. </p>
 
 ## 13. Gerente do Projeto
 
