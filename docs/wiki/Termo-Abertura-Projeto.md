@@ -4,6 +4,9 @@
 |:----------:|:------:|:-----------------------------------------------------------------:|:-------------------------------------------:|
 | 15/03/2018 |   0.1  | Criação do documento e elaboração dos tópicos 11, 13, 14 e 15 |                Arthur Diniz                 |
 | 20/03/2018 |   0.2  | Inserção dos tópicos 1 e 2 | Vitor Falcão |
+| 02/04/2018 |   0.3  | Inserção dos tópicos 3 e 7. Modificações no tópico 4 | Victor Moura |
+| 02/04/2018 |   0.4  | Elaboração dos tópicos 8 e 9 | Arthur Diniz |
+| 17/04/2018 |   0.5  | Concluindo e revisando o documento | Romeu Antunes |
 
 
 ----
@@ -23,9 +26,9 @@
 
 [7. Limites do Projeto](#7-limites-do-projeto)
 
-[8. Riscos de alto nível](#8-riscos-de-alto-nível)
+[8. Riscos](#8-riscos)
 
-[9. Resumo do cronograma de marcos](#9-resumo-do-cronograma-de-marcos)
+[9. Cronograma e Marcos](#9-cronograma-e-marcos)
 
 [10. Resumo do orçamento](#10-resumo-do-orçamento)
 
@@ -49,7 +52,7 @@
 
 ----
 
-## 1. Propósito ou Justificativa do Projeto
+## 1. Justificativa do Projeto
 <p align="justify">
 O Acidente Vascular Cerebral (AVC), popularmente conhecido como derrame, é a segunda maior causa de mortes atualmente no Brasil. Sua causa é problemas na irrigação sanguínea do cérebro causando morte celular, como consequência há um mal funcionamento do cérebro. Como resultado temos os sintomas de dificuldade de movimento ou percepção em um dos lados do corpo, dificuldades em falar ou compreender, perda de visão em um dos lados e sensação de que os objetos a sua volta estão se movimentando.
 </p>
@@ -68,12 +71,15 @@ Em cada atendimento será efetuado as avaliações de acordo com movimentos prev
 Prover uma análise não superficial durante o atendimento de reabilitação de um paciente ajudando o fisioterapeuta a tomar melhores decisões médicas em relação a ele. A recuperação mais rápida do paciente se torna um dos objetivos e uma das consequências do método de espelhamento utilizado.
 </p>
 
-## 3. Descrição do Projeto em alto nível
-
+## 3. Descrição do Projeto
+<p align="justify">
+O projeto em questão é um software com interface tridimensional que servirá de apoio em sessões de fisioterapia. A interface irá reproduzir, em um modelo digital, os movimentos que serão captados por um sensor enquanto o paciente os executa. O movimento executado pelo paciente será baseado em outro movimento anteriormente cadastrado pelo fisioterapeuta. O grande foco do projeto é permitir que o paciente tenha o controle de movimentos de um modelo digital, abrindo possibilidade para uma futura implementação de um sistema gamificado. Os movimentos cadastrados pelo fisioterapeuta serão rotulados com o auxílio de um gráfico gerado automaticamente. O gráfico mostra a relação entre o ângulo de junta da articulação pelo tempo, ou seja, a curva acompanha os movimentos de extensão e contração do membro mapeado. A partir do gráfico gerado, o fisioterapeuta fará a rotulação de cada parte da curva, possibilitando a divisão do movimento completo em etapas menores. A divisão das etapas do movimento completo permite que o profissional possa identificar em qual etapa o paciente está apresentando mais dificuldade ou facilidade.
+</p>
 
 ## 4. Requisitos de alto nível
  - Cadastro e gerenciamento de pacientes
- - Consulta de pacientes com a utilização de captura de movimento
+ - Sessões de fisioterapia assistidas por sensor de captura de movimentos
+ - Rotulação dos movimentos cadastrados por profissional de fisioterapia
 
 
 ## 5. Premissas
@@ -84,18 +90,68 @@ Prover uma análise não superficial durante o atendimento de reabilitação de 
 ## 6. Restrições
  - O projeto deve ser concluído no período letivo de 2018/1 da Universidade de Brasília
  - O projeto só pode utilizar de recursos disponíveis pelos próprios membros
- - O projeto deve ser concluído somente pela equipe de gestão e desenvolvimento do projeto, com consultas somente ao cliente do mesmo. 
+ - O projeto deve ser concluído somente pela equipe de gestão e desenvolvimento do projeto, com consultas somente ao cliente do mesmo.
 
 ## 7. Limites do Projeto
+<p align="justify">
+Como limitações do projeto, temos o uso de sistemas externos que irão ser responsáveis pela interpretação dos sinais captados. O escopo do projeto foi definido levando em consideração que a integração com o sistema externo será possível. Pela falta de disponibilidade de tempo, caso haja grandes dificuldades em se integrar os sistemas, coloca-se em risco a qualidade do produto final. Além disso, a baixa confiabilidade da tecnologia selecionada quando utilizada em sistema operacional que não seja da Microsoft ou da Apple exige que a equipe utilize Windows ou OSX como ambiente de desenvolvimento. Tal limitação dos sistemas operacionais afeta, também, a configuração dos ambientes de integração/*deploy* contínuo, podendo afetar a qualidade final do *pipeline* de desenvolvimento.
+</p>
 
-## 8. Riscos de alto nível
+## 8. Riscos
+
+<p align = "justify">
+Existem inúmeros riscos que envolvem o desenvolvimento de software, Riscos são situações de incertezas que envolvem escolhas relacionadas com decisões que estão ligadas diretamente aos riscos.
+Uma vez conhecidos os riscos, as decisões podem reduzir perdas, aumentar ganhos ou, o contrário, levando a prejuízos.
+</p>
+
+<p align = "justify">
+Os principais riscos do projeto envolvem a equipe e a tecnologia a ser utilizada. Esses riscos exigem um plano de ação para se obter o sucesso do projeto, que são:
+</p>
+
+**Riscos** | **Plano de Ação**
+-----------|------------|
+O tamanho da equipe, que dificulta a comunicação e o gerenciamento dos membros | Manter uma boa integração da equipe para que o gap da comunicação seja amenizado, assim como a utilização de meios de comunicação eficientes para todos, reuniões semanais e acompanhamento dos membros
+Tecnologia nova e nunca antes implementada na disciplina | Pelo fato da tecnologia sair dos padrões da disciplina sendo usado assim um motor gráfico é necessário realizar treinamentos com a equipe de desenvolvimento sobre as tecnologias a serem utilizadas e buscar pessoas capacitadas que possam ajudar a sanar dúvidas.
+A falta ou desistência de algum membro | Adequar os horários e realocar as tarefas entre os membros sem sobrecarregar nenhum membro.
+Um membro da equipe não possuir notebook ou aparelhos periféricos | Organizar reuniões onde tenha a possibilidade de usar um desktop ou um notebook para que todos trabalhem, no mesmo caso de aparelhos periféricos, ou pegar emprestado um notebook que atenda as necessidades das reuniões.
+Periféricos externos como o kinect ou sensor, dificultam ainda mais a implementação  | Analisar o seu acoplamento o quanto antes e manter o conhecimento atualizado em todo o time.
+Falta de conhecimento sobre git e da metodologia SCRUM por parte da equipe de MDS  | Fazer dojos sobre o assunto e dar o máximo de apoio para que os integrantes de MDS tenham uma curva de aprendizado acentuada.
+
+## 9. Cronograma e Marcos
+
+<p align = "justify">
+O cronograma de planejamento foi necessário para manter o controle das tarefas e seus fluxos, nele foram detalhados minuciosamente as atividades a serem executadas durante um período estimado.
+<p>
+<p align = "justify"> O cronograma do projeto começou no  início ao semestre letivo das disciplinas de Métodos de Desenvolvimento de Software e Engenharia do Produto de Software.
+</p>
+
+- Marco inicial no dia 05/03/2018.
+
+- Marco final no dia XX/06/2017.
+
+<p align = "justify">
+Entre essas datas acontece uma primeira entrega parcial, onde devem ser apresentados os casos de uso priorizados,toda documentação de gerenciamento do projeto, além de 30% de cobertura de testes sobre o sistema e a entrega final, com uma cobertura de testes maior ou igual a 90%, como segue o quadro: </p>
+
+<p align = "justify">
+Obs: No caso do nosso projeto será cobrado apenas a cobertura de testes unitários já que a tecnologia usada não cobre os outros tipos de teste. </p>
+
+ **Pontos de Controles**     | **Data**          |  **Resumo**
+-----------------------------|-------------------|-----------
+Release 01                   | 05/03/18 e 19/04/18 | Entrega dos documentos de gerenciamento e entrega parcial do sistema
+Release 02                   | 20/04/18 a 25/06/18 | Entrega total do sistema
 
 
-## 9. Resumo do cronograma de marcos
+## 10. Resumo do Custo estimado
+### 10.1. Recursos Humanos
+<p align="justify"> &emsp;&emsp; Os recursos humanos que estão sendo usados no desenvolvimento do projeto são, 5 pessoas para gerenciamento sendo os papéis definidos pelo <i>Framework Scrum</i> e sendo os papéis <i>Scrum Master</i>, <i>Product Owner</i>, <i>DevOps</i>, <i>Arquitetura</i> e joker. A parte de desenvolvimento do projeto está com o grupo de MDS que é constituído de 5 integrantes. Cada membro dos diferentes grupos deve disponibilizar o período de 10 horas semanais para se dedicar ao desenvolvimento do projeto. Utilizando esses dados estimamos quanto um aluno custa por mês para a Universidade de Brasília (UnB), para utilizarmos no calculo de valor do projeto e estimar o valor das nossas horas de trabalho. </p>
 
+### 10.2. Equipamentos e Serviços
+<p align="justify"> &emsp;&emsp; O custo de equipamentos utilizados pelos membros do grupo está no valor de R$ 33.618,00 este valor foi retirado com base nos valores de mercado dos notebooks pessoais dos membros. Na parte de serviços foi utilizada uma média de consumo elétrico dos notebooks pessoais dos membros para estimar um valor para uma conta de luz onde seria o local de trabalho do grupo, acrescemos também um valor de uma franquia de internet que julgamos suficientes para suportar os 10 membros trabalhando juntos ao mesmo tempo.  </p>
 
-## 10. Resumo do orçamento
+### 10.3. Custo Total
+![](https://raw.githubusercontent.com/RomeuCarvalhoAntunes/2018.1-Reabilitacao-Motora/449db6c1815f5857c99fa32370849b2835e9366b/docs/imagens/EVM/Custos_do_Projeto.png)
 
+> O Custo total do projeto esta no valor de R$ 98.174,78.
 
 ## 11. Lista das partes interessadas
 ### 11.1 Desenvolvedor da Sistema e do Software de Reabilitação
@@ -137,6 +193,7 @@ Prover uma análise não superficial durante o atendimento de reabilitação de 
 
 
 ## 12. Requisitos para aprovação do Projeto
+<p align="justify"> &emsp;&emsp;  Para considerar o projeto aprovado ele deverá estar de acordo com as especificações dos nossos <i>Stakeholders</i> externos que são: Prof. Carla Silva Rocha Aguiar e Prof. Roberto. O projeto deverá captar o movimento do paciente e gerar o gráfico de linha a respeito do mesmo movimento, o fisioterapeuta deverá poder marcar no gráfico pontos para que haja a rotulação de movimento o projeto deve se comunicar com outras plataformas por meio de uma interface TCP para que o cliente não fique dependendo de um sensor especifico. </p>
 
 ## 13. Gerente do Projeto
 
