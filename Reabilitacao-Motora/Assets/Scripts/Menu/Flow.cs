@@ -76,6 +76,14 @@ public class Flow : MonoBehaviour
 		SceneManager.LoadScene("NewPatient");
 	}
 
+		/**
+ 	 * Leva para scene de registrar novo paciente.
+ 	 */
+	public void UpdatePatient() 
+	{
+		SceneManager.LoadScene("UpdatePatient");
+	}
+
 	/**
  	 * Leva para scene de detalhes de sessão.
  	 */

@@ -8,11 +8,12 @@ using UnityEngine;
 public class GenerateLineChart : MonoBehaviour
 {
 	public Transform pointPrefab;
-	public Transform mao, ombro, cotovelo;
+	public Transform mao, ombro, cotovelo, braco;
 	public int resolution;
 	int i = 0;
 	List <float> current_time;
-	List <Vector3> f_mao_pos, f_mao_rot, f_ombro_pos, f_ombro_rot, f_cotovelo_pos, f_cotovelo_rot, points1, points2;
+	List <Vector3> f_mao_pos, f_mao_rot, f_ombro_pos, f_ombro_rot, f_cotovelo_pos, f_cotovelo_rot, f_braco_pos, f_braco_rot, points1, points2;
+	List <Vector3> f_mao_local_pos, f_mao_local_rot, f_ombro_local_pos, f_ombro_local_rot, f_cotovelo_local_pos, f_cotovelo_local_rot, f_braco_local_pos, f_braco_local_rot;
 
 	LineRenderer lineRenderer;
 	public Color c1 = Color.black;
@@ -60,6 +61,58 @@ public class GenerateLineChart : MonoBehaviour
 			b = (float.Parse(pair[17]));
 			c = (float.Parse(pair[18]));
 			f_ombro_rot.Add(new Vector3 (a, b, c));
+
+			a = (float.Parse(pair[19]));
+			b = (float.Parse(pair[20]));
+			c = (float.Parse(pair[21]));
+			f_braco_pos.Add(new Vector3 (a, b, c));
+
+			a = (float.Parse(pair[22]));
+			b = (float.Parse(pair[23]));
+			c = (float.Parse(pair[24]));
+			f_braco_rot.Add(new Vector3 (a, b, c));			
+
+ //____________________________________________________
+
+			a = (float.Parse(pair[25]));
+			b = (float.Parse(pair[26]));
+			c = (float.Parse(pair[27]));
+			f_mao_local_pos.Add(new Vector3 (a, b, c));
+			
+			a = (float.Parse(pair[28]));
+			b = (float.Parse(pair[29]));
+			c = (float.Parse(pair[30]));
+			f_mao_local_rot.Add(new Vector3 (a, b, c));
+
+			a = (float.Parse(pair[31]));
+			b = (float.Parse(pair[32]));
+			c = (float.Parse(pair[33]));
+			f_cotovelo_local_pos.Add(new Vector3 (a, b, c));
+
+			a = (float.Parse(pair[34]));
+			b = (float.Parse(pair[35]));
+			c = (float.Parse(pair[36]));
+			f_cotovelo_local_rot.Add(new Vector3 (a, b, c));
+
+			a = (float.Parse(pair[37]));
+			b = (float.Parse(pair[38]));
+			c = (float.Parse(pair[39]));
+			f_ombro_local_pos.Add(new Vector3 (a, b, c));
+
+			a = (float.Parse(pair[40]));
+			b = (float.Parse(pair[41]));
+			c = (float.Parse(pair[42]));
+			f_ombro_local_rot.Add(new Vector3 (a, b, c));
+
+			a = (float.Parse(pair[43]));
+			b = (float.Parse(pair[44]));
+			c = (float.Parse(pair[45]));
+			f_braco_local_pos.Add(new Vector3 (a, b, c));
+
+			a = (float.Parse(pair[46]));
+			b = (float.Parse(pair[47]));
+			c = (float.Parse(pair[48]));
+			f_braco_local_rot.Add(new Vector3 (a, b, c));			
 		}
 	}
 
@@ -123,6 +176,17 @@ public class GenerateLineChart : MonoBehaviour
 		f_ombro_rot = new List<Vector3>();
 		f_cotovelo_pos = new List<Vector3>();
 		f_cotovelo_rot = new List<Vector3>();
+		f_braco_pos = new List<Vector3>();
+		f_braco_rot = new List<Vector3>();
+
+		f_mao_local_pos = new List<Vector3>();
+		f_mao_local_rot = new List<Vector3>();
+		f_ombro_local_pos = new List<Vector3>();
+		f_ombro_local_rot = new List<Vector3>();
+		f_cotovelo_local_pos = new List<Vector3>();
+		f_cotovelo_local_rot = new List<Vector3>();
+		f_braco_local_pos = new List<Vector3>();
+		f_braco_local_rot = new List<Vector3>();
 
 		points1 = new List<Vector3>();
 		points2 = new List<Vector3>();
@@ -166,12 +230,11 @@ public class GenerateLineChart : MonoBehaviour
 	{
 		if (t && i < current_time.Count) 
 		{
-			mao.position = f_mao_pos[i];
-			mao.rotation = Quaternion.Euler(f_mao_rot[i].x, f_mao_rot[i].y, f_mao_rot[i].z);
-			cotovelo.position = f_cotovelo_pos[i];
-			cotovelo.rotation = Quaternion.Euler(f_cotovelo_rot[i].x, f_cotovelo_rot[i].y, f_cotovelo_rot[i].z);
-			ombro.position = f_ombro_pos[i];
-			ombro.rotation = Quaternion.Euler(f_ombro_rot[i].x, f_ombro_rot[i].y, f_ombro_rot[i].z);
+			ombro.SetPositionAndRotation(f_ombro_pos[i], Quaternion.Euler(f_ombro_rot[i]));
+			braco.SetPositionAndRotation(f_braco_pos[i], Quaternion.Euler(f_braco_rot[i]));
+			cotovelo.SetPositionAndRotation(f_cotovelo_pos[i], Quaternion.Euler(f_cotovelo_rot[i]));
+			mao.SetPositionAndRotation(f_mao_pos[i], Quaternion.Euler(f_mao_rot[i]));
+
 			i++;
 		}
 	}

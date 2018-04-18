@@ -18,8 +18,6 @@ public class GlobalController : MonoBehaviour {
 
 	public static GlobalController instance;
 
-	public Pessoa.Pessoas personPhysio;
-	public Pessoa.Pessoas personPatient;
 	public Telefone.Telefones phone;
 	public Fisioterapeuta.Fisioterapeutas admin;
 	public Paciente.Pacientes user;

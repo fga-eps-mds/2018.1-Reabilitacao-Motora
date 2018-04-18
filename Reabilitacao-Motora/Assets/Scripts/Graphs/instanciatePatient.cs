@@ -2,28 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using movimento;
+using paciente;
 
-public class instanciateMovement : MonoBehaviour {
+public class instanciatePatient : MonoBehaviour {
 
 	public GameObject buttonPrefab;
 	string path;
-	Movimento tableMovimento;
-	List<Movimento.Movimentos> values;
+	Paciente tablePaciente;
+	List<Paciente.Pacientes> values;
 
 	int z = 10;
 
-	void MyAwesomeCreator(int posy, Movimento.Movimentos r)
+	void MyAwesomeCreator(int posy, Paciente.Pacientes r)
 	{
 		GameObject go = Instantiate(buttonPrefab, transform);
 
 		var button = GetComponent<UnityEngine.UI.Button>();
 		go.transform.position = new Vector3 (go.transform.position.x, go.transform.position.y - posy, go.transform.position.z);
-		var aux = go.GetComponentInChildren<setmovement>();
+		var aux = go.GetComponentInChildren<setpatient>();
 		aux.x = r;
 
 		var temp = go.GetComponentInChildren<Text>();
-		temp.text = r.nomeMovimento;
+		temp.text = r.persona.nomePessoa;
 	}
 
 	public void Awake ()
@@ -32,11 +32,10 @@ public class instanciateMovement : MonoBehaviour {
 
 		Initialize ();
 
-		values = tableMovimento.Read();
+		values = tablePaciente.Read();
 
 		foreach (var l in values)
 		{
-			print (string.Format("{0}", l.nomeMovimento));
 			MyAwesomeCreator(z, l);
 			z += 55;
 		}
@@ -45,7 +44,7 @@ public class instanciateMovement : MonoBehaviour {
 
 	void Initialize()
 	{
-	    tableMovimento = new Movimento(path);
-	    values = new List<Movimento.Movimentos>();
+	    tablePaciente = new Paciente(path);
+	    values = new List<Paciente.Pacientes>();
 	}
 }

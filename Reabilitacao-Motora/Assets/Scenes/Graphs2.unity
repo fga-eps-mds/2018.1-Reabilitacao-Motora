@@ -240,6 +240,11 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1.2
       objectReference: {fileID: 0}
+    - target: {fileID: 114289473481017124, guid: e4d8eaff36fa4314c842ce292a0fabc4,
+        type: 2}
+      propertyPath: braco
+      value: 
+      objectReference: {fileID: 1885446795}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e4d8eaff36fa4314c842ce292a0fabc4, type: 2}
   m_IsPrefabParent: 0
@@ -1134,7 +1139,6 @@ GameObject:
   - component: {fileID: 1857454617}
   - component: {fileID: 1857454616}
   - component: {fileID: 1857454615}
-  - component: {fileID: 1857454614}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1142,48 +1146,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1857454614
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1857454613}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00db858c1f8ff90478dad0aa1bac9a2c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TwoUsers: 0
-  ComputeUserMap: 0
-  ComputeColorMap: 0
-  DisplayUserMap: 0
-  DisplayColorMap: 0
-  DisplaySkeletonLines: 0
-  DisplayMapsWidthPercent: 20
-  SensorHeight: 1
-  SensorAngle: 0
-  MinUserDistance: 1
-  MaxUserDistance: 0
-  DetectClosestUser: 1
-  IgnoreInferredJoints: 1
-  smoothing: 1
-  UseBoneOrientationsFilter: 0
-  UseClippedLegsFilter: 0
-  UseBoneOrientationsConstraint: 1
-  UseSelfIntersectionConstraint: 0
-  Player1Avatars: []
-  Player2Avatars: []
-  Player1CalibrationPose: 0
-  Player2CalibrationPose: 0
-  Player1Gestures: 
-  Player2Gestures: 
-  MinTimeBetweenGestures: 0.7
-  GestureListeners: []
-  CalibrationText: {fileID: 0}
-  HandCursor1: {fileID: 0}
-  HandCursor2: {fileID: 0}
-  ControlMouseCursor: 0
-  GesturesDebugText: {fileID: 0}
 --- !u!124 &1857454615
 Behaviour:
   m_ObjectHideFlags: 0
@@ -1256,7 +1218,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: f5e05f20199c880499cc033d19de1bcd, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: f5e05f20199c880499cc033d19de1bcd, type: 3}
       propertyPath: m_LocalRotation.x
@@ -1264,7 +1226,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: f5e05f20199c880499cc033d19de1bcd, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.9848078
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: f5e05f20199c880499cc033d19de1bcd, type: 3}
       propertyPath: m_LocalRotation.z
@@ -1272,7 +1234,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: f5e05f20199c880499cc033d19de1bcd, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.17364825
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: f5e05f20199c880499cc033d19de1bcd, type: 3}
       propertyPath: m_RootOrder
@@ -1296,7 +1258,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: f5e05f20199c880499cc033d19de1bcd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 160
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 13700000, guid: f5e05f20199c880499cc033d19de1bcd, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -1341,6 +1303,10 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f5e05f20199c880499cc033d19de1bcd, type: 3}
   m_IsPrefabParent: 0
+--- !u!4 &1885446795 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400018, guid: f5e05f20199c880499cc033d19de1bcd, type: 3}
+  m_PrefabInternal: {fileID: 1885446794}
 --- !u!4 &1885446797 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400022, guid: f5e05f20199c880499cc033d19de1bcd, type: 3}
