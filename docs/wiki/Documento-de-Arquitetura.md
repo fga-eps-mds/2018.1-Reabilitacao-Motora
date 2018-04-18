@@ -26,7 +26,7 @@ Data|Versão|Descrição|Autor
 15/04|1.12.0|Adição do item 5| João Lucas, Victor Moura e Vitor Falcão
 15/04|1.12.1|Revisão do item 5| João Lucas, Victor Moura e Vitor Falcão
 17/04|1.12.2|Correção item 5| João Lucas
-
+18/04|1.12.3|Correção do MER| João Lucas
 # Sumário
 ----------------
  1. [Introdução](#1)
@@ -175,13 +175,8 @@ Atributo|Propriedade|Tipo|Descrição
 **nomePessoa** | Obrigatório | VARCHAR(30) | Nome da Pessoa
 **sexo** | Obrigatório | CHAR(1) | Sexo da Pessoa
 **dataNascimento** | Obrigatório | DATE | Data de Nascimento da Pessoa
-
-**TELEFONE** </p>
-
-Atributo|Propriedade|Tipo|Descrição
--|-|-|-
-**idPessoa** | Chave Estrangeira </p> Obrigatório | INTEGER | Identificação da Pessoa
-**telefone** | Obrigatório | VARCHAR(18) | Número do Telefone da Pessoa
+**telefone1** | Obrigatório | VARCHAR(18) | Número do Telefone Obrigatório da Pessoa
+**telefone2** | Opcional | VARCHAR(18) | Número do Telefone Opcional da Pessoa
 
 **FISIOTERAPEUTA** </p>
 
