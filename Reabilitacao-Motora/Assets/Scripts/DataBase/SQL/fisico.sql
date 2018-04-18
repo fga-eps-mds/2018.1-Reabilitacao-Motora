@@ -1,7 +1,3 @@
-
-CREATE DATABASE IF NOT EXISTS fisiotech;
-USE fisiotech;
-
 CREATE TABLE IF NOT EXISTS PESSOA (
 	idPessoa INTEGER primary key AUTOINCREMENT,
 	nomePessoa VARCHAR (30) not null,

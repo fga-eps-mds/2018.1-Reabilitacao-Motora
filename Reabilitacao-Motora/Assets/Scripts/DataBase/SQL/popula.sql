@@ -1,5 +1,3 @@
-USE fisiotech;
-
 insert into PESSOA (nomePessoa, sexo, dataNascimento, telefoneCelular) values 
 ('Joao Marcelo', 'M', '1954-10-09', '9999-4456'),
 ('Marcela Queiroz', 'F', '1973-04-01'),

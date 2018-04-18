@@ -21,12 +21,14 @@ public class createPhysiotherapist : MonoBehaviour
 
 	public InputField namePhysio;
 	public InputField date;
-	public InputField phone;
+	public InputField phone1, phone2;
 	public InputField crefito;
 	public InputField regiao;
 	public InputField login;
 	public InputField pass;
 	public InputField confirmPass;
+	public Toggle male;
+	public Toggle female;
 	string wrongConfirmation = "FF7E7EFF", success = "87E580FF";
      
 	public static Color hexToColor(string hex)
@@ -59,9 +61,11 @@ public class createPhysiotherapist : MonoBehaviour
 			var trip = date.text.Split('/');
 			var dateFormate = trip[2] + "/" + trip[1] + "/" + trip[0];
 			
+			string sex = male.isOn ? "m" : "f";
+
 			tablePessoa = new Pessoa(path);
 			tableFisioterapeuta = new Fisioterapeuta(path);
-			tablePessoa.Insert(namePhysio.text, "f", dateFormate);
+			tablePessoa.Insert(namePhysio.text, sex, dateFormate, phone1.text, phone2.text);
 
 			List<Pessoa.Pessoas> p = tablePessoa.Read();
 			

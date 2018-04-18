@@ -76,15 +76,6 @@ public class Flow : MonoBehaviour
 		SceneManager.LoadScene("NewPatient");
 	}
 
-    
-    /**
- 	 * Leva para scene de registrar novo paciente.
- 	 */
-	public void NewPhysiotherapist() 
-	{
-		SceneManager.LoadScene("NewPhysiotherapist");
-	}
-
 	/**
  	 * Leva para scene de detalhes de sessão.
  	 */
