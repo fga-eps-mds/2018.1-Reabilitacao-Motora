@@ -137,7 +137,7 @@ A implementação do projeto será a linguagem de programação C# (C-Sharp).Ele
 ## 5. Visão Lógica
 
 <p align = "justify">Em visão lógica, o Diagrama Geral da Arquitetura demonstra como será o funcionamento do projeto. Inicialmente, através de um sensor, o usuário executará um movimento para que seja capturado e através de um adapter, que deve atender as exigências de acoplamento, envia ao programa em Unity 3D. O KINECT, diferente dos outros sensores, já possui integração feita de forma nativa no software, portanto não exige o uso do adapter. </p>
-<p align = "justify"> O Módulode Processamento (pode ser considerado um plugin que realiza processamentos externos) é uma unidade de processamento, podendo ser escrita em qualquer linguagem de programação, que receberá dados do movimento e poderá utilizá-los para realizar cálculos não abordados pelo sistema. A sua comunicação com o software também é feita por meio de um adapter. </p>
+<p align = "justify"> O Módulo de Processamento (pode ser considerado um plugin que realiza processamentos externos) é uma unidade de processamento, podendo ser escrita em qualquer linguagem de programação, que receberá dados do movimento e poderá utilizá-los para realizar cálculos não abordados pelo sistema. A sua comunicação com o software também é feita por meio de um adapter. </p>
 
 ![Diagrama](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/doc_arq/docs/imagens/Arquitetura/diagrama.png)</p>
 **Figura 3**- Diagrama Geral da Arquitetura </p>
