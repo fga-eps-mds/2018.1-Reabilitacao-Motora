@@ -132,4 +132,36 @@ public class Flow : MonoBehaviour
 	{
 		SceneManager.LoadScene("Menu");
 	}
+
+	/**
+ 	 * Volta para o menu inicial.
+ 	 */
+	public void BackToHomeMenu()
+	{
+		SceneManager.LoadScene("HomeMenu");
+	}
+
+	/**
+ 	 * Leva para a scene de novo fisioterapeuta.
+ 	 */
+	public void NewPhysiotherapist()
+	{
+		SceneManager.LoadScene("NewPhysiotherapist");
+	}
+
+	/**
+ 	 * Leva para a scene de gráfico em tempo real.
+ 	 */
+	public void RealtimeGraph()
+	{
+		SceneManager.LoadScene("Realtime Graph");
+	}
+
+	/**
+ 	 * Leva para a scene sucess register.
+ 	 */
+	public void SucessRegister()
+	{
+		SceneManager.LoadScene("sucessRegister");
+	}
 }

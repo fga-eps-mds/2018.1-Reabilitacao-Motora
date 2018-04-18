@@ -25,12 +25,14 @@ namespace DataBaseTables {
         public TableNameColumn()
         {
             TABLES[0] = new MultiDimensionalString();
-            TABLES[0].colName = new string[4];
+            TABLES[0].colName = new string[6];
             TABLES[0].tableName = "PESSOA";
             TABLES[0].colName[0] = "idPessoa";
             TABLES[0].colName[1] = "nomePessoa";
             TABLES[0].colName[2] = "sexo";
             TABLES[0].colName[3] = "dataNascimento";
+			TABLES[0].colName[4] = "telefone1";
+			TABLES[0].colName[5] = "telefone2";
 
             TABLES[1] = new MultiDimensionalString();
             TABLES[1].colName = new string[2];
