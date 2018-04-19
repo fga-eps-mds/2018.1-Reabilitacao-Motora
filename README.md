@@ -1,3 +1,5 @@
+![](https://travis-ci.org/fga-gpp-mds/2018.1-Reabilitacao-Motora.svg?branch=development)
+
 ![](https://fga-gpp-mds.github.io/2018.1-Reabilitacao-Motora/docs/imagens/logo.png)
 
 # Reabilitação Motora
