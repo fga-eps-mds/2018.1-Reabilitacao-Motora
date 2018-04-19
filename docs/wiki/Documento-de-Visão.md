@@ -84,7 +84,6 @@ Disponível em: https://github.com/fga-gpp-mds/2017.2-Receituario-Medico/wiki. A
  <p align="justify"> &emsp;&emsp; Este documento é dividido em 7 tópicos descrevendo os detalhes das características do software proposto.
 Sendo dividido em:</p>
 
-
 * **Introdução:** No qual é introduzido os detalhes gerais sobre a visão do projeto;
 * **Posicionamento:** Descrevendo o problema e a oportunidade de negócio;
 * **Descrições dos Envolvidos e dos Usuários:** Esta seção descreve o perfil das partes interessadas no projeto;
@@ -148,34 +147,34 @@ Nome|Descrição
 
 Representante|<p align = "justify"> Davi Alves, Djorkaeff Alexandre, Guilherme de Lyra, Guilherme Siqueira e João Lucas.
 -|-
-**Descrição**|Desenvolvedores.
-**Tipo**|<p align = "justify">Estudantes da Universidade de Brasília da disciplina de Métodos de Desenvolvimento de Software.</p>
-**Responsabilidade**|<p align = "justify">Desenvolvimento, Testes, Documentação e Implementação do *software*.</p>
-**Critérios de Sucesso**|<p align = "justify">Finalizar o desenvolvimento e realizar a entrega do *software* em tempo estipulado.</p>
-**Envolvimento**|Alto.
-**Problemas/Comentários**|<p align = "justify">A equipe é inexperiente na linguagem de programação utilizada no desenvolvimento, no padrão arquitetural e nas metodologias de desenvolvimento.</p>
+**Descrição** |Desenvolvedores.
+**Tipo** |<p align = "justify">Estudantes da Universidade de Brasília da disciplina de Métodos de Desenvolvimento de Software.</p>
+**Responsabilidade** |<p align = "justify">Desenvolvimento, Testes, Documentação e Implementação do *software*.</p>
+**Critérios de Sucesso** |<p align = "justify">Finalizar o desenvolvimento e realizar a entrega do *software* em tempo estipulado.</p>
+**Envolvimento** |Alto.
+**Problemas/Comentários** |<p align = "justify">A equipe é inexperiente na linguagem de programação utilizada no desenvolvimento, no padrão arquitetural e nas metodologias de desenvolvimento.</p>
 
 ###### 3.3.2 Equipe de Gestão de Projeto
 
 Representante|<p align = "justify">Arthur Diniz, Lucas Malta, Romeu Carvalho, Victor Moura e Vitor Falcão.</p>
 -|-
-**Descrição**|Gerenciamento de projeto.
-**Tipo**|<p align = "justify">Estudantes da disciplina de Engenharia de Produto de Software da Universidade de Brasília.</p>
-**Responsabilidade**|<p align = "justify">Gerir o desenvolvimento do produto identificando problemas e apontando caminhos e soluções.</p>
-**Critérios de Sucesso**|<p align = "justify">Manter a equipe focada no projeto, gerência dos riscos associados ao projeto e finalizar o desenvolvimento do projeto.</p>
-**Envolvimento**|Alto.
-**Problemas/Comentários**|<p align = "justify">Não familiarizados com o ambiente de desenvolvimento de aplicações com uso de sensores de movimento.</p>
+**Descrição** |Gerenciamento de projeto.
+**Tipo** |<p align = "justify">Estudantes da disciplina de Engenharia de Produto de Software da Universidade de Brasília.</p>
+**Responsabilidade** |<p align = "justify">Gerir o desenvolvimento do produto identificando problemas e apontando caminhos e soluções.</p>
+**Critérios de Sucesso** |<p align = "justify">Manter a equipe focada no projeto, gerência dos riscos associados ao projeto e finalizar o desenvolvimento do projeto.</p>
+**Envolvimento** |Alto.
+**Problemas/Comentários** |<p align = "justify">Não familiarizados com o ambiente de desenvolvimento de aplicações com uso de sensores de movimento.</p>
 
 ###### 3.3.3 Clientes
 
 Representante|<p align = "justify"> Carla Silva Rocha Aguiar / Prof. Roberto Baptista
 -|-
-**Descrição**|Professores da Universidade de Brasília Campus Gama. </p>
-**Tipo**|<p align = "justify">Clientes idealizadores do projeto e com grande interesse no seu desenvolvimento.
-**Responsabilidade**|<p align = "justify">Avaliar e validar o *software*.</p>
-**Critérios de Sucesso**|<p align = "justify"> O *software* deve apresentar todos os requisitos e metodologias das disciplinas de MDS e EPS.</p>
-**Envolvimento**|Alto.
-**Problemas/Comentários**|<p align = "justify"> - </p>
+**Descrição** |Professores da Universidade de Brasília Campus Gama. </p>
+**Tipo** |<p align = "justify">Clientes idealizadores do projeto e com grande interesse no seu desenvolvimento.
+**Responsabilidade** |<p align = "justify">Avaliar e validar o *software*.</p>
+**Critérios de Sucesso** |<p align = "justify"> O *software* deve apresentar todos os requisitos e metodologias das disciplinas de MDS e EPS.</p>
+**Envolvimento** |Alto.
+**Problemas/Comentários** |<p align = "justify"> - </p>
 
 ##### 3.4 <a name="3_4">Perfis dos Usuários</a>
 ###### 3.4.1 <a name="3_5"> Paciente </a>
