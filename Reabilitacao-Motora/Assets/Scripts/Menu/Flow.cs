@@ -137,7 +137,7 @@ public class Flow : MonoBehaviour
  	 */
 	public void BackToHomeMenu()
 	{
-		SceneManager.LoadScene("HomeMenu");
+		SceneManager.LoadScene("Login");
 	}
 
 	/**
