@@ -1,7 +1,7 @@
 USE fisiotech;
 
-insert into PESSOA (nomePessoa, sexo, dataNascimento) values 
-('Joao Marcelo', 'M', '1954-10-09'),
+insert into PESSOA (nomePessoa, sexo, dataNascimento, telefoneCelular) values 
+('Joao Marcelo', 'M', '1954-10-09', '9999-4456'),
 ('Marcela Queiroz', 'F', '1973-04-01'),
 ('Danerys Targueri', 'F', '1991-06-06'),
 ('Carlos Paraiba', 'M', '2003-01-11');

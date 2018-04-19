@@ -11,10 +11,10 @@ Data|Versão|Descrição|Autor
 
 * Os commits devem utilizar o seguinte modelo:
 ```
-[TAG] Breve descrição
+Descrição sucinta das alterações feitas
 ```
 
 * Exemplo prático:
 ```
-[BUG] Corrige captura de movimento
+Adicionando função cadastro de paciente.
 ```
