@@ -1,4 +1,5 @@
 ![](https://travis-ci.org/fga-gpp-mds/2018.1-Reabilitacao-Motora.svg?branch=development)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/52bf6eb032ba4dc0b9a90ec01c915006)](https://www.codacy.com/app/victorcmoura/2018.1-Reabilitacao-Motora?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=fga-gpp-mds/2018.1-Reabilitacao-Motora&amp;utm_campaign=Badge_Grade)
 
 ![](https://fga-gpp-mds.github.io/2018.1-Reabilitacao-Motora/docs/imagens/logo.png)
 
