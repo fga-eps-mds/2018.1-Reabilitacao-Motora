@@ -8,7 +8,7 @@
 
 ## 2. Papéis
 
-| <img src="https://github.com/RomeuCarvalhoAntunes/2018.1-Reabilitacao-Motora/blob/master/docs/imagens/grupo/Romeu_Antunes.png" width="200" height="200"/>
+| <img src="https://github.com/RomeuCarvalhoAntunes/2018.1-Reabilitacao-Motora/blob/master/docs/imagens/grupo/Romeu_Antunes.png?raw=true" width="200" height="200"/>
 |:--:|
 | **Scrum Master**|
 

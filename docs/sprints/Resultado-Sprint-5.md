@@ -1,6 +1,6 @@
 ## 1. Relato da _Sprint_
 
-<p align="justify">&emsp;&emsp; A <i>Sprint</i> 04 teve como objetivo o alinhamento de MDS com o <i>Roadmap</i> que foi traçado por EPS, a <i>feature</i> de gerar gráfico do movimento e rotulá-lo, e implementação do banco de dados.
+<p align="justify">&emsp;&emsp; A <i>Sprint</i> 04 teve como objetivo o alinhamento de MDS com o <i>Roadmap</i> que foi traçado por EPS, a <i>feature</i> de gerar gráfico do movimento e rotulá-lo, e implementação do banco de dados.</p>
 
 ---
 
@@ -62,5 +62,5 @@
 
 
 ## 8. Visão do _Scrum Master_
-<p align="justify">&emsp;&emsp; A <i>Sprint</i> 05 ao contrário da 04 foi considerada um sucesso absoluto, mesmo existindo pendências nada que o time não possa lidar para melhorar, nesta <i>Sprint</i> fechamos US importantíssimas como a de gerar gráfico e de rotulação, as 2 haviam sido programadas para <i>Sprint</i> 04 mas no meio do caminho foram encontrados problemas o que levaram inclusive a repontuação das US o <i>velocity</i> resultado desta <i>Sprint</i> praticamente foi dobrado, e comparado com o nosso EVM que teria como um <i>velocity</i> ideal a média de 28 pontos podemos assegurar que o projeto esta bem encaminhado para ser realizado no prazo e no mais tardar da <i>Sprint</i> 07 o alinhamento com o <i>Roadmap</i> estará ideal, visto que na <i>Sprint</i> 06 esta será interrompida pela R1. Apesar dos problemas pessoais enfrentados durante a <i>Sprint</i> pode se considerar totalmente satisfatória com os respectivos objetivos atingidos e uma queima de pontos elevada. 
+<p align="justify">&emsp;&emsp; A <i>Sprint</i> 05 ao contrário da 04 foi considerada um sucesso absoluto, mesmo existindo pendências nada que o time não possa lidar para melhorar, nesta <i>Sprint</i> fechamos US importantíssimas como a de gerar gráfico e de rotulação, as 2 haviam sido programadas para <i>Sprint</i> 04 mas no meio do caminho foram encontrados problemas o que levaram inclusive a repontuação das US o <i>velocity</i> resultado desta <i>Sprint</i> praticamente foi dobrado, e comparado com o nosso EVM que teria como um <i>velocity</i> ideal a média de 28 pontos podemos assegurar que o projeto esta bem encaminhado para ser realizado no prazo e no mais tardar da <i>Sprint</i> 07 o alinhamento com o <i>Roadmap</i> estará ideal, visto que na <i>Sprint</i> 06 esta será interrompida pela R1. Apesar dos problemas pessoais enfrentados durante a <i>Sprint</i> pode se considerar totalmente satisfatória com os respectivos objetivos atingidos e uma queima de pontos elevada.
 </p>
