@@ -1,6 +1,7 @@
 | Data | Versão | Descrição | Autor(es) |
 | :---: | :---: | --- | :---: |
 | 17/04/2018 | 1.0 | Criação do documento| Arthur Diniz |
+| 17/04/2018 | 1.1 | Correção data da ata de git| Arthur Diniz |
 
 # Ata de Dojo
 
@@ -30,8 +31,7 @@
 
 ## 3. Atas
 
-
-![Ata Dojo 1](https://user-images.githubusercontent.com/18387694/38892419-8b301a8c-425d-11e8-86ba-8ae4b188d6a8.png)
+![Ata Dojo 1](https://user-images.githubusercontent.com/18387694/38899767-5d68dc12-426f-11e8-9c9e-7c862841af4d.png)
 
 ![Ata Dojo 2](https://user-images.githubusercontent.com/18387694/38892420-8b54f7a8-425d-11e8-8abb-a0110c16e8e3.png)
 

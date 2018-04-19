@@ -27,7 +27,7 @@
 
 ### PV x EV x AC
 
-![](https://raw.githubusercontent.com/RomeuCarvalhoAntunes/2018.1-Reabilitacao-Motora/449db6c1815f5857c99fa32370849b2835e9366b/docs/imagens/EVM/Grafico_PV_EV_AC.png)
+![](https://raw.githubusercontent.com/RomeuCarvalhoAntunes/2018.1-Reabilitacao-Motora/master/docs/imagens/EVM/Grafico_PV_EV_AC.png)
 
 > Valor Planejado (PV)
   - Constante pois todas as _Sprints_, possuem o mesmo valor, teoricamente.
@@ -40,7 +40,7 @@
 
 ### CV x SV
 
-![](https://raw.githubusercontent.com/RomeuCarvalhoAntunes/2018.1-Reabilitacao-Motora/449db6c1815f5857c99fa32370849b2835e9366b/docs/imagens/EVM/Grafico_CV_SV.png)
+![](https://raw.githubusercontent.com/RomeuCarvalhoAntunes/2018.1-Reabilitacao-Motora/master/docs/imagens/EVM/Grafico_CV_SV.png)
 
 > Variação de Custo (CV)
 
@@ -48,7 +48,7 @@
 
 ### CPI x SPI
 
-![](https://raw.githubusercontent.com/RomeuCarvalhoAntunes/2018.1-Reabilitacao-Motora/449db6c1815f5857c99fa32370849b2835e9366b/docs/imagens/EVM/Grafico_CPI_SPI.png)
+![](https://raw.githubusercontent.com/RomeuCarvalhoAntunes/2018.1-Reabilitacao-Motora/master/docs/imagens/EVM/Grafico_CPI_SPI.png)
 
 > Índice de Desempenho de Custo (CPI)
 - CPI = 1 → Projeto está atendendo as expectativas (dentro do orçamento)
