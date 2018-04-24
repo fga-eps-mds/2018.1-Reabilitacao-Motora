@@ -213,6 +213,7 @@ MonoBehaviour:
   mao: {fileID: 0}
   cotovelo: {fileID: 0}
   ombro: {fileID: 0}
+  braco: {fileID: 0}
 --- !u!114 &317759027
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -538,17 +539,11 @@ MonoBehaviour:
   mao: {fileID: 1663316761}
   cotovelo: {fileID: 275382387}
   ombro: {fileID: 33588531}
---- !u!114 &383774753
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 383774749}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 123a59e63faa6354c93c5ebb2ec9ffa2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  braco: {fileID: 383774752}
+--- !u!4 &383774752 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400018, guid: f5e05f20199c880499cc033d19de1bcd, type: 3}
+  m_PrefabInternal: {fileID: 383774748}
 --- !u!1 &489022732
 GameObject:
   m_ObjectHideFlags: 0
@@ -616,7 +611,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Graficos do Paciente
+  m_Text: Graficos do Movimento
 --- !u!222 &489022735
 CanvasRenderer:
   m_ObjectHideFlags: 0

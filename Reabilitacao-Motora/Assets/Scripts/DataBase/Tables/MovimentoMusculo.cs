@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using DataBaseTables;
 using DataBaseAttributes;
 using Mono.Data.Sqlite;
@@ -16,6 +17,19 @@ namespace movimentomusculo
         DataBase banco = new DataBase();
         TableNameColumn tt = new TableNameColumn();
         string path;
+
+        /**
+         * Classe com todos os atributos de um movimentomusculo.
+         */
+        public class MovimentoMusculos
+        {
+            public int idMusculo, idMovimento;
+            public MovimentoMusculos (int idmu, int idmo)
+            {
+                this.idMusculo = idmu;
+                this.idMovimento = idmo;
+            }
+        }
 
         /**
          * Cria a relação para cadastro dos movimento do musculo, contendo um id que vem da relação de outra tabela (musculo) como chave primária e estrangeira, assim como idMovimento, que vem da relação movimento.
@@ -90,7 +104,7 @@ namespace movimentomusculo
         /**
          * Função que lê dados já cadastrados anteriormente na relação MovimentoMusculo.
          */
-        public void Read()
+        public List<MovimentoMusculos> Read()
         {
             using (banco.conn = new SqliteConnection(path))
             {
@@ -99,6 +113,9 @@ namespace movimentomusculo
                 banco.sqlQuery = "SELECT * " + "FROM MOVIMENTOMUSCULO";
                 banco.cmd.CommandText = banco.sqlQuery;
                 IDataReader reader = banco.cmd.ExecuteReader();
+
+                List<MovimentoMusculos> mm = new List<MovimentoMusculos>();
+
                 while (reader.Read())
                 {
                     int idMusculo = 0;
@@ -107,8 +124,8 @@ namespace movimentomusculo
                     if (!reader.IsDBNull(0)) idMusculo = reader.GetInt32(0);
                     if (!reader.IsDBNull(1)) idMovimento = reader.GetInt32(1);
 
-                    Debug.Log (string.Format("\"{0}\" = ", tt.TABLES[tableId].colName[0]) + idMusculo +
-                        string.Format(" \"{0}\" = ", tt.TABLES[tableId].colName[1]) + idMovimento);
+                    MovimentoMusculos x = new MovimentoMusculos(idMusculo,idMovimento);
+                    mm.Add(x);
                 }
                 reader.Close();
                 reader = null;
@@ -116,6 +133,7 @@ namespace movimentomusculo
                 banco.cmd = null;
                 banco.conn.Close();
                 banco.conn = null;
+                return mm;
             }
         }
 

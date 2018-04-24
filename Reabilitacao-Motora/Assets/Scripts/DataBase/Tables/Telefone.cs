@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using DataBaseTables;
 using DataBaseAttributes;
 using Mono.Data.Sqlite;
@@ -16,6 +17,20 @@ namespace telefone
         DataBase banco = new DataBase();
         TableNameColumn tt = new TableNameColumn();
         string path;
+
+        /**
+         * Classe com todos os atributos de um telefone.
+         */
+        public class Telefones
+        {
+            public int idPessoa;
+            public string telefone;
+            public Telefones (int idp, string tel)
+            {
+                this.idPessoa = idp;
+                this.telefone = tel;
+            }
+        }
 
         /**
          * Cria a relação para telefone, sendo a chave primária composta pelo telefone e a chave estrangeira advinda de Pessoa.
@@ -92,7 +107,7 @@ namespace telefone
         /**
          * Função que lê dados já cadastrados anteriormente na relação de telefone.
          */
-        public void Read()
+        public List<Telefones> Read()
         {
             using (banco.conn = new SqliteConnection(path))
             {
@@ -101,6 +116,9 @@ namespace telefone
                 banco.sqlQuery = "SELECT * " + "FROM TELEFONE";
                 banco.cmd.CommandText = banco.sqlQuery;
                 IDataReader reader = banco.cmd.ExecuteReader();
+
+                List<Telefones> t = new List<Telefones>();
+
                 while (reader.Read())
                 {
                     int idPessoa = 0;
@@ -109,8 +127,8 @@ namespace telefone
                     if (!reader.IsDBNull(0)) idPessoa = reader.GetInt32(0);
                     if (!reader.IsDBNull(1)) telefone = reader.GetString(1);
 
-                    Debug.Log (string.Format("\"{0}\" = ", tt.TABLES[tableId].colName[0]) + idPessoa +
-                        string.Format(" \"{0}\" = ", tt.TABLES[tableId].colName[1]) + telefone);
+                    Telefones x = new Telefones(idPessoa, telefone);
+                    t.Add(x);
                 }
                 reader.Close();
                 reader = null;
@@ -118,8 +136,40 @@ namespace telefone
                 banco.cmd = null;
                 banco.conn.Close();
                 banco.conn = null;
+                return t;
             }
         }
+
+        public Telefones ReadValue (int id)
+        {
+            using (banco.conn = new SqliteConnection(path))
+            {
+                banco.conn.Open();
+                banco.cmd = banco.conn.CreateCommand();
+                banco.sqlQuery = "SELECT * " + string.Format("FROM \"{0}\" WHERE \"{1}\" = \"{2}\";", tt.TABLES[tableId].tableName, 
+                    tt.TABLES[tableId].colName[0], 
+                    id);
+                banco.cmd.CommandText = banco.sqlQuery;
+                IDataReader reader = banco.cmd.ExecuteReader();
+
+                int idPessoa = 0;
+                string telefone = "null";
+
+                if (!reader.IsDBNull(0)) idPessoa = reader.GetInt32(0);
+                if (!reader.IsDBNull(1)) telefone = reader.GetString(1);
+
+                Telefones x = new Telefones(idPessoa, telefone);
+
+                reader.Close();
+                reader = null;
+                banco.cmd.Dispose();
+                banco.cmd = null;
+                banco.conn.Close();
+                banco.conn = null;
+                return x;
+            }
+        }
+
 
         /**
          * Função que deleta dados cadastrados anteriormente na relação de telefone.

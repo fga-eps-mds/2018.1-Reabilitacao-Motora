@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using DataBaseTables;
 using DataBaseAttributes;
 using Mono.Data.Sqlite;
@@ -18,6 +19,20 @@ namespace musculo
         string path;
 
         /**
+         * Classe com todos os atributos de um musculo.
+         */
+        public class Musculos
+        {
+            public int idMusculo;
+            public string nomeMusculo;
+            public Musculos (int idm, string nm)
+            {
+                this.idMusculo = idm;
+                this.nomeMusculo = nm;
+            }
+        }
+
+        /**
          * Cria a relação para musculo, contendo um id gerado automaticamente pelo banco como chave primária.
          */
         public Musculo(string caminho)
@@ -28,7 +43,8 @@ namespace musculo
                 banco.conn.Open();
                 banco.cmd = banco.conn.CreateCommand();
 
-                banco.sqlQuery = "CREATE TABLE IF NOT EXISTS MUSCULO (idMusculo INTEGER primary key AUTOINCREMENT,nomeMusculo VARCHAR (20) not null);";
+                banco.sqlQuery = "CREATE TABLE IF NOT EXISTS MUSCULO (idMusculo INTEGER primary key AUTOINCREMENT,nomeMusculo VARCHAR (20) not null, constraint musculo UNIQUE (nomeMusculo));";
+                
                 banco.cmd.CommandText = banco.sqlQuery;
                 banco.cmd.ExecuteScalar();
                 banco.conn.Close();
@@ -87,7 +103,7 @@ namespace musculo
         /**
          * Função que lê dados já cadastrados anteriormente na relação musculo.
          */
-        public void Read()
+        public List<Musculos> Read()
         {
             using (banco.conn = new SqliteConnection(path))
             {
@@ -96,6 +112,9 @@ namespace musculo
                 banco.sqlQuery = "SELECT * " + "FROM MUSCULO";
                 banco.cmd.CommandText = banco.sqlQuery;
                 IDataReader reader = banco.cmd.ExecuteReader();
+
+                List<Musculos> m = new List<Musculos>();
+
                 while (reader.Read())
                 {
                     int idMusculo = 0;
@@ -104,9 +123,8 @@ namespace musculo
                     if (!reader.IsDBNull(0)) idMusculo = reader.GetInt32(0);
                     if (!reader.IsDBNull(1)) nomeMusculo = reader.GetString(1);
 
-
-                    Debug.Log (string.Format("\"{0}\" = ", tt.TABLES[tableId].colName[0]) + idMusculo +
-                        string.Format(" \"{0}\" = ", tt.TABLES[tableId].colName[1]) + nomeMusculo);
+                    Musculos x = new Musculos (idMusculo, nomeMusculo);
+                    m.Add(x);
                 }
                 reader.Close();
                 reader = null;
@@ -114,6 +132,37 @@ namespace musculo
                 banco.cmd = null;
                 banco.conn.Close();
                 banco.conn = null;
+                return m;
+            }
+        }
+
+        public Musculos ReadValue (int id)
+        {
+            using (banco.conn = new SqliteConnection(path))
+            {
+                banco.conn.Open();
+                banco.cmd = banco.conn.CreateCommand();
+                banco.sqlQuery = "SELECT * " + string.Format("FROM \"{0}\" WHERE \"{1}\" = \"{2}\";", tt.TABLES[tableId].tableName, 
+                    tt.TABLES[tableId].colName[0], 
+                    id);
+                banco.cmd.CommandText = banco.sqlQuery;
+                IDataReader reader = banco.cmd.ExecuteReader();
+
+                int idMusculo = 0;
+                string nomeMusculo = "null";
+
+                if (!reader.IsDBNull(0)) idMusculo = reader.GetInt32(0);
+                if (!reader.IsDBNull(1)) nomeMusculo = reader.GetString(1);
+
+                Musculos x = new Musculos (idMusculo,nomeMusculo);
+
+                reader.Close();
+                reader = null;
+                banco.cmd.Dispose();
+                banco.cmd = null;
+                banco.conn.Close();
+                banco.conn = null;
+                return x;
             }
         }
 

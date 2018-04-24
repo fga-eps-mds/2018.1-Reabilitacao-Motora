@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using DataBaseTables;
 using DataBaseAttributes;
 using Mono.Data.Sqlite;
@@ -16,6 +17,24 @@ namespace exercicio
         DataBase banco = new DataBase();
         TableNameColumn tt = new TableNameColumn();
         string path;
+
+        /**
+         * Classe com todos os atributos de um exercicio.
+         */
+        public class Exercicios
+        {
+            public int idExercicio, idPaciente, idMovimento, idSessao;
+            public string descricaoExercicio, pontosExercicio;
+            public Exercicios (int ide, int idp, int idm, int ids, string de, string pe)
+            {
+                this.idExercicio = ide;
+                this.idPaciente = idp;
+                this.idMovimento = idm;
+                this.idSessao = ids;
+                this.descricaoExercicio = de;
+                this.pontosExercicio = pe;
+            }
+        }
 
         /**
          * Cria a relação para exercicios, contendo um id gerado automaticamente pelo banco como chave primária.
@@ -53,7 +72,7 @@ namespace exercicio
 
                 int tableSize = tt.TABLES[tableId].Length;
 
-                for (int i = 1; i < tableSize; ++i) {
+                for (int i = 0; i < tableSize; ++i) {
                     string aux = (i+1 == tableSize) ? (")") : (",");
                     banco.sqlQuery += (tt.TABLES[tableId].colName[i] + aux);
                 }
@@ -104,7 +123,7 @@ namespace exercicio
         /**
          * Função que lê dados já cadastrados anteriormente na relação de exercicios.
          */
-        public void Read()
+        public List<Exercicios> Read()
         {
             using (banco.conn = new SqliteConnection(path))
             {
@@ -113,6 +132,9 @@ namespace exercicio
                 banco.sqlQuery = "SELECT * " + "FROM EXERCICIO";
                 banco.cmd.CommandText = banco.sqlQuery;
                 IDataReader reader = banco.cmd.ExecuteReader();
+
+                List<Exercicios> e = new List<Exercicios>();
+
                 while (reader.Read())
                 {
                     int idExercicio = 0;
@@ -129,12 +151,8 @@ namespace exercicio
                     if (!reader.IsDBNull(4)) descricaoExercicio = reader.GetString(4);
                     if (!reader.IsDBNull(5)) pontosExercicio = reader.GetString(5);
 
-                    Debug.Log (string.Format("\"{0}\" = ", tt.TABLES[tableId].colName[0]) + idExercicio +
-                        string.Format(" \"{0}\" = ", tt.TABLES[tableId].colName[1]) + idPaciente +
-                        string.Format(" \"{0}\" = ", tt.TABLES[tableId].colName[2]) + idMovimento +
-                        string.Format(" \"{0}\" = ", tt.TABLES[tableId].colName[3]) + idSessao +
-                        string.Format(" \"{0}\" = ", tt.TABLES[tableId].colName[4]) + descricaoExercicio +
-                        string.Format(" \"{0}\" = ", tt.TABLES[tableId].colName[5]) + pontosExercicio);
+                    Exercicios x = new Exercicios (idExercicio,idPaciente,idMovimento,idSessao,descricaoExercicio,pontosExercicio);
+                    e.Add(x);
                 }
                 reader.Close();
                 reader = null;
@@ -142,6 +160,45 @@ namespace exercicio
                 banco.cmd = null;
                 banco.conn.Close();
                 banco.conn = null;
+                return e;
+            }
+        }
+
+        public Exercicios ReadValue (int id)
+        {
+            using (banco.conn = new SqliteConnection(path))
+            {
+                banco.conn.Open();
+                banco.cmd = banco.conn.CreateCommand();
+                banco.sqlQuery = "SELECT * " + string.Format("FROM \"{0}\" WHERE \"{1}\" = \"{2}\";", tt.TABLES[tableId].tableName, 
+                    tt.TABLES[tableId].colName[0], 
+                    id);
+                banco.cmd.CommandText = banco.sqlQuery;
+                IDataReader reader = banco.cmd.ExecuteReader();
+
+                int idExercicio = 0;
+                int idPaciente = 0;
+                int idMovimento = 0;
+                int idSessao = 0;
+                string descricaoExercicio = "null";
+                string pontosExercicio = "null";
+
+                if (!reader.IsDBNull(0)) idExercicio = reader.GetInt32(0);
+                if (!reader.IsDBNull(1)) idPaciente = reader.GetInt32(1);
+                if (!reader.IsDBNull(2)) idMovimento = reader.GetInt32(2);
+                if (!reader.IsDBNull(3)) idSessao = reader.GetInt32(3);
+                if (!reader.IsDBNull(4)) descricaoExercicio = reader.GetString(4);
+                if (!reader.IsDBNull(5)) pontosExercicio = reader.GetString(5);
+
+                Exercicios x = new Exercicios (idExercicio,idPaciente,idMovimento,idSessao,descricaoExercicio,pontosExercicio);
+
+                reader.Close();
+                reader = null;
+                banco.cmd.Dispose();
+                banco.cmd = null;
+                banco.conn.Close();
+                banco.conn = null;
+                return x;
             }
         }
 

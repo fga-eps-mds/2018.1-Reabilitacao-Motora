@@ -26,14 +26,15 @@ namespace pessoa
         {
             public int idPessoa;
             public string nomePessoa, sexo, dataNascimento, telefone1, telefone2;
-			public Pessoas (int id, string nome, string s, string d, string t1, string t2)
+            public Pessoas (){}
+            public Pessoas (int id, string nome, string s, string d, string t1, string t2)
             {
                 this.idPessoa = id;
                 this.nomePessoa = nome;
                 this.sexo = s;
                 this.dataNascimento = d;
-				this.telefone1 = t1;
-				this.telefone2 = t2;
+                this.telefone1 = t1;
+                this.telefone2 = t2;
             }
         }
 
@@ -48,7 +49,7 @@ namespace pessoa
                 banco.conn.Open();
                 banco.cmd = banco.conn.CreateCommand();
 
-				banco.sqlQuery = "CREATE TABLE IF NOT EXISTS PESSOA (idPessoa INTEGER primary key AUTOINCREMENT,nomePessoa VARCHAR (30) not null,sexo CHAR (1) not null,dataNascimento DATE not null,telefone1 VARCHAR (11) not null,telefone2 VARCHAR (11));";
+                banco.sqlQuery = "CREATE TABLE IF NOT EXISTS PESSOA (idPessoa INTEGER primary key AUTOINCREMENT,nomePessoa VARCHAR (30) not null,sexo CHAR (1) not null,dataNascimento DATE not null,telefone1 VARCHAR (11) not null,telefone2 VARCHAR (11));";
 
                 banco.cmd.CommandText = banco.sqlQuery;
                 banco.cmd.ExecuteScalar();
@@ -63,8 +64,8 @@ namespace pessoa
             string nomePessoa,
             string sexo,
             string dataNascimento,
-			string telefone1,
-			string telefone2)
+            string telefone1,
+            string telefone2)
         {
             using (banco.conn = new SqliteConnection(path))
             {
@@ -79,11 +80,11 @@ namespace pessoa
                     banco.sqlQuery += (tt.TABLES[tableId].colName[i] + aux);
                 }
 
-				banco.sqlQuery += string.Format(" values (\"{0}\",\"{1}\",\"{2}\",\"{3}\",\"{4}\")", nomePessoa,
+                banco.sqlQuery += string.Format(" values (\"{0}\",\"{1}\",\"{2}\",\"{3}\",\"{4}\")", nomePessoa,
                     sexo,
                     dataNascimento,
-					telefone1,
-					telefone2);
+                    telefone1,
+                    telefone2);
 
                 banco.cmd.CommandText = banco.sqlQuery;
                 banco.cmd.ExecuteScalar();
@@ -98,8 +99,8 @@ namespace pessoa
             string nomePessoa,
             string sexo,
             string dataNascimento,
-			string telefone1,
-			string telefone2)
+            string telefone1,
+            string telefone2)
         {
             using (banco.conn = new SqliteConnection(path))
             {
@@ -110,9 +111,9 @@ namespace pessoa
 
                 banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",", tt.TABLES[tableId].colName[1], nomePessoa);
                 banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",", tt.TABLES[tableId].colName[2], sexo);
-                banco.sqlQuery += string.Format("\"{0}\"=\"{1}\" ", tt.TABLES[tableId].colName[3], dataNascimento);
-				banco.sqlQuery += string.Format("\"{0}\"=\"{1}\" ", tt.TABLES[tableId].colName[4], telefone1);
-				banco.sqlQuery += string.Format("\"{0}\"=\"{1}\" ", tt.TABLES[tableId].colName[5], telefone2);
+                banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",", tt.TABLES[tableId].colName[3], dataNascimento);
+                banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",", tt.TABLES[tableId].colName[4], telefone1);
+                banco.sqlQuery += string.Format("\"{0}\"=\"{1}\" ", tt.TABLES[tableId].colName[5], telefone2);
 
                 banco.sqlQuery += string.Format("WHERE \"{0}\" = \"{1}\"", tt.TABLES[tableId].colName[0], id);
 
@@ -142,15 +143,15 @@ namespace pessoa
                     string nomePessoa = "null";
                     string sexo = "null";
                     string dataNascimento = "null";
-					string telefone1 = "null";
-					string telefone2 = "null";
+                    string telefone1 = "null";
+                    string telefone2 = "null";
                     if (!reader.IsDBNull(0)) idPessoa = reader.GetInt32(0);
                     if (!reader.IsDBNull(1)) nomePessoa = reader.GetString(1);
                     if (!reader.IsDBNull(2)) sexo = reader.GetString(2);
                     if (!reader.IsDBNull(3)) dataNascimento = reader.GetString(3);
-					if (!reader.IsDBNull(4)) telefone1 = reader.GetString(4);
-					if (!reader.IsDBNull(5)) telefone2 = reader.GetString(5);
-					Pessoas x = new Pessoas(idPessoa, nomePessoa, sexo, dataNascimento, telefone1, telefone2);
+                    if (!reader.IsDBNull(4)) telefone1 = reader.GetString(4);
+                    if (!reader.IsDBNull(5)) telefone2 = reader.GetString(5);
+                    Pessoas x = new Pessoas(idPessoa, nomePessoa, sexo, dataNascimento, telefone1, telefone2);
                     p.Add(x);
                 }
                 reader.Close();
@@ -161,6 +162,50 @@ namespace pessoa
                 banco.conn = null;
 
                 return p;
+            }
+        }
+
+
+        public Pessoas ReadValue (int id)
+        {
+            using (banco.conn = new SqliteConnection(path))
+            {
+                banco.conn.Open();
+                banco.cmd = banco.conn.CreateCommand();
+                banco.sqlQuery = "SELECT * " + string.Format("FROM \"{0}\" WHERE \"{1}\" = \"{2}\";", tt.TABLES[tableId].tableName, 
+                    tt.TABLES[tableId].colName[0], 
+                    id);
+                banco.cmd.CommandText = banco.sqlQuery;
+                IDataReader reader = banco.cmd.ExecuteReader();
+
+                Pessoas x = new Pessoas();
+
+                while (reader.Read())
+                {
+                    int idPessoa = 0;
+                    string nomePessoa = "null";
+                    string sexo = "null";
+                    string dataNascimento = "null";
+                    string telefone1 = "null";
+                    string telefone2 = "null";
+
+                    if (!reader.IsDBNull(0)) idPessoa = reader.GetInt32(0);
+                    if (!reader.IsDBNull(1)) nomePessoa = reader.GetString(1);
+                    if (!reader.IsDBNull(2)) sexo = reader.GetString(2);
+                    if (!reader.IsDBNull(3)) dataNascimento = reader.GetString(3);
+                    if (!reader.IsDBNull(4)) telefone1 = reader.GetString(4);
+                    if (!reader.IsDBNull(5)) telefone2 = reader.GetString(5);
+                    
+                    x = new Pessoas(idPessoa, nomePessoa, sexo, dataNascimento, telefone1, telefone2);
+                }
+
+                reader.Close();
+                reader = null;
+                banco.cmd.Dispose();
+                banco.cmd = null;
+                banco.conn.Close();
+                banco.conn = null;
+                return x;
             }
         }
 

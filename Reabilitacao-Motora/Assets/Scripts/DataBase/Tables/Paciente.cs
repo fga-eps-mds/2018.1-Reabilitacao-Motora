@@ -1,9 +1,11 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using DataBaseTables;
 using DataBaseAttributes;
 using Mono.Data.Sqlite;
 using System.Data;
+using pessoa;
 
 namespace paciente
 {
@@ -16,6 +18,25 @@ namespace paciente
         DataBase banco = new DataBase();
         TableNameColumn tt = new TableNameColumn();
         string path;
+
+        /**
+         * Classe com todos os atributos de um paciente.
+         */
+        public class Pacientes
+        {
+            public int idPaciente, idPessoa;
+            public string observacoes;
+            public Pessoa.Pessoas persona;
+            public Pessoa temp;
+            public Pacientes (int idpa, int idpe, string obs)
+            {
+                this.idPaciente = idpa;
+                this.idPessoa = idpe;
+                this.observacoes = obs;
+                temp = new Pessoa(GlobalController.instance.path);
+                this.persona = temp.ReadValue (idpe);
+            }
+        }
 
         /**
          * Cria a relação para paciente, contendo um id gerado automaticamente pelo banco como chave primária.
@@ -92,7 +113,7 @@ namespace paciente
         /**
          * Função que lê dados já cadastrados anteriormente na relação paciente.
          */
-        public void Read()
+        public List<Pacientes> Read()
         {
             using (banco.conn = new SqliteConnection(path))
             {
@@ -101,6 +122,9 @@ namespace paciente
                 banco.sqlQuery = "SELECT * " + "FROM PACIENTE";
                 banco.cmd.CommandText = banco.sqlQuery;
                 IDataReader reader = banco.cmd.ExecuteReader();
+
+                List<Pacientes> p = new List<Pacientes>();
+
                 while (reader.Read())
                 {
                     int idPaciente = 0;
@@ -111,9 +135,8 @@ namespace paciente
                     if (!reader.IsDBNull(1)) idPessoa = reader.GetInt32(1);
                     if (!reader.IsDBNull(2)) observacoes = reader.GetString(2);
 
-                    Debug.Log (string.Format("\"{0}\" = ", tt.TABLES[tableId].colName[0]) + idPaciente +
-                        string.Format(" \"{0}\" = ", tt.TABLES[tableId].colName[1]) + idPessoa +
-                        string.Format(" \"{0}\" = ", tt.TABLES[tableId].colName[2]) + observacoes);
+                    Pacientes x = new Pacientes(idPaciente, idPessoa, observacoes);
+                    p.Add(x);
                 }
                 reader.Close();
                 reader = null;
@@ -121,6 +144,39 @@ namespace paciente
                 banco.cmd = null;
                 banco.conn.Close();
                 banco.conn = null;
+                return p;
+            }
+        }
+
+        public Pacientes ReadValue (int id)
+        {
+            using (banco.conn = new SqliteConnection(path))
+            {
+                banco.conn.Open();
+                banco.cmd = banco.conn.CreateCommand();
+                banco.sqlQuery = "SELECT * " + string.Format("FROM \"{0}\" WHERE \"{1}\" = \"{2}\";", tt.TABLES[tableId].tableName, 
+                    tt.TABLES[tableId].colName[0], 
+                    id);
+                banco.cmd.CommandText = banco.sqlQuery;
+                IDataReader reader = banco.cmd.ExecuteReader();
+
+                int idPaciente = 0;
+                int idPessoa = 0;
+                string observacoes = "null";
+
+                if (!reader.IsDBNull(0)) idPaciente = reader.GetInt32(0);
+                if (!reader.IsDBNull(1)) idPessoa = reader.GetInt32(1);
+                if (!reader.IsDBNull(2)) observacoes = reader.GetString(2);
+
+                Pacientes x = new Pacientes (idPaciente,idPessoa,observacoes);
+
+                reader.Close();
+                reader = null;
+                banco.cmd.Dispose();
+                banco.cmd = null;
+                banco.conn.Close();
+                banco.conn = null;
+                return x;
             }
         }
 
