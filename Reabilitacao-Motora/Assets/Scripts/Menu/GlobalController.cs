@@ -18,14 +18,14 @@ public class GlobalController : MonoBehaviour {
 
 	public static GlobalController instance;
 
-	public Telefone.Telefones phone;
-	public Fisioterapeuta.Fisioterapeutas admin;
-	public Paciente.Pacientes user;
-	public Movimento.Movimentos movement;
-	public Sessao.Sessoes session;
-	public Exercicio.Exercicios exercise;
-	public PontosRotuloFisioterapeuta.PontosRotuloFisioterapeutas labelPhysioPoints;
-	public PontosRotuloPaciente.PontosRotuloPacientes labelPatientPoints;
+	public Telefone phone;
+	public Fisioterapeuta admin;
+	public Paciente user;
+	public Movimento movement;
+	public Sessao session;
+	public Exercicio exercise;
+	public PontosRotuloFisioterapeuta labelPhysioPoints;
+	public PontosRotuloPaciente labelPatientPoints;
 	public string path;
 
 	// Use this for initialization
@@ -39,10 +39,26 @@ public class GlobalController : MonoBehaviour {
 			instance = this;
 			DontDestroyOnLoad(gameObject);
 			path = "URI=file:" + Application.dataPath + "/Plugins/fisiotech.db";
+			Initialize();
 			instance.path = "URI=file:" + Application.dataPath + "/Plugins/fisiotech.db";
 		}
 	}
 	
+	void Initialize()
+    {
+        tablePessoa.Create();
+        tableTel.Create();
+        tableFisio.Create();
+        tablePaciente.Create();
+        tableMusculo.Create();
+        tableMovimento.Create();
+        tableSessao.Create();
+        tableExercicio.Create();
+        tableMovimentoMusculo.Create();
+        tablePRF.Create();
+        tablePRP.Create();
+    }
+
 	// Update is called once per frame
 	void Update () 
 	{

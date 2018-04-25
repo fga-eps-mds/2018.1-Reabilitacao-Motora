@@ -1,7 +1,6 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using DataBaseTables;
 using DataBaseAttributes;
 using Mono.Data.Sqlite;
 using System.Data;
@@ -16,8 +15,6 @@ namespace paciente
     {
         int tableId = 3;
         DataBase banco = new DataBase();
-        TableNameColumn tt = new TableNameColumn();
-        string path;
         public int idPaciente, idPessoa;
         public string observacoes;
         public Pessoa persona;
@@ -37,10 +34,9 @@ namespace paciente
         /**
          * Cria a relação para paciente, contendo um id gerado automaticamente pelo banco como chave primária.
          */
-        public void Create(string caminho)
+        public void Create()
         {
-            path = caminho;
-            using (banco.conn = new SqliteConnection(path))
+            using (banco.conn = new SqliteConnection(GlobalController.instance.path))
             {
                 banco.conn.Open();
                 banco.cmd = banco.conn.CreateCommand();
@@ -59,17 +55,17 @@ namespace paciente
         public void Insert(int idPessoa,
             string observacoes)
         {
-            using (banco.conn = new SqliteConnection(path))
+            using (banco.conn = new SqliteConnection(GlobalController.instance.path))
             {
                 banco.conn.Open();
                 banco.cmd = banco.conn.CreateCommand();
                 banco.sqlQuery = "insert into PACIENTE (";
 
-                int tableSize = tt.TABLES[tableId].Length;
+                int tableSize = TablesManager.instance.Tables[tableId].Length;
 
                 for (int i = 1; i < tableSize; ++i) {
                     string aux = (i+1 == tableSize) ? (")") : (",");
-                    banco.sqlQuery += (tt.TABLES[tableId].colName[i] + aux);
+                    banco.sqlQuery += (TablesManager.instance.Tables[tableId].colName[i] + aux);
                 }
 
                 banco.sqlQuery += string.Format(" values (\"{0}\",\"{1}\")", idPessoa,
@@ -88,17 +84,17 @@ namespace paciente
             int idPessoa,
             string observacoes)
         {
-            using (banco.conn = new SqliteConnection(path))
+            using (banco.conn = new SqliteConnection(GlobalController.instance.path))
             {
                 banco.conn.Open();
                 banco.cmd = banco.conn.CreateCommand();
 
-                banco.sqlQuery = string.Format("UPDATE \"{0}\" set ", tt.TABLES[tableId].tableName);
+                banco.sqlQuery = string.Format("UPDATE \"{0}\" set ", TablesManager.instance.Tables[tableId].tableName);
 
-                banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",", tt.TABLES[tableId].colName[1], idPessoa);
-                banco.sqlQuery += string.Format("\"{0}\"=\"{1}\" ", tt.TABLES[tableId].colName[2], observacoes);
+                banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",", TablesManager.instance.Tables[tableId].colName[1], idPessoa);
+                banco.sqlQuery += string.Format("\"{0}\"=\"{1}\" ", TablesManager.instance.Tables[tableId].colName[2], observacoes);
 
-                banco.sqlQuery += string.Format("WHERE \"{0}\" = \"{1}\"", tt.TABLES[tableId].colName[0], id);
+                banco.sqlQuery += string.Format("WHERE \"{0}\" = \"{1}\"", TablesManager.instance.Tables[tableId].colName[0], id);
 
                 banco.cmd.CommandText = banco.sqlQuery;
                 banco.cmd.ExecuteScalar();
@@ -111,7 +107,7 @@ namespace paciente
          */
         public List<Paciente> Read()
         {
-            using (banco.conn = new SqliteConnection(path))
+            using (banco.conn = new SqliteConnection(GlobalController.instance.path))
             {
                 banco.conn.Open();
                 banco.cmd = banco.conn.CreateCommand();
@@ -146,12 +142,12 @@ namespace paciente
 
         public Paciente ReadValue (int id)
         {
-            using (banco.conn = new SqliteConnection(path))
+            using (banco.conn = new SqliteConnection(GlobalController.instance.path))
             {
                 banco.conn.Open();
                 banco.cmd = banco.conn.CreateCommand();
-                banco.sqlQuery = "SELECT * " + string.Format("FROM \"{0}\" WHERE \"{1}\" = \"{2}\";", tt.TABLES[tableId].tableName, 
-                    tt.TABLES[tableId].colName[0], 
+                banco.sqlQuery = "SELECT * " + string.Format("FROM \"{0}\" WHERE \"{1}\" = \"{2}\";", TablesManager.instance.Tables[tableId].tableName, 
+                    TablesManager.instance.Tables[tableId].colName[0], 
                     id);
                 banco.cmd.CommandText = banco.sqlQuery;
                 IDataReader reader = banco.cmd.ExecuteReader();
@@ -181,12 +177,12 @@ namespace paciente
          */
         public void DeleteValue(int id)
         {
-            using (banco.conn = new SqliteConnection(path))
+            using (banco.conn = new SqliteConnection(GlobalController.instance.path))
             {
                 banco.conn.Open();
                 banco.cmd = banco.conn.CreateCommand();
 
-                banco.sqlQuery = string.Format("delete from \"{0}\" WHERE \"{1}\" = \"{2}\"", tt.TABLES[tableId].tableName, tt.TABLES[tableId].colName[0], id);
+                banco.sqlQuery = string.Format("delete from \"{0}\" WHERE \"{1}\" = \"{2}\"", TablesManager.instance.Tables[tableId].tableName, TablesManager.instance.Tables[tableId].colName[0], id);
 
                 banco.cmd.CommandText = banco.sqlQuery;
                 banco.cmd.ExecuteScalar();
@@ -199,12 +195,12 @@ namespace paciente
          */
         public void Drop()
         {
-            using (banco.conn = new SqliteConnection(path))
+            using (banco.conn = new SqliteConnection(GlobalController.instance.path))
             {
                 banco.conn.Open();
                 banco.cmd = banco.conn.CreateCommand();
 
-                banco.sqlQuery = string.Format("DROP TABLE IF EXISTS \"{0}\"", tt.TABLES[tableId].tableName);
+                banco.sqlQuery = string.Format("DROP TABLE IF EXISTS \"{0}\"", TablesManager.instance.Tables[tableId].tableName);
 
                 banco.cmd.CommandText = banco.sqlQuery;
                 banco.cmd.ExecuteScalar();

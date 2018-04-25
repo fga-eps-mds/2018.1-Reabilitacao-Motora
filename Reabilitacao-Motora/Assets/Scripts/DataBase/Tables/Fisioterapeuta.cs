@@ -1,7 +1,6 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using DataBaseTables;
 using DataBaseAttributes;
 using Mono.Data.Sqlite;
 using System.Data;
@@ -16,8 +15,6 @@ namespace fisioterapeuta
     {
         int tableId = 2;
         DataBase banco = new DataBase();
-        TableNameColumn tt = new TableNameColumn();
-        string path;
         public int idFisioterapeuta, idPessoa;
         public string login, senha, regiao, crefito;
         public Pessoa persona;
@@ -40,10 +37,9 @@ namespace fisioterapeuta
         /**
          * Cria a relação para fisioterapeuta, contendo um id gerado automaticamente pelo banco como chave primária.
          */
-        public void Create(string caminho)
+        public void Create()
         {
-            path = caminho;
-            using (banco.conn = new SqliteConnection(path))
+            using (banco.conn = new SqliteConnection(GlobalController.instance.path))
             {
                 banco.conn.Open();
                 banco.cmd = banco.conn.CreateCommand();
@@ -61,17 +57,17 @@ namespace fisioterapeuta
          */
         public void Insert(int idPessoa, string login, string senha)
         {
-            using (banco.conn = new SqliteConnection(path))
+            using (banco.conn = new SqliteConnection(GlobalController.instance.path))
             {
                 banco.conn.Open();
                 banco.cmd = banco.conn.CreateCommand();
                 banco.sqlQuery = "insert into FISIOTERAPEUTA (";
 
-                int tableSize = tt.TABLES[tableId].Length;
+                int tableSize =  TablesManager.instance.Tables[tableId].Length;
 
                 for (int i = 1; i < tableSize; ++i) {
                     string aux = (i+1 == tableSize) ? (")") : (",");
-                    banco.sqlQuery += (tt.TABLES[tableId].colName[i] + aux);
+                    banco.sqlQuery += ( TablesManager.instance.Tables[tableId].colName[i] + aux);
                 }
 
                 banco.sqlQuery += string.Format(" values (\"{0}\",\"{1}\",\"{2}\")", idPessoa,
@@ -93,17 +89,17 @@ namespace fisioterapeuta
             string regiao,
             string crefito)
         {
-            using (banco.conn = new SqliteConnection(path))
+            using (banco.conn = new SqliteConnection(GlobalController.instance.path))
             {
                 banco.conn.Open();
                 banco.cmd = banco.conn.CreateCommand();
                 banco.sqlQuery = "insert into FISIOTERAPEUTA (";
 
-                int tableSize = tt.TABLES[tableId].Length;
+                int tableSize =  TablesManager.instance.Tables[tableId].Length;
 
                 for (int i = 1; i < tableSize; ++i) {
                     string aux = (i+1 == tableSize) ? (")") : (",");
-                    banco.sqlQuery += (tt.TABLES[tableId].colName[i] + aux);
+                    banco.sqlQuery += ( TablesManager.instance.Tables[tableId].colName[i] + aux);
                 }
 
                 banco.sqlQuery += string.Format(" values (\"{0}\",\"{1}\",\"{2}\",\"{3}\", \"{4}\")", idPessoa,
@@ -125,17 +121,17 @@ namespace fisioterapeuta
             int idPessoa,
             string senha)
         {
-            using (banco.conn = new SqliteConnection(path))
+            using (banco.conn = new SqliteConnection(GlobalController.instance.path))
             {
                 banco.conn.Open();
                 banco.cmd = banco.conn.CreateCommand();
 
-                banco.sqlQuery = string.Format("UPDATE \"{0}\" set ", tt.TABLES[tableId].tableName);
+                banco.sqlQuery = string.Format("UPDATE \"{0}\" set ",  TablesManager.instance.Tables[tableId].tableName);
 
-                banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",", tt.TABLES[tableId].colName[1], idPessoa);
-                banco.sqlQuery += string.Format("\"{0}\"=\"{1}\" ", tt.TABLES[tableId].colName[3], senha);
+                banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",",  TablesManager.instance.Tables[tableId].colName[1], idPessoa);
+                banco.sqlQuery += string.Format("\"{0}\"=\"{1}\" ",  TablesManager.instance.Tables[tableId].colName[3], senha);
 
-                banco.sqlQuery += string.Format("WHERE \"{0}\" = \"{1}\"", tt.TABLES[tableId].colName[0], id);
+                banco.sqlQuery += string.Format("WHERE \"{0}\" = \"{1}\"",  TablesManager.instance.Tables[tableId].colName[0], id);
 
                 banco.cmd.CommandText = banco.sqlQuery;
                 banco.cmd.ExecuteScalar();
@@ -153,19 +149,19 @@ namespace fisioterapeuta
             string regiao,
             string crefito)
         {
-            using (banco.conn = new SqliteConnection(path))
+            using (banco.conn = new SqliteConnection(GlobalController.instance.path))
             {
                 banco.conn.Open();
                 banco.cmd = banco.conn.CreateCommand();
 
-                banco.sqlQuery = string.Format("UPDATE \"{0}\" set ", tt.TABLES[tableId].tableName);
+                banco.sqlQuery = string.Format("UPDATE \"{0}\" set ",  TablesManager.instance.Tables[tableId].tableName);
 
-                banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",", tt.TABLES[tableId].colName[1], idPessoa);
-                banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",", tt.TABLES[tableId].colName[4], regiao);
-                banco.sqlQuery += string.Format("\"{0}\"=\"{1}\" ", tt.TABLES[tableId].colName[5], crefito);
-                banco.sqlQuery += string.Format("\"{0}\"=\"{1}\" ", tt.TABLES[tableId].colName[3], senha);
+                banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",",  TablesManager.instance.Tables[tableId].colName[1], idPessoa);
+                banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",",  TablesManager.instance.Tables[tableId].colName[4], regiao);
+                banco.sqlQuery += string.Format("\"{0}\"=\"{1}\" ",  TablesManager.instance.Tables[tableId].colName[5], crefito);
+                banco.sqlQuery += string.Format("\"{0}\"=\"{1}\" ",  TablesManager.instance.Tables[tableId].colName[3], senha);
 
-                banco.sqlQuery += string.Format("WHERE \"{0}\" = \"{1}\"", tt.TABLES[tableId].colName[0], id);
+                banco.sqlQuery += string.Format("WHERE \"{0}\" = \"{1}\"",  TablesManager.instance.Tables[tableId].colName[0], id);
 
                 banco.cmd.CommandText = banco.sqlQuery;
                 banco.cmd.ExecuteScalar();
@@ -178,7 +174,7 @@ namespace fisioterapeuta
          */
         public List<Fisioterapeuta> Read()
         {
-            using (banco.conn = new SqliteConnection(path))
+            using (banco.conn = new SqliteConnection(GlobalController.instance.path))
             {
                 banco.conn.Open();
                 banco.cmd = banco.conn.CreateCommand();
@@ -218,12 +214,12 @@ namespace fisioterapeuta
 
         public Fisioterapeuta ReadValue (int id)
         {
-            using (banco.conn = new SqliteConnection(path))
+            using (banco.conn = new SqliteConnection(GlobalController.instance.path))
             {
                 banco.conn.Open();
                 banco.cmd = banco.conn.CreateCommand();
-                banco.sqlQuery = "SELECT * " + string.Format("FROM \"{0}\" WHERE \"{1}\" = \"{2}\";", tt.TABLES[tableId].tableName, 
-                    tt.TABLES[tableId].colName[0], 
+                banco.sqlQuery = "SELECT * " + string.Format("FROM \"{0}\" WHERE \"{1}\" = \"{2}\";",  TablesManager.instance.Tables[tableId].tableName, 
+                     TablesManager.instance.Tables[tableId].colName[0], 
                     id);
                 banco.cmd.CommandText = banco.sqlQuery;
                 IDataReader reader = banco.cmd.ExecuteReader();
@@ -259,12 +255,12 @@ namespace fisioterapeuta
          */
         public void DeleteValue(int id)
         {
-            using (banco.conn = new SqliteConnection(path))
+            using (banco.conn = new SqliteConnection(GlobalController.instance.path))
             {
                 banco.conn.Open();
                 banco.cmd = banco.conn.CreateCommand();
 
-                banco.sqlQuery = string.Format("delete from \"{0}\" WHERE \"{1}\" = \"{2}\"", tt.TABLES[tableId].tableName, tt.TABLES[tableId].colName[0], id);
+                banco.sqlQuery = string.Format("delete from \"{0}\" WHERE \"{1}\" = \"{2}\"",  TablesManager.instance.Tables[tableId].tableName,  TablesManager.instance.Tables[tableId].colName[0], id);
 
                 banco.cmd.CommandText = banco.sqlQuery;
                 banco.cmd.ExecuteScalar();
@@ -277,12 +273,12 @@ namespace fisioterapeuta
          */
         public void Drop()
         {
-            using (banco.conn = new SqliteConnection(path))
+            using (banco.conn = new SqliteConnection(GlobalController.instance.path))
             {
                 banco.conn.Open();
                 banco.cmd = banco.conn.CreateCommand();
 
-                banco.sqlQuery = string.Format("DROP TABLE IF EXISTS \"{0}\"", tt.TABLES[tableId].tableName);
+                banco.sqlQuery = string.Format("DROP TABLE IF EXISTS \"{0}\"",  TablesManager.instance.Tables[tableId].tableName);
 
                 banco.cmd.CommandText = banco.sqlQuery;
                 banco.cmd.ExecuteScalar();

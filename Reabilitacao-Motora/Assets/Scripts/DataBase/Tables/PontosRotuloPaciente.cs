@@ -1,7 +1,6 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using DataBaseTables;
 using DataBaseAttributes;
 using Mono.Data.Sqlite;
 using System.Data;
@@ -15,8 +14,6 @@ namespace pontosrotulopaciente {
     {
         int tableId = 10;
         DataBase banco = new DataBase();
-        TableNameColumn tt = new TableNameColumn();
-        string path;
         public int idRotuloPaciente, idExercicio;
         public double tempoInicial, tempoFinal;
         public string estagioMovimentoPaciente;
@@ -36,10 +33,9 @@ namespace pontosrotulopaciente {
         /**
         * Cria a relação para pontosrotulopaciente, contendo um id gerado automaticamente pelo banco como chave primária.
          */
-        public void Create(string caminho)
+        public void Create()
         {
-            path = caminho;
-            using (banco.conn = new SqliteConnection(path))
+            using (banco.conn = new SqliteConnection(GlobalController.instance.path))
             {
                 banco.conn.Open();
                 banco.cmd = banco.conn.CreateCommand();
@@ -60,17 +56,17 @@ namespace pontosrotulopaciente {
             double tempoInicial,
             double tempoFinal)
         {
-            using (banco.conn = new SqliteConnection(path))
+            using (banco.conn = new SqliteConnection(GlobalController.instance.path))
             {
                 banco.conn.Open();
                 banco.cmd = banco.conn.CreateCommand();
                 banco.sqlQuery = "insert into PONTOSROTULOPACIENTE (";
 
-                int tableSize = tt.TABLES[tableId].Length;
+                int tableSize = TablesManager.instance.Tables[tableId].Length;
 
                 for (int i = 1; i < tableSize; ++i) {
                     string aux = (i+1 == tableSize) ? (")") : (",");
-                    banco.sqlQuery += (tt.TABLES[tableId].colName[i] + aux);
+                    banco.sqlQuery += (TablesManager.instance.Tables[tableId].colName[i] + aux);
                 }
 
                 banco.sqlQuery += string.Format(" values (\"{0}\",\"{1}\",\"{2}\",\"{3}\")", idMovimento,
@@ -93,19 +89,19 @@ namespace pontosrotulopaciente {
             double tempoInicial,
             double tempoFinal)
         {
-            using (banco.conn = new SqliteConnection(path))
+            using (banco.conn = new SqliteConnection(GlobalController.instance.path))
             {
                 banco.conn.Open();
                 banco.cmd = banco.conn.CreateCommand();
 
-                banco.sqlQuery = string.Format("UPDATE \"{0}\" set ", tt.TABLES[tableId].tableName);
+                banco.sqlQuery = string.Format("UPDATE \"{0}\" set ", TablesManager.instance.Tables[tableId].tableName);
 
-                banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",", tt.TABLES[tableId].colName[1], idMovimento);
-                banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",", tt.TABLES[tableId].colName[2], estagioMovimentoPaciente);
-                banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",", tt.TABLES[tableId].colName[3], tempoInicial);
-                banco.sqlQuery += string.Format("\"{0}\"=\"{1}\" ", tt.TABLES[tableId].colName[4], tempoFinal);
+                banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",", TablesManager.instance.Tables[tableId].colName[1], idMovimento);
+                banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",", TablesManager.instance.Tables[tableId].colName[2], estagioMovimentoPaciente);
+                banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",", TablesManager.instance.Tables[tableId].colName[3], tempoInicial);
+                banco.sqlQuery += string.Format("\"{0}\"=\"{1}\" ", TablesManager.instance.Tables[tableId].colName[4], tempoFinal);
 
-                banco.sqlQuery += string.Format("WHERE \"{0}\" = \"{1}\"", tt.TABLES[tableId].colName[0], id);
+                banco.sqlQuery += string.Format("WHERE \"{0}\" = \"{1}\"", TablesManager.instance.Tables[tableId].colName[0], id);
 
                 banco.cmd.CommandText = banco.sqlQuery;
                 banco.cmd.ExecuteScalar();
@@ -118,7 +114,7 @@ namespace pontosrotulopaciente {
          */
         public List<PontosRotuloPaciente> Read()
         {
-            using (banco.conn = new SqliteConnection(path))
+            using (banco.conn = new SqliteConnection(GlobalController.instance.path))
             {
                 banco.conn.Open();
                 banco.cmd = banco.conn.CreateCommand();
@@ -158,12 +154,12 @@ namespace pontosrotulopaciente {
 
         public PontosRotuloPaciente ReadValue (int id)
         {
-            using (banco.conn = new SqliteConnection(path))
+            using (banco.conn = new SqliteConnection(GlobalController.instance.path))
             {
                 banco.conn.Open();
                 banco.cmd = banco.conn.CreateCommand();
-                banco.sqlQuery = "SELECT * " + string.Format("FROM \"{0}\" WHERE \"{1}\" = \"{2}\";", tt.TABLES[tableId].tableName, 
-                    tt.TABLES[tableId].colName[0], 
+                banco.sqlQuery = "SELECT * " + string.Format("FROM \"{0}\" WHERE \"{1}\" = \"{2}\";", TablesManager.instance.Tables[tableId].tableName, 
+                    TablesManager.instance.Tables[tableId].colName[0], 
                     id);
                 banco.cmd.CommandText = banco.sqlQuery;
                 IDataReader reader = banco.cmd.ExecuteReader();
@@ -197,12 +193,12 @@ namespace pontosrotulopaciente {
          */
         public void DeleteValue(int id)
         {
-            using (banco.conn = new SqliteConnection(path))
+            using (banco.conn = new SqliteConnection(GlobalController.instance.path))
             {
                 banco.conn.Open();
                 banco.cmd = banco.conn.CreateCommand();
 
-                banco.sqlQuery = string.Format("delete from \"{0}\" WHERE \"{1}\" = \"{2}\"", tt.TABLES[tableId].tableName, tt.TABLES[tableId].colName[0], id);
+                banco.sqlQuery = string.Format("delete from \"{0}\" WHERE \"{1}\" = \"{2}\"", TablesManager.instance.Tables[tableId].tableName, TablesManager.instance.Tables[tableId].colName[0], id);
 
                 banco.cmd.CommandText = banco.sqlQuery;
                 banco.cmd.ExecuteScalar();
@@ -215,12 +211,12 @@ namespace pontosrotulopaciente {
          */
         public void Drop()
         {
-            using (banco.conn = new SqliteConnection(path))
+            using (banco.conn = new SqliteConnection(GlobalController.instance.path))
             {
                 banco.conn.Open();
                 banco.cmd = banco.conn.CreateCommand();
 
-                banco.sqlQuery = string.Format("DROP TABLE IF EXISTS \"{0}\"", tt.TABLES[tableId].tableName);
+                banco.sqlQuery = string.Format("DROP TABLE IF EXISTS \"{0}\"", TablesManager.instance.Tables[tableId].tableName);
 
                 banco.cmd.CommandText = banco.sqlQuery;
                 banco.cmd.ExecuteScalar();
