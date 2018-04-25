@@ -5,6 +5,8 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.IO;
 
+using cryptpw;
+
 using pessoa;
 using fisioterapeuta;
 using telefone;
@@ -18,6 +20,8 @@ public class createPhysiotherapist : MonoBehaviour
 	Pessoa tablePessoa;
 	Fisioterapeuta tableFisioterapeuta;
 	Telefone tableTelefone;
+
+	cryptPassword cryptPw = new cryptPassword();
 
 	public InputField namePhysio;
 	public InputField date;
@@ -51,6 +55,7 @@ public class createPhysiotherapist : MonoBehaviour
 	public void savePhysiotherapist()
 	{
 		if (pass.text == confirmPass.text) {
+			string pw = cryptPw.encrypt(pass.text);
 			ColorBlock cb = confirmPass.colors;
 			cb.normalColor = hexToColor(success);
 			confirmPass.colors = cb;
@@ -69,7 +74,7 @@ public class createPhysiotherapist : MonoBehaviour
 
 			List<Pessoa.Pessoas> p = tablePessoa.Read();
 			
-			tableFisioterapeuta.Insert(p[p.Count -1].idPessoa, login.text, pass.text, crefito.text, regiao.text);
+			tableFisioterapeuta.Insert(p[p.Count -1].idPessoa, login.text, pw, crefito.text, regiao.text);
 
 			string namePhysioUnderscored = (namePhysio.text).Replace(' ', '_');
 

@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+using cryptpw;
+
 using fisioterapeuta;
 
 
@@ -14,6 +16,8 @@ public class Login : MonoBehaviour
 {
 	string path;
 	Fisioterapeuta tableFisioterapeuta;
+
+	cryptPassword cryptPw = new cryptPassword();
 
 	public InputField login;
 	public InputField pass;
@@ -66,7 +70,7 @@ public class Login : MonoBehaviour
 
 		foreach (var fisio in p) 
 		{			
-			if (fisio.login == login.text && fisio.senha == pass.text) {
+			if (fisio.login == login.text && cryptPw.uncrypt(pass.text, fisio.senha)) {
 				return fisio;
 			}
 		}
