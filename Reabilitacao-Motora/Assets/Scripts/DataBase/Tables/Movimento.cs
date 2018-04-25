@@ -17,22 +17,20 @@ namespace movimento
         DataBase banco = new DataBase ();
         TableNameColumn tt = new TableNameColumn ();
         string path;
+        public int idMovimento, idFisioterapeuta;
+        public string nomeMovimento, descricaoMovimento, pontosMovimento;
+
 
         /**
          * Classe com todos os atributos de um movimento.
          */
-        public class Movimentos
+        public Movimento(int idm, int idf, string nm, string dm, string pm)
         {
-            public int idMovimento, idFisioterapeuta;
-            public string nomeMovimento, descricaoMovimento, pontosMovimento;
-            public Movimentos (int idm, int idf, string nm, string dm, string pm)
-            {
-                this.idMovimento = idm;
-                this.idFisioterapeuta = idf;
-                this.nomeMovimento = nm;
-                this.descricaoMovimento = dm;
-                this.pontosMovimento = pm;
-            }
+            this.idMovimento = idm;
+            this.idFisioterapeuta = idf;
+            this.nomeMovimento = nm;
+            this.descricaoMovimento = dm;
+            this.pontosMovimento = pm;
         }
 
         /**
@@ -118,7 +116,7 @@ namespace movimento
         /**
          * Função que lê dados já cadastrados anteriormente na relação movimento.
          */
-        public List<Movimentos> Read()
+        public List<Movimento> Read()
         {
             using (banco.conn = new SqliteConnection(path))
             {
@@ -128,7 +126,7 @@ namespace movimento
                 banco.cmd.CommandText = banco.sqlQuery;
                 IDataReader reader = banco.cmd.ExecuteReader();
 
-                List<Movimentos> m = new List<Movimentos>();
+                List<Movimento> m = new List<Movimento>();
                 while (reader.Read())
                 {
                     int idMovimento = 0;
@@ -143,7 +141,7 @@ namespace movimento
                     if (!reader.IsDBNull(3)) descricaoFisioterapeuta = reader.GetString(3);
                     if (!reader.IsDBNull(4)) pontosMovimento = reader.GetString(4);
 
-                    Movimentos x = new Movimentos(idMovimento, idFisioterapeuta, nomeMovimento, descricaoFisioterapeuta, pontosMovimento);
+                    Movimento x = new Movimento(idMovimento, idFisioterapeuta, nomeMovimento, descricaoFisioterapeuta, pontosMovimento);
                     m.Add(x);
                 }
                 reader.Close();
@@ -156,7 +154,7 @@ namespace movimento
             }
         }
 
-        public Movimentos ReadValue (int id)
+        public Movimento ReadValue (int id)
         {
             using (banco.conn = new SqliteConnection(path))
             {
@@ -180,7 +178,7 @@ namespace movimento
                 if (!reader.IsDBNull(3)) descricaoMovimento = reader.GetString(3);
                 if (!reader.IsDBNull(4)) pontosMovimento = reader.GetString(4);
 
-                Movimentos x = new Movimentos (idMovimento,idFisioterapeuta,nomeMovimento,descricaoMovimento,pontosMovimento);
+                Movimento x = new Movimento (idMovimento,idFisioterapeuta,nomeMovimento,descricaoMovimento,pontosMovimento);
 
                 reader.Close();
                 reader = null;

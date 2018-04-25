@@ -17,29 +17,26 @@ namespace pontosrotulopaciente {
         DataBase banco = new DataBase();
         TableNameColumn tt = new TableNameColumn();
         string path;
+        public int idRotuloPaciente, idExercicio;
+        public double tempoInicial, tempoFinal;
+        public string estagioMovimentoPaciente;
 
         /**
          * Classe com todos os atributos de um pontosrotulopaciente.
          */
-        public class PontosRotuloPacientes
+        public PontosRotuloPaciente(int idrp, int ide, double ti, double tf, string e)
         {
-            public int idRotuloPaciente, idExercicio;
-            public double tempoInicial, tempoFinal;
-            public string estagioMovimentoPaciente;
-            public PontosRotuloPacientes (int idrp, int ide, double ti, double tf, string e)
-            {
                 this.idRotuloPaciente = idrp;
                 this.idExercicio = ide;
                 this.tempoInicial = ti;
                 this.tempoFinal = tf;
                 this.estagioMovimentoPaciente = e;
-            }
         }
 
         /**
         * Cria a relação para pontosrotulopaciente, contendo um id gerado automaticamente pelo banco como chave primária.
          */
-        public PontosRotuloPaciente(string caminho)
+        public void Create(string caminho)
         {
             path = caminho;
             using (banco.conn = new SqliteConnection(path))
@@ -119,7 +116,7 @@ namespace pontosrotulopaciente {
         /**
         * Função que lê dados já cadastrados anteriormente na relação de pontosrotulopaciente.
          */
-        public List<PontosRotuloPacientes> Read()
+        public List<PontosRotuloPaciente> Read()
         {
             using (banco.conn = new SqliteConnection(path))
             {
@@ -129,7 +126,7 @@ namespace pontosrotulopaciente {
                 banco.cmd.CommandText = banco.sqlQuery;
                 IDataReader reader = banco.cmd.ExecuteReader();
 
-                List<PontosRotuloPacientes> prp = new List<PontosRotuloPacientes>();
+                List<PontosRotuloPaciente> prp = new List<PontosRotuloPaciente>();
 
                 while (reader.Read())
                 {
@@ -145,7 +142,7 @@ namespace pontosrotulopaciente {
                     if (!reader.IsDBNull(3)) tempoInicial = reader.GetDouble(3);
                     if (!reader.IsDBNull(4)) tempoFinal = reader.GetDouble(4);
 
-                    PontosRotuloPacientes x = new PontosRotuloPacientes(idRotuloPaciente,idExercicio,tempoInicial,tempoFinal,estagioMovimentoPaciente);
+                    PontosRotuloPaciente x = new PontosRotuloPaciente(idRotuloPaciente,idExercicio,tempoInicial,tempoFinal,estagioMovimentoPaciente);
                     prp.Add(x);
                 }
                 reader.Close();
@@ -159,7 +156,7 @@ namespace pontosrotulopaciente {
         }
 
 
-        public PontosRotuloPacientes ReadValue (int id)
+        public PontosRotuloPaciente ReadValue (int id)
         {
             using (banco.conn = new SqliteConnection(path))
             {
@@ -183,7 +180,7 @@ namespace pontosrotulopaciente {
                 if (!reader.IsDBNull(3)) tempoInicial = reader.GetDouble(3);
                 if (!reader.IsDBNull(4)) tempoFinal = reader.GetDouble(4);
 
-                PontosRotuloPacientes x = new PontosRotuloPacientes (idRotuloPaciente,idExercicio,tempoInicial,tempoFinal,estagioMovimentoPaciente);
+                PontosRotuloPaciente x = new PontosRotuloPaciente (idRotuloPaciente,idExercicio,tempoInicial,tempoFinal,estagioMovimentoPaciente);
 
                 reader.Close();
                 reader = null;

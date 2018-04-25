@@ -18,29 +18,26 @@ namespace pontosrotulofisioterapeuta
         DataBase banco = new DataBase();
         TableNameColumn tt = new TableNameColumn();
         string path;
+        public int idRotuloFisioterapeuta, idMovimento;
+        public double tempoInicial, tempoFinal;
+        public string estagioMovimentoFisio;
 
         /**
          * Classe com todos os atributos de um pontosrotulofisioterapeuta.
          */
-        public class PontosRotuloFisioterapeutas
+        public PontosRotuloFisioterapeuta(int idrf, int idm, double ti, double tf, string e)
         {
-            public int idRotuloFisioterapeuta, idMovimento;
-            public double tempoInicial, tempoFinal;
-            public string estagioMovimentoFisio;
-            public PontosRotuloFisioterapeutas (int idrf, int idm, double ti, double tf, string e)
-            {
                 this.idRotuloFisioterapeuta = idrf;
                 this.idMovimento = idm;
                 this.tempoInicial = ti;
                 this.tempoFinal = tf;
                 this.estagioMovimentoFisio = e;
-            }
         }
 
         /**
         * Cria a relação para pontosrotulofisioterapeuta, contendo um id gerado automaticamente pelo banco como chave primária.
          */
-        public PontosRotuloFisioterapeuta(string caminho)
+        public void Create(string caminho)
         {
             path = caminho;
             using (banco.conn = new SqliteConnection(path))
@@ -120,7 +117,7 @@ namespace pontosrotulofisioterapeuta
         /**
         * Função que lê dados já cadastrados anteriormente na relação de pontosrotulofisioterapeuta.
          */
-        public List<PontosRotuloFisioterapeutas> Read()
+        public List<PontosRotuloFisioterapeuta> Read()
         {
             using (banco.conn = new SqliteConnection(path))
             {
@@ -130,7 +127,7 @@ namespace pontosrotulofisioterapeuta
                 banco.cmd.CommandText = banco.sqlQuery;
                 IDataReader reader = banco.cmd.ExecuteReader();
 
-                List<PontosRotuloFisioterapeutas> prf = new List<PontosRotuloFisioterapeutas>();
+                List<PontosRotuloFisioterapeuta> prf = new List<PontosRotuloFisioterapeuta>();
 
                 while (reader.Read())
                 {
@@ -146,7 +143,7 @@ namespace pontosrotulofisioterapeuta
                     if (!reader.IsDBNull(3)) tempoInicial = reader.GetDouble(3);
                     if (!reader.IsDBNull(4)) tempoFinal = reader.GetDouble(4);
 
-                    PontosRotuloFisioterapeutas x = new PontosRotuloFisioterapeutas(idRotuloFisioterapeuta,idMovimento,tempoInicial,tempoFinal,estagioMovimentoFisio);
+                    PontosRotuloFisioterapeuta x = new PontosRotuloFisioterapeuta(idRotuloFisioterapeuta,idMovimento,tempoInicial,tempoFinal,estagioMovimentoFisio);
                     prf.Add(x);
                 }
                 reader.Close();
@@ -159,7 +156,7 @@ namespace pontosrotulofisioterapeuta
             }
         }
 
-        public PontosRotuloFisioterapeutas ReadValue (int id)
+        public PontosRotuloFisioterapeuta ReadValue (int id)
         {
             using (banco.conn = new SqliteConnection(path))
             {
@@ -183,7 +180,7 @@ namespace pontosrotulofisioterapeuta
                 if (!reader.IsDBNull(3)) tempoInicial = reader.GetDouble(3);
                 if (!reader.IsDBNull(4)) tempoFinal = reader.GetDouble(4);
 
-                PontosRotuloFisioterapeutas x = new PontosRotuloFisioterapeutas (idRotuloFisioterapeuta,idMovimento,tempoInicial,tempoFinal,estagioMovimentoFisio);
+                PontosRotuloFisioterapeuta x = new PontosRotuloFisioterapeuta (idRotuloFisioterapeuta,idMovimento,tempoInicial,tempoFinal,estagioMovimentoFisio);
 
                 reader.Close();
                 reader = null;

@@ -18,30 +18,26 @@ namespace paciente
         DataBase banco = new DataBase();
         TableNameColumn tt = new TableNameColumn();
         string path;
+        public int idPaciente, idPessoa;
+        public string observacoes;
+        public Pessoa persona;
 
         /**
          * Classe com todos os atributos de um paciente.
          */
-        public class Pacientes
+        public Paciente(int idpa, int idpe, string obs)
         {
-            public int idPaciente, idPessoa;
-            public string observacoes;
-            public Pessoa.Pessoas persona;
-            public Pessoa temp;
-            public Pacientes (int idpa, int idpe, string obs)
-            {
-                this.idPaciente = idpa;
-                this.idPessoa = idpe;
-                this.observacoes = obs;
-                temp = new Pessoa(GlobalController.instance.path);
-                this.persona = temp.ReadValue (idpe);
-            }
+            this.idPaciente = idpa;
+            this.idPessoa = idpe;
+            this.observacoes = obs;
+            temp = new Pessoa(GlobalController.instance.path);
+            this.persona = persona.ReadValue (idpe);
         }
 
         /**
          * Cria a relação para paciente, contendo um id gerado automaticamente pelo banco como chave primária.
          */
-        public Paciente(string caminho)
+        public void Create(string caminho)
         {
             path = caminho;
             using (banco.conn = new SqliteConnection(path))
@@ -113,7 +109,7 @@ namespace paciente
         /**
          * Função que lê dados já cadastrados anteriormente na relação paciente.
          */
-        public List<Pacientes> Read()
+        public List<Paciente> Read()
         {
             using (banco.conn = new SqliteConnection(path))
             {
@@ -123,7 +119,7 @@ namespace paciente
                 banco.cmd.CommandText = banco.sqlQuery;
                 IDataReader reader = banco.cmd.ExecuteReader();
 
-                List<Pacientes> p = new List<Pacientes>();
+                List<Paciente> p = new List<Paciente>();
 
                 while (reader.Read())
                 {
@@ -135,7 +131,7 @@ namespace paciente
                     if (!reader.IsDBNull(1)) idPessoa = reader.GetInt32(1);
                     if (!reader.IsDBNull(2)) observacoes = reader.GetString(2);
 
-                    Pacientes x = new Pacientes(idPaciente, idPessoa, observacoes);
+                    Paciente x = new Paciente(idPaciente, idPessoa, observacoes);
                     p.Add(x);
                 }
                 reader.Close();
@@ -148,7 +144,7 @@ namespace paciente
             }
         }
 
-        public Pacientes ReadValue (int id)
+        public Paciente ReadValue (int id)
         {
             using (banco.conn = new SqliteConnection(path))
             {
@@ -168,7 +164,7 @@ namespace paciente
                 if (!reader.IsDBNull(1)) idPessoa = reader.GetInt32(1);
                 if (!reader.IsDBNull(2)) observacoes = reader.GetString(2);
 
-                Pacientes x = new Pacientes (idPaciente,idPessoa,observacoes);
+                Paciente x = new Paciente (idPaciente,idPessoa,observacoes);
 
                 reader.Close();
                 reader = null;

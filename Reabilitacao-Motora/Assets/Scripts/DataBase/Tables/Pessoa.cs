@@ -18,30 +18,29 @@ namespace pessoa
         DataBase banco = new DataBase();
         TableNameColumn tt = new TableNameColumn();
         string path;
+        public int idPessoa;
+        public string nomePessoa, sexo, dataNascimento, telefone1, telefone2;
+
+
 
         /**
          * Classe com todos os atributos de uma pessoa.
          */
-        public class Pessoas
+        public Pessoa(int id, string nome, string s, string d, string t1, string t2)
         {
-            public int idPessoa;
-            public string nomePessoa, sexo, dataNascimento, telefone1, telefone2;
-            public Pessoas (){}
-            public Pessoas (int id, string nome, string s, string d, string t1, string t2)
-            {
-                this.idPessoa = id;
-                this.nomePessoa = nome;
-                this.sexo = s;
-                this.dataNascimento = d;
-                this.telefone1 = t1;
-                this.telefone2 = t2;
-            }
+            this.idPessoa = id;
+            this.nomePessoa = nome;
+            this.sexo = s;
+            this.dataNascimento = d;
+            this.telefone1 = t1;
+            this.telefone2 = t2;
+            
         }
 
         /**
          * Cria a relação para pessoas, contendo um id gerado automaticamente pelo banco como chave primária.
          */
-        public Pessoa(string caminho)
+        public void Create(string caminho)
         {
             path = caminho;
             using (banco.conn = new SqliteConnection(path))
@@ -126,7 +125,7 @@ namespace pessoa
         /**
         * Função que retorna dados já cadastrados anteriormente na relação de pessoas.
          */
-        public List<Pessoas> Read()
+        public List<Pessoa> Read()
         {
             using (banco.conn = new SqliteConnection(path))
             {
@@ -135,7 +134,7 @@ namespace pessoa
                 banco.sqlQuery = "SELECT * " + "FROM PESSOA";
                 banco.cmd.CommandText = banco.sqlQuery;
                 IDataReader reader = banco.cmd.ExecuteReader();
-                List<Pessoas> p = new List<Pessoas>();
+                List<Pessoa> p = new List<Pessoa>();
 
                 while (reader.Read())
                 {
@@ -151,7 +150,7 @@ namespace pessoa
                     if (!reader.IsDBNull(3)) dataNascimento = reader.GetString(3);
                     if (!reader.IsDBNull(4)) telefone1 = reader.GetString(4);
                     if (!reader.IsDBNull(5)) telefone2 = reader.GetString(5);
-                    Pessoas x = new Pessoas(idPessoa, nomePessoa, sexo, dataNascimento, telefone1, telefone2);
+                    Pessoa x = new Pessoa(idPessoa, nomePessoa, sexo, dataNascimento, telefone1, telefone2);
                     p.Add(x);
                 }
                 reader.Close();
@@ -166,7 +165,7 @@ namespace pessoa
         }
 
 
-        public Pessoas ReadValue (int id)
+        public Pessoa ReadValue (int id)
         {
             using (banco.conn = new SqliteConnection(path))
             {
@@ -178,7 +177,7 @@ namespace pessoa
                 banco.cmd.CommandText = banco.sqlQuery;
                 IDataReader reader = banco.cmd.ExecuteReader();
 
-                Pessoas x = new Pessoas();
+                Pessoa x = new Pessoa();
 
                 while (reader.Read())
                 {
@@ -196,7 +195,7 @@ namespace pessoa
                     if (!reader.IsDBNull(4)) telefone1 = reader.GetString(4);
                     if (!reader.IsDBNull(5)) telefone2 = reader.GetString(5);
                     
-                    x = new Pessoas(idPessoa, nomePessoa, sexo, dataNascimento, telefone1, telefone2);
+                    x = new Pessoa(idPessoa, nomePessoa, sexo, dataNascimento, telefone1, telefone2);
                 }
 
                 reader.Close();

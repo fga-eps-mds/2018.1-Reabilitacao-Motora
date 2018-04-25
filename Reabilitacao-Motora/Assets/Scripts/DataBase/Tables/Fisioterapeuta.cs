@@ -18,33 +18,29 @@ namespace fisioterapeuta
         DataBase banco = new DataBase();
         TableNameColumn tt = new TableNameColumn();
         string path;
+        public int idFisioterapeuta, idPessoa;
+        public string login, senha, regiao, crefito;
+        public Pessoa persona;
 
         /**
          * Classe com todos os atributos de um fisioterapeuta.
          */
-        public class Fisioterapeutas
+        public Fisioterapeuta(int idf, int idp, string l, string s, string r, string c)
         {
-            public int idFisioterapeuta, idPessoa;
-            public string login, senha, regiao, crefito;
-            public Pessoa.Pessoas persona;
-            public Pessoa temp;
-            public Fisioterapeutas (int idf, int idp, string l, string s, string r, string c)
-            {
-                this.idFisioterapeuta = idf;
-                this.idPessoa = idp;
-                this.login = l;
-                this.senha = s;
-                this.regiao = r;
-                this.crefito = c;
-                temp = new Pessoa(GlobalController.instance.path);
-                this.persona = temp.ReadValue(idp);
-            }
+            this.idFisioterapeuta = idf;
+            this.idPessoa = idp;
+            this.login = l;
+            this.senha = s;
+            this.regiao = r;
+            this.crefito = c;
+            this.persona = persona.ReadValue(idp);
+            
         }
 
         /**
          * Cria a relação para fisioterapeuta, contendo um id gerado automaticamente pelo banco como chave primária.
          */
-        public Fisioterapeuta(string caminho)
+        public void Create(string caminho)
         {
             path = caminho;
             using (banco.conn = new SqliteConnection(path))
@@ -180,7 +176,7 @@ namespace fisioterapeuta
         /**
          * Função que lê dados já cadastrados anteriormente na relação fisioterapeuta.
          */
-        public List<Fisioterapeutas> Read()
+        public List<Fisioterapeuta> Read()
         {
             using (banco.conn = new SqliteConnection(path))
             {
@@ -189,7 +185,7 @@ namespace fisioterapeuta
                 banco.sqlQuery = "SELECT * " + "FROM FISIOTERAPEUTA";
                 banco.cmd.CommandText = banco.sqlQuery;
                 IDataReader reader = banco.cmd.ExecuteReader();
-                List<Fisioterapeutas> f = new List<Fisioterapeutas>();
+                List<Fisioterapeuta> f = new List<Fisioterapeuta>();
 
                 while (reader.Read())
                 {
@@ -207,7 +203,7 @@ namespace fisioterapeuta
                     if (!reader.IsDBNull(4)) regiao = reader.GetString(4);
                     if (!reader.IsDBNull(5)) crefito = reader.GetString(5);
 
-                    Fisioterapeutas x = new Fisioterapeutas (idFisioterapeuta, idPessoa, login, senha, regiao, crefito);
+                    Fisioterapeuta x = new Fisioterapeuta (idFisioterapeuta, idPessoa, login, senha, regiao, crefito);
                     f.Add(x);
                 }
                 reader.Close();
@@ -220,7 +216,7 @@ namespace fisioterapeuta
             }
         }
 
-        public Fisioterapeutas ReadValue (int id)
+        public Fisioterapeuta ReadValue (int id)
         {
             using (banco.conn = new SqliteConnection(path))
             {
@@ -246,7 +242,7 @@ namespace fisioterapeuta
                 if (!reader.IsDBNull(4)) regiao = reader.GetString(4);
                 if (!reader.IsDBNull(5)) crefito = reader.GetString(5);
 
-                Fisioterapeutas x = new Fisioterapeutas (idFisioterapeuta,idPessoa,login,senha,regiao,crefito);
+                Fisioterapeuta x = new Fisioterapeuta (idFisioterapeuta,idPessoa,login,senha,regiao,crefito);
 
                 reader.Close();
                 reader = null;

@@ -17,24 +17,21 @@ namespace movimentomusculo
         DataBase banco = new DataBase();
         TableNameColumn tt = new TableNameColumn();
         string path;
+        public int idMusculo, idMovimento;
 
         /**
          * Classe com todos os atributos de um movimentomusculo.
          */
-        public class MovimentoMusculos
+        public MovimentoMusculo (int idmu, int idmo)
         {
-            public int idMusculo, idMovimento;
-            public MovimentoMusculos (int idmu, int idmo)
-            {
                 this.idMusculo = idmu;
                 this.idMovimento = idmo;
-            }
         }
 
         /**
          * Cria a relação para cadastro dos movimento do musculo, contendo um id que vem da relação de outra tabela (musculo) como chave primária e estrangeira, assim como idMovimento, que vem da relação movimento.
          */
-        public MovimentoMusculo(string caminho)
+        public void Create(string caminho)
         {
             path = caminho;
             using (banco.conn = new SqliteConnection(path))
@@ -104,7 +101,7 @@ namespace movimentomusculo
         /**
          * Função que lê dados já cadastrados anteriormente na relação MovimentoMusculo.
          */
-        public List<MovimentoMusculos> Read()
+        public List<MovimentoMusculo> Read()
         {
             using (banco.conn = new SqliteConnection(path))
             {
@@ -114,7 +111,7 @@ namespace movimentomusculo
                 banco.cmd.CommandText = banco.sqlQuery;
                 IDataReader reader = banco.cmd.ExecuteReader();
 
-                List<MovimentoMusculos> mm = new List<MovimentoMusculos>();
+                List<MovimentoMusculo> mm = new List<MovimentoMusculo>();
 
                 while (reader.Read())
                 {
@@ -124,7 +121,7 @@ namespace movimentomusculo
                     if (!reader.IsDBNull(0)) idMusculo = reader.GetInt32(0);
                     if (!reader.IsDBNull(1)) idMovimento = reader.GetInt32(1);
 
-                    MovimentoMusculos x = new MovimentoMusculos(idMusculo,idMovimento);
+                    MovimentoMusculo x = new MovimentoMusculo(idMusculo,idMovimento);
                     mm.Add(x);
                 }
                 reader.Close();

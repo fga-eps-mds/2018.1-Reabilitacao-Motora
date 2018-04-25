@@ -17,22 +17,19 @@ namespace sessao
         DataBase banco = new DataBase();
         TableNameColumn tt = new TableNameColumn();
         string path;
+        public int idSessao, idFisioterapeuta, idPaciente;
+        public string dataSessao, observacaoSessao;
 
         /**
          * Classe com todos os atributos de uma sessao.
          */
-        public class Sessoes
+        public Sessao(int ids, int idf, int idp, string ds, string os)
         {
-            public int idSessao, idFisioterapeuta, idPaciente;
-            public string dataSessao, observacaoSessao;
-            public Sessoes (int ids, int idf, int idp, string ds, string os)
-            {
                 this.idSessao = ids;
                 this.idFisioterapeuta = idf;
                 this.idPaciente = idp;
                 this.dataSessao = ds;
                 this.observacaoSessao = os;
-            }
         }
 
         /**
@@ -118,7 +115,7 @@ namespace sessao
         /**
         * Função que lê dados já cadastrados anteriormente na relação de sessão.
          */
-        public List<Sessoes> Read()
+        public List<Sessao> Read()
         {
             using (banco.conn = new SqliteConnection(path))
             {
@@ -128,7 +125,7 @@ namespace sessao
                 banco.cmd.CommandText = banco.sqlQuery;
                 IDataReader reader = banco.cmd.ExecuteReader();
 
-                List<Sessoes> s = new List<Sessoes>();
+                List<Sessao> s = new List<Sessao>();
 
                 while (reader.Read())
                 {
@@ -144,7 +141,7 @@ namespace sessao
                     if (!reader.IsDBNull(3)) dataSessao = reader.GetString(3);
                     if (!reader.IsDBNull(4)) observacaoSessao = reader.GetString(4);
 
-                    Sessoes x = new Sessoes (idSessao, idFisioterapeuta, idPaciente, dataSessao, observacaoSessao);
+                    Sessao x = new Sessao(idSessao, idFisioterapeuta, idPaciente, dataSessao, observacaoSessao);
                     s.Add(x);
                 }
                 reader.Close();
@@ -158,7 +155,7 @@ namespace sessao
         }
 
 
-        public Sessoes ReadValue (int id)
+        public Sessao ReadValue (int id)
         {
             using (banco.conn = new SqliteConnection(path))
             {
@@ -182,7 +179,7 @@ namespace sessao
                 if (!reader.IsDBNull(3)) dataSessao = reader.GetString(3);
                 if (!reader.IsDBNull(4)) observacaoSessao = reader.GetString(4);
 
-                Sessoes x = new Sessoes (idSessao, idFisioterapeuta, idPaciente, dataSessao, observacaoSessao);
+                Sessao x = new Sessao (idSessao, idFisioterapeuta, idPaciente, dataSessao, observacaoSessao);
 
                 reader.Close();
                 reader = null;

@@ -17,25 +17,23 @@ namespace musculo
         DataBase banco = new DataBase();
         TableNameColumn tt = new TableNameColumn();
         string path;
+        public int idMusculo;
+        public string nomeMusculo;
+
 
         /**
          * Classe com todos os atributos de um musculo.
          */
-        public class Musculos
+        public Musculo(int idm, string nm)
         {
-            public int idMusculo;
-            public string nomeMusculo;
-            public Musculos (int idm, string nm)
-            {
                 this.idMusculo = idm;
                 this.nomeMusculo = nm;
-            }
         }
 
         /**
          * Cria a relação para musculo, contendo um id gerado automaticamente pelo banco como chave primária.
          */
-        public Musculo(string caminho)
+        public void Create(string caminho)
         {
             path = caminho;
             using (banco.conn = new SqliteConnection(path))
@@ -103,7 +101,7 @@ namespace musculo
         /**
          * Função que lê dados já cadastrados anteriormente na relação musculo.
          */
-        public List<Musculos> Read()
+        public List<Musculo> Read()
         {
             using (banco.conn = new SqliteConnection(path))
             {
@@ -113,7 +111,7 @@ namespace musculo
                 banco.cmd.CommandText = banco.sqlQuery;
                 IDataReader reader = banco.cmd.ExecuteReader();
 
-                List<Musculos> m = new List<Musculos>();
+                List<Musculo> m = new List<Musculo>();
 
                 while (reader.Read())
                 {
@@ -123,7 +121,7 @@ namespace musculo
                     if (!reader.IsDBNull(0)) idMusculo = reader.GetInt32(0);
                     if (!reader.IsDBNull(1)) nomeMusculo = reader.GetString(1);
 
-                    Musculos x = new Musculos (idMusculo, nomeMusculo);
+                    Musculo x = new Musculo (idMusculo, nomeMusculo);
                     m.Add(x);
                 }
                 reader.Close();
@@ -136,7 +134,7 @@ namespace musculo
             }
         }
 
-        public Musculos ReadValue (int id)
+        public Musculo ReadValue (int id)
         {
             using (banco.conn = new SqliteConnection(path))
             {
@@ -154,7 +152,7 @@ namespace musculo
                 if (!reader.IsDBNull(0)) idMusculo = reader.GetInt32(0);
                 if (!reader.IsDBNull(1)) nomeMusculo = reader.GetString(1);
 
-                Musculos x = new Musculos (idMusculo,nomeMusculo);
+                Musculo x = new Musculo (idMusculo,nomeMusculo);
 
                 reader.Close();
                 reader = null;

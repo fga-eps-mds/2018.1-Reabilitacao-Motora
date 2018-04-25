@@ -21,21 +21,16 @@ namespace telefone
         /**
          * Classe com todos os atributos de um telefone.
          */
-        public class Telefones
+        public Telefone(int idp, string tel)
         {
-            public int idPessoa;
-            public string telefone;
-            public Telefones (int idp, string tel)
-            {
-                this.idPessoa = idp;
-                this.telefone = tel;
-            }
+            this.idPessoa = idp;
+            this.telefone = tel;
         }
 
         /**
          * Cria a relação para telefone, sendo a chave primária composta pelo telefone e a chave estrangeira advinda de Pessoa.
          */
-        public Telefone(string caminho)
+        public void Create(string caminho)
         {
             path = caminho;
             using (banco.conn = new SqliteConnection(path))
@@ -107,7 +102,7 @@ namespace telefone
         /**
          * Função que lê dados já cadastrados anteriormente na relação de telefone.
          */
-        public List<Telefones> Read()
+        public List<Telefone> Read()
         {
             using (banco.conn = new SqliteConnection(path))
             {
@@ -117,7 +112,7 @@ namespace telefone
                 banco.cmd.CommandText = banco.sqlQuery;
                 IDataReader reader = banco.cmd.ExecuteReader();
 
-                List<Telefones> t = new List<Telefones>();
+                List<Telefone> t = new List<Telefone>();
 
                 while (reader.Read())
                 {
@@ -127,7 +122,7 @@ namespace telefone
                     if (!reader.IsDBNull(0)) idPessoa = reader.GetInt32(0);
                     if (!reader.IsDBNull(1)) telefone = reader.GetString(1);
 
-                    Telefones x = new Telefones(idPessoa, telefone);
+                    Telefone x = new Telefone(idPessoa, telefone);
                     t.Add(x);
                 }
                 reader.Close();
@@ -140,7 +135,7 @@ namespace telefone
             }
         }
 
-        public Telefones ReadValue (int id)
+        public Telefone ReadValue (int id)
         {
             using (banco.conn = new SqliteConnection(path))
             {
@@ -158,7 +153,7 @@ namespace telefone
                 if (!reader.IsDBNull(0)) idPessoa = reader.GetInt32(0);
                 if (!reader.IsDBNull(1)) telefone = reader.GetString(1);
 
-                Telefones x = new Telefones(idPessoa, telefone);
+                Telefone x = new Telefone(idPessoa, telefone);
 
                 reader.Close();
                 reader = null;

@@ -8,38 +8,40 @@ using System.Data;
 
 namespace exercicio
 {
-  /**
-   * Cria relação para cadastro dos exercicios a serem cadastrados pelo programa.
-   */
+    /**
+     * Cria relação para cadastro dos exercicios a serem cadastrados pelo programa.
+     */
     public class Exercicio
     {
         int tableId = 7;
         DataBase banco = new DataBase();
         TableNameColumn tt = new TableNameColumn();
         string path;
+        int idExercicio;
+        int idPaciente;
+        int idMovimento;
+        int idSessao;
+        string descricaoExercicio;
+        string pontosExercicio;
+
 
         /**
          * Classe com todos os atributos de um exercicio.
          */
-        public class Exercicios
+        public Exercicio(int ide, int idp, int idm, int ids, string de, string pe)
         {
-            public int idExercicio, idPaciente, idMovimento, idSessao;
-            public string descricaoExercicio, pontosExercicio;
-            public Exercicios (int ide, int idp, int idm, int ids, string de, string pe)
-            {
-                this.idExercicio = ide;
-                this.idPaciente = idp;
-                this.idMovimento = idm;
-                this.idSessao = ids;
-                this.descricaoExercicio = de;
-                this.pontosExercicio = pe;
-            }
+            this.idExercicio = ide;
+            this.idPaciente = idp;
+            this.idMovimento = idm;
+            this.idSessao = ids;
+            this.descricaoExercicio = de;
+            this.pontosExercicio = pe;
         }
 
         /**
          * Cria a relação para exercicios, contendo um id gerado automaticamente pelo banco como chave primária.
          */
-        public Exercicio(string caminho)
+        public void Create(string caminho)
         {
             path = caminho;
             using (banco.conn = new SqliteConnection(path))
@@ -72,8 +74,9 @@ namespace exercicio
 
                 int tableSize = tt.TABLES[tableId].Length;
 
-                for (int i = 0; i < tableSize; ++i) {
-                    string aux = (i+1 == tableSize) ? (")") : (",");
+                for (int i = 0; i < tableSize; ++i)
+                {
+                    string aux = (i + 1 == tableSize) ? (")") : (",");
                     banco.sqlQuery += (tt.TABLES[tableId].colName[i] + aux);
                 }
 
@@ -123,7 +126,7 @@ namespace exercicio
         /**
          * Função que lê dados já cadastrados anteriormente na relação de exercicios.
          */
-        public List<Exercicios> Read()
+        public List<Exercicio> Read()
         {
             using (banco.conn = new SqliteConnection(path))
             {
@@ -133,7 +136,7 @@ namespace exercicio
                 banco.cmd.CommandText = banco.sqlQuery;
                 IDataReader reader = banco.cmd.ExecuteReader();
 
-                List<Exercicios> e = new List<Exercicios>();
+                List<Exercicio> e = new List<Exercicio>();
 
                 while (reader.Read())
                 {
@@ -151,7 +154,7 @@ namespace exercicio
                     if (!reader.IsDBNull(4)) descricaoExercicio = reader.GetString(4);
                     if (!reader.IsDBNull(5)) pontosExercicio = reader.GetString(5);
 
-                    Exercicios x = new Exercicios (idExercicio,idPaciente,idMovimento,idSessao,descricaoExercicio,pontosExercicio);
+                    Exercicio x = new Exercicio(idExercicio, idPaciente, idMovimento, idSessao, descricaoExercicio, pontosExercicio);
                     e.Add(x);
                 }
                 reader.Close();
@@ -164,14 +167,14 @@ namespace exercicio
             }
         }
 
-        public Exercicios ReadValue (int id)
+        public Exercicio ReadValue(int id)
         {
             using (banco.conn = new SqliteConnection(path))
             {
                 banco.conn.Open();
                 banco.cmd = banco.conn.CreateCommand();
-                banco.sqlQuery = "SELECT * " + string.Format("FROM \"{0}\" WHERE \"{1}\" = \"{2}\";", tt.TABLES[tableId].tableName, 
-                    tt.TABLES[tableId].colName[0], 
+                banco.sqlQuery = "SELECT * " + string.Format("FROM \"{0}\" WHERE \"{1}\" = \"{2}\";", tt.TABLES[tableId].tableName,
+                    tt.TABLES[tableId].colName[0],
                     id);
                 banco.cmd.CommandText = banco.sqlQuery;
                 IDataReader reader = banco.cmd.ExecuteReader();
@@ -190,7 +193,7 @@ namespace exercicio
                 if (!reader.IsDBNull(4)) descricaoExercicio = reader.GetString(4);
                 if (!reader.IsDBNull(5)) pontosExercicio = reader.GetString(5);
 
-                Exercicios x = new Exercicios (idExercicio,idPaciente,idMovimento,idSessao,descricaoExercicio,pontosExercicio);
+                Exercicio x = new Exercicio(idExercicio, idPaciente, idMovimento, idSessao, descricaoExercicio, pontosExercicio);
 
                 reader.Close();
                 reader = null;
