@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class setpatient : MonoBehaviour {
 
-	public Paciente.Pacientes x;
+	public Paciente x;
 
 	public void setepatient ()
 	{

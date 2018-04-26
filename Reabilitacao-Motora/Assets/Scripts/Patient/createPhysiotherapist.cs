@@ -7,18 +7,14 @@ using System.IO;
 
 using pessoa;
 using fisioterapeuta;
-using telefone;
 
 /**
  * Cria um novo Fisioterapeuta no banco de dados.
  */
 public class createPhysiotherapist : MonoBehaviour 
 {
-	string path, pathnamephysio;
-	Pessoa tablePessoa;
-	Fisioterapeuta tableFisioterapeuta;
-	Telefone tableTelefone;
-
+	string pathnamephysio;
+	
 	public InputField namePhysio;
 	public InputField date;
 	public InputField phone1, phone2;
@@ -56,20 +52,16 @@ public class createPhysiotherapist : MonoBehaviour
 			confirmPass.colors = cb;
 			pass.colors = cb;
 
-			path = "URI=file:" + Application.dataPath + "/Plugins/fisiotech.db";
-
 			var trip = date.text.Split('/');
 			var dateFormate = trip[2] + "/" + trip[1] + "/" + trip[0];
 			
 			string sex = male.isOn ? "m" : "f";
 
-			tablePessoa = new Pessoa(path);
-			tableFisioterapeuta = new Fisioterapeuta(path);
-			tablePessoa.Insert(namePhysio.text, sex, dateFormate, phone1.text, phone2.text);
+			Pessoa.Insert(namePhysio.text, sex, dateFormate, phone1.text, phone2.text);
 
-			List<Pessoa.Pessoas> p = tablePessoa.Read();
+			List<Pessoa> p = Pessoa.Read();
 			
-			tableFisioterapeuta.Insert(p[p.Count -1].idPessoa, login.text, pass.text, crefito.text, regiao.text);
+			Fisioterapeuta.Insert(p[p.Count -1].idPessoa, login.text, pass.text, crefito.text, regiao.text);
 
 			string namePhysioUnderscored = (namePhysio.text).Replace(' ', '_');
 

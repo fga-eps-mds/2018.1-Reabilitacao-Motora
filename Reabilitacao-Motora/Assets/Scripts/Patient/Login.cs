@@ -12,8 +12,6 @@ using fisioterapeuta;
  */
 public class Login : MonoBehaviour 
 {
-	string path;
-	Fisioterapeuta tableFisioterapeuta;
 
 	public InputField login;
 	public InputField pass;
@@ -39,7 +37,7 @@ public class Login : MonoBehaviour
  	 */
 	public void Flow()
 	{
-		Fisioterapeuta.Fisioterapeutas idcheck = CheckLoginPass();
+		Fisioterapeuta idcheck = CheckLoginPass();
 		if (idcheck != null) {
 			ColorBlock cb = pass.colors;
 			cb.normalColor = hexToColor(success);
@@ -58,11 +56,10 @@ public class Login : MonoBehaviour
 		}
 	}
 
-	Fisioterapeuta.Fisioterapeutas CheckLoginPass () 
+	Fisioterapeuta CheckLoginPass () 
 	{
-		path = "URI=file:" + Application.dataPath + "/Plugins/fisiotech.db";
-		tableFisioterapeuta = new Fisioterapeuta(path);
-		List<Fisioterapeuta.Fisioterapeutas> p = tableFisioterapeuta.Read();
+		List<Fisioterapeuta> p = new List<Fisioterapeuta>();
+		p = Fisioterapeuta.Read();
 
 		foreach (var fisio in p) 
 		{			

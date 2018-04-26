@@ -7,13 +7,12 @@ using paciente;
 public class instanciatePatient : MonoBehaviour {
 
 	public GameObject buttonPrefab;
-	string path;
-	Paciente tablePaciente;
-	List<Paciente.Pacientes> values;
+
+	List<Paciente> values;
 
 	int z = 10;
 
-	void MyAwesomeCreator(int posy, Paciente.Pacientes r)
+	void MyAwesomeCreator(int posy, Paciente r)
 	{
 		GameObject go = Instantiate(buttonPrefab, transform);
 
@@ -28,11 +27,9 @@ public class instanciatePatient : MonoBehaviour {
 
 	public void Awake ()
 	{
-		path = "URI=file:" + Application.dataPath + "/Plugins/fisiotech.db";
-
 		Initialize ();
 
-		values = tablePaciente.Read();
+		values = Paciente.Read();
 
 		foreach (var l in values)
 		{
@@ -44,7 +41,6 @@ public class instanciatePatient : MonoBehaviour {
 
 	void Initialize()
 	{
-	    tablePaciente = new Paciente(path);
-	    values = new List<Paciente.Pacientes>();
+	    values = new List<Paciente>();
 	}
 }

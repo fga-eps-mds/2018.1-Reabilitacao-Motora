@@ -1,7 +1,6 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using DataBaseAttributes;
 using Mono.Data.Sqlite;
 using System.Data;
 
@@ -12,8 +11,7 @@ namespace movimentomusculo
    */
     public class MovimentoMusculo
     {
-        int tableId = 8;
-        DataBase banco = new DataBase();
+        private static int tableId = 8;
         public int idMusculo, idMovimento;
         /**
          * Classe com todos os atributos de um movimentomusculo.
@@ -27,84 +25,84 @@ namespace movimentomusculo
         /**
          * Cria a relação para cadastro dos movimento do musculo, contendo um id que vem da relação de outra tabela (musculo) como chave primária e estrangeira, assim como idMovimento, que vem da relação movimento.
          */
-        public void Create()
+        public static void Create()
         {
-            using (banco.conn = new SqliteConnection(GlobalController.instance.path))
+            using (GlobalController.instance.conn = new SqliteConnection(GlobalController.instance.path))
             {
-                banco.conn.Open();
-                banco.cmd = banco.conn.CreateCommand();
+                GlobalController.instance.conn.Open();
+                GlobalController.instance.cmd = GlobalController.instance.conn.CreateCommand();
 
-                banco.sqlQuery = "CREATE TABLE IF NOT EXISTS MOVIMENTOMUSCULO (idMusculo INTEGER not null,idMovimento INTEGER not null, foreign key (idMovimento) references MOVIMENTO (idMovimento),foreign key (idMusculo) references MUSCULO (idMusculo),primary key (idMusculo, idMovimento));";
+                GlobalController.instance.sqlQuery = "CREATE TABLE IF NOT EXISTS MOVIMENTOMUSCULO (idMusculo INTEGER not null,idMovimento INTEGER not null, foreign key (idMovimento) references MOVIMENTO (idMovimento),foreign key (idMusculo) references MUSCULO (idMusculo),primary key (idMusculo, idMovimento));";
 
-                banco.cmd.CommandText = banco.sqlQuery;
-                banco.cmd.ExecuteScalar();
-                banco.conn.Close();
+                GlobalController.instance.cmd.CommandText = GlobalController.instance.sqlQuery;
+                GlobalController.instance.cmd.ExecuteScalar();
+                GlobalController.instance.conn.Close();
             }
         }
 
         /**
          * Função que insere dados necessários para cadastro de movimentos dos musculos na relação MovimentoMusculo.
          */
-        public void Insert(int idMusculo,
+        public static void Insert(int idMusculo,
             int idMovimento)
         {
-            using (banco.conn = new SqliteConnection(GlobalController.instance.path))
+            using (GlobalController.instance.conn = new SqliteConnection(GlobalController.instance.path))
             {
-                banco.conn.Open();
-                banco.cmd = banco.conn.CreateCommand();
-                banco.sqlQuery = "insert into MOVIMENTOMUSCULO (";
+                GlobalController.instance.conn.Open();
+                GlobalController.instance.cmd = GlobalController.instance.conn.CreateCommand();
+                GlobalController.instance.sqlQuery = "insert into MOVIMENTOMUSCULO (";
 
                 int tableSize = TablesManager.instance.Tables[tableId].Length;
 
                 for (int i = 0; i < tableSize; ++i) {
                     string aux = (i+1 == tableSize) ? (")") : (",");
-                    banco.sqlQuery += (TablesManager.instance.Tables[tableId].colName[i] + aux);
+                    GlobalController.instance.sqlQuery += (TablesManager.instance.Tables[tableId].colName[i] + aux);
                 }
 
-                banco.sqlQuery += string.Format(" values (\"{0}\",\"{1}\")", idMusculo,
+                GlobalController.instance.sqlQuery += string.Format(" values (\"{0}\",\"{1}\")", idMusculo,
                     idMovimento);
 
-                banco.cmd.CommandText = banco.sqlQuery;
-                banco.cmd.ExecuteScalar();
-                banco.conn.Close();
+                GlobalController.instance.cmd.CommandText = GlobalController.instance.sqlQuery;
+                GlobalController.instance.cmd.ExecuteScalar();
+                GlobalController.instance.conn.Close();
             }
         }
 
         /**
          * Função que atualiza dados já cadastrados anteriormente na relação MovimentoMusculo.
          */
-        public void Update(int idMusculo, int idMovimento)
+        public static void Update(int idMusculo, int idMovimento)
         {
-            using (banco.conn = new SqliteConnection(GlobalController.instance.path))
+            using (GlobalController.instance.conn = new SqliteConnection(GlobalController.instance.path))
             {
-                banco.conn.Open();
-                banco.cmd = banco.conn.CreateCommand();
+                GlobalController.instance.conn.Open();
+                GlobalController.instance.cmd = GlobalController.instance.conn.CreateCommand();
 
-                banco.sqlQuery = string.Format("UPDATE \"{0}\" set ", TablesManager.instance.Tables[tableId].tableName);
+                GlobalController.instance.sqlQuery = string.Format("UPDATE \"{0}\" set ", TablesManager.instance.Tables[tableId].tableName);
 
-                banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",", TablesManager.instance.Tables[tableId].colName[0], idMusculo);
-                banco.sqlQuery += string.Format("\"{0}\"=\"{1}\" ", TablesManager.instance.Tables[tableId].colName[1], idMovimento);
+                GlobalController.instance.sqlQuery += string.Format("\"{0}\"=\"{1}\",", TablesManager.instance.Tables[tableId].colName[0], idMusculo);
+                GlobalController.instance.sqlQuery += string.Format("\"{0}\"=\"{1}\" ", TablesManager.instance.Tables[tableId].colName[1], idMovimento);
 
-                banco.sqlQuery += string.Format("WHERE \"{0}\" = \"{1}\", \"{2}\" = \"{3}\"", TablesManager.instance.Tables[tableId].colName[0], idMusculo, TablesManager.instance.Tables[tableId].colName[1], idMusculo);
+                GlobalController.instance.sqlQuery += string.Format("WHERE \"{0}\" = \"{1}\", \"{2}\" = \"{3}\"", TablesManager.instance.Tables[tableId].colName[0], idMusculo, TablesManager.instance.Tables[tableId].colName[1], idMusculo);
 
-                banco.cmd.CommandText = banco.sqlQuery;
-                banco.cmd.ExecuteScalar();
-                banco.conn.Close();
+                GlobalController.instance.cmd.CommandText = GlobalController.instance.sqlQuery;
+                GlobalController.instance.cmd.ExecuteScalar();
+                GlobalController.instance.conn.Close();
             }
         }
 
         /**
          * Função que lê dados já cadastrados anteriormente na relação MovimentoMusculo.
          */
-        public List<MovimentoMusculo> Read()
+        public static List<MovimentoMusculo> Read()
         {
-            using (banco.conn = new SqliteConnection(GlobalController.instance.path))
+            using (GlobalController.instance.conn = new SqliteConnection(GlobalController.instance.path))
             {
-                banco.conn.Open();
-                banco.cmd = banco.conn.CreateCommand();
-                banco.sqlQuery = "SELECT * " + "FROM MOVIMENTOMUSCULO";
-                banco.cmd.CommandText = banco.sqlQuery;
-                IDataReader reader = banco.cmd.ExecuteReader();
+                GlobalController.instance.conn.Open();
+                GlobalController.instance.cmd = GlobalController.instance.conn.CreateCommand();
+                GlobalController.instance.sqlQuery = "SELECT * " + "FROM MOVIMENTOMUSCULO";
+                GlobalController.instance.cmd.CommandText = GlobalController.instance.sqlQuery;
+                IDataReader reader = GlobalController.instance.cmd.ExecuteReader();
 
                 List<MovimentoMusculo> mm = new List<MovimentoMusculo>();
 
@@ -121,10 +119,10 @@ namespace movimentomusculo
                 }
                 reader.Close();
                 reader = null;
-                banco.cmd.Dispose();
-                banco.cmd = null;
-                banco.conn.Close();
-                banco.conn = null;
+                GlobalController.instance.cmd.Dispose();
+                GlobalController.instance.cmd = null;
+                GlobalController.instance.conn.Close();
+                GlobalController.instance.conn = null;
                 return mm;
             }
         }
@@ -132,36 +130,36 @@ namespace movimentomusculo
         /**
          * Função que deleta dados cadastrados anteriormente na relação MovimentoMusculo.
          */
-        public void DeleteValue(int id1, int id2)
+        public static void DeleteValue(int id1, int id2)
         {
-            using (banco.conn = new SqliteConnection(GlobalController.instance.path))
+            using (GlobalController.instance.conn = new SqliteConnection(GlobalController.instance.path))
             {
-                banco.conn.Open();
-                banco.cmd = banco.conn.CreateCommand();
+                GlobalController.instance.conn.Open();
+                GlobalController.instance.cmd = GlobalController.instance.conn.CreateCommand();
 
-                banco.sqlQuery = string.Format("delete from \"{0}\" WHERE \"{1}\" = \"{2}\" AND \"{3}\" = \"{4}\"", TablesManager.instance.Tables[tableId].tableName, TablesManager.instance.Tables[tableId].colName[0], id1, TablesManager.instance.Tables[tableId].colName[1], id2);
+                GlobalController.instance.sqlQuery = string.Format("delete from \"{0}\" WHERE \"{1}\" = \"{2}\" AND \"{3}\" = \"{4}\"", TablesManager.instance.Tables[tableId].tableName, TablesManager.instance.Tables[tableId].colName[0], id1, TablesManager.instance.Tables[tableId].colName[1], id2);
 
-                banco.cmd.CommandText = banco.sqlQuery;
-                banco.cmd.ExecuteScalar();
-                banco.conn.Close();
+                GlobalController.instance.cmd.CommandText = GlobalController.instance.sqlQuery;
+                GlobalController.instance.cmd.ExecuteScalar();
+                GlobalController.instance.conn.Close();
             }
         }
 
         /**
          * Função que apaga a relação MovimentoMusculo inteira de uma vez.
          */
-        public void Drop()
+        public static void Drop()
         {
-            using (banco.conn = new SqliteConnection(GlobalController.instance.path))
+            using (GlobalController.instance.conn = new SqliteConnection(GlobalController.instance.path))
             {
-                banco.conn.Open();
-                banco.cmd = banco.conn.CreateCommand();
+                GlobalController.instance.conn.Open();
+                GlobalController.instance.cmd = GlobalController.instance.conn.CreateCommand();
 
-                banco.sqlQuery = string.Format("DROP TABLE IF EXISTS \"{0}\"", TablesManager.instance.Tables[tableId].tableName);
+                GlobalController.instance.sqlQuery = string.Format("DROP TABLE IF EXISTS \"{0}\"", TablesManager.instance.Tables[tableId].tableName);
 
-                banco.cmd.CommandText = banco.sqlQuery;
-                banco.cmd.ExecuteScalar();
-                banco.conn.Close();
+                GlobalController.instance.cmd.CommandText = GlobalController.instance.sqlQuery;
+                GlobalController.instance.cmd.ExecuteScalar();
+                GlobalController.instance.conn.Close();
             }
         }
     }

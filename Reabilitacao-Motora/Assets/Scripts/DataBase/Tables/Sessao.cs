@@ -1,7 +1,6 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using DataBaseAttributes;
 using Mono.Data.Sqlite;
 using System.Data;
 
@@ -12,8 +11,7 @@ namespace sessao
    */
     public class Sessao
     {
-        int tableId = 6;
-        DataBase banco = new DataBase();
+        private static int tableId = 6;
         public int idSessao, idFisioterapeuta, idPaciente;
         public string dataSessao, observacaoSessao;
 
@@ -32,94 +30,94 @@ namespace sessao
         /**
         * Cria a relação para sessão, contendo um id gerado automaticamente pelo banco como chave primária.
          */
-        public void Create()
+        public static void Create()
         {
-            using (banco.conn = new SqliteConnection(GlobalController.instance.path))
+            using (GlobalController.instance.conn = new SqliteConnection(GlobalController.instance.path))
             {
-                banco.conn.Open();
-                banco.cmd = banco.conn.CreateCommand();
+                GlobalController.instance.conn.Open();
+                GlobalController.instance.cmd = GlobalController.instance.conn.CreateCommand();
 
-                banco.sqlQuery = "CREATE TABLE IF NOT EXISTS SESSAO (idSessao INTEGER primary key AUTOINCREMENT,idFisioterapeuta INTEGER not null,idPaciente INTEGER not null,dataSessao DATE not null,observacaoSessao VARCHAR (300),foreign key (idPaciente) references PACIENTE (idPaciente),foreign key (idFisioterapeuta) references FISIOTERAPEUTA (idFisioterapeuta));";
+                GlobalController.instance.sqlQuery = "CREATE TABLE IF NOT EXISTS SESSAO (idSessao INTEGER primary key AUTOINCREMENT,idFisioterapeuta INTEGER not null,idPaciente INTEGER not null,dataSessao DATE not null,observacaoSessao VARCHAR (300),foreign key (idPaciente) references PACIENTE (idPaciente),foreign key (idFisioterapeuta) references FISIOTERAPEUTA (idFisioterapeuta));";
 
-                banco.cmd.CommandText = banco.sqlQuery;
-                banco.cmd.ExecuteScalar();
-                banco.conn.Close();
+                GlobalController.instance.cmd.CommandText = GlobalController.instance.sqlQuery;
+                GlobalController.instance.cmd.ExecuteScalar();
+                GlobalController.instance.conn.Close();
             }
         }
 
         /**
         * Função que insere dados na tabela de sessão.
          */
-        public void Insert(int idFisioterapeuta,
+        public static void Insert(int idFisioterapeuta,
             int idPaciente,
             string dataSessao,
             string observacaoSessao)
         {
-            using (banco.conn = new SqliteConnection(GlobalController.instance.path))
+            using (GlobalController.instance.conn = new SqliteConnection(GlobalController.instance.path))
             {
-                banco.conn.Open();
-                banco.cmd = banco.conn.CreateCommand();
-                banco.sqlQuery = "insert into SESSAO (";
+                GlobalController.instance.conn.Open();
+                GlobalController.instance.cmd = GlobalController.instance.conn.CreateCommand();
+                GlobalController.instance.sqlQuery = "insert into SESSAO (";
 
                 int tableSize = TablesManager.instance.Tables[tableId].Length;
 
                 for (int i = 1; i < tableSize; ++i) {
                     string aux = (i+1 == tableSize) ? (")") : (",");
-                    banco.sqlQuery += (TablesManager.instance.Tables[tableId].colName[i] + aux);
+                    GlobalController.instance.sqlQuery += (TablesManager.instance.Tables[tableId].colName[i] + aux);
                 }
 
-                banco.sqlQuery += string.Format(" values (\"{0}\",\"{1}\",\"{2}\",\"{3}\")", idFisioterapeuta,
+                GlobalController.instance.sqlQuery += string.Format(" values (\"{0}\",\"{1}\",\"{2}\",\"{3}\")", idFisioterapeuta,
                     idPaciente,
                     dataSessao,
                     observacaoSessao);
 
-                banco.cmd.CommandText = banco.sqlQuery;
-                banco.cmd.ExecuteScalar();
-                banco.conn.Close();
+                GlobalController.instance.cmd.CommandText = GlobalController.instance.sqlQuery;
+                GlobalController.instance.cmd.ExecuteScalar();
+                GlobalController.instance.conn.Close();
             }
         }
 
         /**
         * Função que atualiza dados já cadastrados anteriormente na relação de sessão.
          */
-        public void Update(int id,
+        public static void Update(int id,
             int idFisioterapeuta,
             int idPaciente,
             string dataSessao,
             string observacaoSessao)
         {
-            using (banco.conn = new SqliteConnection(GlobalController.instance.path))
+            using (GlobalController.instance.conn = new SqliteConnection(GlobalController.instance.path))
             {
-                banco.conn.Open();
-                banco.cmd = banco.conn.CreateCommand();
+                GlobalController.instance.conn.Open();
+                GlobalController.instance.cmd = GlobalController.instance.conn.CreateCommand();
 
-                banco.sqlQuery = string.Format("UPDATE \"{0}\" set ", TablesManager.instance.Tables[tableId].tableName);
+                GlobalController.instance.sqlQuery = string.Format("UPDATE \"{0}\" set ", TablesManager.instance.Tables[tableId].tableName);
 
-                banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",", TablesManager.instance.Tables[tableId].colName[1], idFisioterapeuta);
-                banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",", TablesManager.instance.Tables[tableId].colName[2], idPaciente);
-                banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",", TablesManager.instance.Tables[tableId].colName[3], dataSessao);
-                banco.sqlQuery += string.Format("\"{0}\"=\"{1}\" ", TablesManager.instance.Tables[tableId].colName[4], observacaoSessao);
+                GlobalController.instance.sqlQuery += string.Format("\"{0}\"=\"{1}\",", TablesManager.instance.Tables[tableId].colName[1], idFisioterapeuta);
+                GlobalController.instance.sqlQuery += string.Format("\"{0}\"=\"{1}\",", TablesManager.instance.Tables[tableId].colName[2], idPaciente);
+                GlobalController.instance.sqlQuery += string.Format("\"{0}\"=\"{1}\",", TablesManager.instance.Tables[tableId].colName[3], dataSessao);
+                GlobalController.instance.sqlQuery += string.Format("\"{0}\"=\"{1}\" ", TablesManager.instance.Tables[tableId].colName[4], observacaoSessao);
 
-                banco.sqlQuery += string.Format("WHERE \"{0}\" = \"{1}\"", TablesManager.instance.Tables[tableId].colName[0], id);
+                GlobalController.instance.sqlQuery += string.Format("WHERE \"{0}\" = \"{1}\"", TablesManager.instance.Tables[tableId].colName[0], id);
 
-                banco.cmd.CommandText = banco.sqlQuery;
-                banco.cmd.ExecuteScalar();
-                banco.conn.Close();
+                GlobalController.instance.cmd.CommandText = GlobalController.instance.sqlQuery;
+                GlobalController.instance.cmd.ExecuteScalar();
+                GlobalController.instance.conn.Close();
             }
         }
 
         /**
         * Função que lê dados já cadastrados anteriormente na relação de sessão.
          */
-        public List<Sessao> Read()
+        public static List<Sessao> Read()
         {
-            using (banco.conn = new SqliteConnection(GlobalController.instance.path))
+            using (GlobalController.instance.conn = new SqliteConnection(GlobalController.instance.path))
             {
-                banco.conn.Open();
-                banco.cmd = banco.conn.CreateCommand();
-                banco.sqlQuery = "SELECT * " + "FROM SESSAO";
-                banco.cmd.CommandText = banco.sqlQuery;
-                IDataReader reader = banco.cmd.ExecuteReader();
+                GlobalController.instance.conn.Open();
+                GlobalController.instance.cmd = GlobalController.instance.conn.CreateCommand();
+                GlobalController.instance.sqlQuery = "SELECT * " + "FROM SESSAO";
+                GlobalController.instance.cmd.CommandText = GlobalController.instance.sqlQuery;
+                IDataReader reader = GlobalController.instance.cmd.ExecuteReader();
 
                 List<Sessao> s = new List<Sessao>();
 
@@ -142,26 +140,26 @@ namespace sessao
                 }
                 reader.Close();
                 reader = null;
-                banco.cmd.Dispose();
-                banco.cmd = null;
-                banco.conn.Close();
-                banco.conn = null;
+                GlobalController.instance.cmd.Dispose();
+                GlobalController.instance.cmd = null;
+                GlobalController.instance.conn.Close();
+                GlobalController.instance.conn = null;
                 return s;
             }
         }
 
 
-        public Sessao ReadValue (int id)
+        public static Sessao ReadValue (int id)
         {
-            using (banco.conn = new SqliteConnection(GlobalController.instance.path))
+            using (GlobalController.instance.conn = new SqliteConnection(GlobalController.instance.path))
             {
-                banco.conn.Open();
-                banco.cmd = banco.conn.CreateCommand();
-                banco.sqlQuery = "SELECT * " + string.Format("FROM \"{0}\" WHERE \"{1}\" = \"{2}\";", TablesManager.instance.Tables[tableId].tableName, 
+                GlobalController.instance.conn.Open();
+                GlobalController.instance.cmd = GlobalController.instance.conn.CreateCommand();
+                GlobalController.instance.sqlQuery = "SELECT * " + string.Format("FROM \"{0}\" WHERE \"{1}\" = \"{2}\";", TablesManager.instance.Tables[tableId].tableName, 
                     TablesManager.instance.Tables[tableId].colName[0], 
                     id);
-                banco.cmd.CommandText = banco.sqlQuery;
-                IDataReader reader = banco.cmd.ExecuteReader();
+                GlobalController.instance.cmd.CommandText = GlobalController.instance.sqlQuery;
+                IDataReader reader = GlobalController.instance.cmd.ExecuteReader();
 
                 int idSessao = 0;
                 int idFisioterapeuta = 0;
@@ -179,10 +177,10 @@ namespace sessao
 
                 reader.Close();
                 reader = null;
-                banco.cmd.Dispose();
-                banco.cmd = null;
-                banco.conn.Close();
-                banco.conn = null;
+                GlobalController.instance.cmd.Dispose();
+                GlobalController.instance.cmd = null;
+                GlobalController.instance.conn.Close();
+                GlobalController.instance.conn = null;
                 return x;
             }
         }
@@ -190,36 +188,36 @@ namespace sessao
         /**
         * Função que deleta dados cadastrados anteriormente na relação de sessão.
          */
-        public void DeleteValue(int id)
+        public static void DeleteValue(int id)
         {
-            using (banco.conn = new SqliteConnection(GlobalController.instance.path))
+            using (GlobalController.instance.conn = new SqliteConnection(GlobalController.instance.path))
             {
-                banco.conn.Open();
-                banco.cmd = banco.conn.CreateCommand();
+                GlobalController.instance.conn.Open();
+                GlobalController.instance.cmd = GlobalController.instance.conn.CreateCommand();
 
-                banco.sqlQuery = string.Format("delete from \"{0}\" WHERE \"{1}\" = \"{2}\"", TablesManager.instance.Tables[tableId].tableName, TablesManager.instance.Tables[tableId].colName[0], id);
+                GlobalController.instance.sqlQuery = string.Format("delete from \"{0}\" WHERE \"{1}\" = \"{2}\"", TablesManager.instance.Tables[tableId].tableName, TablesManager.instance.Tables[tableId].colName[0], id);
 
-                banco.cmd.CommandText = banco.sqlQuery;
-                banco.cmd.ExecuteScalar();
-                banco.conn.Close();
+                GlobalController.instance.cmd.CommandText = GlobalController.instance.sqlQuery;
+                GlobalController.instance.cmd.ExecuteScalar();
+                GlobalController.instance.conn.Close();
             }
         }
 
         /**
         * Função que apaga a relação de sessão inteira de uma vez.
          */
-        public void Drop()
+        public static void Drop()
         {
-            using (banco.conn = new SqliteConnection(GlobalController.instance.path))
+            using (GlobalController.instance.conn = new SqliteConnection(GlobalController.instance.path))
             {
-                banco.conn.Open();
-                banco.cmd = banco.conn.CreateCommand();
+                GlobalController.instance.conn.Open();
+                GlobalController.instance.cmd = GlobalController.instance.conn.CreateCommand();
 
-                banco.sqlQuery = string.Format("DROP TABLE IF EXISTS \"{0}\"", TablesManager.instance.Tables[tableId].tableName);
+                GlobalController.instance.sqlQuery = string.Format("DROP TABLE IF EXISTS \"{0}\"", TablesManager.instance.Tables[tableId].tableName);
 
-                banco.cmd.CommandText = banco.sqlQuery;
-                banco.cmd.ExecuteScalar();
-                banco.conn.Close();
+                GlobalController.instance.cmd.CommandText = GlobalController.instance.sqlQuery;
+                GlobalController.instance.cmd.ExecuteScalar();
+                GlobalController.instance.conn.Close();
             }
         }
     }

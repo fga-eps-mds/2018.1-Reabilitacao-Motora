@@ -7,13 +7,12 @@ using movimento;
 public class instanciateMovement : MonoBehaviour {
 
 	public GameObject buttonPrefab;
-	string path;
-	Movimento tableMovimento;
-	List<Movimento.Movimentos> values;
+
+	List<Movimento> values;
 
 	int z = 10;
 
-	void MyAwesomeCreator(int posy, Movimento.Movimentos r)
+	void MyAwesomeCreator(int posy, Movimento r)
 	{
 		GameObject go = Instantiate(buttonPrefab, transform);
 
@@ -28,11 +27,9 @@ public class instanciateMovement : MonoBehaviour {
 
 	public void Awake ()
 	{
-		path = "URI=file:" + Application.dataPath + "/Plugins/fisiotech.db";
-
 		Initialize ();
 
-		values = tableMovimento.Read();
+		values = Movimento.Read();
 
 		foreach (var l in values)
 		{
@@ -45,7 +42,6 @@ public class instanciateMovement : MonoBehaviour {
 
 	void Initialize()
 	{
-	    tableMovimento = new Movimento(path);
-	    values = new List<Movimento.Movimentos>();
+	    values = new List<Movimento>();
 	}
 }

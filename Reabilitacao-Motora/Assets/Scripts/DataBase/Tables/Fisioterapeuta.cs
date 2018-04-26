@@ -1,7 +1,6 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using DataBaseAttributes;
 using Mono.Data.Sqlite;
 using System.Data;
 using pessoa;
@@ -13,8 +12,7 @@ namespace fisioterapeuta
    */
     public class Fisioterapeuta
     {
-        int tableId = 2;
-        DataBase banco = new DataBase();
+        private static int tableId = 2;
         public int idFisioterapeuta, idPessoa;
         public string login, senha, regiao, crefito;
         public Pessoa persona;
@@ -30,112 +28,112 @@ namespace fisioterapeuta
             this.senha = s;
             this.regiao = r;
             this.crefito = c;
-            this.persona = persona.ReadValue(idp);
+            this.persona = Pessoa.ReadValue(idp);
             
         }
 
         /**
          * Cria a relação para fisioterapeuta, contendo um id gerado automaticamente pelo banco como chave primária.
          */
-        public void Create()
+        public static void Create()
         {
-            using (banco.conn = new SqliteConnection(GlobalController.instance.path))
+            using (GlobalController.instance.conn = new SqliteConnection(GlobalController.instance.path))
             {
-                banco.conn.Open();
-                banco.cmd = banco.conn.CreateCommand();
+                GlobalController.instance.conn.Open();
+                GlobalController.instance.cmd = GlobalController.instance.conn.CreateCommand();
 
-                banco.sqlQuery = "CREATE TABLE IF NOT EXISTS FISIOTERAPEUTA (idFisioterapeuta INTEGER primary key AUTOINCREMENT,idPessoa INTEGER not null,login VARCHAR (255) not null,senha VARCHAR (255) not null,regiao VARCHAR (2),crefito VARCHAR (10),foreign key (idPessoa) references PESSOA (idPessoa),constraint crefito_regiao UNIQUE (crefito, regiao), constraint login_senha UNIQUE (login, senha));";
+                GlobalController.instance.sqlQuery = "CREATE TABLE IF NOT EXISTS FISIOTERAPEUTA (idFisioterapeuta INTEGER primary key AUTOINCREMENT,idPessoa INTEGER not null,login VARCHAR (255) not null,senha VARCHAR (255) not null,regiao VARCHAR (2),crefito VARCHAR (10),foreign key (idPessoa) references PESSOA (idPessoa),constraint crefito_regiao UNIQUE (crefito, regiao), constraint login_senha UNIQUE (login, senha));";
 
-                banco.cmd.CommandText = banco.sqlQuery;
-                banco.cmd.ExecuteScalar();
-                banco.conn.Close();
+                GlobalController.instance.cmd.CommandText = GlobalController.instance.sqlQuery;
+                GlobalController.instance.cmd.ExecuteScalar();
+                GlobalController.instance.conn.Close();
             }
         }
 
         /**
          * Função que insere dados necessários para cadastro dos fisioterapeutas na relação fisioterapeuta.
          */
-        public void Insert(int idPessoa, string login, string senha)
+        public static void Insert(int idPessoa, string login, string senha)
         {
-            using (banco.conn = new SqliteConnection(GlobalController.instance.path))
+            using (GlobalController.instance.conn = new SqliteConnection(GlobalController.instance.path))
             {
-                banco.conn.Open();
-                banco.cmd = banco.conn.CreateCommand();
-                banco.sqlQuery = "insert into FISIOTERAPEUTA (";
+                GlobalController.instance.conn.Open();
+                GlobalController.instance.cmd = GlobalController.instance.conn.CreateCommand();
+                GlobalController.instance.sqlQuery = "insert into FISIOTERAPEUTA (";
 
                 int tableSize =  TablesManager.instance.Tables[tableId].Length;
 
                 for (int i = 1; i < tableSize; ++i) {
                     string aux = (i+1 == tableSize) ? (")") : (",");
-                    banco.sqlQuery += ( TablesManager.instance.Tables[tableId].colName[i] + aux);
+                    GlobalController.instance.sqlQuery += ( TablesManager.instance.Tables[tableId].colName[i] + aux);
                 }
 
-                banco.sqlQuery += string.Format(" values (\"{0}\",\"{1}\",\"{2}\")", idPessoa,
+                GlobalController.instance.sqlQuery += string.Format(" values (\"{0}\",\"{1}\",\"{2}\")", idPessoa,
                     login,
                     senha);
 
-                banco.cmd.CommandText = banco.sqlQuery;
-                banco.cmd.ExecuteScalar();
-                banco.conn.Close();
+                GlobalController.instance.cmd.CommandText = GlobalController.instance.sqlQuery;
+                GlobalController.instance.cmd.ExecuteScalar();
+                GlobalController.instance.conn.Close();
             }
         }
 
         /**
          * Função que insere dados necessários para cadastro dos pacientes do fisioterapeuta na relação fisioterapeuta.
          */
-        public void Insert(int idPessoa,
+        public static void Insert(int idPessoa,
             string login,
             string senha,
             string regiao,
             string crefito)
         {
-            using (banco.conn = new SqliteConnection(GlobalController.instance.path))
+            using (GlobalController.instance.conn = new SqliteConnection(GlobalController.instance.path))
             {
-                banco.conn.Open();
-                banco.cmd = banco.conn.CreateCommand();
-                banco.sqlQuery = "insert into FISIOTERAPEUTA (";
+                GlobalController.instance.conn.Open();
+                GlobalController.instance.cmd = GlobalController.instance.conn.CreateCommand();
+                GlobalController.instance.sqlQuery = "insert into FISIOTERAPEUTA (";
 
                 int tableSize =  TablesManager.instance.Tables[tableId].Length;
 
                 for (int i = 1; i < tableSize; ++i) {
                     string aux = (i+1 == tableSize) ? (")") : (",");
-                    banco.sqlQuery += ( TablesManager.instance.Tables[tableId].colName[i] + aux);
+                    GlobalController.instance.sqlQuery += ( TablesManager.instance.Tables[tableId].colName[i] + aux);
                 }
 
-                banco.sqlQuery += string.Format(" values (\"{0}\",\"{1}\",\"{2}\",\"{3}\", \"{4}\")", idPessoa,
+                GlobalController.instance.sqlQuery += string.Format(" values (\"{0}\",\"{1}\",\"{2}\",\"{3}\", \"{4}\")", idPessoa,
                     login,
                     senha,
                     regiao,
                     crefito);
 
-                banco.cmd.CommandText = banco.sqlQuery;
-                banco.cmd.ExecuteScalar();
-                banco.conn.Close();
+                GlobalController.instance.cmd.CommandText = GlobalController.instance.sqlQuery;
+                GlobalController.instance.cmd.ExecuteScalar();
+                GlobalController.instance.conn.Close();
             }
         }
 
         /**
          * Função que atualiza dados já cadastrados anteriormente na relação fisioterapeuta.
          */
-        public void Update(int id,
+        public static void Update(int id,
             int idPessoa,
             string senha)
         {
-            using (banco.conn = new SqliteConnection(GlobalController.instance.path))
+            using (GlobalController.instance.conn = new SqliteConnection(GlobalController.instance.path))
             {
-                banco.conn.Open();
-                banco.cmd = banco.conn.CreateCommand();
+                GlobalController.instance.conn.Open();
+                GlobalController.instance.cmd = GlobalController.instance.conn.CreateCommand();
 
-                banco.sqlQuery = string.Format("UPDATE \"{0}\" set ",  TablesManager.instance.Tables[tableId].tableName);
+                GlobalController.instance.sqlQuery = string.Format("UPDATE \"{0}\" set ",  TablesManager.instance.Tables[tableId].tableName);
 
-                banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",",  TablesManager.instance.Tables[tableId].colName[1], idPessoa);
-                banco.sqlQuery += string.Format("\"{0}\"=\"{1}\" ",  TablesManager.instance.Tables[tableId].colName[3], senha);
+                GlobalController.instance.sqlQuery += string.Format("\"{0}\"=\"{1}\",",  TablesManager.instance.Tables[tableId].colName[1], idPessoa);
+                GlobalController.instance.sqlQuery += string.Format("\"{0}\"=\"{1}\" ",  TablesManager.instance.Tables[tableId].colName[3], senha);
 
-                banco.sqlQuery += string.Format("WHERE \"{0}\" = \"{1}\"",  TablesManager.instance.Tables[tableId].colName[0], id);
+                GlobalController.instance.sqlQuery += string.Format("WHERE \"{0}\" = \"{1}\"",  TablesManager.instance.Tables[tableId].colName[0], id);
 
-                banco.cmd.CommandText = banco.sqlQuery;
-                banco.cmd.ExecuteScalar();
-                banco.conn.Close();
+                GlobalController.instance.cmd.CommandText = GlobalController.instance.sqlQuery;
+                GlobalController.instance.cmd.ExecuteScalar();
+                GlobalController.instance.conn.Close();
             }
         }
 
@@ -143,44 +141,44 @@ namespace fisioterapeuta
         /**
          * Função que atualiza dados já cadastrados anteriormente na relação fisioterapeuta.
          */
-        public void Update(int id,
+        public static void Update(int id,
             int idPessoa,
             string senha,
             string regiao,
             string crefito)
         {
-            using (banco.conn = new SqliteConnection(GlobalController.instance.path))
+            using (GlobalController.instance.conn = new SqliteConnection(GlobalController.instance.path))
             {
-                banco.conn.Open();
-                banco.cmd = banco.conn.CreateCommand();
+                GlobalController.instance.conn.Open();
+                GlobalController.instance.cmd = GlobalController.instance.conn.CreateCommand();
 
-                banco.sqlQuery = string.Format("UPDATE \"{0}\" set ",  TablesManager.instance.Tables[tableId].tableName);
+                GlobalController.instance.sqlQuery = string.Format("UPDATE \"{0}\" set ",  TablesManager.instance.Tables[tableId].tableName);
 
-                banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",",  TablesManager.instance.Tables[tableId].colName[1], idPessoa);
-                banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",",  TablesManager.instance.Tables[tableId].colName[4], regiao);
-                banco.sqlQuery += string.Format("\"{0}\"=\"{1}\" ",  TablesManager.instance.Tables[tableId].colName[5], crefito);
-                banco.sqlQuery += string.Format("\"{0}\"=\"{1}\" ",  TablesManager.instance.Tables[tableId].colName[3], senha);
+                GlobalController.instance.sqlQuery += string.Format("\"{0}\"=\"{1}\",",  TablesManager.instance.Tables[tableId].colName[1], idPessoa);
+                GlobalController.instance.sqlQuery += string.Format("\"{0}\"=\"{1}\",",  TablesManager.instance.Tables[tableId].colName[4], regiao);
+                GlobalController.instance.sqlQuery += string.Format("\"{0}\"=\"{1}\" ",  TablesManager.instance.Tables[tableId].colName[5], crefito);
+                GlobalController.instance.sqlQuery += string.Format("\"{0}\"=\"{1}\" ",  TablesManager.instance.Tables[tableId].colName[3], senha);
 
-                banco.sqlQuery += string.Format("WHERE \"{0}\" = \"{1}\"",  TablesManager.instance.Tables[tableId].colName[0], id);
+                GlobalController.instance.sqlQuery += string.Format("WHERE \"{0}\" = \"{1}\"",  TablesManager.instance.Tables[tableId].colName[0], id);
 
-                banco.cmd.CommandText = banco.sqlQuery;
-                banco.cmd.ExecuteScalar();
-                banco.conn.Close();
+                GlobalController.instance.cmd.CommandText = GlobalController.instance.sqlQuery;
+                GlobalController.instance.cmd.ExecuteScalar();
+                GlobalController.instance.conn.Close();
             }
         }
 
         /**
          * Função que lê dados já cadastrados anteriormente na relação fisioterapeuta.
          */
-        public List<Fisioterapeuta> Read()
+        public static List<Fisioterapeuta> Read()
         {
-            using (banco.conn = new SqliteConnection(GlobalController.instance.path))
+            using (GlobalController.instance.conn = new SqliteConnection(GlobalController.instance.path))
             {
-                banco.conn.Open();
-                banco.cmd = banco.conn.CreateCommand();
-                banco.sqlQuery = "SELECT * " + "FROM FISIOTERAPEUTA";
-                banco.cmd.CommandText = banco.sqlQuery;
-                IDataReader reader = banco.cmd.ExecuteReader();
+                GlobalController.instance.conn.Open();
+                GlobalController.instance.cmd = GlobalController.instance.conn.CreateCommand();
+                GlobalController.instance.sqlQuery = "SELECT * " + "FROM FISIOTERAPEUTA";
+                GlobalController.instance.cmd.CommandText = GlobalController.instance.sqlQuery;
+                IDataReader reader = GlobalController.instance.cmd.ExecuteReader();
                 List<Fisioterapeuta> f = new List<Fisioterapeuta>();
 
                 while (reader.Read())
@@ -204,25 +202,25 @@ namespace fisioterapeuta
                 }
                 reader.Close();
                 reader = null;
-                banco.cmd.Dispose();
-                banco.cmd = null;
-                banco.conn.Close();
-                banco.conn = null;
+                GlobalController.instance.cmd.Dispose();
+                GlobalController.instance.cmd = null;
+                GlobalController.instance.conn.Close();
+                GlobalController.instance.conn = null;
                 return f;
             }
         }
 
-        public Fisioterapeuta ReadValue (int id)
+        public static Fisioterapeuta ReadValue (int id)
         {
-            using (banco.conn = new SqliteConnection(GlobalController.instance.path))
+            using (GlobalController.instance.conn = new SqliteConnection(GlobalController.instance.path))
             {
-                banco.conn.Open();
-                banco.cmd = banco.conn.CreateCommand();
-                banco.sqlQuery = "SELECT * " + string.Format("FROM \"{0}\" WHERE \"{1}\" = \"{2}\";",  TablesManager.instance.Tables[tableId].tableName, 
+                GlobalController.instance.conn.Open();
+                GlobalController.instance.cmd = GlobalController.instance.conn.CreateCommand();
+                GlobalController.instance.sqlQuery = "SELECT * " + string.Format("FROM \"{0}\" WHERE \"{1}\" = \"{2}\";",  TablesManager.instance.Tables[tableId].tableName, 
                      TablesManager.instance.Tables[tableId].colName[0], 
                     id);
-                banco.cmd.CommandText = banco.sqlQuery;
-                IDataReader reader = banco.cmd.ExecuteReader();
+                GlobalController.instance.cmd.CommandText = GlobalController.instance.sqlQuery;
+                IDataReader reader = GlobalController.instance.cmd.ExecuteReader();
 
                 int idFisioterapeuta = 0;
                 int idPessoa = 0;
@@ -242,10 +240,10 @@ namespace fisioterapeuta
 
                 reader.Close();
                 reader = null;
-                banco.cmd.Dispose();
-                banco.cmd = null;
-                banco.conn.Close();
-                banco.conn = null;
+                GlobalController.instance.cmd.Dispose();
+                GlobalController.instance.cmd = null;
+                GlobalController.instance.conn.Close();
+                GlobalController.instance.conn = null;
                 return x;
             }
         }
@@ -253,36 +251,36 @@ namespace fisioterapeuta
         /**
          * Função que deleta dados cadastrados anteriormente na relação fisioterapeuta.
          */
-        public void DeleteValue(int id)
+        public static void DeleteValue(int id)
         {
-            using (banco.conn = new SqliteConnection(GlobalController.instance.path))
+            using (GlobalController.instance.conn = new SqliteConnection(GlobalController.instance.path))
             {
-                banco.conn.Open();
-                banco.cmd = banco.conn.CreateCommand();
+                GlobalController.instance.conn.Open();
+                GlobalController.instance.cmd = GlobalController.instance.conn.CreateCommand();
 
-                banco.sqlQuery = string.Format("delete from \"{0}\" WHERE \"{1}\" = \"{2}\"",  TablesManager.instance.Tables[tableId].tableName,  TablesManager.instance.Tables[tableId].colName[0], id);
+                GlobalController.instance.sqlQuery = string.Format("delete from \"{0}\" WHERE \"{1}\" = \"{2}\"",  TablesManager.instance.Tables[tableId].tableName,  TablesManager.instance.Tables[tableId].colName[0], id);
 
-                banco.cmd.CommandText = banco.sqlQuery;
-                banco.cmd.ExecuteScalar();
-                banco.conn.Close();
+                GlobalController.instance.cmd.CommandText = GlobalController.instance.sqlQuery;
+                GlobalController.instance.cmd.ExecuteScalar();
+                GlobalController.instance.conn.Close();
             }
         }
 
         /**
          * Função que apaga a relação fisioterapeuta inteira de uma vez.
          */
-        public void Drop()
+        public static void Drop()
         {
-            using (banco.conn = new SqliteConnection(GlobalController.instance.path))
+            using (GlobalController.instance.conn = new SqliteConnection(GlobalController.instance.path))
             {
-                banco.conn.Open();
-                banco.cmd = banco.conn.CreateCommand();
+                GlobalController.instance.conn.Open();
+                GlobalController.instance.cmd = GlobalController.instance.conn.CreateCommand();
 
-                banco.sqlQuery = string.Format("DROP TABLE IF EXISTS \"{0}\"",  TablesManager.instance.Tables[tableId].tableName);
+                GlobalController.instance.sqlQuery = string.Format("DROP TABLE IF EXISTS \"{0}\"",  TablesManager.instance.Tables[tableId].tableName);
 
-                banco.cmd.CommandText = banco.sqlQuery;
-                banco.cmd.ExecuteScalar();
-                banco.conn.Close();
+                GlobalController.instance.cmd.CommandText = GlobalController.instance.sqlQuery;
+                GlobalController.instance.cmd.ExecuteScalar();
+                GlobalController.instance.conn.Close();
             }
         }
     }

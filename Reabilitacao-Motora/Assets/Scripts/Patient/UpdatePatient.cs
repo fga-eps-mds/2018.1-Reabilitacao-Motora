@@ -5,17 +5,12 @@ using UnityEngine.UI;
 
 using pessoa;
 using paciente;
-using telefone;
 
 /**
  * Cria um novo paciente no banco de dados.
  */
 public class UpdatePatient : MonoBehaviour 
 {
-	string path;
-	Pessoa tablePessoa;
-	Paciente tablePaciente;
-
 	public InputField namePatient;
 	public InputField date;
 	public InputField phone1;
@@ -31,7 +26,6 @@ public class UpdatePatient : MonoBehaviour
 	public void updatePatient()
 	{
 
-			path = "URI=file:" + Application.dataPath + "/Plugins/fisiotech.db";
 
 			var dateFormate = "";
 			var trip = date.text.Split('/');
@@ -42,10 +36,7 @@ public class UpdatePatient : MonoBehaviour
 				if (x > 31) dateFormate = trip[2] + "/" + trip[1] + "/" + trip[0];
 				else dateFormate = trip[0] + "/" + trip[1] + "/" + trip[2];
 			}
-		
-			tablePessoa = new Pessoa(path);
-			tablePaciente = new Paciente(path);
-			
+					
 			string newName = (namePatient.text.Length > 0) ? (namePatient.text) : (GlobalController.instance.user.persona.nomePessoa);
 			string newDate = (dateFormate.Length > 0) ? (dateFormate) : (GlobalController.instance.user.persona.dataNascimento);
 			string newP1 = (phone1.text.Length > 0) ? (phone1.text) : (GlobalController.instance.user.persona.telefone1);
@@ -54,12 +45,12 @@ public class UpdatePatient : MonoBehaviour
 
 
 			if (male.isOn) 
-				tablePessoa.Update(GlobalController.instance.user.persona.idPessoa, newName, "m", newDate, newP1, newP2);
+				Pessoa.Update(GlobalController.instance.user.persona.idPessoa, newName, "m", newDate, newP1, newP2);
 			else if(female.isOn)
-				tablePessoa.Update(GlobalController.instance.user.persona.idPessoa, newName, "f", newDate, newP1, newP2);
+				Pessoa.Update(GlobalController.instance.user.persona.idPessoa, newName, "f", newDate, newP1, newP2);
 			
-			List<Pessoa.Pessoas> p = tablePessoa.Read();
+			List<Pessoa> p = Pessoa.Read();
 			
-			tablePaciente.Update(GlobalController.instance.user.idPaciente, GlobalController.instance.user.persona.idPessoa, newNote);
+			Paciente.Update(GlobalController.instance.user.idPaciente, GlobalController.instance.user.persona.idPessoa, newNote);
 	}
 }

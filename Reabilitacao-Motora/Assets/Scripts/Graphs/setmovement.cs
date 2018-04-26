@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class setmovement : MonoBehaviour {
 
-	public Movimento.Movimentos x;
+	public Movimento x;
 
 	public void setemovement ()
 	{
