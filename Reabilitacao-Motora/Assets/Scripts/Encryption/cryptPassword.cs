@@ -4,26 +4,25 @@ using sha_256;
 
 namespace cryptpw 
 {
-    public class cryptPassword 
-    {
-        public string encrypt(string password)
-        {
-            password = SHA_256.GenerateSHA256String(password);
- 
-            string mySalt = BCrypt.GenerateSalt();
-            string myHash = BCrypt.HashPassword(password, mySalt);
+   public class cryptPassword
+   {
+       public string encrypt(string password)
+       {
+           password = SHA_256.GenerateSHA256String(password);
 
-            return myHash;
-        }
+           string mySalt = BCrypt.GenerateSalt();
+           string myHash = BCrypt.HashPassword(password, mySalt);
 
-        public bool uncrypt(string password, string hash)
-        {
-            password = SHA_256.GenerateSHA256String(password);
+           return myHash;
+       }
 
-            bool doesPasswordMatch = BCrypt.CheckPassword(password, hash);
+       public bool uncrypt(string password, string hash)
+       {
+           password = SHA_256.GenerateSHA256String(password);
 
-            return doesPasswordMatch;
-        }
-    }
+           bool doesPasswordMatch = BCrypt.CheckPassword(password, hash);
+
+           return doesPasswordMatch;
+       }
+   }
 }
-
