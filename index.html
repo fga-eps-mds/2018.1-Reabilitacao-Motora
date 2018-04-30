@@ -12,6 +12,7 @@
 
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
   <!-- Custom fonts for this template -->
   <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -30,10 +31,11 @@
   <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
 
-  <!-- Compiled and minified JavaScript -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
-
-
+  <!-- Custom scripts -->
+  <script src="scripts/fetchData.js"></script>
+  <!-- <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script> -->
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
 </head>
 
 <body id="page-top">
@@ -49,13 +51,13 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#about">O projeto</a>
+            <a class="nav-link js-scroll-trigger" href="#about">Sobre</a>
           </li>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#services">Documentos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#portfolio">Informações</a>
+            <a class="nav-link js-scroll-trigger" href="#portfolio">Insights</a>
           </li>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#contact">Outros</a>
@@ -195,101 +197,75 @@
     </div>
   </section>
 
-  <section class="p-0" id="portfolio">
-    <div class="container-fluid p-0">
-      <div class="row no-gutters popup-gallery">
-        <div class="col-lg-4 col-sm-6">
-          <a class="portfolio-box" href="img/portfolio/fullsize/1.jpg">
-            <img class="img-fluid" src="img/portfolio/thumbnails/1.jpg" alt="">
-            <div class="portfolio-box-caption">
-              <div class="portfolio-box-caption-content">
-                <div class="project-category text-faded">
-                  Category
-                </div>
-                <div class="project-name">
-                  Project Name
-                </div>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col-lg-4 col-sm-6">
-          <a class="portfolio-box" href="img/portfolio/fullsize/2.jpg">
-            <img class="img-fluid" src="img/portfolio/thumbnails/2.jpg" alt="">
-            <div class="portfolio-box-caption">
-              <div class="portfolio-box-caption-content">
-                <div class="project-category text-faded">
-                  Category
-                </div>
-                <div class="project-name">
-                  Project Name
-                </div>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col-lg-4 col-sm-6">
-          <a class="portfolio-box" href="img/portfolio/fullsize/3.jpg">
-            <img class="img-fluid" src="img/portfolio/thumbnails/3.jpg" alt="">
-            <div class="portfolio-box-caption">
-              <div class="portfolio-box-caption-content">
-                <div class="project-category text-faded">
-                  Category
-                </div>
-                <div class="project-name">
-                  Project Name
-                </div>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col-lg-4 col-sm-6">
-          <a class="portfolio-box" href="img/portfolio/fullsize/4.jpg">
-            <img class="img-fluid" src="img/portfolio/thumbnails/4.jpg" alt="">
-            <div class="portfolio-box-caption">
-              <div class="portfolio-box-caption-content">
-                <div class="project-category text-faded">
-                  Category
-                </div>
-                <div class="project-name">
-                  Project Name
-                </div>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col-lg-4 col-sm-6">
-          <a class="portfolio-box" href="img/portfolio/fullsize/5.jpg">
-            <img class="img-fluid" src="img/portfolio/thumbnails/5.jpg" alt="">
-            <div class="portfolio-box-caption">
-              <div class="portfolio-box-caption-content">
-                <div class="project-category text-faded">
-                  Category
-                </div>
-                <div class="project-name">
-                  Project Name
-                </div>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col-lg-4 col-sm-6">
-          <a class="portfolio-box" href="img/portfolio/fullsize/6.jpg">
-            <img class="img-fluid" src="img/portfolio/thumbnails/6.jpg" alt="">
-            <div class="portfolio-box-caption">
-              <div class="portfolio-box-caption-content">
-                <div class="project-category text-faded">
-                  Category
-                </div>
-                <div class="project-name">
-                  Project Name
-                </div>
-              </div>
-            </div>
-          </a>
+  <section id="portfolio" class="portfolio-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h2 class="section-heading">Insights </h2>
+          <hr class="my-4">
         </div>
       </div>
     </div>
+    <div class="container">
+      <canvas id="commit-chart"></canvas>
+      <div class="row">
+        <div class="col-lg-3 col-md-6 text-center">
+          <div class="service-box mt-5 mx-auto">
+            <i class="fa fa-4x fa-code-fork text-primary mb-3 sr-icons"></i>
+            <h3 class="mb-3 portfolio-topic">Forks</h3>
+            <p class="text-muted mb-0" id="forks"></p>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 text-center">
+          <div class="service-box mt-5 mx-auto">
+            <i class="fa fa-4x fa-paper-plane text-primary mb-3 sr-icons"></i>
+            <h3 class="mb-3 portfolio-topic">Commits</h3>
+            <p class="text-muted mb-0" id="commits"></p>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 text-center">
+          <div class="service-box mt-5 mx-auto">
+            <i class="fa fa-4x fa-code text-primary mb-3 sr-icons"></i>
+            <h3 class="mb-3 portfolio-topic">Linguagem</h3>
+            <p class="text-muted mb-0" id="language"></p>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 text-center">
+          <div class="service-box mt-5 mx-auto">
+            <i class="fa fa-4x fa-bug text-primary mb-3 sr-icons"></i>
+            <h3 class="mb-3 portfolio-topic">Issues</h3>
+            <p class="text-muted mb-0" id="issues"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="commit-section">
+      <div class="top-commit-container">
+        <h3 class="mb-3 portfolio-topic top-committer-title">Top Committer</h3>
+        <div class="card top-commit-card">
+          <div class="card-image waves-effect waves-block waves-light">
+            <img class="activator" id="top-avatar">
+          </div>
+          <div class="card-content">
+            <span class="card-title activator grey-text text-darken-4" id="top-committer">
+            </span>
+          </div>
+          <div class="card-reveal">
+            <span class="card-title grey-text text-darken-4">Informações
+              <i class="material-icons right">close</i>
+            </span>
+            <p id="top-commit"></p>
+            <p id="top-lines"></p>
+            <a class="waves-effect waves-light btn" id="top-link">Perfil</a>
+          </div>
+        </div>
+      </div>
+      <div class="commit-list-container">
+        <h3 class="mb-3 portfolio-topic top-committer-title">Últimos commits</h3>
+        <ul class="collection commit-list" id="project-list">
+        </ul>
+        </div>
+
   </section>
 
   <section class="bg-dark text-white">
@@ -333,6 +309,10 @@
   <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
   <script src="vendor/scrollreveal/scrollreveal.min.js"></script>
   <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+
+  <!-- materialize -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+
 
   <!-- Custom scripts for this template -->
   <script src="js/creative.min.js"></script>

@@ -26,7 +26,7 @@ const setBasicDynamicData = () => {
     //forks
     let forks = document.getElementById("forks");
     forks.classList.remove("loader");
-    forks.innerHTML = basicInfo.forks_count;
+    forks.innerHTML = "Número total de forks: " + basicInfo.forks_count;
     
 
     //language
@@ -77,9 +77,9 @@ const setTopCommiter = () => {
     let divLines = document.getElementById("top-lines");
     let divLink = document.getElementById("top-link");
 
-    div.innerHTML = topCommitter;
-    divCommmit.innerHTML = topCommit;
-    divLines.innerHTML = topLines;
+    div.innerHTML = topCommitter + `<i class="material-icons right">more_vert</i>`;
+    divCommmit.innerHTML = "Número de commits: " + topCommit;
+    divLines.innerHTML = "Número de linhas: " + topLines;
     avatar.src = topAvatar;
     divLink.href = `https://github.com/${topCommitter}`;
 }
@@ -110,19 +110,20 @@ const setCommitData = () => {
         counter += totalCommits[commit].length;
     }
     commits.classList.remove("loader");
-    commits.innerHTML = counter;
+    commits.innerHTML = "Número total de commits: " + counter;
 
     const template = (author, message, date, avatar_url) => {
         return (
             `
-                <div class="project-item-user">
-                    <div class="user-avatar"><img src="${avatar_url}" alt="avatar"></div>
-                    <div class="user-info"><span class="name">${author}</span></div>
-                </div>
-                <div class="project-item-title"><span class="name">${message}</span></div>
-                <div class="project-item-date"><span class="date">${date}</span></div>
+                <li class="collection-item avatar">
+                    <img src="${avatar_url}" alt="" class="circle">
+                    <span class="title">${author}</span>
+                    <p>${message}
+                        <br> ${date}
+                    </p>
+                </li>
             `
-        )
+            )
     }
 
     for (let i = 0; i < 5; i++) {
@@ -131,7 +132,7 @@ const setCommitData = () => {
         let date = totalCommits[0][i].commit.author.date;
         let avatar_url = totalCommits[0][i].author.avatar_url;
         let list = document.getElementById("project-list");
-        let oneElement = document.createElement("div");
+        let oneElement = document.createElement("li");
         oneElement.className = "project-item";
         oneElement.innerHTML = template(author, message, date, avatar_url);
         list.appendChild(oneElement);
@@ -186,10 +187,10 @@ const startChart = () => {
                     commitData[4].commits
                 ],
                 backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)'
+                    '#0984e3'
                 ],
                 borderColor: [
-                    'rgba(255,99,132,1)'
+                    '#636e72'
                 ],
                 borderWidth: 1
             }]
