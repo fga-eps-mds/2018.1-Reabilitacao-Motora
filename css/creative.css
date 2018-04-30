@@ -126,7 +126,7 @@ img::-moz-selection {
 header.masthead {
   padding-top: 10rem;
   padding-bottom: calc(10rem - 56px);
-  background-image: url("../img/header.jpg");
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../img/header.jpg");
   background-position: center center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -298,5 +298,12 @@ header.masthead {
   .github-icon:hover {
     text-decoration: none;
     color: #333333; }
+
+.repo-container {
+  display: flex; }
+
+.repo-list {
+  width: 50%;
+  margin: 20px; }
 
 /*# sourceMappingURL=creative.css.map */

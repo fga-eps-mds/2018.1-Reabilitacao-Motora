@@ -212,5 +212,8 @@ window.onload = () => {
     getStatisticInfo();
     getCommits(1);
     getCommitPerDay();
+
     getDocumentsInfo();
+    
+    getRepoDocInfo();
 }
