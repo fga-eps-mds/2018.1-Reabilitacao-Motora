@@ -76,11 +76,19 @@
 
 .planning-container {
     display: flex;
-    
 }
 
 .planning-row {
     display: flex;
     justify-content: center;
     width: 50%;
+}
+
+.github-icon {
+    text-decoration: none;
+    color: black;
+    &:hover {
+        text-decoration: none;
+        color: lighten(black, 20%);
+    }
 }
