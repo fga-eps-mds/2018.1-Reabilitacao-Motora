@@ -70,7 +70,7 @@ public class Login : MonoBehaviour
 
 		foreach (var fisio in p) 
 		{			
-			if (fisio.login == login.text && cryptPw.uncrypt(pass.text, fisio.senha)) {
+			if (fisio.login == login.text && cryptPw.uncrypt(pass.text, fisio.senha, login.text)) {
 				return fisio;
 			}
 		}

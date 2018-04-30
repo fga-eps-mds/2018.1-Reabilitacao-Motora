@@ -55,7 +55,7 @@ public class createPhysiotherapist : MonoBehaviour
 	public void savePhysiotherapist()
 	{
 		if (pass.text == confirmPass.text) {
-			string pw = cryptPw.encrypt(pass.text);
+			string pw = cryptPw.encrypt(pass.text, login.text);
 			ColorBlock cb = confirmPass.colors;
 			cb.normalColor = hexToColor(success);
 			confirmPass.colors = cb;

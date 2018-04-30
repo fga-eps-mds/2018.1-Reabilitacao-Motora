@@ -1,28 +1,32 @@
+using UnityEngine;
+using System.Collections;
 using bcrypt;
-using aes256;
 using sha_256;
 
 namespace cryptpw 
 {
    public class cryptPassword
    {
-       public string encrypt(string password)
+       public string encrypt(string password, string username)
        {
-           password = SHA_256.GenerateSHA256String(password);
+            password = SHA_256.GenerateSHA256String(password);
 
-           string mySalt = BCrypt.GenerateSalt();
-           string myHash = BCrypt.HashPassword(password, mySalt);
+            string mySalt = BCrypt.GenerateSalt();
+            password += username;
+            string myHash = BCrypt.HashPassword(password, mySalt);
 
-           return myHash;
+            return myHash;
        }
 
-       public bool uncrypt(string password, string hash)
+       public bool uncrypt(string password, string hash, string username)
        {
-           password = SHA_256.GenerateSHA256String(password);
+            password = SHA_256.GenerateSHA256String(password);
 
-           bool doesPasswordMatch = BCrypt.CheckPassword(password, hash);
+            password += username;
 
-           return doesPasswordMatch;
+            bool doesPasswordMatch = BCrypt.CheckPassword(password, hash);
+
+            return doesPasswordMatch;
        }
    }
 }
