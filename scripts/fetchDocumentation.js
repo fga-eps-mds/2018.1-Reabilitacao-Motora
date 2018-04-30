@@ -31,10 +31,10 @@ const setEpsDocuments = () => {
 
       var doc =
       `
-      <div class="text-center">
+      <div class="text-center document-card">
         <a class="document-text" href="${epsObj[i].url_markdown}">
           <div class="service-box mt-5 mx-auto">
-            <i class="fa fa-4x fa-diamond text-primary mb-3 sr-icons"></i>
+            <i class="fa fa-4x fa-file-text-o text-primary mb-3 sr-icons"></i>
             <h3 class="mb-3">${epsObj[i].name}</h3>
             <p class="text-muted mb-0">${epsObj[i].description}</p>
           </div>
@@ -51,10 +51,10 @@ const setMdsDocuments = () => {
 
       var doc =
       `      
-      <div class="text-center">
+      <div class="text-center document-card">
         <a class="document-text" href="${mdsObj[i].url_markdown}">
           <div class="service-box mt-5 mx-auto">
-            <i class="fa fa-4x fa-diamond text-primary mb-3 sr-icons"></i>
+            <i class="fa fa-4x fa-file-text text-primary mb-3 sr-icons"></i>
             <h3 class="mb-3">${mdsObj[i].name}</h3>
             <p class="text-muted mb-0">${mdsObj[i].description}</p>
           </div>
@@ -73,7 +73,6 @@ const setRelease1Planning = () => {
       `<a href="${r1PlanningObj[i].url_markdown}" class="list-group-item list-group-item-action flex-column align-items-start">
         <div class="d-flex w-100 justify-content-between">
           <h5 class="mb-1">${r1PlanningObj[i].name}</h5>
-          <small>${r1PlanningObj[i].last_update}</small>
         </div>
         <p class="mb-1">${r1PlanningObj[i].description}</p>
         <small>${r1PlanningObj[i].progress}</small>
@@ -91,7 +90,6 @@ const setRelease1Review = () => {
       `<a href="${r1ReviewObj[i].url_markdown}" class="list-group-item list-group-item-action flex-column align-items-start">
         <div class="d-flex w-100 justify-content-between">
           <h5 class="mb-1">${r1ReviewObj[i].name}</h5>
-          <small>${r1ReviewObj[i].last_update}</small>
         </div>
         <p class="mb-1">${r1ReviewObj[i].description}</p>
         <small>${r1ReviewObj[i].progress}</small>
