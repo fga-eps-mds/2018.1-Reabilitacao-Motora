@@ -66,6 +66,7 @@ public class Flow : MonoBehaviour
     public void Movements() 
 	{
 		SceneManager.LoadScene("Movements");
+		SceneManager.LoadScene ("ClinicToMoveMenu", LoadSceneMode.Additive);
 	}
 
 	/**
