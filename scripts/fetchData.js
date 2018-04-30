@@ -3,18 +3,18 @@ function reverseString(s) {
 }
 
 const token_api = reverseString("fb4d5a12cb16327536d9a8dbba29d7f75e42f6bf");
-const base_url = "https://api.github.com"
+const github_url = "https://api.github.com"
 
 
-let basicInfo = {};
-const getBasicInfo = () => {
-    axios.get(`${base_url}/repos/fga-gpp-mds/2018.1-Reabilitacao-Motora`, {
+let basicInformation = {};
+const getbasicInformation = () => {
+    axios.get(`${github_url}/repos/fga-gpp-mds/2018.1-Reabilitacao-Motora`, {
         headers: {
             Authorization: `token ${token_api}`
         }
     })
         .then(function (response) {
-            basicInfo = response.data;
+            basicInformation = response.data;
             setBasicDynamicData();
         }).catch(function (error) {
             console.log(error);
@@ -26,24 +26,24 @@ const setBasicDynamicData = () => {
     //forks
     let forks = document.getElementById("forks");
     forks.classList.remove("loader");
-    forks.innerHTML = "Número total de forks: " + basicInfo.forks_count;
+    forks.innerHTML = "Número total de forks: " + basicInformation.forks_count;
     
 
     //language
     let language = document.getElementById("language");
     language.classList.remove("loader");
-    language.innerHTML = basicInfo.language;
+    language.innerHTML = basicInformation.language;
 
     //issues
     let issues = document.getElementById("issues");
     issues.classList.remove("loader");
-    issues.innerHTML = basicInfo.open_issues;
+    issues.innerHTML = basicInformation.open_issues;
 
 }
 
 let statisticInfo = {};
 const getStatisticInfo = () => {
-    axios.get(`${base_url}/repos/fga-gpp-mds/2018.1-Reabilitacao-Motora/stats/contributors`, {
+    axios.get(`${github_url}/repos/fga-gpp-mds/2018.1-Reabilitacao-Motora/stats/contributors`, {
         headers: {
             Authorization: `token ${token_api}`
         }
@@ -86,7 +86,7 @@ const setTopCommiter = () => {
 
 let totalCommits = [];
 const getCommits = (pageCounter) => {
-    axios.get(`${base_url}/repos/fga-gpp-mds/2018.1-Reabilitacao-Motora/commits?page=${pageCounter}`, {
+    axios.get(`${github_url}/repos/fga-gpp-mds/2018.1-Reabilitacao-Motora/commits?page=${pageCounter}`, {
         headers: {
             Authorization: `token ${token_api}`
         }
@@ -142,7 +142,7 @@ const setCommitData = () => {
 
 let commitsPerDay = [];
 const getCommitPerDay = () => {
-    axios.get(`${base_url}/repos/fga-gpp-mds/2018.1-Reabilitacao-Motora/stats/commit_activity`, {
+    axios.get(`${github_url}/repos/fga-gpp-mds/2018.1-Reabilitacao-Motora/stats/commit_activity`, {
         headers: {
             Authorization: `token ${token_api}`
         }
@@ -208,8 +208,9 @@ const startChart = () => {
 }
 
 window.onload = () => {
-    getBasicInfo();
+    getbasicInformation();
     getStatisticInfo();
     getCommits(1);
     getCommitPerDay();
+    getDocumentsInfo();
 }

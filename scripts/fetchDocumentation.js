@@ -30,14 +30,16 @@ const setEpsDocuments = () => {
     for (i in epsObj) {
 
       var doc =
-      `<a href="${epsObj[i].url_markdown}" class="list-group-item list-group-item-action flex-column align-items-start">
-        <div class="d-flex w-100 justify-content-between">
-          <h5 class="mb-1">${epsObj[i].name}</h5>
-          <small>${epsObj[i].last_update}</small>
-        </div>
-        <p class="mb-1">${epsObj[i].description}</p>
-        <small>${epsObj[i].progress}</small>
-      </a>
+      `
+      <div class="text-center">
+        <a class="document-text" href="${epsObj[i].url_markdown}">
+          <div class="service-box mt-5 mx-auto">
+            <i class="fa fa-4x fa-diamond text-primary mb-3 sr-icons"></i>
+            <h3 class="mb-3">${epsObj[i].name}</h3>
+            <p class="text-muted mb-0">${epsObj[i].description}</p>
+          </div>
+        </a>
+      </div>
       `
       $("#eps-list").append(doc);
     }
@@ -97,6 +99,3 @@ const setRelease1Review = () => {
     }
 }
 
-window.onload = () => {
-    getDocumentsInfo();
-}
