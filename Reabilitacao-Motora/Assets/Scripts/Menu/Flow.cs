@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
 
@@ -159,7 +159,7 @@ public class Flow : MonoBehaviour
 	/**
  	 * Leva para a scene sucess register.
  	 */
-	public void SucessRegister()
+	public void SuccessRegister()
 	{
 		SceneManager.LoadScene("sucessRegister");
 	}
