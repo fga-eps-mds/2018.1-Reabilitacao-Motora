@@ -1,6 +1,6 @@
 ## 1. Relato da _Sprint_
 
-<p align="justify">&emsp;&emsp; A <i>Sprint</i> 04 teve como objetivo o realizar o CRUD de paciente, e realizar a primeira <i>Release</i> da disciplina.</p>
+<p align="justify">&emsp;&emsp; A <i>Sprint</i> 06 teve como objetivo o realizar o CRUD de paciente, e realizar a primeira <i>Release</i> da disciplina.</p>
 
 ---
 
@@ -24,42 +24,51 @@
 
 * **Pontuação Total:** 29
 * **Pontos Concluídos:** 08
+* **Pontos Concluídos da Release:** 84
 * **Pontos Não Agregados:** 21
 
 ------------
 
 ## 3. _Burndown Chart_
 
-![](https://raw.githubusercontent.com/RomeuCarvalhoAntunes/2018.1-Reabilitacao-Motora/master/docs/imagens/Burndown/Sprint_05.png)
+![](https://raw.githubusercontent.com/RomeuCarvalhoAntunes/2018.1-Reabilitacao-Motora/master/docs/imagens/Burndown/Sprint_06.png)
 
-> O _Burndown_ se encontra disponível neste [Link](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues#reports?report=burndown&milestoneId=3179764)
+> O _Burndown_ se encontra disponível neste [Link](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues#reports?report=burndown&milestoneId=3179766&showPRs=false)
 
 ------------
 
 ## 5. velocity
 
-> **O _velocity_ desta equipe**  : 43 Pontos.
+> O _velocity_ desta equipe  : 34 pontos.
+
+> O _velocity_ desta _sprint_ levou em consideração as tarefas que foram pontuadas e concluídas durante a _Release_ 1
 
 ------------
 
 
 ## 6. Retrospectiva da _Sprint_
 
-![](https://raw.githubusercontent.com/RomeuCarvalhoAntunes/2018.1-Reabilitacao-Motora/master/docs/imagens/Retrospectiva/Retrospectiva_Sprint05.png)
+![](https://raw.githubusercontent.com/RomeuCarvalhoAntunes/2018.1-Reabilitacao-Motora/master/docs/imagens/Retrospectiva/Retrospectiva_Sprint06.png)
 
- >[Link](https://raw.githubusercontent.com/RomeuCarvalhoAntunes/2018.1-Reabilitacao-Motora/master/docs/imagens/Retrospectiva/Retrospectiva_Sprint05.png)
+ >[Link](https://raw.githubusercontent.com/RomeuCarvalhoAntunes/2018.1-Reabilitacao-Motora/master/docs/imagens/Retrospectiva/Retrospectiva_Sprint06.png)
 
 ------------
 
-## 7. Quadro de Conhecimento
+## 7. Retrospectiva da _Release_
 
-![](https://raw.githubusercontent.com/RomeuCarvalhoAntunes/2018.1-Reabilitacao-Motora/master/docs/imagens/Quadro%20de%20Conhecimento/Quadro_Conhecimento_05.png)
+![](https://raw.githubusercontent.com/RomeuCarvalhoAntunes/2018.1-Reabilitacao-Motora/master/docs/imagens/Release/Burndown_Release_01.png)
 
-## 8. Quadro de Presença Daily
+>[Link](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/milestone/10#reports?report=burndown&milestoneId=3183847&showPRs=false)
 
-![](https://raw.githubusercontent.com/RomeuCarvalhoAntunes/2018.1-Reabilitacao-Motora/master/docs/imagens/Daily/Sprint05.png)
+
+## 8. Quadro de Conhecimento
+
+![](https://raw.githubusercontent.com/RomeuCarvalhoAntunes/2018.1-Reabilitacao-Motora/master/docs/imagens/Quadro%20de%20Conhecimento/Quadro_Conhecimento_06.png)
+
+## 9. Quadro de Presença Daily
+
+![](https://raw.githubusercontent.com/RomeuCarvalhoAntunes/2018.1-Reabilitacao-Motora/master/docs/imagens/Daily/Sprint06.png)
 
 
 ## 8. Visão do _Scrum Master_
-<p align="justify">&emsp;&emsp; A <i>Sprint</i> 05 ao contrário da 04 foi considerada um sucesso absoluto, mesmo existindo pendências nada que o time não possa lidar para melhorar, nesta <i>Sprint</i> fechamos US importantíssimas como a de gerar gráfico e de rotulação, as 2 haviam sido programadas para <i>Sprint</i> 04 mas no meio do caminho foram encontrados problemas o que levaram inclusive a repontuação das US o <i>velocity</i> resultado desta <i>Sprint</i> praticamente foi dobrado, e comparado com o nosso EVM que teria como um <i>velocity</i> ideal a média de 28 pontos podemos assegurar que o projeto esta bem encaminhado para ser realizado no prazo e no mais tardar da <i>Sprint</i> 07 o alinhamento com o <i>Roadmap</i> estará ideal, visto que na <i>Sprint</i> 06 esta será interrompida pela R1. Apesar dos problemas pessoais enfrentados durante a <i>Sprint</i> pode se considerar totalmente satisfatória com os respectivos objetivos atingidos e uma queima de pontos elevada.
-</p>
+<p align="justify">&emsp;&emsp; Bom durante esta <i>Sprint</i> tivemos muito o que comemorar, mas por outro lado tivemos falhas, em minha opinião devido aos nervos pré R1, pois sendo essa a primeira entrega de um MVP mostrando a viabilidade técnica do nosso produto e recebendo da professora e sua banca avaliadora uma série de <i>feedbacks</i> sendo em sua maioria positivos, vimos também que a parte que faremos a compatibilidade do produto com outras plataformas até agora realizada por conexão TCP poderá ser migrada para UDP visando eficiência, levando em consideração o <i>feedback</i> da professora Carla Rocha, que questionou-me a respeito do fato da parte do <i>DevOps</i> na parte de integração do <i>bot</i> com o slack se teria agregado valor e valido o esforço o time, na <i>Sprint</i> 2/3 mais ou menos decidiu deixar de lado e congelar essa funcionalidade visto que o esforço não estava sendo equivalente ao valor que estava sendo agregado. A respeito das <i>US</i> que nos comprometemos a entregar, algumas não foram concluídas por falta de tempo durante a <i>Sprint</i> e por algumas divergências de opiniões durante a <i>Sprint</i> quando um membro furou os valores do <i>Scrum</i> (Respeito, Abertura e coragem), no entanto este problema foi contornado na retrospectiva da <i>Sprint</i> o fato do <i>Burndown</i> não refletir as US que foram realizadas é porque o membro que as realizou colocou todas em apenas um <i>Pull Request</i> então as <i>Issues</i> não foram fechadas de forma automática. De modo geral foi uma <i>Sprint</i> mediana com pontos positivos e negativos a serem tratados.  </p>
