@@ -164,4 +164,5 @@ public class Flow : MonoBehaviour
 	{
 		SceneManager.LoadScene("sucessRegister");
 	}
+		
 }
