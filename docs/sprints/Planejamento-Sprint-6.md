@@ -28,7 +28,7 @@
 | Data de Início | 15/04/2018 |
 |:--|:--:|
 | **Data de Término** | **22/04/2018** |
-| **Pontos Planejados** | **DEFINIR**|
+| **Pontos Planejados** | **29**|
 | **Duração** | **7 dias** |
 
 
@@ -60,25 +60,7 @@ A Milestone desta Sprint encontra-se neste [link](https://github.com/fga-gpp-mds
 - Salvar o movimento.
 - Conseguir rever o movimento.
 
-**Pontos:** XY.
-
----
-
-### [US09 - Visualizar Paciente](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/137)
-
-#### Descrição:
-**Eu, como**  fisioterapeuta, **desejo** visualizar perfil do paciente  **para** ter acesso aos dados de um paciente cadastrado
-
-#### Critérios de Aceitação:
-- Testes Unity passando.
-
-#### Tarefas:
-- Acessar o sistema.
-- Acessar como administrador.
-- Acessar dados do paciente.
-
-**Pontos:** XY.
-
+**Pontos:** 13.
 
 ---
 
@@ -95,9 +77,46 @@ A Milestone desta Sprint encontra-se neste [link](https://github.com/fga-gpp-mds
 - Feedback para o usuário a respeito da criação do paciente.
 - Persistência do cadastro no banco de dados.
 
-**Pontos:** XY.
+**Pontos:** 05.
 
 ---
+
+### [US09 - Visualizar Paciente](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/137)
+
+#### Descrição:
+**Eu, como**  fisioterapeuta, **desejo** visualizar perfil do paciente  **para** ter acesso aos dados de um paciente cadastrado
+
+#### Critérios de Aceitação:
+- Testes Unity passando.
+
+#### Tarefas:
+- Acessar o sistema.
+- Acessar como administrador.
+- Acessar dados do paciente.
+
+**Pontos:** 03.
+
+---
+
+### [US10 - Remover Paciente](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/138)
+
+#### Descrição:
+**Eu, como**  fisioterapeuta, **desejo** remover paciente  **para** melhor utilizar os recursos de armazenamento do sistema
+
+#### Critérios de Aceitação:
+- Testes Unity passando.
+
+#### Tarefas:
+- Acessar como administrador.
+- Acessar o paciente desejado.
+- Acessar a parte de atualizar paciente.
+- Remover paciente.
+- Persistir no banco de dados.
+
+**Pontos:** 05.
+
+---
+
 
 ## 7. Tarefas Importantes
 
@@ -109,6 +128,6 @@ Validar se os campos de dados estão vazios antes de tentar cadastrar um pacient
 #### Critérios de Aceitação
 - Mostrar mensagem que alerta o usuário sobre campo obrigatório.
 
-**Pontos:** XY.
+**Pontos:** 03.
 
 ---
