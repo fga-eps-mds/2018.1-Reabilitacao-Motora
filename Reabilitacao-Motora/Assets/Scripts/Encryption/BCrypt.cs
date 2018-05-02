@@ -18,6 +18,8 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Security.Cryptography;
 using System.Text;
+using UnityEngine;
+
 
 namespace bcrypt{
 
@@ -752,6 +754,18 @@ namespace bcrypt{
         /// <returns><c>true</c> if the passwords, <c>false</c>
         /// otherwise.</returns>
         public static bool CheckPassword(string plaintext, string hashed) {
+            Debug.Log("Plaintext: " + plaintext);
+            Debug.Log("Hashed: " + hashed);
+            string str1 = HashPassword(plaintext, hashed);
+            Debug.Log("str1: " + str1);
+            for (int i = 0; i < str1.Length; ++i) {
+                Debug.Log("____________________________________");
+                Debug.Log(string.Format("str1[{0}] = {1}", i, str1[i]));
+                Debug.Log(string.Format("hashed[{0}] = {1}", i, hashed[i]));
+                Debug.Log(string.Format("str1[{0}] == hashed[{1}] = {2}", i, i, str1[i] == hashed[i]));
+                Debug.Log(string.Format("ordinalcompare({0}, {1}) == {2}", str1[i] & 0x0f, hashed[i] & 0x0f, StringComparer.Ordinal.Compare(str1[i] & 0x0f, hashed[i] & 0x0f)));
+                Debug.Log("____________________________________");
+            }
             return StringComparer.Ordinal.Compare(hashed, HashPassword(plaintext, hashed)) == 0;
         }
 
