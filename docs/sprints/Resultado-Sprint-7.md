@@ -1,6 +1,6 @@
 ## 1. Relato da _Sprint_
 
-<p align="justify">&emsp;&emsp; A <i>Sprint</i> 06 teve como objetivo o realizar a refatoração do projeto com base na nova identidade visual, e realizar os testes unitários. </p>
+<p align="justify">&emsp;&emsp; A <i>Sprint</i> 07 teve como objetivo o realizar a refatoração do projeto com base na nova identidade visual, e realizar os testes unitários. </p>
 
 ---
 
