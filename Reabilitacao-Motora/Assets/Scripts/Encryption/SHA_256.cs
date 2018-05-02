@@ -4,7 +4,7 @@ using System.Security.Cryptography;
 
 namespace sha_256
 {
-    public class SHA_256 
+    public static class SHA_256 
     {
         public static string GenerateSHA256String(string password)
         {

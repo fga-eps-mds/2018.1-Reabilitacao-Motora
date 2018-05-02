@@ -21,8 +21,6 @@ public class createPhysiotherapist : MonoBehaviour
 	Fisioterapeuta tableFisioterapeuta;
 	Telefone tableTelefone;
 
-	cryptPassword cryptPw = new cryptPassword();
-
 	public InputField namePhysio;
 	public InputField date;
 	public InputField phone1, phone2;
@@ -55,7 +53,7 @@ public class createPhysiotherapist : MonoBehaviour
 	public void savePhysiotherapist()
 	{
 		if (pass.text == confirmPass.text) {
-			string pw = cryptPw.encrypt(pass.text, login.text);
+			string pw = CryptPassword.Encrypt(pass.text, login.text);
 			ColorBlock cb = confirmPass.colors;
 			cb.normalColor = hexToColor(success);
 			confirmPass.colors = cb;

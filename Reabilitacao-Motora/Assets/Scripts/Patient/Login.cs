@@ -17,8 +17,6 @@ public class Login : MonoBehaviour
 	string path;
 	Fisioterapeuta tableFisioterapeuta;
 
-	cryptPassword cryptPw = new cryptPassword();
-
 	public InputField login;
 	public InputField pass;
 	
@@ -70,7 +68,7 @@ public class Login : MonoBehaviour
 
 		foreach (var fisio in p) 
 		{			
-			if (fisio.login == login.text && cryptPw.uncrypt(pass.text, fisio.senha, login.text)) {
+			if (fisio.login == login.text && CryptPassword.Uncrypt(pass.text, fisio.senha, login.text)) {
 				return fisio;
 			}
 		}

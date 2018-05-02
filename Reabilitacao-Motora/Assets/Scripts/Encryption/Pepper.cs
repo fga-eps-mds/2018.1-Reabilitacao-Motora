@@ -2,7 +2,7 @@ using System;
 using sha_512;
 
 namespace pepper {
-	public class Pepper {
+	public static class Pepper {
 		public static string Generate ()
 		{
 			System.Random rnd = new System.Random();
@@ -63,9 +63,11 @@ namespace pepper {
 					string pepper = (two ? s.ToString() : second.ToString()) + (one ? f.ToString() : first.ToString()); 
 
 					string aux = password + pepper;
-					aux = salt + SHA_512.GenerateSHA512String(aux);
+					string result = salt + SHA_512.GenerateSHA512String(aux);
 
-					if (aux == hashed) return true;
+					if (result == hashed) {
+						return true;
+					} 
 				}
 			}
 

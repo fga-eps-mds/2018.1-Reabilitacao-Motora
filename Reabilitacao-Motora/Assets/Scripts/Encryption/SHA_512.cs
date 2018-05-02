@@ -4,7 +4,7 @@ using System.Security.Cryptography;
 
 namespace sha_512
 {
-    public class SHA_512 
+    public static class SHA_512 
     {
         public static string GenerateSHA512String(string password)
         {
