@@ -29,7 +29,7 @@
 | Data de Início | 22/04/2018 |
 |:--|:--:|
 | **Data de Término** | **29/04/2018** |
-| **Pontos Planejados** | **DEFINIR**|
+| **Pontos Planejados** | **21**|
 | **Duração** | **7 dias** |
 
 
@@ -65,7 +65,7 @@ Adequação da identidade visual do projeto apresentado na R1 com a identidade v
 - Cria telas faltantes.
 - Excluir telas excedentes.
 
-**Pontos:** XY
+**Pontos:** 08
 
 ---
 
@@ -85,6 +85,6 @@ Aprendizado e criação dos primeiros testes unitários realizados na plataforma
 - Criar um modo para distribuir o conhecimento entre os membros do time
 - Adicionar os testes na integração contínua do projeto.
 
-**Pontos:** XY
+**Pontos:** 13
 
 ---
