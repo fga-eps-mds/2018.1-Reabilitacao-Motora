@@ -11,7 +11,7 @@ public class Flow : MonoBehaviour
 	/**
  	 * Finaliza o programa ao clicar em sair.
  	 */
-	public void Quit()
+	public static void Quit()
 	{
 		#if UNITY_EDITOR
 		UnityEditor.EditorApplication.isPlaying = false;
@@ -121,7 +121,7 @@ public class Flow : MonoBehaviour
  	 */
 	public void RealTimeGraphs() 
 	{
-		SceneManager.LoadScene("Realtime Graph");
+		SceneManager.LoadScene("RealtimeGraph");
 	}
 
 	/**
@@ -149,18 +149,10 @@ public class Flow : MonoBehaviour
 	}
 
 	/**
- 	 * Leva para a scene de gráfico em tempo real.
- 	 */
-	public void RealtimeGraph()
-	{
-		SceneManager.LoadScene("Realtime Graph");
-	}
-
-	/**
  	 * Leva para a scene sucess register.
  	 */
 	public void SuccessRegister()
 	{
-		SceneManager.LoadScene("sucessRegister");
+		SceneManager.LoadScene("SuccessRegister");
 	}
 }

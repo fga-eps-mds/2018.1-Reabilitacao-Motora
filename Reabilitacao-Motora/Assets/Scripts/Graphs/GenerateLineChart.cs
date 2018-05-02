@@ -169,47 +169,56 @@ public class GenerateLineChart : MonoBehaviour
 	*/
 	void Awake()
 	{
-		current_time = new List<float>();
-		f_mao_pos = new List<Vector3>();
-		f_mao_rot = new List<Vector3>();
-		f_ombro_pos = new List<Vector3>();
-		f_ombro_rot = new List<Vector3>();
-		f_cotovelo_pos = new List<Vector3>();
-		f_cotovelo_rot = new List<Vector3>();
-		f_braco_pos = new List<Vector3>();
-		f_braco_rot = new List<Vector3>();
 
-		f_mao_local_pos = new List<Vector3>();
-		f_mao_local_rot = new List<Vector3>();
-		f_ombro_local_pos = new List<Vector3>();
-		f_ombro_local_rot = new List<Vector3>();
-		f_cotovelo_local_pos = new List<Vector3>();
-		f_cotovelo_local_rot = new List<Vector3>();
-		f_braco_local_pos = new List<Vector3>();
-		f_braco_local_rot = new List<Vector3>();
+		if(GlobalController.instance != null && 
+		   GlobalController.instance.movement != null){
 
-		points1 = new List<Vector3>();
-		points2 = new List<Vector3>();
+			current_time = new List<float>();
+			f_mao_pos = new List<Vector3>();
+			f_mao_rot = new List<Vector3>();
+			f_ombro_pos = new List<Vector3>();
+			f_ombro_rot = new List<Vector3>();
+			f_cotovelo_pos = new List<Vector3>();
+			f_cotovelo_rot = new List<Vector3>();
+			f_braco_pos = new List<Vector3>();
+			f_braco_rot = new List<Vector3>();
 
-		string[] p1 = System.IO.File.ReadAllLines(string.Format("Assets/Movimentos/{0}.points", GlobalController.instance.movement.pontosMovimento));
-		LoadData (p1);
+			f_mao_local_pos = new List<Vector3>();
+			f_mao_local_rot = new List<Vector3>();
+			f_ombro_local_pos = new List<Vector3>();
+			f_ombro_local_rot = new List<Vector3>();
+			f_cotovelo_local_pos = new List<Vector3>();
+			f_cotovelo_local_rot = new List<Vector3>();
+			f_braco_local_pos = new List<Vector3>();
+			f_braco_local_rot = new List<Vector3>();
 
-		lineRenderer = gameObject.AddComponent<LineRenderer>();
-		lineRenderer.material = new Material(Shader.Find("Particles/Multiply (Double)"));
-		lineRenderer.widthMultiplier = 0.2f;
-		lineRenderer.positionCount = p1.Length;
-		resolution = p1.Length;
+			points1 = new List<Vector3>();
+			points2 = new List<Vector3>();
 
-	// A simple 2 color gradient with a fixed alpha of 1.0f.
-		float alpha = 1.0f;
-		Gradient gradient = new Gradient();
-		gradient.SetKeys(
+			string[] p1 = System.IO.File.ReadAllLines(string.Format("Assets/Movimentos/{0}.points", GlobalController.instance.movement.pontosMovimento));
+			LoadData (p1);
+			
+			lineRenderer = gameObject.AddComponent<LineRenderer>();
+			lineRenderer.material = new Material(Shader.Find("Particles/Multiply (Double)"));
+			lineRenderer.widthMultiplier = 0.2f;
+			lineRenderer.positionCount = p1.Length;
+			resolution = p1.Length;
+
+		// A simple 2 color gradient with a fixed alpha of 1.0f.
+			float alpha = 1.0f;
+			Gradient gradient = new Gradient();
+			gradient.SetKeys(
 			new GradientColorKey[] { new GradientColorKey(c1, 0.0f), new GradientColorKey(c2, 1.0f) },
 			new GradientAlphaKey[] { new GradientAlphaKey(alpha, 0.0f), new GradientAlphaKey(alpha, 1.0f) }
 			);
-		lineRenderer.colorGradient = gradient;
+			lineRenderer.colorGradient = gradient;
 
-		generateGraphicPoints();		
+			generateGraphicPoints();
+		}
+		else{
+			Debug.Log("Você violou o acesso!");	
+		}
+		
 	}
 
 	/**

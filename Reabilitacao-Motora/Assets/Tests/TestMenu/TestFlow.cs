@@ -2,244 +2,251 @@
 using UnityEngine.TestTools;
 using NUnit.Framework;
 using System.Collections;
-using UnityEditor;
 using UnityEngine.SceneManagement;
 
-public class TestFlow {
-	[UnityTest]
-	public IEnumerator TestCreateMove() {
-        var createmove = new GameObject().AddComponent<Flow>();
-        createmove.CreateMove();
-        
-        yield return null;
-
-        var currentscene = SceneManager.GetActiveScene().name;
-        var expectedscene = "NewMovement";
-
-        Assert.AreEqual(currentscene, expectedscene);
-	}
-
-    [UnityTest]
-    public IEnumerator TestRecordMove()
+namespace Tests
+{
+    public class TestFlow
     {
-        var recordmove = new GameObject().AddComponent<Flow>();
-        recordmove.RecordMove();
+        [UnityTest]
+        public IEnumerator TestCreateMove()
+        {
+            var createmove = new GameObject().AddComponent<Flow>();
+            createmove.CreateMove();
 
-        yield return null;
+            yield return null;
 
-        var currentscene = SceneManager.GetActiveScene().name;
-        var expectedscene = "Clinic";
+            var currentscene = SceneManager.GetActiveScene().name;
+            var expectedscene = "NewMovement";
 
-        Assert.AreEqual(currentscene, expectedscene);
-    }
+            Assert.AreEqual(currentscene, expectedscene);
+        }
 
-    [UnityTest]
-    public IEnumerator TestPatient()
-    {
-        var patient = new GameObject().AddComponent<Flow>();
-        patient.Patient();
+        [UnityTest]
+        public IEnumerator TestRecordMove()
+        {
+            var recordmove = new GameObject().AddComponent<Flow>();
+            recordmove.RecordMove();
 
-        yield return null;
+            yield return null;
 
-        var currentscene = SceneManager.GetActiveScene().name;
-        var expectedscene = "Patient";
+            var currentscene = SceneManager.GetActiveScene().name;
+            var expectedscene = "Clinic";
 
-        Assert.AreEqual(currentscene, expectedscene);
-    }
+            Assert.AreEqual(currentscene, expectedscene);
+        }
 
-    [UnityTest]
-    public IEnumerator TestPatients()
-    {
-        var patients = new GameObject().AddComponent<Flow>();
-        patients.Patients();
+        [UnityTest]
+        public IEnumerator TestPatient()
+        {
+            var patient = new GameObject().AddComponent<Flow>();
+            patient.Patient();
 
-        yield return null;
+            yield return null;
 
-        var currentscene = SceneManager.GetActiveScene().name;
-        var expectedscene = "Patients";
+            var currentscene = SceneManager.GetActiveScene().name;
+            var expectedscene = "Patient";
 
-        Assert.AreEqual(currentscene, expectedscene);
-    }
+            Assert.AreEqual(currentscene, expectedscene);
+        }
 
-    [UnityTest]
-    public IEnumerator TestLogin()
-    {
-        var login = new GameObject().AddComponent<Flow>();
-        login.Login();
+        [UnityTest]
+        public IEnumerator TestPatients()
+        {
+            var patients = new GameObject().AddComponent<Flow>();
+            patients.Patients();
 
-        yield return null;
+            yield return null;
 
-        var currentscene = SceneManager.GetActiveScene().name;
-        var expectedscene = "Login";
+            var currentscene = SceneManager.GetActiveScene().name;
+            var expectedscene = "Patients";
 
-        Assert.AreEqual(currentscene, expectedscene);
-    }
+            Assert.AreEqual(currentscene, expectedscene);
+        }
 
-    [UnityTest]
-    public IEnumerator TestMovements()
-    {
-        var movements = new GameObject().AddComponent<Flow>();
-        movements.Movements();
+        [UnityTest]
+        public IEnumerator _TestLogin()
+        {
+            var login = new GameObject().AddComponent<Flow>();
+            login.Login();
 
-        yield return null;
+            yield return null;
 
-        var currentscene = SceneManager.GetActiveScene().name;
-        var expectedscene = "Movements";
+            var currentscene = SceneManager.GetActiveScene().name;
+            var expectedscene = "Login";
 
-        Assert.AreEqual(currentscene, expectedscene);
-    }
+            Assert.AreEqual(currentscene, expectedscene);
+        }
 
-    [UnityTest]
-    public IEnumerator TestNewPatient()
-    {
-        var newpatient = new GameObject().AddComponent<Flow>();
-        newpatient.NewPatient();
+        [UnityTest]
+        public IEnumerator _TestMovements()
+        {
+            var movements = new GameObject().AddComponent<Flow>();
+            movements.Movements();
 
-        yield return null;
+            yield return null;
 
-        var currentscene = SceneManager.GetActiveScene().name;
-        var expectedscene = "NewPatient";
+            var currentscene = SceneManager.GetActiveScene().name;
+            var expectedscene = "Movements";
 
-        Assert.AreEqual(currentscene, expectedscene);
-    }
+            Assert.AreEqual(currentscene, expectedscene);
+        }
 
-    [UnityTest]
-    public IEnumerator TestUpdatePatient()
-    {
-        var updatepatient = new GameObject().AddComponent<Flow>();
-        updatepatient.UpdatePatient();
+        [UnityTest]
+        public IEnumerator TestNewPatient()
+        {
+            var newpatient = new GameObject().AddComponent<Flow>();
+            newpatient.NewPatient();
 
-        yield return null;
+            yield return null;
 
-        var currentscene = SceneManager.GetActiveScene().name;
-        var expectedscene = "UpdatePatient";
+            var currentscene = SceneManager.GetActiveScene().name;
+            var expectedscene = "NewPatient";
 
-        Assert.AreEqual(currentscene, expectedscene);
-    }
+            Assert.AreEqual(currentscene, expectedscene);
+        }
 
-    [UnityTest]
-    public IEnumerator TestSuccessRegister()
-    {
-        var createmove = new GameObject().AddComponent<Flow>();
-        createmove.SuccessRegister();
+        [UnityTest]
+        public IEnumerator TestUpdatePatient()
+        {
+            var updatepatient = new GameObject().AddComponent<Flow>();
+            updatepatient.UpdatePatient();
 
-        yield return null;
+            yield return null;
 
-        var currentscene = SceneManager.GetActiveScene().name;
-        var expectedscene = "successRegister";
+            var currentscene = SceneManager.GetActiveScene().name;
+            var expectedscene = "UpdatePatient";
 
-        Assert.AreEqual(currentscene, expectedscene);
-    }
+            Assert.AreEqual(currentscene, expectedscene);
+        }
 
-    [UnityTest]
-    public IEnumerator TestRealtimeGraph()
-    {
-        var createmove = new GameObject().AddComponent<Flow>();
-        createmove.RealtimeGraph();
+        [UnityTest]
+        public IEnumerator TestSuccessRegister()
+        {
+            var createmove = new GameObject().AddComponent<Flow>();
+            createmove.SuccessRegister();
 
-        yield return null;
+            yield return null;
 
-        var currentscene = SceneManager.GetActiveScene().name;
-        var expectedscene = "Realtime Graph";
+            var currentscene = SceneManager.GetActiveScene().name;
+            var expectedscene = "SuccessRegister";
 
-        Assert.AreEqual(currentscene, expectedscene);
-    }
+            Assert.AreEqual(currentscene, expectedscene);
+        }
 
-    [UnityTest]
-    public IEnumerator TestNewPhysiotherapist()
-    {
-        var createmove = new GameObject().AddComponent<Flow>();
-        createmove.NewPhysiotherapist();
+        [UnityTest]
+        public IEnumerator TestRealtimeGraphs()
+        {
+            var createmove = new GameObject().AddComponent<Flow>();
+            createmove.RealTimeGraphs();
 
-        yield return null;
+            yield return null;
 
-        var currentscene = SceneManager.GetActiveScene().name;
-        var expectedscene = "NewPhysiotherapist";
+            var currentscene = SceneManager.GetActiveScene().name;
+            var expectedscene = "RealtimeGraph";
 
-        Assert.AreEqual(currentscene, expectedscene);
-    }
+            // Debug.Log(LogType.Exception);
 
-    [UnityTest]
-    public IEnumerator TestBackToHomeMenu()
-    {
-        var createmove = new GameObject().AddComponent<Flow>();
-        createmove.BackToHomeMenu();
+            Assert.AreEqual(currentscene, expectedscene);
+            
+        }
 
-        yield return null;
+        [UnityTest]
+        public IEnumerator TestNewPhysiotherapist()
+        {
+            var createmove = new GameObject().AddComponent<Flow>();
+            createmove.NewPhysiotherapist();
 
-        var currentscene = SceneManager.GetActiveScene().name;
-        var expectedscene = "Login";
+            yield return null;
 
-        Assert.AreEqual(currentscene, expectedscene);
-    }
+            var currentscene = SceneManager.GetActiveScene().name;
+            var expectedscene = "NewPhysiotherapist";
 
-    [UnityTest]
-    public IEnumerator TestBackToMenu()
-    {
-        var createmove = new GameObject().AddComponent<Flow>();
-        createmove.BackToMenu();
+            Assert.AreEqual(currentscene, expectedscene);
+        }
 
-        yield return null;
+        [UnityTest]
+        public IEnumerator TestBackToHomeMenu()
+        {
+            var createmove = new GameObject().AddComponent<Flow>();
+            createmove.BackToHomeMenu();
 
-        var currentscene = SceneManager.GetActiveScene().name;
-        var expectedscene = "Menu";
+            yield return null;
 
-        Assert.AreEqual(currentscene, expectedscene);
-    }
+            var currentscene = SceneManager.GetActiveScene().name;
+            var expectedscene = "Login";
 
-    [UnityTest]
-    public IEnumerator TestGraphs()
-    {
-        var createmove = new GameObject().AddComponent<Flow>();
-        createmove.Graphs();
+            Assert.AreEqual(currentscene, expectedscene);
+        }
 
-        yield return null;
+        [UnityTest]
+        public IEnumerator TestBackToMenu()
+        {
+            var createmove = new GameObject().AddComponent<Flow>();
+            createmove.BackToMenu();
 
-        var currentscene = SceneManager.GetActiveScene().name;
-        var expectedscene = "Graphs2";
+            yield return null;
 
-        Assert.AreEqual(currentscene, expectedscene);
-    }
+            var currentscene = SceneManager.GetActiveScene().name;
+            var expectedscene = "Menu";
 
-    [UnityTest]
-    public IEnumerator TestNotImplemented()
-    {
-        var createmove = new GameObject().AddComponent<Flow>();
-        createmove.NotImplemented();
+            Assert.AreEqual(currentscene, expectedscene);
+        }
 
-        yield return null;
+        [UnityTest]
+        public IEnumerator TestGraphs()
+        {
+            var createmove = new GameObject().AddComponent<Flow>();
+            createmove.Graphs();
 
-        var currentscene = SceneManager.GetActiveScene().name;
-        var expectedscene = "NotImplemented";
+            yield return null;
 
-        Assert.AreEqual(currentscene, expectedscene);
-    }
+            var currentscene = SceneManager.GetActiveScene().name;
+            var expectedscene = "Graphs2";
 
-    [UnityTest]
-    public IEnumerator TestSessions()
-    {
-        var createmove = new GameObject().AddComponent<Flow>();
-        createmove.Sessions();
+            Assert.AreEqual(currentscene, expectedscene);
+        }
 
-        yield return null;
+        [UnityTest]
+        public IEnumerator TestNotImplemented()
+        {
+            var createmove = new GameObject().AddComponent<Flow>();
+            createmove.NotImplemented();
 
-        var currentscene = SceneManager.GetActiveScene().name;
-        var expectedscene = "Sessions";
+            yield return null;
 
-        Assert.AreEqual(currentscene, expectedscene);
-    }
+            var currentscene = SceneManager.GetActiveScene().name;
+            var expectedscene = "NotImplemented";
 
-    [UnityTest]
-    public IEnumerator TestSession()
-    {
-        var createmove = new GameObject().AddComponent<Flow>();
-        createmove.Session();
+            Assert.AreEqual(currentscene, expectedscene);
+        }
 
-        yield return null;
+        [UnityTest]
+        public IEnumerator TestSessions()
+        {
+            var createmove = new GameObject().AddComponent<Flow>();
+            createmove.Sessions();
 
-        var currentscene = SceneManager.GetActiveScene().name;
-        var expectedscene = "Session";
+            yield return null;
 
-        Assert.AreEqual(currentscene, expectedscene);
+            var currentscene = SceneManager.GetActiveScene().name;
+            var expectedscene = "Sessions";
+
+            Assert.AreEqual(currentscene, expectedscene);
+        }
+
+        [UnityTest]
+        public IEnumerator TestSession()
+        {
+            var createmove = new GameObject().AddComponent<Flow>();
+            createmove.Session();
+
+            yield return null;
+
+            var currentscene = SceneManager.GetActiveScene().name;
+            var expectedscene = "Session";
+
+            Assert.AreEqual(currentscene, expectedscene);
+        }
     }
 }
