@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Mono.Data.Sqlite;
 using System.Data;
+using DataBaseAttributes;
 
 namespace pessoa
 {
@@ -38,16 +39,17 @@ namespace pessoa
          */
         public static void Create()
         {
-            using (GlobalController.instance.conn = new SqliteConnection(GlobalController.instance.path))
+            DataBase banco = new DataBase();
+            using (banco.conn = new SqliteConnection(GlobalController.instance.path))
             {
-                GlobalController.instance.conn.Open();
-                GlobalController.instance.cmd = GlobalController.instance.conn.CreateCommand();
+                banco.conn.Open();
+                banco.cmd = banco.conn.CreateCommand();
 
-                GlobalController.instance.sqlQuery = "CREATE TABLE IF NOT EXISTS PESSOA (idPessoa INTEGER primary key AUTOINCREMENT,nomePessoa VARCHAR (30) not null,sexo CHAR (1) not null,dataNascimento DATE not null,telefone1 VARCHAR (11) not null,telefone2 VARCHAR (11));";
+                banco.sqlQuery = "CREATE TABLE IF NOT EXISTS PESSOA (idPessoa INTEGER primary key AUTOINCREMENT,nomePessoa VARCHAR (30) not null,sexo CHAR (1) not null,dataNascimento DATE not null,telefone1 VARCHAR (11) not null,telefone2 VARCHAR (11));";
 
-                GlobalController.instance.cmd.CommandText = GlobalController.instance.sqlQuery;
-                GlobalController.instance.cmd.ExecuteScalar();
-                GlobalController.instance.conn.Close();
+                banco.cmd.CommandText = banco.sqlQuery;
+                banco.cmd.ExecuteScalar();
+                banco.conn.Close();
             }
         }
 
@@ -61,28 +63,29 @@ namespace pessoa
             string telefone1,
             string telefone2)
         {
-            using (GlobalController.instance.conn = new SqliteConnection(GlobalController.instance.path))
+            DataBase banco = new DataBase();
+            using (banco.conn = new SqliteConnection(GlobalController.instance.path))
             {
-                GlobalController.instance.conn.Open();
-                GlobalController.instance.cmd = GlobalController.instance.conn.CreateCommand();
-                GlobalController.instance.sqlQuery = "insert into PESSOA (";
+                banco.conn.Open();
+                banco.cmd = banco.conn.CreateCommand();
+                banco.sqlQuery = "insert into PESSOA (";
 
                 int tableSize = TablesManager.instance.Tables[tableId].Length;
 
                 for (int i = 1; i < tableSize; ++i) {
                     string aux = (i+1 == tableSize) ? (")") : (",");
-                    GlobalController.instance.sqlQuery += (TablesManager.instance.Tables[tableId].colName[i] + aux);
+                    banco.sqlQuery += (TablesManager.instance.Tables[tableId].colName[i] + aux);
                 }
 
-                GlobalController.instance.sqlQuery += string.Format(" values (\"{0}\",\"{1}\",\"{2}\",\"{3}\",\"{4}\")", nomePessoa,
+                banco.sqlQuery += string.Format(" values (\"{0}\",\"{1}\",\"{2}\",\"{3}\",\"{4}\")", nomePessoa,
                     sexo,
                     dataNascimento,
                     telefone1,
                     telefone2);
 
-                GlobalController.instance.cmd.CommandText = GlobalController.instance.sqlQuery;
-                GlobalController.instance.cmd.ExecuteScalar();
-                GlobalController.instance.conn.Close();
+                banco.cmd.CommandText = banco.sqlQuery;
+                banco.cmd.ExecuteScalar();
+                banco.conn.Close();
             }
         }
 
@@ -96,24 +99,25 @@ namespace pessoa
             string telefone1,
             string telefone2)
         {
-            using (GlobalController.instance.conn = new SqliteConnection(GlobalController.instance.path))
+            DataBase banco = new DataBase();
+            using (banco.conn = new SqliteConnection(GlobalController.instance.path))
             {
-                GlobalController.instance.conn.Open();
-                GlobalController.instance.cmd = GlobalController.instance.conn.CreateCommand();
+                banco.conn.Open();
+                banco.cmd = banco.conn.CreateCommand();
 
-                GlobalController.instance.sqlQuery = string.Format("UPDATE \"{0}\" set ", TablesManager.instance.Tables[tableId].tableName);
+                banco.sqlQuery = string.Format("UPDATE \"{0}\" set ", TablesManager.instance.Tables[tableId].tableName);
 
-                GlobalController.instance.sqlQuery += string.Format("\"{0}\"=\"{1}\",", TablesManager.instance.Tables[tableId].colName[1], nomePessoa);
-                GlobalController.instance.sqlQuery += string.Format("\"{0}\"=\"{1}\",", TablesManager.instance.Tables[tableId].colName[2], sexo);
-                GlobalController.instance.sqlQuery += string.Format("\"{0}\"=\"{1}\",", TablesManager.instance.Tables[tableId].colName[3], dataNascimento);
-                GlobalController.instance.sqlQuery += string.Format("\"{0}\"=\"{1}\",", TablesManager.instance.Tables[tableId].colName[4], telefone1);
-                GlobalController.instance.sqlQuery += string.Format("\"{0}\"=\"{1}\" ", TablesManager.instance.Tables[tableId].colName[5], telefone2);
+                banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",", TablesManager.instance.Tables[tableId].colName[1], nomePessoa);
+                banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",", TablesManager.instance.Tables[tableId].colName[2], sexo);
+                banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",", TablesManager.instance.Tables[tableId].colName[3], dataNascimento);
+                banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",", TablesManager.instance.Tables[tableId].colName[4], telefone1);
+                banco.sqlQuery += string.Format("\"{0}\"=\"{1}\" ", TablesManager.instance.Tables[tableId].colName[5], telefone2);
 
-                GlobalController.instance.sqlQuery += string.Format("WHERE \"{0}\" = \"{1}\"", TablesManager.instance.Tables[tableId].colName[0], id);
+                banco.sqlQuery += string.Format("WHERE \"{0}\" = \"{1}\"", TablesManager.instance.Tables[tableId].colName[0], id);
 
-                GlobalController.instance.cmd.CommandText = GlobalController.instance.sqlQuery;
-                GlobalController.instance.cmd.ExecuteScalar();
-                GlobalController.instance.conn.Close();
+                banco.cmd.CommandText = banco.sqlQuery;
+                banco.cmd.ExecuteScalar();
+                banco.conn.Close();
             }
         }
 
@@ -122,13 +126,14 @@ namespace pessoa
          */
         public static List<Pessoa> Read()
         {
-            using (GlobalController.instance.conn = new SqliteConnection(GlobalController.instance.path))
+            DataBase banco = new DataBase();
+            using (banco.conn = new SqliteConnection(GlobalController.instance.path))
             {
-                GlobalController.instance.conn.Open();
-                GlobalController.instance.cmd = GlobalController.instance.conn.CreateCommand();
-                GlobalController.instance.sqlQuery = "SELECT * " + "FROM PESSOA";
-                GlobalController.instance.cmd.CommandText = GlobalController.instance.sqlQuery;
-                IDataReader reader = GlobalController.instance.cmd.ExecuteReader();
+                banco.conn.Open();
+                banco.cmd = banco.conn.CreateCommand();
+                banco.sqlQuery = "SELECT * " + "FROM PESSOA";
+                banco.cmd.CommandText = banco.sqlQuery;
+                IDataReader reader = banco.cmd.ExecuteReader();
                 List<Pessoa> p = new List<Pessoa>();
 
                 while (reader.Read())
@@ -150,10 +155,10 @@ namespace pessoa
                 }
                 reader.Close();
                 reader = null;
-                GlobalController.instance.cmd.Dispose();
-                GlobalController.instance.cmd = null;
-                GlobalController.instance.conn.Close();
-                GlobalController.instance.conn = null;
+                banco.cmd.Dispose();
+                banco.cmd = null;
+                banco.conn.Close();
+                banco.conn = null;
 
                 return p;
             }
@@ -162,15 +167,16 @@ namespace pessoa
 
         public static Pessoa ReadValue (int id)
         {
-            using (GlobalController.instance.conn = new SqliteConnection(GlobalController.instance.path))
+            DataBase banco = new DataBase();
+            using (banco.conn = new SqliteConnection(GlobalController.instance.path))
             {
-                GlobalController.instance.conn.Open();
-                GlobalController.instance.cmd = GlobalController.instance.conn.CreateCommand();
-                GlobalController.instance.sqlQuery = "SELECT * " + string.Format("FROM \"{0}\" WHERE \"{1}\" = \"{2}\";", TablesManager.instance.Tables[tableId].tableName, 
+                banco.conn.Open();
+                banco.cmd = banco.conn.CreateCommand();
+                banco.sqlQuery = "SELECT * " + string.Format("FROM \"{0}\" WHERE \"{1}\" = \"{2}\";", TablesManager.instance.Tables[tableId].tableName, 
                     TablesManager.instance.Tables[tableId].colName[0], 
                     id);
-                GlobalController.instance.cmd.CommandText = GlobalController.instance.sqlQuery;
-                IDataReader reader = GlobalController.instance.cmd.ExecuteReader();
+                banco.cmd.CommandText = banco.sqlQuery;
+                IDataReader reader = banco.cmd.ExecuteReader();
 
                 Pessoa x = new Pessoa();
 
@@ -195,10 +201,10 @@ namespace pessoa
 
                 reader.Close();
                 reader = null;
-                GlobalController.instance.cmd.Dispose();
-                GlobalController.instance.cmd = null;
-                GlobalController.instance.conn.Close();
-                GlobalController.instance.conn = null;
+                banco.cmd.Dispose();
+                banco.cmd = null;
+                banco.conn.Close();
+                banco.conn = null;
                 return x;
             }
         }
@@ -208,16 +214,17 @@ namespace pessoa
          */
         public static void DeleteValue(int id)
         {
-            using (GlobalController.instance.conn = new SqliteConnection(GlobalController.instance.path))
+            DataBase banco = new DataBase();
+            using (banco.conn = new SqliteConnection(GlobalController.instance.path))
             {
-                GlobalController.instance.conn.Open();
-                GlobalController.instance.cmd = GlobalController.instance.conn.CreateCommand();
+                banco.conn.Open();
+                banco.cmd = banco.conn.CreateCommand();
 
-                GlobalController.instance.sqlQuery = string.Format("delete from \"{0}\" WHERE \"{1}\" = \"{2}\"", TablesManager.instance.Tables[tableId].tableName, TablesManager.instance.Tables[tableId].colName[0], id);
+                banco.sqlQuery = string.Format("delete from \"{0}\" WHERE \"{1}\" = \"{2}\"", TablesManager.instance.Tables[tableId].tableName, TablesManager.instance.Tables[tableId].colName[0], id);
 
-                GlobalController.instance.cmd.CommandText = GlobalController.instance.sqlQuery;
-                GlobalController.instance.cmd.ExecuteScalar();
-                GlobalController.instance.conn.Close();
+                banco.cmd.CommandText = banco.sqlQuery;
+                banco.cmd.ExecuteScalar();
+                banco.conn.Close();
             }
         }
 
@@ -226,16 +233,17 @@ namespace pessoa
          */
         public static void Drop()
         {
-            using (GlobalController.instance.conn = new SqliteConnection(GlobalController.instance.path))
+            DataBase banco = new DataBase();
+            using (banco.conn = new SqliteConnection(GlobalController.instance.path))
             {
-                GlobalController.instance.conn.Open();
-                GlobalController.instance.cmd = GlobalController.instance.conn.CreateCommand();
+                banco.conn.Open();
+                banco.cmd = banco.conn.CreateCommand();
 
-                GlobalController.instance.sqlQuery = string.Format("DROP TABLE IF EXISTS \"{0}\"", TablesManager.instance.Tables[tableId].tableName);
+                banco.sqlQuery = string.Format("DROP TABLE IF EXISTS \"{0}\"", TablesManager.instance.Tables[tableId].tableName);
 
-                GlobalController.instance.cmd.CommandText = GlobalController.instance.sqlQuery;
-                GlobalController.instance.cmd.ExecuteScalar();
-                GlobalController.instance.conn.Close();
+                banco.cmd.CommandText = banco.sqlQuery;
+                banco.cmd.ExecuteScalar();
+                banco.conn.Close();
             }
         }
     }

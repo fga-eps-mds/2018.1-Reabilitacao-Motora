@@ -5,7 +5,6 @@ using System.IO;
 using Mono.Data.Sqlite;
 using System.Data;
 
-
 using pessoa;
 using fisioterapeuta;
 using paciente;
@@ -20,7 +19,7 @@ using pontosrotulopaciente;
 public class GlobalController : MonoBehaviour {
 
 	public static GlobalController instance;
-    public string sqlQuery;
+    public string sqlQuery = "";
     public IDbConnection conn;
     public IDbCommand cmd;
 
