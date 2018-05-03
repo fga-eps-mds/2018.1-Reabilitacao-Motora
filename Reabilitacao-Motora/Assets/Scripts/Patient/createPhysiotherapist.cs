@@ -53,7 +53,7 @@ public class createPhysiotherapist : MonoBehaviour
 	public void savePhysiotherapist()
 	{
 		if (pass.text == confirmPass.text) {
-			string pw = CryptPassword.Encrypt(pass.text, login.text);
+			string encryptedPassword = CryptPassword.Encrypt(pass.text, login.text);
 			ColorBlock cb = confirmPass.colors;
 			cb.normalColor = hexToColor(success);
 			confirmPass.colors = cb;
@@ -72,7 +72,7 @@ public class createPhysiotherapist : MonoBehaviour
 
 			List<Pessoa.Pessoas> p = tablePessoa.Read();
 			
-			tableFisioterapeuta.Insert(p[p.Count -1].idPessoa, login.text, pw, crefito.text, regiao.text);
+			tableFisioterapeuta.Insert(p[p.Count -1].idPessoa, login.text, encryptedPassword, crefito.text, regiao.text);
 
 			string namePhysioUnderscored = (namePhysio.text).Replace(' ', '_');
 
