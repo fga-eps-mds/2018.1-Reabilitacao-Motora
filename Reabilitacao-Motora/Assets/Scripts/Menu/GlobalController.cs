@@ -18,19 +18,15 @@ using pontosrotulopaciente;
 
 public class GlobalController : MonoBehaviour 
 {
-
 	public static GlobalController instance;
 
-	public Fisioterapeuta admin;
-	public Paciente user;
-	public Movimento movement;
-	public Sessao session;
-	public Exercicio exercise;
-	public PontosRotuloFisioterapeuta labelPhysioPoints;
-	public PontosRotuloPaciente labelPatientPoints;
+	private Fisioterapeuta Admin;
+	private Paciente User;
+	private Movimento Movement;
+	private Sessao Session;
+	private Exercicio Exercise;
+
 	public string path;
-	public string pathEx;
-	public string pathMv;
 
 	void Awake () 
 	{
@@ -40,8 +36,8 @@ public class GlobalController : MonoBehaviour
 		}
 		else
 		{
-			pathEx = "Assets\\Exercicios";
-			pathMv = "Assets\\Movimentos";
+			string pathEx = "Assets\\Exercicios";
+			string pathMv = "Assets\\Movimentos";
 
 			Directory.CreateDirectory(pathEx);
 			Directory.CreateDirectory(pathMv);
@@ -50,7 +46,6 @@ public class GlobalController : MonoBehaviour
 			DontDestroyOnLoad(gameObject);
 			path = "URI=file:" + Application.dataPath + "/Plugins/fisiotech.db";
 			Initialize();
-			instance.path = "URI=file:" + Application.dataPath + "/Plugins/fisiotech.db";
 		}
 	}
 
@@ -68,4 +63,63 @@ public class GlobalController : MonoBehaviour
 		PontosRotuloFisioterapeuta.Create();
 	}
 
+	public Fisioterapeuta admin
+	{
+		get
+		{
+			return Admin;
+		}
+		set
+		{
+			Admin = value;
+		}
+	}
+
+	public Paciente user
+	{
+		get
+		{
+			return User;
+		}
+		set
+		{
+			User = value;
+		}
+	}
+
+	public Movimento movement
+	{
+		get
+		{
+			return Movement;
+		}
+		set
+		{
+			Movement = value;
+		}
+	}
+
+	public Sessao session
+	{
+		get
+		{
+			return Session;
+		}
+		set
+		{
+			Session = value;
+		}
+	}
+
+	public Exercicio exercise
+	{
+		get
+		{
+			return Exercise;
+		}
+		set
+		{
+			Exercise = value;
+		}
+	}
 }

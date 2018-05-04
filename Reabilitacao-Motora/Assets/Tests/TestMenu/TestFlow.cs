@@ -9,7 +9,7 @@ namespace Tests
     public class TestFlow
     {
         [UnityTest]
-        public IEnumerator TestCreateMove()
+        public static IEnumerator TestCreateMove()
         {
             var createmove = new GameObject().AddComponent<Flow>();
             createmove.CreateMove();
@@ -23,7 +23,7 @@ namespace Tests
         }
 
         [UnityTest]
-        public IEnumerator TestRecordMove()
+        public static IEnumerator TestRecordMove()
         {
             var recordmove = new GameObject().AddComponent<Flow>();
             recordmove.RecordMove();
@@ -37,7 +37,7 @@ namespace Tests
         }
 
         [UnityTest]
-        public IEnumerator TestPatient()
+        public static IEnumerator TestPatient()
         {
             var patient = new GameObject().AddComponent<Flow>();
             patient.Patient();
@@ -51,7 +51,7 @@ namespace Tests
         }
 
         [UnityTest]
-        public IEnumerator TestPatients()
+        public static IEnumerator TestPatients()
         {
             var patients = new GameObject().AddComponent<Flow>();
             patients.Patients();
@@ -65,7 +65,7 @@ namespace Tests
         }
 
         [UnityTest]
-        public IEnumerator _TestLogin()
+        public static IEnumerator _TestLogin()
         {
             var login = new GameObject().AddComponent<Flow>();
             login.Login();
@@ -79,7 +79,7 @@ namespace Tests
         }
 
         [UnityTest]
-        public IEnumerator _TestMovements()
+        public static IEnumerator _TestMovements()
         {
             var movements = new GameObject().AddComponent<Flow>();
             movements.Movements();
@@ -93,7 +93,7 @@ namespace Tests
         }
 
         [UnityTest]
-        public IEnumerator TestNewPatient()
+        public static IEnumerator TestNewPatient()
         {
             var newpatient = new GameObject().AddComponent<Flow>();
             newpatient.NewPatient();
@@ -107,7 +107,7 @@ namespace Tests
         }
 
         [UnityTest]
-        public IEnumerator TestUpdatePatient()
+        public static IEnumerator TestUpdatePatient()
         {
             var updatepatient = new GameObject().AddComponent<Flow>();
             updatepatient.UpdatePatient();
@@ -121,7 +121,7 @@ namespace Tests
         }
 
         [UnityTest]
-        public IEnumerator TestSuccessRegister()
+        public static IEnumerator TestSuccessRegister()
         {
             var createmove = new GameObject().AddComponent<Flow>();
             createmove.SuccessRegister();
@@ -135,7 +135,7 @@ namespace Tests
         }
 
         [UnityTest]
-        public IEnumerator TestRealtimeGraphs()
+        public static IEnumerator TestRealtimeGraphs()
         {
             var createmove = new GameObject().AddComponent<Flow>();
             createmove.RealTimeGraphs();
@@ -145,14 +145,11 @@ namespace Tests
             var currentscene = SceneManager.GetActiveScene().name;
             var expectedscene = "RealtimeGraph";
 
-            // Debug.Log(LogType.Exception);
-
-            Assert.AreEqual(currentscene, expectedscene);
-            
+            Assert.AreEqual(currentscene, expectedscene);     
         }
 
         [UnityTest]
-        public IEnumerator TestNewPhysiotherapist()
+        public static IEnumerator TestNewPhysiotherapist()
         {
             var createmove = new GameObject().AddComponent<Flow>();
             createmove.NewPhysiotherapist();
@@ -166,7 +163,7 @@ namespace Tests
         }
 
         [UnityTest]
-        public IEnumerator TestBackToHomeMenu()
+        public static IEnumerator TestBackToHomeMenu()
         {
             var createmove = new GameObject().AddComponent<Flow>();
             createmove.BackToHomeMenu();
@@ -180,7 +177,7 @@ namespace Tests
         }
 
         [UnityTest]
-        public IEnumerator TestBackToMenu()
+        public static IEnumerator TestBackToMenu()
         {
             var createmove = new GameObject().AddComponent<Flow>();
             createmove.BackToMenu();
@@ -194,7 +191,7 @@ namespace Tests
         }
 
         [UnityTest]
-        public IEnumerator TestGraphs()
+        public static IEnumerator TestGraphs()
         {
             var createmove = new GameObject().AddComponent<Flow>();
             createmove.Graphs();
@@ -208,7 +205,7 @@ namespace Tests
         }
 
         [UnityTest]
-        public IEnumerator TestNotImplemented()
+        public static IEnumerator TestNotImplemented()
         {
             var createmove = new GameObject().AddComponent<Flow>();
             createmove.NotImplemented();
@@ -222,7 +219,7 @@ namespace Tests
         }
 
         [UnityTest]
-        public IEnumerator TestSessions()
+        public static IEnumerator TestSessions()
         {
             var createmove = new GameObject().AddComponent<Flow>();
             createmove.Sessions();
@@ -236,7 +233,7 @@ namespace Tests
         }
 
         [UnityTest]
-        public IEnumerator TestSession()
+        public static IEnumerator TestSession()
         {
             var createmove = new GameObject().AddComponent<Flow>();
             createmove.Session();

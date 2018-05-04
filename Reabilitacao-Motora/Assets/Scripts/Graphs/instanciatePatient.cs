@@ -9,8 +9,6 @@ public class instanciatePatient : MonoBehaviour
 
 	public GameObject buttonPrefab;
 
-	List<Paciente> patients;
-
 	int heightOffset = 10;
 
 	void ButtonSpawner(int posy, Paciente patient)
@@ -18,8 +16,8 @@ public class instanciatePatient : MonoBehaviour
 		GameObject go = Instantiate(buttonPrefab, transform);
 
 		go.transform.position = new Vector3 (go.transform.position.x, go.transform.position.y - posy, go.transform.position.z);
-		var aux = go.GetComponentInChildren<setpatient>();
-		aux.x = patient;
+		var aux = go.GetComponentInChildren<SetPatientToButton>();
+		aux.Patient = patient;
 
 		var temp = go.GetComponentInChildren<Text>();
 		temp.text = patient.persona.nomePessoa;

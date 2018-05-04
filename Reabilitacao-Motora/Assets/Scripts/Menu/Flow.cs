@@ -11,7 +11,7 @@ public class Flow : MonoBehaviour
 	/**
  	 * Finaliza o programa ao clicar em sair.
  	 */
-	public static void Quit()
+	public void Quit()
 	{
 		#if UNITY_EDITOR
 		UnityEditor.EditorApplication.isPlaying = false;

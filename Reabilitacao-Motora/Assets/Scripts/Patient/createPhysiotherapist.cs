@@ -12,9 +12,7 @@ using fisioterapeuta;
  * Cria um novo Fisioterapeuta no banco de dados.
  */
 public class createPhysiotherapist : MonoBehaviour 
-{
-	string pathnamephysio;
-	
+{	
 	public InputField namePhysio;
 	public InputField date;
 	public InputField phone1, phone2;
@@ -65,7 +63,7 @@ public class createPhysiotherapist : MonoBehaviour
 
 			string namePhysioUnderscored = (namePhysio.text).Replace(' ', '_');
 
-			pathnamephysio = "Assets\\Movimentos\\" + string.Format("{0}-{1}", p[p.Count-1].idPessoa, namePhysioUnderscored);
+			string pathnamephysio = "Assets\\Movimentos\\" + string.Format("{0}-{1}", p[p.Count-1].idPessoa, namePhysioUnderscored);
 
 			Directory.CreateDirectory(pathnamephysio);
 

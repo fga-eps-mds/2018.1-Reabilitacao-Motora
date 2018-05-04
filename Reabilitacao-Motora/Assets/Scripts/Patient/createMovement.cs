@@ -57,7 +57,7 @@ public class createMovement : MonoBehaviour
 		SceneManager.LoadScene("Clinic");
 	}
 
-	int checkMuscle(string name)
+	static int checkMuscle(string name)
 	{
 		List<Musculo> musclesList = Musculo.Read();
 

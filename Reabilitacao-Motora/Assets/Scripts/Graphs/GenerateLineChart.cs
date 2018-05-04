@@ -209,12 +209,12 @@ public class GenerateLineChart : MonoBehaviour
 			float alpha = 1.0f;
 			Gradient gradient = new Gradient();
 			gradient.SetKeys(
-				new GradientColorKey[] 
+				new [] 
 				{ 
 					new GradientColorKey(c1, 0.0f), 
 					new GradientColorKey(c2, 1.0f) 
 				},
-				new GradientAlphaKey[] 
+				new [] 
 				{ 
 					new GradientAlphaKey(alpha, 0.0f), 
 					new GradientAlphaKey(alpha, 1.0f) 

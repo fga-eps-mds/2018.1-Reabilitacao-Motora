@@ -16,8 +16,8 @@ public class instanciateMovement : MonoBehaviour
 		GameObject go = Instantiate(buttonPrefab, transform);
 
 		go.transform.position = new Vector3 (go.transform.position.x, go.transform.position.y - posy, go.transform.position.z);
-		var aux = go.GetComponentInChildren<setmovement>();
-		aux.x = movement;
+		var aux = go.GetComponentInChildren<SetMovementToButton>();
+		aux.Movement = movement;
 
 		var temp = go.GetComponentInChildren<Text>();
 		temp.text = movement.nomeMovimento;

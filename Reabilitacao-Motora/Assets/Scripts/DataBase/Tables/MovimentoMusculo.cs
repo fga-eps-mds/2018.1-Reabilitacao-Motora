@@ -56,11 +56,11 @@ namespace movimentomusculo
                 banco.cmd = banco.conn.CreateCommand();
                 banco.sqlQuery = "insert into MOVIMENTOMUSCULO (";
 
-                int tableSize = TablesManager.instance.Tables[tableId].Length;
+                int tableSize = TablesManager.Tables[tableId].colName.Count;
 
                 for (int i = 0; i < tableSize; ++i) {
                     string aux = (i+1 == tableSize) ? (")") : (",");
-                    banco.sqlQuery += (TablesManager.instance.Tables[tableId].colName[i] + aux);
+                    banco.sqlQuery += (TablesManager.Tables[tableId].colName[i] + aux);
                 }
 
                 banco.sqlQuery += string.Format(" values (\"{0}\",\"{1}\")", idMusculo,
@@ -83,12 +83,12 @@ namespace movimentomusculo
                 banco.conn.Open();
                 banco.cmd = banco.conn.CreateCommand();
 
-                banco.sqlQuery = string.Format("UPDATE \"{0}\" set ", TablesManager.instance.Tables[tableId].tableName);
+                banco.sqlQuery = string.Format("UPDATE \"{0}\" set ", TablesManager.Tables[tableId].tableName);
 
-                banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",", TablesManager.instance.Tables[tableId].colName[0], idMusculo);
-                banco.sqlQuery += string.Format("\"{0}\"=\"{1}\" ", TablesManager.instance.Tables[tableId].colName[1], idMovimento);
+                banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",", TablesManager.Tables[tableId].colName[0], idMusculo);
+                banco.sqlQuery += string.Format("\"{0}\"=\"{1}\" ", TablesManager.Tables[tableId].colName[1], idMovimento);
 
-                banco.sqlQuery += string.Format("WHERE \"{0}\" = \"{1}\", \"{2}\" = \"{3}\"", TablesManager.instance.Tables[tableId].colName[0], idMusculo, TablesManager.instance.Tables[tableId].colName[1], idMusculo);
+                banco.sqlQuery += string.Format("WHERE \"{0}\" = \"{1}\", \"{2}\" = \"{3}\"", TablesManager.Tables[tableId].colName[0], idMusculo, TablesManager.Tables[tableId].colName[1], idMusculo);
 
                 banco.cmd.CommandText = banco.sqlQuery;
                 banco.cmd.ExecuteScalar();
@@ -144,7 +144,7 @@ namespace movimentomusculo
                 banco.conn.Open();
                 banco.cmd = banco.conn.CreateCommand();
 
-                banco.sqlQuery = string.Format("delete from \"{0}\" WHERE \"{1}\" = \"{2}\" AND \"{3}\" = \"{4}\"", TablesManager.instance.Tables[tableId].tableName, TablesManager.instance.Tables[tableId].colName[0], id1, TablesManager.instance.Tables[tableId].colName[1], id2);
+                banco.sqlQuery = string.Format("delete from \"{0}\" WHERE \"{1}\" = \"{2}\" AND \"{3}\" = \"{4}\"", TablesManager.Tables[tableId].tableName, TablesManager.Tables[tableId].colName[0], id1, TablesManager.Tables[tableId].colName[1], id2);
 
                 banco.cmd.CommandText = banco.sqlQuery;
                 banco.cmd.ExecuteScalar();
@@ -163,7 +163,7 @@ namespace movimentomusculo
                 banco.conn.Open();
                 banco.cmd = banco.conn.CreateCommand();
 
-                banco.sqlQuery = string.Format("DROP TABLE IF EXISTS \"{0}\"", TablesManager.instance.Tables[tableId].tableName);
+                banco.sqlQuery = string.Format("DROP TABLE IF EXISTS \"{0}\"", TablesManager.Tables[tableId].tableName);
 
                 banco.cmd.CommandText = banco.sqlQuery;
                 banco.cmd.ExecuteScalar();
