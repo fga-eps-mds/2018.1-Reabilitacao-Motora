@@ -25,7 +25,8 @@ public class Login : MonoBehaviour
 		byte g = byte.Parse(hex.Substring(2,2), System.Globalization.NumberStyles.HexNumber);
 		byte b = byte.Parse(hex.Substring(4,2), System.Globalization.NumberStyles.HexNumber);
 
-		if(hex.Length == 8){
+		if(hex.Length == 8)
+		{
 			a = byte.Parse(hex.Substring(6,2), System.Globalization.NumberStyles.HexNumber);
 		}
 		return new Color32(r,g,b,a);
@@ -38,7 +39,8 @@ public class Login : MonoBehaviour
 	public void Flow()
 	{
 		Fisioterapeuta idcheck = CheckLoginPass();
-		if (idcheck != null) {
+		if (idcheck != null) 
+		{
 			ColorBlock cb = pass.colors;
 			cb.normalColor = hexToColor(success);
 			login.colors = cb;
@@ -47,7 +49,9 @@ public class Login : MonoBehaviour
 			GlobalController.instance.admin = idcheck;
 
 			SceneManager.LoadScene("Menu");
-		} else {
+		} 
+		else 
+		{
 			print("A combinação login+senha está incorreta!");
 			ColorBlock cb = pass.colors;
 			cb.normalColor = hexToColor(wrongConfirmation);
@@ -58,12 +62,12 @@ public class Login : MonoBehaviour
 
 	Fisioterapeuta CheckLoginPass () 
 	{
-		List<Fisioterapeuta> p = new List<Fisioterapeuta>();
-		p = Fisioterapeuta.Read();
+		List<Fisioterapeuta> physiotherapists = Fisioterapeuta.Read();
 
-		foreach (var fisio in p) 
+		foreach (var fisio in physiotherapists) 
 		{			
-			if (fisio.login == login.text && fisio.senha == pass.text) {
+			if (fisio.login == login.text && fisio.senha == pass.text) 
+			{
 				return fisio;
 			}
 		}

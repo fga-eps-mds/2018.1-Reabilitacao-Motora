@@ -4,44 +4,34 @@ using UnityEngine;
 using UnityEngine.UI;
 using movimento;
 
-public class instanciateMovement : MonoBehaviour {
+public class instanciateMovement : MonoBehaviour 
+{
 
 	public GameObject buttonPrefab;
 
-	List<Movimento> values;
+	int heightOffset = 10;
 
-	int z = 10;
-
-	void MyAwesomeCreator(int posy, Movimento r)
+	void ButtonSpawner(int posy, Movimento movement)
 	{
 		GameObject go = Instantiate(buttonPrefab, transform);
 
-		var button = GetComponent<UnityEngine.UI.Button>();
 		go.transform.position = new Vector3 (go.transform.position.x, go.transform.position.y - posy, go.transform.position.z);
 		var aux = go.GetComponentInChildren<setmovement>();
-		aux.x = r;
+		aux.x = movement;
 
 		var temp = go.GetComponentInChildren<Text>();
-		temp.text = r.nomeMovimento;
+		temp.text = movement.nomeMovimento;
 	}
 
 	public void Awake ()
 	{
-		Initialize ();
+		List<Movimento> movements = Movimento.Read();
 
-		values = Movimento.Read();
-
-		foreach (var l in values)
+		foreach (var movement in movements)
 		{
-			print (string.Format("{0}", l.nomeMovimento));
-			MyAwesomeCreator(z, l);
-			z += 55;
+			ButtonSpawner(heightOffset, movement);
+			heightOffset += 55;
 		}
 
-	}
-
-	void Initialize()
-	{
-	    values = new List<Movimento>();
 	}
 }

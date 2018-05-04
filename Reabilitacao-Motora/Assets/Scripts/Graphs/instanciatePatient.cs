@@ -4,43 +4,36 @@ using UnityEngine;
 using UnityEngine.UI;
 using paciente;
 
-public class instanciatePatient : MonoBehaviour {
+public class instanciatePatient : MonoBehaviour 
+{
 
 	public GameObject buttonPrefab;
 
-	List<Paciente> values;
+	List<Paciente> patients;
 
-	int z = 10;
+	int heightOffset = 10;
 
-	void MyAwesomeCreator(int posy, Paciente r)
+	void ButtonSpawner(int posy, Paciente patient)
 	{
 		GameObject go = Instantiate(buttonPrefab, transform);
 
-		var button = GetComponent<UnityEngine.UI.Button>();
 		go.transform.position = new Vector3 (go.transform.position.x, go.transform.position.y - posy, go.transform.position.z);
 		var aux = go.GetComponentInChildren<setpatient>();
-		aux.x = r;
+		aux.x = patient;
 
 		var temp = go.GetComponentInChildren<Text>();
-		temp.text = r.persona.nomePessoa;
+		temp.text = patient.persona.nomePessoa;
 	}
 
 	public void Awake ()
 	{
-		Initialize ();
+		List<Paciente> patients = Paciente.Read();
 
-		values = Paciente.Read();
-
-		foreach (var l in values)
+		foreach (var patient in patients)
 		{
-			MyAwesomeCreator(z, l);
-			z += 55;
+			ButtonSpawner(heightOffset, patient);
+			heightOffset += 55;
 		}
 
-	}
-
-	void Initialize()
-	{
-	    values = new List<Paciente>();
 	}
 }

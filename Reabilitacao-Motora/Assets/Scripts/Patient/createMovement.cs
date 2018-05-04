@@ -26,12 +26,13 @@ public class createMovement : MonoBehaviour
 	public void saveMovement()
 	{
 
-		var trip = musculos.text.Split(',');
+		var muscles = musculos.text.Split(',');
 
 		string movunderscored = (nomeMovimento.text).Replace(' ', '_');
 		string physiounderscored = (GlobalController.instance.admin.persona.nomePessoa).Replace(' ', '_');
 
 		string pathSave = GlobalController.instance.admin.idPessoa + "-";
+
 		pathSave += physiounderscored + "/";
 		pathSave += movunderscored + "-";
 		pathSave += DateTime.Now.ToString("HHmmss", System.Globalization.DateTimeFormatInfo.InvariantInfo);
@@ -39,30 +40,35 @@ public class createMovement : MonoBehaviour
 		Movimento.Insert (GlobalController.instance.admin.idFisioterapeuta, 
 							nomeMovimento.text, descricao.text, pathSave);
 
-		List<Movimento> auxMovi = Movimento.Read();
+		List<Movimento> movementsList = Movimento.Read();
 
-		foreach (var tt in trip) {
-		name = new string((from c in tt where char.IsLetterOrDigit(c) select c).ToArray());
-			if (!checkMuscle (name)) {
+		foreach (var muscle in muscles) 
+		{
+			name = new string((from c in muscle where char.IsLetterOrDigit(c) select c).ToArray());
+			int idMuscleIfNotExists = checkMuscle (name);
+			if (idMuscleIfNotExists != -1) 
+			{
 				Musculo.Insert(name);
-				List<Musculo> x = Musculo.Read();
-				MovimentoMusculo.Insert(x[x.Count - 1].idMusculo, auxMovi[auxMovi.Count - 1].idMovimento);
+				MovimentoMusculo.Insert(idMuscleIfNotExists, movementsList[movementsList.Count - 1].idMovimento);
 			}
 		}
 
-		GlobalController.instance.movement = auxMovi[auxMovi.Count-1];
+		GlobalController.instance.movement = movementsList[movementsList.Count - 1];
 		SceneManager.LoadScene("Clinic");
 	}
 
-	bool checkMuscle(string name)
+	int checkMuscle(string name)
 	{
-		List<Musculo> auxMusc = Musculo.Read();
+		List<Musculo> musclesList = Musculo.Read();
 
-		foreach (var x in auxMusc)
+		foreach (var muscle in musclesList)
 		{
-			if(x.nomeMusculo == name) return true;
+			if(muscle.nomeMusculo == name)
+			{
+				return -1;
+			}
 		}
 
-		return false;
+		return musclesList[musclesList.Count - 1].idMusculo;
 	}
 }

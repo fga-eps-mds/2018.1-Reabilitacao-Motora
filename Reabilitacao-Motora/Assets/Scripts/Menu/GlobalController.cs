@@ -16,12 +16,10 @@ using movimentomusculo;
 using pontosrotulofisioterapeuta;
 using pontosrotulopaciente;
 
-public class GlobalController : MonoBehaviour {
+public class GlobalController : MonoBehaviour 
+{
 
 	public static GlobalController instance;
-    public string sqlQuery = "";
-    public IDbConnection conn;
-    public IDbCommand cmd;
 
 	public Fisioterapeuta admin;
 	public Paciente user;
@@ -33,19 +31,20 @@ public class GlobalController : MonoBehaviour {
 	public string path;
 	public string pathEx;
 	public string pathMv;
-	// Use this for initialization
-	void Awake () {
+
+	void Awake () 
+	{
 		if (instance != null)
 		{
 			Destroy(gameObject);
 		}
 		else
 		{
-	        pathEx = "Assets\\Exercicios";
-	        pathMv = "Assets\\Movimentos";
+			pathEx = "Assets\\Exercicios";
+			pathMv = "Assets\\Movimentos";
 
-	        Directory.CreateDirectory(pathEx);
-	        Directory.CreateDirectory(pathMv);
+			Directory.CreateDirectory(pathEx);
+			Directory.CreateDirectory(pathMv);
 
 			instance = this;
 			DontDestroyOnLoad(gameObject);
@@ -54,24 +53,19 @@ public class GlobalController : MonoBehaviour {
 			instance.path = "URI=file:" + Application.dataPath + "/Plugins/fisiotech.db";
 		}
 	}
-	
-	void Initialize()
-    {
-        Pessoa.Create();
-        Fisioterapeuta.Create();
-        Paciente.Create();
-        Musculo.Create();
-        Movimento.Create();
-        Sessao.Create();
-        Exercicio.Create();
-        MovimentoMusculo.Create();
-        PontosRotuloPaciente.Create();
-        PontosRotuloFisioterapeuta.Create();
-    }
 
-	// Update is called once per frame
-	void Update () 
+	void Initialize()
 	{
-		
+		Pessoa.Create();
+		Fisioterapeuta.Create();
+		Paciente.Create();
+		Musculo.Create();
+		Movimento.Create();
+		Sessao.Create();
+		Exercicio.Create();
+		MovimentoMusculo.Create();
+		PontosRotuloPaciente.Create();
+		PontosRotuloFisioterapeuta.Create();
 	}
+
 }

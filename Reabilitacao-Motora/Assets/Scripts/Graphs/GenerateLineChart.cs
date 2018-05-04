@@ -171,7 +171,8 @@ public class GenerateLineChart : MonoBehaviour
 	{
 
 		if(GlobalController.instance != null && 
-		   GlobalController.instance.movement != null){
+		   GlobalController.instance.movement != null)
+		{
 
 			current_time = new List<float>();
 			f_mao_pos = new List<Vector3>();
@@ -208,14 +209,23 @@ public class GenerateLineChart : MonoBehaviour
 			float alpha = 1.0f;
 			Gradient gradient = new Gradient();
 			gradient.SetKeys(
-			new GradientColorKey[] { new GradientColorKey(c1, 0.0f), new GradientColorKey(c2, 1.0f) },
-			new GradientAlphaKey[] { new GradientAlphaKey(alpha, 0.0f), new GradientAlphaKey(alpha, 1.0f) }
+				new GradientColorKey[] 
+				{ 
+					new GradientColorKey(c1, 0.0f), 
+					new GradientColorKey(c2, 1.0f) 
+				},
+				new GradientAlphaKey[] 
+				{ 
+					new GradientAlphaKey(alpha, 0.0f), 
+					new GradientAlphaKey(alpha, 1.0f) 
+				}
 			);
 			lineRenderer.colorGradient = gradient;
 
 			generateGraphicPoints();
 		}
-		else{
+		else
+		{
 			Debug.Log("Você violou o acesso!");	
 		}
 		

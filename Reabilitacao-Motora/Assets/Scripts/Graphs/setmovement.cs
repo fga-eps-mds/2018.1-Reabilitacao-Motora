@@ -5,7 +5,8 @@ using movimento;
 using UnityEngine.SceneManagement;
 
 
-public class setmovement : MonoBehaviour {
+public class setmovement : MonoBehaviour 
+{
 
 	public Movimento x;
 

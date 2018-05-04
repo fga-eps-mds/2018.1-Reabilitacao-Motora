@@ -24,21 +24,22 @@ public class createPatient : MonoBehaviour
  	 */
 	public void savePatient()
 	{
-		if(namePatient.text == "" || date.text == "" || phone1.text == "") {
-			
-		} else {
-
+		if(namePatient.text != "" && date.text != "" && phone1.text != "") {
 			var trip = date.text.Split('/');
 			var dateFormate = trip[2] + "/" + trip[1] + "/" + trip[0];
 		
 			if (male.isOn)
+			{
 				Pessoa.Insert(namePatient.text, "m", dateFormate, phone1.text, phone2.text);
+			}
 			else if(female.isOn)
+			{
 				Pessoa.Insert(namePatient.text, "f", dateFormate, phone1.text, phone2.text);
+			}
 
-			List<Pessoa> p = Pessoa.Read();
+			List<Pessoa> personsList = Pessoa.Read();
 			
-			Paciente.Insert(p[p.Count -1].idPessoa, notes.text);
+			Paciente.Insert(personsList[personsList.Count - 1].idPessoa, notes.text);
 		}
 	}
 }
