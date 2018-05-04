@@ -7,10 +7,10 @@ namespace DataBaseAttributes
   /**
    * Classe que cria a base de dados em que as relações serão criadas.
    */
-    public class DataBase
-    {
-        public string sqlQuery;
-        public IDbConnection conn;
-        public IDbCommand cmd;
-    }
+	public class DataBase
+	{
+		public string sqlQuery;
+		public IDbConnection conn;
+		public IDbCommand cmd;
+	}
 }
