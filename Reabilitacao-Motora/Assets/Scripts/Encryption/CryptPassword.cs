@@ -16,7 +16,7 @@ namespace cryptpw
 		 * O procedimento é:
 		 * - recebe senha X
 		 * - Hasheia X com SHA256, resultando em Y
-		 * - "Acopla" o nounce (login) no final d'este resultado (Y), resultando em Z
+		 * - "Acopla" o nounce (login) no final deste resultado (Y), resultando em Z
 		 * - gera um Salt aleatório, com 29 caracteres
 		 * - Utiliza o BCrypt para gerar outra hash, sendo esta resultado do Salt + Z, resultando em W
 		 * - Como os primeiros 29 caracteres de W são o proprio salt, encripta-se, com o AES, apenas os caracteres que não fazem parte do Salt, resultando Salt + R
@@ -35,7 +35,7 @@ namespace cryptpw
 		}
 
 		/**
-		 * Repete o mesmo procedimento de encriptação e compara as hashs resultadas com
+		 * Repete o mesmo procedimento de encriptação e compara as hashs resultantes com
 		 * o que está salvo no banco de dados.
 		 */
 		public static bool Uncrypt(string password, string hash, string username)

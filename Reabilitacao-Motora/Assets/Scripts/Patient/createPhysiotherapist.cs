@@ -40,7 +40,8 @@ public class createPhysiotherapist : MonoBehaviour
 		byte g = byte.Parse(hex.Substring(2,2), System.Globalization.NumberStyles.HexNumber);
 		byte b = byte.Parse(hex.Substring(4,2), System.Globalization.NumberStyles.HexNumber);
 
-		if(hex.Length == 8){
+		if(hex.Length == 8)
+		{
 			a = byte.Parse(hex.Substring(6,2), System.Globalization.NumberStyles.HexNumber);
 		}
 		return new Color32(r,g,b,a);
@@ -52,7 +53,8 @@ public class createPhysiotherapist : MonoBehaviour
  	 */
 	public void savePhysiotherapist()
 	{
-		if (pass.text == confirmPass.text) {
+		if (pass.text == confirmPass.text) 
+		{
 			string encryptedPassword = CryptPassword.Encrypt(pass.text, login.text);
 			ColorBlock cb = confirmPass.colors;
 			cb.normalColor = hexToColor(success);
@@ -81,7 +83,9 @@ public class createPhysiotherapist : MonoBehaviour
 			Directory.CreateDirectory(pathnamephysio);
 
 			SceneManager.LoadScene("Login");
-		} else {
+		} 
+		else 
+		{
 			print("As senhas não condizem!");
 			ColorBlock cb = confirmPass.colors;
 			cb.normalColor = hexToColor(wrongConfirmation);

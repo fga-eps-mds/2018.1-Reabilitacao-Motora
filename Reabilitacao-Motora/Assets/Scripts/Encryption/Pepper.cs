@@ -8,9 +8,6 @@ namespace pepper
 	 */
 	public static class Pepper 
 	{
-		private const int INTEGER_BOUND = 9;
-		private const int UPPER_CASE_BOUND = 35;
-
 		/**
 		 * Gera uma pepper aleatória, sendo composta por dois caracteres; podendo, cada um deles, ser um numero de 0 a 9 ou uma letra de A-z.
 		 * Exemplos de possíveis peppers: 00, x4, Aa, 8z (etc)
@@ -84,22 +81,29 @@ namespace pepper
 		{
 			int asciiDecimal;
 			char digit;
+			const int INTEGER_BOUND = 9;
+			const int UPPER_CASE_BOUND = 35;
+			const int TRANSFORM_TO_LOWER_CASE = 61;
+			const int TRANSFORM_TO_UPPER_CASE = 55;
+			const int TRANSFORM_TO_NUM = 48;
+
 			if (index > INTEGER_BOUND) 
 			{
 				if (index > UPPER_CASE_BOUND) 
 				{
-					asciiDecimal = index + 61;
+					asciiDecimal = index + TRANSFORM_TO_LOWER_CASE;
 				} 
 				else 
 				{
-					asciiDecimal = index + 55;
+					asciiDecimal = index + TRANSFORM_TO_UPPER_CASE;
 				}
-				digit = (char) asciiDecimal;
 			}
 			else
 			{
-				digit = (char) (index + '0');
+				asciiDecimal = index + TRANSFORM_TO_NUM;
 			}
+
+			digit = (char) asciiDecimal;
 
 			return digit.ToString();
 		}
