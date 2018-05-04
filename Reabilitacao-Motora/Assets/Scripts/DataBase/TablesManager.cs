@@ -11,11 +11,36 @@ public static class TablesManager
 {
 	public class Table 
 	{
-		public string tableName;
-		public List<string> colName;
+		private string TableName;
+		private List<string> ColName;
+
+		public string tableName
+		{
+			get
+			{
+				return TableName;
+			}
+			set
+			{
+				TableName = value;
+			}
+		}
+
+		public List<string> colName
+		{
+			get
+			{
+				return ColName;
+			}
+			set
+			{
+				ColName = value;
+			}
+		}
+
 	}
 
-	private static Table Pessoa =
+	private static readonly Table Pessoa =
 	new Table 
 	{
 		tableName = "PESSOA", 
@@ -29,7 +54,7 @@ public static class TablesManager
 		}
 	};
 
-	private static Table Fisioterapeuta =
+	private static readonly Table Fisioterapeuta =
 	new Table 
 	{
 		tableName = "FISIOTERAPEUTA", 
@@ -43,7 +68,7 @@ public static class TablesManager
 		}
 	};
 
-	private static Table Paciente =
+	private static readonly Table Paciente =
 	new Table 
 	{
 		tableName = "PACIENTE", 
@@ -54,7 +79,7 @@ public static class TablesManager
 		}
 	};
 
-	private static Table Musculo =
+	private static readonly Table Musculo =
 	new Table 
 	{
 		tableName = "MUSCULO", 
@@ -64,7 +89,7 @@ public static class TablesManager
 		}
 	};
 
-	private static Table Movimento =
+	private static readonly Table Movimento =
 	new Table 
 	{
 		tableName = "MOVIMENTO", 
@@ -77,7 +102,7 @@ public static class TablesManager
 		}
 	};
 
-	private static Table Sessao =
+	private static readonly Table Sessao =
 	new Table 
 	{
 		tableName = "SESSAO", 
@@ -90,7 +115,7 @@ public static class TablesManager
 		}
 	};
 
-	private static Table Exercicio =
+	private static readonly Table Exercicio =
 	new Table 
 	{
 		tableName = "EXERCICIO", 
@@ -104,7 +129,7 @@ public static class TablesManager
 		}
 	};
 
-	private static Table MovimentoMusculo =
+	private static readonly Table MovimentoMusculo =
 	new Table 
 	{
 		tableName = "MOVIMENTOMUSCULO", 
@@ -114,7 +139,7 @@ public static class TablesManager
 		}
 	};
 
-	private static Table PRF =
+	private static readonly Table PRF =
 	new Table 
 	{
 		tableName = "PONTOSROTULOFISIOTERAPEUTA", 
@@ -127,7 +152,7 @@ public static class TablesManager
 		}
 	};
 
-	private static Table PRP =
+	private static readonly Table PRP =
 	new Table 
 	{
 		tableName = "PONTOSROTULOPACIENTE", 
@@ -140,10 +165,9 @@ public static class TablesManager
 		}
 	};
 
-	public static List<Table> Tables = new List<Table>{
+	public static readonly Table[] Tables = new []{
 		Pessoa, Fisioterapeuta, Paciente, Musculo,
 		Movimento, Sessao, Exercicio, MovimentoMusculo,
 		PRF, PRP
 	};
 }
-

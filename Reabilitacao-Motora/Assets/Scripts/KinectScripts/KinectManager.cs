@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using UnityEngine.UI;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -84,19 +84,19 @@ public class KinectManager : MonoBehaviour
 	public List<MonoBehaviour> GestureListeners;
 	
 	// GUI Text to show messages.
-	public GUIText CalibrationText;
+	public Text CalibrationText;
 	
 	// GUI Texture to display the hand cursor for Player1
-	public GameObject HandCursor1;
+	public Image HandCursor1;
 	
 	// GUI Texture to display the hand cursor for Player1
-	public GameObject HandCursor2;
+	public Image HandCursor2;
 	
 	// Bool to specify whether Left/Right-hand-cursor and the Click-gesture control the mouse cursor and click
 	public bool ControlMouseCursor = false;
 
 	// GUI Text to show gesture debug message.
-	public GUIText GesturesDebugText;
+	public Text GesturesDebugText;
 	
 
 	// Bool to keep track of whether Kinect has been initialized
@@ -1004,7 +1004,7 @@ public class KinectManager : MonoBehaviour
 			Debug.LogError(message);
 			Debug.LogError(e.ToString());
 			if(CalibrationText != null)
-				CalibrationText.GetComponent<GUIText>().text = message;
+				CalibrationText.text = message;
 				
 			return;
 		}
@@ -1014,7 +1014,7 @@ public class KinectManager : MonoBehaviour
 			Debug.LogError(message);
 			Debug.LogError(e.ToString());
 			if(CalibrationText != null)
-				CalibrationText.GetComponent<GUIText>().text = message;
+				CalibrationText.text = message;
 				
 			return;
 		}
@@ -1090,7 +1090,7 @@ public class KinectManager : MonoBehaviour
 		// GUI Text.
 		if(CalibrationText != null)
 		{
-			CalibrationText.GetComponent<GUIText>().text = "WAITING FOR USERS";
+			CalibrationText.text = "WAITING FOR USERS";
 		}
 		
 		Debug.Log("Waiting for users.");
@@ -1186,7 +1186,7 @@ public class KinectManager : MonoBehaviour
 								{
 									Vector3 vCursorPos = gestureData.screenPos;
 									
-									if(HandCursor1.GetComponent<GUITexture>() == null)
+									if(HandCursor1 == null)
 									{
 										float zDist = HandCursor1.transform.position.z - Camera.main.transform.position.z;
 										vCursorPos.z = zDist;
@@ -1199,7 +1199,7 @@ public class KinectManager : MonoBehaviour
 								
 								if(ControlMouseCursor)
 								{
-									Vector3 vCursorPos = HandCursor1.GetComponent<GUITexture>() != null ? HandCursor1.transform.position :
+									Vector3 vCursorPos = HandCursor1 != null ? HandCursor1.transform.position :
 										Camera.main.WorldToViewportPoint(HandCursor1.transform.position);
 									MouseControl.MouseMove(vCursorPos, CalibrationText);
 								}
@@ -1271,7 +1271,7 @@ public class KinectManager : MonoBehaviour
 								{
 									Vector3 vCursorPos = gestureData.screenPos;
 									
-									if(HandCursor2.GetComponent<GUITexture>() == null)
+									if(HandCursor2 == null)
 									{
 										float zDist = HandCursor2.transform.position.z - Camera.main.transform.position.z;
 										vCursorPos.z = zDist;
@@ -1284,7 +1284,7 @@ public class KinectManager : MonoBehaviour
 								
 								if(ControlMouseCursor)
 								{
-									Vector3 vCursorPos = HandCursor2.GetComponent<GUITexture>() != null ? HandCursor2.transform.position :
+									Vector3 vCursorPos = HandCursor2 != null ? HandCursor2.transform.position :
 										Camera.main.WorldToViewportPoint(HandCursor2.transform.position);
 									MouseControl.MouseMove(vCursorPos, CalibrationText);
 								}
@@ -1603,7 +1603,7 @@ public class KinectManager : MonoBehaviour
 			
 			if(CalibrationText != null)
 			{
-				CalibrationText.GetComponent<GUIText>().text = "";
+				CalibrationText.text = "";
 			}
 		}
     }
@@ -1665,7 +1665,7 @@ public class KinectManager : MonoBehaviour
 
 		if(CalibrationText != null)
 		{
-			CalibrationText.GetComponent<GUIText>().text = "WAITING FOR USERS";
+			CalibrationText.text = "WAITING FOR USERS";
 		}
 	}
 	
@@ -1864,7 +1864,7 @@ public class KinectManager : MonoBehaviour
 							sDebugGestures += string.Format("\n HipRight: {0}", player1JointsTracked[(int)KinectWrapper.NuiSkeletonPositionIndex.HipRight] ?
 							                                player1JointsPos[(int)KinectWrapper.NuiSkeletonPositionIndex.HipRight].ToString() : "");
 
-							GesturesDebugText.GetComponent<GUIText>().text = sDebugGestures;
+							GesturesDebugText.text = sDebugGestures;
 						}
 					}
 				}

@@ -11,206 +11,275 @@ namespace paciente
   /**
    * Classe que cria relação para cadastro de Pacientes a serem registrados pelo sistema.
    */
-    public class Paciente
-    {
-        private static int tableId = 3;
-        public int idPaciente, idPessoa;
-        public string observacoes;
-        public Pessoa persona;
+	public class Paciente
+	{
+		private const int tableId = 2;
+		private int IdPaciente;
+		private int IdPessoa;
+		private string Observacoes;
+		private Pessoa Persona;
 
-        /**
-         * Classe com todos os atributos de um paciente.
-         */
-        public Paciente(int idpa, int idpe, string obs)
-        {
-            this.idPaciente = idpa;
-            this.idPessoa = idpe;
-            this.observacoes = obs;
-            this.persona = Pessoa.ReadValue (idpe);
-        }
+		public int idPaciente 
+		{ 
+			get 
+			{ 
+				return IdPaciente; 
+			} 
+			set 
+			{ 
+				IdPaciente = value; 
+			}
+		}
 
-        /**
-         * Cria a relação para paciente, contendo um id gerado automaticamente pelo banco como chave primária.
-         */
-        public static void Create()
-        {
-            DataBase banco = new DataBase();
-            using (banco.conn = new SqliteConnection(GlobalController.instance.path))
-            {
-                banco.conn.Open();
-                banco.cmd = banco.conn.CreateCommand();
+		public int idPessoa 
+		{ 
+			get 
+			{ 
+				return IdPessoa; 
+			} 
+			set 
+			{ 
+				IdPessoa = value; 
+			}
+		}
 
-                banco.sqlQuery = "CREATE TABLE IF NOT EXISTS PACIENTE (idPaciente INTEGER primary key AUTOINCREMENT,idPessoa INTEGER not null,observacoes VARCHAR (300),foreign key (idPessoa) references PESSOA (idPessoa));";
+		public string observacoes 
+		{ 
+			get 
+			{ 
+				return Observacoes; 
+			} 
+			set 
+			{ 
+				Observacoes = value; 
+			}
+		}
 
-                banco.cmd.CommandText = banco.sqlQuery;
-                banco.cmd.ExecuteScalar();
-                banco.conn.Close();
-            }
-        }
+		public Pessoa persona 
+		{ 
+			get 
+			{ 
+				return Persona; 
+			} 
+			set 
+			{ 
+				Persona = value; 
+			}
+		} 
 
-        /**
-         * Função que insere dados necessários para cadastro de pacientes na relação musculo.
-         */
-        public static void Insert(int idPessoa,
-            string observacoes)
-        {
-            DataBase banco = new DataBase();
-            using (banco.conn = new SqliteConnection(GlobalController.instance.path))
-            {
-                banco.conn.Open();
-                banco.cmd = banco.conn.CreateCommand();
-                banco.sqlQuery = "insert into PACIENTE (";
 
-                int tableSize = TablesManager.Tables[tableId].colName.Count;
+		/**
+		 * Classe com todos os atributos de um paciente.
+		 */
+		public Paciente(int idpa, int idpe, string obs)
+		{
+			this.idPaciente = idpa;
+			this.idPessoa = idpe;
+			this.observacoes = obs;
+			this.persona = Pessoa.ReadValue (idpe);
+		}
 
-                for (int i = 1; i < tableSize; ++i) {
-                    string aux = (i+1 == tableSize) ? (")") : (",");
-                    banco.sqlQuery += (TablesManager.Tables[tableId].colName[i] + aux);
-                }
+		/**
+		 * Cria a relação para paciente, contendo um id gerado automaticamente pelo banco como chave primária.
+		 */
+		public static void Create()
+		{
+			DataBase banco = new DataBase();
+			using (banco.conn = new SqliteConnection(GlobalController.instance.path))
+			{
+				banco.conn.Open();
+				banco.cmd = banco.conn.CreateCommand();
 
-                banco.sqlQuery += string.Format(" values (\"{0}\",\"{1}\")", idPessoa,
-                    observacoes);
+				banco.sqlQuery = "CREATE TABLE IF NOT EXISTS PACIENTE (idPaciente INTEGER primary key AUTOINCREMENT,idPessoa INTEGER not null,observacoes VARCHAR (300),foreign key (idPessoa) references PESSOA (idPessoa));";
 
-                banco.cmd.CommandText = banco.sqlQuery;
-                banco.cmd.ExecuteScalar();
-                banco.conn.Close();
-            }
-        }
+				banco.cmd.CommandText = banco.sqlQuery;
+				banco.cmd.ExecuteScalar();
+				banco.conn.Close();
+			}
+		}
 
-        /**
-         * Função que atualiza dados já cadastrados anteriormente na relação paciente.
-         */
-        public static void Update(int id,
-            int idPessoa,
-            string observacoes)
-        {
-            DataBase banco = new DataBase();
-            using (banco.conn = new SqliteConnection(GlobalController.instance.path))
-            {
-                banco.conn.Open();
-                banco.cmd = banco.conn.CreateCommand();
+		/**
+		 * Função que insere dados necessários para cadastro de pacientes na relação musculo.
+		 */
+		public static void Insert(int idPessoa,
+			string observacoes)
+		{
+			DataBase banco = new DataBase();
+			using (banco.conn = new SqliteConnection(GlobalController.instance.path))
+			{
+				banco.conn.Open();
+				banco.cmd = banco.conn.CreateCommand();
+				banco.sqlQuery = "insert into PACIENTE (";
 
-                banco.sqlQuery = string.Format("UPDATE \"{0}\" set ", TablesManager.Tables[tableId].tableName);
+				int tableSize = TablesManager.Tables[tableId].colName.Count;
 
-                banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",", TablesManager.Tables[tableId].colName[1], idPessoa);
-                banco.sqlQuery += string.Format("\"{0}\"=\"{1}\" ", TablesManager.Tables[tableId].colName[2], observacoes);
+				for (int i = 1; i < tableSize; ++i) 
+				{
+					string aux = (i+1 == tableSize) ? (")") : (",");
+					banco.sqlQuery += (TablesManager.Tables[tableId].colName[i] + aux);
+				}
 
-                banco.sqlQuery += string.Format("WHERE \"{0}\" = \"{1}\"", TablesManager.Tables[tableId].colName[0], id);
+				banco.sqlQuery += string.Format(" values (\"{0}\",\"{1}\")", idPessoa,
+					observacoes);
 
-                banco.cmd.CommandText = banco.sqlQuery;
-                banco.cmd.ExecuteScalar();
-                banco.conn.Close();
-            }
-        }
+				banco.cmd.CommandText = banco.sqlQuery;
+				banco.cmd.ExecuteScalar();
+				banco.conn.Close();
+			}
+		}
 
-        /**
-         * Função que lê dados já cadastrados anteriormente na relação paciente.
-         */
-        public static List<Paciente> Read()
-        {
-            DataBase banco = new DataBase();
-            using (banco.conn = new SqliteConnection(GlobalController.instance.path))
-            {
-                banco.conn.Open();
-                banco.cmd = banco.conn.CreateCommand();
-                banco.sqlQuery = "SELECT * " + "FROM PACIENTE";
-                banco.cmd.CommandText = banco.sqlQuery;
-                IDataReader reader = banco.cmd.ExecuteReader();
+		/**
+		 * Função que atualiza dados já cadastrados anteriormente na relação paciente.
+		 */
+		public static void Update(int id,
+			int idPessoa,
+			string observacoes)
+		{
+			DataBase banco = new DataBase();
+			using (banco.conn = new SqliteConnection(GlobalController.instance.path))
+			{
+				banco.conn.Open();
+				banco.cmd = banco.conn.CreateCommand();
 
-                List<Paciente> p = new List<Paciente>();
+				banco.sqlQuery = string.Format("UPDATE \"{0}\" set ", TablesManager.Tables[tableId].tableName);
 
-                while (reader.Read())
-                {
-                    int idPaciente = 0;
-                    int idPessoa = 0;
-                    string observacoes = "null";
+				banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",", TablesManager.Tables[tableId].colName[1], idPessoa);
+				banco.sqlQuery += string.Format("\"{0}\"=\"{1}\" ", TablesManager.Tables[tableId].colName[2], observacoes);
 
-                    if (!reader.IsDBNull(0)) idPaciente = reader.GetInt32(0);
-                    if (!reader.IsDBNull(1)) idPessoa = reader.GetInt32(1);
-                    if (!reader.IsDBNull(2)) observacoes = reader.GetString(2);
+				banco.sqlQuery += string.Format("WHERE \"{0}\" = \"{1}\"", TablesManager.Tables[tableId].colName[0], id);
 
-                    Paciente x = new Paciente(idPaciente, idPessoa, observacoes);
-                    p.Add(x);
-                }
-                reader.Close();
-                reader = null;
-                banco.cmd.Dispose();
-                banco.cmd = null;
-                banco.conn.Close();
-                banco.conn = null;
-                return p;
-            }
-        }
+				banco.cmd.CommandText = banco.sqlQuery;
+				banco.cmd.ExecuteScalar();
+				banco.conn.Close();
+			}
+		}
 
-        public static Paciente ReadValue (int id)
-        {
-            DataBase banco = new DataBase();
-            using (banco.conn = new SqliteConnection(GlobalController.instance.path))
-            {
-                banco.conn.Open();
-                banco.cmd = banco.conn.CreateCommand();
-                banco.sqlQuery = "SELECT * " + string.Format("FROM \"{0}\" WHERE \"{1}\" = \"{2}\";", TablesManager.Tables[tableId].tableName, 
-                    TablesManager.Tables[tableId].colName[0], 
-                    id);
-                banco.cmd.CommandText = banco.sqlQuery;
-                IDataReader reader = banco.cmd.ExecuteReader();
+		/**
+		 * Função que lê dados já cadastrados anteriormente na relação paciente.
+		 */
+		public static List<Paciente> Read()
+		{
+			DataBase banco = new DataBase();
+			using (banco.conn = new SqliteConnection(GlobalController.instance.path))
+			{
+				banco.conn.Open();
+				banco.cmd = banco.conn.CreateCommand();
+				banco.sqlQuery = "SELECT * " + "FROM PACIENTE";
+				banco.cmd.CommandText = banco.sqlQuery;
+				IDataReader reader = banco.cmd.ExecuteReader();
 
-                int idPaciente = 0;
-                int idPessoa = 0;
-                string observacoes = "null";
+				List<Paciente> p = new List<Paciente>();
 
-                if (!reader.IsDBNull(0)) idPaciente = reader.GetInt32(0);
-                if (!reader.IsDBNull(1)) idPessoa = reader.GetInt32(1);
-                if (!reader.IsDBNull(2)) observacoes = reader.GetString(2);
+				while (reader.Read())
+				{
+					int idPacienteTemp = 0;
+					int idPessoaTemp = 0;
+					string observacoesTemp = "null";
 
-                Paciente x = new Paciente (idPaciente,idPessoa,observacoes);
+					if (!reader.IsDBNull(0))
+					{
+						idPacienteTemp = reader.GetInt32(0);
+					}
+					if (!reader.IsDBNull(1))
+					{
+						idPessoaTemp = reader.GetInt32(1);
+					}
+					if (!reader.IsDBNull(2))
+					{
+						observacoesTemp = reader.GetString(2);
+					}
 
-                reader.Close();
-                reader = null;
-                banco.cmd.Dispose();
-                banco.cmd = null;
-                banco.conn.Close();
-                banco.conn = null;
-                return x;
-            }
-        }
+					Paciente x = new Paciente(idPacienteTemp, idPessoaTemp, observacoesTemp);
+					p.Add(x);
+				}
+				reader.Close();
+				reader = null;
+				banco.cmd.Dispose();
+				banco.cmd = null;
+				banco.conn.Close();
+				banco.conn = null;
+				return p;
+			}
+		}
 
-        /**
-         * Função que deleta dados cadastrados anteriormente na relação paciente.
-         */
-        public static void DeleteValue(int id)
-        {
-            DataBase banco = new DataBase();
-            using (banco.conn = new SqliteConnection(GlobalController.instance.path))
-            {
-                banco.conn.Open();
-                banco.cmd = banco.conn.CreateCommand();
+		public static Paciente ReadValue (int id)
+		{
+			DataBase banco = new DataBase();
+			using (banco.conn = new SqliteConnection(GlobalController.instance.path))
+			{
+				banco.conn.Open();
+				banco.cmd = banco.conn.CreateCommand();
+				banco.sqlQuery = "SELECT * " + string.Format("FROM \"{0}\" WHERE \"{1}\" = \"{2}\";", TablesManager.Tables[tableId].tableName, 
+					TablesManager.Tables[tableId].colName[0], 
+					id);
+				banco.cmd.CommandText = banco.sqlQuery;
+				IDataReader reader = banco.cmd.ExecuteReader();
 
-                banco.sqlQuery = string.Format("delete from \"{0}\" WHERE \"{1}\" = \"{2}\"", TablesManager.Tables[tableId].tableName, TablesManager.Tables[tableId].colName[0], id);
+				int idPacienteTemp = 0;
+				int idPessoaTemp = 0;
+				string observacoesTemp = "null";
 
-                banco.cmd.CommandText = banco.sqlQuery;
-                banco.cmd.ExecuteScalar();
-                banco.conn.Close();
-            }
-        }
+				if (!reader.IsDBNull(0))
+				{
+					idPacienteTemp = reader.GetInt32(0);
+				}
+				if (!reader.IsDBNull(1))
+				{
+					idPessoaTemp = reader.GetInt32(1);
+				}
+				if (!reader.IsDBNull(2))
+				{
+					observacoesTemp = reader.GetString(2);
+				}
 
-        /**
-         * Função que apaga a relação paciente inteira de uma vez.
-         */
-        public static void Drop()
-        {
-            DataBase banco = new DataBase();
-            using (banco.conn = new SqliteConnection(GlobalController.instance.path))
-            {
-                banco.conn.Open();
-                banco.cmd = banco.conn.CreateCommand();
+				Paciente x = new Paciente (idPacienteTemp,idPessoaTemp,observacoesTemp);
 
-                banco.sqlQuery = string.Format("DROP TABLE IF EXISTS \"{0}\"", TablesManager.Tables[tableId].tableName);
+				reader.Close();
+				reader = null;
+				banco.cmd.Dispose();
+				banco.cmd = null;
+				banco.conn.Close();
+				banco.conn = null;
+				return x;
+			}
+		}
 
-                banco.cmd.CommandText = banco.sqlQuery;
-                banco.cmd.ExecuteScalar();
-                banco.conn.Close();
-            }
-        }
-    }
+		/**
+		 * Função que deleta dados cadastrados anteriormente na relação paciente.
+		 */
+		public static void DeleteValue(int id)
+		{
+			DataBase banco = new DataBase();
+			using (banco.conn = new SqliteConnection(GlobalController.instance.path))
+			{
+				banco.conn.Open();
+				banco.cmd = banco.conn.CreateCommand();
+
+				banco.sqlQuery = string.Format("delete from \"{0}\" WHERE \"{1}\" = \"{2}\"", TablesManager.Tables[tableId].tableName, TablesManager.Tables[tableId].colName[0], id);
+
+				banco.cmd.CommandText = banco.sqlQuery;
+				banco.cmd.ExecuteScalar();
+				banco.conn.Close();
+			}
+		}
+
+		/**
+		 * Função que apaga a relação paciente inteira de uma vez.
+		 */
+		public static void Drop()
+		{
+			DataBase banco = new DataBase();
+			using (banco.conn = new SqliteConnection(GlobalController.instance.path))
+			{
+				banco.conn.Open();
+				banco.cmd = banco.conn.CreateCommand();
+
+				banco.sqlQuery = string.Format("DROP TABLE IF EXISTS \"{0}\"", TablesManager.Tables[tableId].tableName);
+
+				banco.cmd.CommandText = banco.sqlQuery;
+				banco.cmd.ExecuteScalar();
+				banco.conn.Close();
+			}
+		}
+	}
 }

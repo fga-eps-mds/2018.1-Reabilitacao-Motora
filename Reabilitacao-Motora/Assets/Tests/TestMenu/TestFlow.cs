@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 namespace Tests
 {
-    public class TestFlow
+    public static class TestFlow
     {
         [UnityTest]
         public static IEnumerator TestCreateMove()
