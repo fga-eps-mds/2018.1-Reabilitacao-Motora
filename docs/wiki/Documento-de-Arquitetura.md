@@ -27,6 +27,8 @@ Data|Versão|Descrição|Autor
 15/04|1.12.1|Revisão do item 5| João Lucas, Victor Moura e Vitor Falcão
 17/04|1.12.2|Correção item 5| João Lucas
 18/04|1.12.3|Correção do MER| João Lucas
+04/05|1.13.0|Modificação quanto a arquitetura sensor-aplicação| Djorkaeff Alexandre
+
 # Sumário
 ----------------
  1. [Introdução](#1)
@@ -138,6 +140,13 @@ A implementação do projeto será a linguagem de programação C# (C-Sharp).Ele
 
 <p align = "justify">Em visão lógica, o Diagrama Geral da Arquitetura demonstra como será o funcionamento do projeto. Inicialmente, através de um sensor, o usuário executará um movimento para que seja capturado e através de um adapter, que deve atender as exigências de acoplamento, envia ao programa em Unity 3D. O KINECT, diferente dos outros sensores, já possui integração feita de forma nativa no software, portanto não exige o uso do adapter. </p>
 <p align = "justify"> O Módulo de Processamento (pode ser considerado um plugin que realiza processamentos externos) é uma unidade de processamento, podendo ser escrita em qualquer linguagem de programação, que receberá dados do movimento e poderá utilizá-los para realizar cálculos não abordados pelo sistema. A sua comunicação com o software também é feita por meio de um adapter. </p>
+<p align = "justify">Para a conexão com diversos sensores será usado um adapter com a capacidade de receber informações específicas para a usabilidade da aplicação através de portas UDP, a escolha das portas UDP em relação as portas TCP foi motivada pelo motivo de que em portas UDP a transferência é feita de forma relativamente mais rápida.</p>
+<p align = "justify">O UDP (USER DATAGRAM PROTOCOL) provê um serviço sem conexão não confiável, usando IP para transportar mensagens entre duas máquinas. Este protocolo, igualmente o TCP, provê um mecanismo que o transmissor usa para distinguir entre múltiplos receptores numa mesma máquina.</p>
+
+### FORMATO DO DATAGRAMA UDP
+<p align = "justify">
+Cada datagrama UDP é formado por um cabeçalho UDP e uma área de dados. O formato do cabeçalho UDP está dividido em quatro campos de 16 bits. Definições dos campos: <br />Source and Destination Ports: estes campos contêm os números de portas fonte e destino do protocolo UDP. A porta fonte é opcional, quando é usada ela especifica a porta a qual uma resposta poderia ser enviada, se não é usada contém zeros. <br />Length: contém um contador de bytes no datagrama UDP. O valor mínimo é oito, sendo este só o comprimento do cabeçalho.<br /> Checksum: Este campo é opcional. Um valor de zero indica que o checksum não é computado.
+</p>
 
 ![Diagrama](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/development/docs/imagens/Arquitetura/diagrama.png)</p>
 **Figura 3**- Diagrama Geral da Arquitetura </p>
