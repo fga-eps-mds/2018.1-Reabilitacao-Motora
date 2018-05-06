@@ -1,17 +1,17 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
 
 /**
  * Escala o tamanho dos componentes da scene conforme o tamanho da tela.
  */
-public class Flow : MonoBehaviour 
-	{
+public class Flow : MonoBehaviour
+{
 
 	/**
  	 * Finaliza o programa ao clicar em sair.
  	 */
-	public void Quit()
+	public static void StaticQuit()
 	{
 		#if UNITY_EDITOR
 		UnityEditor.EditorApplication.isPlaying = false;
@@ -20,149 +20,228 @@ public class Flow : MonoBehaviour
 		#endif
 	}
 
+	public void Quit()
+	{
+		StaticQuit();
+	}
+
 	/**
  	 * Leva para scene de gravar um movimento.
  	 */
-	public void CreateMove() 
+	public static void StaticCreateMove()
 	{
 		SceneManager.LoadScene("NewMovement");
 	}
 
+	public void CreateMove()
+	{
+		StaticCreateMove();
+	}
+
+
 	/**
  	 * Leva para scene de gravar um movimento.
  	 */
-	public void RecordMove() 
+	public static void StaticRecordMove()
 	{
 		SceneManager.LoadScene("Clinic");
 	}
 
+	public void RecordMove()
+	{
+		StaticRecordMove();
+	}
+
+
 	/**
  	 * Leva para scene de detalhe de paciente.
  	 */
-	public void Patient() 
+	public static void StaticPatient()
 	{
 		SceneManager.LoadScene("Patient");
+	}
+
+	public void Patient()
+	{
+		StaticPatient();
 	}
 
 	/**
  	 * Leva para scene de lista de pacientes.
  	 */
-	public void Patients() 
+	public static void StaticPatients()
 	{
 		SceneManager.LoadScene("Patients");
+	}
+
+	public void Patients()
+	{
+		StaticPatients();
 	}
 
 	/**
  	 * Leva para scene de tela de login.
  	 */
-	public void Login() 
+	public static void StaticLogin()
 	{
 		SceneManager.LoadScene("Login");
+	}
+
+	public void Login()
+	{
+		StaticLogin();
 	}
 
     /**
  	 * Leva para scene de lista de movimentos.
  	 */
-    public void Movements() 
+    public static void StaticMovements()
 	{
 		SceneManager.LoadScene("Movements");
 		SceneManager.LoadScene ("ClinicToMoveMenu", LoadSceneMode.Additive);
 	}
 
+	public void Movements()
+	{
+		StaticMovements();
+	}
+
 	/**
  	 * Leva para scene de registrar novo paciente.
  	 */
-	public void NewPatient() 
+	public static void StaticNewPatient()
 	{
 		SceneManager.LoadScene("NewPatient");
 	}
 
-		/**
+	public void NewPatient()
+	{
+		StaticNewPatient();
+	}
+
+	/**
  	 * Leva para scene de registrar novo paciente.
  	 */
-	public void UpdatePatient() 
+	public static void StaticUpdatePatient()
 	{
 		SceneManager.LoadScene("UpdatePatient");
+	}
+
+	public void UpdatePatient()
+	{
+		StaticUpdatePatient();
 	}
 
 	/**
  	 * Leva para scene de detalhes de sessão.
  	 */
-	public void Session() 
+	public static void StaticSession()
 	{
 		SceneManager.LoadScene("Session");
+	}
+
+	public void Session()
+	{
+		StaticSession();
 	}
 
 	/**
  	 * Leva para scene de lista de sessões.
  	 */
-	public void Sessions() 
+	public static void StaticSessions()
 	{
 		SceneManager.LoadScene("Sessions");
+	}
+
+	public void Sessions()
+	{
+		StaticSessions();
 	}
 
 	/**
  	 * Leva para scene de função não implementada.
  	 */
-	public void NotImplemented() 
+	public static void StaticNotImplemented()
 	{
 		SceneManager.LoadScene("NotImplemented");
+	}
+
+	public void NotImplemented()
+	{
+		StaticNotImplemented();
 	}
 
 	/**
  	 * Leva para scene de gráficos.
  	 */
-	public void Graphs() 
+	public static void StaticGraphs()
 	{
 		SceneManager.LoadScene("Graphs2");
+	}
+
+	public void Graphs()
+	{
+		StaticGraphs();
 	}
 
     /**
  	 * Leva para scene de gráficos.
  	 */
-	public void RealTimeGraphs() 
+	public static void StaticRealTimeGraphs()
 	{
-		SceneManager.LoadScene("Realtime Graph");
+		SceneManager.LoadScene("RealtimeGraph");
+	}
+
+	public void RealTimeGraphs()
+	{
+		StaticRealTimeGraphs();
 	}
 
 	/**
  	 * Volta para o menu.
  	 */
-	public void BackToMenu() 
+	public static void StaticBackToMenu()
 	{
 		SceneManager.LoadScene("Menu");
+	}
+
+	public void BackToMenu()
+	{
+		StaticBackToMenu();
 	}
 
 	/**
  	 * Volta para o menu inicial.
  	 */
-	public void BackToHomeMenu()
+	public static void StaticBackToHomeMenu()
 	{
 		SceneManager.LoadScene("Login");
+	}
+
+	public void BackToHomeMenu()
+	{
+		StaticBackToHomeMenu();
 	}
 
 	/**
  	 * Leva para a scene de novo fisioterapeuta.
  	 */
-	public void NewPhysiotherapist()
+	public static void StaticNewPhysiotherapist()
 	{
 		SceneManager.LoadScene("NewPhysiotherapist");
 	}
 
-	/**
- 	 * Leva para a scene de gráfico em tempo real.
- 	 */
-	public void RealtimeGraph()
+	public void NewPhysiotherapist()
 	{
-		SceneManager.LoadScene("Realtime Graph");
+		StaticNewPhysiotherapist();
 	}
 
 	/**
  	 * Leva para a scene sucess register.
  	 */
-	public void SucessRegister()
+	public static void StaticSuccessRegister()
 	{
-		SceneManager.LoadScene("sucessRegister");
+		SceneManager.LoadScene("SuccessRegister");
 	}
-		
+
 }
