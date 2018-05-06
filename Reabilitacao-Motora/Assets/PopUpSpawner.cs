@@ -2,12 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PopUpSpawner : MonoBehaviour {
-
+public class PopUpSpawner : MonoBehaviour
+{
     public GameObject PopUpPrefab;
 
     public void Spawner()
     {
-        GameObject jo = Instantiate(PopUpPrefab, transform);
+        PopUpPrefab.SetActive(true);
+    }
+
+    public void Eraser()
+    {
+        PopUpPrefab.SetActive(false);
     }
 }
