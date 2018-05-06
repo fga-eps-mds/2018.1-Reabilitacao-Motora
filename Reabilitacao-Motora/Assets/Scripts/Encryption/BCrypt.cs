@@ -23,9 +23,6 @@ using UnityEngine;
 
 namespace bcrypt
 {
-
-    [assembly: System.Reflection.AssemblyVersion("0.1")]
-
     /// <summary>BCrypt implements OpenBSD-style Blowfish password hashing
     /// using the scheme described in "A Future-Adaptable Password Scheme"
     /// by Niels Provos and David Mazieres.</summary>

@@ -15,11 +15,6 @@ using movimento;
  */
 public class createMovement : MonoBehaviour 
 {
-	string path;
-	Movimento tableMovimento;
-	Musculo tableMusculo;
-	MovimentoMusculo tableMM;
-
 	public InputField nomeMovimento;
 	public InputField musculos;
 	public InputField descricao;
@@ -30,47 +25,48 @@ public class createMovement : MonoBehaviour
  	 */
 	public void saveMovement()
 	{
-		path = "URI=file:" + Application.dataPath + "/Plugins/fisiotech.db";
 
-		var trip = musculos.text.Split(',');
-
-		tableMusculo = new Musculo(path);
-		tableMM = new MovimentoMusculo(path);
-		tableMovimento = new Movimento(path);
+		var muscles = musculos.text.Split(',');
 
 		string movunderscored = (nomeMovimento.text).Replace(' ', '_');
 		string physiounderscored = (GlobalController.instance.admin.persona.nomePessoa).Replace(' ', '_');
 
 		string pathSave = GlobalController.instance.admin.idPessoa + "-";
+
 		pathSave += physiounderscored + "/";
 		pathSave += movunderscored + "-";
 		pathSave += DateTime.Now.ToString("HHmmss", System.Globalization.DateTimeFormatInfo.InvariantInfo);
 		
-		tableMovimento.Insert (GlobalController.instance.admin.idFisioterapeuta, 
-							   nomeMovimento.text, descricao.text, pathSave);
+		Movimento.Insert (GlobalController.instance.admin.idFisioterapeuta, 
+							nomeMovimento.text, descricao.text, pathSave);
 
-		List<Movimento.Movimentos> auxMovi = tableMovimento.Read();
+		List<Movimento> movementsList = Movimento.Read();
 
-		foreach (var tt in trip) {
-		name = new string((from c in tt where char.IsLetterOrDigit(c) select c).ToArray());
-			if (!checkMuscle (name)) {
-				tableMusculo.Insert(name);
-				List<Musculo.Musculos> x = tableMusculo.Read();
-				tableMM.Insert(x[x.Count - 1].idMusculo, auxMovi[auxMovi.Count - 1].idMovimento);
+		foreach (var muscle in muscles) 
+		{
+			name = new string((from c in muscle where char.IsLetterOrDigit(c) select c).ToArray());
+			if (!checkMuscle(name)) 
+			{
+				Musculo.Insert(name);
+				List<Musculo> musclesList = Musculo.Read();
+				MovimentoMusculo.Insert(musclesList[musclesList.Count - 1].idMusculo, movementsList[movementsList.Count - 1].idMovimento);
 			}
 		}
 
-		GlobalController.instance.movement = auxMovi[auxMovi.Count-1];
+		GlobalController.instance.movement = movementsList[movementsList.Count - 1];
 		SceneManager.LoadScene("Clinic");
 	}
 
-	bool checkMuscle(string name)
+	static bool checkMuscle (string name)
 	{
-		List<Musculo.Musculos> auxMusc = tableMusculo.Read();
+		List<Musculo> musclesList = Musculo.Read();
 
-		foreach (var x in auxMusc)
+		foreach (var muscle in musclesList)
 		{
-			if(x.nomeMusculo == name) return true;
+			if(muscle.nomeMusculo == name)
+			{
+				return true;
+			}
 		}
 
 		return false;

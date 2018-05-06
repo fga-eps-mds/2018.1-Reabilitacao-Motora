@@ -38,7 +38,7 @@
 
 ## 5. Velocity
 
-> **O _Velocity_ desta equipe**  : 17.875 pontos.
+> **O _Velocity_ desta equipe**  : 13.5 pontos.
 
 ------------
 
