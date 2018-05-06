@@ -4,48 +4,35 @@ using UnityEngine;
 using UnityEngine.UI;
 using movimento;
 
-public class instanciateMovement : MonoBehaviour {
+public class instanciateMovement : MonoBehaviour 
+{
 
 	public GameObject buttonPrefab;
-	string path;
-	Movimento tableMovimento;
-	List<Movimento.Movimentos> values;
 
-	int z = 10;
+	int heightOffset = 10;
+	const int HEIGHT_PADDING = 55;
 
-	void MyAwesomeCreator(int posy, Movimento.Movimentos r)
+	void ButtonSpawner(int posY, Movimento movement)
 	{
 		GameObject go = Instantiate(buttonPrefab, transform);
 
-		var button = GetComponent<UnityEngine.UI.Button>();
-		go.transform.position = new Vector3 (go.transform.position.x, go.transform.position.y - posy, go.transform.position.z);
-		var aux = go.GetComponentInChildren<setmovement>();
-		aux.x = r;
+		go.transform.position = new Vector3 (go.transform.position.x, go.transform.position.y - posY, go.transform.position.z);
+		var aux = go.GetComponentInChildren<SetMovementToButton>();
+		aux.Movement = movement;
 
 		var temp = go.GetComponentInChildren<Text>();
-		temp.text = r.nomeMovimento;
+		temp.text = movement.nomeMovimento;
 	}
 
 	public void Awake ()
 	{
-		path = "URI=file:" + Application.dataPath + "/Plugins/fisiotech.db";
+		List<Movimento> movements = Movimento.Read();
 
-		Initialize ();
-
-		values = tableMovimento.Read();
-
-		foreach (var l in values)
+		foreach (var movement in movements)
 		{
-			print (string.Format("{0}", l.nomeMovimento));
-			MyAwesomeCreator(z, l);
-			z += 55;
+			ButtonSpawner(heightOffset, movement);
+			heightOffset += HEIGHT_PADDING;
 		}
 
-	}
-
-	void Initialize()
-	{
-	    tableMovimento = new Movimento(path);
-	    values = new List<Movimento.Movimentos>();
 	}
 }

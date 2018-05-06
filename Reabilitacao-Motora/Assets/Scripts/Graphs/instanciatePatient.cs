@@ -4,47 +4,35 @@ using UnityEngine;
 using UnityEngine.UI;
 using paciente;
 
-public class instanciatePatient : MonoBehaviour {
+public class instanciatePatient : MonoBehaviour 
+{
 
 	public GameObject buttonPrefab;
-	string path;
-	Paciente tablePaciente;
-	List<Paciente.Pacientes> values;
 
-	int z = 10;
+	int heightOffset = 10;
+	const int HEIGHT_PADDING = 55;
 
-	void MyAwesomeCreator(int posy, Paciente.Pacientes r)
+	void ButtonSpawner(int posY, Paciente patient)
 	{
 		GameObject go = Instantiate(buttonPrefab, transform);
 
-		var button = GetComponent<UnityEngine.UI.Button>();
-		go.transform.position = new Vector3 (go.transform.position.x, go.transform.position.y - posy, go.transform.position.z);
-		var aux = go.GetComponentInChildren<setpatient>();
-		aux.x = r;
+		go.transform.position = new Vector3 (go.transform.position.x, go.transform.position.y - posY, go.transform.position.z);
+		var aux = go.GetComponentInChildren<SetPatientToButton>();
+		aux.Patient = patient;
 
 		var temp = go.GetComponentInChildren<Text>();
-		temp.text = r.persona.nomePessoa;
+		temp.text = patient.persona.nomePessoa;
 	}
 
 	public void Awake ()
 	{
-		path = "URI=file:" + Application.dataPath + "/Plugins/fisiotech.db";
+		List<Paciente> patients = Paciente.Read();
 
-		Initialize ();
-
-		values = tablePaciente.Read();
-
-		foreach (var l in values)
+		foreach (var patient in patients)
 		{
-			MyAwesomeCreator(z, l);
-			z += 55;
+			ButtonSpawner(heightOffset, patient);
+			heightOffset += HEIGHT_PADDING;
 		}
 
-	}
-
-	void Initialize()
-	{
-	    tablePaciente = new Paciente(path);
-	    values = new List<Paciente.Pacientes>();
 	}
 }

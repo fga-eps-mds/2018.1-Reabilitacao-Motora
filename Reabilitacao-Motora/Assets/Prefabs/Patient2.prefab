@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 224497823284034106}
-  - component: {fileID: 114574058983103434}
+  - component: {fileID: 114871447406047650}
   m_Layer: 5
   m_Name: Setpatient
   m_TagString: Untagged
@@ -62,17 +62,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &114574058983103434
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1271608413375396}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9cbb47a6fcd2ff4ca53caafe1841d50, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114591970312289518
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -112,8 +101,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114574058983103434}
-        m_MethodName: setepatient
+      - m_Target: {fileID: 114871447406047650}
+        m_MethodName: SelectPatient
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -185,6 +174,17 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Paciente 2
+--- !u!114 &114871447406047650
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1271608413375396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cbd9c6252845ca4bb6bffe34a1901c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!222 &222633919263945112
 CanvasRenderer:
   m_ObjectHideFlags: 1
