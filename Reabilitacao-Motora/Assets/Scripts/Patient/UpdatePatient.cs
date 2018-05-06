@@ -96,7 +96,6 @@ public class UpdatePatient : MonoBehaviour
 				newNote = (GlobalController.instance.user.observacoes);
 			}
 
-
 			if (male.isOn)
 			{
 				Pessoa.Update(GlobalController.instance.user.persona.idPessoa, newName, "m", newDate, newP1, newP2);

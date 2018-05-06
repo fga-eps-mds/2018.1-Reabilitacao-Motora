@@ -86,7 +86,17 @@ namespace musculo
 
 				for (int i = 1; i < tableSize; ++i) 
 				{
-					string aux = (i+1 == tableSize) ? (")") : (",");
+					string aux;
+
+					if (i + 1 == tableSize)
+					{
+						aux = ")";
+					}
+					else
+					{
+						aux = ",";
+					}
+
 					banco.sqlQuery += (TablesManager.Tables[tableId].colName[i] + aux);
 				}
 
@@ -136,7 +146,7 @@ namespace musculo
 				banco.cmd.CommandText = banco.sqlQuery;
 				IDataReader reader = banco.cmd.ExecuteReader();
 
-				List<Musculo> m = new List<Musculo>();
+				List<Musculo> muscles = new List<Musculo>();
 
 				while (reader.Read())
 				{
@@ -152,16 +162,17 @@ namespace musculo
 						nomeMusculoTemp = reader.GetString(1);
 					}
 
-					Musculo x = new Musculo (idMusculoTemp, nomeMusculoTemp);
-					m.Add(x);
+					Musculo muscle = new Musculo (idMusculoTemp, nomeMusculoTemp);
+					muscles.Add(muscle);
 				}
+
 				reader.Close();
 				reader = null;
 				banco.cmd.Dispose();
 				banco.cmd = null;
 				banco.conn.Close();
 				banco.conn = null;
-				return m;
+				return muscles;
 			}
 		}
 
@@ -178,6 +189,8 @@ namespace musculo
 				banco.cmd.CommandText = banco.sqlQuery;
 				IDataReader reader = banco.cmd.ExecuteReader();
 
+				reader.Read();
+
 				int idMusculoTemp = 0;
 				string nomeMusculoTemp = "null";
 
@@ -190,7 +203,7 @@ namespace musculo
 					nomeMusculoTemp = reader.GetString(1);
 				}
 
-				Musculo x = new Musculo (idMusculoTemp,nomeMusculoTemp);
+				Musculo muscle = new Musculo (idMusculoTemp,nomeMusculoTemp);
 
 				reader.Close();
 				reader = null;
@@ -198,7 +211,7 @@ namespace musculo
 				banco.cmd = null;
 				banco.conn.Close();
 				banco.conn = null;
-				return x;
+				return muscle;
 			}
 		}
 

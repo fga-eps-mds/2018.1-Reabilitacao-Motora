@@ -145,7 +145,17 @@ namespace exercicio
 
 				for (int i = 0; i < tableSize; ++i)
 				{
-					string aux = (i + 1 == tableSize) ? (")") : (",");
+					string aux;
+
+					if (i + 1 == tableSize)
+					{
+						aux = ")";
+					}
+					else
+					{
+						aux = ",";
+					}
+					
 					banco.sqlQuery += (TablesManager.Tables[tableId].colName[i] + aux);
 				}
 
@@ -207,7 +217,7 @@ namespace exercicio
 				banco.cmd.CommandText = banco.sqlQuery;
 				IDataReader reader = banco.cmd.ExecuteReader();
 
-				List<Exercicio> e = new List<Exercicio>();
+				List<Exercicio> exercises = new List<Exercicio>();
 
 				while (reader.Read())
 				{
@@ -243,8 +253,8 @@ namespace exercicio
 						pontosExercicioTemp = reader.GetString(5);
 					}
 
-					Exercicio x = new Exercicio(idExercicioTemp, idPacienteTemp, idMovimentoTemp, idSessaoTemp, descricaoExercicioTemp, pontosExercicioTemp);
-					e.Add(x);
+					Exercicio exercise = new Exercicio(idExercicioTemp, idPacienteTemp, idMovimentoTemp, idSessaoTemp, descricaoExercicioTemp, pontosExercicioTemp);
+					exercises.Add(exercise);
 				}
 
 				reader.Close();
@@ -253,7 +263,7 @@ namespace exercicio
 				banco.cmd = null;
 				banco.conn.Close();
 				banco.conn = null;
-				return e;
+				return exercises;
 			}
 		}
 
@@ -269,6 +279,8 @@ namespace exercicio
 					id);
 				banco.cmd.CommandText = banco.sqlQuery;
 				IDataReader reader = banco.cmd.ExecuteReader();
+
+				reader.Read();
 
 				int idExercicioTemp = 0;
 				int idPacienteTemp = 0;
@@ -302,7 +314,7 @@ namespace exercicio
 					pontosExercicioTemp = reader.GetString(5);
 				}
 
-				Exercicio x = new Exercicio(idExercicioTemp, idPacienteTemp, idMovimentoTemp, idSessaoTemp, descricaoExercicioTemp, pontosExercicioTemp);
+				Exercicio exercise = new Exercicio(idExercicioTemp, idPacienteTemp, idMovimentoTemp, idSessaoTemp, descricaoExercicioTemp, pontosExercicioTemp);
 
 				reader.Close();
 				reader = null;
@@ -310,7 +322,7 @@ namespace exercicio
 				banco.cmd = null;
 				banco.conn.Close();
 				banco.conn = null;
-				return x;
+				return exercise;
 			}
 		}
 

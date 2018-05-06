@@ -130,7 +130,17 @@ namespace sessao
 
 				for (int i = 1; i < tableSize; ++i) 
 				{
-					string aux = (i+1 == tableSize) ? (")") : (",");
+					string aux;
+
+					if (i + 1 == tableSize)
+					{
+						aux = ")";
+					}
+					else
+					{
+						aux = ",";
+					}
+
 					banco.sqlQuery += (TablesManager.Tables[tableId].colName[i] + aux);
 				}
 
@@ -189,7 +199,7 @@ namespace sessao
 				banco.cmd.CommandText = banco.sqlQuery;
 				IDataReader reader = banco.cmd.ExecuteReader();
 
-				List<Sessao> s = new List<Sessao>();
+				List<Sessao> sessions = new List<Sessao>();
 
 				while (reader.Read())
 				{
@@ -220,16 +230,17 @@ namespace sessao
 						observacaoSessaoTemp = reader.GetString(4);
 					}
 
-					Sessao x = new Sessao (idSessaoTemp, idFisioterapeutaTemp, idPacienteTemp, dataSessaoTemp, observacaoSessaoTemp);
-					s.Add(x);
+					Sessao session = new Sessao (idSessaoTemp, idFisioterapeutaTemp, idPacienteTemp, dataSessaoTemp, observacaoSessaoTemp);
+					sessions.Add(session);
 				}
+				
 				reader.Close();
 				reader = null;
 				banco.cmd.Dispose();
 				banco.cmd = null;
 				banco.conn.Close();
 				banco.conn = null;
-				return s;
+				return sessions;
 			}
 		}
 
@@ -246,6 +257,8 @@ namespace sessao
 					id);
 				banco.cmd.CommandText = banco.sqlQuery;
 				IDataReader reader = banco.cmd.ExecuteReader();
+
+				reader.Read();
 
 				int idSessaoTemp = 0;
 				int idFisioterapeutaTemp = 0;
@@ -274,7 +287,7 @@ namespace sessao
 					observacaoSessaoTemp = reader.GetString(4);
 				}
 
-				Sessao x = new Sessao (idSessaoTemp, idFisioterapeutaTemp, idPacienteTemp, dataSessaoTemp, observacaoSessaoTemp);
+				Sessao session = new Sessao (idSessaoTemp, idFisioterapeutaTemp, idPacienteTemp, dataSessaoTemp, observacaoSessaoTemp);
 
 				reader.Close();
 				reader = null;
@@ -282,7 +295,7 @@ namespace sessao
 				banco.cmd = null;
 				banco.conn.Close();
 				banco.conn = null;
-				return x;
+				return session;
 			}
 		}
 

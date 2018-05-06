@@ -130,7 +130,17 @@ namespace pontosrotulopaciente {
 
 				for (int i = 1; i < tableSize; ++i) 
 				{
-					string aux = (i+1 == tableSize) ? (")") : (",");
+					string aux;
+
+					if (i + 1 == tableSize)
+					{
+						aux = ")";
+					}
+					else
+					{
+						aux = ",";
+					}
+					
 					banco.sqlQuery += (TablesManager.Tables[tableId].colName[i] + aux);
 				}
 
@@ -189,7 +199,7 @@ namespace pontosrotulopaciente {
 				banco.cmd.CommandText = banco.sqlQuery;
 				IDataReader reader = banco.cmd.ExecuteReader();
 
-				List<PontosRotuloPaciente> prp = new List<PontosRotuloPaciente>();
+				List<PontosRotuloPaciente> patientLabelPoints = new List<PontosRotuloPaciente>();
 
 				while (reader.Read())
 				{
@@ -220,16 +230,17 @@ namespace pontosrotulopaciente {
 						tempoFinalTemp = reader.GetDouble(4);
 					}
 
-					PontosRotuloPaciente x = new PontosRotuloPaciente(idRotuloPacienteTemp,idExercicioTemp,tempoInicialTemp,tempoFinalTemp,estagioMovimentoPacienteTemp);
-					prp.Add(x);
+					PontosRotuloPaciente patientLabelPoint = new PontosRotuloPaciente(idRotuloPacienteTemp,idExercicioTemp,tempoInicialTemp,tempoFinalTemp,estagioMovimentoPacienteTemp);
+					patientLabelPoints.Add(patientLabelPoint);
 				}
+				
 				reader.Close();
 				reader = null;
 				banco.cmd.Dispose();
 				banco.cmd = null;
 				banco.conn.Close();
 				banco.conn = null;
-				return prp;
+				return patientLabelPoints;
 			}
 		}
 
@@ -246,6 +257,8 @@ namespace pontosrotulopaciente {
 					id);
 				banco.cmd.CommandText = banco.sqlQuery;
 				IDataReader reader = banco.cmd.ExecuteReader();
+
+				reader.Read();
 
 				int idRotuloPacienteTemp = 0;
 				int idExercicioTemp = 0;

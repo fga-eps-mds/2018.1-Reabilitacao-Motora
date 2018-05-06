@@ -115,7 +115,17 @@ namespace paciente
 
 				for (int i = 1; i < tableSize; ++i) 
 				{
-					string aux = (i+1 == tableSize) ? (")") : (",");
+					string aux;
+
+					if (i + 1 == tableSize)
+					{
+						aux = ")";
+					}
+					else
+					{
+						aux = ",";
+					}
+
 					banco.sqlQuery += (TablesManager.Tables[tableId].colName[i] + aux);
 				}
 
@@ -168,7 +178,7 @@ namespace paciente
 				banco.cmd.CommandText = banco.sqlQuery;
 				IDataReader reader = banco.cmd.ExecuteReader();
 
-				List<Paciente> p = new List<Paciente>();
+				List<Paciente> patients = new List<Paciente>();
 
 				while (reader.Read())
 				{
@@ -189,16 +199,17 @@ namespace paciente
 						observacoesTemp = reader.GetString(2);
 					}
 
-					Paciente x = new Paciente(idPacienteTemp, idPessoaTemp, observacoesTemp);
-					p.Add(x);
+					Paciente patient = new Paciente(idPacienteTemp, idPessoaTemp, observacoesTemp);
+					patients.Add(patient);
 				}
+				
 				reader.Close();
 				reader = null;
 				banco.cmd.Dispose();
 				banco.cmd = null;
 				banco.conn.Close();
 				banco.conn = null;
-				return p;
+				return patients;
 			}
 		}
 
@@ -214,6 +225,8 @@ namespace paciente
 					id);
 				banco.cmd.CommandText = banco.sqlQuery;
 				IDataReader reader = banco.cmd.ExecuteReader();
+
+				reader.Read();
 
 				int idPacienteTemp = 0;
 				int idPessoaTemp = 0;
@@ -232,7 +245,7 @@ namespace paciente
 					observacoesTemp = reader.GetString(2);
 				}
 
-				Paciente x = new Paciente (idPacienteTemp,idPessoaTemp,observacoesTemp);
+				Paciente patient = new Paciente (idPacienteTemp,idPessoaTemp,observacoesTemp);
 
 				reader.Close();
 				reader = null;
@@ -240,7 +253,7 @@ namespace paciente
 				banco.cmd = null;
 				banco.conn.Close();
 				banco.conn = null;
-				return x;
+				return patient;
 			}
 		}
 

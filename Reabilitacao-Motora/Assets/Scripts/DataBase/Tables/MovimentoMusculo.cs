@@ -87,7 +87,17 @@ namespace movimentomusculo
 
 				for (int i = 0; i < tableSize; ++i) 
 				{
-					string aux = (i+1 == tableSize) ? (")") : (",");
+					string aux;
+
+					if (i + 1 == tableSize)
+					{
+						aux = ")";
+					}
+					else
+					{
+						aux = ",";
+					}
+
 					banco.sqlQuery += (TablesManager.Tables[tableId].colName[i] + aux);
 				}
 
@@ -138,7 +148,7 @@ namespace movimentomusculo
 				banco.cmd.CommandText = banco.sqlQuery;
 				IDataReader reader = banco.cmd.ExecuteReader();
 
-				List<MovimentoMusculo> mm = new List<MovimentoMusculo>();
+				List<MovimentoMusculo> muscleMovements = new List<MovimentoMusculo>();
 
 				while (reader.Read())
 				{
@@ -154,16 +164,17 @@ namespace movimentomusculo
 						idMovimentoTemp = reader.GetInt32(1);
 					}
 
-					MovimentoMusculo x = new MovimentoMusculo(idMusculoTemp,idMovimentoTemp);
-					mm.Add(x);
+					MovimentoMusculo muscleMovement = new MovimentoMusculo(idMusculoTemp,idMovimentoTemp);
+					muscleMovements.Add(muscleMovement);
 				}
+				
 				reader.Close();
 				reader = null;
 				banco.cmd.Dispose();
 				banco.cmd = null;
 				banco.conn.Close();
 				banco.conn = null;
-				return mm;
+				return muscleMovements;
 			}
 		}
 

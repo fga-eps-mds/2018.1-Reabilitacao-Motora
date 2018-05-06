@@ -10,12 +10,13 @@ public class instanciatePatient : MonoBehaviour
 	public GameObject buttonPrefab;
 
 	int heightOffset = 10;
+	const int HEIGHT_PADDING = 55;
 
-	void ButtonSpawner(int posy, Paciente patient)
+	void ButtonSpawner(int posY, Paciente patient)
 	{
 		GameObject go = Instantiate(buttonPrefab, transform);
 
-		go.transform.position = new Vector3 (go.transform.position.x, go.transform.position.y - posy, go.transform.position.z);
+		go.transform.position = new Vector3 (go.transform.position.x, go.transform.position.y - posY, go.transform.position.z);
 		var aux = go.GetComponentInChildren<SetPatientToButton>();
 		aux.Patient = patient;
 
@@ -30,7 +31,7 @@ public class instanciatePatient : MonoBehaviour
 		foreach (var patient in patients)
 		{
 			ButtonSpawner(heightOffset, patient);
-			heightOffset += 55;
+			heightOffset += HEIGHT_PADDING;
 		}
 
 	}

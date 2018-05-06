@@ -156,7 +156,17 @@ namespace fisioterapeuta
 
 				for (int i = 1; i < tableSize; ++i) 
 				{
-					string aux = (i+1 == tableSize) ? (")") : (",");
+					string aux;
+
+					if (i + 1 == tableSize)
+					{
+						aux = ")";
+					}
+					else
+					{
+						aux = ",";
+					}
+					
 					banco.sqlQuery += ( TablesManager.Tables[tableId].colName[i] + aux);
 				}
 
@@ -190,7 +200,17 @@ namespace fisioterapeuta
 
 				for (int i = 1; i < tableSize; ++i) 
 				{
-					string aux = (i+1 == tableSize) ? (")") : (",");
+					string aux;
+
+					if (i + 1 == tableSize)
+					{
+						aux = ")";
+					}
+					else
+					{
+						aux = ",";
+					}
+					
 					banco.sqlQuery += ( TablesManager.Tables[tableId].colName[i] + aux);
 				}
 
@@ -276,7 +296,7 @@ namespace fisioterapeuta
 				banco.sqlQuery = "SELECT * " + "FROM FISIOTERAPEUTA";
 				banco.cmd.CommandText = banco.sqlQuery;
 				IDataReader reader = banco.cmd.ExecuteReader();
-				List<Fisioterapeuta> f = new List<Fisioterapeuta>();
+				List<Fisioterapeuta> physiotherapeuts = new List<Fisioterapeuta>();
 
 				while (reader.Read())
 				{
@@ -312,16 +332,17 @@ namespace fisioterapeuta
 						crefitoTemp = reader.GetString(5);
 					}
 
-					Fisioterapeuta x = new Fisioterapeuta (idFisioterapeutaTemp, idPessoaTemp, loginTemp, senhaTemp, regiaoTemp, crefitoTemp);
-					f.Add(x);
+					Fisioterapeuta physiotherapeut = new Fisioterapeuta (idFisioterapeutaTemp, idPessoaTemp, loginTemp, senhaTemp, regiaoTemp, crefitoTemp);
+					physiotherapeuts.Add(physiotherapeut);
 				}
+
 				reader.Close();
 				reader = null;
 				banco.cmd.Dispose();
 				banco.cmd = null;
 				banco.conn.Close();
 				banco.conn = null;
-				return f;
+				return physiotherapeuts;
 			}
 		}
 
@@ -337,6 +358,8 @@ namespace fisioterapeuta
 					id);
 				banco.cmd.CommandText = banco.sqlQuery;
 				IDataReader reader = banco.cmd.ExecuteReader();
+
+				reader.Read();
 
 				int idFisioterapeutaTemp = 0;
 				int idPessoaTemp = 0;
@@ -370,7 +393,7 @@ namespace fisioterapeuta
 					crefitoTemp = reader.GetString(5);
 				}
 
-				Fisioterapeuta x = new Fisioterapeuta (idFisioterapeutaTemp,idPessoaTemp,loginTemp,senhaTemp,regiaoTemp,crefitoTemp);
+				Fisioterapeuta physiotherapeut = new Fisioterapeuta (idFisioterapeutaTemp,idPessoaTemp,loginTemp,senhaTemp,regiaoTemp,crefitoTemp);
 
 				reader.Close();
 				reader = null;
@@ -378,7 +401,7 @@ namespace fisioterapeuta
 				banco.cmd = null;
 				banco.conn.Close();
 				banco.conn = null;
-				return x;
+				return physiotherapeut;
 			}
 		}
 

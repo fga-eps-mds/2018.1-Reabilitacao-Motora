@@ -130,7 +130,17 @@ namespace pontosrotulofisioterapeuta
 
 				for (int i = 1; i < tableSize; ++i) 
 				{
-					string aux = (i+1 == tableSize) ? (")") : (",");
+					string aux;
+
+					if (i + 1 == tableSize)
+					{
+						aux = ")";
+					}
+					else
+					{
+						aux = ",";
+					}
+					
 					banco.sqlQuery += (TablesManager.Tables[tableId].colName[i] + aux);
 				}
 
@@ -189,7 +199,7 @@ namespace pontosrotulofisioterapeuta
 				banco.cmd.CommandText = banco.sqlQuery;
 				IDataReader reader = banco.cmd.ExecuteReader();
 
-				List<PontosRotuloFisioterapeuta> prf = new List<PontosRotuloFisioterapeuta>();
+				List<PontosRotuloFisioterapeuta> physioLabelPoints = new List<PontosRotuloFisioterapeuta>();
 
 				while (reader.Read())
 				{
@@ -220,16 +230,17 @@ namespace pontosrotulofisioterapeuta
 						tempoFinalTemp = reader.GetDouble(4);
 					}
 
-					PontosRotuloFisioterapeuta x = new PontosRotuloFisioterapeuta(idRotuloFisioterapeutaTemp,idMovimentoTemp,tempoInicialTemp,tempoFinalTemp,estagioMovimentoFisioTemp);
-					prf.Add(x);
+					PontosRotuloFisioterapeuta physioLabelPoint = new PontosRotuloFisioterapeuta(idRotuloFisioterapeutaTemp,idMovimentoTemp,tempoInicialTemp,tempoFinalTemp,estagioMovimentoFisioTemp);
+					physioLabelPoints.Add(physioLabelPoint);
 				}
+
 				reader.Close();
 				reader = null;
 				banco.cmd.Dispose();
 				banco.cmd = null;
 				banco.conn.Close();
 				banco.conn = null;
-				return prf;
+				return physioLabelPoints;
 			}
 		}
 
@@ -246,6 +257,8 @@ namespace pontosrotulofisioterapeuta
 				banco.cmd.CommandText = banco.sqlQuery;
 				IDataReader reader = banco.cmd.ExecuteReader();
 
+				reader.Read();
+				
 				int idRotuloFisioterapeutaTemp = 0;
 				int idMovimentoTemp = 0;
 				string estagioMovimentoFisioTemp = "null";
@@ -273,7 +286,7 @@ namespace pontosrotulofisioterapeuta
 					tempoFinalTemp = reader.GetDouble(4);
 				}
 
-				PontosRotuloFisioterapeuta x = new PontosRotuloFisioterapeuta (idRotuloFisioterapeutaTemp,idMovimentoTemp,tempoInicialTemp,tempoFinalTemp,estagioMovimentoFisioTemp);
+				PontosRotuloFisioterapeuta physioLabelPoint = new PontosRotuloFisioterapeuta (idRotuloFisioterapeutaTemp,idMovimentoTemp,tempoInicialTemp,tempoFinalTemp,estagioMovimentoFisioTemp);
 
 				reader.Close();
 				reader = null;
@@ -281,7 +294,7 @@ namespace pontosrotulofisioterapeuta
 				banco.cmd = null;
 				banco.conn.Close();
 				banco.conn = null;
-				return x;
+				return physioLabelPoint;
 			}
 		}
 

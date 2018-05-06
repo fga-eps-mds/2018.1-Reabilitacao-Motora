@@ -151,7 +151,17 @@ namespace pessoa
 
 				for (int i = 1; i < tableSize; ++i) 
 				{
-					string aux = (i+1 == tableSize) ? (")") : (",");
+					string aux;
+
+					if (i + 1 == tableSize)
+					{
+						aux = ")";
+					}
+					else
+					{
+						aux = ",";
+					}
+
 					banco.sqlQuery += (TablesManager.Tables[tableId].colName[i] + aux);
 				}
 
@@ -212,7 +222,8 @@ namespace pessoa
 				banco.sqlQuery = "SELECT * " + "FROM PESSOA";
 				banco.cmd.CommandText = banco.sqlQuery;
 				IDataReader reader = banco.cmd.ExecuteReader();
-				List<Pessoa> p = new List<Pessoa>();
+
+				List<Pessoa> persons = new List<Pessoa>();
 
 				while (reader.Read())
 				{
@@ -222,6 +233,7 @@ namespace pessoa
 					string dataNascimentoTemp = "null";
 					string telefone1Temp = "null";
 					string telefone2Temp = "null";
+
 					if (!reader.IsDBNull(0))
 					{
 						idPessoaTemp = reader.GetInt32(0);
@@ -246,9 +258,11 @@ namespace pessoa
 					{
 						telefone2Temp = reader.GetString(5);
 					}
-					Pessoa x = new Pessoa(idPessoaTemp, nomePessoaTemp, sexoTemp, dataNascimentoTemp, telefone1Temp, telefone2Temp);
-					p.Add(x);
+
+					Pessoa person = new Pessoa(idPessoaTemp, nomePessoaTemp, sexoTemp, dataNascimentoTemp, telefone1Temp, telefone2Temp);
+					persons.Add(person);
 				}
+
 				reader.Close();
 				reader = null;
 				banco.cmd.Dispose();
@@ -256,7 +270,7 @@ namespace pessoa
 				banco.conn.Close();
 				banco.conn = null;
 
-				return p;
+				return persons;
 			}
 		}
 
@@ -274,44 +288,43 @@ namespace pessoa
 				banco.cmd.CommandText = banco.sqlQuery;
 				IDataReader reader = banco.cmd.ExecuteReader();
 
-				Pessoa x = new Pessoa();
+				reader.Read();
 
-				while (reader.Read())
+				Pessoa person = new Pessoa();
+
+				int idPessoaTemp = 0;
+				string nomePessoaTemp = "null";
+				string sexoTemp = "null";
+				string dataNascimentoTemp = "null";
+				string telefone1Temp = "null";
+				string telefone2Temp = "null";
+
+				if (!reader.IsDBNull(0))
 				{
-					int idPessoaTemp = 0;
-					string nomePessoaTemp = "null";
-					string sexoTemp = "null";
-					string dataNascimentoTemp = "null";
-					string telefone1Temp = "null";
-					string telefone2Temp = "null";
-
-					if (!reader.IsDBNull(0))
-					{
-						idPessoaTemp = reader.GetInt32(0);
-					}
-					if (!reader.IsDBNull(1))
-					{
-						nomePessoaTemp = reader.GetString(1);
-					}
-					if (!reader.IsDBNull(2))
-					{
-						sexoTemp = reader.GetString(2);
-					}
-					if (!reader.IsDBNull(3))
-					{
-						dataNascimentoTemp = reader.GetString(3);
-					}
-					if (!reader.IsDBNull(4))
-					{
-						telefone1Temp = reader.GetString(4);
-					}
-					if (!reader.IsDBNull(5))
-					{
-						telefone2Temp = reader.GetString(5);
-					}
-					
-					x = new Pessoa(idPessoaTemp, nomePessoaTemp, sexoTemp, dataNascimentoTemp, telefone1Temp, telefone2Temp);
+					idPessoaTemp = reader.GetInt32(0);
 				}
+				if (!reader.IsDBNull(1))
+				{
+					nomePessoaTemp = reader.GetString(1);
+				}
+				if (!reader.IsDBNull(2))
+				{
+					sexoTemp = reader.GetString(2);
+				}
+				if (!reader.IsDBNull(3))
+				{
+					dataNascimentoTemp = reader.GetString(3);
+				}
+				if (!reader.IsDBNull(4))
+				{
+					telefone1Temp = reader.GetString(4);
+				}
+				if (!reader.IsDBNull(5))
+				{
+					telefone2Temp = reader.GetString(5);
+				}
+				
+				person = new Pessoa(idPessoaTemp, nomePessoaTemp, sexoTemp, dataNascimentoTemp, telefone1Temp, telefone2Temp);
 
 				reader.Close();
 				reader = null;
@@ -319,7 +332,7 @@ namespace pessoa
 				banco.cmd = null;
 				banco.conn.Close();
 				banco.conn = null;
-				return x;
+				return person;
 			}
 		}
 

@@ -24,7 +24,8 @@ public class createPatient : MonoBehaviour
  	 */
 	public void savePatient()
 	{
-		if(namePatient.text != "" && date.text != "" && phone1.text != "") {
+		if(namePatient.text != "" && date.text != "" && phone1.text != "") 
+		{
 			var trip = date.text.Split('/');
 			var dateFormate = trip[2] + "/" + trip[1] + "/" + trip[0];
 		

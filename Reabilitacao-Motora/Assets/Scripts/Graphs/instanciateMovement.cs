@@ -10,12 +10,13 @@ public class instanciateMovement : MonoBehaviour
 	public GameObject buttonPrefab;
 
 	int heightOffset = 10;
+	const int HEIGHT_PADDING = 55;
 
-	void ButtonSpawner(int posy, Movimento movement)
+	void ButtonSpawner(int posY, Movimento movement)
 	{
 		GameObject go = Instantiate(buttonPrefab, transform);
 
-		go.transform.position = new Vector3 (go.transform.position.x, go.transform.position.y - posy, go.transform.position.z);
+		go.transform.position = new Vector3 (go.transform.position.x, go.transform.position.y - posY, go.transform.position.z);
 		var aux = go.GetComponentInChildren<SetMovementToButton>();
 		aux.Movement = movement;
 
@@ -30,7 +31,7 @@ public class instanciateMovement : MonoBehaviour
 		foreach (var movement in movements)
 		{
 			ButtonSpawner(heightOffset, movement);
-			heightOffset += 55;
+			heightOffset += HEIGHT_PADDING;
 		}
 
 	}

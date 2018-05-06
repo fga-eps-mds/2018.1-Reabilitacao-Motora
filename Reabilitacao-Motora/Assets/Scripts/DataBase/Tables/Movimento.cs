@@ -133,7 +133,17 @@ namespace movimento
 
 				for (int i = 1; i < tableSize; ++i) 
 				{
-					string aux = (i+1 == tableSize) ? (")") : (",");
+					string aux;
+
+					if (i + 1 == tableSize)
+					{
+						aux = ")";
+					}
+					else
+					{
+						aux = ",";
+					}
+
 					banco.sqlQuery += (TablesManager.Tables[tableId].colName[i] + aux);
 				}
 
@@ -192,7 +202,7 @@ namespace movimento
 				banco.cmd.CommandText = banco.sqlQuery;
 				IDataReader reader = banco.cmd.ExecuteReader();
 
-				List<Movimento> m = new List<Movimento>();
+				List<Movimento> movements = new List<Movimento>();
 				while (reader.Read())
 				{
 					int idMovimentoTemp = 0;
@@ -222,16 +232,17 @@ namespace movimento
 						pontosMovimentoTemp = reader.GetString(4);
 					}
 
-					Movimento x = new Movimento(idMovimentoTemp, idFisioterapeutaTemp, nomeMovimentoTemp, descricaoMovimentoTemp, pontosMovimentoTemp);
-					m.Add(x);
+					Movimento movement = new Movimento(idMovimentoTemp, idFisioterapeutaTemp, nomeMovimentoTemp, descricaoMovimentoTemp, pontosMovimentoTemp);
+					movements.Add(movement);
 				}
+				
 				reader.Close();
 				reader = null;
 				banco.cmd.Dispose();
 				banco.cmd = null;
 				banco.conn.Close();
 				banco.conn = null;
-				return m;
+				return movements;
 			}
 		}
 
@@ -247,6 +258,8 @@ namespace movimento
 					id);
 				banco.cmd.CommandText = banco.sqlQuery;
 				IDataReader reader = banco.cmd.ExecuteReader();
+
+				reader.Read();
 
 				int idMovimentoTemp = 0;
 				int idFisioterapeutaTemp = 0;
@@ -275,7 +288,7 @@ namespace movimento
 					pontosMovimentoTemp = reader.GetString(4);
 				}
 
-				Movimento x = new Movimento (idMovimentoTemp,idFisioterapeutaTemp,nomeMovimentoTemp,descricaoMovimentoTemp,pontosMovimentoTemp);
+				Movimento movement = new Movimento (idMovimentoTemp,idFisioterapeutaTemp,nomeMovimentoTemp,descricaoMovimentoTemp,pontosMovimentoTemp);
 
 				reader.Close();
 				reader = null;
@@ -283,7 +296,7 @@ namespace movimento
 				banco.cmd = null;
 				banco.conn.Close();
 				banco.conn = null;
-				return x;
+				return movement;
 			}
 		}
 
