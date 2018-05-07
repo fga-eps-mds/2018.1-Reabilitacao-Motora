@@ -41,6 +41,8 @@ public class createPatient : MonoBehaviour
 			List<Pessoa> personsList = Pessoa.Read();
 			
 			Paciente.Insert(personsList[personsList.Count - 1].idPessoa, notes.text);
+
+			Flow.StaticNewPatient();
 		}
 	}
 }

@@ -12,7 +12,6 @@ public class SetPatientToButton : MonoBehaviour {
 	public void SelectPatient ()
 	{
 		GlobalController.instance.user = patient;
-		SceneManager.LoadScene("Patient");
 	}
 
 	public Paciente Patient

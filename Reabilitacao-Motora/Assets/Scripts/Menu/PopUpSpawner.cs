@@ -9,12 +9,14 @@ using UnityEngine;
 public class PopUpSpawner : MonoBehaviour
 {
     public GameObject PopUpPrefab;
+    public GameObject Canvas;
 
 	/**
  	 * Deixa a instancia do Prefab do popUp ativa.
  	 */
     public void Spawner()
     {
+        PopUpPrefab.transform.SetSiblingIndex(Canvas.transform.childCount - 1);
         PopUpPrefab.SetActive(true);
     }
 
