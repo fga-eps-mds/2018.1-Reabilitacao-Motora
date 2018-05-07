@@ -156,8 +156,8 @@
 - [Inclusão de criptografia das senhas no banco de dados](https://github.com/fga-gpp-mds/2018.1-reabilitacao-motora/issues/146)  
 
 ### Sprint 9
-- [US11 - Consultar resultados do paciente]()
-- [US12 - Relacionar movimento gravado com paciente]()
+- [US11 - Consultar resultados do paciente](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/160)
+- [US12 - Relacionar movimento gravado com paciente](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/161)
 
 ### Sprint 10
 - [US02 - Atualizar Movimento]()
