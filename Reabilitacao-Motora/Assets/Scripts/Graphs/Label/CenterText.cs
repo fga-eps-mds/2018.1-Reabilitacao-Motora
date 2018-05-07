@@ -3,22 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /**
- * Descrever aqui o que essa classe realiza.
+ * Classe responsável por manipular texto referente às labels.
  */
 public class CenterText : MonoBehaviour
-	{
+{
 	public Transform line1, line2;
 
 	/**
-	 * Descrever aqui o que esse método realiza.
-	 */
-	void Start()
-	{
-
-	}
-
-	/**
-	 * Descrever aqui o que esse método realiza.
+	 * Centraliza o nome da label de acordo com o X inicial e X final.
 	 */
 	void Update()
 	{
