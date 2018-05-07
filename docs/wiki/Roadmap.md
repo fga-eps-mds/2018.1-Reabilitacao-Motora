@@ -7,6 +7,8 @@
 | 28/03/2018 |   0.3  | Atualização do documento |                Arthur Diniz                 |
 | 31/03/2018 |   0.4  | Revisão do Documento | Romeu Antunes |
 | 15/04/2018 |   0.5  | Atualização do documento com tarefas de EPS e adicionadas no meio das sprints | Romeu Antunes |
+| 03/05/2018 |   0.6  | Criação do Roadmap R2 | EPS / MDS  |
+| 07/05/2018 |   0.7  | Adição do Roadmap da Sprint 07/08 | Romeu Antunes |
 
 # Release 1
 
@@ -86,10 +88,6 @@
 
 ### Release 01
 
-
-
-----
-
 | Histórias de Usuários realizadas | Pontuação |
 | --- | ---- |
 | US14 | 03 | Fechada |
@@ -136,30 +134,38 @@
 | Total | 49 |
 
 
-
-
-
-
-
-
-
-
----
-us em aberto 02,04,11,12,15,16 --> 138 pontos ao todo
-20 pontos por sprint em 7 sprints +-
-corbertura de testes 20% por sprints
-
-
-
 ### Sprint 7
+- [Adequação com a identidade visual do protótipo.](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/149)
+
+- [Testes Unity](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/148)
 
 ### Sprint 8
 
+- [US06 - Visualizar Movimento](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/135)
+
+- [US09 - Visualizar Paciente](https://github.com/fga-gpp-mds/2018.1-reabilitacao-motora/issues/137)
+
+- [US10 - Remover Paciente](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/138)
+
+- [Validar os campos de registro de paciente.](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/131)
+
+- [Adequação com a identidade visual do protótipo.](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/149)
+
+- [Testes Unity](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/148)
+
+- [Inclusão de criptografia das senhas no banco de dados](https://github.com/fga-gpp-mds/2018.1-reabilitacao-motora/issues/146)  
+
 ### Sprint 9
+- [US11 - Consultar resultados do paciente]()
+- [US12 - Relacionar movimento gravado com paciente]()
 
 ### Sprint 10
+- [US02 - Atualizar Movimento]()
+- [US04 - Remover Movimento]()
 
 ### Sprint 11
+- [US15 - Configurar o ambiente gráfico]()
+- [US16 - Visualizar instruções de uso]()
 
 ### Sprint 12
 
