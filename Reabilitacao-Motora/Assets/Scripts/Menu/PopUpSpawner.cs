@@ -8,7 +8,19 @@ using UnityEngine;
 
 public class PopUpSpawner : MonoBehaviour
 {
-    public GameObject PopUpPrefab;
+
+    private GameObject popUpPrefab;
+    public GameObject PopUpPrefab
+    {
+        get
+        {
+            return popUpPrefab;
+        }
+        set
+        {
+            popUpPrefab = value;
+        }
+    } 
 
 	/**
  	 * Deixa a instancia do Prefab do popUp ativa.
