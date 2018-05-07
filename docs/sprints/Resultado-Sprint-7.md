@@ -5,7 +5,7 @@
 ---
 
 ## 2. Fechamento da _Sprint_
-<p align="justify">&emsp;&emsp; A respeito da <i>Sprint</i> 07 tivemos alguns problemas devido ao fato de um relaxamento por parte da equipe, pela ausencia do <i>Scrum Master</i> durante o período da <i>Sprint</i> por alguns problemas pessoais, o que gerou uma grande quantidade de dívidas técnicas visto que as tarefas que estam propostas para serem realizadas não foram cumpridas nos tempos corretos, então entraríamos na <i>Sprint</i> 08 com dívidas técnicas. </p>
+<p align="justify">&emsp;&emsp; A respeito da <i>Sprint</i> 07 tivemos alguns problemas devido ao fato de um relaxamento por parte da equipe, pela ausência do <i>Scrum Master</i> durante o período da <i>Sprint</i> por alguns problemas pessoais, o que gerou uma grande quantidade de dívidas técnicas visto que as tarefas que estão propostas para serem realizadas não foram cumpridas nos tempos corretos, então entraríamos na <i>Sprint</i> 08 com dívidas técnicas. </p>
 
 ### 2.1 Backlog da Sprint
 
