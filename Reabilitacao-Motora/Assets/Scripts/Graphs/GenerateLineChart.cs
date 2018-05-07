@@ -10,7 +10,7 @@ public class GenerateLineChart : MonoBehaviour
 	public Transform pointPrefab;
 	public Transform mao, ombro, cotovelo, braco;
 	public int resolution;
-	int i = 0;
+	int i;
 	List <float> current_time;
 	List <Vector3> f_mao_pos, f_mao_rot, f_ombro_pos, f_ombro_rot, f_cotovelo_pos, f_cotovelo_rot, f_braco_pos, f_braco_rot, points1, points2;
 	List <Vector3> f_mao_local_pos, f_mao_local_rot, f_ombro_local_pos, f_ombro_local_rot, f_cotovelo_local_pos, f_cotovelo_local_rot, f_braco_local_pos, f_braco_local_rot;
@@ -19,7 +19,8 @@ public class GenerateLineChart : MonoBehaviour
 	public Color c1 = Color.black;
 	public Color c2 = Color.red;
 
-	bool t = false, drawed = false;
+	bool t;
+	bool drawed;
 
 	/**
 	* Descrever aqui o que esse método realiza.
@@ -137,8 +138,9 @@ public class GenerateLineChart : MonoBehaviour
 
 	void generateGraphicPoints ()
 	{
-		for (int i = 0; i < current_time.Count; ++i) {
-			Vector3 temp = new Vector3 (current_time[i], angle((Vector2)f_mao_pos[i],(Vector2)f_cotovelo_pos[i],(Vector2)f_cotovelo_pos[i],(Vector2)f_ombro_pos[i]), 0f);
+		for (int j = 0; j < current_time.Count; ++j) 
+		{
+			Vector3 temp = new Vector3 (current_time[j], angle((Vector2)f_mao_pos[j],(Vector2)f_cotovelo_pos[j],(Vector2)f_cotovelo_pos[j],(Vector2)f_ombro_pos[j]), 0f);
 			points1.Add (temp);
 		}
 	}
@@ -149,11 +151,11 @@ public class GenerateLineChart : MonoBehaviour
 		Vector3 scale = Vector3.one * step;
 		Vector3 position = Vector3.zero;
 
-		for (int i = 0; i < resolution; ++i) 
+		for (int j = 0; j < resolution; ++j) 
 		{
 			Transform point = Instantiate(pointPrefab);
-			position.x = (points1[i].x) + 0.05f;
-			position.y = (points1[i].y/24);
+			position.x = (points1[j].x) + 0.05f;
+			position.y = (points1[j].y/24);
 			point.localPosition = position;
 			point.localScale = scale;
 			point.SetParent (transform, false);
@@ -173,6 +175,9 @@ public class GenerateLineChart : MonoBehaviour
 		if(GlobalController.instance != null && 
 		   GlobalController.instance.movement != null)
 		{
+			t = false;
+			drawed = false;
+			i = 0;
 
 			current_time = new List<float>();
 			f_mao_pos = new List<Vector3>();
@@ -236,9 +241,11 @@ public class GenerateLineChart : MonoBehaviour
 	*/
 	void Update () 
 	{
-		if (Input.GetKeyDown(KeyCode.Space)) {
+		if (Input.GetKeyDown(KeyCode.Space)) 
+		{
 			t = !t;
-			if (t == true && drawed == false) {
+			if (t == true && drawed == false) 
+			{
 				drawGraphic();
 				drawed = true;
 			}

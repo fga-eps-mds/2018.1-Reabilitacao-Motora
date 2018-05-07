@@ -45,11 +45,11 @@ public class createMovement : MonoBehaviour
 		foreach (var muscle in muscles) 
 		{
 			name = new string((from c in muscle where char.IsLetterOrDigit(c) select c).ToArray());
-			int idMuscleIfNotExists = checkMuscle (name);
-			if (idMuscleIfNotExists != -1) 
+			if (!checkMuscle(name)) 
 			{
 				Musculo.Insert(name);
-				MovimentoMusculo.Insert(idMuscleIfNotExists, movementsList[movementsList.Count - 1].idMovimento);
+				List<Musculo> musclesList = Musculo.Read();
+				MovimentoMusculo.Insert(musclesList[musclesList.Count - 1].idMusculo, movementsList[movementsList.Count - 1].idMovimento);
 			}
 		}
 
@@ -57,7 +57,7 @@ public class createMovement : MonoBehaviour
 		SceneManager.LoadScene("Clinic");
 	}
 
-	static int checkMuscle(string name)
+	static bool checkMuscle (string name)
 	{
 		List<Musculo> musclesList = Musculo.Read();
 
@@ -65,10 +65,10 @@ public class createMovement : MonoBehaviour
 		{
 			if(muscle.nomeMusculo == name)
 			{
-				return -1;
+				return true;
 			}
 		}
 
-		return musclesList[musclesList.Count - 1].idMusculo;
+		return false;
 	}
 }

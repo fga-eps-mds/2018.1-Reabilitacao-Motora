@@ -9,19 +9,19 @@ public class GenerateLineChartRealTime : MonoBehaviour
 {
 	public Transform x_axis;
 	public Transform pointPrefab;
-	public int resolution = 750;
+	public int resolution;
 	public Transform mao, cotovelo, ombro; //o ponto final de mao é o inicial de cotovelo, o final de cotovelo é o inicial de ombro; ou seja, sao apenas 2 retas
 	Vector2 m_p, c_p, o_p, grafico;
-	float current_time_movement = 0;
-	bool t = false;
-	int i = 0;
+	float current_time_movement;
+	bool t;
+	int i;
 	LineRenderer lineRenderer;
 	public Color c1 = Color.black;
 	public Color c2 = Color.red;
 	List <Vector3> points2;
 
 	public Transform mainCamera, xEnd;
-	private int mdelta = 4;
+	private const int mdelta = 4;
 
 	public static float hypot(float a, float b)
 	{
@@ -42,14 +42,17 @@ public class GenerateLineChartRealTime : MonoBehaviour
 		return (Mathf.Acos(num / den) * (180.0f / Mathf.PI));
 	}
 
-	void Update () {
-		if (Input.GetKeyDown(KeyCode.Space)) {
+	void Update () 
+	{
+		if (Input.GetKeyDown(KeyCode.Space)) 
+		{
 			t = !t;
 		}
 	}
 
 
-	void FixedUpdate () {
+	void FixedUpdate () 
+	{
 		if (t) 
 		{
 			current_time_movement += Time.fixedDeltaTime;
@@ -59,14 +62,16 @@ public class GenerateLineChartRealTime : MonoBehaviour
 
 			grafico = new Vector2 (current_time_movement, angle (m_p, c_p, c_p, o_p));
 
-			if (i >= 750) {
+			if (i >= 750) 
+			{
 				x_axis.localScale = new Vector3 (x_axis.localScale.x, x_axis.localScale.y + 0.02f, x_axis.localScale.z);
 				x_axis.localPosition = new Vector3 (x_axis.localScale.y/2f, x_axis.localPosition.y, x_axis.localPosition.z);
 				lineRenderer.positionCount++;
 				resolution++;
 				Vector3 pos = Camera.main.WorldToScreenPoint(xEnd.transform.position);
 
-				if (pos.x >= Screen.width - mdelta) {
+				if (pos.x >= Screen.width - mdelta) 
+				{
 					mainCamera.position = new Vector3 (mainCamera.position.x + 6f, mainCamera.position.y, mainCamera.position.z);
 				}
 			}
@@ -94,9 +99,13 @@ public class GenerateLineChartRealTime : MonoBehaviour
 	*/
 	void Awake()
 	{	
+
 		points2 = new List<Vector3>();
-		t = new bool();
 		t = false;
+		i = 0;
+		resolution = 750;
+		current_time_movement = 0;
+
 		lineRenderer = gameObject.AddComponent<LineRenderer>();
 		lineRenderer.material = new Material(Shader.Find("Particles/Multiply (Double)"));
 		lineRenderer.widthMultiplier = 0.4f;
