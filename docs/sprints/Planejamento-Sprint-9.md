@@ -136,27 +136,28 @@ Validar se os campos de dados estão vazios antes de tentar cadastrar um pacient
 #### Critérios de Aceitação
 - Mostrar mensagem que alerta o usuário sobre campo obrigatório.
 
-**Pontos:** 03.
+**Pontos:** 05.
 
 ---
 
-### [Testes Unity](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/148)
+### [Implementar Teste](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/152)
 
-#### Descrição:
-Aprendizado e criação dos primeiros testes unitários realizados na plataforma do projeto
+### Descrição:
+Incrementa a integração continua com teste unitários e deploy 
 
-#### Critérios de Aceitação
-- Aprendizado de implementação de testes
-- Capacidade de disseminar o conhecimento para o resto do time.
+### Critérios de Aceitação
+- [ ] Sscript de teste no travis passando com algum teste base.
+- [ ] Script de deploy do travis passando
+- [ ] Apos a finalização do deploy fazer o upload do executavel em algum lugar
 
 
-#### Tarefas
-- Verificar viabilidade técnica dos testes.
-- Descobrir como implementar os testes unitários na plataforma.
-- Criar um modo para distribuir o conhecimento entre os membros do time
-- Adicionar os testes na integração contínua do projeto.
+### Tarefas
+- [ ] Fazer script de teste no travis.
+- [ ] Fazer script de deploy do travis
+- [ ] Apos a finalização do deploy fazer o upload do executavel em algum lugar
 
-**Pontos:** 13.
+
+**Pontos:** 5.
 
 ---
 
