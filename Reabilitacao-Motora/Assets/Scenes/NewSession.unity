@@ -746,12 +746,6 @@ RectTransform:
   m_PrefabParentObject: {fileID: 224772225755270966, guid: 3c5f922615a161b4fa41228d7ef99826,
     type: 2}
   m_PrefabInternal: {fileID: 471240410}
---- !u!114 &471240412 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114284177967961956, guid: 3c5f922615a161b4fa41228d7ef99826,
-    type: 2}
-  m_PrefabInternal: {fileID: 471240410}
-  m_Script: {fileID: 11500000, guid: 8cbd9c6252845ca4bb6bffe34a1901c0, type: 3}
 --- !u!1 &529090989
 GameObject:
   m_ObjectHideFlags: 0
@@ -976,8 +970,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 2016466648}
   - {fileID: 2058188493}
+  - {fileID: 2016466648}
   - {fileID: 471240411}
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -1294,7 +1288,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 471240412}
+      - m_Target: {fileID: 0}
         m_MethodName: SelectPatient
         m_Mode: 1
         m_Arguments:
@@ -1628,11 +1622,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 646684137}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -260, y: 181}
+  m_AnchoredPosition: {x: -260.00003, y: 205}
   m_SizeDelta: {x: 170, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2016466649
@@ -1706,7 +1700,7 @@ RectTransform:
   - {fileID: 53409577}
   - {fileID: 215042708}
   m_Father: {fileID: 646684137}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 1}
