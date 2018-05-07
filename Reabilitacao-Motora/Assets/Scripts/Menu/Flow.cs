@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 /**
  * Escala o tamanho dos componentes da scene conforme o tamanho da tela.
  */
-public class Flow : MonoBehaviour 
+public class Flow : MonoBehaviour
 {
 
 	/**
@@ -28,26 +28,26 @@ public class Flow : MonoBehaviour
 	/**
  	 * Leva para scene de gravar um movimento.
  	 */
-	public static void StaticCreateMove() 
+	public static void StaticCreateMove()
 	{
 		SceneManager.LoadScene("NewMovement");
 	}
 
-	public void CreateMove() 
+	public void CreateMove()
 	{
 		StaticCreateMove();
 	}
 
-	
+
 	/**
  	 * Leva para scene de gravar um movimento.
  	 */
-	public static void StaticRecordMove() 
+	public static void StaticRecordMove()
 	{
 		SceneManager.LoadScene("Clinic");
 	}
 
-	public void RecordMove() 
+	public void RecordMove()
 	{
 		StaticRecordMove();
 	}
@@ -56,12 +56,12 @@ public class Flow : MonoBehaviour
 	/**
  	 * Leva para scene de detalhe de paciente.
  	 */
-	public static void StaticPatient() 
+	public static void StaticPatient()
 	{
 		SceneManager.LoadScene("Patient");
 	}
 
-	public void Patient() 
+	public void Patient()
 	{
 		StaticPatient();
 	}
@@ -69,12 +69,12 @@ public class Flow : MonoBehaviour
 	/**
  	 * Leva para scene de lista de pacientes.
  	 */
-	public static void StaticPatients() 
+	public static void StaticPatients()
 	{
 		SceneManager.LoadScene("Patients");
 	}
 
-	public void Patients() 
+	public void Patients()
 	{
 		StaticPatients();
 	}
@@ -82,12 +82,12 @@ public class Flow : MonoBehaviour
 	/**
  	 * Leva para scene de tela de login.
  	 */
-	public static void StaticLogin() 
+	public static void StaticLogin()
 	{
 		SceneManager.LoadScene("Login");
 	}
 
-	public void Login() 
+	public void Login()
 	{
 		StaticLogin();
 	}
@@ -95,12 +95,13 @@ public class Flow : MonoBehaviour
     /**
  	 * Leva para scene de lista de movimentos.
  	 */
-    public static void StaticMovements() 
+    public static void StaticMovements()
 	{
 		SceneManager.LoadScene("Movements");
+		SceneManager.LoadScene ("ClinicToMoveMenu", LoadSceneMode.Additive);
 	}
 
-	public void Movements() 
+	public void Movements()
 	{
 		StaticMovements();
 	}
@@ -108,12 +109,12 @@ public class Flow : MonoBehaviour
 	/**
  	 * Leva para scene de registrar novo paciente.
  	 */
-	public static void StaticNewPatient() 
+	public static void StaticNewPatient()
 	{
 		SceneManager.LoadScene("NewPatient");
 	}
 
-	public void NewPatient() 
+	public void NewPatient()
 	{
 		StaticNewPatient();
 	}
@@ -121,12 +122,12 @@ public class Flow : MonoBehaviour
 	/**
  	 * Leva para scene de registrar novo paciente.
  	 */
-	public static void StaticUpdatePatient() 
+	public static void StaticUpdatePatient()
 	{
 		SceneManager.LoadScene("UpdatePatient");
 	}
 
-	public void UpdatePatient() 
+	public void UpdatePatient()
 	{
 		StaticUpdatePatient();
 	}
@@ -134,12 +135,12 @@ public class Flow : MonoBehaviour
 	/**
  	 * Leva para scene de detalhes de sessão.
  	 */
-	public static void StaticSession() 
+	public static void StaticSession()
 	{
 		SceneManager.LoadScene("Session");
 	}
 
-	public void Session() 
+	public void Session()
 	{
 		StaticSession();
 	}
@@ -147,12 +148,12 @@ public class Flow : MonoBehaviour
 	/**
  	 * Leva para scene de lista de sessões.
  	 */
-	public static void StaticSessions() 
+	public static void StaticSessions()
 	{
 		SceneManager.LoadScene("Sessions");
 	}
 
-	public void Sessions() 
+	public void Sessions()
 	{
 		StaticSessions();
 	}
@@ -160,12 +161,12 @@ public class Flow : MonoBehaviour
 	/**
  	 * Leva para scene de função não implementada.
  	 */
-	public static void StaticNotImplemented() 
+	public static void StaticNotImplemented()
 	{
 		SceneManager.LoadScene("NotImplemented");
 	}
 
-	public void NotImplemented() 
+	public void NotImplemented()
 	{
 		StaticNotImplemented();
 	}
@@ -173,12 +174,12 @@ public class Flow : MonoBehaviour
 	/**
  	 * Leva para scene de gráficos.
  	 */
-	public static void StaticGraphs() 
+	public static void StaticGraphs()
 	{
 		SceneManager.LoadScene("Graphs2");
 	}
 
-	public void Graphs() 
+	public void Graphs()
 	{
 		StaticGraphs();
 	}
@@ -186,12 +187,12 @@ public class Flow : MonoBehaviour
     /**
  	 * Leva para scene de gráficos.
  	 */
-	public static void StaticRealTimeGraphs() 
+	public static void StaticRealTimeGraphs()
 	{
 		SceneManager.LoadScene("RealtimeGraph");
 	}
 
-	public void RealTimeGraphs() 
+	public void RealTimeGraphs()
 	{
 		StaticRealTimeGraphs();
 	}
@@ -199,12 +200,12 @@ public class Flow : MonoBehaviour
 	/**
  	 * Volta para o menu.
  	 */
-	public static void StaticBackToMenu() 
+	public static void StaticBackToMenu()
 	{
 		SceneManager.LoadScene("Menu");
 	}
 
-	public void BackToMenu() 
+	public void BackToMenu()
 	{
 		StaticBackToMenu();
 	}
@@ -242,11 +243,5 @@ public class Flow : MonoBehaviour
 	{
 		SceneManager.LoadScene("SuccessRegister");
 	}
-
-	public void SuccessRegister()
-	{
-		StaticSuccessRegister();
-	}
-
 
 }
