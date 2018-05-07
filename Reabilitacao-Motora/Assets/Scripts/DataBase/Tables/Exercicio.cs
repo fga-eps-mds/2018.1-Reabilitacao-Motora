@@ -171,6 +171,56 @@ namespace exercicio
 			}
 		}
 
+
+		/**
+		 * Função que insere dados na tabela de exercicios (sem a descrição).
+		 */
+		public static void Insert(int idPaciente,
+			int idMovimento,
+			int idSessao,
+			string pontosExercicio)
+		{
+			DataBase banco = new DataBase();
+			using (banco.conn = new SqliteConnection(GlobalController.instance.path))
+			{
+				banco.conn.Open();
+				banco.cmd = banco.conn.CreateCommand();
+				banco.sqlQuery = "insert into EXERCICIO (";
+
+				int tableSize = TablesManager.Tables[tableId].colName.Count;
+				const int INDEX_COL_DESCRICAO = 4;
+
+				for (int i = 0; i < tableSize; ++i)
+				{
+					if (i != INDEX_COL_DESCRICAO)
+					{
+						string aux;
+
+						if (i + 1 == tableSize)
+						{
+							aux = ")";
+						}
+						else
+						{
+							aux = ",";
+						}
+						
+						banco.sqlQuery += (TablesManager.Tables[tableId].colName[i] + aux);
+					}
+				}
+
+				banco.sqlQuery += string.Format(" values (\"{0}\",\"{1}\",\"{2}\",\"{3}\")", idPaciente,
+					idMovimento,
+					idSessao,
+					pontosExercicio);
+
+				banco.cmd.CommandText = banco.sqlQuery;
+				banco.cmd.ExecuteScalar();
+				banco.conn.Close();
+			}
+		}
+
+
 		/**
 		 * Função que atualiza dados já cadastrados anteriormente na relação de exercicios.
 		 */

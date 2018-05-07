@@ -56,7 +56,7 @@ public class GetMovementPoints : MonoBehaviour
 			sb.Append(ombro.rotation.x).Append(" ").Append(ombro.rotation.y).Append(" ").Append(ombro.rotation.z).Append(" ");
 
 			sb.Append(braco.position.x).Append(" ").Append(braco.position.y).Append(" ").Append(braco.position.z).Append(" ");
-			sb.Append(braco.rotation.x).Append(" ").Append(braco.rotation.y).Append(" ").Append(braco.rotation.z).Append(" ");
+			sb.Append(braco.rotation.x).Append(" ").Append(braco.rotation.y).Append(" ").Append(braco.rotation.z).Append("\n");
 
 			string path = Application.dataPath + "/Movimentos/" + GlobalController.instance.movement.pontosMovimento + ".points";
 			File.AppendAllText(path, sb.ToString());

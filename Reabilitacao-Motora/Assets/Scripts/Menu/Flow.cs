@@ -244,4 +244,17 @@ public class Flow : MonoBehaviour
 		SceneManager.LoadScene("SuccessRegister");
 	}
 
+
+	/**
+ 	 * Leva para a scene de nova sessao.
+ 	 */
+	public static void StaticNewSession()
+	{
+		SceneManager.LoadScene("NewSession");
+	}
+
+	public void NewSession()
+	{
+		StaticNewSession();
+	}
 }
