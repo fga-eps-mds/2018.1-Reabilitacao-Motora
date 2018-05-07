@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+using cryptpw;
+
 using fisioterapeuta;
 
 
@@ -39,7 +41,8 @@ public class Login : MonoBehaviour
 	public void Flow()
 	{
 		Fisioterapeuta idcheck = CheckLoginPass();
-		if (idcheck != null) 
+
+        if (idcheck != null) 
 		{
 			ColorBlock cb = pass.colors;
 			cb.normalColor = hexToColor(success);
@@ -66,11 +69,13 @@ public class Login : MonoBehaviour
 
 		foreach (var fisio in physiotherapists) 
 		{			
-			if (fisio.login == login.text && fisio.senha == pass.text) 
-			{
+			if (fisio.login == login.text && 
+				CryptPassword.Uncrypt(pass.text, fisio.senha, login.text))
+            {
 				return fisio;
 			}
 		}
+
 		return null;
 	}
 }
