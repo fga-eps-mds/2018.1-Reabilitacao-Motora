@@ -1433,8 +1433,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: savePatient
+      - m_Target: {fileID: 192482561}
+        m_MethodName: CreateMove
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1847,7 +1847,6 @@ GameObject:
   - component: {fileID: 1784361600}
   - component: {fileID: 1784361599}
   - component: {fileID: 1784361598}
-  - component: {fileID: 1784361597}
   - component: {fileID: 1784361596}
   - component: {fileID: 1784361595}
   m_Layer: 0
@@ -1911,13 +1910,6 @@ MonoBehaviour:
   HandCursor2: {fileID: 0}
   ControlMouseCursor: 0
   GesturesDebugText: {fileID: 0}
---- !u!81 &1784361597
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1784361594}
-  m_Enabled: 1
 --- !u!124 &1784361598
 Behaviour:
   m_ObjectHideFlags: 0
@@ -1956,7 +1948,6 @@ Camera:
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -2122,9 +2113,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 2
   m_Convex: 0
-  m_CookingOptions: 14
+  m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!33 &1874057632

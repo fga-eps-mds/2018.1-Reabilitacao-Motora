@@ -1,5 +1,7 @@
 using System.Collections;
+using System.Text;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 /**
@@ -7,7 +9,6 @@ using UnityEngine;
 */
 public class GenerateLineChartRealTime : MonoBehaviour
 {
-	public Transform x_axis;
 	public Transform pointPrefab;
 	public int resolution;
 	public Transform mao, cotovelo, ombro; //o ponto final de mao é o inicial de cotovelo, o final de cotovelo é o inicial de ombro; ou seja, sao apenas 2 retas
@@ -20,8 +21,6 @@ public class GenerateLineChartRealTime : MonoBehaviour
 	public Color c2 = Color.red;
 	List <Vector3> points2;
 
-	public Transform mainCamera, xEnd;
-	private const int mdelta = 4;
 
 	public static float hypot(float a, float b)
 	{
@@ -64,16 +63,7 @@ public class GenerateLineChartRealTime : MonoBehaviour
 
 			if (i >= 750) 
 			{
-				x_axis.localScale = new Vector3 (x_axis.localScale.x, x_axis.localScale.y + 0.02f, x_axis.localScale.z);
-				x_axis.localPosition = new Vector3 (x_axis.localScale.y/2f, x_axis.localPosition.y, x_axis.localPosition.z);
-				lineRenderer.positionCount++;
-				resolution++;
-				Vector3 pos = Camera.main.WorldToScreenPoint(xEnd.transform.position);
-
-				if (pos.x >= Screen.width - mdelta) 
-				{
-					mainCamera.position = new Vector3 (mainCamera.position.x + 6f, mainCamera.position.y, mainCamera.position.z);
-				}
+				t = false;
 			}
 
 	        float divScale = (70 * resolution)/750f;
@@ -93,10 +83,17 @@ public class GenerateLineChartRealTime : MonoBehaviour
        	}
 	}
 
+	void SavePoints (Vector2 point) 
+	{
+		StringBuilder sb = new StringBuilder();
 
-	/**
-	* Descrever aqui o que esse método realiza.
-	*/
+		sb.Append(point.x).Append(" ").Append(point.y);
+
+		string path = Application.dataPath + "/Exercicios/" + GlobalController.instance.movement.pontosMovimento + ".points";
+		File.AppendAllText(path, sb.ToString());
+	}
+
+
 	void Awake()
 	{	
 
@@ -111,7 +108,6 @@ public class GenerateLineChartRealTime : MonoBehaviour
 		lineRenderer.widthMultiplier = 0.4f;
 		lineRenderer.positionCount = 5000;
 
-	// A simple 2 color gradient with a fixed alpha of 1.0f.
 		float alpha = 1.0f;
 		Gradient gradient = new Gradient();
 		gradient.SetKeys(
@@ -121,7 +117,4 @@ public class GenerateLineChartRealTime : MonoBehaviour
 		lineRenderer.colorGradient = gradient;
 	}
 
-	/**
-	* Descrever aqui o que esse método realiza.
-	*/
 }
