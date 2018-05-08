@@ -22,7 +22,7 @@ public class instanciateExercise : MonoBehaviour
 		script.Exercise = exercise;
 
 		var temp = go.GetComponentInChildren<Text>();
-		temp.text = result(exercise.pontosExercicio);
+		temp.text = result(exercise.idExercicio, exercise.pontosExercicio);
 	}
 
 
@@ -41,11 +41,12 @@ public class instanciateExercise : MonoBehaviour
 	}
 
 
-	public static string result (string x)
+	public static string result (int y, string x)
 	{
 		var trip = x.Split('/');
 		var hehe = trip[2].Split('-');
 		var kaka = hehe[0].Replace('_', ' ');
-		return kaka;
+		var popo = string.Format("{0} - {1}", y, kaka); 
+		return popo;
 	}
 }

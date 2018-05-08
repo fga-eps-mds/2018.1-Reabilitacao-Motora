@@ -253,4 +253,46 @@ public class Flow : MonoBehaviour
 	{
 		StaticEndSession();
 	}
+
+
+	/**
+ 	 * Leva para a scene que lista os movimentos passíveis de serem reproduzidos num exercício.
+ 	 */
+	public static void StaticMovementsToReview()
+	{
+		SceneManager.LoadScene("MovementsToReview");
+	}
+
+	public void MovementsToReview()
+	{
+		StaticMovementsToReview();
+	}
+
+
+	/**
+ 	 * Leva para a scene que lista os movimentos passíveis de serem reproduzidos num exercício.
+ 	 */
+	public static void StaticExercisesToReview()
+	{
+		SceneManager.LoadScene("ExercisesToReview");
+	}
+
+	public void ExercisesToReview()
+	{
+		StaticExercisesToReview();
+	}
+
+
+	/**
+ 	 * Leva para a scene que lista os movimentos passíveis de serem reproduzidos num exercício.
+ 	 */
+	public static void StaticGraphs1()
+	{
+		SceneManager.LoadScene("Graphs1");
+	}
+
+	public void Graphs1()
+	{
+		StaticGraphs1();
+	}
 }

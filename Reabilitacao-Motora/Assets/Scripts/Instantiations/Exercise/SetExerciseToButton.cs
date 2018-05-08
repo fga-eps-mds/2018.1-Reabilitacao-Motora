@@ -13,7 +13,6 @@ public class SetExerciseToButton : MonoBehaviour
 	public void SelectExercise ()
 	{
 		GlobalController.instance.exercise = exercise;
-		SceneManager.LoadScene("Graphs2");
 	}
 
 	public Exercicio Exercise
