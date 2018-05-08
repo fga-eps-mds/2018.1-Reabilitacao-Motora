@@ -36,6 +36,6 @@ public class createExercise : MonoBehaviour
 		List<Exercicio> exercises = Exercicio.Read();
 		GlobalController.instance.exercise = exercises[exercises.Count - 1];
 
-		Flow.StaticRealTimeGraphs();
+		Flow.StaticRealtimeGraph();
 	}
 }

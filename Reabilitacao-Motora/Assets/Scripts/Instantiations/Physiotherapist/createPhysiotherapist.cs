@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.IO;
+using System;
 
 using cryptpw;
 
@@ -26,7 +27,7 @@ public class createPhysiotherapist : MonoBehaviour
 	public Toggle male;
 	public Toggle female;
 	private const string wrongConfirmation = "FF7E7EFF", success = "87E580FF";
-	 
+
 	public static Color hexToColor(string hex)
 	{
 		byte a = 255;
@@ -80,6 +81,9 @@ public class createPhysiotherapist : MonoBehaviour
 			string pathnamephysio = "Assets\\Movimentos\\" + string.Format("{0}-{1}", p[p.Count-1].idPessoa, namePhysioUnderscored);
 
 			Directory.CreateDirectory(pathnamephysio);
+
+			List<Fisioterapeuta> physios = Fisioterapeuta.Read();
+			GlobalController.instance.admin = physios[physios.Count - 1]; 
 
 			Flow.StaticLogin();
 		} 

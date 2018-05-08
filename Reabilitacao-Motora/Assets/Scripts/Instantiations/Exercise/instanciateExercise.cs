@@ -26,7 +26,7 @@ public class instanciateExercise : MonoBehaviour
 	}
 
 
-	public void Awake ()
+	public void Start ()
 	{
 		List<Exercicio> exercises = Exercicio.Read();
 

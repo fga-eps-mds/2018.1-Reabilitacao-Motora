@@ -28,6 +28,6 @@ public class FinalizeSession : MonoBehaviour
 			GlobalController.instance.session.dataSessao,
 			observacaoSessao.text);
 
-		Flow.StaticSessions();
+		Flow.StaticNewSession();
 	}
 }

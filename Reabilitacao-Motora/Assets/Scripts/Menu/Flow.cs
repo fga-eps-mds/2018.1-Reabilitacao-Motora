@@ -28,28 +28,28 @@ public class Flow : MonoBehaviour
 	/**
  	 * Leva para scene de gravar um movimento.
  	 */
-	public static void StaticCreateMove()
+	public static void StaticNewMovement()
 	{
 		SceneManager.LoadScene("NewMovement");
 	}
 
-	public void CreateMove()
+	public void NewMovement()
 	{
-		StaticCreateMove();
+		StaticNewMovement();
 	}
 
 
 	/**
  	 * Leva para scene de gravar um movimento.
  	 */
-	public static void StaticRecordMove()
+	public static void StaticClinic()
 	{
 		SceneManager.LoadScene("Clinic");
 	}
 
-	public void RecordMove()
+	public void Clinic()
 	{
-		StaticRecordMove();
+		StaticClinic();
 	}
 
 
@@ -66,18 +66,6 @@ public class Flow : MonoBehaviour
 		StaticPatient();
 	}
 
-	/**
- 	 * Leva para scene de lista de pacientes.
- 	 */
-	public static void StaticPatients()
-	{
-		SceneManager.LoadScene("Patients");
-	}
-
-	public void Patients()
-	{
-		StaticPatients();
-	}
 
 	/**
  	 * Leva para scene de tela de login.
@@ -174,54 +162,42 @@ public class Flow : MonoBehaviour
 	/**
  	 * Leva para scene de gráficos.
  	 */
-	public static void StaticGraphs()
+	public static void StaticGraphs2()
 	{
 		SceneManager.LoadScene("Graphs2");
 	}
 
-	public void Graphs()
+	public void Graphs2()
 	{
-		StaticGraphs();
+		StaticGraphs2();
 	}
 
     /**
  	 * Leva para scene de gráficos.
  	 */
-	public static void StaticRealTimeGraphs()
+	public static void StaticRealtimeGraph()
 	{
 		SceneManager.LoadScene("RealtimeGraph");
 	}
 
-	public void RealTimeGraphs()
+	public void RealtimeGraph()
 	{
-		StaticRealTimeGraphs();
+		StaticRealtimeGraph();
 	}
 
 	/**
  	 * Volta para o menu.
  	 */
-	public static void StaticBackToMenu()
+	public static void StaticMenu()
 	{
 		SceneManager.LoadScene("Menu");
 	}
 
-	public void BackToMenu()
+	public void Menu()
 	{
-		StaticBackToMenu();
+		StaticMenu();
 	}
 
-	/**
- 	 * Volta para o menu inicial.
- 	 */
-	public static void StaticBackToHomeMenu()
-	{
-		SceneManager.LoadScene("Login");
-	}
-
-	public void BackToHomeMenu()
-	{
-		StaticBackToHomeMenu();
-	}
 
 	/**
  	 * Leva para a scene de novo fisioterapeuta.
@@ -234,14 +210,6 @@ public class Flow : MonoBehaviour
 	public void NewPhysiotherapist()
 	{
 		StaticNewPhysiotherapist();
-	}
-
-	/**
- 	 * Leva para a scene sucess register.
- 	 */
-	public static void StaticSuccessRegister()
-	{
-		SceneManager.LoadScene("SuccessRegister");
 	}
 
 
@@ -270,5 +238,19 @@ public class Flow : MonoBehaviour
 	public void MovementsToExercise()
 	{
 		StaticMovementsToExercise();
+	}
+
+
+	/**
+ 	 * Leva para a scene que lista os movimentos passíveis de serem reproduzidos num exercício.
+ 	 */
+	public static void StaticEndSession()
+	{
+		SceneManager.LoadScene("EndSession");
+	}
+
+	public void EndSession()
+	{
+		StaticEndSession();
 	}
 }
