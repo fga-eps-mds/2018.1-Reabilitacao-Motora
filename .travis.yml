@@ -7,16 +7,18 @@ before_install:
   - chmod a+x ./Reabilitacao-Motora/Assets/Scripts/travis_build.sh
   - chmod a+x ./Reabilitacao-Motora/Assets/Scripts/travis_tests.sh
 install:
-  #- ./Reabilitacao-Motora/Assets/Scripts/travis_install.sh
-  - echo "Skipping install"
+  - ./Reabilitacao-Motora/Assets/Scripts/travis_install.sh
 jobs:
   include:
-    - stage: travis_stage
-      if: branch = travis
+    - stage: master_stage
+      if: branch = master
       script:
-        - echo "This is travis_stage"
-        # - ./Reabilitacao-Motora/Assets/Scripts/travis_build.sh
-    - stage: other_stages
-      if: NOT branch = travis
+        - ./Reabilitacao-Motora/Assets/Scripts/travis_build.sh
+    - stage: homolog_stage
+      if: branch = development
       script:
-        - echo "This is not travis_stage"
+        - ./Reabilitacao-Motora/Assets/Scripts/travis_build.sh
+    - stage: development_stages
+      if: (NOT branch = development) AND (NOT branch = master)
+      script:
+        - ./Reabilitacao-Motora/Assets/Scripts/travis_build.sh
