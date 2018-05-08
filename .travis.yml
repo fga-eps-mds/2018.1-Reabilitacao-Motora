@@ -1,12 +1,22 @@
 language: objective-c
 osx_image: xcode9.2
 rvm:
-- 2.2
+  - 2.2
 before_install:
-- chmod a+x ./Reabilitacao-Motora/Assets/Scripts/travis_install.sh
-- chmod a+x ./Reabilitacao-Motora/Assets/Scripts/travis_build.sh
-- chmod a+x ./Reabilitacao-Motora/Assets/Scripts/travis_tests.sh
+  - chmod a+x ./Reabilitacao-Motora/Assets/Scripts/travis_install.sh
+  - chmod a+x ./Reabilitacao-Motora/Assets/Scripts/travis_build.sh
+  - chmod a+x ./Reabilitacao-Motora/Assets/Scripts/travis_tests.sh
 install:
-- ./Reabilitacao-Motora/Assets/Scripts/travis_install.sh
-script:
-- ./Reabilitacao-Motora/Assets/Scripts/travis_build.sh
+  #- ./Reabilitacao-Motora/Assets/Scripts/travis_install.sh
+  - echo "Skipping install"
+jobs:
+  include:
+    - stage: travis_stage
+      if: branch = travis
+      script:
+        - echo "This is travis_stage"
+        # - ./Reabilitacao-Motora/Assets/Scripts/travis_build.sh
+    - stage: other_stages
+      if: NOT branch = travis
+      script:
+        - echo "This is not travis_stage"
