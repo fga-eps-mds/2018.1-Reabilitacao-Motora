@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.IO;
 
 using pessoa;
 using paciente;
@@ -39,8 +40,11 @@ public class createPatient : MonoBehaviour
 			}
 
 			List<Pessoa> personsList = Pessoa.Read();
-			
 			Paciente.Insert(personsList[personsList.Count - 1].idPessoa, notes.text);
+
+			string namePatientUnderscored = (namePatient.text).Replace(' ', '_');
+			string pathNamePatient = "Assets\\Exercicios\\" + string.Format("{0}-{1}", personsList[personsList.Count-1].idPessoa, namePatientUnderscored);
+			Directory.CreateDirectory(pathNamePatient);
 
 			Flow.StaticNewPatient();
 		}

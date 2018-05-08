@@ -257,4 +257,18 @@ public class Flow : MonoBehaviour
 	{
 		StaticNewSession();
 	}
+
+
+	/**
+ 	 * Leva para a scene que lista os movimentos passíveis de serem reproduzidos num exercício.
+ 	 */
+	public static void StaticMovementsToExercise()
+	{
+		SceneManager.LoadScene("MovementsToExercise");
+	}
+
+	public void MovementsToExercise()
+	{
+		StaticMovementsToExercise();
+	}
 }

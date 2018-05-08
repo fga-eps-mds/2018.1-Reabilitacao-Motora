@@ -16,7 +16,7 @@ public class createExercise : MonoBehaviour
 	/**
  	 * Salva o paciente no banco.
  	 */
-	public void saveExercise()
+	public void CreateExercise()
 	{
 		string patientUnderscored = (GlobalController.instance.user.persona.nomePessoa).Replace(' ', '_');
 
@@ -33,7 +33,9 @@ public class createExercise : MonoBehaviour
 			GlobalController.instance.session.idSessao, 
 			pathSave);
 
-		Flow.StaticNewSession();
-	}
+		List<Exercicio> exercises = Exercicio.Read();
+		GlobalController.instance.exercise = exercises[exercises.Count - 1];
 
+		Flow.StaticRealTimeGraphs();
+	}
 }

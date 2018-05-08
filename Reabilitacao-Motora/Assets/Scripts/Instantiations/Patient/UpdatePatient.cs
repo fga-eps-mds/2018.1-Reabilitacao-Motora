@@ -106,5 +106,10 @@ public class UpdatePatient : MonoBehaviour
 			}
 						
 			Paciente.Update(GlobalController.instance.user.idPaciente, GlobalController.instance.user.persona.idPessoa, newNote);
+
+			Paciente tempPatient = Paciente.ReadValue(GlobalController.instance.user.idPaciente);
+			GlobalController.instance.user = tempPatient;
+
+			Flow.StaticPatient();
 	}
 }

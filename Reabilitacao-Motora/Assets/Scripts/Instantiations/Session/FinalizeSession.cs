@@ -12,7 +12,7 @@ using sessao;
 /**
  * Cria um novo paciente no banco de dados.
  */
-public class FinalizeSessao : MonoBehaviour 
+public class FinalizeSession : MonoBehaviour 
 {
 	public InputField observacaoSessao;
 

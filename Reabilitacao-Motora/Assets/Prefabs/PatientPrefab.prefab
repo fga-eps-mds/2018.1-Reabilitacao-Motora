@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114321422766103680}
   - component: {fileID: 114324228000192858}
   m_Layer: 5
-  m_Name: Patient
+  m_Name: Physio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 114378903838014716}
   - component: {fileID: 114215653474337290}
   m_Layer: 5
-  m_Name: SaveBt (1)
+  m_Name: DeleteBt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -56,9 +56,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 224067224625266882}
-  - component: {fileID: 114585367714602564}
+  - component: {fileID: 114024011065545504}
   m_Layer: 5
-  m_Name: Setpatient
+  m_Name: Setphysio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -90,7 +90,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224772225755270966}
   m_Layer: 5
-  m_Name: GameObject 1 1
+  m_Name: PatientPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 4367315124004976}
   - component: {fileID: 114315067262446546}
   m_Layer: 0
-  m_Name: GameObject (1)
+  m_Name: FlowManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -125,6 +125,17 @@ Transform:
   m_Father: {fileID: 224772225755270966}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114024011065545504
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1646016103712984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e4c44f347125424eac1360cdc2340b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114215653474337290
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -214,7 +225,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114585367714602564}
+      - m_Target: {fileID: 114024011065545504}
         m_MethodName: SelectPatient
         m_Mode: 1
         m_Arguments:
@@ -277,7 +288,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114585367714602564}
+      - m_Target: {fileID: 114024011065545504}
         m_MethodName: SelectPatient
         m_Mode: 1
         m_Arguments:
@@ -325,17 +336,6 @@ MonoBehaviour:
   m_Text: '
 
 '
---- !u!114 &114585367714602564
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1646016103712984}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e4c44f347125424eac1360cdc2340b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114600676883464860
 MonoBehaviour:
   m_ObjectHideFlags: 1

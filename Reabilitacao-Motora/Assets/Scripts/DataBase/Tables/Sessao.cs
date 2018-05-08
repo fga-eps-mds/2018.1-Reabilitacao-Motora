@@ -180,7 +180,7 @@ namespace sessao
 					{
 						string aux;
 
-						if (i + 1 == tableSize)
+						if (i + 2 == tableSize)
 						{
 							aux = ")";
 						}
@@ -196,7 +196,7 @@ namespace sessao
 				banco.sqlQuery += string.Format(" values (\"{0}\",\"{1}\",\"{2}\")", idFisioterapeuta,
 					idPaciente,
 					dataSessao);
-
+				
 				banco.cmd.CommandText = banco.sqlQuery;
 				banco.cmd.ExecuteScalar();
 				banco.conn.Close();

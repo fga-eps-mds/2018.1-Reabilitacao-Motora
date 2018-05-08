@@ -22,8 +22,9 @@ public class instanciateExercise : MonoBehaviour
 		script.Exercise = exercise;
 
 		var temp = go.GetComponentInChildren<Text>();
-		temp.text = exercise.pontosExercicio;
+		temp.text = result(exercise.pontosExercicio);
 	}
+
 
 	public void Awake ()
 	{
@@ -31,9 +32,20 @@ public class instanciateExercise : MonoBehaviour
 
 		foreach (var exercise in exercises)
 		{
-			ButtonSpawner(heightOffset, exercise);
-			heightOffset += HEIGHT_PADDING;
+			if (exercise.idSessao == GlobalController.instance.session.idSessao)
+			{
+				ButtonSpawner(heightOffset, exercise);
+				heightOffset += HEIGHT_PADDING;
+			}
 		}
+	}
 
+
+	public static string result (string x)
+	{
+		var trip = x.Split('/');
+		var hehe = trip[2].Split('-');
+		var kaka = hehe[0].Replace('_', ' ');
+		return kaka;
 	}
 }

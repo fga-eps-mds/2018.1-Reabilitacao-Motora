@@ -30,9 +30,11 @@ public class instanciateSession : MonoBehaviour
 
 		foreach (var session in sessions)
 		{
-			ButtonSpawner(heightOffset, session);
-			heightOffset += HEIGHT_PADDING;
+			if (session.idPaciente == GlobalController.instance.user.idPaciente)
+			{
+				ButtonSpawner(heightOffset, session);
+				heightOffset += HEIGHT_PADDING;
+			}
 		}
-
 	}
 }

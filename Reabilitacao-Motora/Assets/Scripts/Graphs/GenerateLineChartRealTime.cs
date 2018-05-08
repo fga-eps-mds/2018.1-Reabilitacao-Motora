@@ -60,6 +60,7 @@ public class GenerateLineChartRealTime : MonoBehaviour
 
 			grafico = new Vector2 (current_time_movement, angle (m_p, c_p, c_p, o_p));
 			SavePoints (grafico);
+
 			if (i >= 750) 
 			{
 				t = false;
@@ -86,23 +87,11 @@ public class GenerateLineChartRealTime : MonoBehaviour
 	{
 		StringBuilder sb = new StringBuilder();
 
-		sb.Append(point.x).Append(" ").Append(point.y);
+		sb.Append(point.x).Append(" ").Append(point.y).Append("\n");
 
-		string patientUnderscored = (GlobalController.instance.user.persona.nomePessoa).Replace(' ', '_');
-
-		string pathSave = GlobalController.instance.user.idPessoa + "-";
-		pathSave += patientUnderscored + "/";
-		pathSave += GlobalController.instance.session.dataSessao + "/";
-
-		var token = (GlobalController.instance.movement.pontosMovimento).Split('/');
-
-		pathSave += token[1] + ".points";
-
-		string path = Application.dataPath + "/Exercicios/" + pathSave;
+		string path = Application.dataPath + "/Exercicios/" + GlobalController.instance.exercise.pontosExercicio;
 
 		File.AppendAllText(path, sb.ToString());
-
-		GlobalController.instance.exercise.pontosExercicio = pathSave;
 	}
 
 

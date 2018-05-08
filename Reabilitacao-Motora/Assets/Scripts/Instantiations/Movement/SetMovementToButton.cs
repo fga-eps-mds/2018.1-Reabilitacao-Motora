@@ -13,7 +13,6 @@ public class SetMovementToButton : MonoBehaviour
 	public void SelectMovement ()
 	{
 		GlobalController.instance.movement = movement;
-		SceneManager.LoadScene("Graphs2");
 	}
 
 	public Movimento Movement

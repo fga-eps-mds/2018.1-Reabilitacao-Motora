@@ -143,7 +143,7 @@ namespace exercicio
 
 				int tableSize = TablesManager.Tables[tableId].colName.Count;
 
-				for (int i = 0; i < tableSize; ++i)
+				for (int i = 1; i < tableSize; ++i)
 				{
 					string aux;
 
@@ -190,7 +190,7 @@ namespace exercicio
 				int tableSize = TablesManager.Tables[tableId].colName.Count;
 				const int INDEX_COL_DESCRICAO = 4;
 
-				for (int i = 0; i < tableSize; ++i)
+				for (int i = 1; i < tableSize; ++i)
 				{
 					if (i != INDEX_COL_DESCRICAO)
 					{
