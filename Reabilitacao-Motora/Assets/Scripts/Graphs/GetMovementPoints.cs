@@ -19,7 +19,8 @@ public class GetMovementPoints : MonoBehaviour
 	/**
 	 * Descrever aqui o que esse método realiza.
 	 */
-	void Start () {
+	void ActivateCaption () {
+		t = true;
 		//tempo_anguloDeJunta = new List<Vector2> ();
 	}
 

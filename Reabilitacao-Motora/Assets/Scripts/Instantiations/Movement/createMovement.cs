@@ -54,7 +54,6 @@ public class createMovement : MonoBehaviour
 		}
 
 		GlobalController.instance.movement = movementsList[movementsList.Count - 1];
-		SceneManager.LoadScene("Clinic");
 	}
 
 	static bool checkMuscle (string name)

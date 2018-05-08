@@ -1,17 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using paciente;
-using UnityEngine.SceneManagement;
 using sessao;
+using pessoa;
 using exercicio;
 using pontosrotulopaciente;
 
-public class DeletePatientButton : MonoBehaviour {
+public class DeletePatientButton : MonoBehaviour 
+{
 
 	public void DeletePatient ()
 	{
 		int IdPaciente = GlobalController.instance.user.idPaciente;
+		int IdPessoa = GlobalController.instance.user.persona.idPessoa;
+
+		string nomePessoa = (GlobalController.instance.user.persona.nomePessoa).Replace(' ', '_');
+		string nomePasta = string.Format("{0}/Exercicios/{1}-{2}", Application.dataPath, IdPessoa, nomePessoa);
 
 		List<Sessao> allSessions = Sessao.Read();
 		List<Exercicio> allExercises = Exercicio.Read();
@@ -42,6 +48,9 @@ public class DeletePatientButton : MonoBehaviour {
 		}
 
 		Paciente.DeleteValue(IdPaciente);
+		Pessoa.DeleteValue(IdPessoa);
+
+		Directory.Delete(nomePasta.Replace('/', '\\'), true);
 
 		Flow.StaticNewPatient();
 	}
