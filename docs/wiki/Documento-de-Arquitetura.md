@@ -156,9 +156,9 @@ Cada datagrama UDP é formado por um cabeçalho UDP e uma área de dados. O form
 **Figura 4**- Diagrama Geral da Arquitetura com o KINECT como sensor </p>
 [Clique aqui para visualizar a imagem](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/development/docs/imagens/Arquitetura/kinect.png) </p>
 
-### 5.1 Pacotes de design Significativos do Ponto de Vista da Arquitetura
+## 6 Pacotes de design Significativos do Ponto de Vista da Arquitetura
 
-#### 5.1.1 GameObjects e Componentes
+### 6.1 GameObjects e Componentes
 <p align = "justify">Devido à arquitetura de componentes inerente ao Unity, tudo que há no projeto é um GameObject. O GameObject é uma combinação de componentes. Ou seja: ele é a base para a adição de componentes ao objeto da scene, determinando o comportamento do mesmo nela. Basicamente tudo no Unity é um componente. Desde scripts a câmeras. Quando um componente ou um script é adicionado a um GameObject, esse componente adicionado pode ser acessado através da função GetComponent da classe GameObject. Uma vez que o GameObject é destruído, todos os componentes abaixo da sua hierarquia são destruídos.</p><br />
 
 <p align = "justify">Dentro de todo GameObject há componentes, sendo exemplos deles Transform (representa a posição, rotação e escala do objeto na scene), RigidBody (dá propriedade físicas ao GameObject), Renderers (componentes que permitem exibição dos GameObjects em cena), etc.</p><br />
@@ -170,11 +170,11 @@ Cada datagrama UDP é formado por um cabeçalho UDP e uma área de dados. O form
 Para melhor visualização da relação entre os componentes no Unity, segue um diagrama:   </p>
 ![Diagrama Componentes](http://oi64.tinypic.com/23hsntc.jpg) </p>
 
-## 6. Visão de Dados
+## 7. Visão de Dados
 
-### 6.1 MER
+### 7.1 MER
 
-#### 6.1.1 Entidades
+#### 7.1.1 Entidades
 
 **PESSOA** </p>
 
@@ -267,7 +267,7 @@ Atributo|Propriedade|Tipo|Descrição
 **tempoInicial** | Obrigatório | REAL | Tempo Inicial do Movimento
 **tempoFinal** | Obrigatório | REAL | Tempo Final do Movimento
 
-#### 6.1.2 Relacionamentos
+#### 7.1.2 Relacionamentos
 
 **PESSOA** especializa totalmente em **FISIOTERAPEUTA** ou **PACIENTE**, pois ambas as entidades compartilham vários atributos em comum.
 
@@ -308,7 +308,7 @@ Um exercício gera n pontos nos eixos x e y.
 (Cardinalidade 1:n)
 
 
-### 6.2 DER
+### 7.2 DER
 ![DER](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/development/docs/imagens/Arquitetura/der.png)
 **Figura 6**- Diagrama Entidade-Relacionamento</p>
 [Clique aqui para visualizar a imagem](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/development/docs/imagens/Arquitetura/der.png)
@@ -318,10 +318,10 @@ Um exercício gera n pontos nos eixos x e y.
 [Clique aqui para visualizar a imagem](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/development/docs/imagens/Arquitetura/logico.png)
 
 
-## 7. Tamanho e Desempenho
+## 8. Tamanho e Desempenho
 
 <p align = "justify">Estimamos que um movimento de duração de 15 segundos gera, em média, aproximadamente 750 pontos (o que, salvo num arquivo, dá aproximadamente 6kB); tendo em vista que em uma sessão poucos movimentos serão realizados de forma monitorada (já que o sensor tem a finalidade de mapear e estimar a situação do paciente, e que, após isso, o fisioterapeuta conduzirá os movimentos necessários), pode-se inferir que o sistema não processará uma grande quantidade de dados — principalmente por se tratar de um sistema local/_offline_. Seu desempenho será determinado, principalmente, pelo computador utilizado pelo operador.</p>
 
-## 8. Qualidade
+## 9. Qualidade
 
 <p align = "justify">O sistema irá utilizar padrões de interface gráfica desktop desenvolvido na linguagem C# em paralelo com o software Unity 3D. Também deverá ser compatível com os principais sistemas operacionais. Além disso, os desenvolvedores deverão adotar boas práticas para que o sistema como um todo venha ser desenvolvido com qualidade satisfatória.</p>
