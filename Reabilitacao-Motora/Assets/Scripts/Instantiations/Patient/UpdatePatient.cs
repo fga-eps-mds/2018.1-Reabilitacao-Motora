@@ -20,8 +20,8 @@ public class UpdatePatient : MonoBehaviour
 	public Toggle female;
 
 	/**
- 	 * Salva o paciente no banco.
- 	 */
+	 * Salva o paciente no banco.
+	 */
 
 	public void updatePatient()
 	{

@@ -7,20 +7,8 @@ using exercicio;
 public class instanciateExercise : MonoBehaviour 
 {
 
-	private GameObject ButtonPrefab;
-	public GameObject buttonPrefab
-	{
-		get
-		{
-			return ButtonPrefab;
-		}
-		set
-		{
-			ButtonPrefab = value;
-		}
-	}
+	public GameObject buttonPrefab;
 
-	int heightOffset;
 	const int HEIGHT_PADDING = 55;
 
 	void ButtonSpawner(int posY, Exercicio exercise)
@@ -40,7 +28,7 @@ public class instanciateExercise : MonoBehaviour
 	public void Start ()
 	{
 		List<Exercicio> exercises = Exercicio.Read();
-		heightOffset = 60;
+		int heightOffset = 60;
 		foreach (var exercise in exercises)
 		{
 			if (exercise.idSessao == GlobalController.instance.session.idSessao)

@@ -11,31 +11,8 @@ using paciente;
  */
 public class loadSession : MonoBehaviour 
 {
-	public InputField Date;
-	private InputField date
-	{
-		get
-		{
-			return Date;
-		}
-		set
-		{
-			Date = value;
-		}
-	}
-
-	public InputField Notes;
-	private InputField notes
-	{
-		get
-		{
-			return Notes;
-		}
-		set
-		{
-			Notes = value;
-		}
-	}
+	public InputField date;
+	public InputField notes;
 	
 	void Start()
 	{

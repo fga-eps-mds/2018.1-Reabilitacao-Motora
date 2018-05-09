@@ -6,7 +6,7 @@ using namespace std;
 namespace fs = std::experimental::filesystem;
 
 
-vector<string> listFiles (string path, string extension)
+vector<string> listFiles (string& path, string& extension)
 {
     vector<string> x;
     for(auto& p: fs::recursive_directory_iterator(path))
@@ -24,19 +24,15 @@ vector<string> listFiles (string path, string extension)
 void replace(string path);
 
 int main () {
-    vector<fs::path> ret;
-    fs::path root;
-    string ext;
     vector<string> x = listFiles(".", ".cs");
     for (auto & v : x)
         replace(v.substr(2));
 
-    //replace("Instantiations/Patient/DeletePatientButton.cs");
     return 0;
 }
 
 
-void replace (string path)
+void replace (string& path)
 {
     ifstream filein(path);
     ofstream fileout("temp.txt"); //Temporary file
@@ -48,7 +44,6 @@ void replace (string path)
     }
 
     string strTemp1, strTemp2, strTemp3;
-    int j = 0, i = 0;
 
     while(getline(filein, strTemp1))
     {
@@ -71,8 +66,8 @@ void replace (string path)
            
 
             fileout << strTemp3 << endl;
-        }
-        
+        }       
     }
+
     rename ("temp.txt", path.c_str());
 }

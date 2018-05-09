@@ -19,13 +19,13 @@ public class Login : MonoBehaviour
 	public InputField pass;
 
 	/**
- 	 * Salva o Fisioterapeuta no banco.
- 	 */
+	 * Salva o Fisioterapeuta no banco.
+	 */
 	public void Flow()
 	{
 		Fisioterapeuta idcheck = CheckLoginPass();
 
-        if (idcheck != null) 
+		if (idcheck != null) 
 		{
 			ColorBlock cb = pass.colors;
 			cb.normalColor = ColorManager.success;
@@ -46,8 +46,7 @@ public class Login : MonoBehaviour
 		}
 	}
 
-	Fisioterapeuta CheckLoginPass () 
-	
+	Fisioterapeuta CheckLoginPass ()
 	{
 		List<Fisioterapeuta> physiotherapists = Fisioterapeuta.Read();
 
@@ -55,8 +54,7 @@ public class Login : MonoBehaviour
 		{			
 			if (fisio.login == login.text && 
 				CryptPassword.Uncrypt(pass.text, fisio.senha, login.text))
-           
-{
+			{
 				return fisio;
 			}
 		}

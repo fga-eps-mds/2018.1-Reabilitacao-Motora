@@ -15,10 +15,11 @@ using fisioterapeuta;
  * Cria um novo Fisioterapeuta no banco de dados.
  */
 public class createPhysiotherapist : MonoBehaviour 
-	{
+{
 	public InputField namePhysio;
 	public InputField date;
-	public InputField phone1, phone2;
+	public InputField phone1;
+	public InputField phone2;
 	public InputField crefito;
 	public InputField regiao;
 	public InputField login;

@@ -21,8 +21,8 @@ public class createPatient : MonoBehaviour
 	public Toggle female;
 
 	/**
- 	 * Salva o paciente no banco.
- 	 */
+	 * Salva o paciente no banco.
+	 */
 	public void savePatient()
 	{
 		if(namePatient.text != "" && date.text != "" && phone1.text != "") 

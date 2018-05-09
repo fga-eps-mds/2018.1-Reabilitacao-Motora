@@ -152,7 +152,7 @@ namespace fisioterapeuta
 				banco.cmd = banco.conn.CreateCommand();
 				banco.sqlQuery = "insert into FISIOTERAPEUTA (";
 
-				int tableSize =  TablesManager.Tables[tableId].colName.Count;
+				int tableSize =	 TablesManager.Tables[tableId].colName.Count;
 
 				for (int i = 1; i < tableSize; ++i) 
 				{
@@ -196,7 +196,7 @@ namespace fisioterapeuta
 				banco.cmd = banco.conn.CreateCommand();
 				banco.sqlQuery = "insert into FISIOTERAPEUTA (";
 
-				int tableSize =  TablesManager.Tables[tableId].colName.Count;
+				int tableSize =	 TablesManager.Tables[tableId].colName.Count;
 
 				for (int i = 1; i < tableSize; ++i) 
 				{
@@ -240,10 +240,10 @@ namespace fisioterapeuta
 				banco.cmd = banco.conn.CreateCommand();
 
 				banco.sqlQuery = string.Format("UPDATE \"{0}\" set ",  TablesManager.Tables[tableId].tableName);
-				banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",",  TablesManager.Tables[tableId].colName[1], idPessoa);
-				banco.sqlQuery += string.Format("\"{0}\"=\"{1}\" ",  TablesManager.Tables[tableId].colName[3], senha);
+				banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",",	 TablesManager.Tables[tableId].colName[1], idPessoa);
+				banco.sqlQuery += string.Format("\"{0}\"=\"{1}\" ",	 TablesManager.Tables[tableId].colName[3], senha);
 
-				banco.sqlQuery += string.Format("WHERE \"{0}\" = \"{1}\"",  TablesManager.Tables[tableId].colName[0], id);
+				banco.sqlQuery += string.Format("WHERE \"{0}\" = \"{1}\"",	TablesManager.Tables[tableId].colName[0], id);
 
 				banco.cmd.CommandText = banco.sqlQuery;
 				banco.cmd.ExecuteScalar();
@@ -268,12 +268,12 @@ namespace fisioterapeuta
 				banco.cmd = banco.conn.CreateCommand();
 
 				banco.sqlQuery = string.Format("UPDATE \"{0}\" set ",  TablesManager.Tables[tableId].tableName);
-				banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",",  TablesManager.Tables[tableId].colName[1], idPessoa);
-				banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",",  TablesManager.Tables[tableId].colName[4], regiao);
-				banco.sqlQuery += string.Format("\"{0}\"=\"{1}\" ",  TablesManager.Tables[tableId].colName[5], crefito);
-				banco.sqlQuery += string.Format("\"{0}\"=\"{1}\" ",  TablesManager.Tables[tableId].colName[3], senha);
+				banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",",	 TablesManager.Tables[tableId].colName[1], idPessoa);
+				banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",",	 TablesManager.Tables[tableId].colName[4], regiao);
+				banco.sqlQuery += string.Format("\"{0}\"=\"{1}\" ",	 TablesManager.Tables[tableId].colName[5], crefito);
+				banco.sqlQuery += string.Format("\"{0}\"=\"{1}\" ",	 TablesManager.Tables[tableId].colName[3], senha);
 
-				banco.sqlQuery += string.Format("WHERE \"{0}\" = \"{1}\"",  TablesManager.Tables[tableId].colName[0], id);
+				banco.sqlQuery += string.Format("WHERE \"{0}\" = \"{1}\"",	TablesManager.Tables[tableId].colName[0], id);
 
 				banco.cmd.CommandText = banco.sqlQuery;
 				banco.cmd.ExecuteScalar();
@@ -414,7 +414,7 @@ namespace fisioterapeuta
 				banco.conn.Open();
 				banco.cmd = banco.conn.CreateCommand();
 
-				banco.sqlQuery = string.Format("delete from \"{0}\" WHERE \"{1}\" = \"{2}\"",  TablesManager.Tables[tableId].tableName,  TablesManager.Tables[tableId].colName[0], id);
+				banco.sqlQuery = string.Format("delete from \"{0}\" WHERE \"{1}\" = \"{2}\"",  TablesManager.Tables[tableId].tableName,	 TablesManager.Tables[tableId].colName[0], id);
 
 				banco.cmd.CommandText = banco.sqlQuery;
 				banco.cmd.ExecuteScalar();
@@ -433,7 +433,7 @@ namespace fisioterapeuta
 				banco.conn.Open();
 				banco.cmd = banco.conn.CreateCommand();
 
-				banco.sqlQuery = string.Format("DROP TABLE IF EXISTS \"{0}\"",  TablesManager.Tables[tableId].tableName);
+				banco.sqlQuery = string.Format("DROP TABLE IF EXISTS \"{0}\"",	TablesManager.Tables[tableId].tableName);
 
 				banco.cmd.CommandText = banco.sqlQuery;
 				banco.cmd.ExecuteScalar();

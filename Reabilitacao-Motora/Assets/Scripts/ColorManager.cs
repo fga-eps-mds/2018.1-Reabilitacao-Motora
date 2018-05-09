@@ -13,9 +13,6 @@ public static class ColorManager
 		{
 			return hexToColor (WrongConfirmation);
 		}
-		set
-		{
-		}
 	}
 
 	public static Color success
@@ -23,9 +20,6 @@ public static class ColorManager
 		get 
 		{
 			return hexToColor (Success);
-		}
-		set
-		{
 		}
 	}
 

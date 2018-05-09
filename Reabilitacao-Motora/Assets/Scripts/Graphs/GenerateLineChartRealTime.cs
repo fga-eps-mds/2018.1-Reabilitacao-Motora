@@ -69,7 +69,7 @@ public class GenerateLineChartRealTime : MonoBehaviour
 				t = false;
 			}
 
-	        float divScale = (70 * resolution)/750f;
+			float divScale = (70 * resolution)/750f;
 			float step = 2f / divScale;
 			Vector3 scale = Vector3.one * step;
 			Vector3 position = new Vector3 (0f,0f,12);
@@ -83,7 +83,7 @@ public class GenerateLineChartRealTime : MonoBehaviour
 
 			lineRenderer.SetPositions (points2.ToArray());
 			i++;
-       	}
+		}
 	}
 
 	static void SavePoints (Vector2 point) 

@@ -14,8 +14,8 @@ using exercicio;
 public class createExercise : MonoBehaviour 
 {
 	/**
- 	 * Salva o paciente no banco.
- 	 */
+	 * Salva o paciente no banco.
+	 */
 	public void CreateExercise()
 	{
 		string patientUnderscored = (GlobalController.instance.user.persona.nomePessoa).Replace(' ', '_');

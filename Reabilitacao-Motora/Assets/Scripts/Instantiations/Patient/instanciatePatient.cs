@@ -7,20 +7,8 @@ using paciente;
 public class instanciatePatient : MonoBehaviour 
 {
 
-	private GameObject ButtonPrefab;
-	public GameObject buttonPrefab
-	{
-		get
-		{
-			return ButtonPrefab;
-		}
-		set
-		{
-			ButtonPrefab = value;
-		}
-	}
+	public GameObject buttonPrefab;
 
-	int heightOffset;
 	const int HEIGHT_PADDING = 55;
 
 	void ButtonSpawner(int posY, Paciente patient)
@@ -39,7 +27,7 @@ public class instanciatePatient : MonoBehaviour
 	public void Awake ()
 	{
 		List<Paciente> patients = Paciente.Read();
-		heightOffset = 60;
+		int heightOffset = 60;
 		foreach (var patient in patients)
 		{
 			ButtonSpawner(heightOffset, patient);

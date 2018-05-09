@@ -66,19 +66,15 @@ namespace Tests
 
 			button.OnPointerClick(new PointerEventData(EventSystem.current));
 
+			int IdFisioterapeuta = GlobalController.instance.admin.idFisioterapeuta;
+			int IdPessoa = GlobalController.instance.admin.persona.idPessoa;
+			Fisioterapeuta.DeleteValue(IdFisioterapeuta);
+			Pessoa.DeleteValue(IdPessoa);
 
 			var currentscene = SceneManager.GetActiveScene().name;
 			var expectedscene = "Login";
 
-			Assert.AreEqual(currentscene, expectedscene);
-
-			if (currentscene == expectedscene)
-			{
-				int IdFisioterapeuta = GlobalController.instance.admin.idFisioterapeuta;
-				int IdPessoa = GlobalController.instance.admin.persona.idPessoa;
-				Fisioterapeuta.DeleteValue(IdFisioterapeuta);
-				Pessoa.DeleteValue(IdPessoa);
-			}
+			Assert.AreEqual(expectedscene, currentscene);
 		}
 	}
 }

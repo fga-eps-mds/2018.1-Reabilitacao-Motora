@@ -5,20 +5,8 @@ using UnityEngine.UI;
 
 public class GetPopUpManager : MonoBehaviour {
 
-	private Button DeleteButton;
-
-	public Button deleteButton
-	{
-		get
-		{
-			return DeleteButton;
-		}
-		set
-		{
-			DeleteButton = value;
-		}
-	}
-
+	public Button deleteButton;
+	
 	// Use this for initialization
 	void Start () 
 	{

@@ -46,7 +46,6 @@ void replace (string path)
     }
 
     string strTemp;
-    int j = 0, i = 0;
 
     while(getline(filein, strTemp))
     {
