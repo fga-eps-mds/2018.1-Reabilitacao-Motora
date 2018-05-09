@@ -2,12 +2,9 @@
 
 <p align="justify">Esta <i>Sprint</i> tem como objetivo:</p>
 
-- Testes Unitários.
-- Refatorar Documento de Arquitetura.
-- Alteração da proposta de ponto TCP/UDP.
-- Criar relação movimento x sessão.
-- Criar relação sessão x usuário.
-- Criar feature de remover paciente.
+- Testes rodando na build do Travis.
+- Mudanças gerais na arquitetura documentadas (TCP/UDP).
+- Novas relações entre entidades (Usuário, sessão, movimento).
 
 ## 2. Papéis
 
@@ -93,16 +90,16 @@ A Milestone desta Sprint encontra-se neste [link](https://github.com/fga-gpp-mds
 Eu, como fisioterapeuta, desejo consultar os resultados do paciente para que eu possa acompanhar seu progresso e visualizar resultados específicos.
 
 ### Critérios de Aceitação
-- [ ] Testes Unit passando.
-- [ ] Página de sessões de cada usuário
-- [ ] Visualizar os resultados de cada sessão
+-  Testes Unit passando.
+-  Página de sessões de cada usuário
+-  Visualizar os resultados de cada sessão
 
 
 ### Tarefas
-- [ ] Página de usuário
-- [ ] Página de sessão
-- [ ] Relação usuário x sessão definidos
-- [ ] Visualização dos movimentos de uma sessão
+-  Página de usuário
+-  Página de sessão
+-  Relação usuário x sessão definidos
+-  Visualização dos movimentos de uma sessão
 
 **Pontos:** 08.
 
@@ -114,13 +111,13 @@ Eu, como fisioterapeuta, desejo consultar os resultados do paciente para que eu 
 Eu, como fisioterapeuta, desejo conectar o movimento de uma sessão do paciente, de modo que os movimentos dessa sessão fiquem salvos para futuras consultas.
 
 ### Critérios de Aceitação
-- [ ] Testes Unit passando.
-- [ ] Visualizar os movimentos de uma sessão de um paciente.
+-  Testes Unit passando.
+-  Visualizar os movimentos de uma sessão de um paciente.
 
 
 ### Tarefas
-- [ ] Página de sessão
-- [ ] Relação movimento x sessão definidos
+-  Página de sessão
+-  Relação movimento x sessão definidos
 
 **Pontos:** 21.
 
@@ -146,18 +143,18 @@ Validar se os campos de dados estão vazios antes de tentar cadastrar um pacient
 Incrementa a integração continua com teste unitários e deploy 
 
 ### Critérios de Aceitação
-- [ ] Sscript de teste no travis passando com algum teste base.
-- [ ] Script de deploy do travis passando
-- [ ] Apos a finalização do deploy fazer o upload do executavel em algum lugar
+-  Sscript de teste no travis passando com algum teste base.
+-  Script de deploy do travis passando
+-  Apos a finalização do deploy fazer o upload do executavel em algum lugar
 
 
 ### Tarefas
-- [ ] Fazer script de teste no travis.
-- [ ] Fazer script de deploy do travis
-- [ ] Apos a finalização do deploy fazer o upload do executavel em algum lugar
+-  Fazer script de teste no travis.
+-  Fazer script de deploy do travis
+-  Apos a finalização do deploy fazer o upload do executavel em algum lugar
 
 
-**Pontos:** 5.
+**Pontos:** 05.
 
 ---
 
@@ -175,7 +172,7 @@ Como requisitado pelo cliente, devemos propor uma forma de conexão entre módul
 - Criar documento sobre conexão TCP/UDP.
 - Disseminar conhecimento sobre o assunto para os integrantes do time.
 
-**Pontos:** 1.
+**Pontos:** 01.
 
 ---
 
@@ -192,6 +189,6 @@ O documento de arquitetura atual não condiz completamente com a nossa proposta,
 #### Tarefas
 - Adicionar tópico sobre conexão TCP/UDP, vantagens, desvantagens, e como/porque ela será utilizado em nossa aplicação.
 
-**Pontos:** 1.
+**Pontos:** 01.
 
 ---
