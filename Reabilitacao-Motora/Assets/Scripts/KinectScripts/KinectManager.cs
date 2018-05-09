@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using UnityEngine.UI;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -84,19 +84,19 @@ public class KinectManager : MonoBehaviour
 	public List<MonoBehaviour> GestureListeners;
 	
 	// GUI Text to show messages.
-	public GUIText CalibrationText;
+	public Text CalibrationText;
 	
 	// GUI Texture to display the hand cursor for Player1
-	public GameObject HandCursor1;
+	public Image HandCursor1;
 	
 	// GUI Texture to display the hand cursor for Player1
-	public GameObject HandCursor2;
+	public Image HandCursor2;
 	
 	// Bool to specify whether Left/Right-hand-cursor and the Click-gesture control the mouse cursor and click
 	public bool ControlMouseCursor = false;
 
 	// GUI Text to show gesture debug message.
-	public GUIText GesturesDebugText;
+	public Text GesturesDebugText;
 	
 
 	// Bool to keep track of whether Kinect has been initialized
@@ -226,9 +226,13 @@ public class KinectManager : MonoBehaviour
 		int index = y * KinectWrapper.Constants.DepthImageWidth + x;
 		
 		if(index >= 0 && index < usersDepthMap.Length)
+		{
 			return usersDepthMap[index];
+		}
 		else
+		{
 			return 0;
+		}
 	}
 	
 	// returns the depth map position for a 3d joint position
@@ -308,9 +312,13 @@ public class KinectManager : MonoBehaviour
 	public bool IsPlayerCalibrated(uint UserId)
 	{
 		if(UserId == Player1ID)
+		{
 			return Player1Calibrated;
+		}
 		else if(UserId == Player2ID)
+		{
 			return Player2Calibrated;
+		}
 		
 		return false;
 	}
@@ -319,9 +327,13 @@ public class KinectManager : MonoBehaviour
 	public Vector3 GetRawSkeletonJointPos(uint UserId, int joint)
 	{
 		if(UserId == Player1ID)
+		{
 			return joint >= 0 && joint < player1JointsPos.Length ? (Vector3)skeletonFrame.SkeletonData[player1Index].SkeletonPositions[joint] : Vector3.zero;
+		}
 		else if(UserId == Player2ID)
+		{
 			return joint >= 0 && joint < player2JointsPos.Length ? (Vector3)skeletonFrame.SkeletonData[player2Index].SkeletonPositions[joint] : Vector3.zero;
+		}
 		
 		return Vector3.zero;
 	}
@@ -330,9 +342,13 @@ public class KinectManager : MonoBehaviour
 	public Vector3 GetUserPosition(uint UserId)
 	{
 		if(UserId == Player1ID)
+		{
 			return player1Pos;
+		}
 		else if(UserId == Player2ID)
+		{
 			return player2Pos;
+		}
 		
 		return Vector3.zero;
 	}
@@ -341,9 +357,13 @@ public class KinectManager : MonoBehaviour
 	public Quaternion GetUserOrientation(uint UserId, bool flip)
 	{
 		if(UserId == Player1ID && player1JointsTracked[(int)KinectWrapper.NuiSkeletonPositionIndex.HipCenter])
+		{
 			return ConvertMatrixToQuat(player1Ori, (int)KinectWrapper.NuiSkeletonPositionIndex.HipCenter, flip);
+		}
 		else if(UserId == Player2ID && player2JointsTracked[(int)KinectWrapper.NuiSkeletonPositionIndex.HipCenter])
+		{
 			return ConvertMatrixToQuat(player2Ori, (int)KinectWrapper.NuiSkeletonPositionIndex.HipCenter, flip);
+		}
 		
 		return Quaternion.identity;
 	}
@@ -352,9 +372,13 @@ public class KinectManager : MonoBehaviour
 	public bool IsJointTracked(uint UserId, int joint)
 	{
 		if(UserId == Player1ID)
+		{
 			return joint >= 0 && joint < player1JointsTracked.Length ? player1JointsTracked[joint] : false;
+		}
 		else if(UserId == Player2ID)
+		{
 			return joint >= 0 && joint < player2JointsTracked.Length ? player2JointsTracked[joint] : false;
+		}
 		
 		return false;
 	}
@@ -363,9 +387,13 @@ public class KinectManager : MonoBehaviour
 	public Vector3 GetJointPosition(uint UserId, int joint)
 	{
 		if(UserId == Player1ID)
+		{
 			return joint >= 0 && joint < player1JointsPos.Length ? player1JointsPos[joint] : Vector3.zero;
+		}
 		else if(UserId == Player2ID)
+		{
 			return joint >= 0 && joint < player2JointsPos.Length ? player2JointsPos[joint] : Vector3.zero;
+		}
 		
 		return Vector3.zero;
 	}
@@ -376,11 +404,15 @@ public class KinectManager : MonoBehaviour
         int parent = KinectWrapper.GetSkeletonJointParent(joint);
 
 		if(UserId == Player1ID)
+		{
 			return joint >= 0 && joint < player1JointsPos.Length ? 
 				(player1JointsPos[joint] - player1JointsPos[parent]) : Vector3.zero;
+		}
 		else if(UserId == Player2ID)
+		{
 			return joint >= 0 && joint < player2JointsPos.Length ? 
 				(player2JointsPos[joint] - player2JointsPos[parent]) : Vector3.zero;
+		}
 		
 		return Vector3.zero;
 	}
@@ -1004,7 +1036,9 @@ public class KinectManager : MonoBehaviour
 			Debug.LogError(message);
 			Debug.LogError(e.ToString());
 			if(CalibrationText != null)
-				CalibrationText.GetComponent<GUIText>().text = message;
+			{
+				CalibrationText.text = message;
+			}
 				
 			return;
 		}
@@ -1013,8 +1047,11 @@ public class KinectManager : MonoBehaviour
 			string message = e.Message + " - " + KinectWrapper.GetNuiErrorString(hr);
 			Debug.LogError(message);
 			Debug.LogError(e.ToString());
+			
 			if(CalibrationText != null)
-				CalibrationText.GetComponent<GUIText>().text = message;
+			{
+				CalibrationText.text = message;
+			}
 				
 			return;
 		}
@@ -1090,7 +1127,7 @@ public class KinectManager : MonoBehaviour
 		// GUI Text.
 		if(CalibrationText != null)
 		{
-			CalibrationText.GetComponent<GUIText>().text = "WAITING FOR USERS";
+			CalibrationText.text = "WAITING FOR USERS";
 		}
 		
 		Debug.Log("Waiting for users.");
@@ -1186,7 +1223,7 @@ public class KinectManager : MonoBehaviour
 								{
 									Vector3 vCursorPos = gestureData.screenPos;
 									
-									if(HandCursor1.GetComponent<GUITexture>() == null)
+									if(HandCursor1 == null)
 									{
 										float zDist = HandCursor1.transform.position.z - Camera.main.transform.position.z;
 										vCursorPos.z = zDist;
@@ -1199,7 +1236,7 @@ public class KinectManager : MonoBehaviour
 								
 								if(ControlMouseCursor)
 								{
-									Vector3 vCursorPos = HandCursor1.GetComponent<GUITexture>() != null ? HandCursor1.transform.position :
+									Vector3 vCursorPos = HandCursor1 != null ? HandCursor1.transform.position :
 										Camera.main.WorldToViewportPoint(HandCursor1.transform.position);
 									MouseControl.MouseMove(vCursorPos, CalibrationText);
 								}
@@ -1271,7 +1308,7 @@ public class KinectManager : MonoBehaviour
 								{
 									Vector3 vCursorPos = gestureData.screenPos;
 									
-									if(HandCursor2.GetComponent<GUITexture>() == null)
+									if(HandCursor2 == null)
 									{
 										float zDist = HandCursor2.transform.position.z - Camera.main.transform.position.z;
 										vCursorPos.z = zDist;
@@ -1284,7 +1321,7 @@ public class KinectManager : MonoBehaviour
 								
 								if(ControlMouseCursor)
 								{
-									Vector3 vCursorPos = HandCursor2.GetComponent<GUITexture>() != null ? HandCursor2.transform.position :
+									Vector3 vCursorPos = HandCursor2 != null ? HandCursor2.transform.position :
 										Camera.main.WorldToViewportPoint(HandCursor2.transform.position);
 									MouseControl.MouseMove(vCursorPos, CalibrationText);
 								}
@@ -1603,7 +1640,7 @@ public class KinectManager : MonoBehaviour
 			
 			if(CalibrationText != null)
 			{
-				CalibrationText.GetComponent<GUIText>().text = "";
+				CalibrationText.text = "";
 			}
 		}
     }
@@ -1665,7 +1702,7 @@ public class KinectManager : MonoBehaviour
 
 		if(CalibrationText != null)
 		{
-			CalibrationText.GetComponent<GUIText>().text = "WAITING FOR USERS";
+			CalibrationText.text = "WAITING FOR USERS";
 		}
 	}
 	
@@ -1864,7 +1901,7 @@ public class KinectManager : MonoBehaviour
 							sDebugGestures += string.Format("\n HipRight: {0}", player1JointsTracked[(int)KinectWrapper.NuiSkeletonPositionIndex.HipRight] ?
 							                                player1JointsPos[(int)KinectWrapper.NuiSkeletonPositionIndex.HipRight].ToString() : "");
 
-							GesturesDebugText.GetComponent<GUIText>().text = sDebugGestures;
+							GesturesDebugText.text = sDebugGestures;
 						}
 					}
 				}

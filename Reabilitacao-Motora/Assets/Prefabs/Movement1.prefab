@@ -37,7 +37,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 224512919842223874}
-  - component: {fileID: 114372865566625766}
+  - component: {fileID: 114677175131408882}
   m_Layer: 5
   m_Name: Setmovement
   m_TagString: Untagged
@@ -101,8 +101,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114372865566625766}
-        m_MethodName: setemovement
+      - m_Target: {fileID: 114677175131408882}
+        m_MethodName: SelectMovement
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -114,17 +114,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &114372865566625766
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1355574532987314}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c28c79907b410dc45a35b4e238801dac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114581122607135078
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -185,6 +174,17 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114677175131408882
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1355574532987314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b095109eda4c2ca43b809a7dc505ccb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!222 &222014637765511798
 CanvasRenderer:
   m_ObjectHideFlags: 1

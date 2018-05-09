@@ -3,6 +3,7 @@
 //
 
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Runtime.InteropServices;
 using System;
@@ -67,7 +68,7 @@ public class MouseControl
 
 
     // Public function to move the mouse cursor to the specified position
-    public static void MouseMove(Vector3 screenCoordinates, GUIText debugText)
+    public static void MouseMove(Vector3 screenCoordinates, Text debugText)
     {
 		int windowX = 0;
 		int windowY = 0;

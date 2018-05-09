@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+using cryptpw;
+
 using fisioterapeuta;
 
 
@@ -12,8 +14,6 @@ using fisioterapeuta;
  */
 public class Login : MonoBehaviour 
 {
-	string path;
-	Fisioterapeuta tableFisioterapeuta;
 
 	public InputField login;
 	public InputField pass;
@@ -27,7 +27,8 @@ public class Login : MonoBehaviour
 		byte g = byte.Parse(hex.Substring(2,2), System.Globalization.NumberStyles.HexNumber);
 		byte b = byte.Parse(hex.Substring(4,2), System.Globalization.NumberStyles.HexNumber);
 
-		if(hex.Length == 8){
+		if(hex.Length == 8)
+		{
 			a = byte.Parse(hex.Substring(6,2), System.Globalization.NumberStyles.HexNumber);
 		}
 		return new Color32(r,g,b,a);
@@ -39,8 +40,10 @@ public class Login : MonoBehaviour
  	 */
 	public void Flow()
 	{
-		Fisioterapeuta.Fisioterapeutas idcheck = CheckLoginPass();
-		if (idcheck != null) {
+		Fisioterapeuta idcheck = CheckLoginPass();
+
+        if (idcheck != null) 
+		{
 			ColorBlock cb = pass.colors;
 			cb.normalColor = hexToColor(success);
 			login.colors = cb;
@@ -49,7 +52,9 @@ public class Login : MonoBehaviour
 			GlobalController.instance.admin = idcheck;
 
 			SceneManager.LoadScene("Menu");
-		} else {
+		} 
+		else 
+		{
 			print("A combinação login+senha está incorreta!");
 			ColorBlock cb = pass.colors;
 			cb.normalColor = hexToColor(wrongConfirmation);
@@ -58,18 +63,19 @@ public class Login : MonoBehaviour
 		}
 	}
 
-	Fisioterapeuta.Fisioterapeutas CheckLoginPass () 
+	Fisioterapeuta CheckLoginPass () 
 	{
-		path = "URI=file:" + Application.dataPath + "/Plugins/fisiotech.db";
-		tableFisioterapeuta = new Fisioterapeuta(path);
-		List<Fisioterapeuta.Fisioterapeutas> p = tableFisioterapeuta.Read();
+		List<Fisioterapeuta> physiotherapists = Fisioterapeuta.Read();
 
-		foreach (var fisio in p) 
+		foreach (var fisio in physiotherapists) 
 		{			
-			if (fisio.login == login.text && fisio.senha == pass.text) {
+			if (fisio.login == login.text && 
+				CryptPassword.Uncrypt(pass.text, fisio.senha, login.text))
+            {
 				return fisio;
 			}
 		}
+
 		return null;
 	}
 }

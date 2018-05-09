@@ -5,20 +5,16 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.IO;
 
+using cryptpw;
+
 using pessoa;
 using fisioterapeuta;
-using telefone;
 
 /**
  * Cria um novo Fisioterapeuta no banco de dados.
  */
 public class createPhysiotherapist : MonoBehaviour 
-{
-	string path, pathnamephysio;
-	Pessoa tablePessoa;
-	Fisioterapeuta tableFisioterapeuta;
-	Telefone tableTelefone;
-
+{	
 	public InputField namePhysio;
 	public InputField date;
 	public InputField phone1, phone2;
@@ -29,8 +25,8 @@ public class createPhysiotherapist : MonoBehaviour
 	public InputField confirmPass;
 	public Toggle male;
 	public Toggle female;
-	string wrongConfirmation = "FF7E7EFF", success = "87E580FF";
-     
+	private const string wrongConfirmation = "FF7E7EFF", success = "87E580FF";
+	 
 	public static Color hexToColor(string hex)
 	{
 		byte a = 255;
@@ -38,7 +34,8 @@ public class createPhysiotherapist : MonoBehaviour
 		byte g = byte.Parse(hex.Substring(2,2), System.Globalization.NumberStyles.HexNumber);
 		byte b = byte.Parse(hex.Substring(4,2), System.Globalization.NumberStyles.HexNumber);
 
-		if(hex.Length == 8){
+		if(hex.Length == 8)
+		{
 			a = byte.Parse(hex.Substring(6,2), System.Globalization.NumberStyles.HexNumber);
 		}
 		return new Color32(r,g,b,a);
@@ -46,39 +43,48 @@ public class createPhysiotherapist : MonoBehaviour
 
 
 	/**
- 	 * Salva o Fisioterapeuta no banco.
- 	 */
+	 * Salva o Fisioterapeuta no banco.
+	 */
 	public void savePhysiotherapist()
 	{
-		if (pass.text == confirmPass.text) {
+		if (pass.text == confirmPass.text) 
+		{
+			string encryptedPassword = CryptPassword.Encrypt(pass.text, login.text);
 			ColorBlock cb = confirmPass.colors;
 			cb.normalColor = hexToColor(success);
 			confirmPass.colors = cb;
 			pass.colors = cb;
 
-			path = "URI=file:" + Application.dataPath + "/Plugins/fisiotech.db";
-
 			var trip = date.text.Split('/');
 			var dateFormate = trip[2] + "/" + trip[1] + "/" + trip[0];
 			
-			string sex = male.isOn ? "m" : "f";
-
-			tablePessoa = new Pessoa(path);
-			tableFisioterapeuta = new Fisioterapeuta(path);
-			tablePessoa.Insert(namePhysio.text, sex, dateFormate, phone1.text, phone2.text);
-
-			List<Pessoa.Pessoas> p = tablePessoa.Read();
+			string sex;
 			
-			tableFisioterapeuta.Insert(p[p.Count -1].idPessoa, login.text, pass.text, crefito.text, regiao.text);
+			if (male.isOn)
+			{
+				sex = "m";
+			}
+			else
+			{
+				sex = "f";
+			}
+
+			Pessoa.Insert(namePhysio.text, sex, dateFormate, phone1.text, phone2.text);
+
+			List<Pessoa> p = Pessoa.Read();
+
+			Fisioterapeuta.Insert(p[p.Count -1].idPessoa, login.text, encryptedPassword, crefito.text, regiao.text);
 
 			string namePhysioUnderscored = (namePhysio.text).Replace(' ', '_');
 
-			pathnamephysio = "Assets\\Movimentos\\" + string.Format("{0}-{1}", p[p.Count-1].idPessoa, namePhysioUnderscored);
+			string pathnamephysio = "Assets\\Movimentos\\" + string.Format("{0}-{1}", p[p.Count-1].idPessoa, namePhysioUnderscored);
 
 			Directory.CreateDirectory(pathnamephysio);
 
-			SceneManager.LoadScene("Login");
-		} else {
+			Flow.StaticLogin();
+		} 
+		else 
+		{
 			print("As senhas não condizem!");
 			ColorBlock cb = confirmPass.colors;
 			cb.normalColor = hexToColor(wrongConfirmation);
