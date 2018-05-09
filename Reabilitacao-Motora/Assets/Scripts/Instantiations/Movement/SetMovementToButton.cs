@@ -18,11 +18,12 @@ public class SetMovementToButton : MonoBehaviour
 	public Movimento Movement
 	{
 		get 
-		{ 
+		
+		{
 			return movement;
 		}
 		set 
-		{ 
+		{
 			movement = value; 
 		}
 	}

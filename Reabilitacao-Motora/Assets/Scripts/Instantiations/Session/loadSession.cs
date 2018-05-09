@@ -11,9 +11,32 @@ using paciente;
  */
 public class loadSession : MonoBehaviour 
 {
-	public InputField date;
-	public InputField notes;
+	public InputField Date;
+	private InputField date
+	{
+		get
+		{
+			return Date;
+		}
+		set
+		{
+			Date = value;
+		}
+	}
 
+	public InputField Notes;
+	private InputField notes
+	{
+		get
+		{
+			return Notes;
+		}
+		set
+		{
+			Notes = value;
+		}
+	}
+	
 	void Start()
 	{
 		if(GlobalController.instance != null &&

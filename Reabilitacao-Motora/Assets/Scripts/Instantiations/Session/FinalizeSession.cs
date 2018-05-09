@@ -14,7 +14,18 @@ using sessao;
  */
 public class FinalizeSession : MonoBehaviour 
 {
-	public InputField observacaoSessao;
+	private InputField ObservacaoSessao;
+	public InputField observacaoSessao
+	{
+		get
+		{
+			return ObservacaoSessao;
+		}
+		set
+		{
+			ObservacaoSessao = value;
+		}
+	}
 
 	/**
  	 * Salva o paciente no banco.

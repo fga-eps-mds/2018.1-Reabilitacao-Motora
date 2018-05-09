@@ -7,9 +7,20 @@ using movimento;
 public class instanciateMovement : MonoBehaviour 
 {
 
-	public GameObject buttonPrefab;
+	private GameObject ButtonPrefab;
+	public GameObject buttonPrefab
+	{
+		get
+		{
+			return ButtonPrefab;
+		}
+		set
+		{
+			ButtonPrefab = value;
+		}
+	}
 
-	int heightOffset = 10;
+	int heightOffset;
 	const int HEIGHT_PADDING = 55;
 
 	void ButtonSpawner(int posY, Movimento movement)
@@ -27,7 +38,7 @@ public class instanciateMovement : MonoBehaviour
 	public void Awake ()
 	{
 		List<Movimento> movements = Movimento.Read();
-
+		heightOffset = 10;
 		foreach (var movement in movements)
 		{
 			ButtonSpawner(heightOffset, movement);

@@ -7,9 +7,20 @@ using sessao;
 public class instanciateSession : MonoBehaviour 
 {
 
-	public GameObject buttonPrefab;
+	private GameObject ButtonPrefab;
+	public GameObject buttonPrefab
+	{
+		get
+		{
+			return ButtonPrefab;
+		}
+		set
+		{
+			ButtonPrefab = value;
+		}
+	}
 
-	int heightOffset = 10;
+	int heightOffset;
 	const int HEIGHT_PADDING = 55;
 
 	void ButtonSpawner(int posY, Sessao session)
@@ -27,7 +38,7 @@ public class instanciateSession : MonoBehaviour
 	public void Awake ()
 	{
 		List<Sessao> sessions = Sessao.Read();
-
+		heightOffset = 10;
 		foreach (var session in sessions)
 		{
 			if (session.idPaciente == GlobalController.instance.user.idPaciente)

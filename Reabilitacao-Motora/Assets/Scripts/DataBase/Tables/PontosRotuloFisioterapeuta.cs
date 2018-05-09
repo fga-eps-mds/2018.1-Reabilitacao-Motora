@@ -21,61 +21,61 @@ namespace pontosrotulofisioterapeuta
 		private string EstagioMovimentoFisio;
 
 		public int idRotuloFisioterapeuta 
-		{ 
+		{
 			get 
-			{ 
+			{
 				return IdRotuloFisioterapeuta; 
 			} 
 			set 
-			{ 
+			{
 				IdRotuloFisioterapeuta = value; 
 			}
 		}
 
 		public int idMovimento 
-		{ 
+		{
 			get 
-			{ 
+			{
 				return IdMovimento; 
 			} 
 			set 
-			{ 
+			{
 				IdMovimento = value; 
 			}
 		}
 
 		public double tempoInicial 
-		{ 
+		{
 			get 
-			{ 
+			{
 				return TempoInicial; 
 			} 
 			set 
-			{ 
+			{
 				TempoInicial = value; 
 			}
 		}
 
 		public double tempoFinal 
-		{ 
+		{
 			get 
-			{ 
+			{
 				return TempoFinal; 
 			} 
 			set 
-			{ 
+			{
 				TempoFinal = value; 
 			}
 		}
 
 		public string estagioMovimentoFisio 
-		{ 
+		{
 			get 
-			{ 
+			{
 				return EstagioMovimentoFisio; 
 			} 
 			set 
-			{ 
+			{
 				EstagioMovimentoFisio = value; 
 			}
 		}
@@ -171,7 +171,6 @@ namespace pontosrotulofisioterapeuta
 				banco.cmd = banco.conn.CreateCommand();
 
 				banco.sqlQuery = string.Format("UPDATE \"{0}\" set ", TablesManager.Tables[tableId].tableName);
-
 				banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",", TablesManager.Tables[tableId].colName[1], idMovimento);
 				banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",", TablesManager.Tables[tableId].colName[2], estagioMovimentoFisio);
 				banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",", TablesManager.Tables[tableId].colName[3], tempo);

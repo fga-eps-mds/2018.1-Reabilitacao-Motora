@@ -20,61 +20,61 @@ namespace sessao
 		private string ObservacaoSessao;
 
 		public int idSessao 
-		{ 
+		{
 			get 
-			{ 
+			{
 				return IdSessao; 
 			} 
 			set 
-			{ 
+			{
 				IdSessao = value; 
 			}
 		}
 
 		public int idFisioterapeuta 
-		{ 
+		{
 			get 
-			{ 
+			{
 				return IdFisioterapeuta; 
 			} 
 			set 
-			{ 
+			{
 				IdFisioterapeuta = value; 
 			}
 		}
 
 		public int idPaciente 
-		{ 
+		{
 			get 
-			{ 
+			{
 				return IdPaciente; 
 			} 
 			set 
-			{ 
+			{
 				IdPaciente = value; 
 			}
 		}
 
 		public string dataSessao 
-		{ 
+		{
 			get 
-			{ 
+			{
 				return DataSessao; 
 			} 
 			set 
-			{ 
+			{
 				DataSessao = value; 
 			}
 		}
 
 		public string observacaoSessao 
-		{ 
+		{
 			get 
-			{ 
+			{
 				return ObservacaoSessao; 
 			} 
 			set 
-			{ 
+			{
 				ObservacaoSessao = value; 
 			}
 		}
@@ -220,7 +220,6 @@ namespace sessao
 				banco.cmd = banco.conn.CreateCommand();
 
 				banco.sqlQuery = string.Format("UPDATE \"{0}\" set ", TablesManager.Tables[tableId].tableName);
-
 				banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",", TablesManager.Tables[tableId].colName[1], idFisioterapeuta);
 				banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",", TablesManager.Tables[tableId].colName[2], idPaciente);
 				banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",", TablesManager.Tables[tableId].colName[3], dataSessao);

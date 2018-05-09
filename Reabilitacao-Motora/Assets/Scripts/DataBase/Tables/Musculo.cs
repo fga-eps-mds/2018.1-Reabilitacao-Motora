@@ -18,25 +18,25 @@ namespace musculo
 		private string NomeMusculo;
 
 		public int idMusculo 
-		{ 
+		{
 			get 
-			{ 
+			{
 				return IdMusculo; 
 			} 
 			set 
-			{ 
+			{
 				IdMusculo = value; 
 			}
 		}
 
 		public string nomeMusculo 
-		{ 
+		{
 			get 
-			{ 
+			{
 				return NomeMusculo; 
 			} 
 			set 
-			{ 
+			{
 				NomeMusculo = value; 
 			}
 		}
@@ -121,7 +121,6 @@ namespace musculo
 				banco.cmd = banco.conn.CreateCommand();
 
 				banco.sqlQuery = string.Format("UPDATE \"{0}\" set ", TablesManager.Tables[tableId].tableName);
-
 				banco.sqlQuery += string.Format("\"{0}\"=\"{1}\" ", TablesManager.Tables[tableId].colName[1], nomeMusculo);
 
 				banco.sqlQuery += string.Format("WHERE \"{0}\" = \"{1}\"", TablesManager.Tables[tableId].colName[0], id);

@@ -8,6 +8,7 @@ using UnityEngine;
 * Descrever aqui o que essa classe realiza.
 */
 public class GenerateLineChartRealTime : MonoBehaviour
+
 {
 	public Transform pointPrefab;
 	public int resolution;
@@ -42,6 +43,7 @@ public class GenerateLineChartRealTime : MonoBehaviour
 	}
 
 	void Update () 
+	
 	{
 		if (Input.GetKeyDown(KeyCode.Space)) 
 		{
@@ -50,6 +52,7 @@ public class GenerateLineChartRealTime : MonoBehaviour
 	}
 
 	void FixedUpdate () 
+	
 	{
 		if (t) 
 		{
@@ -83,7 +86,8 @@ public class GenerateLineChartRealTime : MonoBehaviour
        	}
 	}
 
-	void SavePoints (Vector2 point) 
+	static void SavePoints (Vector2 point) 
+	
 	{
 		StringBuilder sb = new StringBuilder();
 

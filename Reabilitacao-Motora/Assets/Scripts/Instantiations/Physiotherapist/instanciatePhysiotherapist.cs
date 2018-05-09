@@ -7,9 +7,20 @@ using fisioterapeuta;
 public class instanciatePhysiotherapist : MonoBehaviour 
 {
 
-	public GameObject buttonPrefab;
+	private GameObject ButtonPrefab;
+	public GameObject buttonPrefab
+	{
+		get
+		{
+			return ButtonPrefab;
+		}
+		set
+		{
+			ButtonPrefab = value;
+		}
+	}
 
-	int heightOffset = 0;
+	int heightOffset;
 	const int HEIGHT_PADDING = 55;
 
 	void ButtonSpawner(int posY, Fisioterapeuta physiotherapist)
@@ -28,6 +39,8 @@ public class instanciatePhysiotherapist : MonoBehaviour
 	public void Awake ()
 	{
 		List<Fisioterapeuta> physiotherapists = Fisioterapeuta.Read();
+
+		heightOffset = 0;
 
 		foreach (var physiotherapist in physiotherapists)
 		{

@@ -23,85 +23,85 @@ namespace fisioterapeuta
 		private Pessoa Persona;
 
 		public int idFisioterapeuta 
-		{ 
+		{
 			get 
-			{ 
+			{
 				return IdFisioterapeuta; 
 			} 
 			set 
-			{ 
+			{
 				IdFisioterapeuta = value; 
 			}
 		}
 
 		public int idPessoa 
-		{ 
+		{
 			get 
-			{ 
+			{
 				return IdPessoa; 
 			} 
 			set 
-			{ 
+			{
 				IdPessoa = value; 
 			}
 		}
 
 		public string login 
-		{ 
+		{
 			get 
-			{ 
+			{
 				return Login; 
 			} 
 			set 
-			{ 
+			{
 				Login = value; 
 			}
 		}
 
 		public string senha 
-		{ 
+		{
 			get 
-			{ 
+			{
 				return Senha; 
 			} 
 			set 
-			{ 
+			{
 				Senha = value; 
 			}
 		}
 
 		public string regiao 
-		{ 
+		{
 			get 
-			{ 
+			{
 				return Regiao; 
 			} 
 			set 
-			{ 
+			{
 				Regiao = value; 
 			}
 		}
 
 		public string crefito 
-		{ 
+		{
 			get 
-			{ 
+			{
 				return Crefito; 
 			} 
 			set 
-			{ 
+			{
 				Crefito = value; 
 			}
 		}
 
 		public Pessoa persona 
-		{ 
+		{
 			get 
-			{ 
+			{
 				return Persona; 
 			} 
 			set 
-			{ 
+			{
 				Persona = value; 
 			}
 		}
@@ -240,7 +240,6 @@ namespace fisioterapeuta
 				banco.cmd = banco.conn.CreateCommand();
 
 				banco.sqlQuery = string.Format("UPDATE \"{0}\" set ",  TablesManager.Tables[tableId].tableName);
-
 				banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",",  TablesManager.Tables[tableId].colName[1], idPessoa);
 				banco.sqlQuery += string.Format("\"{0}\"=\"{1}\" ",  TablesManager.Tables[tableId].colName[3], senha);
 
@@ -269,7 +268,6 @@ namespace fisioterapeuta
 				banco.cmd = banco.conn.CreateCommand();
 
 				banco.sqlQuery = string.Format("UPDATE \"{0}\" set ",  TablesManager.Tables[tableId].tableName);
-
 				banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",",  TablesManager.Tables[tableId].colName[1], idPessoa);
 				banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",",  TablesManager.Tables[tableId].colName[4], regiao);
 				banco.sqlQuery += string.Format("\"{0}\"=\"{1}\" ",  TablesManager.Tables[tableId].colName[5], crefito);

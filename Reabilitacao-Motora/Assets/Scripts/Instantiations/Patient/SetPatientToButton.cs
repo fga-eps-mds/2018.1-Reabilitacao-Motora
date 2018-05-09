@@ -5,7 +5,8 @@ using paciente;
 using UnityEngine.SceneManagement;
 
 
-public class SetPatientToButton : MonoBehaviour {
+public class SetPatientToButton : MonoBehaviour
+{
 
 	private Paciente patient;
 
@@ -17,11 +18,11 @@ public class SetPatientToButton : MonoBehaviour {
 	public Paciente Patient
 	{
 		get 
-		{ 
+		{
 			return patient;
 		}
 		set 
-		{ 
+		{
 			patient = value; 
 		}
 	}

@@ -86,7 +86,6 @@ public class ClippedLegsFilter
     {
         // set up a really floaty double exponential filter - we want maximum smoothness
         this.filterJoints.Init(0.5f, 0.3f, 1.0f, 1.0f, 1.0f);
-
         this.lerpLeftKnee.Reset();
         this.lerpLeftAnkle.Reset();
         this.lerpLeftFoot.Reset();

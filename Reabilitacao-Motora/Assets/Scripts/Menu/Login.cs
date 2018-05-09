@@ -17,23 +17,6 @@ public class Login : MonoBehaviour
 
 	public InputField login;
 	public InputField pass;
-	
-	string wrongConfirmation = "FF7E7EFF", success = "87E580FF";
-     
-	public static Color hexToColor(string hex)
-	{
-		byte a = 255;
-		byte r = byte.Parse(hex.Substring(0,2), System.Globalization.NumberStyles.HexNumber);
-		byte g = byte.Parse(hex.Substring(2,2), System.Globalization.NumberStyles.HexNumber);
-		byte b = byte.Parse(hex.Substring(4,2), System.Globalization.NumberStyles.HexNumber);
-
-		if(hex.Length == 8)
-		{
-			a = byte.Parse(hex.Substring(6,2), System.Globalization.NumberStyles.HexNumber);
-		}
-		return new Color32(r,g,b,a);
-	}
-
 
 	/**
  	 * Salva o Fisioterapeuta no banco.
@@ -45,7 +28,7 @@ public class Login : MonoBehaviour
         if (idcheck != null) 
 		{
 			ColorBlock cb = pass.colors;
-			cb.normalColor = hexToColor(success);
+			cb.normalColor = ColorManager.success;
 			login.colors = cb;
 			pass.colors = cb;
 
@@ -57,13 +40,14 @@ public class Login : MonoBehaviour
 		{
 			print("A combinação login+senha está incorreta!");
 			ColorBlock cb = pass.colors;
-			cb.normalColor = hexToColor(wrongConfirmation);
+			cb.normalColor = ColorManager.wrongConfirmation;
 			login.colors = cb;
 			pass.colors = cb;
 		}
 	}
 
 	Fisioterapeuta CheckLoginPass () 
+	
 	{
 		List<Fisioterapeuta> physiotherapists = Fisioterapeuta.Read();
 
@@ -71,7 +55,8 @@ public class Login : MonoBehaviour
 		{			
 			if (fisio.login == login.text && 
 				CryptPassword.Uncrypt(pass.text, fisio.senha, login.text))
-            {
+           
+{
 				return fisio;
 			}
 		}

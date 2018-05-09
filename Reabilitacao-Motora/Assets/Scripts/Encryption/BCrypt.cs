@@ -443,7 +443,6 @@ namespace bcrypt
         {
 
             List<byte> bytes = new List<byte>(Math.Min(maximumLength, s.Length));
-
             if (maximumLength <= 0) 
             {
                 throw new ArgumentOutOfRangeException("maximumLength", maximumLength, null);
@@ -456,28 +455,24 @@ namespace bcrypt
             {
                 int c1 = Char64(s[offset]);
                 int c2 = Char64(s[offset + 1]);
-
                 if (c1 == -1 || c2 == -1) 
                 {
                     break;
                 }
 
                 bytes.Add((byte)((c1 << 2) | ((c2 & 0x30) >> 4)));
-
                 if (++length >= maximumLength || (offset + 2) >= s.Length) 
                 {
                     break;
                 }
 
                 int c3 = Char64(s[offset + 2]);
-
                 if (c3 == -1) 
                 {
                     break;
                 }
 
                 bytes.Add((byte)(((c2 & 0x0f) << 4) | ((c3 & 0x3c) >> 2)));
-
                 if (++length >= maximumLength || (offset + 3) >= s.Length) 
                 {
                     break;
@@ -648,7 +643,6 @@ namespace bcrypt
 
             uint[] cdata = new uint[bf_crypt_ciphertext.Length];
             bf_crypt_ciphertext.CopyTo(cdata, 0);
-
             int clen = cdata.Length;
             byte[] ret;
 
@@ -742,17 +736,14 @@ namespace bcrypt
             }
 
             int rounds = Int32.Parse(salt.Substring(offset, 2), NumberFormatInfo.InvariantInfo);
-
             byte[] passwordBytes = Encoding.UTF8.GetBytes(password + (minor >= 'a' ? "\0" : String.Empty));
             byte[] saltBytes = DecodeBase64(salt.Substring(offset + 3, 22),
                                             BCRYPT_SALT_LEN);
 
             BCrypt bcrypt = new BCrypt();
-
             byte[] hashed = bcrypt.CryptRaw(passwordBytes, saltBytes, rounds);
 
             StringBuilder rs = new StringBuilder();
-
             rs.Append("$2");
 
             if (minor >= 'a') 
@@ -761,7 +752,6 @@ namespace bcrypt
             }
 
             rs.Append('$');
-
             if (rounds < 10) 
             {
                 rs.Append('0');
@@ -772,7 +762,6 @@ namespace bcrypt
             rs.Append(EncodeBase64(saltBytes, saltBytes.Length));
             rs.Append(EncodeBase64(hashed,
                                 (bf_crypt_ciphertext.Length * 4) - 1));
-
             return rs.ToString();
         }
 
@@ -789,11 +778,9 @@ namespace bcrypt
             byte[] randomBytes = new byte[BCRYPT_SALT_LEN];
 
             RandomNumberGenerator.Create().GetBytes(randomBytes);
-
             StringBuilder rs = new StringBuilder((randomBytes.Length * 2) + 8);
 
             rs.Append("$2a$");
-
             if (logRounds < 10) 
             {
                 rs.Append('0');

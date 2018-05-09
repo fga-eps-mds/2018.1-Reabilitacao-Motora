@@ -83,7 +83,6 @@ public class GlobalController : MonoBehaviour
 			{
 
 				InputField inputfield = next.GetComponent<InputField>();
-
 				if (inputfield != null) 
 				{
 					inputfield.OnPointerClick(new PointerEventData(system));

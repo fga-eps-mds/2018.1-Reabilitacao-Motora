@@ -21,61 +21,61 @@ namespace movimento
 		private string PontosMovimento;
 
 		public int idMovimento 
-		{ 
+		{
 			get 
-			{ 
+			{
 				return IdMovimento; 
 			} 
 			set 
-			{ 
+			{
 				IdMovimento = value; 
 			}
 		}
 
 		public int idFisioterapeuta 
-		{ 
+		{
 			get 
-			{ 
+			{
 				return IdFisioterapeuta; 
 			} 
 			set 
-			{ 
+			{
 				IdFisioterapeuta = value; 
 			}
 		}
 
 		public string nomeMovimento 
-		{ 
+		{
 			get 
-			{ 
+			{
 				return NomeMovimento; 
 			} 
 			set 
-			{ 
+			{
 				NomeMovimento = value; 
 			}
 		}
 
 		public string descricaoMovimento 
-		{ 
+		{
 			get 
-			{ 
+			{
 				return DescricaoMovimento; 
 			} 
 			set 
-			{ 
+			{
 				DescricaoMovimento = value; 
 			}
 		}
 
 		public string pontosMovimento 
-		{ 
+		{
 			get 
-			{ 
+			{
 				return PontosMovimento; 
 			} 
 			set 
-			{ 
+			{
 				PontosMovimento = value; 
 			}
 		}
@@ -174,7 +174,6 @@ namespace movimento
 				banco.cmd = banco.conn.CreateCommand();
 
 				banco.sqlQuery = string.Format("UPDATE \"{0}\" set ", TablesManager.Tables[tableId].tableName);
-
 				banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",", TablesManager.Tables[tableId].colName[1], idFisioterapeuta);
 				banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",", TablesManager.Tables[tableId].colName[2], nomeMovimento);
 				banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",", TablesManager.Tables[tableId].colName[3], descricaoMovimento);

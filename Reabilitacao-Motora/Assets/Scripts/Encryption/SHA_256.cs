@@ -25,7 +25,6 @@ namespace sha_256
 		private static string GetStringFromHash(byte[] hash)
 		{
 			StringBuilder result = new StringBuilder();
-
 			for (int i = 0; i < hash.Length; i++)
 			{
 				result.Append(hash[i].ToString("X2"));

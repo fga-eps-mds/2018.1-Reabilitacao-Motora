@@ -19,11 +19,12 @@ public class SetSessionToButton : MonoBehaviour
 	public Sessao Session
 	{
 		get 
-		{ 
+		
+		{
 			return session;
 		}
 		set 
-		{ 
+		{
 			session = value; 
 		}
 	}

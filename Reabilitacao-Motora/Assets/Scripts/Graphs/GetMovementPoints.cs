@@ -44,7 +44,6 @@ public class GetMovementPoints : MonoBehaviour
 			current_time_movement += Time.fixedDeltaTime;
 			
 			StringBuilder sb = new StringBuilder();
-
 			sb.Append(current_time_movement).Append(" ");
 
 			sb.Append(mao.position.x).Append(" ").Append(mao.position.y).Append(" ").Append(mao.position.z).Append(" ");

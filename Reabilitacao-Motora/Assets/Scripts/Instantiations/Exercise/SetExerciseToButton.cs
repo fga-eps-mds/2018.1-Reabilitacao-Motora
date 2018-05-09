@@ -18,11 +18,11 @@ public class SetExerciseToButton : MonoBehaviour
 	public Exercicio Exercise
 	{
 		get 
-		{ 
+		{
 			return exercise;
 		}
 		set 
-		{ 
+		{
 			exercise = value; 
 		}
 	}

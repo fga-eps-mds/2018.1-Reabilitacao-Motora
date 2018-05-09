@@ -5,7 +5,8 @@ using fisioterapeuta;
 using UnityEngine.SceneManagement;
 
 
-public class SetPhysiotherapistToButton : MonoBehaviour {
+public class SetPhysiotherapistToButton : MonoBehaviour
+{
 
 	private Fisioterapeuta physiotherapist;
 
@@ -17,11 +18,11 @@ public class SetPhysiotherapistToButton : MonoBehaviour {
 	public Fisioterapeuta Physiotherapist
 	{
 		get 
-		{ 
+		{
 			return physiotherapist;
 		}
 		set 
-		{ 
+		{
 			physiotherapist = value; 
 		}
 	}

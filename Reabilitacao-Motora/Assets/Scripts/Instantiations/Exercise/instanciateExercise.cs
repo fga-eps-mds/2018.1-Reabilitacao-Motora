@@ -7,9 +7,20 @@ using exercicio;
 public class instanciateExercise : MonoBehaviour 
 {
 
-	public GameObject buttonPrefab;
+	private GameObject ButtonPrefab;
+	public GameObject buttonPrefab
+	{
+		get
+		{
+			return ButtonPrefab;
+		}
+		set
+		{
+			ButtonPrefab = value;
+		}
+	}
 
-	int heightOffset = 60;
+	int heightOffset;
 	const int HEIGHT_PADDING = 55;
 
 	void ButtonSpawner(int posY, Exercicio exercise)
@@ -22,14 +33,14 @@ public class instanciateExercise : MonoBehaviour
 		script.Exercise = exercise;
 
 		var temp = go.GetComponentInChildren<Text>();
-		temp.text = result(exercise.idExercicio, exercise.pontosExercicio);
+		temp.text = formatName(exercise.idExercicio, exercise.pontosExercicio);
 	}
 
 
 	public void Start ()
 	{
 		List<Exercicio> exercises = Exercicio.Read();
-
+		heightOffset = 60;
 		foreach (var exercise in exercises)
 		{
 			if (exercise.idSessao == GlobalController.instance.session.idSessao)
@@ -41,12 +52,12 @@ public class instanciateExercise : MonoBehaviour
 	}
 
 
-	public static string result (int y, string x)
+	public static string formatName (int idExercicio, string pontosExercicio)
 	{
-		var trip = x.Split('/');
-		var hehe = trip[2].Split('-');
-		var kaka = hehe[0].Replace('_', ' ');
-		var popo = string.Format("{0} - {1}", y, kaka); 
-		return popo;
+		var partsBetweenSlashs = pontosExercicio.Split('/');
+		var partsBetweenDashs = partsBetweenSlashs[2].Split('-');
+		var withoutUnderscores = partsBetweenDashs[0].Replace('_', ' ');
+		var result = string.Format("{0} - {1}", idExercicio, withoutUnderscores); 
+		return result;
 	}
 }

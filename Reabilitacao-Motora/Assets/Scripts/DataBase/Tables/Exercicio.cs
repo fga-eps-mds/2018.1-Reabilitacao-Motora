@@ -21,73 +21,73 @@ namespace exercicio
 		private string PontosExercicio;
 
 		public int idExercicio 
-		{ 
+		{
 			get 
-			{ 
+			{
 				return IdExercicio; 
 			} 
 			set 
-			{ 
+			{
 				IdExercicio = value; 
 			}
 		}
 
 		public int idPaciente 
-		{ 
+		{
 			get 
-			{ 
+			{
 				return IdPaciente; 
 			} 
 			set 
-			{ 
+			{
 				IdPaciente = value; 
 			}
 		}
 
 		public int idMovimento 
-		{ 
+		{
 			get 
-			{ 
+			{
 				return IdMovimento; 
 			} 
 			set 
-			{ 
+			{
 				IdMovimento = value; 
 			}
 		}
 
 		public int idSessao 
-		{ 
+		{
 			get 
-			{ 
+			{
 				return IdSessao; 
 			} 
 			set 
-			{ 
+			{
 				IdSessao = value; 
 			}
 		}
 
 		public string descricaoExercicio 
-		{ 
+		{
 			get 
-			{ 
+			{
 				return DescricaoExercicio; 
 			} 
 			set 
-			{ 
+			{
 				DescricaoExercicio = value; 
 			}
 		}
 
 		public string pontosExercicio 
-		{ 
+		{
 			get 
-			{ 
+			{
 				return PontosExercicio; 
 			} 
 			set 
-			{ 
+			{
 				PontosExercicio = value; 
 			}
 		}
@@ -238,7 +238,6 @@ namespace exercicio
 				banco.cmd = banco.conn.CreateCommand();
 
 				banco.sqlQuery = string.Format("UPDATE \"{0}\" set ", TablesManager.Tables[tableId].tableName);
-
 				banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",", TablesManager.Tables[tableId].colName[1], idPaciente);
 				banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",", TablesManager.Tables[tableId].colName[2], idMovimento);
 				banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",", TablesManager.Tables[tableId].colName[3], idSessao);

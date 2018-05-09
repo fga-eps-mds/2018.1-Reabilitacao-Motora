@@ -7,7 +7,8 @@ using sessao;
 using exercicio;
 using pontosrotulopaciente;
 
-public class DeletePhysiotherapistButton : MonoBehaviour {
+public class DeletePhysiotherapistButton : MonoBehaviour
+{
 
 	public void DeletePhysiotherapist ()
 	{

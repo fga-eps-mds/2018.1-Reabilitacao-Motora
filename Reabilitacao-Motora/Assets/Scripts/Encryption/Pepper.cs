@@ -78,6 +78,7 @@ namespace pepper
 		 *   27 + 55 = +82+
 		 */
 		private static string ConvertIndex (int index) 
+		
 		{
 			int asciiDecimal;
 			char digit;
