@@ -28,7 +28,7 @@ Data|Versão|Descrição|Autor
 17/04|1.12.2|Correção item 5| João Lucas
 18/04|1.12.3|Correção do MER| João Lucas
 04/05|1.13.0|Modificação quanto a arquitetura sensor-aplicação| Djorkaeff Alexandre
-
+10/05|1.13.1|Adição de justificativa de uso de UDP na ponte sensor-Unity| Djorkaeff Alexandre
 # Sumário
 ----------------
  1. [Introdução](#1)
