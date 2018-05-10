@@ -13,7 +13,6 @@ public class GenerateLineChart : MonoBehaviour
 	int i;
 	List <float> current_time;
 	List <Vector3> f_mao_pos, f_mao_rot, f_ombro_pos, f_ombro_rot, f_cotovelo_pos, f_cotovelo_rot, f_braco_pos, f_braco_rot, points1, points2;
-	List <Vector3> f_mao_local_pos, f_mao_local_rot, f_ombro_local_pos, f_ombro_local_rot, f_cotovelo_local_pos, f_cotovelo_local_rot, f_braco_local_pos, f_braco_local_rot;
 
 	LineRenderer lineRenderer;
 	public Color c1 = Color.black;
@@ -67,45 +66,7 @@ public class GenerateLineChart : MonoBehaviour
 			a = (float.Parse(pair[22]));
 			b = (float.Parse(pair[23]));
 			c = (float.Parse(pair[24]));
-			f_braco_rot.Add(new Vector3 (a, b, c));			
-
- //____________________________________________________
-
-			a = (float.Parse(pair[25]));
-			b = (float.Parse(pair[26]));
-			c = (float.Parse(pair[27]));
-			f_mao_local_pos.Add(new Vector3 (a, b, c));
-			a = (float.Parse(pair[28]));
-			b = (float.Parse(pair[29]));
-			c = (float.Parse(pair[30]));
-			f_mao_local_rot.Add(new Vector3 (a, b, c));
-
-			a = (float.Parse(pair[31]));
-			b = (float.Parse(pair[32]));
-			c = (float.Parse(pair[33]));
-			f_cotovelo_local_pos.Add(new Vector3 (a, b, c));
-			a = (float.Parse(pair[34]));
-			b = (float.Parse(pair[35]));
-			c = (float.Parse(pair[36]));
-			f_cotovelo_local_rot.Add(new Vector3 (a, b, c));
-
-			a = (float.Parse(pair[37]));
-			b = (float.Parse(pair[38]));
-			c = (float.Parse(pair[39]));
-			f_ombro_local_pos.Add(new Vector3 (a, b, c));
-			a = (float.Parse(pair[40]));
-			b = (float.Parse(pair[41]));
-			c = (float.Parse(pair[42]));
-			f_ombro_local_rot.Add(new Vector3 (a, b, c));
-
-			a = (float.Parse(pair[43]));
-			b = (float.Parse(pair[44]));
-			c = (float.Parse(pair[45]));
-			f_braco_local_pos.Add(new Vector3 (a, b, c));
-			a = (float.Parse(pair[46]));
-			b = (float.Parse(pair[47]));
-			c = (float.Parse(pair[48]));
-			f_braco_local_rot.Add(new Vector3 (a, b, c));			
+			f_braco_rot.Add(new Vector3 (a, b, c));					
 		}
 	}
 
@@ -136,25 +97,6 @@ public class GenerateLineChart : MonoBehaviour
 		}
 	}
 
-	void drawGraphic ()
-	{
-		float step = 2f / 70;
-		Vector3 scale = Vector3.one * step;
-		Vector3 position = Vector3.zero;
-
-		for (int j = 0; j < resolution; ++j) 
-		{
-			Transform point = Instantiate(pointPrefab);
-			position.x = (points1[j].x) + 0.05f;
-			position.y = (points1[j].y/24);
-			point.localPosition = position;
-			point.localScale = scale;
-			point.SetParent (transform, false);
-			points2.Add (point.position);
-		}
-
-		lineRenderer.SetPositions (points2.ToArray());
-	}
 
 	/**
 	* Descrever aqui o que esse método realiza.
@@ -179,15 +121,6 @@ public class GenerateLineChart : MonoBehaviour
 			f_braco_pos = new List<Vector3>();
 			f_braco_rot = new List<Vector3>();
 
-			f_mao_local_pos = new List<Vector3>();
-			f_mao_local_rot = new List<Vector3>();
-			f_ombro_local_pos = new List<Vector3>();
-			f_ombro_local_rot = new List<Vector3>();
-			f_cotovelo_local_pos = new List<Vector3>();
-			f_cotovelo_local_rot = new List<Vector3>();
-			f_braco_local_pos = new List<Vector3>();
-			f_braco_local_rot = new List<Vector3>();
-
 			points1 = new List<Vector3>();
 			points2 = new List<Vector3>();
 
@@ -204,14 +137,12 @@ public class GenerateLineChart : MonoBehaviour
 			float alpha = 1.0f;
 			Gradient gradient = new Gradient();
 			gradient.SetKeys(
-				new [] 
-				
+				new []
 				{
 					new GradientColorKey(c1, 0.0f), 
 					new GradientColorKey(c2, 1.0f) 
 				},
 				new [] 
-				
 				{
 					new GradientAlphaKey(alpha, 0.0f), 
 					new GradientAlphaKey(alpha, 1.0f) 
@@ -238,22 +169,53 @@ public class GenerateLineChart : MonoBehaviour
 			t = !t;
 			if (t == true && drawed == false) 
 			{
-				drawGraphic();
+				StartCoroutine("drawGraphic");
+				StartCoroutine("Playback");
 				drawed = true;
 			}
 		}
 	}
 
-	void FixedUpdate ()
-	{
-		if (t && i < current_time.Count) 
-		{
-			ombro.SetPositionAndRotation(f_ombro_pos[i], Quaternion.Euler(f_ombro_rot[i]));
-			braco.SetPositionAndRotation(f_braco_pos[i], Quaternion.Euler(f_braco_rot[i]));
-			cotovelo.SetPositionAndRotation(f_cotovelo_pos[i], Quaternion.Euler(f_cotovelo_rot[i]));
-			mao.SetPositionAndRotation(f_mao_pos[i], Quaternion.Euler(f_mao_rot[i]));
+	public IEnumerator Playback ()
+	{  
+		Debug.Log (current_time.Count);
+	    for (int i = 0; i < current_time.Count; i++) {
+	    	
+	    	ombro.localPosition = f_ombro_pos[i];
+	    	ombro.localEulerAngles = f_ombro_rot[i];
 
-			i++;
+	    	braco.localPosition = f_braco_pos[i];
+	    	braco.localEulerAngles = f_braco_rot[i];
+
+	    	cotovelo.localPosition = f_cotovelo_pos[i];
+	    	cotovelo.localEulerAngles = f_cotovelo_rot[i];
+
+	    	mao.localPosition = f_mao_pos[i];
+	    	mao.localEulerAngles = f_mao_rot[i];
+
+	    	yield return new WaitForSeconds(0.02f);        
+	    } 
+	}
+
+	public IEnumerator drawGraphic ()
+	{
+		float step = 2f / 70;
+		Vector3 scale = Vector3.one * step;
+		Vector3 position = Vector3.zero;
+
+		for (int j = 0; j < current_time.Count; ++j) 
+		{
+			Transform point = Instantiate(pointPrefab);
+			position.x = (points1[j].x) + 0.05f;
+			position.y = (points1[j].y/24);
+			point.localPosition = position;
+			point.localScale = scale;
+			point.SetParent (transform, false);
+			points2.Add (point.position);
+			lineRenderer.SetPositions (points2.ToArray());
+
+			yield return new WaitForSeconds(0.02f);
 		}
+
 	}
 }

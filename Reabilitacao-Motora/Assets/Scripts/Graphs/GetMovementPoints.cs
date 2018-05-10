@@ -46,17 +46,17 @@ public class GetMovementPoints : MonoBehaviour
 			StringBuilder sb = new StringBuilder();
 			sb.Append(current_time_movement).Append(" ");
 
-			sb.Append(mao.position.x).Append(" ").Append(mao.position.y).Append(" ").Append(mao.position.z).Append(" ");
-			sb.Append(mao.rotation.x).Append(" ").Append(mao.rotation.y).Append(" ").Append(mao.rotation.z).Append(" ");
+			sb.Append(mao.localPosition.x).Append(" ").Append(mao.localPosition.y).Append(" ").Append(mao.localPosition.z).Append(" ");
+			sb.Append(mao.localEulerAngles.x).Append(" ").Append(mao.localEulerAngles.y).Append(" ").Append(mao.localEulerAngles.z).Append(" ");
 
-			sb.Append(cotovelo.position.x).Append(" ").Append(cotovelo.position.y).Append(" ").Append(cotovelo.position.z).Append(" ");
-			sb.Append(cotovelo.rotation.x).Append(" ").Append(cotovelo.rotation.y).Append(" ").Append(cotovelo.rotation.z).Append(" ");
+			sb.Append(cotovelo.localPosition.x).Append(" ").Append(cotovelo.localPosition.y).Append(" ").Append(cotovelo.localPosition.z).Append(" ");
+			sb.Append(cotovelo.localEulerAngles.x).Append(" ").Append(cotovelo.localEulerAngles.y).Append(" ").Append(cotovelo.localEulerAngles.z).Append(" ");
 
-			sb.Append(ombro.position.x).Append(" ").Append(ombro.position.y).Append(" ").Append(ombro.position.z).Append(" ");
-			sb.Append(ombro.rotation.x).Append(" ").Append(ombro.rotation.y).Append(" ").Append(ombro.rotation.z).Append(" ");
+			sb.Append(ombro.localPosition.x).Append(" ").Append(ombro.localPosition.y).Append(" ").Append(ombro.localPosition.z).Append(" ");
+			sb.Append(ombro.localEulerAngles.x).Append(" ").Append(ombro.localEulerAngles.y).Append(" ").Append(ombro.localEulerAngles.z).Append(" ");
 
-			sb.Append(braco.position.x).Append(" ").Append(braco.position.y).Append(" ").Append(braco.position.z).Append(" ");
-			sb.Append(braco.rotation.x).Append(" ").Append(braco.rotation.y).Append(" ").Append(braco.rotation.z).Append("\n");
+			sb.Append(braco.localPosition.x).Append(" ").Append(braco.localPosition.y).Append(" ").Append(braco.localPosition.z).Append(" ");
+			sb.Append(braco.localEulerAngles.x).Append(" ").Append(braco.localEulerAngles.y).Append(" ").Append(braco.localEulerAngles.z).Append("\n");
 
 			string path = Application.dataPath + "/Movimentos/" + GlobalController.instance.movement.pontosMovimento + ".points";
 			File.AppendAllText(path, sb.ToString());
