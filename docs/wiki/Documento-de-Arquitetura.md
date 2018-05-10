@@ -143,9 +143,15 @@ A implementação do projeto será a linguagem de programação C# (C-Sharp).Ele
 <p align = "justify">Para a conexão com diversos sensores será usado um adapter com a capacidade de receber informações específicas para a usabilidade da aplicação através de portas UDP, a escolha das portas UDP em relação as portas TCP foi motivada pelo motivo de que em portas UDP a transferência é feita de forma relativamente mais rápida.</p>
 <p align = "justify">O UDP (USER DATAGRAM PROTOCOL) provê um serviço sem conexão não confiável, usando IP para transportar mensagens entre duas máquinas. Este protocolo, igualmente o TCP, provê um mecanismo que o transmissor usa para distinguir entre múltiplos receptores numa mesma máquina.</p>
 
-### FORMATO DO DATAGRAMA UDP
+### 5.1 Formato do datagrama UDP
 <p align = "justify">
 Cada datagrama UDP é formado por um cabeçalho UDP e uma área de dados. O formato do cabeçalho UDP está dividido em quatro campos de 16 bits. Definições dos campos: <br />Source and Destination Ports: estes campos contêm os números de portas fonte e destino do protocolo UDP. A porta fonte é opcional, quando é usada ela especifica a porta a qual uma resposta poderia ser enviada, se não é usada contém zeros. <br />Length: contém um contador de bytes no datagrama UDP. O valor mínimo é oito, sendo este só o comprimento do cabeçalho.<br /> Checksum: Este campo é opcional. Um valor de zero indica que o checksum não é computado.
+</p>
+
+### 5.2 Justificativa para uso do UDP
+<p align = "justify">
+O protocolo de transferência de dados UDP será utilizado no adapter que fará o contato entre o sensor e o unity para que os dados transferidos do sensor para o sistema não tenham atrasos e a leitura seja mais veloz, com mais pontos recebidos o gráfico do movimento poderá ser feito de forma mais sucinta.<br />
+O protocolo TCP não seria viável para o adapter Sensor-Unity pois sua transferência de dados retorna um valor de sucesso enquanto os próximos pacotes fiquem na espera de que exista sucesso na tranferência do último pacote, isso causaria atraso na chegada dos dados ao Unity, para dados que serão usados em Real-time o protocolo mais utilizado é o UDP.
 </p>
 
 ![Diagrama](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/development/docs/imagens/Arquitetura/diagrama.png)</p>
