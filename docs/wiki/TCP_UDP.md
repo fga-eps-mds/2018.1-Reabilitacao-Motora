@@ -7,7 +7,7 @@ Data|Versão|Descrição|Autor
 ----------------
  1. [Transmission Control Protocol/Internet Protocol - TCP/IP](#1)
    * 1.1 [Visão Geral](#1_1)
-   * 1.2 [TCP/IP em Camadas]
+   * 1.2 [TCP/IP em Camadas](#1_2)
  2. [Transport Control Protocol - TCP](#2)
     * 2.1 [Visão Geral](#2_1)
 
@@ -28,10 +28,10 @@ Documento de Arquitetura de Software
 </p>
 
 <p align = "justify"> O TCP/IP possui quatro camadas. Sendo elas a Camada de Aplicação, a camada de Transporte (TCP), a camada de internet (IP) e a Camada de Acesso à Rede. </p>
-<p align = "justify"> A **Camada de Aplicação** agrupa os a padrão da rede (SMTP, FTP, etc). Faz a comunicação entre os programas e os protocolos de transporte no TCP/IP. </p>
-<p align = "justify"> A **Camada de Transporte (TCP)** garante o encaminhamento dos dados e os mecanismos que permitem conhecer o estado da transmissão. Recebe os dados enviados pela camada de aplicação e transforma em pacotes menores que são repassados para a camada de internet. É formado pelos protocolos TCP e UDP. </p>
-<p align = "justify"> A **Camada de Internet (IP)** é encarregada fornecer o pacote de dados (datagrama). É responsável pelo endereçamento e roteamento do pacote, fazendo a conexão entre as redes locais. Adiciona ao pacote o endereço IP de origem e o de destino, para que ele saiba qual o caminho deve percorrer. </p>
-<p align = "justify"> A **Camada de Acesso** à Rede especifica a forma que os dados devem ser encaminhados independentemente do tipo de rede utilizado. O Ethernet é o protocolo mais utilizado e possui três componentes principais: Logic Link Control (LLC) que é responsável por adicionar ao pacote, qual protocolo da camada de internet vai entregar os dados para a serem transmitidos. Media Access Control (MAC): responsável por montar o quadro que vai ser enviado pela rede e adiciona tanto o endereço origem MAC quanto o endereço destino, que é o endereço físico da placa de rede. Physical: responsável por converter o quadro gerado pela camada MAC em eletricidade  ou em ondas eletromagnéticas.</p>
+<p align = "justify"> A <b>Camada de Aplicação</b> agrupa os a padrão da rede (SMTP, FTP, etc). Faz a comunicação entre os programas e os protocolos de transporte no TCP/IP. </p>
+<p align = "justify"> A <b>Camada de Transporte (TCP)</b> garante o encaminhamento dos dados e os mecanismos que permitem conhecer o estado da transmissão. Recebe os dados enviados pela camada de aplicação e transforma em pacotes menores que são repassados para a camada de internet. É formado pelos protocolos TCP e UDP. </p>
+<p align = "justify"> A <b>Camada de Internet (IP)</b> é encarregada fornecer o pacote de dados (datagrama). É responsável pelo endereçamento e roteamento do pacote, fazendo a conexão entre as redes locais. Adiciona ao pacote o endereço IP de origem e o de destino, para que ele saiba qual o caminho deve percorrer. </p>
+<p align = "justify"> A <b>Camada de Acesso</b> à Rede especifica a forma que os dados devem ser encaminhados independentemente do tipo de rede utilizado. O Ethernet é o protocolo mais utilizado e possui três componentes principais: Logic Link Control (LLC) que é responsável por adicionar ao pacote, qual protocolo da camada de internet vai entregar os dados para a serem transmitidos. Media Access Control (MAC): responsável por montar o quadro que vai ser enviado pela rede e adiciona tanto o endereço origem MAC quanto o endereço destino, que é o endereço físico da placa de rede. Physical: responsável por converter o quadro gerado pela camada MAC em eletricidade  ou em ondas eletromagnéticas.</p>
 
 Funcionamento das camadas do TCP/IP:
 ![imagem](http://infotecnews.com.br/wp-content/uploads/2017/01/camada-tcpip-funcionamento.jpg)
@@ -42,7 +42,7 @@ Funcionamento das camadas do TCP/IP:
  <p align = "justify"> É um protocolo de transporte fim-a-fim, orientado à conexão, que fornece um serviço confiável de dados entre aplicações parceiras. O TCP garante que dados são entregues integralmente, sem erros, mas isso deixa a aplicação mais lenta. É recomendada para aplicações que não necessitam de respostas em um curtíssimo espaço de tempo.
  </p>
 
-### 1.4 Referências
+### 3.4 Referências
 <p align = "justify"> Este documento faz referência aos seguintes links:
 
 * REIS, Rodrigo. Modelo TCP/IP – Definição, camadas e funcionamento . Disponível em: <http://infotecnews.com.br/modelo-tcpip/>. Acesso em: 09 maio 2018.
