@@ -1,29 +1,37 @@
 #! /bin/sh
-project="Reabilitacao-Motora"
-echo "========================================"
-echo "Initializing Build Script for $project"
-cd Reabilitacao-Motora
-echo "========================================"
-echo "Current folder contains:"
-ls
-echo "========================================"
-echo "Attempting to activate Unity"
-/Applications/Unity/Unity.app/Contents/MacOS/Unity -batchmode -serial $UNITY_KEY -username $UNITY_LOGIN -password $UNITY_PASSWORD -logFile /dev/stdout -quit
-echo "========================================"
-echo "Attempting to build $project for OSX"
-/Applications/Unity/Unity.app/Contents/MacOS/Unity -batchmode -logFile /dev/stdout -projectPath $(pwd) -buildOSXUniversalPlayer "Build/osx/$project.app" -quit
-echo "========================================"
-echo "Attempting to build $project for Linux"
-/Applications/Unity/Unity.app/Contents/MacOS/Unity -batchmode -logFile /dev/stdout -projectPath $(pwd) -buildLinuxUniversalPlayer "Build/linux/$project.exe" -quit
-echo "========================================"
-echo "Attempting to build $project for Windows"
-/Applications/Unity/Unity.app/Contents/MacOS/Unity -batchmode -logFile /dev/stdout -projectPath $(pwd) -buildWindowsPlayer "Build/windows/$project.exe" -quit
-echo "========================================"
-echo "Opening in order to deactivate Unity"
-/Applications/Unity/Unity.app/Contents/MacOS/Unity -batchmode -returnlicense -logFile /dev/stdout -quit
-echo "========================================"
 
-echo 'Attempting to zip builds'
+
+TEXTOAZUL=`echo "\033[01;34m"`
+TEXTOVERMELHO=`echo "\033[01;31m"`
+TEXTOAMARELO=`echo "\033[01;33m"`
+TEXTOVERDE=`echo "\033[01;32m"`
+NORMAL=`echo "\033[m"`
+
+
+project="Reabilitacao-Motora"
+echo "${TEXTOVERDE}========================================================================================================${NORMAL}"
+echo "${TEXTOAMARELO}Initializing Build Script for $project  ${NORMAL}"
+cd Reabilitacao-Motora
+echo "${TEXTOVERDE}========================================================================================================${NORMAL}"
+echo "${TEXTOAMARELO}Current folder contains: ${NORMAL}"
+ls
+echo "${TEXTOVERDE}========================================================================================================${NORMAL}"
+echo "${TEXTOAMARELO}Attempting to activate Unity  ${NORMAL}"
+/Applications/Unity/Unity.app/Contents/MacOS/Unity -batchmode -serial $UNITY_KEY -username $UNITY_LOGIN -password $UNITY_PASSWORD -logFile /dev/stdout -quit
+echo "${TEXTOVERDE}========================================================================================================${NORMAL}"
+echo "${TEXTOAMARELO}Attempting to build $project for OSX  ${NORMAL}"
+/Applications/Unity/Unity.app/Contents/MacOS/Unity -batchmode -logFile /dev/stdout -projectPath $(pwd) -buildOSXUniversalPlayer "Build/osx/$project.app" -quit
+echo "${TEXTOVERDE}========================================================================================================${NORMAL}"
+echo "${TEXTOAMARELO}Attempting to build $project for Linux  ${NORMAL}"
+/Applications/Unity/Unity.app/Contents/MacOS/Unity -batchmode -logFile /dev/stdout -projectPath $(pwd) -buildLinuxUniversalPlayer "Build/linux/$project.exe" -quit
+echo "${TEXTOVERDE}========================================================================================================${NORMAL}"
+echo "${TEXTOAMARELO}Attempting to build $project for Windows  ${NORMAL}"
+/Applications/Unity/Unity.app/Contents/MacOS/Unity -batchmode -logFile /dev/stdout -projectPath $(pwd) -buildWindowsPlayer "Build/windows/$project.exe" -quit
+echo "${TEXTOVERDE}========================================================================================================${NORMAL}"
+echo "${TEXTOAMARELO}Opening in order to deactivate Unity  ${NORMAL}"
+/Applications/Unity/Unity.app/Contents/MacOS/Unity -batchmode -returnlicense -logFile /dev/stdout -quit
+echo "${TEXTOVERDE}========================================================================================================${NORMAL}"
+echo "${TEXTOAMARELO}Attempting to zip builds ${NORMAL}"
 zip -r Build/linux.zip Build/linux/
 zip -r Build/mac.zip Build/osx/
 zip -r Build/windows.zip Build/windows/
