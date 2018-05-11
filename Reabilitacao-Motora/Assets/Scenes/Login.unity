@@ -704,7 +704,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &413763709
 MonoBehaviour:
@@ -1150,6 +1150,7 @@ GameObject:
   - component: {fileID: 1408810523}
   - component: {fileID: 1408810522}
   - component: {fileID: 1408810521}
+  - component: {fileID: 1408810524}
   m_Layer: 5
   m_Name: RegisterBt
   m_TagString: Untagged
@@ -1214,18 +1215,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1408810522}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1276306279}
-        m_MethodName: NewPhysiotherapist
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1408810522
@@ -1261,6 +1251,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1408810519}
+--- !u!114 &1408810524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1408810519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9711704ada24c504ea2b9293bd9d3cd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextPage: {fileID: 1408810521}
 --- !u!1 &1424580537
 GameObject:
   m_ObjectHideFlags: 0
@@ -1623,6 +1625,7 @@ GameObject:
   - component: {fileID: 1807832148}
   - component: {fileID: 1807832147}
   - component: {fileID: 1807832146}
+  - component: {fileID: 1807832149}
   m_Layer: 5
   m_Name: LoginBt
   m_TagString: Untagged
@@ -1687,18 +1690,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1807832147}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1816981474}
-        m_MethodName: Flow
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1807832147
@@ -1734,28 +1726,12 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1807832144}
---- !u!1 &1816981473
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1816981475}
-  - component: {fileID: 1816981474}
-  m_Layer: 0
-  m_Name: Login Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1816981474
+--- !u!114 &1807832149
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1816981473}
+  m_GameObject: {fileID: 1807832144}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7b8caecd19f029045ad78570ba4bde83, type: 3}
@@ -1763,19 +1739,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   login: {fileID: 148421636}
   pass: {fileID: 279754643}
---- !u!4 &1816981475
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1816981473}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  nextPage: {fileID: 1807832146}
 --- !u!1 &2081773807
 GameObject:
   m_ObjectHideFlags: 0

@@ -1006,6 +1006,7 @@ GameObject:
   - component: {fileID: 1421729301}
   - component: {fileID: 1421729300}
   - component: {fileID: 1421729299}
+  - component: {fileID: 1421729302}
   m_Layer: 5
   m_Name: BackBt
   m_TagString: Untagged
@@ -1070,18 +1071,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1421729300}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1495203533}
-        m_MethodName: Menu
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1421729300
@@ -1117,6 +1107,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1421729297}
+--- !u!114 &1421729302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1421729297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a33cb0c7f084f74786e0fd41835b5c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextPage: {fileID: 1421729299}
 --- !u!1 &1476847004
 GameObject:
   m_ObjectHideFlags: 0

@@ -20,12 +20,6 @@ public class Flow : MonoBehaviour
 		#endif
 	}
 
-	public void Quit()
-	{
-		StaticQuit();
-	}
-
-
 	/**
 	 * Leva para scene de gravar um movimento.
 	 */
@@ -34,10 +28,6 @@ public class Flow : MonoBehaviour
 		SceneManager.LoadScene("NewMovement");
 	}
 
-	public void NewMovement()
-	{
-		StaticNewMovement();
-	}
 
 
 	/**
@@ -48,10 +38,6 @@ public class Flow : MonoBehaviour
 		SceneManager.LoadScene("Clinic");
 	}
 
-	public void Clinic()
-	{
-		StaticClinic();
-	}
 
 
 	/**
@@ -62,10 +48,6 @@ public class Flow : MonoBehaviour
 		SceneManager.LoadScene("Patient");
 	}
 
-	public void Patient()
-	{
-		StaticPatient();
-	}
 
 
 	/**
@@ -76,10 +58,6 @@ public class Flow : MonoBehaviour
 		SceneManager.LoadScene("Login");
 	}
 
-	public void Login()
-	{
-		StaticLogin();
-	}
 
 	/**
 	 * Leva para scene de lista de movimentos.
@@ -90,11 +68,6 @@ public class Flow : MonoBehaviour
 		SceneManager.LoadScene ("ClinicToMoveMenu", LoadSceneMode.Additive);
 	}
 
-	public void Movements()
-	{
-		StaticMovements();
-	}
-
 	/**
 	 * Leva para scene de registrar novo paciente.
 	 */
@@ -103,10 +76,6 @@ public class Flow : MonoBehaviour
 		SceneManager.LoadScene("NewPatient");
 	}
 
-	public void NewPatient()
-	{
-		StaticNewPatient();
-	}
 
 	/**
 	 * Leva para scene de registrar novo paciente.
@@ -116,10 +85,6 @@ public class Flow : MonoBehaviour
 		SceneManager.LoadScene("UpdatePatient");
 	}
 
-	public void UpdatePatient()
-	{
-		StaticUpdatePatient();
-	}
 
 	/**
 	 * Leva para scene de detalhes de sessão.
@@ -129,10 +94,6 @@ public class Flow : MonoBehaviour
 		SceneManager.LoadScene("Session");
 	}
 
-	public void Session()
-	{
-		StaticSession();
-	}
 
 	/**
 	 * Leva para scene de lista de sessões.
@@ -142,10 +103,6 @@ public class Flow : MonoBehaviour
 		SceneManager.LoadScene("Sessions");
 	}
 
-	public void Sessions()
-	{
-		StaticSessions();
-	}
 
 	/**
 	 * Leva para scene de função não implementada.
@@ -155,10 +112,6 @@ public class Flow : MonoBehaviour
 		SceneManager.LoadScene("NotImplemented");
 	}
 
-	public void NotImplemented()
-	{
-		StaticNotImplemented();
-	}
 
 	/**
 	 * Leva para scene de gráficos.
@@ -168,10 +121,6 @@ public class Flow : MonoBehaviour
 		SceneManager.LoadScene("Graphs2");
 	}
 
-	public void Graphs2()
-	{
-		StaticGraphs2();
-	}
 
 	/**
 	 * Leva para scene de gráficos.
@@ -181,10 +130,6 @@ public class Flow : MonoBehaviour
 		SceneManager.LoadScene("RealtimeGraph");
 	}
 
-	public void RealtimeGraph()
-	{
-		StaticRealtimeGraph();
-	}
 
 	/**
 	 * Volta para o menu.
@@ -194,10 +139,6 @@ public class Flow : MonoBehaviour
 		SceneManager.LoadScene("Menu");
 	}
 
-	public void Menu()
-	{
-		StaticMenu();
-	}
 
 
 	/**
@@ -208,10 +149,6 @@ public class Flow : MonoBehaviour
 		SceneManager.LoadScene("NewPhysiotherapist");
 	}
 
-	public void NewPhysiotherapist()
-	{
-		StaticNewPhysiotherapist();
-	}
 
 
 	/**
@@ -222,10 +159,6 @@ public class Flow : MonoBehaviour
 		SceneManager.LoadScene("NewSession");
 	}
 
-	public void NewSession()
-	{
-		StaticNewSession();
-	}
 
 
 	/**
@@ -236,10 +169,6 @@ public class Flow : MonoBehaviour
 		SceneManager.LoadScene("MovementsToExercise");
 	}
 
-	public void MovementsToExercise()
-	{
-		StaticMovementsToExercise();
-	}
 
 
 	/**
@@ -250,10 +179,6 @@ public class Flow : MonoBehaviour
 		SceneManager.LoadScene("EndSession");
 	}
 
-	public void EndSession()
-	{
-		StaticEndSession();
-	}
 
 
 	/**
@@ -264,10 +189,6 @@ public class Flow : MonoBehaviour
 		SceneManager.LoadScene("MovementsToReview");
 	}
 
-	public void MovementsToReview()
-	{
-		StaticMovementsToReview();
-	}
 
 
 	/**
@@ -278,10 +199,6 @@ public class Flow : MonoBehaviour
 		SceneManager.LoadScene("ExercisesToReview");
 	}
 
-	public void ExercisesToReview()
-	{
-		StaticExercisesToReview();
-	}
 
 
 	/**
@@ -292,8 +209,4 @@ public class Flow : MonoBehaviour
 		SceneManager.LoadScene("Graphs1");
 	}
 
-	public void Graphs1()
-	{
-		StaticGraphs1();
-	}
 }

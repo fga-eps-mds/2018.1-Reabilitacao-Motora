@@ -20,7 +20,7 @@ public class Login : MonoBehaviour
 	/**
 	 * Salva o Fisioterapeuta no banco.
 	 */
-	public void Flow()
+	public void Floww()
 	{
 		Fisioterapeuta idcheck = CheckLoginPass();
 
@@ -32,8 +32,7 @@ public class Login : MonoBehaviour
 			pass.colors = cb;
 
 			GlobalController.instance.admin = idcheck;
-
-			SceneManager.LoadScene("Menu");
+			Flow.StaticMenu();
 		} 
 		else 
 		{

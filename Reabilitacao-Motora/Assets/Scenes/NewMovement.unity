@@ -781,6 +781,7 @@ GameObject:
   - component: {fileID: 758340681}
   - component: {fileID: 758340680}
   - component: {fileID: 758340679}
+  - component: {fileID: 758340682}
   m_Layer: 5
   m_Name: CancelBt
   m_TagString: Untagged
@@ -845,18 +846,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 758340680}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1276306279}
-        m_MethodName: Movements
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &758340680
@@ -892,6 +882,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 758340677}
+--- !u!114 &758340682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 758340677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc2b527bbe71f504da16e1acfe5e42e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextPage: {fileID: 758340679}
 --- !u!1 &836985460
 GameObject:
   m_ObjectHideFlags: 0
@@ -1423,17 +1425,6 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1816981474}
         m_MethodName: saveMovement
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1276306279}
-        m_MethodName: Clinic
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2193,6 +2184,7 @@ GameObject:
   - component: {fileID: 1954862740}
   - component: {fileID: 1954862739}
   - component: {fileID: 1954862738}
+  - component: {fileID: 1954862741}
   m_Layer: 5
   m_Name: BackBt
   m_TagString: Untagged
@@ -2257,18 +2249,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1954862739}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1276306279}
-        m_MethodName: Movements
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1954862739
@@ -2304,6 +2285,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1954862736}
+--- !u!114 &1954862741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1954862736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc2b527bbe71f504da16e1acfe5e42e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextPage: {fileID: 1954862738}
 --- !u!1 &2079553058
 GameObject:
   m_ObjectHideFlags: 0

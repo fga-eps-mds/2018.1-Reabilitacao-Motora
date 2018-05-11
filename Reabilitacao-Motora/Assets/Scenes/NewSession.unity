@@ -238,6 +238,7 @@ GameObject:
   - component: {fileID: 53409580}
   - component: {fileID: 53409579}
   - component: {fileID: 53409578}
+  - component: {fileID: 53409581}
   m_Layer: 5
   m_Name: RegisterExercise
   m_TagString: Untagged
@@ -302,18 +303,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 53409579}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 43840616}
-        m_MethodName: MovementsToExercise
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &53409579
@@ -349,6 +339,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 53409576}
+--- !u!114 &53409581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 53409576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e041495ede19cee4ab6d2686c8745f23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextPage: {fileID: 53409578}
 --- !u!1 &215042707
 GameObject:
   m_ObjectHideFlags: 0
@@ -360,6 +362,7 @@ GameObject:
   - component: {fileID: 215042711}
   - component: {fileID: 215042710}
   - component: {fileID: 215042709}
+  - component: {fileID: 215042712}
   m_Layer: 5
   m_Name: AddObs
   m_TagString: Untagged
@@ -424,18 +427,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 215042710}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 43840616}
-        m_MethodName: EndSession
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &215042710
@@ -471,6 +463,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 215042707}
+--- !u!114 &215042712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 215042707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b4c52ad7dbb33e4da909a8eca5868c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextPage: {fileID: 215042709}
 --- !u!1 &461306435
 GameObject:
   m_ObjectHideFlags: 0
@@ -905,6 +909,7 @@ GameObject:
   - component: {fileID: 934084437}
   - component: {fileID: 934084436}
   - component: {fileID: 934084435}
+  - component: {fileID: 934084438}
   m_Layer: 5
   m_Name: FinalizeSession (1)
   m_TagString: Untagged
@@ -928,7 +933,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -535, y: 6.0000143}
+  m_AnchoredPosition: {x: -535, y: 6}
   m_SizeDelta: {x: 130, y: 30}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &934084435
@@ -969,18 +974,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 934084436}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 43840616}
-        m_MethodName: Sessions
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &934084436
@@ -1016,6 +1010,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 934084433}
+--- !u!114 &934084438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 934084433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d24a03a6f4bb7874a8ca1a8b5e78154c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextPage: {fileID: 934084435}
 --- !u!1 &989314380
 GameObject:
   m_ObjectHideFlags: 0
@@ -1646,6 +1652,7 @@ GameObject:
   - component: {fileID: 1947696792}
   - component: {fileID: 1947696791}
   - component: {fileID: 1947696790}
+  - component: {fileID: 1947696793}
   m_Layer: 5
   m_Name: BackBt
   m_TagString: Untagged
@@ -1710,18 +1717,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1947696791}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 43840616}
-        m_MethodName: Sessions
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1947696791
@@ -1757,6 +1753,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1947696788}
+--- !u!114 &1947696793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1947696788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d24a03a6f4bb7874a8ca1a8b5e78154c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextPage: {fileID: 1947696790}
 --- !u!1 &2058188492
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,7 +4,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 using musculo;
 using movimentomusculo;
@@ -51,6 +50,7 @@ public class createMovement : MonoBehaviour
 		}
 
 		GlobalController.instance.movement = movementsList[movementsList.Count - 1];
+		Flow.StaticClinic();
 	}
 
 	static bool checkMuscle (string name)
