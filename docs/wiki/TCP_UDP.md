@@ -3,6 +3,7 @@
 Data|Versão|Descrição|Autor
 -|-|-|-
 09/05|1.0.0|Descrição do modelo TCP/IP. | Guilherme Siqueira
+10/05|1.1.0|Adição do tópico 2. | Guilherme Siqueira
 # Sumário
 ----------------
  1. [Transmission Control Protocol/Internet Protocol - TCP/IP](#1)
@@ -10,9 +11,10 @@ Data|Versão|Descrição|Autor
    * 1.2 [TCP/IP em Camadas](#1_2)
  2. [Transport Control Protocol - TCP](#2)
     * 2.1 [Visão Geral](#2_1)
+    * 2.2 [Socket](#2_2)
 
 
-Documento de Arquitetura de Software
+Documento de Especificação
 ------------------------------------
 ## 1. Transmission Control Protocol/Internet Protocol - TCP/IP
 
@@ -39,8 +41,25 @@ Funcionamento das camadas do TCP/IP:
 ## 2. Transport Control Protocol - TCP
 
 ### 2.1 Visão Geral
- <p align = "justify"> É um protocolo de transporte fim-a-fim, orientado à conexão, que fornece um serviço confiável de dados entre aplicações parceiras. O TCP garante que dados são entregues integralmente, sem erros, mas isso deixa a aplicação mais lenta. É recomendada para aplicações que não necessitam de respostas em um curtíssimo espaço de tempo.
- </p>
+<p align = "justify"> É um dos principais protocolos da camada de transporte do modelo TCP/IP. É um protocolo de transporte fim-a-fim, orientado à conexão, que fornece um serviço confiável de dados entre aplicações parceiras. O TCP garante que dados são entregues integralmente, sem erros, pois ele não só envia pacote de dados, como também recebe, mas isso deixa a aplicação mais lenta. É recomendada para aplicações que não necessitam de respostas em um curtíssimo espaço de tempo.
+</p>
+<p align = "justify"> Para assegurar que os pacotes de dados enviados vão chegar ao receptor na ordem correta, o TCP usa um sistema de numeração prórpio. A informação é enviada repetidamente para o receptor até o pacote de dados ser recebido corretamente, e ainda há uma checagem de erros que garante que a informação não foi corrompida durante o trajeto.
+</p>
+
+### 2.2 Socket
+<p align = "justify"> Socket é a ligação entre os processos do servidor e do cliente. Ele é a porta na qual os processos enviam e recebem mensagens. James Kurose definiu socket como "a interface entre a camada de aplicação e a de transporte dentro de uma máquina". O TCP e o UDP são dois tipos de serviços de transporte via socket.
+</p>
+<p align = "justify"> Quando um script ou aplicação interage com o software de protocolo, ele deve especificar se é um servidor ou um cliente, e os scripts devem especificar também os dados a serem enviados (o remetente), enquanto o receptor deve especificar onde o pacote de dados recebido deve ser armazenado.
+</p>
+<p align = "justify"> A <b>sequência de funcionamento do servidor TCP</b> é:
+</p>
+1. Se fornecido um nome de protocolo de transporte, deve-se converter em número; 
+2. Criar o socket utilizando a função **socket**;
+3. Colocar um endereço IP e porta no socket (função **bind**);
+4. Fazer o sistema operacional a colocar o socket em modo passivo (função **listen**);
+5. Aceitar uma nova conexão (função **accept**);
+6. Enviar/receber dados;
+7. Fechar o socket.
 
 ### 3.4 Referências
 <p align = "justify"> Este documento faz referência aos seguintes links:
@@ -56,3 +75,5 @@ Funcionamento das camadas do TCP/IP:
 * https://www.inf.ufes.br/~zegonc/material/Redes_de_Computadores/O%20Protocolo%20TCP.pdf
 
 *  GUGELMIN, Felipe. Internet: qual a diferença entre os protocolos UDP e TCP?. Disponível em: <https://www.tecmundo.com.br/internet/57947-internet-diferenca-entre-protocolos-udp-tcp.htm>. Acesso em: 09 maio 2018.
+
+*  RODRIGUES, Diego Mendes. Python – Sockets – Criando aplicações Cliente e Servidor TCP. Disponível em: <https://pt.linkedin.com/pulse/python-sockets-criando-aplica%C3%A7%C3%B5es-cliente-e-servidor-diego>. Acesso em: 10 maio 2018. 
