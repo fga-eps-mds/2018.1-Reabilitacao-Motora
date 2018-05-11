@@ -11,8 +11,8 @@ using paciente;
  */
 public class loadSession : MonoBehaviour 
 {
-	public InputField date;
-	public InputField notes;
+	[SerializeField]
+	protected InputField date, notes;
 	
 	void Start()
 	{

@@ -14,9 +14,8 @@ using fisioterapeuta;
  */
 public class Login : MonoBehaviour 
 {
-
-	public InputField login;
-	public InputField pass;
+	[SerializeField]
+	protected InputField login, pass;
 
 	/**
 	 * Salva o Fisioterapeuta no banco.

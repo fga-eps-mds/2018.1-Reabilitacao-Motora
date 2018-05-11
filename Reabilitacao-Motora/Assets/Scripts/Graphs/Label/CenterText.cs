@@ -7,7 +7,8 @@ using UnityEngine;
  */
 public class CenterText : MonoBehaviour
 {
-	public Transform line1, line2;
+	[SerializeField]
+	protected Transform line1, line2;
 
 	/**
 	 * Centraliza o nome da label de acordo com o X inicial e X final.

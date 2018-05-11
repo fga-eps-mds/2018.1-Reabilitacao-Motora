@@ -7,7 +7,8 @@ using UnityEngine;
  */
 public class SetInitialX : MonoBehaviour
 {
-	public Label prefab;
+	[SerializeField]
+	protected Label prefab;
 
 	/**
 	 * Descrever aqui o que esse método realiza.

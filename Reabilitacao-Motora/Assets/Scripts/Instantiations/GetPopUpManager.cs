@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class GetPopUpManager : MonoBehaviour {
 
-	public Button deleteButton;
+	[SerializeField]
+	protected Button deleteButton;
 	
 	// Use this for initialization
 	void Start () 

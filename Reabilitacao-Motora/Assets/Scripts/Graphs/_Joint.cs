@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class Joint
+public static class _Joint
 {
-
 	private static float Hypot (float a, float b)
 	{
 		return Mathf.Sqrt(Mathf.Pow(a, 2) + Mathf.Pow(b, 2));

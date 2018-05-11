@@ -8,19 +8,22 @@ using UnityEngine;
 * Descrever aqui o que essa classe realiza.
 */
 public class GenerateLineChartRealTime : MonoBehaviour
-
 {
-	public Transform pointPrefab;
+	[SerializeField]
+	protected Transform pointPrefab, mao, cotovelo, ombro; //o ponto final de mao é o inicial de cotovelo, o final de cotovelo é o inicial de ombro; ou seja, sao apenas 2 retas
+	
 	private const int RESOLUTION = 750;
-	public Transform mao, cotovelo, ombro; //o ponto final de mao é o inicial de cotovelo, o final de cotovelo é o inicial de ombro; ou seja, sao apenas 2 retas
+
 	Vector2 m_p, c_p, o_p, grafico;
 	float current_time_movement;
 	bool t;
 	int i;
 	LineRenderer lineRenderer;
-	public Color c1 = Color.black;
-	public Color c2 = Color.red;
-	List <Vector3> points2;
+
+	private static readonly Color c1 = Color.black;
+	private static readonly Color c2 = Color.red;
+
+	List <Vector3> points2, xd;
 
 	void Update () 
 	{
@@ -39,7 +42,7 @@ public class GenerateLineChartRealTime : MonoBehaviour
 			c_p = new Vector2 (cotovelo.position.x, cotovelo.position.y);
 			o_p = new Vector2 (ombro.position.x, ombro.position.y);
 
-			grafico = new Vector2 (current_time_movement, Joint.Angle(m_p, c_p, c_p, o_p));
+			grafico = new Vector2 (current_time_movement, _Joint.Angle(m_p, c_p, c_p, o_p));
 
 			SavePoints (grafico);
 
@@ -66,7 +69,6 @@ public class GenerateLineChartRealTime : MonoBehaviour
 	}
 
 	static void SavePoints (Vector2 point) 
-	
 	{
 		StringBuilder sb = new StringBuilder();
 

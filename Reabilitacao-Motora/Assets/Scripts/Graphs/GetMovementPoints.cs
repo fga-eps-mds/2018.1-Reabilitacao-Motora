@@ -10,7 +10,9 @@ using System.IO;
  */
 public class GetMovementPoints : MonoBehaviour
 {
-	public Transform mao, cotovelo, ombro, braco; //o ponto final de mao é o inicial de cotovelo, o final de cotovelo é o inicial de ombro; ou seja, sao apenas 2 retas
+	[SerializeField]
+	protected Transform mao, cotovelo, ombro, braco; //o ponto final de mao é o inicial de cotovelo, o final de cotovelo é o inicial de ombro; ou seja, sao apenas 2 retas
+	
 	float current_time_movement;
 	bool t;
 

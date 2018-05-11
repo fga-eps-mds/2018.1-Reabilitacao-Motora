@@ -16,17 +16,11 @@ using fisioterapeuta;
  */
 public class createPhysiotherapist : MonoBehaviour 
 {
-	public InputField namePhysio;
-	public InputField date;
-	public InputField phone1;
-	public InputField phone2;
-	public InputField crefito;
-	public InputField regiao;
-	public InputField login;
-	public InputField pass;
-	public InputField confirmPass;
-	public Toggle male;
-	public Toggle female;
+	[SerializeField]
+	protected InputField namePhysio, date, phone1, phone2, crefito, regiao, login, pass, confirmPass;
+
+	[SerializeField]
+	protected Toggle male, female;
 
 	/**
 	 * Salva o Fisioterapeuta no banco.

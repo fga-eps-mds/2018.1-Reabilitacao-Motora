@@ -8,8 +8,8 @@ using UnityEngine;
 
 public class PopUpSpawner : MonoBehaviour
 {
-	public GameObject PopUpPrefab;
-	public GameObject Canvas;
+	[SerializeField]
+	protected GameObject PopUpPrefab, Canvas;
 	
 	/**
 	 * Deixa a instancia do Prefab do popUp ativa.

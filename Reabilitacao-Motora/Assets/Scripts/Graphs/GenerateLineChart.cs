@@ -7,16 +7,16 @@ using UnityEngine;
 */
 public class GenerateLineChart : MonoBehaviour
 {
-	public Transform pointPrefab;
-	public Transform mao, ombro, cotovelo, braco;
-	public int resolution;
-	int i;
+	[SerializeField]
+	protected Transform pointPrefab, mao, ombro, cotovelo, braco;
+
 	List <float> current_time;
 	List <Vector3> f_mao_pos, f_mao_rot, f_ombro_pos, f_ombro_rot, f_cotovelo_pos, f_cotovelo_rot, f_braco_pos, f_braco_rot, points1, points2;
 
 	LineRenderer lineRenderer;
-	public Color c1 = Color.black;
-	public Color c2 = Color.red;
+
+	private static readonly Color c1 = Color.black;
+	private static readonly Color c2 = Color.red;
 
 	bool t;
 	bool drawed;
@@ -76,7 +76,7 @@ public class GenerateLineChart : MonoBehaviour
 		for (int j = 0; j < current_time.Count; ++j) 
 		{
 			Vector3 temp = new Vector3 (current_time[j], 
-										Joint.Angle((Vector2)f_mao_pos[j],
+										_Joint.Angle((Vector2)f_mao_pos[j],
 													(Vector2)f_cotovelo_pos[j],
 													(Vector2)f_cotovelo_pos[j],
 													(Vector2)f_ombro_pos[j]), 
@@ -117,7 +117,6 @@ public class GenerateLineChart : MonoBehaviour
 			lineRenderer.material = new Material(Shader.Find("Particles/Multiply (Double)"));
 			lineRenderer.widthMultiplier = 0.2f;
 			lineRenderer.positionCount = p1.Length;
-			resolution = p1.Length;
 
 		// A simple 2 color gradient with a fixed alpha of 1.0f.
 			float alpha = 1.0f;

@@ -1,6 +1,7 @@
 using Mono.Data.Sqlite;
 using System.Data;
 using System;
+using System.Text;
 using System.Reflection;
 using System.Collections.Generic;
 
@@ -70,7 +71,9 @@ namespace DataBaseAttributes
 				conn.Open();
 				cmd = conn.CreateCommand();
 
-				sqlQuery = string.Format("insert into {0} (", tableName);
+				StringBuilder bld = new StringBuilder();
+
+				bld.Append(string.Format("insert into {0} (", tableName));
 
 				int tableSize = TablesManager.Tables[tableId].colName.Count;
 
@@ -87,10 +90,10 @@ namespace DataBaseAttributes
 						aux = ",";
 					}
 
-					sqlQuery += (TablesManager.Tables[tableId].colName[i] + aux);
+					bld.Append(TablesManager.Tables[tableId].colName[i] + aux);
 				}
 
-				sqlQuery += " values (";
+				bld.Append(" values (");
 
 				for (int i = 0; i < columns.Length; ++i) 
 				{
@@ -105,8 +108,10 @@ namespace DataBaseAttributes
 						aux = ",";
 					}
 
-					sqlQuery += (string.Format("\"{0}\"", columns[i]) + aux);
+					bld.Append((string.Format("\"{0}\"", columns[i]) + aux));
 				}
+
+				sqlQuery = bld.ToString();
 
 				cmd.CommandText = sqlQuery;
 				cmd.ExecuteScalar();
@@ -120,8 +125,9 @@ namespace DataBaseAttributes
 			{
 				conn.Open();
 				cmd = conn.CreateCommand();
+				StringBuilder bld = new StringBuilder();
 
-				sqlQuery = string.Format("UPDATE \"{0}\" set ", tableName);
+				bld.Append(string.Format("UPDATE \"{0}\" set ", tableName));
 
 				for (int i = 1; i < TablesManager.Tables[tableId].colName.Count - 1; ++i)
 				{
@@ -136,10 +142,12 @@ namespace DataBaseAttributes
 						aux = ",";
 					}
 
-					sqlQuery += string.Format("\"{0}\"=\"{1}\"{2}", TablesManager.Tables[tableId].colName[i], columns[i], aux);
+					bld.Append(string.Format("\"{0}\"=\"{1}\"{2}", TablesManager.Tables[tableId].colName[i], columns[i], aux));
 				}
 
-				sqlQuery += string.Format("WHERE \"{0}\" = \"{1}\"", TablesManager.Tables[tableId].colName[0], columns[0]);
+				bld.Append(string.Format("WHERE \"{0}\" = \"{1}\"", TablesManager.Tables[tableId].colName[0], columns[0]));
+
+				sqlQuery = bld.ToString();
 
 				cmd.CommandText = sqlQuery;
 				
@@ -164,13 +172,13 @@ namespace DataBaseAttributes
 				while (reader.Read())
 				{
 
-					var z = columns;
-					ObjectArray (ref z, ref reader);
-					columns = z;
+					var aux = columns;
+					ObjectArray (ref aux, ref reader);
+					var columnsCopy = aux;
 
 					Type classType = typeof(T);
-					ConstructorInfo classConstructor = classType.GetConstructor(new Type[] { columns.GetType() });
-					T classInstance = (T)classConstructor.Invoke(new object[] { columns });
+					ConstructorInfo classConstructor = classType.GetConstructor(new [] { columnsCopy.GetType() });
+					T classInstance = (T)classConstructor.Invoke(new object[] { columnsCopy });
 
 					classList.Add(classInstance);
 				}
@@ -193,13 +201,13 @@ namespace DataBaseAttributes
 				IDataReader reader = cmd.ExecuteReader();
 				reader.Read();
 
-				var z = columns;
-				ObjectArray (ref z, ref reader);
-				columns = z;
+				var aux = columns;
+				ObjectArray (ref aux, ref reader);
+				var columnsCopy = aux;
 
 				Type classType = typeof(T);
-				ConstructorInfo classConstructor = classType.GetConstructor(new Type[] { columns.GetType() });
-				T classInstance = (T)classConstructor.Invoke(new object[] { columns });
+				ConstructorInfo classConstructor = classType.GetConstructor(new [] { columnsCopy.GetType() });
+				T classInstance = (T)classConstructor.Invoke(new object[] { columnsCopy });
 
 				CloseDB(reader, cmd, conn);
 
@@ -243,14 +251,14 @@ namespace DataBaseAttributes
 			}
 		}
 
-		private void CloseDB (IDataReader reader, IDbCommand cmd, IDbConnection conn)
+		private static void CloseDB (IDataReader reader, IDbCommand cmd, IDbConnection conn)
 		{
 			reader.Close();
 			cmd.Dispose();
 			conn.Close();
 		}
 
-		private void ObjectArray (ref Object[] columns, ref IDataReader reader)
+		private static void ObjectArray (ref Object[] columns, ref IDataReader reader)
 		{
 			for (int i = 0; i < columns.Length; ++i)
 			{

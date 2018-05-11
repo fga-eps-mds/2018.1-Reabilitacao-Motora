@@ -9,7 +9,9 @@ using System.Linq;
  */
 public class CreateLabel : MonoBehaviour
 {
-	public Label labelPrefab;
+	[SerializeField]
+	protected Label labelPrefab;
+	
 	string nameLabel = "label name";
 	string initialX = "0", finalX = "0";
 
