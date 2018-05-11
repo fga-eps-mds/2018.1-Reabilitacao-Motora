@@ -1,4 +1,4 @@
-using UnityEngine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Mono.Data.Sqlite;
@@ -79,23 +79,22 @@ namespace paciente
 			this.persona = Pessoa.ReadValue (idpe);
 		}
 
+		public Paciente(Object[] columns)
+		{
+			this.idPaciente = (int)columns[0];
+			this.idPessoa = (int)columns[1];
+			this.observacoes = (string)columns[2];
+			this.persona = Pessoa.ReadValue ((int)columns[1]);
+		}
+
 		/**
 		 * Cria a relação para paciente, contendo um id gerado automaticamente pelo banco como chave primária.
 		 */
 		public static void Create()
 		{
 			DataBase banco = new DataBase();
-			using (banco.conn = new SqliteConnection(GlobalController.instance.path))
-			{
-				banco.conn.Open();
-				banco.cmd = banco.conn.CreateCommand();
-
-				banco.sqlQuery = "CREATE TABLE IF NOT EXISTS PACIENTE (idPaciente INTEGER primary key AUTOINCREMENT,idPessoa INTEGER not null,observacoes VARCHAR (300),foreign key (idPessoa) references PESSOA (idPessoa));";
-
-				banco.cmd.CommandText = banco.sqlQuery;
-				banco.cmd.ExecuteScalar();
-				banco.conn.Close();
-			}
+			string query = "CREATE TABLE IF NOT EXISTS PACIENTE (idPaciente INTEGER primary key AUTOINCREMENT,idPessoa INTEGER not null,observacoes VARCHAR (300),foreign key (idPessoa) references PESSOA (idPessoa));";
+			banco.Create(GlobalController.instance.path, query);	
 		}
 
 		/**
@@ -105,37 +104,8 @@ namespace paciente
 			string observacoes)
 		{
 			DataBase banco = new DataBase();
-			using (banco.conn = new SqliteConnection(GlobalController.instance.path))
-			{
-				banco.conn.Open();
-				banco.cmd = banco.conn.CreateCommand();
-				banco.sqlQuery = "insert into PACIENTE (";
-
-				int tableSize = TablesManager.Tables[tableId].colName.Count;
-
-				for (int i = 1; i < tableSize; ++i) 
-				{
-					string aux;
-
-					if (i + 1 == tableSize)
-					{
-						aux = ")";
-					}
-					else
-					{
-						aux = ",";
-					}
-
-					banco.sqlQuery += (TablesManager.Tables[tableId].colName[i] + aux);
-				}
-
-				banco.sqlQuery += string.Format(" values (\"{0}\",\"{1}\")", idPessoa,
-					observacoes);
-
-				banco.cmd.CommandText = banco.sqlQuery;
-				banco.cmd.ExecuteScalar();
-				banco.conn.Close();
-			}
+			Object[] columns = new Object[] {idPessoa, observacoes};
+			banco.Insert(GlobalController.instance.path, columns, TablesManager.Tables[tableId].tableName, tableId);
 		}
 
 		/**
@@ -146,21 +116,8 @@ namespace paciente
 			string observacoes)
 		{
 			DataBase banco = new DataBase();
-			using (banco.conn = new SqliteConnection(GlobalController.instance.path))
-			{
-				banco.conn.Open();
-				banco.cmd = banco.conn.CreateCommand();
-
-				banco.sqlQuery = string.Format("UPDATE \"{0}\" set ", TablesManager.Tables[tableId].tableName);
-				banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",", TablesManager.Tables[tableId].colName[1], idPessoa);
-				banco.sqlQuery += string.Format("\"{0}\"=\"{1}\" ", TablesManager.Tables[tableId].colName[2], observacoes);
-
-				banco.sqlQuery += string.Format("WHERE \"{0}\" = \"{1}\"", TablesManager.Tables[tableId].colName[0], id);
-
-				banco.cmd.CommandText = banco.sqlQuery;
-				banco.cmd.ExecuteScalar();
-				banco.conn.Close();
-			}
+			Object[] columns = new Object[] {id, idPessoa, observacoes};
+			banco.Update(GlobalController.instance.path, columns, TablesManager.Tables[tableId].tableName, tableId);
 		}
 
 		/**
@@ -169,91 +126,29 @@ namespace paciente
 		public static List<Paciente> Read()
 		{
 			DataBase banco = new DataBase();
-			using (banco.conn = new SqliteConnection(GlobalController.instance.path))
-			{
-				banco.conn.Open();
-				banco.cmd = banco.conn.CreateCommand();
-				banco.sqlQuery = "SELECT * " + "FROM PACIENTE";
-				banco.cmd.CommandText = banco.sqlQuery;
-				IDataReader reader = banco.cmd.ExecuteReader();
+			int idPacienteTemp = 0;
+			int idPessoaTemp = 0;
+			string observacoesTemp = "null";
 
-				List<Paciente> patients = new List<Paciente>();
+			Object[] columns = new Object[] {idPacienteTemp,idPessoaTemp,observacoesTemp};
+			List<Paciente> patients = banco.Read<Paciente>(GlobalController.instance.path, TablesManager.Tables[tableId].tableName, columns);
 
-				while (reader.Read())
-				{
-					int idPacienteTemp = 0;
-					int idPessoaTemp = 0;
-					string observacoesTemp = "null";
-
-					if (!reader.IsDBNull(0))
-					{
-						idPacienteTemp = reader.GetInt32(0);
-					}
-					if (!reader.IsDBNull(1))
-					{
-						idPessoaTemp = reader.GetInt32(1);
-					}
-					if (!reader.IsDBNull(2))
-					{
-						observacoesTemp = reader.GetString(2);
-					}
-
-					Paciente patient = new Paciente(idPacienteTemp, idPessoaTemp, observacoesTemp);
-					patients.Add(patient);
-				}
-				
-				reader.Close();
-				reader = null;
-				banco.cmd.Dispose();
-				banco.cmd = null;
-				banco.conn.Close();
-				banco.conn = null;
-				return patients;
-			}
+			return patients;
 		}
 
 		public static Paciente ReadValue (int id)
 		{
 			DataBase banco = new DataBase();
-			using (banco.conn = new SqliteConnection(GlobalController.instance.path))
-			{
-				banco.conn.Open();
-				banco.cmd = banco.conn.CreateCommand();
-				banco.sqlQuery = "SELECT * " + string.Format("FROM \"{0}\" WHERE \"{1}\" = \"{2}\";", TablesManager.Tables[tableId].tableName, 
-					TablesManager.Tables[tableId].colName[0], 
-					id);
-				banco.cmd.CommandText = banco.sqlQuery;
-				IDataReader reader = banco.cmd.ExecuteReader();
+			int idPacienteTemp = 0;
+			int idPessoaTemp = 0;
+			string observacoesTemp = "null";
 
-				reader.Read();
+			Object[] columns = new Object[] {idPacienteTemp,idPessoaTemp,observacoesTemp};
 
-				int idPacienteTemp = 0;
-				int idPessoaTemp = 0;
-				string observacoesTemp = "null";
+			Paciente patient = banco.ReadValue<Paciente>(GlobalController.instance.path, TablesManager.Tables[tableId].tableName,
+				TablesManager.Tables[tableId].colName[0], id, columns);
 
-				if (!reader.IsDBNull(0))
-				{
-					idPacienteTemp = reader.GetInt32(0);
-				}
-				if (!reader.IsDBNull(1))
-				{
-					idPessoaTemp = reader.GetInt32(1);
-				}
-				if (!reader.IsDBNull(2))
-				{
-					observacoesTemp = reader.GetString(2);
-				}
-
-				Paciente patient = new Paciente (idPacienteTemp,idPessoaTemp,observacoesTemp);
-
-				reader.Close();
-				reader = null;
-				banco.cmd.Dispose();
-				banco.cmd = null;
-				banco.conn.Close();
-				banco.conn = null;
-				return patient;
-			}
+			return patient;
 		}
 
 		/**
@@ -262,17 +157,7 @@ namespace paciente
 		public static void DeleteValue(int id)
 		{
 			DataBase banco = new DataBase();
-			using (banco.conn = new SqliteConnection(GlobalController.instance.path))
-			{
-				banco.conn.Open();
-				banco.cmd = banco.conn.CreateCommand();
-
-				banco.sqlQuery = string.Format("delete from \"{0}\" WHERE \"{1}\" = \"{2}\"", TablesManager.Tables[tableId].tableName, TablesManager.Tables[tableId].colName[0], id);
-
-				banco.cmd.CommandText = banco.sqlQuery;
-				banco.cmd.ExecuteScalar();
-				banco.conn.Close();
-			}
+			banco.DeleteValue (tableId, id);
 		}
 
 		/**
@@ -281,17 +166,7 @@ namespace paciente
 		public static void Drop()
 		{
 			DataBase banco = new DataBase();
-			using (banco.conn = new SqliteConnection(GlobalController.instance.path))
-			{
-				banco.conn.Open();
-				banco.cmd = banco.conn.CreateCommand();
-
-				banco.sqlQuery = string.Format("DROP TABLE IF EXISTS \"{0}\"", TablesManager.Tables[tableId].tableName);
-
-				banco.cmd.CommandText = banco.sqlQuery;
-				banco.cmd.ExecuteScalar();
-				banco.conn.Close();
-			}
+			banco.Drop (tableId);
 		}
 	}
 }

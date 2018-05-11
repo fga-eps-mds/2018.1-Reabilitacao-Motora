@@ -1,4 +1,4 @@
-using UnityEngine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Mono.Data.Sqlite;
@@ -47,8 +47,14 @@ namespace musculo
 		 */
 		public Musculo(int idm, string nm)
 		{
-				this.idMusculo = idm;
-				this.nomeMusculo = nm;
+			this.idMusculo = idm;
+			this.nomeMusculo = nm;
+		}
+
+		public Musculo(Object[] columns)
+		{
+			this.idMusculo = (int)columns[0];
+			this.nomeMusculo = (string)columns[1];
 		}
 
 		/**
@@ -57,17 +63,8 @@ namespace musculo
 		public static void Create()
 		{
 			DataBase banco = new DataBase();
-			using (banco.conn = new SqliteConnection(GlobalController.instance.path))
-			{
-				banco.conn.Open();
-				banco.cmd = banco.conn.CreateCommand();
-
-				banco.sqlQuery = "CREATE TABLE IF NOT EXISTS MUSCULO (idMusculo INTEGER primary key AUTOINCREMENT,nomeMusculo VARCHAR (20) not null, constraint musculo UNIQUE (nomeMusculo));";
-				
-				banco.cmd.CommandText = banco.sqlQuery;
-				banco.cmd.ExecuteScalar();
-				banco.conn.Close();
-			}
+			string query = "CREATE TABLE IF NOT EXISTS MUSCULO (idMusculo INTEGER primary key AUTOINCREMENT,nomeMusculo VARCHAR (20) not null, constraint musculo UNIQUE (nomeMusculo));";
+			banco.Create(GlobalController.instance.path, query);	
 		}
 
 		/**
@@ -76,36 +73,8 @@ namespace musculo
 		public static void Insert(string nomeMusculo)
 		{
 			DataBase banco = new DataBase();
-			using (banco.conn = new SqliteConnection(GlobalController.instance.path))
-			{
-				banco.conn.Open();
-				banco.cmd = banco.conn.CreateCommand();
-				banco.sqlQuery = "insert into MUSCULO (";
-
-				int tableSize = TablesManager.Tables[tableId].colName.Count;
-
-				for (int i = 1; i < tableSize; ++i) 
-				{
-					string aux;
-
-					if (i + 1 == tableSize)
-					{
-						aux = ")";
-					}
-					else
-					{
-						aux = ",";
-					}
-
-					banco.sqlQuery += (TablesManager.Tables[tableId].colName[i] + aux);
-				}
-
-				banco.sqlQuery += string.Format(" values (\"{0}\")", nomeMusculo);
-
-				banco.cmd.CommandText = banco.sqlQuery;
-				banco.cmd.ExecuteScalar();
-				banco.conn.Close();
-			}
+			Object[] columns = new Object[] {nomeMusculo};
+			banco.Insert(GlobalController.instance.path, columns, TablesManager.Tables[tableId].tableName, tableId);
 		}
 
 		/**
@@ -115,20 +84,8 @@ namespace musculo
 			string nomeMusculo)
 		{
 			DataBase banco = new DataBase();
-			using (banco.conn = new SqliteConnection(GlobalController.instance.path))
-			{
-				banco.conn.Open();
-				banco.cmd = banco.conn.CreateCommand();
-
-				banco.sqlQuery = string.Format("UPDATE \"{0}\" set ", TablesManager.Tables[tableId].tableName);
-				banco.sqlQuery += string.Format("\"{0}\"=\"{1}\" ", TablesManager.Tables[tableId].colName[1], nomeMusculo);
-
-				banco.sqlQuery += string.Format("WHERE \"{0}\" = \"{1}\"", TablesManager.Tables[tableId].colName[0], id);
-
-				banco.cmd.CommandText = banco.sqlQuery;
-				banco.cmd.ExecuteScalar();
-				banco.conn.Close();
-			}
+			Object[] columns = new Object[] {id, nomeMusculo};
+			banco.Update(GlobalController.instance.path, columns, TablesManager.Tables[tableId].tableName, tableId);
 		}
 
 		/**
@@ -137,81 +94,29 @@ namespace musculo
 		public static List<Musculo> Read()
 		{
 			DataBase banco = new DataBase();
-			using (banco.conn = new SqliteConnection(GlobalController.instance.path))
-			{
-				banco.conn.Open();
-				banco.cmd = banco.conn.CreateCommand();
-				banco.sqlQuery = "SELECT * " + "FROM MUSCULO";
-				banco.cmd.CommandText = banco.sqlQuery;
-				IDataReader reader = banco.cmd.ExecuteReader();
 
-				List<Musculo> muscles = new List<Musculo>();
+			int idMusculoTemp = 0;
+			string nomeMusculoTemp = "null";
 
-				while (reader.Read())
-				{
-					int idMusculoTemp = 0;
-					string nomeMusculoTemp = "null";
+			Object[] columns = new Object[] {idMusculoTemp, nomeMusculoTemp};
 
-					if (!reader.IsDBNull(0))
-					{
-						idMusculoTemp = reader.GetInt32(0);
-					}
-					if (!reader.IsDBNull(1))
-					{
-						nomeMusculoTemp = reader.GetString(1);
-					}
+			List<Musculo> muscles = banco.Read<Musculo>(GlobalController.instance.path, TablesManager.Tables[tableId].tableName, columns);
 
-					Musculo muscle = new Musculo (idMusculoTemp, nomeMusculoTemp);
-					muscles.Add(muscle);
-				}
-
-				reader.Close();
-				reader = null;
-				banco.cmd.Dispose();
-				banco.cmd = null;
-				banco.conn.Close();
-				banco.conn = null;
-				return muscles;
-			}
+			return muscles;
 		}
 
 		public static Musculo ReadValue (int id)
 		{
 			DataBase banco = new DataBase();
-			using (banco.conn = new SqliteConnection(GlobalController.instance.path))
-			{
-				banco.conn.Open();
-				banco.cmd = banco.conn.CreateCommand();
-				banco.sqlQuery = "SELECT * " + string.Format("FROM \"{0}\" WHERE \"{1}\" = \"{2}\";", TablesManager.Tables[tableId].tableName, 
-					TablesManager.Tables[tableId].colName[0], 
-					id);
-				banco.cmd.CommandText = banco.sqlQuery;
-				IDataReader reader = banco.cmd.ExecuteReader();
+			int idMusculoTemp = 0;
+			string nomeMusculoTemp = "null";
 
-				reader.Read();
+			Object[] columns = new Object[] {idMusculoTemp, nomeMusculoTemp};
 
-				int idMusculoTemp = 0;
-				string nomeMusculoTemp = "null";
+			Musculo muscle = banco.ReadValue<Musculo>(GlobalController.instance.path, TablesManager.Tables[tableId].tableName,
+				TablesManager.Tables[tableId].colName[0], id, columns);
 
-				if (!reader.IsDBNull(0))
-				{
-					idMusculoTemp = reader.GetInt32(0);
-				}
-				if (!reader.IsDBNull(1))
-				{
-					nomeMusculoTemp = reader.GetString(1);
-				}
-
-				Musculo muscle = new Musculo (idMusculoTemp,nomeMusculoTemp);
-
-				reader.Close();
-				reader = null;
-				banco.cmd.Dispose();
-				banco.cmd = null;
-				banco.conn.Close();
-				banco.conn = null;
-				return muscle;
-			}
+			return muscle;
 		}
 
 		/**
@@ -220,17 +125,7 @@ namespace musculo
 		public static void DeleteValue(int id)
 		{
 			DataBase banco = new DataBase();
-			using (banco.conn = new SqliteConnection(GlobalController.instance.path))
-			{
-				banco.conn.Open();
-				banco.cmd = banco.conn.CreateCommand();
-
-				banco.sqlQuery = string.Format("delete from \"{0}\" WHERE \"{1}\" = \"{2}\"", TablesManager.Tables[tableId].tableName, TablesManager.Tables[tableId].colName[0], id);
-
-				banco.cmd.CommandText = banco.sqlQuery;
-				banco.cmd.ExecuteScalar();
-				banco.conn.Close();
-			}
+			banco.DeleteValue (tableId, id);
 		}
 
 		/**
@@ -239,17 +134,7 @@ namespace musculo
 		public static void Drop()
 		{
 			DataBase banco = new DataBase();
-			using (banco.conn = new SqliteConnection(GlobalController.instance.path))
-			{
-				banco.conn.Open();
-				banco.cmd = banco.conn.CreateCommand();
-
-				banco.sqlQuery = string.Format("DROP TABLE IF EXISTS \"{0}\"", TablesManager.Tables[tableId].tableName);
-
-				banco.cmd.CommandText = banco.sqlQuery;
-				banco.cmd.ExecuteScalar();
-				banco.conn.Close();
-			}
+			banco.Drop (tableId);
 		}
 	}
 }
