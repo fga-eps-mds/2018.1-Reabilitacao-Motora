@@ -11,7 +11,7 @@ public class GenerateLineChartRealTime : MonoBehaviour
 
 {
 	public Transform pointPrefab;
-	public int resolution;
+	private const int RESOLUTION = 750;
 	public Transform mao, cotovelo, ombro; //o ponto final de mao é o inicial de cotovelo, o final de cotovelo é o inicial de ombro; ou seja, sao apenas 2 retas
 	Vector2 m_p, c_p, o_p, grafico;
 	float current_time_movement;
@@ -22,28 +22,7 @@ public class GenerateLineChartRealTime : MonoBehaviour
 	public Color c2 = Color.red;
 	List <Vector3> points2;
 
-
-	public static float hypot(float a, float b)
-	{
-		return Mathf.Sqrt(Mathf.Pow(a, 2) + Mathf.Pow(b, 2));
-	}
-
-	float angle(Vector2 P, Vector2 Q, Vector2 R, Vector2 S)
-	{
-		float ux = P.x - Q.x;
-		float uy = P.y - Q.y;
-
-		float vx = R.x - S.x;
-		float vy = R.y - S.y;
-
-		float num = ux * vx + uy * vy;
-		float den = hypot(ux, uy) * hypot(vx, vy);
-
-		return (Mathf.Acos(num / den) * (180.0f / Mathf.PI));
-	}
-
 	void Update () 
-	
 	{
 		if (Input.GetKeyDown(KeyCode.Space)) 
 		{
@@ -52,7 +31,6 @@ public class GenerateLineChartRealTime : MonoBehaviour
 	}
 
 	void FixedUpdate () 
-	
 	{
 		if (t) 
 		{
@@ -61,15 +39,16 @@ public class GenerateLineChartRealTime : MonoBehaviour
 			c_p = new Vector2 (cotovelo.position.x, cotovelo.position.y);
 			o_p = new Vector2 (ombro.position.x, ombro.position.y);
 
-			grafico = new Vector2 (current_time_movement, angle (m_p, c_p, c_p, o_p));
+			grafico = new Vector2 (current_time_movement, Joint.Angle(m_p, c_p, c_p, o_p));
+
 			SavePoints (grafico);
 
-			if (i >= 750) 
+			if (i >= RESOLUTION) 
 			{
 				t = false;
 			}
 
-			float divScale = (70 * resolution)/750f;
+			float divScale = (70 * RESOLUTION)/(float)RESOLUTION;
 			float step = 2f / divScale;
 			Vector3 scale = Vector3.one * step;
 			Vector3 position = new Vector3 (0f,0f,12);
@@ -101,11 +80,9 @@ public class GenerateLineChartRealTime : MonoBehaviour
 
 	void Awake()
 	{	
-
 		points2 = new List<Vector3>();
 		t = false;
 		i = 0;
-		resolution = 750;
 		current_time_movement = 0;
 
 		lineRenderer = gameObject.AddComponent<LineRenderer>();

@@ -5,35 +5,40 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.IO;
 
-
 /**
  * Descrever aqui o que essa classe realiza.
  */
 public class GetMovementPoints : MonoBehaviour
 {
 	public Transform mao, cotovelo, ombro, braco; //o ponto final de mao é o inicial de cotovelo, o final de cotovelo é o inicial de ombro; ou seja, sao apenas 2 retas
-//	List<Vector2> tempo_anguloDeJunta;
-	float current_time_movement = 0;
-	bool t = false;
+	float current_time_movement;
+	bool t;
 
 	/**
 	 * Descrever aqui o que esse método realiza.
 	 */
-	void ActivateCaption () {
+	void ActivateCaption () 
+	{
 		t = true;
-		//tempo_anguloDeJunta = new List<Vector2> ();
 	}
 
 	/**
 	 * Descrever aqui o que esse método realiza.
 	 */
-	void Update () {
-		if (Input.GetKeyDown(KeyCode.Space)) {
+	void Update () 
+	{
+		if (Input.GetKeyDown(KeyCode.Space)) 
+		{
 			t = !t;
 		}
 	}
 
-
+	void Awake ()
+	{
+		current_time_movement = 0;
+		t = false;
+	}
+	
 	/**
 	 * Descrever aqui o que esse método realiza.
 	 */

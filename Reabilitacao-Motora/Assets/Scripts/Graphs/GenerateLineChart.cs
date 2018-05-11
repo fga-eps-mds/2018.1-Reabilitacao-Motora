@@ -70,29 +70,17 @@ public class GenerateLineChart : MonoBehaviour
 		}
 	}
 
-	public static float hypot(float a, float b)
-	{
-		return Mathf.Sqrt(Mathf.Pow(a, 2) + Mathf.Pow(b, 2));
-	}
-
-	float angle(Vector2 P, Vector2 Q, Vector2 R, Vector2 S)
-	{
-		float ux = P.x - Q.x;
-		float uy = P.y - Q.y;
-
-		float vx = R.x - S.x;
-		float vy = R.y - S.y;
-
-		float num = ux * vx + uy * vy;
-		float den = hypot(ux, uy) * hypot(vx, vy);
-		return (Mathf.Acos(num / den) * (180.0f / Mathf.PI));
-	}
 
 	void generateGraphicPoints ()
 	{
 		for (int j = 0; j < current_time.Count; ++j) 
 		{
-			Vector3 temp = new Vector3 (current_time[j], angle((Vector2)f_mao_pos[j],(Vector2)f_cotovelo_pos[j],(Vector2)f_cotovelo_pos[j],(Vector2)f_ombro_pos[j]), 0f);
+			Vector3 temp = new Vector3 (current_time[j], 
+										Joint.Angle((Vector2)f_mao_pos[j],
+													(Vector2)f_cotovelo_pos[j],
+													(Vector2)f_cotovelo_pos[j],
+													(Vector2)f_ombro_pos[j]), 
+										0f);
 			points1.Add (temp);
 		}
 	}
@@ -103,13 +91,11 @@ public class GenerateLineChart : MonoBehaviour
 	*/
 	void Awake()
 	{
-
 		if(GlobalController.instance != null && 
 		   GlobalController.instance.movement != null)
 		{
 			t = false;
 			drawed = false;
-			i = 0;
 
 			current_time = new List<float>();
 			f_mao_pos = new List<Vector3>();
@@ -178,23 +164,22 @@ public class GenerateLineChart : MonoBehaviour
 
 	public IEnumerator Playback ()
 	{  
-		Debug.Log (current_time.Count);
-	    for (int i = 0; i < current_time.Count; i++) {
-	    	
-	    	ombro.localPosition = f_ombro_pos[i];
-	    	ombro.localEulerAngles = f_ombro_rot[i];
+		for (int i = 0; i < current_time.Count; i++) 
+		{	
+			ombro.localPosition = f_ombro_pos[i];
+			ombro.localEulerAngles = f_ombro_rot[i];
 
-	    	braco.localPosition = f_braco_pos[i];
-	    	braco.localEulerAngles = f_braco_rot[i];
+			braco.localPosition = f_braco_pos[i];
+			braco.localEulerAngles = f_braco_rot[i];
 
-	    	cotovelo.localPosition = f_cotovelo_pos[i];
-	    	cotovelo.localEulerAngles = f_cotovelo_rot[i];
+			cotovelo.localPosition = f_cotovelo_pos[i];
+			cotovelo.localEulerAngles = f_cotovelo_rot[i];
 
-	    	mao.localPosition = f_mao_pos[i];
-	    	mao.localEulerAngles = f_mao_rot[i];
+			mao.localPosition = f_mao_pos[i];
+			mao.localEulerAngles = f_mao_rot[i];
 
-	    	yield return new WaitForSeconds(0.02f);        
-	    } 
+			yield return new WaitForSeconds(0.02f);        
+		} 
 	}
 
 	public IEnumerator drawGraphic ()

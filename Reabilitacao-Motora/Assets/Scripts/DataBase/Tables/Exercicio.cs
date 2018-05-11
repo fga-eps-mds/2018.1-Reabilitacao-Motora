@@ -1,4 +1,4 @@
-using UnityEngine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Mono.Data.Sqlite;
@@ -96,7 +96,7 @@ namespace exercicio
 		/**
 		 * Classe com todos os atributos de um exercicio.
 		 */
-		public Exercicio(int ide, int idp, int idm, int ids, string de, string pe)
+		public Exercicio (int ide, int idp, int idm, int ids, string de, string pe)
 		{
 			this.idExercicio = ide;
 			this.idPaciente = idp;
@@ -106,6 +106,15 @@ namespace exercicio
 			this.pontosExercicio = pe;
 		}
 
+		public Exercicio (Object[] columns)
+		{
+			this.idExercicio = (int)columns[0];
+			this.idPaciente = (int)columns[1];
+			this.idMovimento = (int)columns[2];
+			this.idSessao = (int)columns[3];
+			this.descricaoExercicio = (string)columns[4];
+			this.pontosExercicio = (string)columns[5];
+		}
 		/**
 		 * Cria a relação para exercicios, contendo um id gerado automaticamente pelo banco como chave primária.
 		 */
@@ -373,6 +382,25 @@ namespace exercicio
 				banco.conn = null;
 				return exercise;
 			}
+		}
+
+		public static Exercicio ReadValue(int id, bool x)
+		{
+			DataBase banco = new DataBase();
+
+			int idExercicioTemp = 0;
+			int idPacienteTemp = 0;
+			int idMovimentoTemp = 0;
+			int idSessaoTemp = 0;
+			string descricaoExercicioTemp = "null";
+			string pontosExercicioTemp = "null";
+
+			Object[] columns = new Object[] {idExercicioTemp, idPacienteTemp, idMovimentoTemp, idSessaoTemp, descricaoExercicioTemp, pontosExercicioTemp};
+
+			Exercicio z = banco.ReadValue<Exercicio>(GlobalController.instance.path, TablesManager.Tables[tableId].tableName,
+				TablesManager.Tables[tableId].colName[0], id, columns);
+
+			return z;
 		}
 
 		/**

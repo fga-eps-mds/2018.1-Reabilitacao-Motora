@@ -1,5 +1,5 @@
-using UnityEngine;
 using System.Collections;
+using System;
 using System.Collections.Generic;
 using Mono.Data.Sqlite;
 using System.Data;
@@ -107,8 +107,17 @@ namespace pessoa
 			this.sexo = s;
 			this.dataNascimento = d;
 			this.telefone1 = t1;
-			this.telefone2 = t2;
-			
+			this.telefone2 = t2;	
+		}
+
+		public Pessoa (Object[] columns)
+		{
+			this.idPessoa = (int)columns[0];
+			this.nomePessoa = (string)columns[1];
+			this.sexo = (string)columns[2];
+			this.dataNascimento = (string)columns[3];
+			this.telefone1 = (string)columns[4];
+			this.telefone2 = (string)columns[5];	
 		}
 
 		/**
@@ -214,125 +223,37 @@ namespace pessoa
 		public static List<Pessoa> Read()
 		{
 			DataBase banco = new DataBase();
-			using (banco.conn = new SqliteConnection(GlobalController.instance.path))
-			{
-				banco.conn.Open();
-				banco.cmd = banco.conn.CreateCommand();
-				banco.sqlQuery = "SELECT * " + "FROM PESSOA";
-				banco.cmd.CommandText = banco.sqlQuery;
-				IDataReader reader = banco.cmd.ExecuteReader();
 
-				List<Pessoa> persons = new List<Pessoa>();
+			int idPessoaTemp = 0;
+			string nomePessoaTemp = "null";
+			string sexoTemp = "null";
+			string dataNascimentoTemp = "null";
+			string telefone1Temp = "null";
+			string telefone2Temp = "null";
 
-				while (reader.Read())
-				{
-					int idPessoaTemp = 0;
-					string nomePessoaTemp = "null";
-					string sexoTemp = "null";
-					string dataNascimentoTemp = "null";
-					string telefone1Temp = "null";
-					string telefone2Temp = "null";
+			Object[] columns = new Object[] {idPessoaTemp, nomePessoaTemp, sexoTemp, dataNascimentoTemp, telefone1Temp, telefone2Temp};
 
-					if (!reader.IsDBNull(0))
-					{
-						idPessoaTemp = reader.GetInt32(0);
-					}
-					if (!reader.IsDBNull(1))
-					{
-						nomePessoaTemp = reader.GetString(1);
-					}
-					if (!reader.IsDBNull(2))
-					{
-						sexoTemp = reader.GetString(2);
-					}
-					if (!reader.IsDBNull(3))
-					{
-						dataNascimentoTemp = reader.GetString(3);
-					}
-					if (!reader.IsDBNull(4))
-					{
-						telefone1Temp = reader.GetString(4);
-					}
-					if (!reader.IsDBNull(5))
-					{
-						telefone2Temp = reader.GetString(5);
-					}
+			List<Pessoa> z = banco.Read<Pessoa>(GlobalController.instance.path, TablesManager.Tables[tableId].tableName, columns);
 
-					Pessoa person = new Pessoa(idPessoaTemp, nomePessoaTemp, sexoTemp, dataNascimentoTemp, telefone1Temp, telefone2Temp);
-					persons.Add(person);
-				}
-
-				reader.Close();
-				reader = null;
-				banco.cmd.Dispose();
-				banco.cmd = null;
-				banco.conn.Close();
-				banco.conn = null;
-
-				return persons;
-			}
+			return z;		
 		}
 
-
-		public static Pessoa ReadValue (int id)
+		public static Pessoa ReadValue(int id)
 		{
 			DataBase banco = new DataBase();
-			using (banco.conn = new SqliteConnection(GlobalController.instance.path))
-			{
-				banco.conn.Open();
-				banco.cmd = banco.conn.CreateCommand();
-				banco.sqlQuery = "SELECT * " + string.Format("FROM \"{0}\" WHERE \"{1}\" = \"{2}\";", TablesManager.Tables[tableId].tableName, 
-					TablesManager.Tables[tableId].colName[0], 
-					id);
-				banco.cmd.CommandText = banco.sqlQuery;
-				IDataReader reader = banco.cmd.ExecuteReader();
+			
+			int idPessoaTemp = 0;
+			string nomePessoaTemp = "null";
+			string sexoTemp = "null";
+			string dataNascimentoTemp = "null";
+			string telefone1Temp = "null";
+			string telefone2Temp = "null";
 
-				reader.Read();
+			Object[] columns = new Object[] {idPessoaTemp, nomePessoaTemp, sexoTemp, dataNascimentoTemp, telefone1Temp, telefone2Temp};
 
-				Pessoa person = new Pessoa();
-
-				int idPessoaTemp = 0;
-				string nomePessoaTemp = "null";
-				string sexoTemp = "null";
-				string dataNascimentoTemp = "null";
-				string telefone1Temp = "null";
-				string telefone2Temp = "null";
-
-				if (!reader.IsDBNull(0))
-				{
-					idPessoaTemp = reader.GetInt32(0);
-				}
-				if (!reader.IsDBNull(1))
-				{
-					nomePessoaTemp = reader.GetString(1);
-				}
-				if (!reader.IsDBNull(2))
-				{
-					sexoTemp = reader.GetString(2);
-				}
-				if (!reader.IsDBNull(3))
-				{
-					dataNascimentoTemp = reader.GetString(3);
-				}
-				if (!reader.IsDBNull(4))
-				{
-					telefone1Temp = reader.GetString(4);
-				}
-				if (!reader.IsDBNull(5))
-				{
-					telefone2Temp = reader.GetString(5);
-				}
-				
-				person = new Pessoa(idPessoaTemp, nomePessoaTemp, sexoTemp, dataNascimentoTemp, telefone1Temp, telefone2Temp);
-
-				reader.Close();
-				reader = null;
-				banco.cmd.Dispose();
-				banco.cmd = null;
-				banco.conn.Close();
-				banco.conn = null;
-				return person;
-			}
+			Pessoa z = banco.ReadValue<Pessoa>(GlobalController.instance.path, TablesManager.Tables[tableId].tableName,
+				TablesManager.Tables[tableId].colName[0], id, columns);
+			return z;
 		}
 
 		/**
