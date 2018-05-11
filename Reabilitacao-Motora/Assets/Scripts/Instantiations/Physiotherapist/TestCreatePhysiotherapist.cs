@@ -52,17 +52,49 @@ namespace Tests
 			var objectButton = GameObject.Find("Canvas/PanelPhysiotherapist/SaveBt");
 			var button = objectButton.GetComponentInChildren<Button>();
 
-			physioManager.SetMemberValue("namePhysio.text", "fake_name");
-			physioManager.SetMemberValue("date.text", "01/01/1900");
-			physioManager.SetMemberValue("phone1.text", "61999999");
-			physioManager.SetMemberValue("phone2.text", "61999950");
-			physioManager.SetMemberValue("crefito.text", "123712");
-			physioManager.SetMemberValue("regiao.text", "df");
-			physioManager.SetMemberValue("login.text", "fake_login");
-			physioManager.SetMemberValue("pass.text", "fake_pass");
-			physioManager.SetMemberValue("confirmPass.text", "fake_pass");
-			physioManager.SetMemberValue("male.isOn", true);
-			physioManager.SetMemberValue("female.isOn", false);
+			InputField aux = (InputField)physioManager.GetMemberValue("namePhysio");
+			aux.text = "fake_name";
+			physioManager.SetMemberValue("namePhysio", aux);
+
+			InputField aux1 = (InputField)physioManager.GetMemberValue("date");
+			aux1.text = "01/01/1900";
+			physioManager.SetMemberValue("date", aux1);
+			
+			InputField aux3 = (InputField)physioManager.GetMemberValue("phone1");
+			aux3.text = "61999999";
+			physioManager.SetMemberValue("phone1", aux3);
+
+			InputField aux4 = (InputField)physioManager.GetMemberValue("phone2");
+			aux4.text = "61999950";
+			physioManager.SetMemberValue("phone2", aux4);
+
+			InputField aux5 = (InputField)physioManager.GetMemberValue("crefito");
+			aux5.text = "123712";
+			physioManager.SetMemberValue("crefito", aux5);
+
+			InputField aux6 = (InputField)physioManager.GetMemberValue("regiao");
+			aux6.text = "df";
+			physioManager.SetMemberValue("regiao", aux6);
+
+			InputField aux7 = (InputField)physioManager.GetMemberValue("login");
+			aux7.text = "fake_login";
+			physioManager.SetMemberValue("login", aux7);
+
+			InputField aux8 = (InputField)physioManager.GetMemberValue("pass");
+			aux8.text = "fake_pass";
+			physioManager.SetMemberValue("pass", aux8);
+
+			InputField aux9 = (InputField)physioManager.GetMemberValue("confirmPass");
+			aux9.text = "fake_pass";
+			physioManager.SetMemberValue("confirmPass", aux9);
+
+			Toggle aux2 = (Toggle)physioManager.GetMemberValue("male");
+			aux2.isOn = true;
+			physioManager.SetMemberValue("male", aux2);
+
+			Toggle aux0 = (Toggle)physioManager.GetMemberValue("female");
+			aux0.isOn = false;
+			physioManager.SetMemberValue("female", aux0);
 
 			button.OnPointerClick(new PointerEventData(EventSystem.current));
 
@@ -70,6 +102,8 @@ namespace Tests
 			int IdPessoa = GlobalController.instance.admin.persona.idPessoa;
 			Fisioterapeuta.DeleteValue(IdFisioterapeuta);
 			Pessoa.DeleteValue(IdPessoa);
+
+			yield return new WaitForSeconds(0.5f);
 
 			var currentscene = SceneManager.GetActiveScene().name;
 			var expectedscene = "Login";

@@ -35,6 +35,9 @@ public class createPhysiotherapist : MonoBehaviour
 			confirmPass.colors = cb;
 			pass.colors = cb;
 
+			print(namePhysio);
+			print(date);
+
 			var trip = date.text.Split('/');
 			var dateFormate = trip[2] + "/" + trip[1] + "/" + trip[0];
 			

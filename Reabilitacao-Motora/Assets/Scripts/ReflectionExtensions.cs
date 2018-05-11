@@ -5,15 +5,21 @@ public static class ReflectionExtensions
 		var memInf = GetMemberInfo(obj, memberName);
 
 		if (memInf == null)
-		throw new System.Exception("memberName");
+		{
+			throw new System.ArgumentNullException("memberName");
+		}
 
 		if (memInf is System.Reflection.PropertyInfo)
-		return memInf.As<System.Reflection.PropertyInfo>().GetValue(obj, null);
+		{
+			return memInf.As<System.Reflection.PropertyInfo>().GetValue(obj, null);
+		}
 
 		if (memInf is System.Reflection.FieldInfo)
-		return memInf.As<System.Reflection.FieldInfo>().GetValue(obj);
+		{
+			return memInf.As<System.Reflection.FieldInfo>().GetValue(obj);
+		}
 
-		throw new System.Exception();
+		throw new System.ArgumentNullException();
 	}
 
 	public static object SetMemberValue(this object obj, string memberName, object newValue)
@@ -22,16 +28,24 @@ public static class ReflectionExtensions
 
 
 		if (memInf == null)
-		throw new System.Exception("memberName");
+		{
+			throw new System.ArgumentNullException("memberName");
+		}
 
 		var oldValue = obj.GetMemberValue(memberName);
 
 		if (memInf is System.Reflection.PropertyInfo)
-		memInf.As<System.Reflection.PropertyInfo>().SetValue(obj, newValue, null);
+		{
+			memInf.As<System.Reflection.PropertyInfo>().SetValue(obj, newValue, null);
+		}
 		else if (memInf is System.Reflection.FieldInfo)
-		memInf.As<System.Reflection.FieldInfo>().SetValue(obj, newValue);
+		{
+			memInf.As<System.Reflection.FieldInfo>().SetValue(obj, newValue);
+		}
 		else
-		throw new System.Exception();
+		{
+			throw new System.ArgumentNullException();
+		}
 
 		return oldValue;
 	}
@@ -44,8 +58,11 @@ public static class ReflectionExtensions
 			System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance |
 			System.Reflection.BindingFlags.FlattenHierarchy));
 		prps = System.Linq.Enumerable.ToList(System.Linq.Enumerable.Where( prps,i => !ReferenceEquals(i, null)));
+
 		if (prps.Count != 0)
-		return prps[0];
+		{
+			return prps[0];
+		}
 
 		var flds = new System.Collections.Generic.List<System.Reflection.FieldInfo>();
 
@@ -56,7 +73,9 @@ public static class ReflectionExtensions
 		flds = System.Linq.Enumerable.ToList(System.Linq.Enumerable.Where(flds, i => !ReferenceEquals(i, null)));
 
 		if (flds.Count != 0)
-		return flds[0];
+		{
+			return flds[0];
+		}
 
 		return null;
 	}

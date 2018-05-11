@@ -23,7 +23,7 @@ public class GenerateLineChartRealTime : MonoBehaviour
 	private static readonly Color c1 = Color.black;
 	private static readonly Color c2 = Color.red;
 
-	List <Vector3> points2, xd;
+	List <Vector3> points2;
 
 	void Update () 
 	{
