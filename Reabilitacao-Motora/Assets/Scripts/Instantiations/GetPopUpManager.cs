@@ -9,7 +9,7 @@ public class GetPopUpManager : MonoBehaviour {
 	protected Button deleteButton;
 	
 	// Use this for initialization
-	void Start () 
+	public void Start () 
 	{
 		var popUpManager = GameObject.Find("PopUp Manager");
 		PopUpSpawner script = popUpManager.GetComponent(typeof(PopUpSpawner)) as PopUpSpawner;

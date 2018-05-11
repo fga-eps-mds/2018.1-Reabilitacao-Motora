@@ -19,7 +19,7 @@ public class GetMovementPoints : MonoBehaviour
 	/**
 	 * Descrever aqui o que esse método realiza.
 	 */
-	void ActivateCaption () 
+	public void ActivateCaption () 
 	{
 		t = true;
 	}
@@ -27,7 +27,7 @@ public class GetMovementPoints : MonoBehaviour
 	/**
 	 * Descrever aqui o que esse método realiza.
 	 */
-	void Update () 
+	public void Update () 
 	{
 		if (Input.GetKeyDown(KeyCode.Space)) 
 		{
@@ -35,7 +35,7 @@ public class GetMovementPoints : MonoBehaviour
 		}
 	}
 
-	void Awake ()
+	public void Awake ()
 	{
 		current_time_movement = 0;
 		t = false;
@@ -44,7 +44,7 @@ public class GetMovementPoints : MonoBehaviour
 	/**
 	 * Descrever aqui o que esse método realiza.
 	 */
-	void FixedUpdate () 
+	public void FixedUpdate () 
 	{
 		if (t) 
 		{

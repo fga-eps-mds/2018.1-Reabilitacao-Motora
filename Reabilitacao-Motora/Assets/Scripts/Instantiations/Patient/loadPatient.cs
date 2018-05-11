@@ -17,7 +17,7 @@ public class loadPatient : MonoBehaviour
 	[SerializeField]
 	protected Toggle male, female;
 
-	void Start()
+	public void Start()
 	{
 		if(GlobalController.instance != null &&
 		   GlobalController.instance.user != null)

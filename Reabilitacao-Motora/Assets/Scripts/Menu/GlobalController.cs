@@ -30,7 +30,7 @@ public class GlobalController : MonoBehaviour
 	private EventSystem system;
 	public string path;
 
-	void Awake () 
+	public void Awake () 
 	{
 		if (instance != null)
 		{
@@ -51,7 +51,7 @@ public class GlobalController : MonoBehaviour
 		}
 	}
 
-	void Initialize()
+	public void Initialize()
 	{
 		Pessoa.Create();
 		Fisioterapeuta.Create();
@@ -65,7 +65,7 @@ public class GlobalController : MonoBehaviour
 		PontosRotuloFisioterapeuta.Create();
 	}
 
-	void Start ()
+	public void Start ()
 	{
 		system = EventSystem.current;
 	}

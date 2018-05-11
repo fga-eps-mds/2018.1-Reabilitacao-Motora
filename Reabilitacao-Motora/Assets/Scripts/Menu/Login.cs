@@ -17,10 +17,17 @@ public class Login : MonoBehaviour
 	[SerializeField]
 	protected InputField login, pass;
 
+	[SerializeField]
+	protected Button nextPage;
+
+	public void Awake ()
+	{
+		nextPage.onClick.AddListener(delegate{Enter();});
+	}
 	/**
 	 * Salva o Fisioterapeuta no banco.
 	 */
-	public void Floww()
+	public void Enter()
 	{
 		Fisioterapeuta idcheck = CheckLoginPass();
 

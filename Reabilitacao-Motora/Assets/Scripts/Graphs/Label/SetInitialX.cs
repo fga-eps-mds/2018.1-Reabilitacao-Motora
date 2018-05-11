@@ -13,7 +13,7 @@ public class SetInitialX : MonoBehaviour
 	/**
 	 * Descrever aqui o que esse método realiza.
 	 */
-	void Update()
+	public void Update()
 	{
 		transform.localPosition = new Vector3 (prefab.InitialX, 3.75f, 0);
 	}

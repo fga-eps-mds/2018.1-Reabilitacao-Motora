@@ -14,7 +14,7 @@ public class loadSession : MonoBehaviour
 	[SerializeField]
 	protected InputField date, notes;
 	
-	void Start()
+	public void Start()
 	{
 		if(GlobalController.instance != null &&
 		   GlobalController.instance.session != null)

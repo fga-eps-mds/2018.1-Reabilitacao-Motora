@@ -13,7 +13,7 @@ public class SetFinalX : MonoBehaviour
 	/**
 	 * Descrever aqui o que esse método realiza.
 	 */
-	void Update()
+	public void Update()
 	{
 		transform.localPosition = new Vector3 (prefab.FinalX, 3.75f, 0);
 	}

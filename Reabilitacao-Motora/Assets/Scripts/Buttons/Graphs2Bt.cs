@@ -6,7 +6,7 @@ public class Graphs2Bt : MonoBehaviour
 	[SerializeField]
 	protected Button nextPage;
 
-	void Awake ()
+	public void Awake ()
 	{
 		nextPage.onClick.AddListener(delegate{Flow.StaticGraphs2();});
 	}
