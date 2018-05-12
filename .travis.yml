@@ -26,4 +26,3 @@ jobs:
       if: (NOT branch = development) AND (NOT branch = master)
       script:
         - ./Reabilitacao-Motora/Assets/Scripts/travis_build.sh
-        - ./Reabilitacao-Motora/Assets/Scripts/travis_deploy_master.sh

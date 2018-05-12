@@ -1,3 +1,4 @@
+#! /bin/sh
 /Applications/Unity/Unity.app/Contents/MacOS/Unity -batchmode -logFile /dev/stdout -runEditorTests -projectPath $(pwd) -testPlatform playmode -editorTestsResultFile test.xml
  rc0=$?
 
