@@ -30,6 +30,8 @@ Data|Versão|Descrição|Autor
 04/05|1.13.0|Modificação quanto a arquitetura sensor-aplicação| Djorkaeff Alexandre
 10/05|1.13.1|Adição de justificativa de uso de UDP na ponte sensor-Unity| Djorkaeff Alexandre
 11/05|1.13.2|Revisando tópicos relacionados aos protocolos TCP e UDP| Guilherme Siqueira
+12/05|1.13.3|Correção do Sumário| João Lucas
+
 # Sumário
 ----------------
  1. [Introdução](#1)
@@ -40,22 +42,25 @@ Data|Versão|Descrição|Autor
     * 1.5 [Visão Geral](#1_5)
  2. [Representação da Arquitetura](#2)
  3. [Metas e Restrições de Arquitetura](#3)
+    * 3.1 [Metas](#3_1)
+    * 3.2 [Restrições](#3_2)
  4. [Visão dos Casos de Uso](#4)
     * 4.1 [Diagrama de Casos de Uso](#4_1)
     * 4.2 [Atores de Casos de Uso](#4_2)
     * 4.3 [Descrições de Casos de Uso](#4_3)
  5. [Visão Lógica](#5)
-    * 5.1 [Pacotes de Design Significativos do Ponto de Vista da Arquitetura](#5_1)
-    * 5.1.1 [Classe](#5_1_1)
-    * 5.1.2 [Pacotes](#5_1_2)
- 6. [Visão de Dados](#6)
-    * 6.1 [MER](#6_1)
-    * 6.1.1 [Entidades](#6_1_1)
-    * 6.1.2 [Relacionamentos](#6_1_2)
-    * 6.2 [DER](#6_2)
-    * 6.3 [Diagrama Lógico](#6_3)
- 7. [Tamanho e Desempenho](#7)
- 8. [Qualidade](#8)
+    * 5.1 [Formato do datagrama UDP](#5_1)
+    * 5.2 [Justificativa para uso do UDP](#5_2)
+ 6. [Pacotes de design Significativos do Ponto de Vista da Arquitetura](#6)
+    * 6.1 [GameObjects e Componentes](#6_1)
+ 7. [Visão de Dados](#7)
+    * 6.1 [MER](#7_1)
+    * 6.1.1 [Entidades](#7_1_1)
+    * 6.1.2 [Relacionamentos](#7_1_2)
+    * 6.2 [DER](#7_2)
+    * 6.3 [Diagrama Lógico](#7_3)
+ 8. [Tamanho e Desempenho](#8)
+ 9. [Qualidade](#9)
 
 Documento de Arquitetura de Software
 ------------------------------------
@@ -82,6 +87,8 @@ Abreviação|Significado
 |**OUI**| Object Ubity Interface
 |**GO**| GameObject
 |**Adapter**| Adaptador
+|**UDP**| User Datagram Protocol - Protocolo de Datagramas do Usuário
+|**TCP**|Transmission Control Protocol - Protocolo de Controle de Transmissão
 
 ### 1.4 Referências
 <p align = "justify"> Este documento faz referência ao seguinte link e  documento.
@@ -142,7 +149,7 @@ A implementação do projeto será a linguagem de programação C# (C-Sharp).Ele
 <p align = "justify">Em visão lógica, o Diagrama Geral da Arquitetura demonstra como será o funcionamento do projeto. Inicialmente, através de um sensor, o usuário executará um movimento para que seja capturado e através de um adapter, que deve atender as exigências de acoplamento, envia ao programa em Unity 3D. O KINECT, diferente dos outros sensores, já possui integração feita de forma nativa no software, portanto não exige o uso do adapter. </p>
 <p align = "justify"> O Módulo de Processamento (pode ser considerado um plugin que realiza processamentos externos) é uma unidade de processamento, podendo ser escrita em qualquer linguagem de programação, que receberá dados do movimento e poderá utilizá-los para realizar cálculos não abordados pelo sistema. A sua comunicação com o software também é feita por meio de um adapter. </p>
 <p align = "justify">Para a conexão com diversos sensores será usado um adapter com a capacidade de receber informações específicas para a usabilidade da aplicação através de portas UDP. A escolha das portas UDP em relação as portas TCP foi motivada pelo fato de que utilizando o protocolo UDP a transferência é feita de forma mais rápida do que utilizando o protocolo TCP, pois o TCP garante que dados são entregues integralmente, sem erros (pois ele não só envia pacote de dados, como também recebe), ao custo de ser mais lento que o UDP.</p>
-<p align = "justify">O UDP (USER DATAGRAM PROTOCOL) provê um serviço sem conexão não confiável, usando IP para transportar mensagens entre duas máquinas. Este protocolo, igualmente o TCP, provê um mecanismo que o transmissor usa para distinguir entre múltiplos receptores numa mesma máquina.</p>
+<p align = "justify">O UDP provê um serviço sem conexão não confiável, usando IP para transportar mensagens entre duas máquinas. Este protocolo, igualmente o TCP, provê um mecanismo que o transmissor usa para distinguir entre múltiplos receptores numa mesma máquina.</p>
 
 ### 5.1 Formato do datagrama UDP
 <p align = "justify">
@@ -319,7 +326,7 @@ Um exercício gera n pontos nos eixos x e y.
 ![DER](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/development/docs/imagens/Arquitetura/der.png)
 **Figura 6**- Diagrama Entidade-Relacionamento</p>
 [Clique aqui para visualizar a imagem](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/development/docs/imagens/Arquitetura/der.png)
-### 6.3 Diagrama Lógico
+### 7.3 Diagrama Lógico
 ![LÓGICO](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/development/docs/imagens/Arquitetura/logico.png)
 **Figura 7**- Diagrama ME-R Lógico</p>
 [Clique aqui para visualizar a imagem](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/development/docs/imagens/Arquitetura/logico.png)
