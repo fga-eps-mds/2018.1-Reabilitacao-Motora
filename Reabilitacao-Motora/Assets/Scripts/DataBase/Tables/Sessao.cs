@@ -20,61 +20,61 @@ namespace sessao
 		private string ObservacaoSessao;
 
 		public int idSessao 
-		{ 
+		{
 			get 
-			{ 
+			{
 				return IdSessao; 
 			} 
 			set 
-			{ 
+			{
 				IdSessao = value; 
 			}
 		}
 
 		public int idFisioterapeuta 
-		{ 
+		{
 			get 
-			{ 
+			{
 				return IdFisioterapeuta; 
 			} 
 			set 
-			{ 
+			{
 				IdFisioterapeuta = value; 
 			}
 		}
 
 		public int idPaciente 
-		{ 
+		{
 			get 
-			{ 
+			{
 				return IdPaciente; 
 			} 
 			set 
-			{ 
+			{
 				IdPaciente = value; 
 			}
 		}
 
 		public string dataSessao 
-		{ 
+		{
 			get 
-			{ 
+			{
 				return DataSessao; 
 			} 
 			set 
-			{ 
+			{
 				DataSessao = value; 
 			}
 		}
 
 		public string observacaoSessao 
-		{ 
+		{
 			get 
-			{ 
+			{
 				return ObservacaoSessao; 
 			} 
 			set 
-			{ 
+			{
 				ObservacaoSessao = value; 
 			}
 		}
@@ -110,6 +110,7 @@ namespace sessao
 				banco.conn.Close();
 			}
 		}
+
 
 		/**
 		* Função que insere dados na tabela de sessão.
@@ -155,6 +156,54 @@ namespace sessao
 			}
 		}
 
+
+		/**
+		* Função que insere dados na tabela de sessão (sem observacao).
+		 */
+		public static void Insert(int idFisioterapeuta,
+			int idPaciente,
+			string dataSessao)
+		{
+			DataBase banco = new DataBase();
+			using (banco.conn = new SqliteConnection(GlobalController.instance.path))
+			{
+				banco.conn.Open();
+				banco.cmd = banco.conn.CreateCommand();
+				banco.sqlQuery = "insert into SESSAO (";
+
+				int tableSize = TablesManager.Tables[tableId].colName.Count;
+				const int INDEX_COL_OBSERVACAO = 4;
+
+				for (int i = 1; i < tableSize; ++i) 
+				{
+					if (i != INDEX_COL_OBSERVACAO)
+					{
+						string aux;
+
+						if (i + 2 == tableSize)
+						{
+							aux = ")";
+						}
+						else
+						{
+							aux = ",";
+						}
+
+						banco.sqlQuery += (TablesManager.Tables[tableId].colName[i] + aux);
+					}
+				}
+
+				banco.sqlQuery += string.Format(" values (\"{0}\",\"{1}\",\"{2}\")", idFisioterapeuta,
+					idPaciente,
+					dataSessao);
+				
+				banco.cmd.CommandText = banco.sqlQuery;
+				banco.cmd.ExecuteScalar();
+				banco.conn.Close();
+			}
+		}
+
+
 		/**
 		* Função que atualiza dados já cadastrados anteriormente na relação de sessão.
 		 */
@@ -171,7 +220,6 @@ namespace sessao
 				banco.cmd = banco.conn.CreateCommand();
 
 				banco.sqlQuery = string.Format("UPDATE \"{0}\" set ", TablesManager.Tables[tableId].tableName);
-
 				banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",", TablesManager.Tables[tableId].colName[1], idFisioterapeuta);
 				banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",", TablesManager.Tables[tableId].colName[2], idPaciente);
 				banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",", TablesManager.Tables[tableId].colName[3], dataSessao);

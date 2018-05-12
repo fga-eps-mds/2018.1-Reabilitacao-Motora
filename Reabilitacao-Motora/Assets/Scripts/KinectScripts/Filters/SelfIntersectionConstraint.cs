@@ -56,7 +56,6 @@ public class SelfIntersectionConstraint
             Vector3 hipCenter = (Vector3)skeleton.SkeletonPositions[hipCenterIndex];
             Vector3 hipShoulder = hipCenter - shoulderCenter;
             hipShoulder.Normalize();
-
             shoulderCenter = shoulderCenter - (hipShoulder * (ShoulderExtend * cylinderRadius));
             hipCenter = hipCenter + (hipShoulder * (HipExtend * cylinderRadius));
     
@@ -65,7 +64,8 @@ public class SelfIntersectionConstraint
    
             // joints to collide
             int[] collisionIndices = 
-			{ 
+			
+			{
 				(int)KinectWrapper.NuiSkeletonPositionIndex.WristLeft, 
 				(int)KinectWrapper.NuiSkeletonPositionIndex.HandLeft, 
 				(int)KinectWrapper.NuiSkeletonPositionIndex.WristRight, 
@@ -77,14 +77,12 @@ public class SelfIntersectionConstraint
                 Vector3 collisionJoint = (Vector3)skeleton.SkeletonPositions[j];
                 
                 Vector4 distanceNormal = KinectHelper.DistanceToLineSegment(shoulderCenter, hipCenter, collisionJoint);
-
                 Vector3 normal = new Vector3(distanceNormal.x, distanceNormal.y, distanceNormal.z);
 
                 // if distance is within the cylinder then push the joint out and away from the cylinder
                 if (distanceNormal.w < cylinderRadius)
                 {
                     collisionJoint += normal * ((cylinderRadius - distanceNormal.w) * CollisionTolerance);
-
                     skeleton.SkeletonPositions[j] = (Vector4)collisionJoint;
                 }
             }

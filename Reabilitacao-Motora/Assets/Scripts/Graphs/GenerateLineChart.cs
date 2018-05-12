@@ -37,7 +37,6 @@ public class GenerateLineChart : MonoBehaviour
 			float b = (float.Parse(pair[2]));
 			float c = (float.Parse(pair[3]));
 			f_mao_pos.Add(new Vector3 (a, b, c));
-			
 			a = (float.Parse(pair[4]));
 			b = (float.Parse(pair[5]));
 			c = (float.Parse(pair[6]));
@@ -47,7 +46,6 @@ public class GenerateLineChart : MonoBehaviour
 			b = (float.Parse(pair[8]));
 			c = (float.Parse(pair[9]));
 			f_cotovelo_pos.Add(new Vector3 (a, b, c));
-
 			a = (float.Parse(pair[10]));
 			b = (float.Parse(pair[11]));
 			c = (float.Parse(pair[12]));
@@ -57,7 +55,6 @@ public class GenerateLineChart : MonoBehaviour
 			b = (float.Parse(pair[14]));
 			c = (float.Parse(pair[15]));
 			f_ombro_pos.Add(new Vector3 (a, b, c));
-
 			a = (float.Parse(pair[16]));
 			b = (float.Parse(pair[17]));
 			c = (float.Parse(pair[18]));
@@ -67,7 +64,6 @@ public class GenerateLineChart : MonoBehaviour
 			b = (float.Parse(pair[20]));
 			c = (float.Parse(pair[21]));
 			f_braco_pos.Add(new Vector3 (a, b, c));
-
 			a = (float.Parse(pair[22]));
 			b = (float.Parse(pair[23]));
 			c = (float.Parse(pair[24]));
@@ -79,7 +75,6 @@ public class GenerateLineChart : MonoBehaviour
 			b = (float.Parse(pair[26]));
 			c = (float.Parse(pair[27]));
 			f_mao_local_pos.Add(new Vector3 (a, b, c));
-			
 			a = (float.Parse(pair[28]));
 			b = (float.Parse(pair[29]));
 			c = (float.Parse(pair[30]));
@@ -89,7 +84,6 @@ public class GenerateLineChart : MonoBehaviour
 			b = (float.Parse(pair[32]));
 			c = (float.Parse(pair[33]));
 			f_cotovelo_local_pos.Add(new Vector3 (a, b, c));
-
 			a = (float.Parse(pair[34]));
 			b = (float.Parse(pair[35]));
 			c = (float.Parse(pair[36]));
@@ -99,7 +93,6 @@ public class GenerateLineChart : MonoBehaviour
 			b = (float.Parse(pair[38]));
 			c = (float.Parse(pair[39]));
 			f_ombro_local_pos.Add(new Vector3 (a, b, c));
-
 			a = (float.Parse(pair[40]));
 			b = (float.Parse(pair[41]));
 			c = (float.Parse(pair[42]));
@@ -109,7 +102,6 @@ public class GenerateLineChart : MonoBehaviour
 			b = (float.Parse(pair[44]));
 			c = (float.Parse(pair[45]));
 			f_braco_local_pos.Add(new Vector3 (a, b, c));
-
 			a = (float.Parse(pair[46]));
 			b = (float.Parse(pair[47]));
 			c = (float.Parse(pair[48]));
@@ -132,7 +124,6 @@ public class GenerateLineChart : MonoBehaviour
 
 		float num = ux * vx + uy * vy;
 		float den = hypot(ux, uy) * hypot(vx, vy);
-
 		return (Mathf.Acos(num / den) * (180.0f / Mathf.PI));
 	}
 
@@ -159,7 +150,6 @@ public class GenerateLineChart : MonoBehaviour
 			point.localPosition = position;
 			point.localScale = scale;
 			point.SetParent (transform, false);
-
 			points2.Add (point.position);
 		}
 
@@ -215,12 +205,14 @@ public class GenerateLineChart : MonoBehaviour
 			Gradient gradient = new Gradient();
 			gradient.SetKeys(
 				new [] 
-				{ 
+				
+				{
 					new GradientColorKey(c1, 0.0f), 
 					new GradientColorKey(c2, 1.0f) 
 				},
 				new [] 
-				{ 
+				
+				{
 					new GradientAlphaKey(alpha, 0.0f), 
 					new GradientAlphaKey(alpha, 1.0f) 
 				}

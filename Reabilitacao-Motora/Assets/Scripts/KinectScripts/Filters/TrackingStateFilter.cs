@@ -46,7 +46,6 @@ public class TrackingStateFilter
     public void Init(float smoothingValue, float correctionValue, float predictionValue, float jitterRadiusValue, float maxDeviationRadiusValue)
     {
         this.smoothParameters = new KinectWrapper.NuiTransformSmoothParameters();
-
         this.smoothParameters.fSmoothing = smoothingValue;                   // How much soothing will occur.  Will lag when too high
         this.smoothParameters.fCorrection = correctionValue;                 // How much to correct back from prediction.  Can make things springy
         this.smoothParameters.fPrediction = predictionValue;                 // Amount of prediction into the future to use. Can over shoot when too high
@@ -87,7 +86,6 @@ public class TrackingStateFilter
 
         // Check for divide by zero. Use an epsilon of a 10th of a millimeter
         smoothParameters.fJitterRadius = Math.Max(0.0001f, smoothParameters.fJitterRadius);
-
 		int jointsCount = (int)KinectWrapper.NuiSkeletonPositionIndex.Count;
         for(int jointIndex = 0; jointIndex < jointsCount; jointIndex++)
         {
@@ -143,14 +141,12 @@ public class TrackingStateFilter
 
             // Now the double exponential smoothing filter
             filteredState = (filteredState * (1.0f - smoothingParameters.fSmoothing)) + ((prevFilteredState + prevTrend) * smoothingParameters.fSmoothing);
-
             diffVal = filteredState - prevFilteredState;
             trend = (diffVal * smoothingParameters.fCorrection) + (prevTrend * (1.0f - smoothingParameters.fCorrection));
         }      
 
         // Predict into the future to reduce latency
         float predictedState = filteredState + (trend * smoothingParameters.fPrediction);
-
         // Check that we are not too far away from raw data
         diffVal = predictedState - rawState;
 

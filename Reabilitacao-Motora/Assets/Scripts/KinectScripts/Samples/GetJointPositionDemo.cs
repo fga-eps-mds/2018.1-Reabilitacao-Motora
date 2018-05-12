@@ -54,7 +54,6 @@ public class GetJointPositionDemo : MonoBehaviour
 			if(manager.IsUserDetected())
 			{
 				uint userId = manager.GetPlayer1ID();
-
 				if(manager.IsJointTracked(userId, (int)joint))
 				{
 					// output the joint position for easy tracking

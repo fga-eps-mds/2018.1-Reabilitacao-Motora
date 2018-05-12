@@ -10,7 +10,7 @@ using System.Text;
 
 [RequireComponent(typeof(Animator))]
 public class AvatarController : MonoBehaviour
-{	
+	{
 	// Bool that has the characters (facing the player) actions become mirrored. Default false.
 	public bool mirroredMovement = false;
 	
@@ -66,7 +66,7 @@ public class AvatarController : MonoBehaviour
 	}
 	
 	public void Awake()
-    {	
+	{
 		// check for double start
 		if(bones != null)
 			return;
@@ -80,14 +80,13 @@ public class AvatarController : MonoBehaviour
 
 		// Map bones to the points the Kinect tracks
 		MapBones();
-
 		// Get initial bone rotations
 		GetInitialRotations();
 	}
 	
 	// Update the avatar each frame.
     public void UpdateAvatar(uint UserID)
-    {	
+	{
 		if(!transform.gameObject.activeInHierarchy) 
 			return;
 		
@@ -99,7 +98,6 @@ public class AvatarController : MonoBehaviour
 		
 		// move the avatar to its Kinect position
 		MoveAvatar(UserID);
-
 		for (var boneIndex = 0; boneIndex < bones.Length; boneIndex++)
 		{
 			if (!bones[boneIndex]) 
@@ -126,7 +124,7 @@ public class AvatarController : MonoBehaviour
 	
 	// Set bones to their initial positions and rotations
 	public void ResetToInitialPosition()
-	{	
+		{
 		if(bones == null)
 			return;
 		
@@ -198,7 +196,6 @@ public class AvatarController : MonoBehaviour
 		
 		// Smoothly transition to the new rotation
 		Quaternion newRotation = Kinect2AvatarRot(jointRotation, boneIndex);
-		
 		if(smoothFactor != 0f)
         	boneTransform.rotation = Quaternion.Slerp(boneTransform.rotation, newRotation, smoothFactor * Time.deltaTime);
 		else
@@ -234,7 +231,6 @@ public class AvatarController : MonoBehaviour
 		{
 			// Smoothly transition to the new rotation
 			Quaternion newRotation = Kinect2AvatarRot(jointRotation, boneIndex);
-			
 			if(smoothFactor != 0f)
 				boneTransform.rotation = Quaternion.Slerp(boneTransform.rotation, newRotation, smoothFactor * Time.deltaTime);
 			else
@@ -254,7 +250,6 @@ public class AvatarController : MonoBehaviour
 		
         // Get the position of the body and store it.
 		Vector3 trans = kinectManager.GetUserPosition(UserID);
-		
 		// If this is the first time we're moving the avatar, set the offset. Otherwise ignore it.
 		if (!offsetCalibrated)
 		{
@@ -285,7 +280,6 @@ public class AvatarController : MonoBehaviour
 	
 		// Smoothly transition to the new position
 		Vector3 targetPos = Kinect2AvatarPos(trans, verticalMovement);
-
 		if(smoothFactor != 0f)
 			bodyRoot.localPosition = Vector3.Lerp(bodyRoot.localPosition, targetPos, smoothFactor * Time.deltaTime);
 		else
@@ -310,7 +304,6 @@ public class AvatarController : MonoBehaviour
 		
 		// get bone transforms from the animator component
 		var animatorComponent = GetComponent<Animator>();
-		
 		for (int boneIndex = 0; boneIndex < bones.Length; boneIndex++)
 		{
 			if (!boneIndex2MecanimMap.ContainsKey(boneIndex)) 
@@ -396,7 +389,6 @@ public class AvatarController : MonoBehaviour
 		
 		// If we are tracking vertical movement, update the y. Otherwise leave it alone.
 		Vector3 avatarJointPos = new Vector3(xPos, bMoveVertically ? yPos : 0f, zPos);
-		
 		return avatarJointPos;
 	}
 	

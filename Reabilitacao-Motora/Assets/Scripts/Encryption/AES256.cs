@@ -31,7 +31,6 @@ namespace aes256
 		{
 
 			AesCryptoServiceProvider crypt_provider = new AesCryptoServiceProvider();
-
 			crypt_provider.BlockSize = 128;
 			crypt_provider.KeySize = 256;
 			crypt_provider.IV = dx;
@@ -40,11 +39,9 @@ namespace aes256
 			crypt_provider.Padding = PaddingMode.PKCS7;
 
 			ICryptoTransform transform = crypt_provider.CreateEncryptor();
-
 			byte[] encrypted_bytes = transform.TransformFinalBlock(Encoding.Unicode.GetBytes(text), 0, text.Length);
 
 			string str = Convert.ToBase64String(encrypted_bytes);
-
 			return str;
 		}
 	}

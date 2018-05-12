@@ -8,33 +8,23 @@ using UnityEngine;
 
 public class PopUpSpawner : MonoBehaviour
 {
-
-    private GameObject popUpPrefab;
-    public GameObject PopUpPrefab
-    {
-        get
-        {
-            return popUpPrefab;
-        }
-        set
-        {
-            popUpPrefab = value;
-        }
-    } 
+	public GameObject PopUpPrefab;
+	public GameObject Canvas;
+	
+	/**
+	 * Deixa a instancia do Prefab do popUp ativa.
+	 */
+	public void Spawner()
+	{
+		PopUpPrefab.transform.SetSiblingIndex(Canvas.transform.childCount - 1);
+		PopUpPrefab.SetActive(true);
+	}
 
 	/**
- 	 * Deixa a instancia do Prefab do popUp ativa.
- 	 */
-    public void Spawner()
-    {
-        PopUpPrefab.SetActive(true);
-    }
-
-	/**
- 	 * Deixa a instancia do Prefab do popUp desativada.
- 	 */
-    public void Eraser()
-    {
-        PopUpPrefab.SetActive(false);
-    }
+	 * Deixa a instancia do Prefab do popUp desativada.
+	 */
+	public void Eraser()
+	{
+		PopUpPrefab.SetActive(false);
+	}
 }

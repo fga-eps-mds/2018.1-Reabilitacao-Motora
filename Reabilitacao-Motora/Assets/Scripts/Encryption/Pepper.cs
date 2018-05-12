@@ -71,13 +71,14 @@ namespace pepper
 		 * Exemplos:
 		 * 5: 5 + '0' = 5 + 48 = +53+
 		 * b:
-		 *   index(b) = 37
-		 *   37 + 61 = +98+
+		 *	 index(b) = 37
+		 *	 37 + 61 = +98+
 		 * R:
-		 *   index(R) = 27
-		 *   27 + 55 = +82+
+		 *	 index(R) = 27
+		 *	 27 + 55 = +82+
 		 */
 		private static string ConvertIndex (int index) 
+		
 		{
 			int asciiDecimal;
 			char digit;

@@ -9,8 +9,8 @@ public class Flow : MonoBehaviour
 {
 
 	/**
- 	 * Finaliza o programa ao clicar em sair.
- 	 */
+	 * Finaliza o programa ao clicar em sair.
+	 */
 	public static void StaticQuit()
 	{
 		#if UNITY_EDITOR
@@ -25,37 +25,38 @@ public class Flow : MonoBehaviour
 		StaticQuit();
 	}
 
+
 	/**
- 	 * Leva para scene de gravar um movimento.
- 	 */
-	public static void StaticCreateMove()
+	 * Leva para scene de gravar um movimento.
+	 */
+	public static void StaticNewMovement()
 	{
 		SceneManager.LoadScene("NewMovement");
 	}
 
-	public void CreateMove()
+	public void NewMovement()
 	{
-		StaticCreateMove();
+		StaticNewMovement();
 	}
 
 
 	/**
- 	 * Leva para scene de gravar um movimento.
- 	 */
-	public static void StaticRecordMove()
+	 * Leva para scene de gravar um movimento.
+	 */
+	public static void StaticClinic()
 	{
 		SceneManager.LoadScene("Clinic");
 	}
 
-	public void RecordMove()
+	public void Clinic()
 	{
-		StaticRecordMove();
+		StaticClinic();
 	}
 
 
 	/**
- 	 * Leva para scene de detalhe de paciente.
- 	 */
+	 * Leva para scene de detalhe de paciente.
+	 */
 	public static void StaticPatient()
 	{
 		SceneManager.LoadScene("Patient");
@@ -66,22 +67,10 @@ public class Flow : MonoBehaviour
 		StaticPatient();
 	}
 
-	/**
- 	 * Leva para scene de lista de pacientes.
- 	 */
-	public static void StaticPatients()
-	{
-		SceneManager.LoadScene("Patients");
-	}
-
-	public void Patients()
-	{
-		StaticPatients();
-	}
 
 	/**
- 	 * Leva para scene de tela de login.
- 	 */
+	 * Leva para scene de tela de login.
+	 */
 	public static void StaticLogin()
 	{
 		SceneManager.LoadScene("Login");
@@ -92,10 +81,10 @@ public class Flow : MonoBehaviour
 		StaticLogin();
 	}
 
-    /**
- 	 * Leva para scene de lista de movimentos.
- 	 */
-    public static void StaticMovements()
+	/**
+	 * Leva para scene de lista de movimentos.
+	 */
+	public static void StaticMovements()
 	{
 		SceneManager.LoadScene("Movements");
 		SceneManager.LoadScene ("ClinicToMoveMenu", LoadSceneMode.Additive);
@@ -107,8 +96,8 @@ public class Flow : MonoBehaviour
 	}
 
 	/**
- 	 * Leva para scene de registrar novo paciente.
- 	 */
+	 * Leva para scene de registrar novo paciente.
+	 */
 	public static void StaticNewPatient()
 	{
 		SceneManager.LoadScene("NewPatient");
@@ -120,8 +109,8 @@ public class Flow : MonoBehaviour
 	}
 
 	/**
- 	 * Leva para scene de registrar novo paciente.
- 	 */
+	 * Leva para scene de registrar novo paciente.
+	 */
 	public static void StaticUpdatePatient()
 	{
 		SceneManager.LoadScene("UpdatePatient");
@@ -133,8 +122,8 @@ public class Flow : MonoBehaviour
 	}
 
 	/**
- 	 * Leva para scene de detalhes de sessão.
- 	 */
+	 * Leva para scene de detalhes de sessão.
+	 */
 	public static void StaticSession()
 	{
 		SceneManager.LoadScene("Session");
@@ -146,8 +135,8 @@ public class Flow : MonoBehaviour
 	}
 
 	/**
- 	 * Leva para scene de lista de sessões.
- 	 */
+	 * Leva para scene de lista de sessões.
+	 */
 	public static void StaticSessions()
 	{
 		SceneManager.LoadScene("Sessions");
@@ -159,8 +148,8 @@ public class Flow : MonoBehaviour
 	}
 
 	/**
- 	 * Leva para scene de função não implementada.
- 	 */
+	 * Leva para scene de função não implementada.
+	 */
 	public static void StaticNotImplemented()
 	{
 		SceneManager.LoadScene("NotImplemented");
@@ -172,60 +161,48 @@ public class Flow : MonoBehaviour
 	}
 
 	/**
- 	 * Leva para scene de gráficos.
- 	 */
-	public static void StaticGraphs()
+	 * Leva para scene de gráficos.
+	 */
+	public static void StaticGraphs2()
 	{
 		SceneManager.LoadScene("Graphs2");
 	}
 
-	public void Graphs()
+	public void Graphs2()
 	{
-		StaticGraphs();
+		StaticGraphs2();
 	}
 
-    /**
- 	 * Leva para scene de gráficos.
- 	 */
-	public static void StaticRealTimeGraphs()
+	/**
+	 * Leva para scene de gráficos.
+	 */
+	public static void StaticRealtimeGraph()
 	{
 		SceneManager.LoadScene("RealtimeGraph");
 	}
 
-	public void RealTimeGraphs()
+	public void RealtimeGraph()
 	{
-		StaticRealTimeGraphs();
+		StaticRealtimeGraph();
 	}
 
 	/**
- 	 * Volta para o menu.
- 	 */
-	public static void StaticBackToMenu()
+	 * Volta para o menu.
+	 */
+	public static void StaticMenu()
 	{
 		SceneManager.LoadScene("Menu");
 	}
 
-	public void BackToMenu()
+	public void Menu()
 	{
-		StaticBackToMenu();
+		StaticMenu();
 	}
+
 
 	/**
- 	 * Volta para o menu inicial.
- 	 */
-	public static void StaticBackToHomeMenu()
-	{
-		SceneManager.LoadScene("Login");
-	}
-
-	public void BackToHomeMenu()
-	{
-		StaticBackToHomeMenu();
-	}
-
-	/**
- 	 * Leva para a scene de novo fisioterapeuta.
- 	 */
+	 * Leva para a scene de novo fisioterapeuta.
+	 */
 	public static void StaticNewPhysiotherapist()
 	{
 		SceneManager.LoadScene("NewPhysiotherapist");
@@ -236,12 +213,87 @@ public class Flow : MonoBehaviour
 		StaticNewPhysiotherapist();
 	}
 
+
 	/**
- 	 * Leva para a scene sucess register.
- 	 */
-	public static void StaticSuccessRegister()
+	 * Leva para a scene de nova sessao.
+	 */
+	public static void StaticNewSession()
 	{
-		SceneManager.LoadScene("SuccessRegister");
+		SceneManager.LoadScene("NewSession");
 	}
 
+	public void NewSession()
+	{
+		StaticNewSession();
+	}
+
+
+	/**
+	 * Leva para a scene que lista os movimentos passíveis de serem reproduzidos num exercício.
+	 */
+	public static void StaticMovementsToExercise()
+	{
+		SceneManager.LoadScene("MovementsToExercise");
+	}
+
+	public void MovementsToExercise()
+	{
+		StaticMovementsToExercise();
+	}
+
+
+	/**
+	 * Leva para a scene que lista os movimentos passíveis de serem reproduzidos num exercício.
+	 */
+	public static void StaticEndSession()
+	{
+		SceneManager.LoadScene("EndSession");
+	}
+
+	public void EndSession()
+	{
+		StaticEndSession();
+	}
+
+
+	/**
+	 * Leva para a scene que lista os movimentos passíveis de serem reproduzidos num exercício.
+	 */
+	public static void StaticMovementsToReview()
+	{
+		SceneManager.LoadScene("MovementsToReview");
+	}
+
+	public void MovementsToReview()
+	{
+		StaticMovementsToReview();
+	}
+
+
+	/**
+	 * Leva para a scene que lista os movimentos passíveis de serem reproduzidos num exercício.
+	 */
+	public static void StaticExercisesToReview()
+	{
+		SceneManager.LoadScene("ExercisesToReview");
+	}
+
+	public void ExercisesToReview()
+	{
+		StaticExercisesToReview();
+	}
+
+
+	/**
+	 * Leva para a scene que lista os movimentos passíveis de serem reproduzidos num exercício.
+	 */
+	public static void StaticGraphs1()
+	{
+		SceneManager.LoadScene("Graphs1");
+	}
+
+	public void Graphs1()
+	{
+		StaticGraphs1();
+	}
 }

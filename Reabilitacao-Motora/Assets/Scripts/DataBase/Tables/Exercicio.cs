@@ -21,73 +21,73 @@ namespace exercicio
 		private string PontosExercicio;
 
 		public int idExercicio 
-		{ 
+		{
 			get 
-			{ 
+			{
 				return IdExercicio; 
 			} 
 			set 
-			{ 
+			{
 				IdExercicio = value; 
 			}
 		}
 
 		public int idPaciente 
-		{ 
+		{
 			get 
-			{ 
+			{
 				return IdPaciente; 
 			} 
 			set 
-			{ 
+			{
 				IdPaciente = value; 
 			}
 		}
 
 		public int idMovimento 
-		{ 
+		{
 			get 
-			{ 
+			{
 				return IdMovimento; 
 			} 
 			set 
-			{ 
+			{
 				IdMovimento = value; 
 			}
 		}
 
 		public int idSessao 
-		{ 
+		{
 			get 
-			{ 
+			{
 				return IdSessao; 
 			} 
 			set 
-			{ 
+			{
 				IdSessao = value; 
 			}
 		}
 
 		public string descricaoExercicio 
-		{ 
+		{
 			get 
-			{ 
+			{
 				return DescricaoExercicio; 
 			} 
 			set 
-			{ 
+			{
 				DescricaoExercicio = value; 
 			}
 		}
 
 		public string pontosExercicio 
-		{ 
+		{
 			get 
-			{ 
+			{
 				return PontosExercicio; 
 			} 
 			set 
-			{ 
+			{
 				PontosExercicio = value; 
 			}
 		}
@@ -143,7 +143,7 @@ namespace exercicio
 
 				int tableSize = TablesManager.Tables[tableId].colName.Count;
 
-				for (int i = 0; i < tableSize; ++i)
+				for (int i = 1; i < tableSize; ++i)
 				{
 					string aux;
 
@@ -171,6 +171,56 @@ namespace exercicio
 			}
 		}
 
+
+		/**
+		 * Função que insere dados na tabela de exercicios (sem a descrição).
+		 */
+		public static void Insert(int idPaciente,
+			int idMovimento,
+			int idSessao,
+			string pontosExercicio)
+		{
+			DataBase banco = new DataBase();
+			using (banco.conn = new SqliteConnection(GlobalController.instance.path))
+			{
+				banco.conn.Open();
+				banco.cmd = banco.conn.CreateCommand();
+				banco.sqlQuery = "insert into EXERCICIO (";
+
+				int tableSize = TablesManager.Tables[tableId].colName.Count;
+				const int INDEX_COL_DESCRICAO = 4;
+
+				for (int i = 1; i < tableSize; ++i)
+				{
+					if (i != INDEX_COL_DESCRICAO)
+					{
+						string aux;
+
+						if (i + 1 == tableSize)
+						{
+							aux = ")";
+						}
+						else
+						{
+							aux = ",";
+						}
+						
+						banco.sqlQuery += (TablesManager.Tables[tableId].colName[i] + aux);
+					}
+				}
+
+				banco.sqlQuery += string.Format(" values (\"{0}\",\"{1}\",\"{2}\",\"{3}\")", idPaciente,
+					idMovimento,
+					idSessao,
+					pontosExercicio);
+
+				banco.cmd.CommandText = banco.sqlQuery;
+				banco.cmd.ExecuteScalar();
+				banco.conn.Close();
+			}
+		}
+
+
 		/**
 		 * Função que atualiza dados já cadastrados anteriormente na relação de exercicios.
 		 */
@@ -188,7 +238,6 @@ namespace exercicio
 				banco.cmd = banco.conn.CreateCommand();
 
 				banco.sqlQuery = string.Format("UPDATE \"{0}\" set ", TablesManager.Tables[tableId].tableName);
-
 				banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",", TablesManager.Tables[tableId].colName[1], idPaciente);
 				banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",", TablesManager.Tables[tableId].colName[2], idMovimento);
 				banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",", TablesManager.Tables[tableId].colName[3], idSessao);

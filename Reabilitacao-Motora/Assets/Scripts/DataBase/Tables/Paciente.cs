@@ -20,49 +20,49 @@ namespace paciente
 		private Pessoa Persona;
 
 		public int idPaciente 
-		{ 
+		{
 			get 
-			{ 
+			{
 				return IdPaciente; 
 			} 
 			set 
-			{ 
+			{
 				IdPaciente = value; 
 			}
 		}
 
 		public int idPessoa 
-		{ 
+		{
 			get 
-			{ 
+			{
 				return IdPessoa; 
 			} 
 			set 
-			{ 
+			{
 				IdPessoa = value; 
 			}
 		}
 
 		public string observacoes 
-		{ 
+		{
 			get 
-			{ 
+			{
 				return Observacoes; 
 			} 
 			set 
-			{ 
+			{
 				Observacoes = value; 
 			}
 		}
 
 		public Pessoa persona 
-		{ 
+		{
 			get 
-			{ 
+			{
 				return Persona; 
 			} 
 			set 
-			{ 
+			{
 				Persona = value; 
 			}
 		} 
@@ -152,7 +152,6 @@ namespace paciente
 				banco.cmd = banco.conn.CreateCommand();
 
 				banco.sqlQuery = string.Format("UPDATE \"{0}\" set ", TablesManager.Tables[tableId].tableName);
-
 				banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",", TablesManager.Tables[tableId].colName[1], idPessoa);
 				banco.sqlQuery += string.Format("\"{0}\"=\"{1}\" ", TablesManager.Tables[tableId].colName[2], observacoes);
 

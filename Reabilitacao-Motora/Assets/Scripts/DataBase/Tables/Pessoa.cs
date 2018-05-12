@@ -22,73 +22,73 @@ namespace pessoa
 		private string Telefone2;
 
 		public int idPessoa 
-		{ 
+		{
 			get 
-			{ 
+			{
 				return IdPessoa; 
 			}
 			set 
-			{ 
+			{
 				IdPessoa = value; 
 			}
 		}
 
 		public string nomePessoa 
-		{ 
+		{
 			get 
-			{ 
+			{
 				return NomePessoa; 
 			}
 			set 
-			{ 
+			{
 				NomePessoa = value; 
 			}
 		}
 
 		public string sexo 
-		{ 
+		{
 			get 
-			{ 
+			{
 				return Sexo; 
 			}
 			set 
-			{ 
+			{
 				Sexo = value; 
 			}
 		}
 
 		public string dataNascimento 
-		{ 
+		{
 			get 
-			{ 
+			{
 				return DataNascimento; 
 			}
 			set 
-			{ 
+			{
 				DataNascimento = value; 
 			}
 		}
 
 		public string telefone1 
-		{ 
+		{
 			get 
-			{ 
+			{
 				return Telefone1; 
 			}
 			set 
-			{ 
+			{
 				Telefone1 = value; 
 			}
 		}
 
 		public string telefone2 
-		{ 
+		{
 			get 
-			{ 
+			{
 				return Telefone2; 
 			}
 			set 
-			{ 
+			{
 				Telefone2 = value; 
 			}
 		}
@@ -194,7 +194,6 @@ namespace pessoa
 				banco.cmd = banco.conn.CreateCommand();
 
 				banco.sqlQuery = string.Format("UPDATE \"{0}\" set ", TablesManager.Tables[tableId].tableName);
-
 				banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",", TablesManager.Tables[tableId].colName[1], nomePessoa);
 				banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",", TablesManager.Tables[tableId].colName[2], sexo);
 				banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",", TablesManager.Tables[tableId].colName[3], dataNascimento);

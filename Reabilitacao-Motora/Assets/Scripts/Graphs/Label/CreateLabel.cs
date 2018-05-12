@@ -33,19 +33,16 @@ public class CreateLabel : MonoBehaviour
 		GUI.Box(new Rect (3 * (Screen.width/5), 7.4f * (Screen.height/9), Screen.width/4, 60),""); 
 
 		GUILayout.BeginArea(new Rect(3 * (Screen.width/5), 7.5f * (Screen.height/9), Screen.width/4, 50));
-
 			GUILayout.BeginHorizontal();
 				nameLabel = GUILayout.TextField(nameLabel, GUILayout.Width(120));
 				initialX = GUILayout.TextField(initialX, GUILayout.Width(90));
 				finalX = GUILayout.TextField(finalX, GUILayout.Width(90));
 			GUILayout.EndHorizontal();
 
-
 			if (GUILayout.Button("Apply to Chart")) 
 			{
 				string label = nameLabel;
 				Vector2 val = new Vector2 (float.Parse(initialX), float.Parse(finalX));
-				
 				displayGraph (label, val);
 			}
 
