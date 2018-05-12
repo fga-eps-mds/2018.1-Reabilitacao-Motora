@@ -51,7 +51,7 @@ public class GlobalController : MonoBehaviour
 		}
 	}
 
-	public void Initialize()
+	private static void Initialize()
 	{
 		Pessoa.Create();
 		Fisioterapeuta.Create();

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.UI;
 using paciente;
 using sessao;
 using pessoa;
@@ -10,8 +11,15 @@ using pontosrotulopaciente;
 
 public class DeletePatientButton : MonoBehaviour 
 {
+	[SerializeField]
+	protected Button nextPage;
 
-	public void DeletePatient ()
+	public void Awake ()
+	{
+		nextPage.onClick.AddListener(delegate{DeletePatient();});
+	}
+
+	public static void DeletePatient ()
 	{
 		int IdPaciente = GlobalController.instance.user.idPaciente;
 		int IdPessoa = GlobalController.instance.user.persona.idPessoa;

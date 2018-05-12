@@ -86,6 +86,7 @@ GameObject:
   - component: {fileID: 222715029476645614}
   - component: {fileID: 114745757120852056}
   - component: {fileID: 114117393764418356}
+  - component: {fileID: 114355782284018826}
   m_Layer: 5
   m_Name: Session
   m_TagString: Untagged
@@ -175,17 +176,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 114176463477355778}
-        m_MethodName: Session
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114176463477355778
@@ -210,6 +200,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef07cbf59c30dcc4ea36923ee4859cdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114355782284018826
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1802271621094200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db31dde83cd91254986292478688e103, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextPage: {fileID: 114117393764418356}
 --- !u!114 &114524192172081080
 MonoBehaviour:
   m_ObjectHideFlags: 1

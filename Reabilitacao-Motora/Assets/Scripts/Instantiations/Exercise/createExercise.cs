@@ -12,10 +12,17 @@ using exercicio;
  */
 public class createExercise : MonoBehaviour 
 {
+	[SerializeField]
+	protected Button nextPage;
+
+	public void Awake ()
+	{
+		nextPage.onClick.AddListener(delegate{CreateExercise();});
+	}
 	/**
 	 * Salva o paciente no banco.
 	 */
-	public void CreateExercise()
+	public static void CreateExercise()
 	{
 		string patientUnderscored = (GlobalController.instance.user.persona.nomePessoa).Replace(' ', '_');
 

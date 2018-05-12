@@ -10,7 +10,7 @@ using pontosrotulopaciente;
 public class DeletePhysiotherapistButton : MonoBehaviour
 {
 
-	public void DeletePhysiotherapist ()
+	public static void DeletePhysiotherapist ()
 	{
 		int IdPaciente = GlobalController.instance.user.idPaciente;
 

@@ -14,10 +14,17 @@ using sessao;
  */
 public class createSession : MonoBehaviour 
 {
+	[SerializeField]
+	protected Button nextPage;
+
+	public void Awake ()
+	{
+		nextPage.onClick.AddListener(delegate{CreateSessao();});
+	}
 	/**
 	 * Salva o paciente no banco.
 	 */
-	public void CreateSessao()
+	public static void CreateSessao()
 	{
 
 		string date = DateTime.Now.ToString("yyyy-MM-dd-HH-mm", System.Globalization.DateTimeFormatInfo.InvariantInfo);
