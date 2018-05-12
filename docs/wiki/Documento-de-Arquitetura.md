@@ -148,19 +148,26 @@ A implementação do projeto será a linguagem de programação C# (C-Sharp).Ele
 
 <p align = "justify">Em visão lógica, o Diagrama Geral da Arquitetura demonstra como será o funcionamento do projeto. Inicialmente, através de um sensor, o usuário executará um movimento para que seja capturado e através de um adapter, que deve atender as exigências de acoplamento, envia ao programa em Unity 3D. O KINECT, diferente dos outros sensores, já possui integração feita de forma nativa no software, portanto não exige o uso do adapter. </p>
 <p align = "justify"> O Módulo de Processamento (pode ser considerado um plugin que realiza processamentos externos) é uma unidade de processamento, podendo ser escrita em qualquer linguagem de programação, que receberá dados do movimento e poderá utilizá-los para realizar cálculos não abordados pelo sistema. A sua comunicação com o software também é feita por meio de um adapter. </p>
-<p align = "justify">Para a conexão com diversos sensores será usado um adapter com a capacidade de receber informações específicas para a usabilidade da aplicação através de portas UDP. A escolha das portas UDP em relação as portas TCP foi motivada pelo fato de que utilizando o protocolo UDP a transferência é feita de forma mais rápida do que utilizando o protocolo TCP, pois o TCP garante que dados são entregues integralmente, sem erros (pois ele não só envia pacote de dados, como também recebe), ao custo de ser mais lento que o UDP.</p>
+<p align = "justify">Para a conexão com diversos sensores será usado um adapter com a capacidade de receber informações específicas para a usabilidade da aplicação através de portas UDP. A escolha das portas UDP em relação as portas TCP para uso no adapter entre o sensor-unity foi motivada pelo fato de que utilizando o protocolo UDP a transferência é feita de forma mais rápida do que utilizando o protocolo TCP, pois o TCP garante que dados são entregues integralmente, sem erros (pois ele não só envia pacote de dados, como também recebe), ao custo de ser mais lento que o UDP.</p>
 <p align = "justify">O UDP provê um serviço sem conexão não confiável, usando IP para transportar mensagens entre duas máquinas. Este protocolo, igualmente o TCP, provê um mecanismo que o transmissor usa para distinguir entre múltiplos receptores numa mesma máquina.</p>
+
+<p align="center">
+  <img src="https://i.imgur.com/vs8OLhl.png" alt="test" />
+</p>
 
 ### 5.1 Formato do datagrama UDP
 <p align = "justify">
 Cada datagrama UDP é formado por um cabeçalho UDP e uma área de dados. O formato do cabeçalho UDP está dividido em quatro campos de 16 bits. Definições dos campos: <br />Source and Destination Ports: estes campos contêm os números de portas fonte e destino do protocolo UDP. A porta fonte é opcional, quando é usada ela especifica a porta a qual uma resposta poderia ser enviada, se não é usada contém zeros. <br />Length: contém um contador de bytes no datagrama UDP. O valor mínimo é oito, sendo este só o comprimento do cabeçalho.<br /> Checksum: Este campo é opcional. Um valor de zero indica que o checksum não é computado.
 </p>
 
-### 5.2 Justificativa para uso do UDP
+### 5.2 Justificativa para uso do UDP no adapter sensor-unity
 <p align = "justify">
 O protocolo de transferência de dados UDP será utilizado no adapter que fará o contato entre o sensor e o Unity para que os dados transferidos do sensor para o sistema não tenham atrasos e a leitura seja mais veloz, com mais pontos recebidos o gráfico do movimento poderá ser feito de forma mais sucinta.<br />
 O protocolo TCP não seria viável para o adapter Sensor-Unity, pois sua transferência de dados retorna um valor de sucesso, enquanto os próximos pacotes ficam na espera de que exista sucesso na tranferência do último pacote. Isso causaria atraso na chegada dos dados ao Unity, pois mesmo que não haja perda de pacote de dados utilizando protocolo TCP, os movimentos realizados pelo paciente estão em uma frequência muito alta, e por isso é necessário utilizar o UDP ao invés do TCP, pois há uma necessidade de velocidade. Para dados que serão usados em Real-time o protocolo mais utilizado é o UDP.
 </p>
+
+
+
 
 ![Diagrama](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/development/docs/imagens/Arquitetura/diagrama.png)</p>
 **Figura 3**- Diagrama Geral da Arquitetura </p>
