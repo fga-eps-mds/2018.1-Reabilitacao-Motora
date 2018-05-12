@@ -4,6 +4,7 @@ Data|Versão|Descrição|Autor
 -|-|-|-
 09/05|1.0.0|Descrição do modelo TCP/IP. | Guilherme Siqueira
 10/05|1.1.0|Adição do tópico 2. | Guilherme Siqueira
+11/05|1.2.0|Adição do item 3 e revisão do item 2. | Guilherme Siqueira
 # Sumário
 ----------------
  1. [Transmission Control Protocol/Internet Protocol - TCP/IP](#1)
@@ -53,13 +54,22 @@ Funcionamento das camadas do TCP/IP:
 </p>
 <p align = "justify"> A <b>sequência de funcionamento do servidor TCP</b> é:
 </p>
-1. Se fornecido um nome de protocolo de transporte, deve-se converter em número; 
-2. Criar o socket utilizando a função **socket**;
-3. Colocar um endereço IP e porta no socket (função **bind**);
-4. Fazer o sistema operacional a colocar o socket em modo passivo (função **listen**);
-5. Aceitar uma nova conexão (função **accept**);
-6. Enviar/receber dados;
-7. Fechar o socket.
+<p align = "justify"> 1. Se fornecido um nome de protocolo de transporte, deve-se converter em número; </p> 
+<p align = "justify"> 2. Criar o socket utilizando a função <b>socket</b>;</p>
+<p align = "justify"> 3. Colocar um endereço IP e porta no socket (função <b>bind</b>); </p>
+<p align = "justify"> 4. Fazer o sistema operacional a colocar o socket em modo passivo (função <b>listen</b>); </p>
+<p align = "justify"> 5. Aceitar uma nova conexão (função <b>accept</b>); </p>
+<p align = "justify"> 6. Enviar/receber dados; </p>
+<p align = "justify"> 7. Fechar o socket. </p>
+
+## 3. User Datagram Protocol - UDP
+### 3.1 Visão Geral
+<p align = "justify"> O UDP também é baseado no envio de pacote de informações, mas, ao contrário do UDP, preza pela velocidade ao invés da confiabilidade dos dados enviados. O UDP é voltado para a não conexão, então o fluxo de envio de pacote de dados é unidirecional. O receptor recebe os dados enviados pelo emissor sem conhecer o que foi emitido, mas conhecendo apenas o IP do emissor.
+</p>
+<p align = "justify"> Em caso de erros na transmissão dos pacote de dados, ocorre o envio do próximo pacote programado pelo sistema, sendo que os anteriores não podem ser recuperados.Isso garante a transmissão rápida dos dados, mas o risco de ter dados perdidos no caminho é potencializado.
+</p>
+<p align = "justify"> Enquanto no protocolo TCP o cliente envia uma solicitação de abertura de conexão para o envio dos pacotes de dados, no UDP não há essa solicitação e os pacotes são enviados diretamente.
+</p>
 
 ### 3.4 Referências
 <p align = "justify"> Este documento faz referência aos seguintes links:
