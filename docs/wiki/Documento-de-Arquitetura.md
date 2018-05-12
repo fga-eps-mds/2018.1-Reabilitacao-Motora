@@ -31,6 +31,8 @@ Data|Versão|Descrição|Autor
 10/05|1.13.1|Adição de justificativa de uso de UDP na ponte sensor-Unity| Djorkaeff Alexandre
 11/05|1.13.2|Revisando tópicos relacionados aos protocolos TCP e UDP| Guilherme Siqueira
 12/05|1.13.3|Correção do Sumário| João Lucas
+12/05|1.13.4|Adição de imagem explicando a arquitetura dos adapters| Djorkaeff Alexandre
+12/05|1.13.5|Justificando uso do TCP no adapter entre o unity e o módulo de processamento| Djorkaeff Alexandre
 
 # Sumário
 ----------------
@@ -150,7 +152,7 @@ A implementação do projeto será a linguagem de programação C# (C-Sharp).Ele
 <p align = "justify"> O Módulo de Processamento (pode ser considerado um plugin que realiza processamentos externos) é uma unidade de processamento, podendo ser escrita em qualquer linguagem de programação, que receberá dados do movimento e poderá utilizá-los para realizar cálculos não abordados pelo sistema. A sua comunicação com o software também é feita por meio de um adapter. </p>
 <p align = "justify">Para a conexão com diversos sensores será usado um adapter com a capacidade de receber informações específicas para a usabilidade da aplicação através de portas UDP. A escolha das portas UDP em relação as portas TCP para uso no adapter entre o sensor-unity foi motivada pelo fato de que utilizando o protocolo UDP a transferência é feita de forma mais rápida do que utilizando o protocolo TCP, pois o TCP garante que dados são entregues integralmente, sem erros (pois ele não só envia pacote de dados, como também recebe), ao custo de ser mais lento que o UDP.</p>
 <p align = "justify">O UDP provê um serviço sem conexão não confiável, usando IP para transportar mensagens entre duas máquinas. Este protocolo, igualmente o TCP, provê um mecanismo que o transmissor usa para distinguir entre múltiplos receptores numa mesma máquina.</p>
-
+<p align = "justify"> Representação do diagrama da arquitetura dos adapters </p>
 <p align="center">
   <img src="https://i.imgur.com/vs8OLhl.png" alt="test" />
 </p>
@@ -166,8 +168,15 @@ O protocolo de transferência de dados UDP será utilizado no adapter que fará 
 O protocolo TCP não seria viável para o adapter Sensor-Unity, pois sua transferência de dados retorna um valor de sucesso, enquanto os próximos pacotes ficam na espera de que exista sucesso na tranferência do último pacote. Isso causaria atraso na chegada dos dados ao Unity, pois mesmo que não haja perda de pacote de dados utilizando protocolo TCP, os movimentos realizados pelo paciente estão em uma frequência muito alta, e por isso é necessário utilizar o UDP ao invés do TCP, pois há uma necessidade de velocidade. Para dados que serão usados em Real-time o protocolo mais utilizado é o UDP.
 </p>
 
+### 5.3 Formato do datagrama TCP
+<p align = "justify">
+ O TCP (Transmission Control Protocol) é responsável pela divisão da mensagem em datagramas, pelo seu reagrupamento e retransmissão dos datagramas perdidos. O IP (Internet Protocol) é responsável pelo roteamento dos datagramas. A camada IP precisa de conhecer todas as rotas possiveis e lidar com possiveis incompatibilidades entre os diferentes meios de transporte. A interface entre TCP e IP é relativamente simples, a camada TCP entrega à camada IP um datagrama de cada vez, não havendo nenhuma relação entre o datagrama actual e os anteriores.
+ </p>
 
-
+### 5.4 Justificativa para uso do TCP no adapter unity-módulo de processamento
+<p align="justify">
+O módulo de processamento não poderá ter perda de dados recebidos e nem perca de dados enviados para o sistema pois isso causaria grandes anomalias ao sistema, isso justifica o uso de TCP neste adapter. 
+</p>
 
 ![Diagrama](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/development/docs/imagens/Arquitetura/diagrama.png)</p>
 **Figura 3**- Diagrama Geral da Arquitetura </p>
