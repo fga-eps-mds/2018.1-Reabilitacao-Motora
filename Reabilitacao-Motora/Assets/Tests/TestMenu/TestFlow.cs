@@ -9,9 +9,10 @@ namespace Tests
 	public static class TestFlow
 	{
 		[UnityTest]
-		public static IEnumerator TestCreateMove()
+		public static IEnumerator TestNewMovement()
 		{
-			Flow.StaticCreateMove();
+			Debug.Log("___________ NewMovement __________");
+			Flow.StaticNewMovement();
 
 			yield return null;
 
@@ -19,12 +20,15 @@ namespace Tests
 			var expectedscene = "NewMovement";
 
 			Assert.AreEqual(currentscene, expectedscene);
+			Debug.Log(string.Format("Saindo de {0}", expectedscene));
+			Debug.Log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-");
 		}
 
 		[UnityTest]
-		public static IEnumerator TestRecordMove()
+		public static IEnumerator TestClinic()
 		{
-			Flow.StaticRecordMove();
+			Debug.Log("___________ Clinic __________");
+			Flow.StaticClinic();
 
 			yield return null;
 
@@ -32,37 +36,30 @@ namespace Tests
 			var expectedscene = "Clinic";
 
 			Assert.AreEqual(currentscene, expectedscene);
+			Debug.Log(string.Format("Saindo de {0}", expectedscene));
+			Debug.Log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-");
 		}
 
 		[UnityTest]
 		public static IEnumerator TestPatient()
 		{
+			Debug.Log("___________ Patient __________");
 			Flow.StaticPatient();
-
+			
 			yield return null;
 
 			var currentscene = SceneManager.GetActiveScene().name;
 			var expectedscene = "Patient";
 
 			Assert.AreEqual(currentscene, expectedscene);
-		}
-
-		[UnityTest]
-		public static IEnumerator TestPatients()
-		{
-			Flow.StaticPatients();
-
-			yield return null;
-
-			var currentscene = SceneManager.GetActiveScene().name;
-			var expectedscene = "Patients";
-
-			Assert.AreEqual(currentscene, expectedscene);
+			Debug.Log(string.Format("Saindo de {0}", expectedscene));
+			Debug.Log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-");
 		}
 
 		[UnityTest]
 		public static IEnumerator _TestLogin()
 		{
+			Debug.Log("___________ Login __________");
 			Flow.StaticLogin();
 
 			yield return null;
@@ -71,11 +68,14 @@ namespace Tests
 			var expectedscene = "Login";
 
 			Assert.AreEqual(currentscene, expectedscene);
+			Debug.Log(string.Format("Saindo de {0}", expectedscene));
+			Debug.Log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-");
 		}
 
 		[UnityTest]
 		public static IEnumerator _TestMovements()
 		{
+			Debug.Log("___________ Movements __________");
 			Flow.StaticMovements();
 
 			yield return null;
@@ -84,11 +84,14 @@ namespace Tests
 			var expectedscene = "Movements";
 
 			Assert.AreEqual(currentscene, expectedscene);
+			Debug.Log(string.Format("Saindo de {0}", expectedscene));
+			Debug.Log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-");
 		}
 
 		[UnityTest]
 		public static IEnumerator TestNewPatient()
 		{
+			Debug.Log("___________ NewPatient __________");
 			Flow.StaticNewPatient();
 
 			yield return null;
@@ -97,11 +100,14 @@ namespace Tests
 			var expectedscene = "NewPatient";
 
 			Assert.AreEqual(currentscene, expectedscene);
+			Debug.Log(string.Format("Saindo de {0}", expectedscene));
+			Debug.Log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-");
 		}
 
 		[UnityTest]
 		public static IEnumerator TestUpdatePatient()
 		{
+			Debug.Log("___________ UpdatePatient __________");
 			Flow.StaticUpdatePatient();
 
 			yield return null;
@@ -110,25 +116,16 @@ namespace Tests
 			var expectedscene = "UpdatePatient";
 
 			Assert.AreEqual(currentscene, expectedscene);
+			Debug.Log(string.Format("Saindo de {0}", expectedscene));
+			Debug.Log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-");
 		}
 
-		[UnityTest]
-		public static IEnumerator TestSuccessRegister()
-		{
-			Flow.StaticSuccessRegister();
-
-			yield return null;
-
-			var currentscene = SceneManager.GetActiveScene().name;
-			var expectedscene = "SuccessRegister";
-
-			Assert.AreEqual(currentscene, expectedscene);
-		}
 
 		[UnityTest]
-		public static IEnumerator TestRealtimeGraphs()
+		public static IEnumerator TestRealtimeGraph()
 		{
-			Flow.StaticRealTimeGraphs();
+			Debug.Log("___________ RealtimeGraph __________");
+			Flow.StaticRealtimeGraph();
 
 			yield return null;
 
@@ -136,11 +133,14 @@ namespace Tests
 			var expectedscene = "RealtimeGraph";
 
 			Assert.AreEqual(currentscene, expectedscene);     
+			Debug.Log(string.Format("Saindo de {0}", expectedscene));
+			Debug.Log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-");
 		}
 
 		[UnityTest]
 		public static IEnumerator TestNewPhysiotherapist()
 		{
+			Debug.Log("___________ NewPhysiotherapist __________");
 			Flow.StaticNewPhysiotherapist();
 
 			yield return null;
@@ -149,25 +149,15 @@ namespace Tests
 			var expectedscene = "NewPhysiotherapist";
 
 			Assert.AreEqual(currentscene, expectedscene);
+			Debug.Log(string.Format("Saindo de {0}", expectedscene));
+			Debug.Log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-");
 		}
 
 		[UnityTest]
-		public static IEnumerator TestBackToHomeMenu()
+		public static IEnumerator TestMenu()
 		{
-			Flow.StaticBackToHomeMenu();
-
-			yield return null;
-
-			var currentscene = SceneManager.GetActiveScene().name;
-			var expectedscene = "Login";
-
-			Assert.AreEqual(currentscene, expectedscene);
-		}
-
-		[UnityTest]
-		public static IEnumerator TestBackToMenu()
-		{
-			Flow.StaticBackToMenu();
+			Debug.Log("___________ Menu __________");
+			Flow.StaticMenu();
 
 			yield return null;
 
@@ -175,12 +165,15 @@ namespace Tests
 			var expectedscene = "Menu";
 
 			Assert.AreEqual(currentscene, expectedscene);
+			Debug.Log(string.Format("Saindo de {0}", expectedscene));
+			Debug.Log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-");
 		}
 
 		[UnityTest]
-		public static IEnumerator TestGraphs()
+		public static IEnumerator TestGraphs2()
 		{
-			Flow.StaticGraphs();
+			Debug.Log("___________ Graphs2 __________");
+			Flow.StaticGraphs2();
 
 			yield return null;
 
@@ -188,11 +181,14 @@ namespace Tests
 			var expectedscene = "Graphs2";
 
 			Assert.AreEqual(currentscene, expectedscene);
+			Debug.Log(string.Format("Saindo de {0}", expectedscene));
+			Debug.Log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-");
 		}
 
 		[UnityTest]
 		public static IEnumerator TestNotImplemented()
 		{
+			Debug.Log("___________ NotImplemented __________");
 			Flow.StaticNotImplemented();
 
 			yield return null;
@@ -201,11 +197,14 @@ namespace Tests
 			var expectedscene = "NotImplemented";
 
 			Assert.AreEqual(currentscene, expectedscene);
+			Debug.Log(string.Format("Saindo de {0}", expectedscene));
+			Debug.Log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-");
 		}
 
 		[UnityTest]
 		public static IEnumerator TestSessions()
 		{
+			Debug.Log("___________ Sessions __________");
 			Flow.StaticSessions();
 
 			yield return null;
@@ -214,11 +213,14 @@ namespace Tests
 			var expectedscene = "Sessions";
 
 			Assert.AreEqual(currentscene, expectedscene);
+			Debug.Log(string.Format("Saindo de {0}", expectedscene));
+			Debug.Log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-");
 		}
 
 		[UnityTest]
 		public static IEnumerator TestSession()
 		{
+			Debug.Log("___________ Session __________");
 			Flow.StaticSession();
 
 			yield return null;
@@ -227,6 +229,40 @@ namespace Tests
 			var expectedscene = "Session";
 
 			Assert.AreEqual(currentscene, expectedscene);
+			Debug.Log(string.Format("Saindo de {0}", expectedscene));
+			Debug.Log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-");
+		}
+
+		[UnityTest]
+		public static IEnumerator TestNewSession()
+		{
+			Debug.Log("___________ NewSession __________");
+			Flow.StaticNewSession();
+
+			yield return null;
+
+			var currentscene = SceneManager.GetActiveScene().name;
+			var expectedscene = "NewSession";
+
+			Assert.AreEqual(currentscene, expectedscene);
+			Debug.Log(string.Format("Saindo de {0}", expectedscene));
+			Debug.Log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-");
+		}
+
+		[UnityTest]
+		public static IEnumerator TestMovementsToExercise()
+		{
+			Debug.Log("___________ MovementsToExercise __________");
+			Flow.StaticMovementsToExercise();
+
+			yield return null;
+
+			var currentscene = SceneManager.GetActiveScene().name;
+			var expectedscene = "MovementsToExercise";
+
+			Assert.AreEqual(currentscene, expectedscene);
+			Debug.Log(string.Format("Saindo de {0}", expectedscene));
+			Debug.Log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-");
 		}
 	}
 }

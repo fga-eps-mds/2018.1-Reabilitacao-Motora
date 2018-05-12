@@ -21,10 +21,8 @@ public class SetSceneAvatars : MonoBehaviour
 			}
 			
 			manager.ResetAvatarControllers();
-
 			// add available gesture listeners
 			manager.gestureListeners.Clear();
-
 			MonoBehaviour[] listeners = FindObjectsOfType(typeof(MonoBehaviour)) as MonoBehaviour[];
 
 			foreach(MonoBehaviour listener in listeners)

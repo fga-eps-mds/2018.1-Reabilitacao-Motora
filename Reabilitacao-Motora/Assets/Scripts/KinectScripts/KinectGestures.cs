@@ -10,20 +10,16 @@ public class KinectGestures
 		// Invoked when a new user is detected and tracking starts
 		// Here you can start gesture detection with KinectManager.DetectGesture()
 		void UserDetected(uint userId, int userIndex);
-		
 		// Invoked when a user is lost
 		// Gestures for this user are cleared automatically, but you can free the used resources
 		void UserLost(uint userId, int userIndex);
-		
 		// Invoked when a gesture is in progress 
 		void GestureInProgress(uint userId, int userIndex, Gestures gesture, float progress, 
 		                       KinectWrapper.NuiSkeletonPositionIndex joint, Vector3 screenPos);
-
 		// Invoked if a gesture is completed.
 		// Returns true, if the gesture detection must be restarted, false otherwise
 		bool GestureCompleted(uint userId, int userIndex, Gestures gesture,
 		                      KinectWrapper.NuiSkeletonPositionIndex joint, Vector3 screenPos);
-
 		// Invoked if a gesture is cancelled.
 		// Returns true, if the gesture detection must be retarted, false otherwise
 		bool GestureCancelled(uint userId, int userIndex, Gestures gesture, 
@@ -362,7 +358,6 @@ public class KinectGestures
 							(jointsTracked[leftHandIndex] && jointsTracked[leftHipIndex] &&
 							(jointsPos[leftHandIndex].y - jointsPos[leftHipIndex].y) < 0.1f &&
 							(jointsPos[leftHandIndex].x - jointsPos[leftHipIndex].x) <= -0.4f);
-						
 						Vector3 jointPos = jointsPos[gestureData.joint];
 						CheckPoseComplete(ref gestureData, timestamp, jointPos, isInPose, KinectWrapper.Constants.PoseCompleteDuration);
 						break;
@@ -886,7 +881,6 @@ public class KinectGestures
 				
 //				Debug.Log(string.Format("{0}. Dist: {1:F1}, Tag: {2:F1}, Diff: {3:F1}", gestureData.state,
 //				                        distWheel, gestureData.tagFloat, Mathf.Abs(distWheel - gestureData.tagFloat)));
-
 				switch(gestureData.state)
 				{
 					case 0:  // gesture detection - phase 1

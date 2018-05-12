@@ -127,7 +127,6 @@ public class CubemanController : MonoBehaviour
 		}
 		
 		transform.position = initialPosOffset + (MoveVertically ? posPointMan : new Vector3(posPointMan.x, 0, posPointMan.z));
-
 		// update the local positions of the bones
 		for(int i = 0; i < bones.Length; i++) 
 		{
@@ -181,7 +180,6 @@ public class CubemanController : MonoBehaviour
 						if(bones[parI].gameObject.activeSelf)
 						{
 							lines[i].gameObject.SetActive(true);
-							
 							//lines[i].SetVertexCount(2);
 							lines[i].SetPosition(0, posParent);
 							lines[i].SetPosition(1, posJoint);

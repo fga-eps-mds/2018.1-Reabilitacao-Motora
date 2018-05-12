@@ -5,7 +5,8 @@ using Mono.Data.Sqlite;
 using System.Data;
 using DataBaseAttributes;
 
-namespace pontosrotulopaciente {
+namespace pontosrotulopaciente
+{
 
 	/**
 	* Cria relação para cadastro dos pontosrotulopaciente a serem cadastrados pelo programa.
@@ -20,61 +21,61 @@ namespace pontosrotulopaciente {
 		private string EstagioMovimentoPaciente;
 
 		public int idRotuloPaciente 
-		{ 
+		{
 			get 
-			{ 
+			{
 				return IdRotuloPaciente; 
 			} 
 			set 
-			{ 
+			{
 				IdRotuloPaciente = value; 
 			}
 		}
 
 		public int idExercicio 
-		{ 
+		{
 			get 
-			{ 
+			{
 				return IdExercicio; 
 			} 
 			set 
-			{ 
+			{
 				IdExercicio = value; 
 			}
 		}
 
 		public double tempoInicial 
-		{ 
+		{
 			get 
-			{ 
+			{
 				return TempoInicial; 
 			} 
 			set 
-			{ 
+			{
 				TempoInicial = value; 
 			}
 		}
 
 		public double tempoFinal 
-		{ 
+		{
 			get 
-			{ 
+			{
 				return TempoFinal; 
 			} 
 			set 
-			{ 
+			{
 				TempoFinal = value; 
 			}
 		}
 
 		public string estagioMovimentoPaciente 
-		{ 
+		{
 			get 
-			{ 
+			{
 				return EstagioMovimentoPaciente; 
 			} 
 			set 
-			{ 
+			{
 				EstagioMovimentoPaciente = value; 
 			}
 		}
@@ -171,7 +172,6 @@ namespace pontosrotulopaciente {
 				banco.cmd = banco.conn.CreateCommand();
 
 				banco.sqlQuery = string.Format("UPDATE \"{0}\" set ", TablesManager.Tables[tableId].tableName);
-
 				banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",", TablesManager.Tables[tableId].colName[1], idMovimento);
 				banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",", TablesManager.Tables[tableId].colName[2], estagioMovimentoPaciente);
 				banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",", TablesManager.Tables[tableId].colName[3], tempoInicial);

@@ -1283,7 +1283,7 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 973200728}
   m_TextComponent: {fileID: 391914603}
   m_Placeholder: {fileID: 2079553060}
@@ -1432,6 +1432,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1276306279}
+        m_MethodName: Quit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &985879870
@@ -1540,7 +1551,7 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 989527693}
   m_TextComponent: {fileID: 2090661786}
   m_Placeholder: {fileID: 526304006}
@@ -1675,7 +1686,7 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 1049622417}
   m_TextComponent: {fileID: 537737792}
   m_Placeholder: {fileID: 941267749}
@@ -2050,7 +2061,6 @@ Camera:
   m_TargetEye: 3
   m_HDR: 0
   m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -2153,7 +2163,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1816981473}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92e7b92b5699a9f48a88a5f8967c5191, type: 3}
+  m_Script: {fileID: 11500000, guid: 276b2780c1c01004984689bfaae70c63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   nomeMovimento: {fileID: 1049622416}

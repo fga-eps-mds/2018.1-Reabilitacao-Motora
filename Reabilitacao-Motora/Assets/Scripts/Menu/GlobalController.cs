@@ -4,6 +4,8 @@ using UnityEngine;
 using System.IO;
 using Mono.Data.Sqlite;
 using System.Data;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 using pessoa;
 using fisioterapeuta;
@@ -25,7 +27,7 @@ public class GlobalController : MonoBehaviour
 	private Movimento Movement;
 	private Sessao Session;
 	private Exercicio Exercise;
-
+	private EventSystem system;
 	public string path;
 
 	void Awake () 
@@ -61,6 +63,34 @@ public class GlobalController : MonoBehaviour
 		MovimentoMusculo.Create();
 		PontosRotuloPaciente.Create();
 		PontosRotuloFisioterapeuta.Create();
+	}
+
+	void Start ()
+	{
+		system = EventSystem.current;
+	}
+
+	/**
+	 * Permite usar tab para transitar entre os input fields.
+	 */
+	public void Update()
+	{
+		if (Input.GetKeyDown(KeyCode.Tab))
+		{
+			Selectable next = system.currentSelectedGameObject.GetComponent<Selectable>().FindSelectableOnDown();
+
+			if (next != null) 
+			{
+
+				InputField inputfield = next.GetComponent<InputField>();
+				if (inputfield != null) 
+				{
+					inputfield.OnPointerClick(new PointerEventData(system));
+				}
+
+				system.SetSelectedGameObject(next.gameObject, new BaseEventData(system));
+			}
+		}
 	}
 
 	public Fisioterapeuta admin
