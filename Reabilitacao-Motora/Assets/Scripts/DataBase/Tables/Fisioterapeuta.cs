@@ -142,16 +142,6 @@ namespace fisioterapeuta
 		}
 
 		/**
-		 * Função que insere dados necessários para cadastro dos fisioterapeutas na relação fisioterapeuta.
-		 */
-		public static void Insert(int idPessoa, string login, string senha)
-		{
-			DataBase banco = new DataBase();
-			Object[] columns = new Object[] {idPessoa, login, senha};
-			banco.Insert(GlobalController.instance.path, columns, TablesManager.Tables[tableId].tableName, tableId);	
-		}
-
-		/**
 		 * Função que insere dados necessários para cadastro dos pacientes do fisioterapeuta na relação fisioterapeuta.
 		 */
 		public static void Insert(int idPessoa,

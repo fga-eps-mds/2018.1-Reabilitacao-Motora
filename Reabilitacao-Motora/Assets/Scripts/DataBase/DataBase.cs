@@ -4,6 +4,7 @@ using System;
 using System.Text;
 using System.Reflection;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace DataBaseAttributes
 {
@@ -64,7 +65,7 @@ namespace DataBaseAttributes
 			}
 		}
 
-		public void Insert (string path, Object[] columns, string tableName, int tableId)
+		public void Insert (string path, System.Object[] columns, string tableName, int tableId)
 		{
 			using (conn = new SqliteConnection(path))
 			{
@@ -76,40 +77,56 @@ namespace DataBaseAttributes
 				bld.Append(string.Format("insert into {0} (", tableName));
 
 				int tableSize = TablesManager.Tables[tableId].colName.Count;
-
+				Debug.Log(tableSize + " " + columns.Length);
 				for (int i = 1; i < tableSize; ++i) 
 				{
-					string aux;
-
-					if (i + 1 == tableSize)
+					if (columns[i-1] != null)
 					{
-						aux = ")";
-					}
-					else
-					{
-						aux = ",";
-					}
+						string aux;											
+						if (i + 1 == tableSize)
+						{
+							aux = "";
+						}
+						else
+						{
+							aux = ",";
+						}
 
-					bld.Append(TablesManager.Tables[tableId].colName[i] + aux);
+						bld.Append(TablesManager.Tables[tableId].colName[i] + aux);
+					}
 				}
 
-				bld.Append(" values (");
+				if (bld[bld.Length - 1] == ',')
+				{
+					bld.Remove(bld.Length - 1, 1);
+				}
+
+				bld.Append(") values (");
 
 				for (int i = 0; i < columns.Length; ++i) 
 				{
-					string aux;
-
-					if (i + 1 == columns.Length)
+					if (columns[i] != null)
 					{
-						aux = ")";
-					}
-					else
-					{
-						aux = ",";
-					}
+						string aux;
+						if (i + 1 == columns.Length)
+						{
+							aux = "";
+						}
+						else
+						{
+							aux = ",";
+						}
 
-					bld.Append((string.Format("\"{0}\"", columns[i]) + aux));
+						bld.Append((string.Format("\"{0}\"", columns[i]) + aux));
+					}
 				}
+
+				if (bld[bld.Length - 1] == ',')
+				{
+					bld.Remove(bld.Length - 1, 1);
+				}
+
+				bld.Append(")");
 
 				sqlQuery = bld.ToString();
 
@@ -119,7 +136,7 @@ namespace DataBaseAttributes
 			}
 		}
 
-		public void Update (string path, Object[] columns, string tableName, int tableId)
+		public void Update (string path, System.Object[] columns, string tableName, int tableId)
 		{
 			using (conn = new SqliteConnection(path))
 			{
@@ -157,7 +174,7 @@ namespace DataBaseAttributes
 		}
 
 
-		public List<T> Read<T> (string path, string tableName, Object[] columns)
+		public List<T> Read<T> (string path, string tableName, System.Object[] columns)
 		{
 			using (conn = new SqliteConnection(path))
 			{
@@ -188,7 +205,7 @@ namespace DataBaseAttributes
 			}
 		}
 
-		public T ReadValue<T> (string path, string tableName, string colName, int idTable, Object[] columns)
+		public T ReadValue<T> (string path, string tableName, string colName, int idTable, System.Object[] columns)
 		{
 			using (conn = new SqliteConnection(path))
 			{
@@ -258,7 +275,7 @@ namespace DataBaseAttributes
 			conn.Close();
 		}
 
-		private static void ObjectArray (ref Object[] columns, ref IDataReader reader)
+		private static void ObjectArray (ref System.Object[] columns, ref IDataReader reader)
 		{
 			for (int i = 0; i < columns.Length; ++i)
 			{

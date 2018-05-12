@@ -30,40 +30,6 @@ public class GlobalController : MonoBehaviour
 	private EventSystem system;
 	public string path;
 
-	public void Awake () 
-	{
-		if (instance != null)
-		{
-			Destroy(gameObject);
-		}
-		else
-		{
-			string pathEx = "Assets\\Exercicios";
-			string pathMv = "Assets\\Movimentos";
-
-			Directory.CreateDirectory(pathEx);
-			Directory.CreateDirectory(pathMv);
-
-			instance = this;
-			DontDestroyOnLoad(gameObject);
-			path = "URI=file:" + Application.dataPath + "/Plugins/fisiotech.db";
-			Initialize();
-		}
-	}
-
-	private static void Initialize()
-	{
-		Pessoa.Create();
-		Fisioterapeuta.Create();
-		Paciente.Create();
-		Musculo.Create();
-		Movimento.Create();
-		Sessao.Create();
-		Exercicio.Create();
-		MovimentoMusculo.Create();
-		PontosRotuloPaciente.Create();
-		PontosRotuloFisioterapeuta.Create();
-	}
 
 	public void Start ()
 	{
@@ -151,5 +117,40 @@ public class GlobalController : MonoBehaviour
 		{
 			Exercise = value;
 		}
+	}
+	
+	public void Awake () 
+	{
+		if (instance != null)
+		{
+			Destroy(gameObject);
+		}
+		else
+		{
+			string pathEx = "Assets\\Exercicios";
+			string pathMv = "Assets\\Movimentos";
+
+			Directory.CreateDirectory(pathEx);
+			Directory.CreateDirectory(pathMv);
+
+			instance = this;
+			DontDestroyOnLoad(gameObject);
+			path = "URI=file:" + Application.dataPath + "/Plugins/fisiotech.db";
+			Initialize();
+		}
+	}
+
+	private static void Initialize()
+	{
+		Pessoa.Create();
+		Fisioterapeuta.Create();
+		Paciente.Create();
+		Musculo.Create();
+		Movimento.Create();
+		Sessao.Create();
+		Exercicio.Create();
+		MovimentoMusculo.Create();
+		PontosRotuloPaciente.Create();
+		PontosRotuloFisioterapeuta.Create();
 	}
 }

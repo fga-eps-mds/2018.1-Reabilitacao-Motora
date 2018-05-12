@@ -21,6 +21,7 @@ public class createSession : MonoBehaviour
 	{
 		nextPage.onClick.AddListener(delegate{CreateSessao();});
 	}
+	
 	/**
 	 * Salva o paciente no banco.
 	 */
@@ -30,7 +31,7 @@ public class createSession : MonoBehaviour
 		string date = DateTime.Now.ToString("yyyy-MM-dd-HH-mm", System.Globalization.DateTimeFormatInfo.InvariantInfo);
 		
 		Sessao.Insert (GlobalController.instance.admin.idFisioterapeuta, 
-			GlobalController.instance.user.idPaciente, date);
+			GlobalController.instance.user.idPaciente, date, "");
 
 		string namePatientUnderscored = (GlobalController.instance.user.persona.nomePessoa).Replace(' ', '_');
 		string pathNameSession = "Assets\\Exercicios\\" + string.Format("{0}-{1}", GlobalController.instance.user.persona.idPessoa, namePatientUnderscored) + "\\" + date;

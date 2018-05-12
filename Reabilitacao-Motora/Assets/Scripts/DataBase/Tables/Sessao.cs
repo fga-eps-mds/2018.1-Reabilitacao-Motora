@@ -126,19 +126,6 @@ namespace sessao
 
 
 		/**
-		* Função que insere dados na tabela de sessão (sem observacao).
-		 */
-		public static void Insert(int idFisioterapeuta,
-			int idPaciente,
-			string dataSessao)
-		{
-			DataBase banco = new DataBase();
-			Object[] columns = new Object[] {idFisioterapeuta,idPaciente,dataSessao};
-			banco.Insert(GlobalController.instance.path, columns, TablesManager.Tables[tableId].tableName, tableId);
-		}
-
-
-		/**
 		* Função que atualiza dados já cadastrados anteriormente na relação de sessão.
 		 */
 		public static void Update(int id,

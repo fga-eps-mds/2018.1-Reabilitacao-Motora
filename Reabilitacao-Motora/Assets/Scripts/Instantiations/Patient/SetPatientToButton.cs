@@ -13,7 +13,6 @@ public class SetPatientToButton : MonoBehaviour
 	public void SelectPatient ()
 	{
 		GlobalController.instance.user = patient;
-		Flow.StaticPatient();
 	}
 
 	public Paciente Patient
