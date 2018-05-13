@@ -1,5 +1,4 @@
 #! /bin/sh
-
 TEXTOAZUL=`echo "\033[01;34m"`
 TEXTOVERMELHO=`echo "\033[01;31m"`
 TEXTOAMARELO=`echo "\033[01;33m"`
