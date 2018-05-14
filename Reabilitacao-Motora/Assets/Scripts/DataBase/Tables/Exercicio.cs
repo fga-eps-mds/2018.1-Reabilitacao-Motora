@@ -139,21 +139,6 @@ namespace exercicio
 			banco.Insert(GlobalController.instance.path, columns, TablesManager.Tables[tableId].tableName, tableId);	
 		}
 
-
-		/**
-		 * Função que insere dados na tabela de exercicios (sem a descrição).
-		 */
-		public static void Insert(int idPaciente,
-			int idMovimento,
-			int idSessao,
-			string pontosExercicio)
-		{
-			DataBase banco = new DataBase();
-			Object[] columns = new Object[] {idPaciente, idMovimento, idSessao, pontosExercicio};
-			banco.Insert(GlobalController.instance.path, columns, TablesManager.Tables[tableId].tableName, tableId);
-		}
-
-
 		/**
 		 * Função que atualiza dados já cadastrados anteriormente na relação de exercicios.
 		 */

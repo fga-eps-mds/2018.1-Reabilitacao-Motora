@@ -45,7 +45,7 @@ public class instanciateExercise : MonoBehaviour
 		var partsBetweenSlashs = pontosExercicio.Split('/');
 		var partsBetweenDashs = partsBetweenSlashs[2].Split('-');
 		var withoutUnderscores = partsBetweenDashs[0].Replace('_', ' ');
-		var result = string.Format("{0} - {1}", idExercicio, withoutUnderscores); 
+		var result = string.Format("{0} - {1}{2}", idExercicio, partsBetweenDashs[1], withoutUnderscores); 
 		return result;
 	}
 }

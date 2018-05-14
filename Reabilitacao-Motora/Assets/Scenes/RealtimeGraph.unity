@@ -258,6 +258,11 @@ Prefab:
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 1857454617}
+    - target: {fileID: 114134276876835728, guid: 184deb3dde3eaaf44a893367924f55a9,
+        type: 2}
+      propertyPath: braco
+      value: 
+      objectReference: {fileID: 1885446797}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 184deb3dde3eaaf44a893367924f55a9, type: 2}
   m_IsPrefabParent: 0
@@ -1431,21 +1436,10 @@ MonoBehaviour:
   verticalMovement: 0
   smoothFactor: 5
   offsetRelativeToSensor: 0
---- !u!114 &1885446799
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1885446795}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73a782cf2f0c1eb49878ce16a61dfe13, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mao: {fileID: 1565764616}
-  cotovelo: {fileID: 620342130}
-  ombro: {fileID: 1578784869}
-  braco: {fileID: 0}
+--- !u!4 &1885446797 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400078, guid: f5e05f20199c880499cc033d19de1bcd, type: 3}
+  m_PrefabInternal: {fileID: 1885446794}
 --- !u!1 &2131226005
 GameObject:
   m_ObjectHideFlags: 0

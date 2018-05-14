@@ -11,7 +11,8 @@ public class GenerateLineChart : MonoBehaviour
 	protected Transform pointPrefab, mao, ombro, cotovelo, braco;
 
 	List <float> current_time;
-	List <Vector3> f_mao_pos, f_mao_rot, f_ombro_pos, f_ombro_rot, f_cotovelo_pos, f_cotovelo_rot, f_braco_pos, f_braco_rot, points1, points2;
+	List <Vector3> f_mao_pos, f_mao_rot, f_ombro_pos, f_ombro_rot, f_cotovelo_pos, f_cotovelo_rot, f_braco_pos, f_braco_rot, points2;
+	Vector2 m_p, c_p, o_p, grafico;
 
 	LineRenderer lineRenderer;
 
@@ -70,22 +71,6 @@ public class GenerateLineChart : MonoBehaviour
 		}
 	}
 
-
-	void generateGraphicPoints ()
-	{
-		for (int j = 0; j < current_time.Count; ++j) 
-		{
-			Vector3 temp = new Vector3 (current_time[j], 
-										_Joint.Angle((Vector2)f_mao_pos[j],
-													(Vector2)f_cotovelo_pos[j],
-													(Vector2)f_cotovelo_pos[j],
-													(Vector2)f_ombro_pos[j]), 
-										0f);
-			points1.Add (temp);
-		}
-	}
-
-
 	/**
 	* Descrever aqui o que esse método realiza.
 	*/
@@ -107,7 +92,6 @@ public class GenerateLineChart : MonoBehaviour
 			f_braco_pos = new List<Vector3>();
 			f_braco_rot = new List<Vector3>();
 
-			points1 = new List<Vector3>();
 			points2 = new List<Vector3>();
 
 			string[] p1 = System.IO.File.ReadAllLines(string.Format("Assets/Movimentos/{0}.points", GlobalController.instance.movement.pontosMovimento));
@@ -134,8 +118,6 @@ public class GenerateLineChart : MonoBehaviour
 				}
 			);
 			lineRenderer.colorGradient = gradient;
-
-			generateGraphicPoints();
 		}
 		else
 		{
@@ -187,11 +169,17 @@ public class GenerateLineChart : MonoBehaviour
 		Vector3 scale = Vector3.one * step;
 		Vector3 position = Vector3.zero;
 
+
 		for (int j = 0; j < current_time.Count; ++j) 
 		{
+			m_p = new Vector2 (mao.position.x, mao.position.y);
+			c_p = new Vector2 (cotovelo.position.x, cotovelo.position.y);
+			o_p = new Vector2 (ombro.position.x, ombro.position.y);
+			grafico = new Vector2 (current_time[j], _Joint.Angle(m_p, c_p, c_p, o_p));
+
 			Transform point = Instantiate(pointPrefab);
-			position.x = (points1[j].x) + 0.05f;
-			position.y = (points1[j].y/24);
+			position.x = (grafico.x) + 0.05f;
+			position.y = (grafico.y/24);
 			point.localPosition = position;
 			point.localScale = scale;
 			point.SetParent (transform, false);
@@ -200,6 +188,5 @@ public class GenerateLineChart : MonoBehaviour
 
 			yield return new WaitForSeconds(0.02f);
 		}
-
 	}
 }
