@@ -35,7 +35,7 @@
 
 ## 4. Pareamento
 
-O Quadro de pareamento está disponível no -A realizar-
+Nessa sprint houve um super pareamento entre os 5 membros da equipe.
 
 
 
