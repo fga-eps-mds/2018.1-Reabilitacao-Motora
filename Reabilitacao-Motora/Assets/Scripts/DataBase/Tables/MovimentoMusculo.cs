@@ -17,30 +17,30 @@ namespace movimentomusculo
 		private int IdMusculo;
 		private int IdMovimento;
 
-		public int idMusculo 
+		public int idMusculo
 		{
-			get 
+			get
 			{
-				return IdMusculo; 
-			} 
-			set 
+				return IdMusculo;
+			}
+			set
 			{
-				IdMusculo = value; 
+				IdMusculo = value;
 			}
 		}
-		
-		public int idMovimento 
+
+		public int idMovimento
 		{
-			get 
+			get
 			{
-				return IdMovimento; 
-			} 
-			set 
+				return IdMovimento;
+			}
+			set
 			{
-				IdMovimento = value; 
+				IdMovimento = value;
 			}
 		}
-		
+
 
 		/**
 		 * Classe com todos os atributos de um movimentomusculo.
@@ -49,6 +49,15 @@ namespace movimentomusculo
 		{
 			this.idMusculo = idmu;
 			this.idMovimento = idmo;
+		}
+
+		/**
+		 * Classe que cria outra versão do construtor.
+		 */
+		public MovimentoMusculo (Object[] columns)
+		{
+			this.idMusculo = (int)columns[0];
+			this.idMovimento = (int)columns[1];
 		}
 
 		/**
@@ -76,7 +85,7 @@ namespace movimentomusculo
 
 				int tableSize = TablesManager.Tables[tableId].colName.Count;
 
-				for (int i = 0; i < tableSize; ++i) 
+				for (int i = 0; i < tableSize; ++i)
 				{
 					string aux;
 
