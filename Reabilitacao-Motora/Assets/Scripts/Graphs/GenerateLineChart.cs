@@ -71,6 +71,35 @@ public class GenerateLineChart : MonoBehaviour
 		}
 	}
 
+	public void LoadLineRenderer ()
+	{
+		lineRenderer = gameObject.AddComponent<LineRenderer>();
+		lineRenderer.material = new Material(Shader.Find("Particles/Multiply (Double)"));
+		lineRenderer.widthMultiplier = 0.2f;
+		lineRenderer.positionCount = 4000;
+		lineRenderer.sortingOrder = 5;
+		lineRenderer.SetVertexCount(2);
+
+	// A simple 2 color gradient with a fixed alpha of 1.0f.
+		float alpha = 1.0f;
+		Gradient gradient = new Gradient();
+		gradient.SetKeys(
+			new []
+			{
+				new GradientColorKey(c1, 0.0f), 
+				new GradientColorKey(c2, 1.0f) 
+			},
+			new [] 
+			{
+				new GradientAlphaKey(alpha, 0.0f), 
+				new GradientAlphaKey(alpha, 1.0f) 
+			}
+		);
+		lineRenderer.colorGradient = gradient;
+		lineRenderer.useWorldSpace = false;
+		lineRenderer.alignment = LineAlignment.Local;
+
+	}
 	/**
 	* Descrever aqui o que esse método realiza.
 	*/
@@ -97,27 +126,7 @@ public class GenerateLineChart : MonoBehaviour
 			string[] p1 = System.IO.File.ReadAllLines(string.Format("Assets/Movimentos/{0}.points", GlobalController.instance.movement.pontosMovimento));
 			LoadData (p1);
 			
-			lineRenderer = gameObject.AddComponent<LineRenderer>();
-			lineRenderer.material = new Material(Shader.Find("Particles/Multiply (Double)"));
-			lineRenderer.widthMultiplier = 0.2f;
-			lineRenderer.positionCount = p1.Length;
-
-		// A simple 2 color gradient with a fixed alpha of 1.0f.
-			float alpha = 1.0f;
-			Gradient gradient = new Gradient();
-			gradient.SetKeys(
-				new []
-				{
-					new GradientColorKey(c1, 0.0f), 
-					new GradientColorKey(c2, 1.0f) 
-				},
-				new [] 
-				{
-					new GradientAlphaKey(alpha, 0.0f), 
-					new GradientAlphaKey(alpha, 1.0f) 
-				}
-			);
-			lineRenderer.colorGradient = gradient;
+			LoadLineRenderer();
 		}
 		else
 		{
@@ -180,12 +189,14 @@ public class GenerateLineChart : MonoBehaviour
 			Transform point = Instantiate(pointPrefab);
 			position.x = (grafico.x) + 0.05f;
 			position.y = (grafico.y/24);
+			position.z = 0.0f;
 			point.localPosition = position;
 			point.localScale = scale;
 			point.SetParent (transform, false);
-			points2.Add (point.position);
-			lineRenderer.SetPositions (points2.ToArray());
+			points2.Add (point.localPosition);
 
+			lineRenderer.SetVertexCount(points2.Count); 
+       		lineRenderer.SetPosition(points2.Count-1, point.localPosition);
 			yield return new WaitForSeconds(0.02f);
 		}
 	}

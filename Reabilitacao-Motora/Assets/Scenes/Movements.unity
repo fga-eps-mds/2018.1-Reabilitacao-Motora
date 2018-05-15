@@ -124,6 +124,7 @@ GameObject:
   - component: {fileID: 214640347}
   - component: {fileID: 214640346}
   - component: {fileID: 214640345}
+  - component: {fileID: 214640349}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -210,6 +211,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &214640349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 214640344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31c38e020bb741444a59c1a084ff45a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonPrefab: {fileID: 1768867090189390, guid: 0cc2c3057e0fc494eae5556d6a5f32ab,
+    type: 2}
 --- !u!1 &287439020
 GameObject:
   m_ObjectHideFlags: 0
@@ -244,7 +258,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -250, y: 10.000061}
+  m_AnchoredPosition: {x: -250, y: 10}
   m_SizeDelta: {x: 100, y: 30}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &287439022
@@ -727,7 +741,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1135921122}
   - component: {fileID: 1135921127}
-  - component: {fileID: 1135921126}
   - component: {fileID: 1135921125}
   - component: {fileID: 1135921124}
   - component: {fileID: 1135921123}
@@ -781,14 +794,6 @@ AudioListener:
 Behaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 12400000, guid: 7461a7b0cf97947fd9b9e4502fd2d07b,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1135921121}
-  m_Enabled: 1
---- !u!92 &1135921126
-Behaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 9200000, guid: 7461a7b0cf97947fd9b9e4502fd2d07b,
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1135921121}
@@ -1203,7 +1208,6 @@ GameObject:
   - component: {fileID: 1552098837}
   - component: {fileID: 1552098839}
   - component: {fileID: 1552098838}
-  - component: {fileID: 1552098840}
   m_Layer: 5
   m_Name: PanelMoves
   m_TagString: Untagged
@@ -1263,19 +1267,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1552098836}
---- !u!114 &1552098840
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1552098836}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31c38e020bb741444a59c1a084ff45a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonPrefab: {fileID: 1977421397228908, guid: 884d2379b39e3d54e8354b5fd2269621,
-    type: 2}
 --- !u!1 &1620482747
 GameObject:
   m_ObjectHideFlags: 0

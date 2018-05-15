@@ -181,11 +181,21 @@ public class GenerateLineChartPatient : MonoBehaviour
 			Transform point = Instantiate(pointPrefab);
 			position.x = (grafico.x) + 0.05f;
 			position.y = (grafico.y/24);
+			position.z = 6.0f;
 			point.localPosition = position;
 			point.localScale = scale;
 			point.SetParent (transform, false);
 			points2.Add (point.position);
+			
 			lineRenderer.SetPositions (points2.ToArray());
+
+			if (j == 15)
+			{
+				foreach(var x in points2)
+				{
+					Debug.Log(x.x + " " + x.y + " " + x.z);
+				}
+			}
 
 			yield return new WaitForSeconds(0.02f);
 		}
