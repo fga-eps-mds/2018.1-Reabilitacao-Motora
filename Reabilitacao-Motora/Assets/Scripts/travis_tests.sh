@@ -1,9 +1,8 @@
 #! /bin/sh
-TEXTOAZUL=`echo "\033[01;34m"`
-TEXTOVERMELHO=`echo "\033[01;31m"`
-TEXTOAMARELO=`echo "\033[01;33m"`
-TEXTOVERDE=`echo "\033[01;32m"`
-NORMAL=`echo "\033[m"`
+
+TEXTOAMARELO="\033[01;33m"
+TEXTOVERDE="\033[01;32m"
+NORMAL="\033[m"
 
 echo "${TEXTOAMARELO}Initializing Testing Script for Reabilitacao Motora ${NORMAL}"
 cd Reabilitacao-Motora
