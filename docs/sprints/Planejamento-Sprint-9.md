@@ -192,3 +192,22 @@ O documento de arquitetura atual não condiz completamente com a nossa proposta,
 **Pontos:** 01.
 
 ---
+
+### [Implementar Sistema de Deploy Contínuo](https://github.com/fga-gpp-mds/2018.1-reabilitacao-motora/issues/166)
+
+#### Descrição:
+Para entregar continuamente o produto, devemos ter um repositorio global que permita qualquer um acessar
+as últimas versões.
+
+#### Critérios de Aceitação
+-  Builds sendo disponibilizadas para o público
+
+
+#### Tarefas
+- API capaz de receber e armazenar as builds
+- Travis enviar as builds para a API
+
+
+**Pontos:** 08.
+
+---
