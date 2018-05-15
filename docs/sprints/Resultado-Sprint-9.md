@@ -42,7 +42,7 @@
 
 ## 5. velocity
 
-> O _velocity_ desta equipe  : - - pontos.
+> O _velocity_ desta equipe  : 27.2 pontos.
 
 ---
 
