@@ -14,19 +14,20 @@
 | US | [US06 - Visualizar Movimento](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/135) | Em Aberto | 13 |
 | US | [US10 - Remover Paciente](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/138) | Fechada | 05 |
 | US | [US11 - Consultar resultados do paciente](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/160) | Fechada | 08 |
-| US | [US12 - Relacionar movimento gravado com paciente](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/161) | Fechada | 08 |
+| US | [US12 - Relacionar movimento gravado com paciente](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/161) | Fechada | 21 |
 | TK | [Validar os campos de registro de paciente.](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/131) | Fechada | 05 |
 | TK | [Implementar teste](https://github.com/fga-gpp-mds/2018.1-reabilitacao-motora/issues/152)  | Fechada | 05 |
 | TK | [Pesquisa conexão TCP/UDP](https://github.com/fga-gpp-mds/2018.1-reabilitacao-motora/issues/151)  | Fechada | 01 |
 | TK | [Refatorar arquitetura](https://github.com/fga-gpp-mds/2018.1-reabilitacao-motora/issues/150)  | Fechada | 01 |
+| TK | [Implementar Sistema de deploy contínuo](https://github.com/fga-gpp-mds/2018.1-reabilitacao-motora/issues/166) | Fechada | 08 |
 
 
 > O id "TK" é para *tasks* que são consideradas importantes o suficiente para serem pontuadas.
 
 ### 2.3 Pontuação Final
 
-* **Pontuação Total:** 49
-* **Pontos Concluídos:** 33
+* **Pontuação Total:** 67
+* **Pontos Concluídos:** 54
 * **Pontos Não Agregados:** 13
 
 ---
