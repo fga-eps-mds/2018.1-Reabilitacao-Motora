@@ -29,7 +29,7 @@
 | Data de Início | 06/05/2018 |
 |:--|:--:|
 | **Data de Término** | **13/05/2018** |
-| **Pontos Planejados** | **59**|
+| **Pontos Planejados** | **67**|
 | **Duração** | **7 dias** |
 
 
