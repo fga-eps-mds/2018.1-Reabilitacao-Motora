@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
+using pontosrotulopaciente;
 
 /**
  * Descrever aqui o que essa classe realiza.
@@ -10,7 +11,7 @@ using System.Linq;
 public class CreateLabel : MonoBehaviour
 {
 	[SerializeField]
-	protected Label labelPrefab;
+	protected GameObject labelPrefab;
 	
 	string nameLabel = "label name";
 	string initialX = "0", finalX = "0";
@@ -20,13 +21,24 @@ public class CreateLabel : MonoBehaviour
 	 */
 	void displayGraph(string label, Vector2 val)
 	{
-		Label newLabel = Instantiate (labelPrefab) as Label;
+		GameObject go = Instantiate (labelPrefab) as GameObject;
 
-		newLabel.transform.localPosition = new Vector3 (0f, 0f, 0f);
-		newLabel.transform.SetParent (transform, false);
-		newLabel.InitialX = val.x;
-		newLabel.FinalX= val.y;
-		newLabel.Description.text = label;
+		go.transform.localPosition = new Vector3 (0f, 0f, 0f);
+		go.transform.SetParent (transform, false);
+
+		var scriptInitial = go.GetComponentInChildren<SetInitialX>();
+		var scriptFinal = go.GetComponentInChildren<SetFinalX>();
+		var labelName = go.GetComponentInChildren<TextMesh>();
+
+		scriptInitial.InitialX = val.x;
+		scriptFinal.finalX = val.y;
+
+		scriptInitial.Set();
+		scriptFinal.Set();
+
+		labelName.text = label;
+
+		//PontosRotuloPaciente.Insert(GlobalController.instance.exercise.idExercicio, label, val.x, val.y);
 	}
 
 
