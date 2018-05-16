@@ -4,20 +4,21 @@ TEXTOAMARELO="\033[01;33m"
 TEXTOVERDE="\033[01;32m"
 NORMAL="\033[m"
 
-echo "${TEXTOAMARELO}Entering the project folder to start test script ${NORMAL}"
+echo "${TEXTOAMARELO} Entrando na Pasta do Projeto ${NORMAL}"
 cd Reabilitacao-Motora
+echo "${TEXTOVERDE}========================================================================================================${NORMAL}"
 
-echo "${TEXTOAMARELO}Current folder contains:${NORMAL}"
+echo "${TEXTOAMARELO} A pasta do projeto contém: ${NORMAL}"
 ls
 echo "${TEXTOVERDE}========================================================================================================${NORMAL}"
 
-echo "${TEXTOAMARELO} Attempting to Test Reabilitacao Motora ${NORMAL}"
+echo "${TEXTOAMARELO} Iniciando Script de PlayTest ${NORMAL}"
 /Applications/Unity/Unity.app/Contents/MacOS/Unity -batchmode -logFile /dev/stdout -runTests -projectPath $(pwd) -testPlatform playmode -testResults $(pwd)/test.xml
 rc0=$?
-echo "${TEXTOVERDE}========================================================================================================${NORMAL}"
+echo "${TEXTOVERDE} ======================================= FIM DO SCRIPT PLAYTEST ======================================= ${NORMAL}"
 
-echo " ${TEXTOAMARELO}Untiy test Logs"
+echo " ${TEXTOAMARELO} Exibindo Log do Script de PlayTest ${NORMAL}"
 cat $(pwd)/test.xml
-echo "${TEXTOVERDE}========================================================================================================${NORMAL}"
+echo "${TEXTOVERDE} ======================================= FIM DOS LOGS DE TEST ======================================= ${NORMAL}"
 
-if [ $rc0 -ne 0 ]; then { echo "Failed unit tests"; exit $rc0; } fi
+if [ $rc0 -ne 0 ]; then { echo " PlayTest Falhando -- Consultar Log de Teste -- "; exit $rc0; } fi
