@@ -21,7 +21,7 @@ public class DeleteMovementButton : MonoBehaviour
 
 	public static void DeleteMovement ()
 	{
-		int IdMovimento = GlobalController.instance.user.idPaciente;
+		int IdMovimento = GlobalController.instance.movement.idMovimento;
 
 		List<Exercicio> allExercises = Exercicio.Read();
 		List<PontosRotuloFisioterapeuta> allPrfs = PontosRotuloFisioterapeuta.Read();
@@ -49,6 +49,11 @@ public class DeleteMovementButton : MonoBehaviour
 						PontosRotuloPaciente.DeleteValue (prp.idRotuloPaciente);
 					}
 				}
+				string pathEx = string.Format("{0}/Exercicios/{1}", Application.dataPath, ex.pontosExercicio);
+				if(File.Exists(pathEx))
+				{
+					File.Delete(pathEx);
+				}
 				Exercicio.DeleteValue (ex.idExercicio);
 			}
 		}
@@ -59,6 +64,13 @@ public class DeleteMovementButton : MonoBehaviour
 			{
 				MovimentoMusculo.DeleteValue (m.idMovimento, m.idMusculo);
 			}
+		}
+
+		string pathMov = string.Format("{0}/Movimentos/{1}.points", Application.dataPath, GlobalController.instance.movement.pontosMovimento);
+
+		if(File.Exists(pathMov))
+		{
+			File.Delete(pathMov);
 		}
 
 		Movimento.DeleteValue (IdMovimento);
