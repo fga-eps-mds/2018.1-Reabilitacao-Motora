@@ -1,22 +1,19 @@
 #! /bin/sh
 
 TEXTOAMARELO="\033[01;33m"
-TEXTOVERDE="\033[01;32m"
 NORMAL="\033[m"
 
 #Declaração das variáveis de validação
-validaTravis=1
 validaKey=1
 validateste=1
 validaBuild=1
 
   echo "${TEXTOAMARELO} Iniciando Script de Validação de Build. ${NORMAL}"
-  echo "${TEXTOAMARELO} Ativando o Unity. ${NORMAL}"
   ./Reabilitacao-Motora/Assets/Scripts/travis_unity_key.sh
   validaKey=$?
 
   if [ $validaKey -eq 0 ]; then
-    echo "${TEXTOAMARELO} Ativação concluída com êxito ... Iniciando PlayTest do Unity ! ${NORMAL}"
+    echo "${TEXTOAMARELO} Iniciando PlayTest do Unity ! ${NORMAL}"
     ./Reabilitacao-Motora/Assets/Scripts/travis_tests.sh
     validateste=$?
   else

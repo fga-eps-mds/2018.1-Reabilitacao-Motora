@@ -4,13 +4,10 @@ TEXTOAMARELO="\033[01;33m"
 TEXTOVERDE="\033[01;32m"
 NORMAL="\033[m"
 
-echo "${TEXTOAMARELO} Entrando na Pasta do Projeto ${NORMAL}"
+echo "${TEXTOAMARELO} Entrando na Pasta do Projeto - A Pasta do Projeto Contém : ${NORMAL}"
 cd Reabilitacao-Motora
-echo "${TEXTOVERDE}========================================================================================================${NORMAL}"
-
-echo "${TEXTOAMARELO} A pasta do projeto contém: ${NORMAL}"
 ls
-echo "${TEXTOVERDE}========================================================================================================${NORMAL}"
+echo "${TEXTOVERDE} ======================================================================================================== ${NORMAL}"
 
 echo "${TEXTOAMARELO} Iniciando Script de PlayTest ${NORMAL}"
 /Applications/Unity/Unity.app/Contents/MacOS/Unity -batchmode -logFile /dev/stdout -runTests -projectPath $(pwd) -testPlatform playmode -testResults $(pwd)/test.xml

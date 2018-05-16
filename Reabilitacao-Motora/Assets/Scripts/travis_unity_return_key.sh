@@ -4,10 +4,8 @@ TEXTOAMARELO="\033[01;33m"
 TEXTOVERDE="\033[01;32m"
 NORMAL="\033[m"
 
-echo "${TEXTOAMARELO} Entrando na Pasta do Projeto ${NORMAL}"
+echo "${TEXTOAMARELO} Entrando na Pasta do Projeto - A Pasta do Projeto Contém : ${NORMAL}"
 cd Reabilitacao-Motora
-
-echo "${TEXTOAMARELO} A Pasta do Projeto Contém :${NORMAL}"
 ls
 echo "${TEXTOVERDE}========================================================================================================${NORMAL}"
 
