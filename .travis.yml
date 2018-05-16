@@ -4,8 +4,11 @@ rvm:
   - 2.2
 before_install:
   - chmod a+x ./Reabilitacao-Motora/Assets/Scripts/travis_install.sh
+  - chmod a+x ./Reabilitacao-Motora/Assets/Scripts/travis_unity_key.sh
   - chmod a+x ./Reabilitacao-Motora/Assets/Scripts/travis_build.sh
   - chmod a+x ./Reabilitacao-Motora/Assets/Scripts/travis_tests.sh
+  - chmod a+x ./Reabilitacao-Motora/Assets/Scripts/travis_unity_return_key.sh
+  - chmod a+x ./Reabilitacao-Motora/Assets/Scripts/travis_validation.sh
   - chmod a+x ./Reabilitacao-Motora/Assets/Scripts/travis_deploy_dev.sh
   - chmod a+x ./Reabilitacao-Motora/Assets/Scripts/travis_deploy_master.sh
 install:
@@ -15,14 +18,17 @@ jobs:
     - stage: master_stage
       if: branch = master
       script:
-        - ./Reabilitacao-Motora/Assets/Scripts/travis_build.sh
+
+        - ./Reabilitacao-Motora/Assets/Scripts/travis_validation.sh
         - ./Reabilitacao-Motora/Assets/Scripts/travis_deploy_master.sh
+
     - stage: homolog_stage
       if: branch = development
       script:
-        - ./Reabilitacao-Motora/Assets/Scripts/travis_build.sh
+        - ./Reabilitacao-Motora/Assets/Scripts/travis_validation.sh
         - ./Reabilitacao-Motora/Assets/Scripts/travis_deploy_dev.sh
+
     - stage: development_stages
       if: (NOT branch = development) AND (NOT branch = master)
       script:
-        - ./Reabilitacao-Motora/Assets/Scripts/travis_build.sh
+        - ./Reabilitacao-Motora/Assets/Scripts/travis_validation.sh

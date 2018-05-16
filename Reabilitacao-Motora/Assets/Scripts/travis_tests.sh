@@ -1,16 +1,21 @@
 #! /bin/sh
-/Applications/Unity/Unity.app/Contents/MacOS/Unity -batchmode -logFile /dev/stdout -runEditorTests -projectPath $(pwd) -testPlatform playmode -editorTestsResultFile test.xml
- rc0=$?
 
-echo " Untiy test Logs"
-cat $(pwd)test.xml
+TEXTOAMARELO="\033[01;33m"
+TEXTOVERDE="\033[01;32m"
+NORMAL="\033[m"
 
-# exit if tests failed
-if [ $rc0 -ne 0 ]; then { echo "Failed unit tests"; exit $rc0; } fi
+echo "${TEXTOAMARELO} Entrando na Pasta do Projeto - A Pasta do Projeto Contém : ${NORMAL}"
+cd Reabilitacao-Motora
+ls
+echo "${TEXTOVERDE} ======================================================================================================== ${NORMAL}"
 
-#CASO NÃO FUNCUONE TENTAR USAR AS CATEGORIAS
-# -editorTestsCategories ADICIONAR A CATEGORIA AQUI \
+echo "${TEXTOAMARELO} Iniciando Script de PlayTest ${NORMAL}"
+/Applications/Unity/Unity.app/Contents/MacOS/Unity -batchmode -logFile /dev/stdout -runTests -projectPath $(pwd) -testPlatform playmode -testResults $(pwd)/test.xml
+rc0=$?
+echo "${TEXTOVERDE} ======================================= FIM DO SCRIPT PLAYTEST ======================================= ${NORMAL}"
 
-# -testFilter "<projectPath>/Library/ScriptAssemblies/Assembly-CSharp.dll" talvez tenha que adicionar caso ocorra este erro  (One or more child tests had errors" error in the Unity)
+echo " ${TEXTOAMARELO} Exibindo Log do Script de PlayTest ${NORMAL}"
+cat $(pwd)/test.xml
+echo "${TEXTOVERDE} ======================================= FIM DOS LOGS DE TEST ======================================= ${NORMAL}"
 
-#Opção aparentemente viável -executeMethod <ClassName.MethodName> CASO OS TESTES ESTEJAM NA CLASSE TEST PODEM SER EXECUTADOS AQUI (Só funciona com métodos estáticos)
+if [ $rc0 -ne 0 ]; then { echo " PlayTest Falhando -- Consultar Log de Teste -- "; exit $rc0; } fi
