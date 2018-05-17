@@ -5,17 +5,17 @@ using pontosrotulopaciente;
  
 class MoveObjectXAxis : MonoBehaviour
 {
-	private bool dragging = false;
+	private bool dragging;
 	private float distance;
  
    
-	void OnMouseDown()
+	public void OnMouseDown()
 	{
 		distance = Vector3.Distance(transform.position, Camera.main.transform.position);
 		dragging = true;
 	}
  
-	void OnMouseUp()
+	public void OnMouseUp()
 	{
 		dragging = false;
 		
@@ -32,12 +32,11 @@ class MoveObjectXAxis : MonoBehaviour
 		if (currentObjectName == "xFinal")
 		{
 			var brotherX = transform.parent.GetChild(index - 1).gameObject.transform.localPosition.x;
-			Debug.Log("entrou e o transform ta certo? " + transform.localPosition.x);
 			PontosRotuloPaciente.Update(desc.Prp.idRotuloPaciente, GlobalController.instance.exercise.idExercicio, desc.Prp.estagioMovimentoPaciente, brotherX, transform.localPosition.x);
 		}
 	}
  
-	void Update()
+	public void Update()
 	{
 		if (dragging)
 		{

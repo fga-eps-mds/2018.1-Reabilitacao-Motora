@@ -12,7 +12,6 @@ public class GenerateLineChartPatient : MonoBehaviour
 
 	List <float> current_time;
 	List <Vector3> p_mao_pos, p_mao_rot, p_ombro_pos, p_ombro_rot, p_cotovelo_pos, p_cotovelo_rot, p_braco_pos, p_braco_rot, points2;
-	Vector2 m_p, c_p, o_p, grafico;
 
 	LineRenderer lineRenderer;
 
@@ -75,7 +74,7 @@ public class GenerateLineChartPatient : MonoBehaviour
 	/**
 	* Descrever aqui o que esse método realiza.
 	*/
-	void Awake()
+	public void Awake()
 	{
 		if(GlobalController.instance != null && 
 		   GlobalController.instance.movement != null)
@@ -98,27 +97,7 @@ public class GenerateLineChartPatient : MonoBehaviour
 			string[] p1 = System.IO.File.ReadAllLines(string.Format("Assets/Exercicios/{0}", GlobalController.instance.exercise.pontosExercicio));
 			LoadData (p1);
 			
-			lineRenderer = gameObject.AddComponent<LineRenderer>();
-			lineRenderer.material = new Material(Shader.Find("Particles/Multiply (Double)"));
-			lineRenderer.widthMultiplier = 0.2f;
-			lineRenderer.positionCount = p1.Length;
-
-		// A simple 2 color gradient with a fixed alpha of 1.0f.
-			float alpha = 1.0f;
-			Gradient gradient = new Gradient();
-			gradient.SetKeys(
-				new []
-				{
-					new GradientColorKey(c1, 0.0f), 
-					new GradientColorKey(c2, 1.0f) 
-				},
-				new [] 
-				{
-					new GradientAlphaKey(alpha, 0.0f), 
-					new GradientAlphaKey(alpha, 1.0f) 
-				}
-			);
-			lineRenderer.colorGradient = gradient;
+			LoadLineRenderer();
 		}
 		else
 		{
@@ -130,7 +109,7 @@ public class GenerateLineChartPatient : MonoBehaviour
 	/**
 	* Descrever aqui o que esse método realiza.
 	*/
-	void Update () 
+	public void Update () 
 	{
 		if (Input.GetKeyDown(KeyCode.Space)) 
 		{
@@ -169,7 +148,7 @@ public class GenerateLineChartPatient : MonoBehaviour
 		float step = 2f / 70;
 		Vector3 scale = Vector3.one * step;
 		Vector3 position = Vector3.zero;
-
+		Vector2 m_p, c_p, o_p, grafico;
 
 		for (int j = 0; j < current_time.Count; ++j) 
 		{
@@ -181,23 +160,45 @@ public class GenerateLineChartPatient : MonoBehaviour
 			Transform point = Instantiate(pointPrefab);
 			position.x = (grafico.x) + 0.05f;
 			position.y = (grafico.y/24);
-			position.z = 6.0f;
+			position.z = 0.0f;
 			point.localPosition = position;
 			point.localScale = scale;
 			point.SetParent (transform, false);
-			points2.Add (point.position);
+			points2.Add (point.localPosition);
+
+			lineRenderer.SetVertexCount(points2.Count); 
+			lineRenderer.SetPosition(points2.Count-1, point.localPosition);
 			
-			lineRenderer.SetPositions (points2.ToArray());
-
-			if (j == 15)
-			{
-				foreach(var x in points2)
-				{
-					Debug.Log(x.x + " " + x.y + " " + x.z);
-				}
-			}
-
 			yield return new WaitForSeconds(0.02f);
 		}
+	}
+
+	public void LoadLineRenderer ()
+	{
+		lineRenderer = gameObject.AddComponent<LineRenderer>();
+		lineRenderer.material = new Material(Shader.Find("Particles/Multiply (Double)"));
+		lineRenderer.widthMultiplier = 0.2f;
+		lineRenderer.positionCount = 4000;
+		lineRenderer.sortingOrder = 5;
+		lineRenderer.SetVertexCount(2);
+
+	// A simple 2 color gradient with a fixed alpha of 1.0f.
+		float alpha = 1.0f;
+		Gradient gradient = new Gradient();
+		gradient.SetKeys(
+			new []
+			{
+				new GradientColorKey(c1, 0.0f), 
+				new GradientColorKey(c2, 1.0f) 
+			},
+			new [] 
+			{
+				new GradientAlphaKey(alpha, 0.0f), 
+				new GradientAlphaKey(alpha, 1.0f) 
+			}
+		);
+		lineRenderer.colorGradient = gradient;
+		lineRenderer.useWorldSpace = false;
+		lineRenderer.alignment = LineAlignment.Local;
 	}
 }

@@ -12,7 +12,6 @@ public class GenerateLineChart : MonoBehaviour
 
 	List <float> current_time;
 	List <Vector3> f_mao_pos, f_mao_rot, f_ombro_pos, f_ombro_rot, f_cotovelo_pos, f_cotovelo_rot, f_braco_pos, f_braco_rot, points2;
-	Vector2 m_p, c_p, o_p, grafico;
 
 	LineRenderer lineRenderer;
 
@@ -98,8 +97,8 @@ public class GenerateLineChart : MonoBehaviour
 		lineRenderer.colorGradient = gradient;
 		lineRenderer.useWorldSpace = false;
 		lineRenderer.alignment = LineAlignment.Local;
-
 	}
+	
 	/**
 	* Descrever aqui o que esse método realiza.
 	*/
@@ -177,7 +176,7 @@ public class GenerateLineChart : MonoBehaviour
 		float step = 2f / 70;
 		Vector3 scale = Vector3.one * step;
 		Vector3 position = Vector3.zero;
-
+		Vector2 m_p, c_p, o_p, grafico;
 
 		for (int j = 0; j < current_time.Count; ++j) 
 		{
@@ -196,7 +195,7 @@ public class GenerateLineChart : MonoBehaviour
 			points2.Add (point.localPosition);
 
 			lineRenderer.SetVertexCount(points2.Count); 
-       		lineRenderer.SetPosition(points2.Count-1, point.localPosition);
+			lineRenderer.SetPosition(points2.Count-1, point.localPosition);
 			yield return new WaitForSeconds(0.02f);
 		}
 	}

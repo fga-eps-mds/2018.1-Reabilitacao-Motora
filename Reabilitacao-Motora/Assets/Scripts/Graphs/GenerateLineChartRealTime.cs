@@ -26,7 +26,7 @@ public class GenerateLineChartRealTime : MonoBehaviour
 
 	List <Vector3> points2;
 
-	void Update () 
+	public void Update () 
 	{
 		if (Input.GetKeyDown(KeyCode.Space)) 
 		{
@@ -34,7 +34,7 @@ public class GenerateLineChartRealTime : MonoBehaviour
 		}
 	}
 
-	void FixedUpdate () 
+	public void FixedUpdate () 
 	{
 		if (t) 
 		{
@@ -57,18 +57,19 @@ public class GenerateLineChartRealTime : MonoBehaviour
 			float step = 2f / divScale;
 			Vector3 scale = Vector3.one * step;
 			Vector3 position = new Vector3 (0f,0f,12);
+
 			Transform point = Instantiate(pointPrefab);
 			position.x = (grafico.x) + 0.05f;
 			position.y = (grafico.y/24);
-			position.z = 200.0f;
-
+			position.z = 0.0f;
 			point.localPosition = position;
 			point.localScale = scale;
 			point.SetParent (transform, false);
-			points2.Add (point.position);
+			points2.Add (point.localPosition);
 
-			lineRenderer.SetPositions (points2.ToArray());
-			lineRenderer.Simplify(1);
+			lineRenderer.SetVertexCount(points2.Count); 
+			lineRenderer.SetPosition(points2.Count-1, point.localPosition);
+
 			i++;
 		}
 	}
@@ -97,25 +98,43 @@ public class GenerateLineChartRealTime : MonoBehaviour
 	}
 
 
-	void Awake()
+	public void Awake()
 	{	
 		points2 = new List<Vector3>();
 		t = false;
 		i = 0;
 		current_time_movement = 0;
 
+		LoadLineRenderer();
+	}
+
+	public void LoadLineRenderer ()
+	{
 		lineRenderer = gameObject.AddComponent<LineRenderer>();
 		lineRenderer.material = new Material(Shader.Find("Particles/Multiply (Double)"));
-		lineRenderer.widthMultiplier = 0.4f;
-		lineRenderer.positionCount = RESOLUTION + 1;
+		lineRenderer.widthMultiplier = 0.2f;
+		lineRenderer.positionCount = 4000;
+		lineRenderer.sortingOrder = 5;
+		lineRenderer.SetVertexCount(2);
 
+	// A simple 2 color gradient with a fixed alpha of 1.0f.
 		float alpha = 1.0f;
 		Gradient gradient = new Gradient();
 		gradient.SetKeys(
-			new GradientColorKey[] { new GradientColorKey(c1, 0.0f), new GradientColorKey(c2, 1.0f) },
-			new GradientAlphaKey[] { new GradientAlphaKey(alpha, 0.0f), new GradientAlphaKey(alpha, 1.0f) }
-			);
+			new []
+			{
+				new GradientColorKey(c1, 0.0f), 
+				new GradientColorKey(c2, 1.0f) 
+			},
+			new [] 
+			{
+				new GradientAlphaKey(alpha, 0.0f), 
+				new GradientAlphaKey(alpha, 1.0f) 
+			}
+		);
 		lineRenderer.colorGradient = gradient;
+		lineRenderer.useWorldSpace = false;
+		lineRenderer.alignment = LineAlignment.Local;
 	}
 
 }

@@ -4,8 +4,6 @@ using UnityEngine.UI;
 public class DestroyInstance : MonoBehaviour 
 {
 	public static DestroyInstance instance;
-
-	// public GameObject self;
 	
 	private void Awake ()
 	{
