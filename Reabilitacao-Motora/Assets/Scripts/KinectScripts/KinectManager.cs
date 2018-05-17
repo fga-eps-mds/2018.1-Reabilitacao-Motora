@@ -1618,6 +1618,8 @@ public class KinectManager : MonoBehaviour
 		}
     }
 	
+
+	// This is a script for control users.
 	// Remove a lost UserId
 	void RemoveUser(uint UserId)
 	{
@@ -1642,6 +1644,7 @@ public class KinectManager : MonoBehaviour
 			player1CalibrationData.userId = 0;
 		}
 		
+		/*
 		// If we lose player 2...
 		if(UserId == Player2ID)
 		{
@@ -1662,12 +1665,13 @@ public class KinectManager : MonoBehaviour
 			
 			player2CalibrationData.userId = 0;
 		}
+		*/
 		
 		// clear gestures list for this user
 		ClearGestures(UserId);
         // remove from global users list
         allUsers.Remove(UserId);
-		AllPlayersCalibrated = !TwoUsers ? allUsers.Count >= 1 : allUsers.Count >= 2; // false;
+		//AllPlayersCalibrated = !TwoUsers ? allUsers.Count >= 1 : allUsers.Count >= 2; // false;
 		
 		// Try to replace that user!
 		Debug.Log("Waiting for users.");
