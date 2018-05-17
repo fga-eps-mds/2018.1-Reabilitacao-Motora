@@ -29,16 +29,20 @@ public class CreateLabel : MonoBehaviour
 		var scriptInitial = go.GetComponentInChildren<SetInitialX>();
 		var scriptFinal = go.GetComponentInChildren<SetFinalX>();
 		var labelName = go.GetComponentInChildren<TextMesh>();
+		var dbPrpObject = go.GetComponentInChildren<SetLabel>();
 
 		scriptInitial.InitialX = val.x;
-		scriptFinal.finalX = val.y;
+		scriptFinal.FinalX = val.y;
 
 		scriptInitial.Set();
 		scriptFinal.Set();
 
 		labelName.text = label;
 
-		//PontosRotuloPaciente.Insert(GlobalController.instance.exercise.idExercicio, label, val.x, val.y);
+		PontosRotuloPaciente.Insert(GlobalController.instance.exercise.idExercicio, label, val.x, val.y);
+		List<PontosRotuloPaciente> allPrp = PontosRotuloPaciente.Read();
+
+		dbPrpObject.Prp = allPrp[allPrp.Count - 1];
 	}
 
 

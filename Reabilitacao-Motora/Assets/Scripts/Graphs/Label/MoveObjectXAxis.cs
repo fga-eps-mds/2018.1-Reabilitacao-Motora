@@ -20,19 +20,20 @@ class MoveObjectXAxis : MonoBehaviour
 		dragging = false;
 		
 		var currentObjectName = transform.name;
-		var label = transform.parent.gameObject.GetComponentInChildren<TextMesh>();
+		var desc = transform.parent.gameObject.GetComponentInChildren<SetLabel>();
 		int index = transform.GetSiblingIndex();
 
 		if (currentObjectName == "xInicial")
 		{
 			var brotherX = transform.parent.GetChild(index + 1).gameObject.transform.localPosition.x;
-			PontosRotuloPaciente.Update(GlobalController.instance.exercise.idExercicio, label, transform.localPosition.x, brotherX);
+			PontosRotuloPaciente.Update(desc.Prp.idRotuloPaciente, GlobalController.instance.exercise.idExercicio, desc.Prp.estagioMovimentoPaciente, transform.localPosition.x, brotherX);
 		}
 		
 		if (currentObjectName == "xFinal")
 		{
 			var brotherX = transform.parent.GetChild(index - 1).gameObject.transform.localPosition.x;
-			PontosRotuloPaciente.Update(GlobalController.instance.exercise.idExercicio, label, brotherX, transform.localPosition.x);
+			Debug.Log("entrou e o transform ta certo? " + transform.localPosition.x);
+			PontosRotuloPaciente.Update(desc.Prp.idRotuloPaciente, GlobalController.instance.exercise.idExercicio, desc.Prp.estagioMovimentoPaciente, brotherX, transform.localPosition.x);
 		}
 	}
  

@@ -146,11 +146,11 @@ namespace DataBaseAttributes
 
 				bld.Append(string.Format("UPDATE \"{0}\" set ", tableName));
 
-				for (int i = 1; i < TablesManager.Tables[tableId].colName.Count - 1; ++i)
+				for (int i = 1; i < TablesManager.Tables[tableId].colName.Count; ++i)
 				{
 					string aux;
 
-					if (i + 2 == columns.Length)
+					if (i + 1 == columns.Length)
 					{
 						aux = " ";
 					}
@@ -165,6 +165,7 @@ namespace DataBaseAttributes
 				bld.Append(string.Format("WHERE \"{0}\" = \"{1}\"", TablesManager.Tables[tableId].colName[0], columns[0]));
 
 				sqlQuery = bld.ToString();
+				Debug.Log(sqlQuery);
 
 				cmd.CommandText = sqlQuery;
 				
@@ -290,9 +291,9 @@ namespace DataBaseAttributes
 					{
 						columns[i] = reader.GetString(i);
 					}
-					else if ( t.Equals(typeof(double)) ) 
+					else if ( t.Equals(typeof(double)) || t.Equals(typeof(float)) ) 
 					{
-						columns[i] = reader.GetDouble(i);
+						columns[i] = (float) reader.GetDouble(i);
 					}
 				}
 			}

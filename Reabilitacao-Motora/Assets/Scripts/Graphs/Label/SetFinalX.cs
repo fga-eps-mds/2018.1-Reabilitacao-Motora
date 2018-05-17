@@ -7,16 +7,16 @@ using UnityEngine;
  */
 public class SetFinalX : MonoBehaviour
 {
-	private float FinalX;
-	public float finalX
+	private float finalX;
+	public float FinalX
 	{
 		get
 		{
-			return FinalX;
+			return finalX;
 		}
 		set
 		{
-			FinalX = value;
+			finalX = value;
 		}
 	}
 
@@ -25,6 +25,6 @@ public class SetFinalX : MonoBehaviour
 	 */
 	public void Set()
 	{
-		transform.localPosition = new Vector3 (finalX, 3.75f, 0);
+		transform.localPosition = new Vector3 (FinalX, 3.75f, 0);
 	}
 }

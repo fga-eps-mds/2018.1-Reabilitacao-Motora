@@ -27,6 +27,8 @@ public class GlobalController : MonoBehaviour
 	private Movimento Movement;
 	private Sessao Session;
 	private Exercicio Exercise;
+	private PontosRotuloPaciente Prp;
+	private PontosRotuloFisioterapeuta Prf;
 	private EventSystem system;
 	public string path;
 
@@ -116,6 +118,30 @@ public class GlobalController : MonoBehaviour
 		set
 		{
 			Exercise = value;
+		}
+	}
+
+	public PontosRotuloFisioterapeuta prf
+	{
+		get
+		{
+			return Prf;
+		}
+		set
+		{
+			Prf = value;
+		}
+	}
+
+	public PontosRotuloPaciente prp
+	{
+		get
+		{
+			return Prp;
+		}
+		set
+		{
+			Prp = value;
 		}
 	}
 	

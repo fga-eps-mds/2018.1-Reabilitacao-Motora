@@ -16,8 +16,8 @@ namespace pontosrotulopaciente
 		private const int tableId = 9;
 		private int IdRotuloPaciente;
 		private int IdExercicio;
-		private double TempoInicial;
-		private double TempoFinal;
+		private float TempoInicial;
+		private float TempoFinal;
 		private string EstagioMovimentoPaciente;
 
 		public int idRotuloPaciente 
@@ -44,7 +44,7 @@ namespace pontosrotulopaciente
 			}
 		}
 
-		public double tempoInicial 
+		public float tempoInicial 
 		{
 			get 
 			{
@@ -56,7 +56,7 @@ namespace pontosrotulopaciente
 			}
 		}
 
-		public double tempoFinal 
+		public float tempoFinal 
 		{
 			get 
 			{
@@ -84,7 +84,7 @@ namespace pontosrotulopaciente
 		/**
 		 * Classe com todos os atributos de um pontosrotulopaciente.
 		 */
-		public PontosRotuloPaciente(int idrp, int ide, double ti, double tf, string e)
+		public PontosRotuloPaciente(int idrp, int ide, string e, float ti, float tf)
 		{
 				this.idRotuloPaciente = idrp;
 				this.idExercicio = ide;
@@ -97,9 +97,9 @@ namespace pontosrotulopaciente
 		{
 				this.idRotuloPaciente = (int)columns[0];
 				this.idExercicio = (int)columns[1];
-				this.tempoInicial = (double)columns[2];
-				this.tempoFinal = (double)columns[3];
-				this.estagioMovimentoPaciente = (string)columns[4];
+				this.estagioMovimentoPaciente = (string)columns[2];
+				this.tempoInicial = (float)columns[3];
+				this.tempoFinal = (float)columns[4];
 		}
 
 		/**
@@ -117,8 +117,8 @@ namespace pontosrotulopaciente
 		 */
 		public static void Insert(int idExercicio,
 			string estagioMovimentoPaciente,
-			double tempoInicial,
-			double tempoFinal)
+			float tempoInicial,
+			float tempoFinal)
 		{
 			DataBase banco = new DataBase();
 			Object[] columns = new Object[] {idExercicio, estagioMovimentoPaciente, tempoInicial, tempoFinal};
@@ -131,8 +131,8 @@ namespace pontosrotulopaciente
 		public static void Update(int id,
 			int idExercicio,
 			string estagioMovimentoPaciente,
-			double tempoInicial,
-			double tempoFinal)
+			float tempoInicial,
+			float tempoFinal)
 		{
 			DataBase banco = new DataBase();
 			Object[] columns = new Object[] {id, idExercicio, estagioMovimentoPaciente, tempoInicial, tempoFinal};
@@ -149,10 +149,10 @@ namespace pontosrotulopaciente
 			int idRotuloPacienteTemp = 0;
 			int idExercicioTemp = 0;
 			string estagioMovimentoPacienteTemp = "null";
-			double tempoInicialTemp = 0;
-			double tempoFinalTemp = 0;
+			float tempoInicialTemp = 0;
+			float tempoFinalTemp = 0;
 
-			Object[] columns = new Object[] {idRotuloPacienteTemp,idExercicioTemp,tempoInicialTemp,tempoFinalTemp,estagioMovimentoPacienteTemp};
+			Object[] columns = new Object[] {idRotuloPacienteTemp,idExercicioTemp,estagioMovimentoPacienteTemp,tempoInicialTemp,tempoFinalTemp};
 
 			List<PontosRotuloPaciente> patientLabelPoints = banco.Read<PontosRotuloPaciente>(GlobalController.instance.path, TablesManager.Tables[tableId].tableName, columns);
 
@@ -167,10 +167,10 @@ namespace pontosrotulopaciente
 			int idRotuloPacienteTemp = 0;
 			int idExercicioTemp = 0;
 			string estagioMovimentoPacienteTemp = "null";
-			double tempoInicialTemp = 0;
-			double tempoFinalTemp = 0;
+			float tempoInicialTemp = 0;
+			float tempoFinalTemp = 0;
 
-			Object[] columns = new Object[] {idRotuloPacienteTemp,idExercicioTemp,tempoInicialTemp,tempoFinalTemp,estagioMovimentoPacienteTemp};
+			Object[] columns = new Object[] {idRotuloPacienteTemp,idExercicioTemp,estagioMovimentoPacienteTemp,tempoInicialTemp,tempoFinalTemp};
 
 			PontosRotuloPaciente patientLabelPoint = banco.ReadValue<PontosRotuloPaciente>(GlobalController.instance.path, TablesManager.Tables[tableId].tableName,
 				TablesManager.Tables[tableId].colName[0], id, columns);
