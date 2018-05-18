@@ -14,7 +14,6 @@ public class BoneOrientationsConstraint
 	
     // The Joint Constraints.  
     private readonly List<BoneOrientationConstraint> jointConstraints = new List<BoneOrientationConstraint>();
-
 	//private GameObject debugText;
 	
 
@@ -42,7 +41,6 @@ public class BoneOrientationsConstraint
     public void AddBoneOrientationConstraint(int joint, ConstraintAxis axis, float angleMin, float angleMax)
     {
 		int index = FindBoneOrientationConstraint(joint);
-		
 		BoneOrientationConstraint jc = index >= 0 ? jointConstraints[index] : new BoneOrientationConstraint(joint);
 		
 		if(index < 0)
@@ -150,7 +148,6 @@ public class BoneOrientationsConstraint
 
             // If the joint has a parent, constrain the bone direction to be within the constraint cone
             int parentIdx = KinectWrapper.GetSkeletonJointParent(jc.joint);
-
             // Local bone orientation relative to parent
             Matrix4x4 localOrientationMatrix = jointOrientations[parentIdx].inverse * jointOrientations[jc.joint];
 			
@@ -165,7 +162,6 @@ public class BoneOrientationsConstraint
 			
 			//Matrix4x4 globalOrientationMatrix = jointOrientations[jc.joint];
 			//Quaternion globalRotation = Quaternion.LookRotation(globalOrientationMatrix.GetColumn(2), globalOrientationMatrix.GetColumn(1));
-			
 			for(int a = 0; a < jc.axisConstrainrs.Count; a++)
 			{
 				AxisOrientationConstraint ac = jc.axisConstrainrs[a];
@@ -197,7 +193,6 @@ public class BoneOrientationsConstraint
 			if(isConstrained)
 			{
 				Quaternion constrainedRotation = Quaternion.Euler(eulerAngles);
-
                 // Put it back into the bone orientations
 				localOrientationMatrix.SetTRS(Vector3.zero, constrainedRotation, Vector3.one); 
 				jointOrientations[jc.joint] = jointOrientations[parentIdx] * localOrientationMatrix;

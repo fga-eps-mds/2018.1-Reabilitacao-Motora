@@ -83,7 +83,6 @@ public class KinectHelper
 
 		Vector3 jointPos = (Vector3)skeleton.SkeletonPositions[jointIndex];
         jointPos = Vector3.Lerp(jointPos, newJointPos, lerpValue);
-	
 		skeleton.SkeletonPositions[jointIndex] = (Vector4)jointPos;
 		skeleton.eSkeletonPositionTrackingState[jointIndex] = finalTrackingState;
     }

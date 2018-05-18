@@ -446,7 +446,6 @@ public class KinectWrapper
 			phStreamHandle =  GetColorStreamHandle();
 		else
 			throw new Exception("Unsupported image type: " + eImageType);
-		
 		return 0;
 	}
 #else
@@ -778,7 +777,6 @@ public class KinectWrapper
 	{
 #if USE_KINECT_INTERACTION_OR_FACETRACKING
 		uint depthBufLen = (uint)(depthPlayerData.Length << 1);
-
 		var pDepthData = GCHandle.Alloc(depthPlayerData, GCHandleType.Pinned);
 		bool newDepth = GetDepthFrameData(pDepthData.AddrOfPinnedObject(), ref depthBufLen, true);
 		pDepthData.Free();
@@ -874,10 +872,8 @@ public class KinectWrapper
         yCol.y = !flip ? xCol.z : -xCol.z;
         yCol.z = !flip ? -xCol.y : xCol.y;
         yCol.Normalize();
-
         //third column is fully determined by the first two, and it must be their cross product
         zCol = Vector3.Cross(xCol, yCol);
-
         //copy values into matrix
         PopulateMatrix(ref jointOrientation, xCol, yCol, zCol);
     }
@@ -898,10 +894,8 @@ public class KinectWrapper
         xCol.y = -yCol.x;
         xCol.z = 0.0f;
         xCol.Normalize();
-
         //third column is fully determined by the first two, and it must be their cross product
         zCol = Vector3.Cross(xCol, yCol);
-
         //copy values into matrix
         PopulateMatrix(ref jointOrientation, xCol, yCol, zCol);
     }
@@ -922,10 +916,8 @@ public class KinectWrapper
         xCol.y = -zCol.x;
         xCol.z = 0.0f;
         xCol.Normalize();
-
         //third column is fully determined by the first two, and it must be their cross product
         yCol = Vector3.Cross(zCol, xCol);
-
         //copy values into matrix
         PopulateMatrix(ref jointOrientation, xCol, yCol, zCol);
     }

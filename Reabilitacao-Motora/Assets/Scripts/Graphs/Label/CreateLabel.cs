@@ -10,23 +10,13 @@ using System.Linq;
 public class CreateLabel : MonoBehaviour
 {
 	public Label labelPrefab;
-	string label;
-	Vector2 val;
-	float chartHeight;
 	string nameLabel = "label name";
 	string initialX = "0", finalX = "0";
 
 	/**
 	 * Descrever aqui o que esse método realiza.
 	 */
-	void Start()
-	{
-	}
-
-	/**
-	 * Descrever aqui o que esse método realiza.
-	 */
-	void displaygraph(string label, Vector2 val)
+	void displayGraph(string label, Vector2 val)
 	{
 		Label newLabel = Instantiate (labelPrefab) as Label;
 
@@ -43,20 +33,17 @@ public class CreateLabel : MonoBehaviour
 		GUI.Box(new Rect (3 * (Screen.width/5), 7.4f * (Screen.height/9), Screen.width/4, 60),""); 
 
 		GUILayout.BeginArea(new Rect(3 * (Screen.width/5), 7.5f * (Screen.height/9), Screen.width/4, 50));
-
 			GUILayout.BeginHorizontal();
 				nameLabel = GUILayout.TextField(nameLabel, GUILayout.Width(120));
 				initialX = GUILayout.TextField(initialX, GUILayout.Width(90));
 				finalX = GUILayout.TextField(finalX, GUILayout.Width(90));
 			GUILayout.EndHorizontal();
 
-
 			if (GUILayout.Button("Apply to Chart")) 
 			{
-				label = nameLabel;
-				val = new Vector2 (float.Parse(initialX), float.Parse(finalX));
-				
-				displaygraph (label, val);
+				string label = nameLabel;
+				Vector2 val = new Vector2 (float.Parse(initialX), float.Parse(finalX));
+				displayGraph (label, val);
 			}
 
 		GUILayout.EndArea();
