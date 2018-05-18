@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 64965251845638834}
   - component: {fileID: 23652268949169070}
   - component: {fileID: 114442105903859734}
-  - component: {fileID: 114620932523244954}
+  - component: {fileID: 114447196829077946}
   m_Layer: 8
   m_Name: xInicial
   m_TagString: Untagged
@@ -75,7 +75,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4989329866996922}
-  - component: {fileID: 114122777589669678}
+  - component: {fileID: 114976967182913828}
   m_Layer: 0
   m_Name: SetLabel
   m_TagString: Untagged
@@ -94,8 +94,8 @@ GameObject:
   - component: {fileID: 222007482976765054}
   - component: {fileID: 114018692224793618}
   - component: {fileID: 114720966248908960}
-  - component: {fileID: 114417803275982496}
   - component: {fileID: 114392752271727102}
+  - component: {fileID: 114901463006701602}
   m_Layer: 5
   m_Name: DeleteButton
   m_TagString: Untagged
@@ -115,7 +115,7 @@ GameObject:
   - component: {fileID: 64965059797824880}
   - component: {fileID: 23463569000588968}
   - component: {fileID: 114075237899666834}
-  - component: {fileID: 114408013584005128}
+  - component: {fileID: 114446631754933824}
   m_Layer: 8
   m_Name: xFinal
   m_TagString: Untagged
@@ -132,10 +132,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4467429853137612}
   - component: {fileID: 114228890756868698}
-  - component: {fileID: 114834008648924302}
+  - component: {fileID: 114293307854968860}
   m_Layer: 0
-  m_Name: Rotulo
-  m_TagString: Untagged
+  m_Name: RotuloPaciente
+  m_TagString: label
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -413,17 +413,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0950edda7d60fc249bc4e0c538b8d8eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114122777589669678
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1531910278957120}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 929ce81e29d4b6e4b8c2f8684db6f0ae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114228890756868698
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -438,6 +427,17 @@ MonoBehaviour:
   Description: {fileID: 102711204590881666}
   InitialX: 0
   FinalX: 3
+--- !u!114 &114293307854968860
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1828936037844164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4852f32f090bf1641b6046f294567559, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114392752271727102
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -449,29 +449,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3e24461098499c49a01c6f881dbfdfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114408013584005128
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1798327017809164}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea43577d6d1897f44940de8bd73d41f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114417803275982496
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1645142290434008}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84e8a97d8bc1593409bd08d362cbdfd7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  deleteButton: {fileID: 114720966248908960}
 --- !u!114 &114442105903859734
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -481,6 +458,28 @@ MonoBehaviour:
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: af2e60245a39f7f4a962c1504840c2e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114446631754933824
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1798327017809164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cb8560cb4ca92044a82d72cd045e465, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114447196829077946
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1050687314619808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cb8560cb4ca92044a82d72cd045e465, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114457355620986450
@@ -517,17 +516,6 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
---- !u!114 &114620932523244954
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1050687314619808}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea43577d6d1897f44940de8bd73d41f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114720966248908960
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -567,8 +555,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114122777589669678}
-        m_MethodName: SelectLabel
+      - m_Target: {fileID: 114976967182913828}
+        m_MethodName: SelectLabelPatient
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -596,15 +584,27 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &114834008648924302
+--- !u!114 &114901463006701602
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1828936037844164}
+  m_GameObject: {fileID: 1645142290434008}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ad6a70e29a26924ab763a832d32588e, type: 3}
+  m_Script: {fileID: 11500000, guid: 4a5c114376e8f7a44956e0a954d59a63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deleteButton: {fileID: 114720966248908960}
+--- !u!114 &114976967182913828
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1531910278957120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d234affeb5914d4e90ac766529eda45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!222 &222007482976765054

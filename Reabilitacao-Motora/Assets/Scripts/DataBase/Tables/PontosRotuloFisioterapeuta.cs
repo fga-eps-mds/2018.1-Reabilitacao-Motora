@@ -16,9 +16,9 @@ namespace pontosrotulofisioterapeuta
 		private const int tableId = 8;
 		private int IdRotuloFisioterapeuta;
 		private int IdMovimento;
-		private double TempoInicial;
-		private double TempoFinal;
 		private string EstagioMovimentoFisio;
+		private float TempoInicial;
+		private float TempoFinal;
 
 		public int idRotuloFisioterapeuta 
 		{
@@ -44,30 +44,6 @@ namespace pontosrotulofisioterapeuta
 			}
 		}
 
-		public double tempoInicial 
-		{
-			get 
-			{
-				return TempoInicial; 
-			} 
-			set 
-			{
-				TempoInicial = value; 
-			}
-		}
-
-		public double tempoFinal 
-		{
-			get 
-			{
-				return TempoFinal; 
-			} 
-			set 
-			{
-				TempoFinal = value; 
-			}
-		}
-
 		public string estagioMovimentoFisio 
 		{
 			get 
@@ -79,26 +55,51 @@ namespace pontosrotulofisioterapeuta
 				EstagioMovimentoFisio = value; 
 			}
 		}
+
+		public float tempoInicial 
+		{
+			get 
+			{
+				return TempoInicial; 
+			} 
+			set 
+			{
+				TempoInicial = value; 
+			}
+		}
+
+		public float tempoFinal 
+		{
+			get 
+			{
+				return TempoFinal; 
+			} 
+			set 
+			{
+				TempoFinal = value; 
+			}
+		}
+
 		
 		/**
 		 * Classe com todos os atributos de um pontosrotulofisioterapeuta.
 		 */
-		public PontosRotuloFisioterapeuta(int idrf, int idm, double ti, double tf, string e)
+		public PontosRotuloFisioterapeuta(int idrf, int idm, float ti, float tf, string e)
 		{
 				this.idRotuloFisioterapeuta = idrf;
 				this.idMovimento = idm;
+				this.estagioMovimentoFisio = e;
 				this.tempoInicial = ti;
 				this.tempoFinal = tf;
-				this.estagioMovimentoFisio = e;
 		}
 
 		public PontosRotuloFisioterapeuta(Object[] columns)
 		{
 				this.idRotuloFisioterapeuta = (int)columns[0];
 				this.idMovimento = (int)columns[1];
-				this.tempoInicial = (double)columns[2];
-				this.tempoFinal = (double)columns[3];
-				this.estagioMovimentoFisio = (string)columns[4];
+				this.estagioMovimentoFisio = (string)columns[2];
+				this.tempoInicial = (float)columns[3];
+				this.tempoFinal = (float)columns[4];
 		}
 
 		/**
@@ -116,8 +117,8 @@ namespace pontosrotulofisioterapeuta
 		 */
 		public static void Insert(int idMovimento,
 			string estagioMovimentoFisio,
-			double tempoInicial,
-			double tempoFinal)
+			float tempoInicial,
+			float tempoFinal)
 		{
 			DataBase banco = new DataBase();
 			Object[] columns = new Object[] {idMovimento, estagioMovimentoFisio, tempoInicial, tempoFinal};
@@ -130,8 +131,8 @@ namespace pontosrotulofisioterapeuta
 		public static void Update(int id,
 			int idMovimento,
 			string estagioMovimentoFisio,
-			double tempoInicial,
-			double tempoFinal)
+			float tempoInicial,
+			float tempoFinal)
 		{
 			DataBase banco = new DataBase();
 			Object[] columns = new Object[] {id, idMovimento, estagioMovimentoFisio, tempoInicial, tempoFinal};
@@ -148,10 +149,10 @@ namespace pontosrotulofisioterapeuta
 			int idRotuloFisioterapeutaTemp = 0;
 			int idMovimentoTemp = 0;
 			string estagioMovimentoFisioTemp = "null";
-			double tempoInicialTemp = 0;
-			double tempoFinalTemp = 0;
+			float tempoInicialTemp = 0;
+			float tempoFinalTemp = 0;
 
-			Object[] columns = new Object[] {idRotuloFisioterapeutaTemp,idMovimentoTemp,tempoInicialTemp,tempoFinalTemp,estagioMovimentoFisioTemp};
+			Object[] columns = new Object[] {idRotuloFisioterapeutaTemp,idMovimentoTemp,estagioMovimentoFisioTemp,tempoInicialTemp,tempoFinalTemp};
 
 			List<PontosRotuloFisioterapeuta> physioLabelPoints = banco.Read<PontosRotuloFisioterapeuta>(GlobalController.instance.path, TablesManager.Tables[tableId].tableName, columns);
 
@@ -165,10 +166,10 @@ namespace pontosrotulofisioterapeuta
 			int idRotuloFisioterapeutaTemp = 0;
 			int idMovimentoTemp = 0;
 			string estagioMovimentoFisioTemp = "null";
-			double tempoInicialTemp = 0;
-			double tempoFinalTemp = 0;
+			float tempoInicialTemp = 0;
+			float tempoFinalTemp = 0;
 
-			Object[] columns = new Object[] {idRotuloFisioterapeutaTemp,idMovimentoTemp,tempoInicialTemp,tempoFinalTemp,estagioMovimentoFisioTemp};
+			Object[] columns = new Object[] {idRotuloFisioterapeutaTemp,idMovimentoTemp,estagioMovimentoFisioTemp,tempoInicialTemp,tempoFinalTemp};
 
 			PontosRotuloFisioterapeuta physioLabelPoint = banco.ReadValue<PontosRotuloFisioterapeuta>(GlobalController.instance.path, TablesManager.Tables[tableId].tableName,
 				TablesManager.Tables[tableId].colName[0], id, columns);

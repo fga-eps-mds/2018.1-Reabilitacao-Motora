@@ -1,9 +1,8 @@
-
 using System.Collections;
 using UnityEngine;
 using pontosrotulopaciente;
  
-class MoveObjectXAxis : MonoBehaviour
+class MoveObjectXAxisPatient : MonoBehaviour
 {
 	private bool dragging;
 	private float distance;
@@ -20,7 +19,7 @@ class MoveObjectXAxis : MonoBehaviour
 		dragging = false;
 		
 		var currentObjectName = transform.name;
-		var desc = transform.parent.gameObject.GetComponentInChildren<SetLabel>();
+		var desc = transform.parent.gameObject.GetComponentInChildren<SetLabelPatient>();
 		int index = transform.GetSiblingIndex();
 
 		if (currentObjectName == "xInicial")

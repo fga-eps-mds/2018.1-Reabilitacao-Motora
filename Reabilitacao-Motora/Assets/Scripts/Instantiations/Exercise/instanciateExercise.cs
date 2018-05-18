@@ -27,14 +27,17 @@ public class instanciateExercise : MonoBehaviour
 
 	public void Start ()
 	{
-		List<Exercicio> exercises = Exercicio.Read();
-		int heightOffset = 60;
-		foreach (var exercise in exercises)
+		if (GlobalController.instance.session != null)
 		{
-			if (exercise.idSessao == GlobalController.instance.session.idSessao)
+			List<Exercicio> exercises = Exercicio.Read();
+			int heightOffset = 60;
+			foreach (var exercise in exercises)
 			{
-				ButtonSpawner(heightOffset, exercise);
-				heightOffset += HEIGHT_PADDING;
+				if (exercise.idSessao == GlobalController.instance.session.idSessao)
+				{
+					ButtonSpawner(heightOffset, exercise);
+					heightOffset += HEIGHT_PADDING;
+				}
 			}
 		}
 	}

@@ -291,7 +291,7 @@ namespace DataBaseAttributes
 					{
 						columns[i] = reader.GetString(i);
 					}
-					else if ( t.Equals(typeof(double)) || t.Equals(typeof(float)) ) 
+					else if ( t.Equals(typeof(float)) ) 
 					{
 						columns[i] = (float) reader.GetDouble(i);
 					}

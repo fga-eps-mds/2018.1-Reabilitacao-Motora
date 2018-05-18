@@ -4,12 +4,12 @@ using UnityEngine;
 using pontosrotulopaciente;
 
 
-public class SetLabel : MonoBehaviour 
+public class SetLabelPatient : MonoBehaviour 
 {
 
 	private PontosRotuloPaciente prp;
 
-	public void SelectLabel ()
+	public void SelectLabelPatient ()
 	{
 		GlobalController.instance.prp = prp;
 	}

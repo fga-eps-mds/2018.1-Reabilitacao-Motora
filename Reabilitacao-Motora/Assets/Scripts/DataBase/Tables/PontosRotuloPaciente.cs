@@ -16,9 +16,9 @@ namespace pontosrotulopaciente
 		private const int tableId = 9;
 		private int IdRotuloPaciente;
 		private int IdExercicio;
+		private string EstagioMovimentoPaciente;
 		private float TempoInicial;
 		private float TempoFinal;
-		private string EstagioMovimentoPaciente;
 
 		public int idRotuloPaciente 
 		{
@@ -44,6 +44,18 @@ namespace pontosrotulopaciente
 			}
 		}
 
+		public string estagioMovimentoPaciente 
+		{
+			get 
+			{
+				return EstagioMovimentoPaciente; 
+			} 
+			set 
+			{
+				EstagioMovimentoPaciente = value; 
+			}
+		}
+		
 		public float tempoInicial 
 		{
 			get 
@@ -68,17 +80,6 @@ namespace pontosrotulopaciente
 			}
 		}
 
-		public string estagioMovimentoPaciente 
-		{
-			get 
-			{
-				return EstagioMovimentoPaciente; 
-			} 
-			set 
-			{
-				EstagioMovimentoPaciente = value; 
-			}
-		}
 
 
 		/**
@@ -88,9 +89,9 @@ namespace pontosrotulopaciente
 		{
 				this.idRotuloPaciente = idrp;
 				this.idExercicio = ide;
+				this.estagioMovimentoPaciente = e;
 				this.tempoInicial = ti;
 				this.tempoFinal = tf;
-				this.estagioMovimentoPaciente = e;
 		}
 
 		public PontosRotuloPaciente(Object[] columns)

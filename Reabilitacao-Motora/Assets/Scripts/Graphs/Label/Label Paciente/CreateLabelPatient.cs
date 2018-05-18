@@ -8,7 +8,7 @@ using pontosrotulopaciente;
 /**
  * Descrever aqui o que essa classe realiza.
  */
-public class CreateLabel : MonoBehaviour
+public class CreateLabelPatient : MonoBehaviour
 {
 	[SerializeField]
 	protected GameObject labelPrefab;
@@ -29,7 +29,7 @@ public class CreateLabel : MonoBehaviour
 		var scriptInitial = go.GetComponentInChildren<SetInitialX>();
 		var scriptFinal = go.GetComponentInChildren<SetFinalX>();
 		var labelName = go.GetComponentInChildren<TextMesh>();
-		var dbPrpObject = go.GetComponentInChildren<SetLabel>();
+		var dbPrpObject = go.GetComponentInChildren<SetLabelPatient>();
 
 		scriptInitial.InitialX = val.x;
 		scriptFinal.FinalX = val.y;
