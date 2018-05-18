@@ -209,4 +209,12 @@ public class Flow : MonoBehaviour
 		SceneManager.LoadScene("Graphs1");
 	}
 
+	/**
+	 * Leva para a scene que lista os movimentos passíveis de serem reproduzidos num exercício.
+	 */
+	public static void StaticGraphs3()
+	{
+		SceneManager.LoadScene("Graphs3");
+	}
+
 }
