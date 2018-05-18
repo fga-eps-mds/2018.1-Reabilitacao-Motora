@@ -3,6 +3,9 @@ using UnityEngine.TestTools;
 using NUnit.Framework;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using System.Text.RegularExpressions;
+using System;
+
 
 namespace Tests
 {
@@ -31,8 +34,9 @@ namespace Tests
 			var currentscene = SceneManager.GetActiveScene().name;
 			var expectedscene = "Clinic";
 			
-
-			LogAssert.Expect(LogType.Error, "NuiInitialize Failed - Device is not connected.");
+			var device = @"^(.*?(\bDevice|SDK\b)[^$]*)$";
+			Regex rgx1 = new Regex(device, RegexOptions.IgnoreCase);
+			LogAssert.Expect(LogType.Error, rgx1);
 
 			Assert.AreEqual(currentscene, expectedscene);
 		}
@@ -113,7 +117,9 @@ namespace Tests
 			var currentscene = SceneManager.GetActiveScene().name;
 			var expectedscene = "RealtimeGraph";
 			
-			LogAssert.Expect(LogType.Error, "NuiInitialize Failed - Device is not connected.");
+			var device = @"^(.*?(\bDevice|SDK\b)[^$]*)$";
+			Regex rgx1 = new Regex(device, RegexOptions.IgnoreCase);
+			LogAssert.Expect(LogType.Error, rgx1);
 
 			Assert.AreEqual(currentscene, expectedscene);     
 		}
