@@ -383,7 +383,7 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 135279457}
   m_TextComponent: {fileID: 1459765480}
   m_Placeholder: {fileID: 0}
@@ -1201,7 +1201,7 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 976534465}
   m_TextComponent: {fileID: 797901192}
   m_Placeholder: {fileID: 0}
@@ -1705,7 +1705,7 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 1350509776}
   m_TextComponent: {fileID: 2057551577}
   m_Placeholder: {fileID: 0}
@@ -1906,7 +1906,7 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 1743239312}
   toggleTransition: 1
   graphic: {fileID: 970960814}
@@ -2351,7 +2351,7 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 1558827078}
   m_TextComponent: {fileID: 1757808395}
   m_Placeholder: {fileID: 0}
@@ -2520,6 +2520,7 @@ Camera:
   m_TargetEye: 3
   m_HDR: 0
   m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -2596,7 +2597,7 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 1592902968}
   m_TextComponent: {fileID: 1342027961}
   m_Placeholder: {fileID: 0}
@@ -3188,7 +3189,7 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 1385271025}
   toggleTransition: 1
   graphic: {fileID: 541799818}
@@ -3432,6 +3433,7 @@ GameObject:
   - component: {fileID: 2133947783}
   - component: {fileID: 2133947782}
   - component: {fileID: 2133947781}
+  - component: {fileID: 2133947784}
   m_Layer: 5
   m_Name: BackBt
   m_TagString: Untagged
@@ -3543,3 +3545,15 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2133947779}
+--- !u!114 &2133947784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2133947779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8af53dedd22e83542aa5a4fd13dda584, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextPage: {fileID: 2133947781}
