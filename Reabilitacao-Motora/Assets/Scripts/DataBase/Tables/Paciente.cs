@@ -128,7 +128,7 @@ namespace paciente
 			DataBase banco = new DataBase();
 			int idPacienteTemp = 0;
 			int idPessoaTemp = 0;
-			string observacoesTemp = "null";
+			string observacoesTemp = "";
 
 			Object[] columns = new Object[] {idPacienteTemp,idPessoaTemp,observacoesTemp};
 			List<Paciente> patients = banco.Read<Paciente>(GlobalController.instance.path, TablesManager.Tables[tableId].tableName, columns);
@@ -141,7 +141,7 @@ namespace paciente
 			DataBase banco = new DataBase();
 			int idPacienteTemp = 0;
 			int idPessoaTemp = 0;
-			string observacoesTemp = "null";
+			string observacoesTemp = "";
 
 			Object[] columns = new Object[] {idPacienteTemp,idPessoaTemp,observacoesTemp};
 

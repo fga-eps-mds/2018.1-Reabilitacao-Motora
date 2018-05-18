@@ -149,7 +149,7 @@ namespace pontosrotulopaciente
 
 			int idRotuloPacienteTemp = 0;
 			int idExercicioTemp = 0;
-			string estagioMovimentoPacienteTemp = "null";
+			string estagioMovimentoPacienteTemp = "";
 			float tempoInicialTemp = 0;
 			float tempoFinalTemp = 0;
 
@@ -167,7 +167,7 @@ namespace pontosrotulopaciente
 
 			int idRotuloPacienteTemp = 0;
 			int idExercicioTemp = 0;
-			string estagioMovimentoPacienteTemp = "null";
+			string estagioMovimentoPacienteTemp = "";
 			float tempoInicialTemp = 0;
 			float tempoFinalTemp = 0;
 

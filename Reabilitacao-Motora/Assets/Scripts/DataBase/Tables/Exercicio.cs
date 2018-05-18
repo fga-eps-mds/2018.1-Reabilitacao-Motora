@@ -164,8 +164,8 @@ namespace exercicio
 			int idPacienteTemp = 0;
 			int idMovimentoTemp = 0;
 			int idSessaoTemp = 0;
-			string descricaoExercicioTemp = "null";
-			string pontosExercicioTemp = "null";
+			string descricaoExercicioTemp = "";
+			string pontosExercicioTemp = "";
 
 			Object[] columns = new Object[] {idExercicioTemp, idPacienteTemp, idMovimentoTemp, idSessaoTemp, descricaoExercicioTemp, pontosExercicioTemp};
 
@@ -183,8 +183,8 @@ namespace exercicio
 			int idPacienteTemp = 0;
 			int idMovimentoTemp = 0;
 			int idSessaoTemp = 0;
-			string descricaoExercicioTemp = "null";
-			string pontosExercicioTemp = "null";
+			string descricaoExercicioTemp = "";
+			string pontosExercicioTemp = "";
 
 			Object[] columns = new Object[] {idExercicioTemp, idPacienteTemp, idMovimentoTemp, idSessaoTemp, descricaoExercicioTemp, pontosExercicioTemp};
 

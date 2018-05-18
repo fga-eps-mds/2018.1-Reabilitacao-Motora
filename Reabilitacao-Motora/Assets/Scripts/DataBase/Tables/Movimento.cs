@@ -149,9 +149,9 @@ namespace movimento
 			DataBase banco = new DataBase();
 			int idMovimentoTemp = 0;
 			int idFisioterapeutaTemp = 0;
-			string nomeMovimentoTemp = "null";
-			string descricaoMovimentoTemp = "null";
-			string pontosMovimentoTemp = "null";
+			string nomeMovimentoTemp = "";
+			string descricaoMovimentoTemp = "";
+			string pontosMovimentoTemp = "";
 
 			Object[] columns = new Object[] {idMovimentoTemp,idFisioterapeutaTemp,nomeMovimentoTemp,descricaoMovimentoTemp,pontosMovimentoTemp};
 
@@ -166,9 +166,9 @@ namespace movimento
 			DataBase banco = new DataBase();
 			int idMovimentoTemp = 0;
 			int idFisioterapeutaTemp = 0;
-			string nomeMovimentoTemp = "null";
-			string descricaoMovimentoTemp = "null";
-			string pontosMovimentoTemp = "null";
+			string nomeMovimentoTemp = "";
+			string descricaoMovimentoTemp = "";
+			string pontosMovimentoTemp = "";
 
 			Object[] columns = new Object[] {idMovimentoTemp,idFisioterapeutaTemp,nomeMovimentoTemp,descricaoMovimentoTemp,pontosMovimentoTemp};
 

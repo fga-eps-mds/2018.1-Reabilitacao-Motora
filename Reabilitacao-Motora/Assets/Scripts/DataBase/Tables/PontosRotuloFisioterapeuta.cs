@@ -148,7 +148,7 @@ namespace pontosrotulofisioterapeuta
 
 			int idRotuloFisioterapeutaTemp = 0;
 			int idMovimentoTemp = 0;
-			string estagioMovimentoFisioTemp = "null";
+			string estagioMovimentoFisioTemp = "";
 			float tempoInicialTemp = 0;
 			float tempoFinalTemp = 0;
 
@@ -165,7 +165,7 @@ namespace pontosrotulofisioterapeuta
 
 			int idRotuloFisioterapeutaTemp = 0;
 			int idMovimentoTemp = 0;
-			string estagioMovimentoFisioTemp = "null";
+			string estagioMovimentoFisioTemp = "";
 			float tempoInicialTemp = 0;
 			float tempoFinalTemp = 0;
 

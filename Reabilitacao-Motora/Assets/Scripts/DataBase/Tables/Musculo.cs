@@ -96,7 +96,7 @@ namespace musculo
 			DataBase banco = new DataBase();
 
 			int idMusculoTemp = 0;
-			string nomeMusculoTemp = "null";
+			string nomeMusculoTemp = "";
 
 			Object[] columns = new Object[] {idMusculoTemp, nomeMusculoTemp};
 
@@ -109,7 +109,7 @@ namespace musculo
 		{
 			DataBase banco = new DataBase();
 			int idMusculoTemp = 0;
-			string nomeMusculoTemp = "null";
+			string nomeMusculoTemp = "";
 
 			Object[] columns = new Object[] {idMusculoTemp, nomeMusculoTemp};
 

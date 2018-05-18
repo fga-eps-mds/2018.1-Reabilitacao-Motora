@@ -19,7 +19,7 @@ public class CreateLabelPhysio : MonoBehaviour
 	/**
 	 * Descrever aqui o que esse método realiza.
 	 */
-	void displayGraph(string label, Vector2 val)
+	public void displayGraph(string label, Vector2 val)
 	{
 		GameObject go = Instantiate (labelPrefab) as GameObject;
 
@@ -46,7 +46,7 @@ public class CreateLabelPhysio : MonoBehaviour
 	}
 
 
-	void OnGUI()
+	public void OnGUI()
 	{
 		GUI.Box(new Rect (3 * (Screen.width/5), 7.4f * (Screen.height/9), Screen.width/4, 60),""); 
 

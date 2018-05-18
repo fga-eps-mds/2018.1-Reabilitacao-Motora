@@ -180,10 +180,10 @@ namespace fisioterapeuta
 
 			int idFisioterapeutaTemp = 0;
 			int idPessoaTemp = 0;
-			string loginTemp = "null";
-			string senhaTemp = "null";
-			string regiaoTemp = "null";
-			string crefitoTemp = "null";
+			string loginTemp = "";
+			string senhaTemp = "";
+			string regiaoTemp = "";
+			string crefitoTemp = "";
 
 			Object[] columns = new Object[] {idFisioterapeutaTemp, idPessoaTemp, loginTemp, senhaTemp, regiaoTemp, crefitoTemp};
 
@@ -198,10 +198,10 @@ namespace fisioterapeuta
 
 			int idFisioterapeutaTemp = 0;
 			int idPessoaTemp = 0;
-			string loginTemp = "null";
-			string senhaTemp = "null";
-			string regiaoTemp = "null";
-			string crefitoTemp = "null";
+			string loginTemp = "";
+			string senhaTemp = "";
+			string regiaoTemp = "";
+			string crefitoTemp = "";
 
 			Object[] columns = new Object[] {idFisioterapeutaTemp, idPessoaTemp, loginTemp, senhaTemp, regiaoTemp, crefitoTemp};
 

@@ -167,11 +167,11 @@ namespace pessoa
 			DataBase banco = new DataBase();
 
 			int idPessoaTemp = 0;
-			string nomePessoaTemp = "null";
-			string sexoTemp = "null";
-			string dataNascimentoTemp = "null";
-			string telefone1Temp = "null";
-			string telefone2Temp = "null";
+			string nomePessoaTemp = "";
+			string sexoTemp = "";
+			string dataNascimentoTemp = "";
+			string telefone1Temp = "";
+			string telefone2Temp = "";
 
 			Object[] columns = new Object[] {idPessoaTemp, nomePessoaTemp, sexoTemp, dataNascimentoTemp, telefone1Temp, telefone2Temp};
 
@@ -185,11 +185,11 @@ namespace pessoa
 			DataBase banco = new DataBase();
 			
 			int idPessoaTemp = 0;
-			string nomePessoaTemp = "null";
-			string sexoTemp = "null";
-			string dataNascimentoTemp = "null";
-			string telefone1Temp = "null";
-			string telefone2Temp = "null";
+			string nomePessoaTemp = "";
+			string sexoTemp = "";
+			string dataNascimentoTemp = "";
+			string telefone1Temp = "";
+			string telefone2Temp = "";
 
 			Object[] columns = new Object[] {idPessoaTemp, nomePessoaTemp, sexoTemp, dataNascimentoTemp, telefone1Temp, telefone2Temp};
 

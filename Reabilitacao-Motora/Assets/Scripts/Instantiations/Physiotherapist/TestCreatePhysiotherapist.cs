@@ -63,19 +63,7 @@ namespace Tests
 			InputField aux3 = (InputField)physioManager.GetMemberValue("phone1");
 			aux3.text = "61999999";
 			physioManager.SetMemberValue("phone1", aux3);
-/*
-			InputField aux4 = (InputField)physioManager.GetMemberValue("phone2");
-			aux4.text = "61999950";
-			physioManager.SetMemberValue("phone2", aux4);
 
-			InputField aux5 = (InputField)physioManager.GetMemberValue("crefito");
-			aux5.text = "123712";
-			physioManager.SetMemberValue("crefito", aux5);
-
-			InputField aux6 = (InputField)physioManager.GetMemberValue("regiao");
-			aux6.text = "df";
-			physioManager.SetMemberValue("regiao", aux6);
-*/
 			InputField aux7 = (InputField)physioManager.GetMemberValue("login");
 			aux7.text = "fake_login";
 			physioManager.SetMemberValue("login", aux7);
