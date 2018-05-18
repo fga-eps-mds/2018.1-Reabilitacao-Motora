@@ -20,12 +20,18 @@ public class DeleteLabelButtonPhysio : MonoBehaviour
 		int IdPRF = GlobalController.instance.prf.idRotuloFisioterapeuta;
 		PontosRotuloFisioterapeuta.DeleteValue (IdPRF);
 
-		GameObject[] labels = GameObject.FindGameObjectsWithTag("label");
-		
+		GameObject[] labels = GameObject.FindGameObjectsWithTag("labelphysio");
+	
 		foreach (var l in labels)
 		{
-			var scripto = l.GetComponent<DestroyInstancePhysio>();
-			scripto.DestroyGameObjectPhysio(IdPRF);
-		}
+			var scripto = l.GetComponentInChildren<SetLabelPhysio>();
+			var idPrf = scripto.Prf.idRotuloFisioterapeuta;
+
+			if (idPrf == IdPRF)
+			{
+				Destroy(l.gameObject);
+				PontosRotuloFisioterapeuta.DeleteValue(IdPRF);
+			}
+		}		
 	}
 }

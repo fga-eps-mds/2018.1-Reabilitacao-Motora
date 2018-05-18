@@ -20,12 +20,18 @@ public class DeleteLabelButtonPatient : MonoBehaviour
 		int IdPRP = GlobalController.instance.prp.idRotuloPaciente;
 		PontosRotuloPaciente.DeleteValue (IdPRP);
 
-		GameObject[] labels = GameObject.FindGameObjectsWithTag("label");
+		GameObject[] labels = GameObject.FindGameObjectsWithTag("labelpaciente");
 		
 		foreach (var l in labels)
 		{
-			var scripto = l.GetComponent<DestroyInstancePatient>();
-			scripto.DestroyGameObjectPatient (IdPRP);
+			var scripto = l.GetComponentInChildren<SetLabelPatient>();
+			var idPrp = scripto.Prp.idRotuloPaciente;
+
+			if (idPrp == IdPRP)
+			{
+				Destroy(l.gameObject);
+				PontosRotuloPaciente.DeleteValue(idPrp);
+			}
 		}
 	}
 }
