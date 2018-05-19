@@ -11,12 +11,12 @@ public class Tab : MonoBehaviour
 {
     private List<Selectable> m_orderedSelectables;
 
-    void Awake()
+    public void Awake()
     {
         m_orderedSelectables = new List<Selectable>();
     }
 
-    void Update()
+    public void Update()
     {
         if (Input.GetKeyDown(KeyCode.Tab))
         {
