@@ -18,7 +18,7 @@ using movimentomusculo;
 using pontosrotulofisioterapeuta;
 using pontosrotulopaciente;
 
-public class GlobalController : MonoBehaviour 
+public class GlobalController : MonoBehaviour
 {
 	public static GlobalController instance;
 
@@ -32,34 +32,6 @@ public class GlobalController : MonoBehaviour
 	private EventSystem system;
 	public string path;
 
-
-	public void Start ()
-	{
-		system = EventSystem.current;
-	}
-
-	/**
-	 * Permite usar tab para transitar entre os input fields.
-	 */
-	public void Update()
-	{
-		if (Input.GetKeyDown(KeyCode.Tab))
-		{
-			Selectable next = system.currentSelectedGameObject.GetComponent<Selectable>().FindSelectableOnDown();
-
-			if (next != null) 
-			{
-
-				InputField inputfield = next.GetComponent<InputField>();
-				if (inputfield != null) 
-				{
-					inputfield.OnPointerClick(new PointerEventData(system));
-				}
-
-				system.SetSelectedGameObject(next.gameObject, new BaseEventData(system));
-			}
-		}
-	}
 
 	public Fisioterapeuta admin
 	{
@@ -144,8 +116,8 @@ public class GlobalController : MonoBehaviour
 			Prp = value;
 		}
 	}
-	
-	public void Awake () 
+
+	public void Awake ()
 	{
 		if (instance != null)
 		{

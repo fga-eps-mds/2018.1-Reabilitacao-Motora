@@ -520,6 +520,46 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 135279454}
+--- !u!1 &166496499
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 166496501}
+  - component: {fileID: 166496500}
+  m_Layer: 0
+  m_Name: Tab
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &166496500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 166496499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b44bbd3150031a141b223b8cb233b4f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &166496501
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 166496499}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 106.72859, y: -1.6765747, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &166963551
 GameObject:
   m_ObjectHideFlags: 0
@@ -2209,7 +2249,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1743239312}
   toggleTransition: 1
   graphic: {fileID: 970960814}
-  m_Group: {fileID: 0}
+  m_Group: {fileID: 1910751488}
   onValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2894,6 +2934,7 @@ Camera:
   m_TargetEye: 3
   m_HDR: 0
   m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -3567,7 +3608,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1385271025}
   toggleTransition: 1
   graphic: {fileID: 541799818}
-  m_Group: {fileID: 0}
+  m_Group: {fileID: 1910751488}
   onValueChanged:
     m_PersistentCalls:
       m_Calls: []
