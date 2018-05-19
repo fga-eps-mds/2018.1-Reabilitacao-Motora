@@ -4,7 +4,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 using musculo;
 using movimentomusculo;
@@ -15,9 +14,8 @@ using movimento;
  */
 public class createMovement : MonoBehaviour 
 {
-	public InputField nomeMovimento;
-	public InputField musculos;
-	public InputField descricao;
+	[SerializeField]
+	protected InputField nomeMovimento, musculos, descricao;
 	/**
 	 * Salva o paciente no banco.
 	 */
@@ -52,6 +50,7 @@ public class createMovement : MonoBehaviour
 		}
 
 		GlobalController.instance.movement = movementsList[movementsList.Count - 1];
+		Flow.StaticClinic();
 	}
 
 	static bool checkMuscle (string name)

@@ -6,8 +6,8 @@ using sessao;
 
 public class instanciateSession : MonoBehaviour 
 {
-
-	public GameObject buttonPrefab;
+	[SerializeField]
+	protected GameObject buttonPrefab;
 
 	const int HEIGHT_PADDING = 55;
 
@@ -25,14 +25,17 @@ public class instanciateSession : MonoBehaviour
 
 	public void Awake ()
 	{
-		List<Sessao> sessions = Sessao.Read();
-		int heightOffset = 10;
-		foreach (var session in sessions)
+		if (GlobalController.instance.user != null)
 		{
-			if (session.idPaciente == GlobalController.instance.user.idPaciente)
+			List<Sessao> sessions = Sessao.Read();
+			int heightOffset = 10;
+			foreach (var session in sessions)
 			{
-				ButtonSpawner(heightOffset, session);
-				heightOffset += HEIGHT_PADDING;
+				if (session.idPaciente == GlobalController.instance.user.idPaciente)
+				{
+					ButtonSpawner(heightOffset, session);
+					heightOffset += HEIGHT_PADDING;
+				}
 			}
 		}
 	}

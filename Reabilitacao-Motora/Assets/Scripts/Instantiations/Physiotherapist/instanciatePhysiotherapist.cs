@@ -6,8 +6,8 @@ using fisioterapeuta;
 
 public class instanciatePhysiotherapist : MonoBehaviour 
 {
-
-	public GameObject buttonPrefab;
+	[SerializeField]
+	protected GameObject buttonPrefab;
 
 	const int HEIGHT_PADDING = 55;
 

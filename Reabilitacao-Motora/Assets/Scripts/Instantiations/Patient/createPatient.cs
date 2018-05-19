@@ -12,13 +12,11 @@ using paciente;
  */
 public class createPatient : MonoBehaviour 
 {
-	public InputField namePatient;
-	public InputField date;
-	public InputField phone1;
-	public InputField phone2;
-	public InputField notes;
-	public Toggle male;
-	public Toggle female;
+	[SerializeField]
+	protected InputField namePatient, date, phone1, phone2, notes;
+
+	[SerializeField]
+	protected Toggle male, female;
 
 	/**
 	 * Salva o paciente no banco.
