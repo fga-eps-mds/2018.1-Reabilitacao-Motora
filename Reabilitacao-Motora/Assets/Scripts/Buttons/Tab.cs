@@ -11,12 +11,12 @@ public class Tab : MonoBehaviour
 {
     private List<Selectable> m_orderedSelectables;
 
-    private void Awake()
+    void Awake()
     {
         m_orderedSelectables = new List<Selectable>();
     }
 
-    private void Update()
+    void Update()
     {
         if (Input.GetKeyDown(KeyCode.Tab))
         {
@@ -66,7 +66,7 @@ public class Tab : MonoBehaviour
         }
     }
 
-    private void ApplyEnterSelect(Selectable _selectionToApply)
+    private static void ApplyEnterSelect(Selectable _selectionToApply)
     {
         if(_selectionToApply != null)
         {
