@@ -63,7 +63,15 @@ public class CreateLabelPatient : MonoBehaviour
 			{
 				string label = nameLabel;
 				Vector2 val = new Vector2 (float.Parse(initialX), float.Parse(finalX));
-				displayGraph (label, val);
+
+				if (Mathf.Abs(val.x - val.y) > 0.4)
+				{
+					displayGraph (label, val);
+				}
+				else
+				{
+					Debug.Log("Há de se ter alguma distancia entre os pontos!");
+				}
 			}
 
 		GUILayout.EndArea();
