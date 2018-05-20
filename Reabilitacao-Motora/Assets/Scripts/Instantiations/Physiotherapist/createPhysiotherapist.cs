@@ -46,7 +46,7 @@ public class createPhysiotherapist : MonoBehaviour
 		if (ValidInput (allInputs, allToggles) && ((crefito == null) == (regiao == null)))
 		{
 			foreach (var x in allInputs)
-				SetColor (x, true);
+				ApplyColor (x, true);
 
 			string encryptedPassword = CryptPassword.Encrypt(pass.text, login.text);			
 			var trip = date.text.Split('/');
@@ -140,7 +140,7 @@ public class createPhysiotherapist : MonoBehaviour
 					print (erro);
 				}
 
-				SetColor (inputs[0], false);
+				ApplyColor (inputs[0], false);
 			} 
 			if (treatDate != "")
 			{
@@ -150,7 +150,7 @@ public class createPhysiotherapist : MonoBehaviour
 					print (erro);
 				}
 
-				SetColor (inputs[1], false);
+				ApplyColor (inputs[1], false);
 			} 
 			if (treatPhone1 != "")
 			{
@@ -160,7 +160,7 @@ public class createPhysiotherapist : MonoBehaviour
 					print (erro);
 				}
 
-				SetColor (inputs[2], false);
+				ApplyColor (inputs[2], false);
 			} 
 			if (treatLogin != "")
 			{
@@ -170,7 +170,7 @@ public class createPhysiotherapist : MonoBehaviour
 					print (erro);
 				}
 
-				SetColor (inputs[3], false);
+				ApplyColor (inputs[3], false);
 			}
 			if (treatPass != "")
 			{
@@ -180,7 +180,7 @@ public class createPhysiotherapist : MonoBehaviour
 					print (erro);
 				}
 
-				SetColor (inputs[4], false);
+				ApplyColor (inputs[4], false);
 			} 
 			if (treatConfirm != "")
 			{
@@ -190,7 +190,7 @@ public class createPhysiotherapist : MonoBehaviour
 					print (erro);
 				}
 
-				SetColor (inputs[5], false);
+				ApplyColor (inputs[5], false);
 			} 
 			if (treatCrefito != "")
 			{
@@ -200,7 +200,7 @@ public class createPhysiotherapist : MonoBehaviour
 					print (erro);
 				}
 
-				SetColor (inputs[6], false);
+				ApplyColor (inputs[6], false);
 			} 
 			if (treatRegiao != "")
 			{
@@ -210,7 +210,7 @@ public class createPhysiotherapist : MonoBehaviour
 					print (erro);
 				}
 
-				SetColor (inputs[7], false);
+				ApplyColor (inputs[7], false);
 			} 
 			if (treatPhone2 != "")
 			{
@@ -220,7 +220,7 @@ public class createPhysiotherapist : MonoBehaviour
 					print (erro);
 				}
 
-				SetColor (inputs[8], false);
+				ApplyColor (inputs[8], false);
 			} 
 
 			valid = false;
@@ -229,19 +229,9 @@ public class createPhysiotherapist : MonoBehaviour
 		return valid;
 	}
 
-	private static void SetColor (InputField input, bool ok)
+	private static void ApplyColor (InputField input, bool ok)
 	{
-		ColorBlock cb = input.colors;  
-		if (ok)
-		{
-			cb.normalColor = ColorManager.success;
-		}
-		else
-		{
-			cb.normalColor = ColorManager.wrongConfirmation;
-		}
-		
-		input.colors = cb;
+		input.colors = ColorManager.SetColor(input.colors, ok);
 	}
 
 	private static void CreateDirectoryPhysio (string name, int idPessoa)

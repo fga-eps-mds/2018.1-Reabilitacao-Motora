@@ -36,4 +36,19 @@ public static class ColorManager
 		}
 		return new Color32(r,g,b,a);
 	}
+
+	public static ColorBlock SetColor (ColorBlock inputColors, bool ok)
+	{
+		ColorBlock cb = inputColors;  
+		if (ok)
+		{
+			cb.normalColor = success;
+		}
+		else
+		{
+			cb.normalColor = wrongConfirmation;
+		}
+		
+		return cb;
+	}
 }
