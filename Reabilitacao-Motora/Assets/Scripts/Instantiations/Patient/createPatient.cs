@@ -38,11 +38,13 @@ public class createPatient : MonoBehaviour
 		if (ValidInput (allInputs, allToggles))
 		{
 			foreach (var x in allInputs)
+			{
 				ApplyColor (x, true);
+			}
 
 			var trip = date.text.Split('/');
 			var dateFormate = trip[2] + "/" + trip[1] + "/" + trip[0];
-			string sex, _phone2, _notes;
+			string _phone2, _notes;
 
 			if (male.isOn)
 			{
@@ -96,14 +98,8 @@ public class createPatient : MonoBehaviour
 			treatPhone2 = TreatFields.PhoneField(inputs[3].text);
 		}
 
-		string treatNotes = "";
-		if (inputs[4].text != "")
-		{
-			treatNotes = TreatFields.EmptyField(inputs[4].text);
-		}
-
 		if (treatName != "" || treatDate != "" || treatPhone1 != "" ||
-			treatPhone2 != "" || treatNotes != "" || treatSex != "")
+			treatPhone2 != "" || treatSex != "")
 		{
 			if (treatName != "")
 			{
@@ -145,17 +141,7 @@ public class createPatient : MonoBehaviour
 
 				ApplyColor (inputs[3], false);
 			}
-			if (treatNotes != "")
-			{
-				var splitBar = treatNotes.Split('|');
-				foreach (var erro in splitBar)
-				{
-					print (erro);
-				}
-
-				ApplyColor (inputs[4], false);
-			}
-
+			
 			valid = false;
 		}
 

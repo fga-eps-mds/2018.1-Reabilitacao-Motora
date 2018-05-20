@@ -46,7 +46,9 @@ public class createPhysiotherapist : MonoBehaviour
 		if (ValidInput (allInputs, allToggles) && ((crefito == null) == (regiao == null)))
 		{
 			foreach (var x in allInputs)
+			{
 				ApplyColor (x, true);
+			}
 
 			string encryptedPassword = CryptPassword.Encrypt(pass.text, login.text);			
 			var trip = date.text.Split('/');
@@ -110,15 +112,14 @@ public class createPhysiotherapist : MonoBehaviour
 		string treatSex = TreatFields.SexField (toggles[0].isOn, toggles[1].isOn);
 
 		string treatCrefito = "";
-		if (inputs[6].text != "")
+		string treatRegiao = "";
+		string treatUniqueCR = "";
+
+		if (inputs[6].text != "" && inputs[7].text != "")
 		{
 			treatCrefito = TreatFields.CrefitoField (inputs[6].text);
-		}
-
-		string treatRegiao = "";
-		if (inputs[7].text != "")
-		{
 			treatRegiao = TreatFields.CrefitoField (inputs[7].text);
+			treatUniqueCR = TreatFields.UniqueCrefitoRegion (inputs[6].text, inputs[7].text);
 		}
 
 		string treatPhone2 = "";
@@ -127,10 +128,12 @@ public class createPhysiotherapist : MonoBehaviour
 			treatPhone2 = TreatFields.PhoneField(inputs[8].text);
 		}
 
+		string treatUniqueLP = TreatFields.UniqueLoginPassword(inputs[3].text);
+
 		if (treatName != "" || treatDate != "" || treatPhone1 != "" ||
 			treatCrefito != "" || treatRegiao != "" || treatLogin != "" ||
 			treatPass != "" || treatConfirm != "" || treatPhone2 != "" ||
-			treatSex != "")
+			treatSex != "" || treatUniqueCR != "" || treatUniqueLP != "")
 		{
 			if (treatName != "")
 			{
@@ -221,6 +224,28 @@ public class createPhysiotherapist : MonoBehaviour
 				}
 
 				ApplyColor (inputs[8], false);
+			}
+			if (treatUniqueCR != "")
+			{
+				var splitBar = treatUniqueCR.Split('|');
+				foreach (var erro in splitBar)
+				{
+					print (erro);
+				}
+
+				ApplyColor (inputs[6], false);
+				ApplyColor (inputs[7], false);
+			}
+			if (treatUniqueLP != "")
+			{
+				var splitBar = treatUniqueLP.Split('|');
+				foreach (var erro in splitBar)
+				{
+					print (erro);
+				}
+
+				ApplyColor (inputs[3], false);
+				ApplyColor (inputs[4], false);
 			} 
 
 			valid = false;

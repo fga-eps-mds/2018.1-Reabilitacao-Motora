@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
 using System;
-
+using fisioterapeuta;
 
 /**
  * Cria um novo Fisioterapeuta no banco de dados.
@@ -221,4 +221,41 @@ public static class TreatFields
 			return "";
 		}
 	}
+
+	public static string UniqueCrefitoRegion (string crefito, string regiao)
+	{
+		List<Fisioterapeuta> allPhysios = Fisioterapeuta.Read();
+
+		string result = "";
+
+		foreach (var fisio in allPhysios)
+		{
+			if (fisio.regiao == regiao && fisio.crefito == crefito)
+			{
+				result += "Regiao + Crefito inválidos! (já cadastrados)";
+				break;
+			}
+		}
+
+		return result;
 	}
+
+	public static string UniqueLoginPassword (string login)
+	{
+		List<Fisioterapeuta> allPhysios = Fisioterapeuta.Read();
+
+		string result = "";
+
+		foreach (var fisio in allPhysios)
+		{
+			if (fisio.login == login)
+			{
+				result += "Login inválido! (já cadastrado)";
+				break;
+			}
+		}
+
+		return result;
+	}
+
+}
