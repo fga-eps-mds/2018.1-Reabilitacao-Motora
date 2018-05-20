@@ -32,12 +32,15 @@ public class InstanciateLabelsPhysio : MonoBehaviour
 
 	public void Awake ()
 	{
-		List<PontosRotuloFisioterapeuta> prfs = PontosRotuloFisioterapeuta.Read();
-		foreach (var prf in prfs)
+		if (GlobalController.instance.movement != null)
 		{
-			if (prf.idMovimento == GlobalController.instance.movement.idMovimento)
+			List<PontosRotuloFisioterapeuta> prfs = PontosRotuloFisioterapeuta.Read();
+			foreach (var prf in prfs)
 			{
-				ButtonSpawner(prf);
+				if (prf.idMovimento == GlobalController.instance.movement.idMovimento)
+				{
+					ButtonSpawner(prf);
+				}
 			}
 		}
 	}

@@ -53,11 +53,11 @@ namespace Tests
 			var button = objectButton.GetComponentInChildren<Button>();
 
 			InputField aux = (InputField)physioManager.GetMemberValue("namePhysio");
-			aux.text = "fake_name";
+			aux.text = "Fake Name";
 			physioManager.SetMemberValue("namePhysio", aux);
 
 			InputField aux1 = (InputField)physioManager.GetMemberValue("date");
-			aux1.text = "01/01/1900";
+			aux1.text = "01/01/1920";
 			physioManager.SetMemberValue("date", aux1);
 			
 			InputField aux3 = (InputField)physioManager.GetMemberValue("phone1");

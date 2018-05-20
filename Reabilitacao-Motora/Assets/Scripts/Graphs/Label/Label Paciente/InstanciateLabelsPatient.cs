@@ -32,12 +32,15 @@ public class InstanciateLabelsPatient : MonoBehaviour
 
 	public void Awake ()
 	{
-		List<PontosRotuloPaciente> prps = PontosRotuloPaciente.Read();
-		foreach (var prp in prps)
+		if (GlobalController.instance.exercise != null)
 		{
-			if (prp.idExercicio == GlobalController.instance.exercise.idExercicio)
+			List<PontosRotuloPaciente> prps = PontosRotuloPaciente.Read();
+			foreach (var prp in prps)
 			{
-				ButtonSpawner(prp);
+				if (prp.idExercicio == GlobalController.instance.exercise.idExercicio)
+				{
+					ButtonSpawner(prp);
+				}
 			}
 		}
 	}

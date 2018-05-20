@@ -29,7 +29,6 @@ public class GlobalController : MonoBehaviour
 	private Exercicio Exercise;
 	private PontosRotuloPaciente Prp;
 	private PontosRotuloFisioterapeuta Prf;
-	private EventSystem system;
 	public string path;
 
 

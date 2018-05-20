@@ -55,13 +55,23 @@ public class CreateLabelPatient : MonoBehaviour
 				nameLabel = GUILayout.TextField(nameLabel, GUILayout.Width(120));
 				initialX = GUILayout.TextField(initialX, GUILayout.Width(90));
 				finalX = GUILayout.TextField(finalX, GUILayout.Width(90));
+				initialX = System.Text.RegularExpressions.Regex.Replace(initialX, "[^0-9.]", "");
+				finalX = System.Text.RegularExpressions.Regex.Replace(finalX, "[^0-9.]", "");
 			GUILayout.EndHorizontal();
 
 			if (GUILayout.Button("Apply to Chart")) 
 			{
 				string label = nameLabel;
 				Vector2 val = new Vector2 (float.Parse(initialX), float.Parse(finalX));
-				displayGraph (label, val);
+
+				if (Mathf.Abs(val.x - val.y) > 0.4)
+				{
+					displayGraph (label, val);
+				}
+				else
+				{
+					Debug.Log("Há de se ter alguma distancia entre os pontos!");
+				}
 			}
 
 		GUILayout.EndArea();
