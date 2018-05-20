@@ -118,7 +118,7 @@ public class createPhysiotherapist : MonoBehaviour
 		if (inputs[6].text != "" && inputs[7].text != "")
 		{
 			treatCrefito = TreatFields.CrefitoField (inputs[6].text);
-			treatRegiao = TreatFields.CrefitoField (inputs[7].text);
+			treatRegiao = TreatFields.RegionField (inputs[7].text);
 			treatUniqueCR = TreatFields.UniqueCrefitoRegion (inputs[6].text, inputs[7].text);
 		}
 
