@@ -9,7 +9,7 @@ using System;
 /**
  * Cria um novo Fisioterapeuta no banco de dados.
  */
-public static class TreatFields 
+public static class TreatFields
 {
 
 	public static string NameField (string name)
@@ -19,7 +19,7 @@ public static class TreatFields
 
 		int count = 0;
 		foreach (char c in name)
-		{ 
+		{
 			if (c == ' ')
 			{
 				count++;
@@ -35,7 +35,7 @@ public static class TreatFields
 		{
 			result += "Insira nome e sobrenome!|";
 		}
-		
+
 		result += EmptyField (name);
 
 		return result;
@@ -44,7 +44,7 @@ public static class TreatFields
 	public static string DateField (string date)
 	{
 		var normalString = new System.Text.RegularExpressions.Regex("^[0-9/]*$");
-		
+
 		if(!normalString.IsMatch(date))
 		{
 			return "Data deve conter apenas números!|";
@@ -61,7 +61,7 @@ public static class TreatFields
 
 		int count = 0;
 		foreach (char c in date)
-		{ 
+		{
 			if (c == '/')
 			{
 				count++;
@@ -115,10 +115,10 @@ public static class TreatFields
 		{
 			result += "Insira um número válido!|";
 		}
-		
+
 		result += EmptyField (phone);
 
-		return result;		
+		return result;
 	}
 
 	public static string CrefitoField (string crefito)
@@ -150,7 +150,7 @@ public static class TreatFields
 		{
 			result += "Login deve conter apenas letras e/ou números!|";
 		}
-		
+
 		if (login.Length < 6)
 		{
 			result += "Login deve ter no mínimo 6 caractéres.|";
@@ -169,7 +169,7 @@ public static class TreatFields
 		{
 			result += "A senha deve possuir no mínimo 8 caractéres!|";
 		}
-		
+
 		result += EmptyField (password);
 
 		return result;
@@ -221,4 +221,4 @@ public static class TreatFields
 			return "";
 		}
 	}
-}
+	}
