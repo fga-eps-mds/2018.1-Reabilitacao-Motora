@@ -99,7 +99,7 @@ Abreviação|Significado
 
 <p align = "justify">LINS DE ALBUQUERQUE, Leonardo. Plataforma para captura e estimação de movimentos em membro superior utilizando Sistemas Dinâmicos Lineares Chaveados. 150 f. Tese (Monografia) - Departamento de Engenharia Elétrica, Universidade de Brasília, 2017 </p>
 
-* **Unity** </p>
+* **Unity**
 * -- https://unity3d.com/pt/
 
 ### 1.5 Visão Geral
@@ -108,8 +108,8 @@ Abreviação|Significado
 ## 2. Representação da Arquitetura
 <p align = "justify">A arquitetura utilizada no projeto é a arquitetura denominada "Entity Component System" (ECS, "entidade-componente-sistema"), a escolha dessa arquitetura foi feita por vários motivos, dentre eles a sua facilidade de aplicação dentro do Unity 3D e também por ser a arquitetura mais utilizada em jogos eletrônicos e sistemas com interface gráfica 3D nos tempos atuais. Essa arquitetura tem como princípio a "composição ao invés de herança", o que permite uma flexibilidade maior na criação de novas entidades. Com a ECS, criamos um sistema de hierarquia entre as entidades e seus componentes, podendo assim reutilizar os componentes e dar o mesmo comportamento específico para diversas entidades que tem fins totalmente diferentes. Cada entidade consiste de um ou mais componentes que adicionam comportamento ou funcionalidade para a mesma, portanto o comportamento de uma entidade qualquer pode ser alterado durante o tempo de execução simplesmente adicionando ou removendo um componente da mesma. Isso elimina os problemas de ambiguidade que eram gerados nas hierarquias feitas por heranças profundas e vastas, que se tornam difíceis de entender, manter e estender. </p>
 
-![Entity-Component-System](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/development/docs/imagens/Arquitetura/ECS.png) </p>
-**Figura 1**- Diagrama de classes</p>
+![Entity-Component-System](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/development/docs/imagens/Arquitetura/ECS.png)
+**Figura 1**- Diagrama de classes
 [Clique aqui para visualizar a imagem](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/development/docs/imagens/Arquitetura/ECS.png)
 
 <p align = "justify">Adam Martin, um desenvolvedor de jogos MMO, criou a terminologia mais utilizada de jogos. Em jogos, a arquitetura trabalha com "sistemas" que seriam como funções que interagem com outras entidades que tenham componentes físicos e visíveis. Entidade é o objeto que consiste apenas de uma identificação única, Componentes são os dados brutos do aspecto do objeto e como interage com o mundo e Sistema são threads que executam ações das entidades que possuem mesmos componentes.
@@ -149,7 +149,7 @@ A implementação do projeto será a linguagem de programação C# (C-Sharp).Ele
 
 |**Ator**|**Descrição**
 :-:|:-:
-|**Fisioterapeuta/Operador**|<p align = "justify">Os profissionais responsáveis pela reabilitação estarão hábeis a cadastrarem-se no sistema e, também, a cadastrar pacientes. Após isso, numa sessão, poderão captar os movimentos do paciente, visualizar gráficos e dados concretos acerca do movimento realizado, e, também, salvar essas informações para acessá-las novamente quando necessário for; viabilizando, portanto, uma análise muito mais precisa e objetiva sobre a condição e evolução do paciente.</p>
+|**Fisioterapeuta/Operador**|Os profissionais responsáveis pela reabilitação estarão hábeis a cadastrarem-se no sistema e, também, a cadastrar pacientes. Após isso, numa sessão, poderão captar os movimentos do paciente, visualizar gráficos e dados concretos acerca do movimento realizado, e, também, salvar essas informações para acessá-las novamente quando necessário for; viabilizando, portanto, uma análise muito mais precisa e objetiva sobre a condição e evolução do paciente.
 
 ### 4.3 Descrições de Casos de Uso
 
@@ -203,7 +203,7 @@ O módulo de processamento não poderá ter perda de dados recebidos e nem perca
 
 Atributo|Propriedade|Tipo|Descrição
 -|-|-|-
-**idPessoa** | Chave Primária </p> Obrigatório | INTEGER | Identificação da Pessoa
+**idPessoa** | Chave Primária Obrigatório | INTEGER | Identificação da Pessoa
 **nomePessoa** | Obrigatório | VARCHAR(30) | Nome da Pessoa
 **sexo** | Obrigatório | CHAR(1) | Sexo da Pessoa
 **dataNascimento** | Obrigatório | DATE | Data de Nascimento da Pessoa
@@ -214,8 +214,8 @@ Atributo|Propriedade|Tipo|Descrição
 
 Atributo|Propriedade|Tipo|Descrição
 -|-|-|-
-**idFisioterapeuta** | Chave Primária </p> Obrigatório | INTEGER | Identificação de um Fisioterapeuta
-**idPessoa** | Chave Estrangeira </p> Obrigatório | INTEGER | Identificação da Pessoa
+**idFisioterapeuta** | Chave Primária  Obrigatório | INTEGER | Identificação de um Fisioterapeuta
+**idPessoa** | Chave Estrangeira Obrigatório | INTEGER | Identificação da Pessoa
 **regiao** | Opcional | VARCHAR(2) | Região de tratamento do Fisioterapeuta
 **crefito** | Opcional | VARCHAR(10) | Identificação do CREFITO do Fisioterapeuta
 **login** | Obrigatório | VARCHAR(255) | Login do Fisioterapeuta
@@ -226,8 +226,8 @@ Atributo|Propriedade|Tipo|Descrição
 
 Atributo|Propriedade|Tipo|Descrição
 -|-|-|-
-**idPaciente** | Chave Primária </p> Obrigatório | INTEGER | Identificação de um Paciente
-**idPessoa** | Chave Estrangeira </p> Obrigatório | INTEGER | Identificação da Pessoa
+**idPaciente** | Chave Primária Obrigatório | INTEGER | Identificação de um Paciente
+**idPessoa** | Chave Estrangeira Obrigatório | INTEGER | Identificação da Pessoa
 **observacoes** | Opcional | VARCHAR(300) | Observações do Paciente
 
 
@@ -235,7 +235,7 @@ Atributo|Propriedade|Tipo|Descrição
 
 Atributo|Propriedade|Tipo|Descrição
 -|-|-|-
-**idMusculo** | Chave Primária </p> Obrigatório | INTEGER | Identificação de um Músculo
+**idMusculo** | Chave Primária Obrigatório | INTEGER | Identificação de um Músculo
 **nomeMusculo** | Obrigatório | VARCHAR(20) | Nome do Músculo
 
 
@@ -243,9 +243,9 @@ Atributo|Propriedade|Tipo|Descrição
 
 Atributo|Propriedade|Tipo|Descrição
 -|-|-|-
-**idSessao** | Chave Primária </p> Obrigatório | INTEGER | Identificação da Sessão
-**idFisioterapeuta** | Chave Estrangeira </p> Obrigatório | INTEGER | Identificação de um Fisioterapeuta
-**idPaciente** | Chave Estrangeira </p> Obrigatório | INTEGER | Identificação de um Paciente
+**idSessao** | Chave Primária Obrigatório | INTEGER | Identificação da Sessão
+**idFisioterapeuta** | Chave Estrangeira Obrigatório | INTEGER | Identificação de um Fisioterapeuta
+**idPaciente** | Chave Estrangeira Obrigatório | INTEGER | Identificação de um Paciente
 **dataSessao** | Obrigatório | DATE | Data da realização da Sessão de Exercícios
 **observacaoSessao** | Opcional | VARCHAR(300) | Observação da Sessão
 
