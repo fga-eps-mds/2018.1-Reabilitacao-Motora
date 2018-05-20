@@ -13,7 +13,7 @@ using fisioterapeuta;
 /**
  * Cria um novo Fisioterapeuta no banco de dados.
  */
-public class createPhysiotherapist : MonoBehaviour 
+public class createPhysiotherapist : MonoBehaviour
 {
 	[SerializeField]
 	protected InputField namePhysio, date, phone1, phone2, crefito, regiao, login, pass, confirmPass;
@@ -27,32 +27,32 @@ public class createPhysiotherapist : MonoBehaviour
 	public void savePhysiotherapist()
 	{
 		List<InputField> allInputs = new List<InputField>();
-			
-		allInputs.Add(namePhysio); 
-		allInputs.Add(date); 
-		allInputs.Add(phone1); 
-		allInputs.Add(login); 
-		allInputs.Add(pass); 
+
+		allInputs.Add(namePhysio);
+		allInputs.Add(date);
+		allInputs.Add(phone1);
+		allInputs.Add(login);
+		allInputs.Add(pass);
 		allInputs.Add(confirmPass);
-		allInputs.Add(crefito); 
-		allInputs.Add(regiao); 
+		allInputs.Add(crefito);
+		allInputs.Add(regiao);
 		allInputs.Add(phone2);
 
 		List<Toggle> allToggles = new List<Toggle>();
 		allToggles.Add(male);
 		allToggles.Add(female);
-		
+
 
 		if (ValidInput (allInputs, allToggles) && ((crefito == null) == (regiao == null)))
 		{
 			foreach (var x in allInputs)
 				ApplyColor (x, true);
 
-			string encryptedPassword = CryptPassword.Encrypt(pass.text, login.text);			
+			string encryptedPassword = CryptPassword.Encrypt(pass.text, login.text);
 			var trip = date.text.Split('/');
 			var dateFormate = trip[2] + "/" + trip[1] + "/" + trip[0];
 			string sex, _phone2, _crefito, _regiao;
-			
+
 			if (male.isOn)
 			{
 				sex = "m";
@@ -91,10 +91,10 @@ public class createPhysiotherapist : MonoBehaviour
 			CreateDirectoryPhysio (namePhysio.text, p[p.Count-1].idPessoa);
 
 			List<Fisioterapeuta> physios = Fisioterapeuta.Read();
-			GlobalController.instance.admin = physios[physios.Count - 1]; 
+			GlobalController.instance.admin = physios[physios.Count - 1];
 
 			Flow.StaticLogin();
-		} 
+		}
 	}
 
 	private static bool ValidInput (List<InputField> inputs, List<Toggle> toggles)
@@ -118,7 +118,7 @@ public class createPhysiotherapist : MonoBehaviour
 		string treatRegiao = "";
 		if (inputs[7].text != "")
 		{
-			treatRegiao = TreatFields.CrefitoField (inputs[7].text);
+			treatRegiao = TreatFields.RegionField (inputs[7].text);
 		}
 
 		string treatPhone2 = "";
@@ -141,7 +141,7 @@ public class createPhysiotherapist : MonoBehaviour
 				}
 
 				ApplyColor (inputs[0], false);
-			} 
+			}
 			if (treatDate != "")
 			{
 				var splitBar = treatDate.Split('|');
@@ -151,7 +151,7 @@ public class createPhysiotherapist : MonoBehaviour
 				}
 
 				ApplyColor (inputs[1], false);
-			} 
+			}
 			if (treatPhone1 != "")
 			{
 				var splitBar = treatPhone1.Split('|');
@@ -161,7 +161,7 @@ public class createPhysiotherapist : MonoBehaviour
 				}
 
 				ApplyColor (inputs[2], false);
-			} 
+			}
 			if (treatLogin != "")
 			{
 				var splitBar = treatLogin.Split('|');
@@ -181,7 +181,7 @@ public class createPhysiotherapist : MonoBehaviour
 				}
 
 				ApplyColor (inputs[4], false);
-			} 
+			}
 			if (treatConfirm != "")
 			{
 				var splitBar = treatConfirm.Split('|');
@@ -191,7 +191,7 @@ public class createPhysiotherapist : MonoBehaviour
 				}
 
 				ApplyColor (inputs[5], false);
-			} 
+			}
 			if (treatCrefito != "")
 			{
 				var splitBar = treatCrefito.Split('|');
@@ -201,7 +201,7 @@ public class createPhysiotherapist : MonoBehaviour
 				}
 
 				ApplyColor (inputs[6], false);
-			} 
+			}
 			if (treatRegiao != "")
 			{
 				var splitBar = treatRegiao.Split('|');
@@ -211,7 +211,7 @@ public class createPhysiotherapist : MonoBehaviour
 				}
 
 				ApplyColor (inputs[7], false);
-			} 
+			}
 			if (treatPhone2 != "")
 			{
 				var splitBar = treatPhone2.Split('|');
@@ -221,7 +221,7 @@ public class createPhysiotherapist : MonoBehaviour
 				}
 
 				ApplyColor (inputs[8], false);
-			} 
+			}
 
 			valid = false;
 		}
