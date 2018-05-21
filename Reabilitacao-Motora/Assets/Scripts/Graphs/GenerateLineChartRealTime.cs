@@ -1,5 +1,7 @@
 using System.Collections;
+using System.Text;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 /**
@@ -7,112 +9,132 @@ using UnityEngine;
 */
 public class GenerateLineChartRealTime : MonoBehaviour
 {
-	public Transform x_axis;
-	public Transform pointPrefab;
-	public int resolution = 750;
-	public Transform mao, cotovelo, ombro; //o ponto final de mao é o inicial de cotovelo, o final de cotovelo é o inicial de ombro; ou seja, sao apenas 2 retas
+	[SerializeField]
+	protected Transform pointPrefab, mao, cotovelo, ombro, braco; //o ponto final de mao é o inicial de cotovelo, o final de cotovelo é o inicial de ombro; ou seja, sao apenas 2 retas
+	
+	private const int RESOLUTION = 750;
+	
 	Vector2 m_p, c_p, o_p, grafico;
-	float current_time_movement = 0;
-	bool t = false;
-	int i = 0;
+
+	float current_time_movement;
+	bool t;
+	int i;
 	LineRenderer lineRenderer;
-	public Color c1 = Color.black;
-	public Color c2 = Color.red;
+
+	private static readonly Color c1 = Color.black;
+	private static readonly Color c2 = Color.blue;
+
 	List <Vector3> points2;
 
-	public Transform mainCamera, xEnd;
-	private int mdelta = 4;
-
-	public static float hypot(float a, float b)
+	public void Update () 
 	{
-		return Mathf.Sqrt(Mathf.Pow(a, 2) + Mathf.Pow(b, 2));
-	}
-
-	float angle(Vector2 P, Vector2 Q, Vector2 R, Vector2 S)
-	{
-		float ux = P.x - Q.x;
-		float uy = P.y - Q.y;
-
-		float vx = R.x - S.x;
-		float vy = R.y - S.y;
-
-		float num = ux * vx + uy * vy;
-		float den = hypot(ux, uy) * hypot(vx, vy);
-
-		return (Mathf.Acos(num / den) * (180.0f / Mathf.PI));
-	}
-
-	void Update () {
-		if (Input.GetKeyDown(KeyCode.Space)) {
+		if (Input.GetKeyDown(KeyCode.Space)) 
+		{
 			t = !t;
 		}
 	}
 
-
-	void FixedUpdate () {
+	public void FixedUpdate () 
+	{
 		if (t) 
 		{
 			current_time_movement += Time.fixedDeltaTime;
+
 			m_p = new Vector2 (mao.position.x, mao.position.y);
 			c_p = new Vector2 (cotovelo.position.x, cotovelo.position.y);
 			o_p = new Vector2 (ombro.position.x, ombro.position.y);
 
-			grafico = new Vector2 (current_time_movement, angle (m_p, c_p, c_p, o_p));
+			grafico = new Vector2 (current_time_movement, _Joint.Angle(m_p, c_p, c_p, o_p));
 
-			if (i >= 750) {
-				x_axis.localScale = new Vector3 (x_axis.localScale.x, x_axis.localScale.y + 0.02f, x_axis.localScale.z);
-				x_axis.localPosition = new Vector3 (x_axis.localScale.y/2f, x_axis.localPosition.y, x_axis.localPosition.z);
-				lineRenderer.positionCount++;
-				resolution++;
-				Vector3 pos = Camera.main.WorldToScreenPoint(xEnd.transform.position);
+			SavePoints ();
 
-				if (pos.x >= Screen.width - mdelta) {
-					mainCamera.position = new Vector3 (mainCamera.position.x + 6f, mainCamera.position.y, mainCamera.position.z);
-				}
+			if (i >= RESOLUTION) 
+			{
+				t = false;
 			}
 
-	        float divScale = (70 * resolution)/750f;
+			float divScale = (70 * RESOLUTION)/(float)RESOLUTION;
 			float step = 2f / divScale;
 			Vector3 scale = Vector3.one * step;
 			Vector3 position = new Vector3 (0f,0f,12);
+
 			Transform point = Instantiate(pointPrefab);
 			position.x = (grafico.x) + 0.05f;
 			position.y = (grafico.y/24);
+			position.z = 0.0f;
 			point.localPosition = position;
 			point.localScale = scale;
 			point.SetParent (transform, false);
-			points2.Add (point.position);
+			points2.Add (point.localPosition);
 
-			lineRenderer.SetPositions (points2.ToArray());
+			lineRenderer.SetVertexCount(points2.Count); 
+			lineRenderer.SetPosition(points2.Count-1, point.localPosition);
+
 			i++;
-       	}
+		}
+	}
+
+	private void SavePoints () 
+	{
+		StringBuilder sb = new StringBuilder();
+
+		sb.Append(current_time_movement).Append(" ").Append(mao.localPosition.x).Append(" ").Append(mao.localPosition.y).Append(" ").Append(mao.localPosition.z);
+		sb.Append(" ").Append(mao.localEulerAngles.x).Append(" ").Append(mao.localEulerAngles.y).Append(" ").Append(mao.localEulerAngles.z);
+
+		sb.Append(" ").Append(cotovelo.localPosition.x).Append(" ").Append(cotovelo.localPosition.y).Append(" ").Append(cotovelo.localPosition.z);
+		sb.Append(" ").Append(cotovelo.localEulerAngles.x).Append(" ").Append(cotovelo.localEulerAngles.y).Append(" ").Append(cotovelo.localEulerAngles.z);
+
+		sb.Append(" ").Append(ombro.localPosition.x).Append(" ").Append(ombro.localPosition.y).Append(" ").Append(ombro.localPosition.z);
+		sb.Append(" ").Append(ombro.localEulerAngles.x).Append(" ").Append(ombro.localEulerAngles.y).Append(" ").Append(ombro.localEulerAngles.z);
+
+		sb.Append(" ").Append(braco.localPosition.x).Append(" ").Append(braco.localPosition.y).Append(" ").Append(braco.localPosition.z);
+		sb.Append(" ").Append(braco.localEulerAngles.x).Append(" ").Append(braco.localEulerAngles.y).Append(" ").Append(braco.localEulerAngles.z);
+
+		sb.Append("\n");
+
+		string path = Application.dataPath + "/Exercicios/" + GlobalController.instance.exercise.pontosExercicio;
+
+		File.AppendAllText(path, sb.ToString());
 	}
 
 
-	/**
-	* Descrever aqui o que esse método realiza.
-	*/
-	void Awake()
+	public void Awake()
 	{	
 		points2 = new List<Vector3>();
-		t = new bool();
 		t = false;
+		i = 0;
+		current_time_movement = 0;
+
+		LoadLineRenderer();
+	}
+
+	public void LoadLineRenderer ()
+	{
 		lineRenderer = gameObject.AddComponent<LineRenderer>();
 		lineRenderer.material = new Material(Shader.Find("Particles/Multiply (Double)"));
-		lineRenderer.widthMultiplier = 0.4f;
-		lineRenderer.positionCount = 5000;
+		lineRenderer.widthMultiplier = 0.2f;
+		lineRenderer.positionCount = 4000;
+		lineRenderer.sortingOrder = 5;
+		lineRenderer.SetVertexCount(2);
 
 	// A simple 2 color gradient with a fixed alpha of 1.0f.
 		float alpha = 1.0f;
 		Gradient gradient = new Gradient();
 		gradient.SetKeys(
-			new GradientColorKey[] { new GradientColorKey(c1, 0.0f), new GradientColorKey(c2, 1.0f) },
-			new GradientAlphaKey[] { new GradientAlphaKey(alpha, 0.0f), new GradientAlphaKey(alpha, 1.0f) }
-			);
+			new []
+			{
+				new GradientColorKey(c1, 0.0f), 
+				new GradientColorKey(c2, 1.0f) 
+			},
+			new [] 
+			{
+				new GradientAlphaKey(alpha, 0.0f), 
+				new GradientAlphaKey(alpha, 1.0f) 
+			}
+		);
 		lineRenderer.colorGradient = gradient;
+		lineRenderer.useWorldSpace = false;
+		lineRenderer.alignment = LineAlignment.Local;
 	}
 
-	/**
-	* Descrever aqui o que esse método realiza.
-	*/
 }

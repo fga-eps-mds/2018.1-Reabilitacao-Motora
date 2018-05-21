@@ -1,5 +1,3 @@
-USE fisiotech;
-
 insert into PESSOA (nomePessoa, sexo, dataNascimento, telefoneCelular) values 
 ('Joao Marcelo', 'M', '1954-10-09', '9999-4456'),
 ('Marcela Queiroz', 'F', '1973-04-01'),
@@ -12,8 +10,8 @@ insert into TELEFONE (idPessoa, telefone) values
 (2, '+55 61 9489-4205'),
 (4, '+55 61 9066-4195');
 
-insert into FISIOTERAPEUTA (idPessoa, regiao, crefito) values (1, 'DF', '11234567');
-insert into FISIOTERAPEUTA (idPessoa) values (3);
+insert into FISIOTERAPEUTA (idPessoa, login, senha, regiao, crefito) values (1, 'abcdef', '12213', 'DF', '11234567');
+insert into FISIOTERAPEUTA (idPessoa, login, senha) values (3, 'qwerty', 'uiops');
 
 insert into PACIENTE (idPessoa, observacoes) values 
 (2, 'paciente extremamente debilitado, musculos muito rigidos - espasticidade grau 5'),
@@ -56,28 +54,14 @@ insert into MOVIMENTOMUSCULO (idMusculo, idMovimento) values
 (4, 2),
 (3, 3),
 (4, 3);
-/*
-insert into PONTOSMOVIMENTOFISIOTERAPEUTA (idMovimento, tempo, anguloDeJunta) values
-(1, 0, 0),
-(1, 10, 10),
-(1, 20, 10),
-(1, 30, 5),
-(1, 40, 0);
-*/
+
 insert into PONTOSROTULOFISIOTERAPEUTA (idMovimento, estagioMovimentoFisio, tempoInicial, tempoFinal) values
 (1, 'braço estendido', 0, 0),
 (1, 'contraindo musculo', 0, 10),
 (1, 'musculo contraido', 10, 20),
 (1, 'estendendo braço', 20, 30),
 (1, 'braço estendido', 30, 40);
-/*
-insert into PONTOSMOVIMENTOPACIENTE (idExercicio, tempo, anguloDeJunta) values
-(1, 0, 0),
-(1, 13, 9),
-(1, 17, 8),
-(1, 31, 2),
-(1, 40, 0);
-*/
+
 insert into PONTOSROTULOPACIENTE (idExercicio, estagioMovimentoPaciente, tempoInicial, tempoFinal) values
 (1, 'braço estendido', 0, 0),
 (1, 'contraindo musculo', 0, 10),

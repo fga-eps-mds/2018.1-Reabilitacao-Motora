@@ -51,7 +51,6 @@ public class BoneOrientationsFilter
     public void Init(float smoothingValue, float correctionValue, float predictionValue, float jitterRadiusValue, float maxDeviationRadiusValue)
     {
         this.smoothParameters = new KinectWrapper.NuiTransformSmoothParameters();
-
         this.smoothParameters.fMaxDeviationRadius = maxDeviationRadiusValue; // Size of the max prediction radius Can snap back to noisy data when too high
         this.smoothParameters.fSmoothing = smoothingValue;                   // How much soothing will occur.  Will lag when too high
         this.smoothParameters.fCorrection = correctionValue;                 // How much to correct back from prediction.  Can make things springy
@@ -96,10 +95,8 @@ public class BoneOrientationsFilter
         }
 
         KinectWrapper.NuiTransformSmoothParameters tempSmoothingParams = new KinectWrapper.NuiTransformSmoothParameters();
-
         // Check for divide by zero. Use an epsilon of a 10th of a millimeter
         this.smoothParameters.fJitterRadius = Math.Max(0.0001f, this.smoothParameters.fJitterRadius);
-
         tempSmoothingParams.fSmoothing = smoothParameters.fSmoothing;
         tempSmoothingParams.fCorrection = smoothParameters.fCorrection;
         tempSmoothingParams.fPrediction = smoothParameters.fPrediction;
@@ -149,7 +146,6 @@ public class BoneOrientationsFilter
         Quaternion prevTrend = this.history[jointIndex].Trend;
         Vector3 rawPosition = (Vector3)skeleton.SkeletonPositions[jointIndex];
         bool orientationIsValid = KinectHelper.JointPositionIsValid(rawPosition) && KinectHelper.IsTrackedOrInferred(skeleton, jointIndex) && KinectHelper.BoneOrientationIsValid(rawOrientation);
-
         if (!orientationIsValid)
         {
             if (this.history[jointIndex].FrameCount > 0)
@@ -171,7 +167,6 @@ public class BoneOrientationsFilter
             // Use average of two positions and calculate proper trend for end value
             Quaternion prevRawOrientation = this.history[jointIndex].RawBoneOrientation;
             filteredOrientation = KinectHelper.EnhancedQuaternionSlerp(prevRawOrientation, rawOrientation, 0.5f);
-
             Quaternion diffStarted = KinectHelper.RotationBetweenQuaternions(filteredOrientation, prevFilteredOrientation);
             trend = KinectHelper.EnhancedQuaternionSlerp(prevTrend, diffStarted, smoothingParameters.fCorrection);
         }
@@ -192,14 +187,12 @@ public class BoneOrientationsFilter
 
             // Now the double exponential smoothing filter
             filteredOrientation = KinectHelper.EnhancedQuaternionSlerp(filteredOrientation, prevFilteredOrientation * prevTrend, smoothingParameters.fSmoothing);
-
             diffJitter = KinectHelper.RotationBetweenQuaternions(filteredOrientation, prevFilteredOrientation);
             trend = KinectHelper.EnhancedQuaternionSlerp(prevTrend, diffJitter, smoothingParameters.fCorrection);
         }      
 
         // Use the trend and predict into the future to reduce latency
         Quaternion predictedOrientation = filteredOrientation * KinectHelper.EnhancedQuaternionSlerp(Quaternion.identity, trend, smoothingParameters.fPrediction);
-
         // Check that we are not too far away from raw data
         Quaternion diff = KinectHelper.RotationBetweenQuaternions(predictedOrientation, filteredOrientation);
         float diffVal = (float)Math.Abs(KinectHelper.QuaternionAngle(diff));

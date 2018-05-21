@@ -53,7 +53,6 @@ public class JointPositionsFilter
     public void Init(float smoothingValue, float correctionValue, float predictionValue, float jitterRadiusValue, float maxDeviationRadiusValue)
     {
         this.smoothParameters = new KinectWrapper.NuiTransformSmoothParameters();
-
         this.smoothParameters.fSmoothing = smoothingValue;                   // How much soothing will occur.  Will lag when too high
         this.smoothParameters.fCorrection = correctionValue;                 // How much to correct back from prediction.  Can make things springy
         this.smoothParameters.fPrediction = predictionValue;                 // Amount of prediction into the future to use. Can over shoot when too high
@@ -98,12 +97,10 @@ public class JointPositionsFilter
         }
 
         //Array jointTypeValues = Enum.GetValues(typeof(KinectWrapper.NuiSkeletonPositionIndex));
-
         KinectWrapper.NuiTransformSmoothParameters tempSmoothingParams = new KinectWrapper.NuiTransformSmoothParameters();
 
         // Check for divide by zero. Use an epsilon of a 10th of a millimeter
         this.smoothParameters.fJitterRadius = Math.Max(0.0001f, this.smoothParameters.fJitterRadius);
-
         tempSmoothingParams.fSmoothing = smoothParameters.fSmoothing;
         tempSmoothingParams.fCorrection = smoothParameters.fCorrection;
         tempSmoothingParams.fPrediction = smoothParameters.fPrediction;
@@ -112,7 +109,6 @@ public class JointPositionsFilter
         for(int jointIndex = 0; jointIndex < jointsCount; jointIndex++)
         {
 			//KinectWrapper.NuiSkeletonPositionIndex jt = (KinectWrapper.NuiSkeletonPositionIndex)jointTypeValues.GetValue(jointIndex);
-			
             // If not tracked, we smooth a bit more by using a bigger jitter radius
             // Always filter feet highly as they are so noisy
             if (skeleton.eSkeletonPositionTrackingState[jointIndex] != KinectWrapper.NuiSkeletonPositionTrackingState.Tracked)
@@ -150,7 +146,6 @@ public class JointPositionsFilter
         Vector3 prevTrend = this.history[jointIndex].Trend;
         Vector3 prevRawPosition = this.history[jointIndex].RawPosition;
         bool jointIsValid = KinectHelper.JointPositionIsValid(rawPosition);
-
         // If joint is invalid, reset the filter
         if (!jointIsValid)
         {
@@ -174,7 +169,6 @@ public class JointPositionsFilter
             // First apply jitter filter
             diffvec = rawPosition - prevFilteredPosition;
             diffVal = Math.Abs(diffvec.magnitude);
-
             if (diffVal <= smoothingParameters.fJitterRadius)
             {
                 filteredPosition = (rawPosition * (diffVal / smoothingParameters.fJitterRadius)) + (prevFilteredPosition * (1.0f - (diffVal / smoothingParameters.fJitterRadius)));
@@ -186,18 +180,15 @@ public class JointPositionsFilter
 
             // Now the double exponential smoothing filter
             filteredPosition = (filteredPosition * (1.0f - smoothingParameters.fSmoothing)) + ((prevFilteredPosition + prevTrend) * smoothingParameters.fSmoothing);
-
             diffvec = filteredPosition - prevFilteredPosition;
             trend = (diffvec * smoothingParameters.fCorrection) + (prevTrend * (1.0f - smoothingParameters.fCorrection));
         }      
 
         // Predict into the future to reduce latency
         Vector3 predictedPosition = filteredPosition + (trend * smoothingParameters.fPrediction);
-
         // Check that we are not too far away from raw data
         diffvec = predictedPosition - rawPosition;
         diffVal = Mathf.Abs(diffvec.magnitude);
-
         if (diffVal > smoothingParameters.fMaxDeviationRadius)
         {
             predictedPosition = (predictedPosition * (smoothingParameters.fMaxDeviationRadius / diffVal)) + (rawPosition * (1.0f - (smoothingParameters.fMaxDeviationRadius / diffVal)));

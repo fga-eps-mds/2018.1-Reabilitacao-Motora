@@ -1,178 +1,199 @@
-using UnityEngine;
+using System;
 using System.Collections;
-using DataBaseTables;
-using DataBaseAttributes;
+using System.Collections.Generic;
 using Mono.Data.Sqlite;
 using System.Data;
+using DataBaseAttributes;
 
 namespace movimento
 {
   /**
    * Classe que cria relação para cadastro de movimentos a serem cadastrados pelo programa.
    */
-    public class Movimento
-    {
-        int tableId = 5;
-        DataBase banco = new DataBase ();
-        TableNameColumn tt = new TableNameColumn ();
-        string path;
+	public class Movimento
+	{
 
-        /**
-         * Cria a relação para movimento, contendo um id gerado automaticamente pelo banco como chave primária.
-         */
-        public Movimento(string caminho)
-        {
-            path = caminho;
-            using (banco.conn = new SqliteConnection(path))
-            {
-                banco.conn.Open();
-                banco.cmd = banco.conn.CreateCommand();
+		private const int tableId = 4;
+		private int IdMovimento;
+		private int IdFisioterapeuta;
+		private string NomeMovimento;
+		private string DescricaoMovimento;
+		private string PontosMovimento;
 
-                banco.sqlQuery = "CREATE TABLE IF NOT EXISTS MOVIMENTO (idMovimento INTEGER primary key AUTOINCREMENT,idFisioterapeuta INTEGER not null,nomeMovimento VARCHAR (50) not null,descricaoMovimento VARCHAR (150),pontosMovimento VARCHAR (150) not null,foreign key (idFisioterapeuta) references FISIOTERAPEUTA (idFisioterapeuta));";
+		public int idMovimento 
+		{
+			get 
+			{
+				return IdMovimento; 
+			} 
+			set 
+			{
+				IdMovimento = value; 
+			}
+		}
 
-                banco.cmd.CommandText = banco.sqlQuery;
-                banco.cmd.ExecuteScalar();
-                banco.conn.Close();
-            }
-        }
+		public int idFisioterapeuta 
+		{
+			get 
+			{
+				return IdFisioterapeuta; 
+			} 
+			set 
+			{
+				IdFisioterapeuta = value; 
+			}
+		}
 
-        /**
-         * Função que insere dados necessários para cadastro de movimentos na relação movimento.
-         */
-        public void Insert(int idFisioterapeuta,
-            string nomeMovimento,
-            string descricaoFisioterapeuta,
-            string pontosMovimento)
-        {
-            using (banco.conn = new SqliteConnection(path))
-            {
-                banco.conn.Open();
-                banco.cmd = banco.conn.CreateCommand();
-                banco.sqlQuery = "insert into MOVIMENTO (";
+		public string nomeMovimento 
+		{
+			get 
+			{
+				return NomeMovimento; 
+			} 
+			set 
+			{
+				NomeMovimento = value; 
+			}
+		}
 
-                int tableSize = tt.TABLES[tableId].Length;
+		public string descricaoMovimento 
+		{
+			get 
+			{
+				return DescricaoMovimento; 
+			} 
+			set 
+			{
+				DescricaoMovimento = value; 
+			}
+		}
 
-                for (int i = 1; i < tableSize; ++i) {
-                    string aux = (i+1 == tableSize) ? (")") : (",");
-                    banco.sqlQuery += (tt.TABLES[tableId].colName[i] + aux);
-                }
+		public string pontosMovimento 
+		{
+			get 
+			{
+				return PontosMovimento; 
+			} 
+			set 
+			{
+				PontosMovimento = value; 
+			}
+		}
 
-                banco.sqlQuery += string.Format(" values (\"{0}\",\"{1}\",\"{2}\",\"{3}\")", idFisioterapeuta,
-                    nomeMovimento,
-                    descricaoFisioterapeuta,
-                    pontosMovimento);
+		
+		public Movimento(){}
 
-                banco.cmd.CommandText = banco.sqlQuery;
-                banco.cmd.ExecuteScalar();
-                banco.conn.Close();
-            }
-        }
+		/**
+		 * Classe com todos os atributos de um movimento.
+		 */
+		public Movimento(int idm, int idf, string nm, string dm, string pm)
+		{
+			this.idMovimento = idm;
+			this.idFisioterapeuta = idf;
+			this.nomeMovimento = nm;
+			this.descricaoMovimento = dm;
+			this.pontosMovimento = pm;
+		}
 
-        /**
-         * Função que atualiza dados já cadastrados anteriormente na relação movimento.
-         */
-        public void Update(int id,
-            int idFisioterapeuta,
-            string nomeMovimento,
-            string descricaoFisioterapeuta,
-            string pontosMovimento)
-        {
-            using (banco.conn = new SqliteConnection(path))
-            {
-                banco.conn.Open();
-                banco.cmd = banco.conn.CreateCommand();
+		public Movimento(Object[] columns)
+		{
+			this.idMovimento = (int)columns[0];
+			this.idFisioterapeuta = (int)columns[1];
+			this.nomeMovimento = (string)columns[2];
+			this.descricaoMovimento = (string)columns[3];
+			this.pontosMovimento = (string)columns[4];
+		}
 
-                banco.sqlQuery = string.Format("UPDATE \"{0}\" set ", tt.TABLES[tableId].tableName);
+		/**
+		 * Cria a relação para movimento, contendo um id gerado automaticamente pelo banco como chave primária.
+		 */
+		public static void Create()
+		{
+			DataBase banco = new DataBase();
+			string query = "CREATE TABLE IF NOT EXISTS MOVIMENTO (idMovimento INTEGER primary key AUTOINCREMENT,idFisioterapeuta INTEGER not null,nomeMovimento VARCHAR (50) not null,descricaoMovimento VARCHAR (150),pontosMovimento VARCHAR (150) not null,foreign key (idFisioterapeuta) references FISIOTERAPEUTA (idFisioterapeuta));";
+			banco.Create(GlobalController.instance.path, query);	
+		}
 
-                banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",", tt.TABLES[tableId].colName[1], idFisioterapeuta);
-                banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",", tt.TABLES[tableId].colName[2], nomeMovimento);
-                banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",", tt.TABLES[tableId].colName[3], descricaoFisioterapeuta);
-                banco.sqlQuery += string.Format("\"{0}\"=\"{1}\" ", tt.TABLES[tableId].colName[4], pontosMovimento);
+		/**
+		 * Função que insere dados necessários para cadastro de movimentos na relação movimento.
+		 */
+		public static void Insert(int idFisioterapeuta,
+			string nomeMovimento,
+			string descricaoMovimento,
+			string pontosMovimento)
+		{
+			DataBase banco = new DataBase();
+			Object[] columns = new Object[] {idFisioterapeuta, nomeMovimento, descricaoMovimento, pontosMovimento};
+			banco.Insert(GlobalController.instance.path, columns, TablesManager.Tables[tableId].tableName, tableId);
+		}
 
-                banco.sqlQuery += string.Format("WHERE \"{0}\" = \"{1}\"", tt.TABLES[tableId].colName[0], id);
+		/**
+		 * Função que atualiza dados já cadastrados anteriormente na relação movimento.
+		 */
+		public static void Update(int id,
+			int idFisioterapeuta,
+			string nomeMovimento,
+			string descricaoMovimento,
+			string pontosMovimento)
+		{
+			DataBase banco = new DataBase();
+			Object[] columns = new Object[] {id, idFisioterapeuta, nomeMovimento, descricaoMovimento, pontosMovimento};
+			banco.Update(GlobalController.instance.path, columns, TablesManager.Tables[tableId].tableName, tableId);
+		}
 
-                banco.cmd.CommandText = banco.sqlQuery;
-                banco.cmd.ExecuteScalar();
-                banco.conn.Close();
-            }
-        }
+		/**
+		 * Função que lê dados já cadastrados anteriormente na relação movimento.
+		 */
+		public static List<Movimento> Read()
+		{
+			DataBase banco = new DataBase();
+			int idMovimentoTemp = 0;
+			int idFisioterapeutaTemp = 0;
+			string nomeMovimentoTemp = "";
+			string descricaoMovimentoTemp = "";
+			string pontosMovimentoTemp = "";
 
-        /**
-         * Função que lê dados já cadastrados anteriormente na relação movimento.
-         */
-        public void Read()
-        {
-            using (banco.conn = new SqliteConnection(path))
-            {
-                banco.conn.Open();
-                banco.cmd = banco.conn.CreateCommand();
-                banco.sqlQuery = "SELECT * " + "FROM MOVIMENTO";
-                banco.cmd.CommandText = banco.sqlQuery;
-                IDataReader reader = banco.cmd.ExecuteReader();
-                while (reader.Read())
-                {
-                    int idMovimento = 0;
-                    int idFisioterapeuta = 0;
-                    string nomeMovimento = "null";
-                    string descricaoFisioterapeuta = "null";
-                    string pontosMovimento = "null";
+			Object[] columns = new Object[] {idMovimentoTemp,idFisioterapeutaTemp,nomeMovimentoTemp,descricaoMovimentoTemp,pontosMovimentoTemp};
 
-                    if (!reader.IsDBNull(0)) idMovimento = reader.GetInt32(0);
-                    if (!reader.IsDBNull(1)) idFisioterapeuta = reader.GetInt32(1);
-                    if (!reader.IsDBNull(2)) nomeMovimento = reader.GetString(2);
-                    if (!reader.IsDBNull(3)) descricaoFisioterapeuta = reader.GetString(3);
-                    if (!reader.IsDBNull(4)) pontosMovimento = reader.GetString(4);
+			List<Movimento> movements = banco.Read<Movimento>(GlobalController.instance.path, TablesManager.Tables[tableId].tableName, columns);
 
-                    Debug.Log (string.Format("\"{0}\" = ", tt.TABLES[tableId].colName[0]) + idMovimento +
-                        string.Format(" \"{0}\" = ", tt.TABLES[tableId].colName[1]) + idFisioterapeuta +
-                        string.Format(" \"{0}\" = ", tt.TABLES[tableId].colName[2]) + nomeMovimento +
-                        string.Format(" \"{0}\" = ", tt.TABLES[tableId].colName[3]) + descricaoFisioterapeuta +
-                        string.Format(" \"{0}\" = ", tt.TABLES[tableId].colName[4]) + pontosMovimento);
+			return movements;
+		}
 
-                }
-                reader.Close();
-                reader = null;
-                banco.cmd.Dispose();
-                banco.cmd = null;
-                banco.conn.Close();
-                banco.conn = null;
-            }
-        }
 
-        /**
-         * Função que deleta dados cadastrados anteriormente na relação movimento.
-         */
-        public void DeleteValue(int id)
-        {
-            using (banco.conn = new SqliteConnection(path))
-            {
-                banco.conn.Open();
-                banco.cmd = banco.conn.CreateCommand();
+		public static Movimento ReadValue (int id)
+		{
+			DataBase banco = new DataBase();
+			int idMovimentoTemp = 0;
+			int idFisioterapeutaTemp = 0;
+			string nomeMovimentoTemp = "";
+			string descricaoMovimentoTemp = "";
+			string pontosMovimentoTemp = "";
 
-                banco.sqlQuery = string.Format("delete from \"{0}\" WHERE \"{1}\" = \"{2}\"", tt.TABLES[tableId].tableName, tt.TABLES[tableId].colName[0], id);
+			Object[] columns = new Object[] {idMovimentoTemp,idFisioterapeutaTemp,nomeMovimentoTemp,descricaoMovimentoTemp,pontosMovimentoTemp};
 
-                banco.cmd.CommandText = banco.sqlQuery;
-                banco.cmd.ExecuteScalar();
-                banco.conn.Close();
-            }
-        }
+			Movimento movement = banco.ReadValue<Movimento>(GlobalController.instance.path, TablesManager.Tables[tableId].tableName,
+				TablesManager.Tables[tableId].colName[0], id, columns);
 
-        /**
-         * Função que apaga a relação movimento inteira de uma vez.
-         */
-        public void Drop()
-        {
-            using (banco.conn = new SqliteConnection(path))
-            {
-                banco.conn.Open();
-                banco.cmd = banco.conn.CreateCommand();
+			return movement;
+		}
 
-                banco.sqlQuery = string.Format("DROP TABLE IF EXISTS \"{0}\"", tt.TABLES[tableId].tableName);
+		/**
+		 * Função que deleta dados cadastrados anteriormente na relação movimento.
+		 */
+		public static void DeleteValue(int id)
+		{
+			DataBase banco = new DataBase();
+			banco.DeleteValue (tableId, id);
+		}
 
-                banco.cmd.CommandText = banco.sqlQuery;
-                banco.cmd.ExecuteScalar();
-                banco.conn.Close();
-            }
-        }
-    }
+		/**
+		 * Função que apaga a relação movimento inteira de uma vez.
+		 */
+		public static void Drop()
+		{
+			DataBase banco = new DataBase();
+			banco.Drop (tableId);
+		}
+	}
 }

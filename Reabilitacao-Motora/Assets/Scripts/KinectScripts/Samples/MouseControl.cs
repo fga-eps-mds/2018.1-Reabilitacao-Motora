@@ -3,6 +3,7 @@
 //
 
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Runtime.InteropServices;
 using System;
@@ -12,11 +13,11 @@ public class MouseControl
     // Import function mouse_event() from WinApi
     [DllImport("User32.dll")] 
     private static extern void mouse_event(MouseFlags dwFlags, int dx, int dy, int dwData, System.UIntPtr dwExtraInfo);
-
     // Flags needed to specify the mouse action 
     [System.Flags]
     private enum MouseFlags 
-	{ 
+	
+	{
         Move = 0x0001, 
         LeftDown = 0x0002, 
         LeftUp = 0x0004, 
@@ -67,7 +68,7 @@ public class MouseControl
 
 
     // Public function to move the mouse cursor to the specified position
-    public static void MouseMove(Vector3 screenCoordinates, GUIText debugText)
+    public static void MouseMove(Vector3 screenCoordinates, Text debugText)
     {
 		int windowX = 0;
 		int windowY = 0;
@@ -157,7 +158,6 @@ public class MouseControl
 			int winSizeX = winRect.Right - winRect.Left;
 			int winSizeY = winRect.Bottom - winRect.Top;
 			int winDiff = Math.Abs(winSizeX - scrWidth) + Math.Abs(winSizeY - scrHeight);
-
 			IntPtr hWndChild = GetWindow(hWndMain, GetWindow_Cmd.GW_CHILD);
 			int winDiffMin = winDiff;
 			
@@ -168,7 +168,6 @@ public class MouseControl
 					winSizeX = winRect.Right - winRect.Left;
 					winSizeY = winRect.Bottom - winRect.Top;
 					winDiff = Math.Abs(winSizeX - scrWidth) + Math.Abs(winSizeY - scrHeight - 36);
-					
 					if(scrWidth <= winSizeX && scrHeight <= winSizeY && winDiff <= winDiffMin)
 					{
 						hWnd = hWndChild;

@@ -1,177 +1,200 @@
-using UnityEngine;
+using System;
 using System.Collections;
-using DataBaseTables;
-using DataBaseAttributes;
+using System.Collections.Generic;
 using Mono.Data.Sqlite;
 using System.Data;
+using DataBaseAttributes;
 
-namespace pontosrotulopaciente {
+namespace pontosrotulopaciente
+{
 
-    /**
-    * Cria relação para cadastro dos pontosrotulopaciente a serem cadastrados pelo programa.
-     */
-    public class PontosRotuloPaciente
-    {
-        int tableId = 10;
-        DataBase banco = new DataBase();
-        TableNameColumn tt = new TableNameColumn();
-        string path;
+	/**
+	* Cria relação para cadastro dos pontosrotulopaciente a serem cadastrados pelo programa.
+	 */
+	public class PontosRotuloPaciente
+	{
+		private const int tableId = 9;
+		private int IdRotuloPaciente;
+		private int IdExercicio;
+		private string EstagioMovimentoPaciente;
+		private float TempoInicial;
+		private float TempoFinal;
 
-        /**
-        * Cria a relação para pontosrotulopaciente, contendo um id gerado automaticamente pelo banco como chave primária.
-         */
-        public PontosRotuloPaciente(string caminho)
-        {
-            path = caminho;
-            using (banco.conn = new SqliteConnection(path))
-            {
-                banco.conn.Open();
-                banco.cmd = banco.conn.CreateCommand();
+		public int idRotuloPaciente 
+		{
+			get 
+			{
+				return IdRotuloPaciente; 
+			} 
+			set 
+			{
+				IdRotuloPaciente = value; 
+			}
+		}
 
-                banco.sqlQuery = "CREATE TABLE IF NOT EXISTS PONTOSROTULOPACIENTE (idRotuloPaciente INTEGER primary key AUTOINCREMENT,idExercicio INTEGER not null,estagioMovimentoPaciente VARCHAR (30) not null,tempoInicial REAL not null,tempoFinal REAL not null,foreign key (idExercicio) references EXERCICIO (idExercicio));";
+		public int idExercicio 
+		{
+			get 
+			{
+				return IdExercicio; 
+			} 
+			set 
+			{
+				IdExercicio = value; 
+			}
+		}
 
-                banco.cmd.CommandText = banco.sqlQuery;
-                banco.cmd.ExecuteScalar();
-                banco.conn.Close();
-            }
-        }
+		public string estagioMovimentoPaciente 
+		{
+			get 
+			{
+				return EstagioMovimentoPaciente; 
+			} 
+			set 
+			{
+				EstagioMovimentoPaciente = value; 
+			}
+		}
+		
+		public float tempoInicial 
+		{
+			get 
+			{
+				return TempoInicial; 
+			} 
+			set 
+			{
+				TempoInicial = value; 
+			}
+		}
 
-        /**
-        * Função que insere dados na tabela de pontosrotulopaciente.
-         */
-        public void Insert(int idMovimento,
-            string estagioMovimentoPaciente,
-            double tempoInicial,
-            double tempoFinal)
-        {
-            using (banco.conn = new SqliteConnection(path))
-            {
-                banco.conn.Open();
-                banco.cmd = banco.conn.CreateCommand();
-                banco.sqlQuery = "insert into PONTOSROTULOPACIENTE (";
+		public float tempoFinal 
+		{
+			get 
+			{
+				return TempoFinal; 
+			} 
+			set 
+			{
+				TempoFinal = value; 
+			}
+		}
 
-                int tableSize = tt.TABLES[tableId].Length;
 
-                for (int i = 1; i < tableSize; ++i) {
-                    string aux = (i+1 == tableSize) ? (")") : (",");
-                    banco.sqlQuery += (tt.TABLES[tableId].colName[i] + aux);
-                }
 
-                banco.sqlQuery += string.Format(" values (\"{0}\",\"{1}\",\"{2}\",\"{3}\")", idMovimento,
-                    estagioMovimentoPaciente,
-                    tempoInicial,
-                    tempoFinal);
+		/**
+		 * Classe com todos os atributos de um pontosrotulopaciente.
+		 */
+		public PontosRotuloPaciente(int idrp, int ide, string e, float ti, float tf)
+		{
+				this.idRotuloPaciente = idrp;
+				this.idExercicio = ide;
+				this.estagioMovimentoPaciente = e;
+				this.tempoInicial = ti;
+				this.tempoFinal = tf;
+		}
 
-                banco.cmd.CommandText = banco.sqlQuery;
-                banco.cmd.ExecuteScalar();
-                banco.conn.Close();
-            }
-        }
+		public PontosRotuloPaciente(Object[] columns)
+		{
+				this.idRotuloPaciente = (int)columns[0];
+				this.idExercicio = (int)columns[1];
+				this.estagioMovimentoPaciente = (string)columns[2];
+				this.tempoInicial = (float)columns[3];
+				this.tempoFinal = (float)columns[4];
+		}
 
-        /**
-        * Função que atualiza dados já cadastrados anteriormente na relação de pontosrotulopaciente.
-         */
-        public void Update(int id,
-            int idMovimento,
-            string estagioMovimentoPaciente,
-            double tempoInicial,
-            double tempoFinal)
-        {
-            using (banco.conn = new SqliteConnection(path))
-            {
-                banco.conn.Open();
-                banco.cmd = banco.conn.CreateCommand();
+		/**
+		* Cria a relação para pontosrotulopaciente, contendo um id gerado automaticamente pelo banco como chave primária.
+		 */
+		public static void Create()
+		{
+			DataBase banco = new DataBase();
+			string query = "CREATE TABLE IF NOT EXISTS PONTOSROTULOPACIENTE (idRotuloPaciente INTEGER primary key AUTOINCREMENT,idExercicio INTEGER not null,estagioMovimentoPaciente VARCHAR (30) not null,tempoInicial REAL not null,tempoFinal REAL not null,foreign key (idExercicio) references EXERCICIO (idExercicio));";
+			banco.Create(GlobalController.instance.path, query);
+		}
 
-                banco.sqlQuery = string.Format("UPDATE \"{0}\" set ", tt.TABLES[tableId].tableName);
+		/**
+		* Função que insere dados na tabela de pontosrotulopaciente.
+		 */
+		public static void Insert(int idExercicio,
+			string estagioMovimentoPaciente,
+			float tempoInicial,
+			float tempoFinal)
+		{
+			DataBase banco = new DataBase();
+			Object[] columns = new Object[] {idExercicio, estagioMovimentoPaciente, tempoInicial, tempoFinal};
+			banco.Insert(GlobalController.instance.path, columns, TablesManager.Tables[tableId].tableName, tableId);
+		}
 
-                banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",", tt.TABLES[tableId].colName[1], idMovimento);
-                banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",", tt.TABLES[tableId].colName[2], estagioMovimentoPaciente);
-                banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",", tt.TABLES[tableId].colName[3], tempoInicial);
-                banco.sqlQuery += string.Format("\"{0}\"=\"{1}\" ", tt.TABLES[tableId].colName[4], tempoFinal);
+		/**
+		* Função que atualiza dados já cadastrados anteriormente na relação de pontosrotulopaciente.
+		 */
+		public static void Update(int id,
+			int idExercicio,
+			string estagioMovimentoPaciente,
+			float tempoInicial,
+			float tempoFinal)
+		{
+			DataBase banco = new DataBase();
+			Object[] columns = new Object[] {id, idExercicio, estagioMovimentoPaciente, tempoInicial, tempoFinal};
+			banco.Update(GlobalController.instance.path, columns, TablesManager.Tables[tableId].tableName, tableId);
+		}
 
-                banco.sqlQuery += string.Format("WHERE \"{0}\" = \"{1}\"", tt.TABLES[tableId].colName[0], id);
+		/**
+		* Função que lê dados já cadastrados anteriormente na relação de pontosrotulopaciente.
+		 */
+		public static List<PontosRotuloPaciente> Read()
+		{
+			DataBase banco = new DataBase();
 
-                banco.cmd.CommandText = banco.sqlQuery;
-                banco.cmd.ExecuteScalar();
-                banco.conn.Close();
-            }
-        }
+			int idRotuloPacienteTemp = 0;
+			int idExercicioTemp = 0;
+			string estagioMovimentoPacienteTemp = "";
+			float tempoInicialTemp = 0;
+			float tempoFinalTemp = 0;
 
-        /**
-        * Função que lê dados já cadastrados anteriormente na relação de pontosrotulopaciente.
-         */
-        public void Read()
-        {
-            using (banco.conn = new SqliteConnection(path))
-            {
-                banco.conn.Open();
-                banco.cmd = banco.conn.CreateCommand();
-                banco.sqlQuery = "SELECT * " + "FROM PONTOSROTULOPACIENTE";
-                banco.cmd.CommandText = banco.sqlQuery;
-                IDataReader reader = banco.cmd.ExecuteReader();
-                while (reader.Read())
-                {
-                    int idRotuloPaciente = 0;
-                    int idMovimento = 0;
-                    string estagioMovimentoPaciente = "null";
-                    double tempoInicial = 0;
-                    double tempoFinal = 0;
+			Object[] columns = new Object[] {idRotuloPacienteTemp,idExercicioTemp,estagioMovimentoPacienteTemp,tempoInicialTemp,tempoFinalTemp};
 
-                    if (!reader.IsDBNull(0)) idRotuloPaciente = reader.GetInt32(0);
-                    if (!reader.IsDBNull(1)) idMovimento = reader.GetInt32(1);
-                    if (!reader.IsDBNull(2)) estagioMovimentoPaciente = reader.GetString(2);
-                    if (!reader.IsDBNull(3)) tempoInicial = reader.GetDouble(3);
-                    if (!reader.IsDBNull(4)) tempoFinal = reader.GetDouble(4);
+			List<PontosRotuloPaciente> patientLabelPoints = banco.Read<PontosRotuloPaciente>(GlobalController.instance.path, TablesManager.Tables[tableId].tableName, columns);
 
-                    Debug.Log (string.Format("\"{0}\" = ", tt.TABLES[tableId].colName[0]) + idRotuloPaciente +
-                        string.Format(" \"{0}\" = ", tt.TABLES[tableId].colName[1]) + idMovimento +
-                        string.Format(" \"{0}\" = ", tt.TABLES[tableId].colName[2]) + estagioMovimentoPaciente +
-                        string.Format(" \"{0}\" = ", tt.TABLES[tableId].colName[3]) + tempoInicial +
-                        string.Format(" \"{0}\" = ", tt.TABLES[tableId].colName[4]) + tempoFinal);
-                }
-                reader.Close();
-                reader = null;
-                banco.cmd.Dispose();
-                banco.cmd = null;
-                banco.conn.Close();
-                banco.conn = null;
-            }
-        }
+			return patientLabelPoints;
+		}
 
-        /**
-        * Função que deleta dados cadastrados anteriormente na relação de pontosrotulopaciente.
-         */
-        public void DeleteValue(int id)
-        {
-            using (banco.conn = new SqliteConnection(path))
-            {
-                banco.conn.Open();
-                banco.cmd = banco.conn.CreateCommand();
 
-                banco.sqlQuery = string.Format("delete from \"{0}\" WHERE \"{1}\" = \"{2}\"", tt.TABLES[tableId].tableName, tt.TABLES[tableId].colName[0], id);
+		public static PontosRotuloPaciente ReadValue (int id)
+		{
+			DataBase banco = new DataBase();
 
-                banco.cmd.CommandText = banco.sqlQuery;
-                banco.cmd.ExecuteScalar();
-                banco.conn.Close();
-            }
-        }
+			int idRotuloPacienteTemp = 0;
+			int idExercicioTemp = 0;
+			string estagioMovimentoPacienteTemp = "";
+			float tempoInicialTemp = 0;
+			float tempoFinalTemp = 0;
 
-        /**
-        * Função que apaga a relação de pontosrotulopaciente inteira de uma vez.
-         */
-        public void Drop()
-        {
-            using (banco.conn = new SqliteConnection(path))
-            {
-                banco.conn.Open();
-                banco.cmd = banco.conn.CreateCommand();
+			Object[] columns = new Object[] {idRotuloPacienteTemp,idExercicioTemp,estagioMovimentoPacienteTemp,tempoInicialTemp,tempoFinalTemp};
 
-                banco.sqlQuery = string.Format("DROP TABLE IF EXISTS \"{0}\"", tt.TABLES[tableId].tableName);
+			PontosRotuloPaciente patientLabelPoint = banco.ReadValue<PontosRotuloPaciente>(GlobalController.instance.path, TablesManager.Tables[tableId].tableName,
+				TablesManager.Tables[tableId].colName[0], id, columns);
 
-                banco.cmd.CommandText = banco.sqlQuery;
-                banco.cmd.ExecuteScalar();
-                banco.conn.Close();
-            }
-        }
-    }
+			return patientLabelPoint;
+		}
+
+		/**
+		* Função que deleta dados cadastrados anteriormente na relação de pontosrotulopaciente.
+		 */
+		public static void DeleteValue(int id)
+		{
+			DataBase banco = new DataBase();
+			banco.DeleteValue (tableId, id);
+		}
+
+		/**
+		* Função que apaga a relação de pontosrotulopaciente inteira de uma vez.
+		 */
+		public static void Drop()
+		{
+			DataBase banco = new DataBase();
+			banco.Drop (tableId);
+		}
+	}
 }

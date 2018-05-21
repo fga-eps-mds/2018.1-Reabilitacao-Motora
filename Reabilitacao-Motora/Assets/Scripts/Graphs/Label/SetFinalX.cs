@@ -7,13 +7,24 @@ using UnityEngine;
  */
 public class SetFinalX : MonoBehaviour
 {
-	public Label prefab;
+	private float finalX;
+	public float FinalX
+	{
+		get
+		{
+			return finalX;
+		}
+		set
+		{
+			finalX = value;
+		}
+	}
 
 	/**
 	 * Descrever aqui o que esse método realiza.
 	 */
-	void Update()
+	public void Set()
 	{
-		transform.localPosition = new Vector3 (prefab.FinalX, 3.75f, 0);
+		transform.localPosition = new Vector3 (FinalX, 3.75f, 0);
 	}
 }

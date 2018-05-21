@@ -1,156 +1,140 @@
-using UnityEngine;
+using System;
 using System.Collections;
-using DataBaseTables;
-using DataBaseAttributes;
+using System.Collections.Generic;
 using Mono.Data.Sqlite;
 using System.Data;
+using DataBaseAttributes;
+
 
 namespace musculo
 {
   /**
    * Classe que cria relação para cadastro de musculos a serem cadastrados pelo programa.
    */
-    public class Musculo
-    {
-        int tableId = 4;
-        DataBase banco = new DataBase();
-        TableNameColumn tt = new TableNameColumn();
-        string path;
+	public class Musculo
+	{
+		private const int tableId = 3;
+		private int IdMusculo;
+		private string NomeMusculo;
 
-        /**
-         * Cria a relação para musculo, contendo um id gerado automaticamente pelo banco como chave primária.
-         */
-        public Musculo(string caminho)
-        {
-            path = caminho;
-            using (banco.conn = new SqliteConnection(path))
-            {
-                banco.conn.Open();
-                banco.cmd = banco.conn.CreateCommand();
+		public int idMusculo 
+		{
+			get 
+			{
+				return IdMusculo; 
+			} 
+			set 
+			{
+				IdMusculo = value; 
+			}
+		}
 
-                banco.sqlQuery = "CREATE TABLE IF NOT EXISTS MUSCULO (idMusculo INTEGER primary key AUTOINCREMENT,nomeMusculo VARCHAR (20) not null);";
-                banco.cmd.CommandText = banco.sqlQuery;
-                banco.cmd.ExecuteScalar();
-                banco.conn.Close();
-            }
-        }
-
-        /**
-         * Função que insere dados necessários para cadastro de musculos na relação musculo.
-         */
-        public void Insert(string nomeMusculo)
-        {
-            using (banco.conn = new SqliteConnection(path))
-            {
-                banco.conn.Open();
-                banco.cmd = banco.conn.CreateCommand();
-                banco.sqlQuery = "insert into MUSCULO (";
-
-                int tableSize = tt.TABLES[tableId].Length;
-
-                for (int i = 1; i < tableSize; ++i) {
-                    string aux = (i+1 == tableSize) ? (")") : (",");
-                    banco.sqlQuery += (tt.TABLES[tableId].colName[i] + aux);
-                }
-
-                banco.sqlQuery += string.Format(" values (\"{0}\")", nomeMusculo);
-
-                banco.cmd.CommandText = banco.sqlQuery;
-                banco.cmd.ExecuteScalar();
-                banco.conn.Close();
-            }
-        }
-
-        /**
-         * Função que atualiza dados já cadastrados anteriormente na relação musculo.
-         */
-        public void Update(int id,
-            string nomeMusculo)
-        {
-            using (banco.conn = new SqliteConnection(path))
-            {
-                banco.conn.Open();
-                banco.cmd = banco.conn.CreateCommand();
-
-                banco.sqlQuery = string.Format("UPDATE \"{0}\" set ", tt.TABLES[tableId].tableName);
-
-                banco.sqlQuery += string.Format("\"{0}\"=\"{1}\" ", tt.TABLES[tableId].colName[1], nomeMusculo);
-
-                banco.sqlQuery += string.Format("WHERE \"{0}\" = \"{1}\"", tt.TABLES[tableId].colName[0], id);
-
-                banco.cmd.CommandText = banco.sqlQuery;
-                banco.cmd.ExecuteScalar();
-                banco.conn.Close();
-            }
-        }
-
-        /**
-         * Função que lê dados já cadastrados anteriormente na relação musculo.
-         */
-        public void Read()
-        {
-            using (banco.conn = new SqliteConnection(path))
-            {
-                banco.conn.Open();
-                banco.cmd = banco.conn.CreateCommand();
-                banco.sqlQuery = "SELECT * " + "FROM MUSCULO";
-                banco.cmd.CommandText = banco.sqlQuery;
-                IDataReader reader = banco.cmd.ExecuteReader();
-                while (reader.Read())
-                {
-                    int idMusculo = 0;
-                    string nomeMusculo = "null";
-
-                    if (!reader.IsDBNull(0)) idMusculo = reader.GetInt32(0);
-                    if (!reader.IsDBNull(1)) nomeMusculo = reader.GetString(1);
+		public string nomeMusculo 
+		{
+			get 
+			{
+				return NomeMusculo; 
+			} 
+			set 
+			{
+				NomeMusculo = value; 
+			}
+		}
 
 
-                    Debug.Log (string.Format("\"{0}\" = ", tt.TABLES[tableId].colName[0]) + idMusculo +
-                        string.Format(" \"{0}\" = ", tt.TABLES[tableId].colName[1]) + nomeMusculo);
-                }
-                reader.Close();
-                reader = null;
-                banco.cmd.Dispose();
-                banco.cmd = null;
-                banco.conn.Close();
-                banco.conn = null;
-            }
-        }
+		/**
+		 * Classe com todos os atributos de um musculo.
+		 */
+		public Musculo(int idm, string nm)
+		{
+			this.idMusculo = idm;
+			this.nomeMusculo = nm;
+		}
 
-        /**
-         * Função que deleta dados cadastrados anteriormente na relação musculo.
-         */
-        public void DeleteValue(int id)
-        {
-            using (banco.conn = new SqliteConnection(path))
-            {
-                banco.conn.Open();
-                banco.cmd = banco.conn.CreateCommand();
+		public Musculo(Object[] columns)
+		{
+			this.idMusculo = (int)columns[0];
+			this.nomeMusculo = (string)columns[1];
+		}
 
-                banco.sqlQuery = string.Format("delete from \"{0}\" WHERE \"{1}\" = \"{2}\"", tt.TABLES[tableId].tableName, tt.TABLES[tableId].colName[0], id);
+		/**
+		 * Cria a relação para musculo, contendo um id gerado automaticamente pelo banco como chave primária.
+		 */
+		public static void Create()
+		{
+			DataBase banco = new DataBase();
+			string query = "CREATE TABLE IF NOT EXISTS MUSCULO (idMusculo INTEGER primary key AUTOINCREMENT,nomeMusculo VARCHAR (20) not null, constraint musculo UNIQUE (nomeMusculo));";
+			banco.Create(GlobalController.instance.path, query);	
+		}
 
-                banco.cmd.CommandText = banco.sqlQuery;
-                banco.cmd.ExecuteScalar();
-                banco.conn.Close();
-            }
-        }
+		/**
+		 * Função que insere dados necessários para cadastro de musculos na relação musculo.
+		 */
+		public static void Insert(string nomeMusculo)
+		{
+			DataBase banco = new DataBase();
+			Object[] columns = new Object[] {nomeMusculo};
+			banco.Insert(GlobalController.instance.path, columns, TablesManager.Tables[tableId].tableName, tableId);
+		}
 
-        /**
-         * Função que apaga a relação musculo inteira de uma vez.
-         */
-        public void Drop()
-        {
-            using (banco.conn = new SqliteConnection(path))
-            {
-                banco.conn.Open();
-                banco.cmd = banco.conn.CreateCommand();
+		/**
+		 * Função que atualiza dados já cadastrados anteriormente na relação musculo.
+		 */
+		public static void Update(int id,
+			string nomeMusculo)
+		{
+			DataBase banco = new DataBase();
+			Object[] columns = new Object[] {id, nomeMusculo};
+			banco.Update(GlobalController.instance.path, columns, TablesManager.Tables[tableId].tableName, tableId);
+		}
 
-                banco.sqlQuery = string.Format("DROP TABLE IF EXISTS \"{0}\"", tt.TABLES[tableId].tableName);
+		/**
+		 * Função que lê dados já cadastrados anteriormente na relação musculo.
+		 */
+		public static List<Musculo> Read()
+		{
+			DataBase banco = new DataBase();
 
-                banco.cmd.CommandText = banco.sqlQuery;
-                banco.cmd.ExecuteScalar();
-                banco.conn.Close();
-            }
-        }
-    }
+			int idMusculoTemp = 0;
+			string nomeMusculoTemp = "";
+
+			Object[] columns = new Object[] {idMusculoTemp, nomeMusculoTemp};
+
+			List<Musculo> muscles = banco.Read<Musculo>(GlobalController.instance.path, TablesManager.Tables[tableId].tableName, columns);
+
+			return muscles;
+		}
+
+		public static Musculo ReadValue (int id)
+		{
+			DataBase banco = new DataBase();
+			int idMusculoTemp = 0;
+			string nomeMusculoTemp = "";
+
+			Object[] columns = new Object[] {idMusculoTemp, nomeMusculoTemp};
+
+			Musculo muscle = banco.ReadValue<Musculo>(GlobalController.instance.path, TablesManager.Tables[tableId].tableName,
+				TablesManager.Tables[tableId].colName[0], id, columns);
+
+			return muscle;
+		}
+
+		/**
+		 * Função que deleta dados cadastrados anteriormente na relação musculo.
+		 */
+		public static void DeleteValue(int id)
+		{
+			DataBase banco = new DataBase();
+			banco.DeleteValue (tableId, id);
+		}
+
+		/**
+		 * Função que apaga a relação musculo inteira de uma vez.
+		 */
+		public static void Drop()
+		{
+			DataBase banco = new DataBase();
+			banco.Drop (tableId);
+		}
+	}
 }
