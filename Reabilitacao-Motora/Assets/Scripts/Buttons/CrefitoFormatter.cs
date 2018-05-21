@@ -6,6 +6,11 @@ public class CrefitoFormatter : MonoBehaviour
 	[SerializeField]
 	protected InputField crefito;
 
+	public void Awake ()
+	{
+		crefito.characterLimit = 2;
+	}
+
 	public void Update ()
 	{
 		if (crefito.text.Length == 1)

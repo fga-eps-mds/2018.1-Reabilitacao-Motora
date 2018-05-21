@@ -55,6 +55,8 @@ public class CreateLabelPhysio : MonoBehaviour
 				nameLabel = GUILayout.TextField(nameLabel, GUILayout.Width(120));
 				initialX = GUILayout.TextField(initialX, GUILayout.Width(90));
 				finalX = GUILayout.TextField(finalX, GUILayout.Width(90));
+				initialX = System.Text.RegularExpressions.Regex.Replace(initialX, "[^0-9.]", "");
+				finalX = System.Text.RegularExpressions.Regex.Replace(finalX, "[^0-9.]", "");
 			GUILayout.EndHorizontal();
 
 			if (GUILayout.Button("Apply to Chart")) 

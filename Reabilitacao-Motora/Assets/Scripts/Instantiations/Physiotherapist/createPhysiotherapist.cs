@@ -26,106 +26,237 @@ public class createPhysiotherapist : MonoBehaviour
 	 */
 	public void savePhysiotherapist()
 	{
-		System.Object[] inputs = new System.Object[] {namePhysio, date, phone1, login, pass, confirmPass, male, female};
-		if (ValidInput (inputs) && ((crefito == null) == (regiao == null)))
+		List<InputField> allInputs = new List<InputField>();
+			
+		allInputs.Add(namePhysio); 
+		allInputs.Add(date); 
+		allInputs.Add(phone1); 
+		allInputs.Add(login); 
+		allInputs.Add(pass); 
+		allInputs.Add(confirmPass);
+		allInputs.Add(crefito); 
+		allInputs.Add(regiao); 
+		allInputs.Add(phone2);
+
+		List<Toggle> allToggles = new List<Toggle>();
+		allToggles.Add(male);
+		allToggles.Add(female);
+		
+
+		if (ValidInput (allInputs, allToggles) && ((crefito == null) == (regiao == null)))
 		{
-			if (pass.text == confirmPass.text) 
+			foreach (var x in allInputs)
 			{
-				SetColor (true);
-
-				string encryptedPassword = CryptPassword.Encrypt(pass.text, login.text);			
-
-				var trip = date.text.Split('/');
-				var dateFormate = trip[2] + "/" + trip[1] + "/" + trip[0];
-				
-				string sex, _phone2, _crefito, _regiao;
-				
-				if (male.isOn)
-				{
-					sex = "m";
-				}
-				else
-				{
-					sex = "f";
-				}
-
-				if (phone2 == null || phone2.text == "")
-				{
-					_phone2 = null;
-				}
-				else
-				{
-					_phone2 = phone2.text;
-				}
-
-				if (crefito == null || crefito.text == "")
-				{
-					_crefito = null;
-					_regiao = null;
-				}
-				else
-				{
-					_crefito = crefito.text;
-					_regiao = regiao.text;
-				}
-
-
-				Pessoa.Insert(namePhysio.text, sex, dateFormate, phone1.text, _phone2);
-				List<Pessoa> p = Pessoa.Read();
-
-				Fisioterapeuta.Insert(p[p.Count -1].idPessoa, login.text, encryptedPassword, _crefito, _regiao);
-
-				CreateDirectoryPhysio (namePhysio.text, p[p.Count-1].idPessoa);
-
-				List<Fisioterapeuta> physios = Fisioterapeuta.Read();
-				GlobalController.instance.admin = physios[physios.Count - 1]; 
-
-				Flow.StaticLogin();
-			} 
-			else 
-			{
-				print("As senhas não condizem!");
-				SetColor (false);
+				ApplyColor (x, true);
 			}
-		}
-	}
 
-	private static bool ValidInput (System.Object[] inputs)
-	{
-		bool valid = true;
-		const short FEMALE_INDEX = 7;
-		for (int i = 0; i < inputs.Length; ++i)
-		{
-			if (inputs[i] == null)
+			string encryptedPassword = CryptPassword.Encrypt(pass.text, login.text);			
+			var trip = date.text.Split('/');
+			var dateFormate = trip[2] + "/" + trip[1] + "/" + trip[0];
+			string sex, _phone2, _crefito, _regiao;
+			
+			if (male.isOn)
 			{
-				valid = false;
+				sex = "m";
 			}
 			else
 			{
-				Type t = inputs[i].GetType();
-				if (t.Equals(typeof(InputField))) 
-				{
-					InputField aux = (InputField)inputs[i];
-					if (aux.text == "")
-					{
-						valid = false;
-						print("input field " + i);
-					}
-				}
-				else
-				{
-					Toggle aux1 = (Toggle)inputs[i], aux2 = (Toggle)inputs[FEMALE_INDEX];
-					if (aux1.isOn == aux2.isOn)
-					{
-						valid = false;
-						print ("toggle" + i);
-					}
-					break;
-				}
+				sex = "f";
 			}
+
+			if (phone2 == null || phone2.text == "")
+			{
+				_phone2 = null;
+			}
+			else
+			{
+				_phone2 = phone2.text;
+			}
+
+			if (crefito == null || crefito.text == "")
+			{
+				_crefito = null;
+				_regiao = null;
+			}
+			else
+			{
+				_crefito = crefito.text;
+				_regiao = regiao.text;
+			}
+
+
+			Pessoa.Insert(namePhysio.text, sex, dateFormate, phone1.text, _phone2);
+			List<Pessoa> p = Pessoa.Read();
+
+			Fisioterapeuta.Insert(p[p.Count -1].idPessoa, login.text, encryptedPassword, _crefito, _regiao);
+
+			CreateDirectoryPhysio (namePhysio.text, p[p.Count-1].idPessoa);
+
+			List<Fisioterapeuta> physios = Fisioterapeuta.Read();
+			GlobalController.instance.admin = physios[physios.Count - 1]; 
+
+			Flow.StaticLogin();
+		} 
+	}
+
+	private static bool ValidInput (List<InputField> inputs, List<Toggle> toggles)
+	{
+		bool valid = true;
+
+		string treatName = TreatFields.NameField (inputs[0].text);
+		string treatDate = TreatFields.DateField (inputs[1].text);
+		string treatPhone1 = TreatFields.PhoneField (inputs[2].text);
+		string treatLogin = TreatFields.LoginField (inputs[3].text);
+		string treatPass = TreatFields.PasswordField (inputs[4].text);
+		string treatConfirm = TreatFields.ConfirmPasswordField (inputs[5].text, inputs[4].text);
+		string treatSex = TreatFields.SexField (toggles[0].isOn, toggles[1].isOn);
+
+		string treatCrefito = "";
+		string treatRegiao = "";
+		string treatUniqueCR = "";
+
+		if (inputs[6].text != "" && inputs[7].text != "")
+		{
+			treatCrefito = TreatFields.CrefitoField (inputs[6].text);
+			treatRegiao = TreatFields.RegionField (inputs[7].text);
+			treatUniqueCR = TreatFields.UniqueCrefitoRegion (inputs[6].text, inputs[7].text);
+		}
+
+		string treatPhone2 = "";
+		if (inputs[8].text != "")
+		{
+			treatPhone2 = TreatFields.PhoneField(inputs[8].text);
+		}
+
+		string treatUniqueLP = TreatFields.UniqueLoginPassword(inputs[3].text);
+
+		if (treatName != "" || treatDate != "" || treatPhone1 != "" ||
+			treatCrefito != "" || treatRegiao != "" || treatLogin != "" ||
+			treatPass != "" || treatConfirm != "" || treatPhone2 != "" ||
+			treatSex != "" || treatUniqueCR != "" || treatUniqueLP != "")
+		{
+			if (treatName != "")
+			{
+				var splitBar = treatName.Split('|');
+				foreach (var erro in splitBar)
+				{
+					print (erro);
+				}
+
+				ApplyColor (inputs[0], false);
+			} 
+			if (treatDate != "")
+			{
+				var splitBar = treatDate.Split('|');
+				foreach (var erro in splitBar)
+				{
+					print (erro);
+				}
+
+				ApplyColor (inputs[1], false);
+			} 
+			if (treatPhone1 != "")
+			{
+				var splitBar = treatPhone1.Split('|');
+				foreach (var erro in splitBar)
+				{
+					print (erro);
+				}
+
+				ApplyColor (inputs[2], false);
+			} 
+			if (treatLogin != "")
+			{
+				var splitBar = treatLogin.Split('|');
+				foreach (var erro in splitBar)
+				{
+					print (erro);
+				}
+
+				ApplyColor (inputs[3], false);
+			}
+			if (treatPass != "")
+			{
+				var splitBar = treatPass.Split('|');
+				foreach (var erro in splitBar)
+				{
+					print (erro);
+				}
+
+				ApplyColor (inputs[4], false);
+			} 
+			if (treatConfirm != "")
+			{
+				var splitBar = treatConfirm.Split('|');
+				foreach (var erro in splitBar)
+				{
+					print (erro);
+				}
+
+				ApplyColor (inputs[5], false);
+			} 
+			if (treatCrefito != "")
+			{
+				var splitBar = treatCrefito.Split('|');
+				foreach (var erro in splitBar)
+				{
+					print (erro);
+				}
+
+				ApplyColor (inputs[6], false);
+			} 
+			if (treatRegiao != "")
+			{
+				var splitBar = treatRegiao.Split('|');
+				foreach (var erro in splitBar)
+				{
+					print (erro);
+				}
+
+				ApplyColor (inputs[7], false);
+			} 
+			if (treatPhone2 != "")
+			{
+				var splitBar = treatPhone2.Split('|');
+				foreach (var erro in splitBar)
+				{
+					print (erro);
+				}
+
+				ApplyColor (inputs[8], false);
+			}
+			if (treatUniqueCR != "")
+			{
+				var splitBar = treatUniqueCR.Split('|');
+				foreach (var erro in splitBar)
+				{
+					print (erro);
+				}
+
+				ApplyColor (inputs[6], false);
+				ApplyColor (inputs[7], false);
+			}
+			if (treatUniqueLP != "")
+			{
+				var splitBar = treatUniqueLP.Split('|');
+				foreach (var erro in splitBar)
+				{
+					print (erro);
+				}
+
+				ApplyColor (inputs[3], false);
+				ApplyColor (inputs[4], false);
+			} 
+
+			valid = false;
 		}
 
 		return valid;
+	}
+
+	private static void ApplyColor (InputField input, bool ok)
+	{
+		input.colors = ColorManager.SetColor(input.colors, ok);
 	}
 
 	private static void CreateDirectoryPhysio (string name, int idPessoa)
@@ -133,20 +264,5 @@ public class createPhysiotherapist : MonoBehaviour
 		string namePhysioUnderscored = name.Replace(' ', '_');
 		string pathnamephysio = "Assets\\Movimentos\\" + string.Format("{0}-{1}", idPessoa, namePhysioUnderscored);
 		Directory.CreateDirectory(pathnamephysio);
-	}
-
-	private void SetColor (bool ok)
-	{
-		ColorBlock cb = confirmPass.colors;  
-		if (ok)
-		{
-			cb.normalColor = ColorManager.success;
-		}
-		else
-		{
-			cb.normalColor = ColorManager.wrongConfirmation;
-		}
-		confirmPass.colors = cb;
-		pass.colors = cb;
 	}
 }
