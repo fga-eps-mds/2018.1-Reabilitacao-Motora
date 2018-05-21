@@ -13,7 +13,6 @@ public class SetSessionToButton : MonoBehaviour
 	public void SelectSession ()
 	{
 		GlobalController.instance.session = session;
-		Flow.StaticSession();
 	}
 
 	public Sessao Session

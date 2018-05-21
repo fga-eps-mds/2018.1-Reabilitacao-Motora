@@ -1,4 +1,4 @@
-using UnityEngine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Mono.Data.Sqlite;
@@ -96,7 +96,7 @@ namespace exercicio
 		/**
 		 * Classe com todos os atributos de um exercicio.
 		 */
-		public Exercicio(int ide, int idp, int idm, int ids, string de, string pe)
+		public Exercicio (int ide, int idp, int idm, int ids, string de, string pe)
 		{
 			this.idExercicio = ide;
 			this.idPaciente = idp;
@@ -106,23 +106,23 @@ namespace exercicio
 			this.pontosExercicio = pe;
 		}
 
+		public Exercicio (Object[] columns)
+		{
+			this.idExercicio = (int)columns[0];
+			this.idPaciente = (int)columns[1];
+			this.idMovimento = (int)columns[2];
+			this.idSessao = (int)columns[3];
+			this.descricaoExercicio = (string)columns[4];
+			this.pontosExercicio = (string)columns[5];
+		}
 		/**
 		 * Cria a relação para exercicios, contendo um id gerado automaticamente pelo banco como chave primária.
 		 */
 		public static void Create()
 		{
 			DataBase banco = new DataBase();   
-			using (banco.conn = new SqliteConnection(GlobalController.instance.path))
-			{
-				banco.conn.Open();
-				banco.cmd = banco.conn.CreateCommand();
-
-				banco.sqlQuery = "CREATE TABLE IF NOT EXISTS EXERCICIO (idExercicio INTEGER primary key AUTOINCREMENT,idPaciente INTEGER not null,idMovimento INTEGER not null,idSessao INTEGER not null,descricaoExercicio VARCHAR (150),pontosExercicio VARCHAR (150) not null,foreign key (idSessao) references SESSAO (idSessao),foreign key (idMovimento) references MOVIMENTO (idMovimento),foreign key (idPaciente) references PACIENTE (idPaciente));";
-
-				banco.cmd.CommandText = banco.sqlQuery;
-				banco.cmd.ExecuteScalar();
-				banco.conn.Close();
-			}
+			string query = "CREATE TABLE IF NOT EXISTS EXERCICIO (idExercicio INTEGER primary key AUTOINCREMENT,idPaciente INTEGER not null,idMovimento INTEGER not null,idSessao INTEGER not null,descricaoExercicio VARCHAR (150),pontosExercicio VARCHAR (150) not null,foreign key (idSessao) references SESSAO (idSessao),foreign key (idMovimento) references MOVIMENTO (idMovimento),foreign key (idPaciente) references PACIENTE (idPaciente));";
+			banco.Create(GlobalController.instance.path, query);
 		}
 
 		/**
@@ -135,91 +135,9 @@ namespace exercicio
 			string pontosExercicio)
 		{
 			DataBase banco = new DataBase();
-			using (banco.conn = new SqliteConnection(GlobalController.instance.path))
-			{
-				banco.conn.Open();
-				banco.cmd = banco.conn.CreateCommand();
-				banco.sqlQuery = "insert into EXERCICIO (";
-
-				int tableSize = TablesManager.Tables[tableId].colName.Count;
-
-				for (int i = 1; i < tableSize; ++i)
-				{
-					string aux;
-
-					if (i + 1 == tableSize)
-					{
-						aux = ")";
-					}
-					else
-					{
-						aux = ",";
-					}
-					
-					banco.sqlQuery += (TablesManager.Tables[tableId].colName[i] + aux);
-				}
-
-				banco.sqlQuery += string.Format(" values (\"{0}\",\"{1}\",\"{2}\",\"{3}\",\"{4}\")", idPaciente,
-					idMovimento,
-					idSessao,
-					descricaoExercicio,
-					pontosExercicio);
-
-				banco.cmd.CommandText = banco.sqlQuery;
-				banco.cmd.ExecuteScalar();
-				banco.conn.Close();
-			}
+			Object[] columns = new Object[] {idPaciente, idMovimento, idSessao, descricaoExercicio, pontosExercicio};
+			banco.Insert(GlobalController.instance.path, columns, TablesManager.Tables[tableId].tableName, tableId);	
 		}
-
-
-		/**
-		 * Função que insere dados na tabela de exercicios (sem a descrição).
-		 */
-		public static void Insert(int idPaciente,
-			int idMovimento,
-			int idSessao,
-			string pontosExercicio)
-		{
-			DataBase banco = new DataBase();
-			using (banco.conn = new SqliteConnection(GlobalController.instance.path))
-			{
-				banco.conn.Open();
-				banco.cmd = banco.conn.CreateCommand();
-				banco.sqlQuery = "insert into EXERCICIO (";
-
-				int tableSize = TablesManager.Tables[tableId].colName.Count;
-				const int INDEX_COL_DESCRICAO = 4;
-
-				for (int i = 1; i < tableSize; ++i)
-				{
-					if (i != INDEX_COL_DESCRICAO)
-					{
-						string aux;
-
-						if (i + 1 == tableSize)
-						{
-							aux = ")";
-						}
-						else
-						{
-							aux = ",";
-						}
-						
-						banco.sqlQuery += (TablesManager.Tables[tableId].colName[i] + aux);
-					}
-				}
-
-				banco.sqlQuery += string.Format(" values (\"{0}\",\"{1}\",\"{2}\",\"{3}\")", idPaciente,
-					idMovimento,
-					idSessao,
-					pontosExercicio);
-
-				banco.cmd.CommandText = banco.sqlQuery;
-				banco.cmd.ExecuteScalar();
-				banco.conn.Close();
-			}
-		}
-
 
 		/**
 		 * Função que atualiza dados já cadastrados anteriormente na relação de exercicios.
@@ -232,24 +150,8 @@ namespace exercicio
 			string pontosExercicio)
 		{
 			DataBase banco = new DataBase();
-			using (banco.conn = new SqliteConnection(GlobalController.instance.path))
-			{
-				banco.conn.Open();
-				banco.cmd = banco.conn.CreateCommand();
-
-				banco.sqlQuery = string.Format("UPDATE \"{0}\" set ", TablesManager.Tables[tableId].tableName);
-				banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",", TablesManager.Tables[tableId].colName[1], idPaciente);
-				banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",", TablesManager.Tables[tableId].colName[2], idMovimento);
-				banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",", TablesManager.Tables[tableId].colName[3], idSessao);
-				banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",", TablesManager.Tables[tableId].colName[4], descricaoExercicio);
-				banco.sqlQuery += string.Format("\"{0}\"=\"{1}\" ", TablesManager.Tables[tableId].colName[5], pontosExercicio);
-
-				banco.sqlQuery += string.Format("WHERE \"{0}\" = \"{1}\"", TablesManager.Tables[tableId].colName[0], id);
-
-				banco.cmd.CommandText = banco.sqlQuery;
-				banco.cmd.ExecuteScalar();
-				banco.conn.Close();
-			}
+			Object[] columns = new Object[] {id, idPaciente, idMovimento, idSessao, descricaoExercicio, pontosExercicio};
+			banco.Update(GlobalController.instance.path, columns, TablesManager.Tables[tableId].tableName, tableId);
 		}
 
 		/**
@@ -258,121 +160,38 @@ namespace exercicio
 		public static List<Exercicio> Read()
 		{
 			DataBase banco = new DataBase();
-			using (banco.conn = new SqliteConnection(GlobalController.instance.path))
-			{
-				banco.conn.Open();
-				banco.cmd = banco.conn.CreateCommand();
-				banco.sqlQuery = "SELECT * " + "FROM EXERCICIO";
-				banco.cmd.CommandText = banco.sqlQuery;
-				IDataReader reader = banco.cmd.ExecuteReader();
+			int idExercicioTemp = 0;
+			int idPacienteTemp = 0;
+			int idMovimentoTemp = 0;
+			int idSessaoTemp = 0;
+			string descricaoExercicioTemp = "";
+			string pontosExercicioTemp = "";
 
-				List<Exercicio> exercises = new List<Exercicio>();
+			Object[] columns = new Object[] {idExercicioTemp, idPacienteTemp, idMovimentoTemp, idSessaoTemp, descricaoExercicioTemp, pontosExercicioTemp};
 
-				while (reader.Read())
-				{
-					int idExercicioTemp = 0;
-					int idPacienteTemp = 0;
-					int idMovimentoTemp = 0;
-					int idSessaoTemp = 0;
-					string descricaoExercicioTemp = "null";
-					string pontosExercicioTemp = "null";
+			List<Exercicio> exerciseList = banco.Read<Exercicio>(GlobalController.instance.path, TablesManager.Tables[tableId].tableName, columns);
 
-					if (!reader.IsDBNull(0)) 
-					{
-						idExercicioTemp = reader.GetInt32(0);
-					}
-					if (!reader.IsDBNull(1)) 
-					{
-						idPacienteTemp = reader.GetInt32(1);
-					}
-					if (!reader.IsDBNull(2)) 
-					{
-						idMovimentoTemp = reader.GetInt32(2);
-					}
-					if (!reader.IsDBNull(3)) 
-					{
-						idSessaoTemp = reader.GetInt32(3);
-					}
-					if (!reader.IsDBNull(4)) 
-					{
-						descricaoExercicioTemp = reader.GetString(4);
-					}
-					if (!reader.IsDBNull(5)) 
-					{
-						pontosExercicioTemp = reader.GetString(5);
-					}
-
-					Exercicio exercise = new Exercicio(idExercicioTemp, idPacienteTemp, idMovimentoTemp, idSessaoTemp, descricaoExercicioTemp, pontosExercicioTemp);
-					exercises.Add(exercise);
-				}
-
-				reader.Close();
-				reader = null;
-				banco.cmd.Dispose();
-				banco.cmd = null;
-				banco.conn.Close();
-				banco.conn = null;
-				return exercises;
-			}
+			return exerciseList;
 		}
+
 
 		public static Exercicio ReadValue(int id)
 		{
 			DataBase banco = new DataBase();
-			using (banco.conn = new SqliteConnection(GlobalController.instance.path))
-			{
-				banco.conn.Open();
-				banco.cmd = banco.conn.CreateCommand();
-				banco.sqlQuery = "SELECT * " + string.Format("FROM \"{0}\" WHERE \"{1}\" = \"{2}\";", TablesManager.Tables[tableId].tableName,
-					TablesManager.Tables[tableId].colName[0],
-					id);
-				banco.cmd.CommandText = banco.sqlQuery;
-				IDataReader reader = banco.cmd.ExecuteReader();
 
-				reader.Read();
+			int idExercicioTemp = 0;
+			int idPacienteTemp = 0;
+			int idMovimentoTemp = 0;
+			int idSessaoTemp = 0;
+			string descricaoExercicioTemp = "";
+			string pontosExercicioTemp = "";
 
-				int idExercicioTemp = 0;
-				int idPacienteTemp = 0;
-				int idMovimentoTemp = 0;
-				int idSessaoTemp = 0;
-				string descricaoExercicioTemp = "null";
-				string pontosExercicioTemp = "null";
+			Object[] columns = new Object[] {idExercicioTemp, idPacienteTemp, idMovimentoTemp, idSessaoTemp, descricaoExercicioTemp, pontosExercicioTemp};
 
-				if (!reader.IsDBNull(0)) 
-				{
-					idExercicioTemp = reader.GetInt32(0);
-				}
-				if (!reader.IsDBNull(1)) 
-				{
-					idPacienteTemp = reader.GetInt32(1);
-				}
-				if (!reader.IsDBNull(2)) 
-				{
-					idMovimentoTemp = reader.GetInt32(2);
-				}
-				if (!reader.IsDBNull(3)) 
-				{
-					idSessaoTemp = reader.GetInt32(3);
-				}
-				if (!reader.IsDBNull(4)) 
-				{
-					descricaoExercicioTemp = reader.GetString(4);
-				}
-				if (!reader.IsDBNull(5)) 
-				{
-					pontosExercicioTemp = reader.GetString(5);
-				}
+			Exercicio exercise = banco.ReadValue<Exercicio>(GlobalController.instance.path, TablesManager.Tables[tableId].tableName,
+				TablesManager.Tables[tableId].colName[0], id, columns);
 
-				Exercicio exercise = new Exercicio(idExercicioTemp, idPacienteTemp, idMovimentoTemp, idSessaoTemp, descricaoExercicioTemp, pontosExercicioTemp);
-
-				reader.Close();
-				reader = null;
-				banco.cmd.Dispose();
-				banco.cmd = null;
-				banco.conn.Close();
-				banco.conn = null;
-				return exercise;
-			}
+			return exercise;
 		}
 
 		/**
@@ -381,17 +200,7 @@ namespace exercicio
 		public static void DeleteValue(int id)
 		{
 			DataBase banco = new DataBase();
-			using (banco.conn = new SqliteConnection(GlobalController.instance.path))
-			{
-				banco.conn.Open();
-				banco.cmd = banco.conn.CreateCommand();
-
-				banco.sqlQuery = string.Format("delete from \"{0}\" WHERE \"{1}\" = \"{2}\"", TablesManager.Tables[tableId].tableName, TablesManager.Tables[tableId].colName[0], id);
-
-				banco.cmd.CommandText = banco.sqlQuery;
-				banco.cmd.ExecuteScalar();
-				banco.conn.Close();
-			}
+			banco.DeleteValue (tableId, id);
 		}
 
 		/**
@@ -400,17 +209,7 @@ namespace exercicio
 		public static void Drop()
 		{
 			DataBase banco = new DataBase();
-			using (banco.conn = new SqliteConnection(GlobalController.instance.path))
-			{
-				banco.conn.Open();
-				banco.cmd = banco.conn.CreateCommand();
-
-				banco.sqlQuery = string.Format("DROP TABLE IF EXISTS \"{0}\"", TablesManager.Tables[tableId].tableName);
-
-				banco.cmd.CommandText = banco.sqlQuery;
-				banco.cmd.ExecuteScalar();
-				banco.conn.Close();
-			}
+			banco.Drop (tableId);
 		}
 	}
 }

@@ -14,7 +14,8 @@ using sessao;
  */
 public class FinalizeSession : MonoBehaviour 
 {
-	public InputField observacaoSessao;
+	[SerializeField]
+	protected InputField observacaoSessao;
 
 	/**
 	 * Salva o paciente no banco.

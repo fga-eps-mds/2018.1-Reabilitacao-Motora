@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 222551090504758624}
   - component: {fileID: 114321422766103680}
   - component: {fileID: 114324228000192858}
+  - component: {fileID: 114948692519690064}
   m_Layer: 5
   m_Name: Physio
   m_TagString: Untagged
@@ -236,17 +237,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 114315067262446546}
-        m_MethodName: Patient
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114378903838014716
@@ -363,6 +353,18 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114948692519690064
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1036493523290330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8af53dedd22e83542aa5a4fd13dda584, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextPage: {fileID: 114324228000192858}
 --- !u!222 &222053010258912798
 CanvasRenderer:
   m_ObjectHideFlags: 1
