@@ -6,8 +6,8 @@ using exercicio;
 
 public class instanciateExercise : MonoBehaviour 
 {
-
-	public GameObject buttonPrefab;
+	[SerializeField]
+	protected GameObject buttonPrefab;
 
 	const int HEIGHT_PADDING = 55;
 
@@ -27,14 +27,17 @@ public class instanciateExercise : MonoBehaviour
 
 	public void Start ()
 	{
-		List<Exercicio> exercises = Exercicio.Read();
-		int heightOffset = 60;
-		foreach (var exercise in exercises)
+		if (GlobalController.instance.session != null)
 		{
-			if (exercise.idSessao == GlobalController.instance.session.idSessao)
+			List<Exercicio> exercises = Exercicio.Read();
+			int heightOffset = 60;
+			foreach (var exercise in exercises)
 			{
-				ButtonSpawner(heightOffset, exercise);
-				heightOffset += HEIGHT_PADDING;
+				if (exercise.idSessao == GlobalController.instance.session.idSessao)
+				{
+					ButtonSpawner(heightOffset, exercise);
+					heightOffset += HEIGHT_PADDING;
+				}
 			}
 		}
 	}
@@ -45,7 +48,7 @@ public class instanciateExercise : MonoBehaviour
 		var partsBetweenSlashs = pontosExercicio.Split('/');
 		var partsBetweenDashs = partsBetweenSlashs[2].Split('-');
 		var withoutUnderscores = partsBetweenDashs[0].Replace('_', ' ');
-		var result = string.Format("{0} - {1}", idExercicio, withoutUnderscores); 
+		var result = string.Format("{0} - {1}{2}", idExercicio, partsBetweenDashs[1], withoutUnderscores); 
 		return result;
 	}
 }

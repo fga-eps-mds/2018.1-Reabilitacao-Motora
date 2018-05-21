@@ -1022,7 +1022,7 @@ public class KinectManager : MonoBehaviour
 		{
 			string message = "Please check the Kinect SDK installation.";
 			Debug.LogError(message);
-			Debug.LogError(e.ToString());
+
 			if(CalibrationText != null)
 			{
 				CalibrationText.text = message;
@@ -1034,8 +1034,7 @@ public class KinectManager : MonoBehaviour
 		{
 			string message = e.Message + " - " + KinectWrapper.GetNuiErrorString(hr);
 			Debug.LogError(message);
-			Debug.LogError(e.ToString());
-			
+
 			if(CalibrationText != null)
 			{
 				CalibrationText.text = message;
@@ -1043,7 +1042,7 @@ public class KinectManager : MonoBehaviour
 				
 			return;
 		}
-		
+			
 		if(ComputeUserMap)
 		{
 	        // Initialize depth & label map related stuff

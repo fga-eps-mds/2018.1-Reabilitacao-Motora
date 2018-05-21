@@ -7,13 +7,24 @@ using UnityEngine;
  */
 public class SetInitialX : MonoBehaviour
 {
-	public Label prefab;
+	private float initialX;
+	public float InitialX
+	{
+		get
+		{
+			return initialX;
+		}
+		set
+		{
+			initialX = value;
+		}
+	}
 
 	/**
 	 * Descrever aqui o que esse método realiza.
 	 */
-	void Update()
+	public void Set()
 	{
-		transform.localPosition = new Vector3 (prefab.InitialX, 3.75f, 0);
+		transform.localPosition = new Vector3 (InitialX, 3.75f, 0);
 	}
 }

@@ -1,4 +1,4 @@
-using UnityEngine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Mono.Data.Sqlite;
@@ -85,30 +85,29 @@ namespace sessao
 		 */
 		public Sessao(int ids, int idf, int idp, string ds, string os)
 		{
-				this.idSessao = ids;
-				this.idFisioterapeuta = idf;
-				this.idPaciente = idp;
-				this.dataSessao = ds;
-				this.observacaoSessao = os;
+			this.idSessao = ids;
+			this.idFisioterapeuta = idf;
+			this.idPaciente = idp;
+			this.dataSessao = ds;
+			this.observacaoSessao = os;
 		}
 
+		public Sessao(Object[] columns)
+		{
+			this.idSessao = (int)columns[0];
+			this.idFisioterapeuta = (int)columns[1];
+			this.idPaciente = (int)columns[2];
+			this.dataSessao = (string)columns[3];
+			this.observacaoSessao = (string)columns[4];
+		}
 		/**
 		* Cria a relação para sessão, contendo um id gerado automaticamente pelo banco como chave primária.
 		 */
 		public static void Create()
 		{
 			DataBase banco = new DataBase();
-			using (banco.conn = new SqliteConnection(GlobalController.instance.path))
-			{
-				banco.conn.Open();
-				banco.cmd = banco.conn.CreateCommand();
-
-				banco.sqlQuery = "CREATE TABLE IF NOT EXISTS SESSAO (idSessao INTEGER primary key AUTOINCREMENT,idFisioterapeuta INTEGER not null,idPaciente INTEGER not null,dataSessao DATE not null,observacaoSessao VARCHAR (300),foreign key (idPaciente) references PACIENTE (idPaciente),foreign key (idFisioterapeuta) references FISIOTERAPEUTA (idFisioterapeuta));";
-
-				banco.cmd.CommandText = banco.sqlQuery;
-				banco.cmd.ExecuteScalar();
-				banco.conn.Close();
-			}
+			string query = "CREATE TABLE IF NOT EXISTS SESSAO (idSessao INTEGER primary key AUTOINCREMENT,idFisioterapeuta INTEGER not null,idPaciente INTEGER not null,dataSessao DATE not null,observacaoSessao VARCHAR (300),foreign key (idPaciente) references PACIENTE (idPaciente),foreign key (idFisioterapeuta) references FISIOTERAPEUTA (idFisioterapeuta));";
+			banco.Create(GlobalController.instance.path, query);
 		}
 
 
@@ -121,86 +120,8 @@ namespace sessao
 			string observacaoSessao)
 		{
 			DataBase banco = new DataBase();
-			using (banco.conn = new SqliteConnection(GlobalController.instance.path))
-			{
-				banco.conn.Open();
-				banco.cmd = banco.conn.CreateCommand();
-				banco.sqlQuery = "insert into SESSAO (";
-
-				int tableSize = TablesManager.Tables[tableId].colName.Count;
-
-				for (int i = 1; i < tableSize; ++i) 
-				{
-					string aux;
-
-					if (i + 1 == tableSize)
-					{
-						aux = ")";
-					}
-					else
-					{
-						aux = ",";
-					}
-
-					banco.sqlQuery += (TablesManager.Tables[tableId].colName[i] + aux);
-				}
-
-				banco.sqlQuery += string.Format(" values (\"{0}\",\"{1}\",\"{2}\",\"{3}\")", idFisioterapeuta,
-					idPaciente,
-					dataSessao,
-					observacaoSessao);
-
-				banco.cmd.CommandText = banco.sqlQuery;
-				banco.cmd.ExecuteScalar();
-				banco.conn.Close();
-			}
-		}
-
-
-		/**
-		* Função que insere dados na tabela de sessão (sem observacao).
-		 */
-		public static void Insert(int idFisioterapeuta,
-			int idPaciente,
-			string dataSessao)
-		{
-			DataBase banco = new DataBase();
-			using (banco.conn = new SqliteConnection(GlobalController.instance.path))
-			{
-				banco.conn.Open();
-				banco.cmd = banco.conn.CreateCommand();
-				banco.sqlQuery = "insert into SESSAO (";
-
-				int tableSize = TablesManager.Tables[tableId].colName.Count;
-				const int INDEX_COL_OBSERVACAO = 4;
-
-				for (int i = 1; i < tableSize; ++i) 
-				{
-					if (i != INDEX_COL_OBSERVACAO)
-					{
-						string aux;
-
-						if (i + 2 == tableSize)
-						{
-							aux = ")";
-						}
-						else
-						{
-							aux = ",";
-						}
-
-						banco.sqlQuery += (TablesManager.Tables[tableId].colName[i] + aux);
-					}
-				}
-
-				banco.sqlQuery += string.Format(" values (\"{0}\",\"{1}\",\"{2}\")", idFisioterapeuta,
-					idPaciente,
-					dataSessao);
-				
-				banco.cmd.CommandText = banco.sqlQuery;
-				banco.cmd.ExecuteScalar();
-				banco.conn.Close();
-			}
+			Object[] columns = new Object[] {idFisioterapeuta,idPaciente,dataSessao,observacaoSessao};
+			banco.Insert(GlobalController.instance.path, columns, TablesManager.Tables[tableId].tableName, tableId);
 		}
 
 
@@ -214,23 +135,8 @@ namespace sessao
 			string observacaoSessao)
 		{
 			DataBase banco = new DataBase();
-			using (banco.conn = new SqliteConnection(GlobalController.instance.path))
-			{
-				banco.conn.Open();
-				banco.cmd = banco.conn.CreateCommand();
-
-				banco.sqlQuery = string.Format("UPDATE \"{0}\" set ", TablesManager.Tables[tableId].tableName);
-				banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",", TablesManager.Tables[tableId].colName[1], idFisioterapeuta);
-				banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",", TablesManager.Tables[tableId].colName[2], idPaciente);
-				banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",", TablesManager.Tables[tableId].colName[3], dataSessao);
-				banco.sqlQuery += string.Format("\"{0}\"=\"{1}\" ", TablesManager.Tables[tableId].colName[4], observacaoSessao);
-
-				banco.sqlQuery += string.Format("WHERE \"{0}\" = \"{1}\"", TablesManager.Tables[tableId].colName[0], id);
-
-				banco.cmd.CommandText = banco.sqlQuery;
-				banco.cmd.ExecuteScalar();
-				banco.conn.Close();
-			}
+			Object[] columns = new Object[] {id,idFisioterapeuta,idPaciente,dataSessao,observacaoSessao};
+			banco.Update(GlobalController.instance.path, columns, TablesManager.Tables[tableId].tableName, tableId);
 		}
 
 		/**
@@ -239,112 +145,35 @@ namespace sessao
 		public static List<Sessao> Read()
 		{
 			DataBase banco = new DataBase();
-			using (banco.conn = new SqliteConnection(GlobalController.instance.path))
-			{
-				banco.conn.Open();
-				banco.cmd = banco.conn.CreateCommand();
-				banco.sqlQuery = "SELECT * " + "FROM SESSAO";
-				banco.cmd.CommandText = banco.sqlQuery;
-				IDataReader reader = banco.cmd.ExecuteReader();
+			int idSessaoTemp = 0;
+			int idFisioterapeutaTemp = 0;
+			int idPacienteTemp = 0;
+			string dataSessaoTemp = "";
+			string observacaoSessaoTemp = "";
 
-				List<Sessao> sessions = new List<Sessao>();
+			Object[] columns = new Object[] {idSessaoTemp,idFisioterapeutaTemp,idPacienteTemp,dataSessaoTemp,observacaoSessaoTemp};
 
-				while (reader.Read())
-				{
-					int idSessaoTemp = 0;
-					int idFisioterapeutaTemp = 0;
-					int idPacienteTemp = 0;
-					string dataSessaoTemp = "";
-					string observacaoSessaoTemp = "";
+			List<Sessao> sessions = banco.Read<Sessao>(GlobalController.instance.path, TablesManager.Tables[tableId].tableName, columns);
 
-					if (!reader.IsDBNull(0))
-					{
-						idSessaoTemp = reader.GetInt32(0);
-					}
-					if (!reader.IsDBNull(1))
-					{
-						idFisioterapeutaTemp = reader.GetInt32(1);
-					}
-					if (!reader.IsDBNull(2))
-					{
-						idPacienteTemp = reader.GetInt32(2);
-					}
-					if (!reader.IsDBNull(3))
-					{
-						dataSessaoTemp = reader.GetString(3);
-					}
-					if (!reader.IsDBNull(4))
-					{
-						observacaoSessaoTemp = reader.GetString(4);
-					}
-
-					Sessao session = new Sessao (idSessaoTemp, idFisioterapeutaTemp, idPacienteTemp, dataSessaoTemp, observacaoSessaoTemp);
-					sessions.Add(session);
-				}
-				
-				reader.Close();
-				reader = null;
-				banco.cmd.Dispose();
-				banco.cmd = null;
-				banco.conn.Close();
-				banco.conn = null;
-				return sessions;
-			}
+			return sessions;
 		}
 
 
 		public static Sessao ReadValue (int id)
 		{
 			DataBase banco = new DataBase();
-			using (banco.conn = new SqliteConnection(GlobalController.instance.path))
-			{
-				banco.conn.Open();
-				banco.cmd = banco.conn.CreateCommand();
-				banco.sqlQuery = "SELECT * " + string.Format("FROM \"{0}\" WHERE \"{1}\" = \"{2}\";", TablesManager.Tables[tableId].tableName, 
-					TablesManager.Tables[tableId].colName[0], 
-					id);
-				banco.cmd.CommandText = banco.sqlQuery;
-				IDataReader reader = banco.cmd.ExecuteReader();
+			int idSessaoTemp = 0;
+			int idFisioterapeutaTemp = 0;
+			int idPacienteTemp = 0;
+			string dataSessaoTemp = "";
+			string observacaoSessaoTemp = "";
 
-				reader.Read();
+			Object[] columns = new Object[] {idSessaoTemp,idFisioterapeutaTemp,idPacienteTemp,dataSessaoTemp,observacaoSessaoTemp};
 
-				int idSessaoTemp = 0;
-				int idFisioterapeutaTemp = 0;
-				int idPacienteTemp = 0;
-				string dataSessaoTemp = "";
-				string observacaoSessaoTemp = "";
+			Sessao session = banco.ReadValue<Sessao>(GlobalController.instance.path, TablesManager.Tables[tableId].tableName,
+				TablesManager.Tables[tableId].colName[0], id, columns);
 
-				if (!reader.IsDBNull(0))
-				{
-					idSessaoTemp = reader.GetInt32(0);
-				}
-				if (!reader.IsDBNull(1))
-				{
-					idFisioterapeutaTemp = reader.GetInt32(1);
-				}
-				if (!reader.IsDBNull(2))
-				{
-					idPacienteTemp = reader.GetInt32(2);
-				}
-				if (!reader.IsDBNull(3))
-				{
-					dataSessaoTemp = reader.GetString(3);
-				}
-				if (!reader.IsDBNull(4))
-				{
-					observacaoSessaoTemp = reader.GetString(4);
-				}
-
-				Sessao session = new Sessao (idSessaoTemp, idFisioterapeutaTemp, idPacienteTemp, dataSessaoTemp, observacaoSessaoTemp);
-
-				reader.Close();
-				reader = null;
-				banco.cmd.Dispose();
-				banco.cmd = null;
-				banco.conn.Close();
-				banco.conn = null;
-				return session;
-			}
+			return session;
 		}
 
 		/**
@@ -353,17 +182,7 @@ namespace sessao
 		public static void DeleteValue(int id)
 		{
 			DataBase banco = new DataBase();
-			using (banco.conn = new SqliteConnection(GlobalController.instance.path))
-			{
-				banco.conn.Open();
-				banco.cmd = banco.conn.CreateCommand();
-
-				banco.sqlQuery = string.Format("delete from \"{0}\" WHERE \"{1}\" = \"{2}\"", TablesManager.Tables[tableId].tableName, TablesManager.Tables[tableId].colName[0], id);
-
-				banco.cmd.CommandText = banco.sqlQuery;
-				banco.cmd.ExecuteScalar();
-				banco.conn.Close();
-			}
+			banco.DeleteValue (tableId, id);
 		}
 
 		/**
@@ -372,17 +191,7 @@ namespace sessao
 		public static void Drop()
 		{
 			DataBase banco = new DataBase();
-			using (banco.conn = new SqliteConnection(GlobalController.instance.path))
-			{
-				banco.conn.Open();
-				banco.cmd = banco.conn.CreateCommand();
-
-				banco.sqlQuery = string.Format("DROP TABLE IF EXISTS \"{0}\"", TablesManager.Tables[tableId].tableName);
-
-				banco.cmd.CommandText = banco.sqlQuery;
-				banco.cmd.ExecuteScalar();
-				banco.conn.Close();
-			}
+			banco.Drop (tableId);
 		}
 	}
 

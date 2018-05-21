@@ -1,4 +1,4 @@
-using UnityEngine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Mono.Data.Sqlite;
@@ -17,38 +17,47 @@ namespace movimentomusculo
 		private int IdMusculo;
 		private int IdMovimento;
 
-		public int idMusculo 
+		public int idMusculo
 		{
-			get 
+			get
 			{
-				return IdMusculo; 
-			} 
-			set 
+				return IdMusculo;
+			}
+			set
 			{
-				IdMusculo = value; 
+				IdMusculo = value;
 			}
 		}
-		
-		public int idMovimento 
+
+		public int idMovimento
 		{
-			get 
+			get
 			{
-				return IdMovimento; 
-			} 
-			set 
+				return IdMovimento;
+			}
+			set
 			{
-				IdMovimento = value; 
+				IdMovimento = value;
 			}
 		}
-		
+
 
 		/**
 		 * Classe com todos os atributos de um movimentomusculo.
 		 */
 		public MovimentoMusculo (int idmu, int idmo)
 		{
-				this.idMusculo = idmu;
-				this.idMovimento = idmo;
+			this.idMusculo = idmu;
+			this.idMovimento = idmo;
+		}
+
+		/**
+		 * Classe que cria outra versão do construtor.
+		 */
+		public MovimentoMusculo (Object[] columns)
+		{
+			this.idMusculo = (int)columns[0];
+			this.idMovimento = (int)columns[1];
 		}
 
 		/**
@@ -57,17 +66,8 @@ namespace movimentomusculo
 		public static void Create()
 		{
 			DataBase banco = new DataBase();
-			using (banco.conn = new SqliteConnection(GlobalController.instance.path))
-			{
-				banco.conn.Open();
-				banco.cmd = banco.conn.CreateCommand();
-
-				banco.sqlQuery = "CREATE TABLE IF NOT EXISTS MOVIMENTOMUSCULO (idMusculo INTEGER not null,idMovimento INTEGER not null, foreign key (idMovimento) references MOVIMENTO (idMovimento),foreign key (idMusculo) references MUSCULO (idMusculo),primary key (idMusculo, idMovimento));";
-
-				banco.cmd.CommandText = banco.sqlQuery;
-				banco.cmd.ExecuteScalar();
-				banco.conn.Close();
-			}
+			string query = "CREATE TABLE IF NOT EXISTS MOVIMENTOMUSCULO (idMusculo INTEGER not null,idMovimento INTEGER not null, foreign key (idMovimento) references MOVIMENTO (idMovimento),foreign key (idMusculo) references MUSCULO (idMusculo),primary key (idMusculo, idMovimento));";
+			banco.Create(GlobalController.instance.path, query);
 		}
 
 		/**
@@ -85,7 +85,7 @@ namespace movimentomusculo
 
 				int tableSize = TablesManager.Tables[tableId].colName.Count;
 
-				for (int i = 0; i < tableSize; ++i) 
+				for (int i = 0; i < tableSize; ++i)
 				{
 					string aux;
 
@@ -139,42 +139,14 @@ namespace movimentomusculo
 		public static List<MovimentoMusculo> Read()
 		{
 			DataBase banco = new DataBase();
-			using (banco.conn = new SqliteConnection(GlobalController.instance.path))
-			{
-				banco.conn.Open();
-				banco.cmd = banco.conn.CreateCommand();
-				banco.sqlQuery = "SELECT * " + "FROM MOVIMENTOMUSCULO";
-				banco.cmd.CommandText = banco.sqlQuery;
-				IDataReader reader = banco.cmd.ExecuteReader();
+			int idMusculoTemp = 0;
+			int idMovimentoTemp = 0;
 
-				List<MovimentoMusculo> muscleMovements = new List<MovimentoMusculo>();
+			Object[] columns = new Object[] {idMusculoTemp,idMovimentoTemp};
 
-				while (reader.Read())
-				{
-					int idMusculoTemp = 0;
-					int idMovimentoTemp = 0;
+			List<MovimentoMusculo> muscleMovements = banco.Read<MovimentoMusculo>(GlobalController.instance.path, TablesManager.Tables[tableId].tableName, columns);
 
-					if (!reader.IsDBNull(0))
-					{
-						idMusculoTemp = reader.GetInt32(0);
-					}
-					if (!reader.IsDBNull(1))
-					{
-						idMovimentoTemp = reader.GetInt32(1);
-					}
-
-					MovimentoMusculo muscleMovement = new MovimentoMusculo(idMusculoTemp,idMovimentoTemp);
-					muscleMovements.Add(muscleMovement);
-				}
-				
-				reader.Close();
-				reader = null;
-				banco.cmd.Dispose();
-				banco.cmd = null;
-				banco.conn.Close();
-				banco.conn = null;
-				return muscleMovements;
-			}
+			return muscleMovements;
 		}
 
 		/**
@@ -201,18 +173,8 @@ namespace movimentomusculo
 		 */
 		public static void Drop()
 		{
-			DataBase banco = new DataBase();
-			using (banco.conn = new SqliteConnection(GlobalController.instance.path))
-			{
-				banco.conn.Open();
-				banco.cmd = banco.conn.CreateCommand();
-
-				banco.sqlQuery = string.Format("DROP TABLE IF EXISTS \"{0}\"", TablesManager.Tables[tableId].tableName);
-
-				banco.cmd.CommandText = banco.sqlQuery;
-				banco.cmd.ExecuteScalar();
-				banco.conn.Close();
-			}
+		 	DataBase banco = new DataBase();
+		 	banco.Drop (tableId);
 		}
 	}
 }

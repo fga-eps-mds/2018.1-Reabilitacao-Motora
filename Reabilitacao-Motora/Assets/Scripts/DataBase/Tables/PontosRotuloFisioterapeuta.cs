@@ -1,4 +1,4 @@
-using UnityEngine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Mono.Data.Sqlite;
@@ -16,9 +16,9 @@ namespace pontosrotulofisioterapeuta
 		private const int tableId = 8;
 		private int IdRotuloFisioterapeuta;
 		private int IdMovimento;
-		private double TempoInicial;
-		private double TempoFinal;
 		private string EstagioMovimentoFisio;
+		private float TempoInicial;
+		private float TempoFinal;
 
 		public int idRotuloFisioterapeuta 
 		{
@@ -44,30 +44,6 @@ namespace pontosrotulofisioterapeuta
 			}
 		}
 
-		public double tempoInicial 
-		{
-			get 
-			{
-				return TempoInicial; 
-			} 
-			set 
-			{
-				TempoInicial = value; 
-			}
-		}
-
-		public double tempoFinal 
-		{
-			get 
-			{
-				return TempoFinal; 
-			} 
-			set 
-			{
-				TempoFinal = value; 
-			}
-		}
-
 		public string estagioMovimentoFisio 
 		{
 			get 
@@ -79,17 +55,51 @@ namespace pontosrotulofisioterapeuta
 				EstagioMovimentoFisio = value; 
 			}
 		}
+
+		public float tempoInicial 
+		{
+			get 
+			{
+				return TempoInicial; 
+			} 
+			set 
+			{
+				TempoInicial = value; 
+			}
+		}
+
+		public float tempoFinal 
+		{
+			get 
+			{
+				return TempoFinal; 
+			} 
+			set 
+			{
+				TempoFinal = value; 
+			}
+		}
+
 		
 		/**
 		 * Classe com todos os atributos de um pontosrotulofisioterapeuta.
 		 */
-		public PontosRotuloFisioterapeuta(int idrf, int idm, double ti, double tf, string e)
+		public PontosRotuloFisioterapeuta(int idrf, int idm, float ti, float tf, string e)
 		{
 				this.idRotuloFisioterapeuta = idrf;
 				this.idMovimento = idm;
+				this.estagioMovimentoFisio = e;
 				this.tempoInicial = ti;
 				this.tempoFinal = tf;
-				this.estagioMovimentoFisio = e;
+		}
+
+		public PontosRotuloFisioterapeuta(Object[] columns)
+		{
+				this.idRotuloFisioterapeuta = (int)columns[0];
+				this.idMovimento = (int)columns[1];
+				this.estagioMovimentoFisio = (string)columns[2];
+				this.tempoInicial = (float)columns[3];
+				this.tempoFinal = (float)columns[4];
 		}
 
 		/**
@@ -98,17 +108,8 @@ namespace pontosrotulofisioterapeuta
 		public static void Create()
 		{
 			DataBase banco = new DataBase();
-			using (banco.conn = new SqliteConnection(GlobalController.instance.path))
-			{
-				banco.conn.Open();
-				banco.cmd = banco.conn.CreateCommand();
-
-				banco.sqlQuery = "CREATE TABLE IF NOT EXISTS PONTOSROTULOFISIOTERAPEUTA (idRotuloFisioterapeuta INTEGER primary key AUTOINCREMENT,idMovimento INTEGER not null,estagioMovimentoFisio VARCHAR (30) not null,tempoInicial REAL not null,tempoFinal REAL not null,foreign key (idMovimento) references MOVIMENTO (idMovimento));";
-
-				banco.cmd.CommandText = banco.sqlQuery;
-				banco.cmd.ExecuteScalar();
-				banco.conn.Close();
-			}
+			string query = "CREATE TABLE IF NOT EXISTS PONTOSROTULOFISIOTERAPEUTA (idRotuloFisioterapeuta INTEGER primary key AUTOINCREMENT,idMovimento INTEGER not null,estagioMovimentoFisio VARCHAR (30) not null,tempoInicial REAL not null,tempoFinal REAL not null,foreign key (idMovimento) references MOVIMENTO (idMovimento));";
+			banco.Create(GlobalController.instance.path, query);
 		}
 
 		/**
@@ -116,43 +117,12 @@ namespace pontosrotulofisioterapeuta
 		 */
 		public static void Insert(int idMovimento,
 			string estagioMovimentoFisio,
-			double tempo,
-			double anguloDeJunta)
+			float tempoInicial,
+			float tempoFinal)
 		{
 			DataBase banco = new DataBase();
-			using (banco.conn = new SqliteConnection(GlobalController.instance.path))
-			{
-				banco.conn.Open();
-				banco.cmd = banco.conn.CreateCommand();
-				banco.sqlQuery = "insert into PONTOSROTULOFISIOTERAPEUTA (";
-
-				int tableSize = TablesManager.Tables[tableId].colName.Count;
-
-				for (int i = 1; i < tableSize; ++i) 
-				{
-					string aux;
-
-					if (i + 1 == tableSize)
-					{
-						aux = ")";
-					}
-					else
-					{
-						aux = ",";
-					}
-					
-					banco.sqlQuery += (TablesManager.Tables[tableId].colName[i] + aux);
-				}
-
-				banco.sqlQuery += string.Format(" values (\"{0}\",\"{1}\",\"{2}\",\"{3}\")", idMovimento,
-					estagioMovimentoFisio,
-					tempo,
-					anguloDeJunta);
-
-				banco.cmd.CommandText = banco.sqlQuery;
-				banco.cmd.ExecuteScalar();
-				banco.conn.Close();
-			}
+			Object[] columns = new Object[] {idMovimento, estagioMovimentoFisio, tempoInicial, tempoFinal};
+			banco.Insert(GlobalController.instance.path, columns, TablesManager.Tables[tableId].tableName, tableId);
 		}
 
 		/**
@@ -161,27 +131,12 @@ namespace pontosrotulofisioterapeuta
 		public static void Update(int id,
 			int idMovimento,
 			string estagioMovimentoFisio,
-			double tempo,
-			double anguloDeJunta)
+			float tempoInicial,
+			float tempoFinal)
 		{
 			DataBase banco = new DataBase();
-			using (banco.conn = new SqliteConnection(GlobalController.instance.path))
-			{
-				banco.conn.Open();
-				banco.cmd = banco.conn.CreateCommand();
-
-				banco.sqlQuery = string.Format("UPDATE \"{0}\" set ", TablesManager.Tables[tableId].tableName);
-				banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",", TablesManager.Tables[tableId].colName[1], idMovimento);
-				banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",", TablesManager.Tables[tableId].colName[2], estagioMovimentoFisio);
-				banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",", TablesManager.Tables[tableId].colName[3], tempo);
-				banco.sqlQuery += string.Format("\"{0}\"=\"{1}\" ", TablesManager.Tables[tableId].colName[4], anguloDeJunta);
-
-				banco.sqlQuery += string.Format("WHERE \"{0}\" = \"{1}\"", TablesManager.Tables[tableId].colName[0], id);
-
-				banco.cmd.CommandText = banco.sqlQuery;
-				banco.cmd.ExecuteScalar();
-				banco.conn.Close();
-			}
+			Object[] columns = new Object[] {id, idMovimento, estagioMovimentoFisio, tempoInicial, tempoFinal};
+			banco.Update(GlobalController.instance.path, columns, TablesManager.Tables[tableId].tableName, tableId);
 		}
 
 		/**
@@ -190,111 +145,36 @@ namespace pontosrotulofisioterapeuta
 		public static List<PontosRotuloFisioterapeuta> Read()
 		{
 			DataBase banco = new DataBase();
-			using (banco.conn = new SqliteConnection(GlobalController.instance.path))
-			{
-				banco.conn.Open();
-				banco.cmd = banco.conn.CreateCommand();
-				banco.sqlQuery = "SELECT * " + "FROM PONTOSROTULOFISIOTERAPEUTA";
-				banco.cmd.CommandText = banco.sqlQuery;
-				IDataReader reader = banco.cmd.ExecuteReader();
 
-				List<PontosRotuloFisioterapeuta> physioLabelPoints = new List<PontosRotuloFisioterapeuta>();
+			int idRotuloFisioterapeutaTemp = 0;
+			int idMovimentoTemp = 0;
+			string estagioMovimentoFisioTemp = "";
+			float tempoInicialTemp = 0;
+			float tempoFinalTemp = 0;
 
-				while (reader.Read())
-				{
-					int idRotuloFisioterapeutaTemp = 0;
-					int idMovimentoTemp = 0;
-					string estagioMovimentoFisioTemp = "null";
-					double tempoInicialTemp = 0;
-					double tempoFinalTemp = 0;
+			Object[] columns = new Object[] {idRotuloFisioterapeutaTemp,idMovimentoTemp,estagioMovimentoFisioTemp,tempoInicialTemp,tempoFinalTemp};
 
-					if (!reader.IsDBNull(0))
-					{
-						idRotuloFisioterapeutaTemp = reader.GetInt32(0);
-					}
-					if (!reader.IsDBNull(1))
-					{
-						idMovimentoTemp = reader.GetInt32(1);
-					}
-					if (!reader.IsDBNull(2))
-					{
-						estagioMovimentoFisioTemp = reader.GetString(2);
-					}
-					if (!reader.IsDBNull(3))
-					{
-						tempoInicialTemp = reader.GetDouble(3);
-					}
-					if (!reader.IsDBNull(4))
-					{
-						tempoFinalTemp = reader.GetDouble(4);
-					}
+			List<PontosRotuloFisioterapeuta> physioLabelPoints = banco.Read<PontosRotuloFisioterapeuta>(GlobalController.instance.path, TablesManager.Tables[tableId].tableName, columns);
 
-					PontosRotuloFisioterapeuta physioLabelPoint = new PontosRotuloFisioterapeuta(idRotuloFisioterapeutaTemp,idMovimentoTemp,tempoInicialTemp,tempoFinalTemp,estagioMovimentoFisioTemp);
-					physioLabelPoints.Add(physioLabelPoint);
-				}
-
-				reader.Close();
-				reader = null;
-				banco.cmd.Dispose();
-				banco.cmd = null;
-				banco.conn.Close();
-				banco.conn = null;
-				return physioLabelPoints;
-			}
+			return physioLabelPoints;
 		}
 
 		public static PontosRotuloFisioterapeuta ReadValue (int id)
 		{
 			DataBase banco = new DataBase();
-			using (banco.conn = new SqliteConnection(GlobalController.instance.path))
-			{
-				banco.conn.Open();
-				banco.cmd = banco.conn.CreateCommand();
-				banco.sqlQuery = "SELECT * " + string.Format("FROM \"{0}\" WHERE \"{1}\" = \"{2}\";", TablesManager.Tables[tableId].tableName, 
-					TablesManager.Tables[tableId].colName[0], 
-					id);
-				banco.cmd.CommandText = banco.sqlQuery;
-				IDataReader reader = banco.cmd.ExecuteReader();
 
-				reader.Read();
-				
-				int idRotuloFisioterapeutaTemp = 0;
-				int idMovimentoTemp = 0;
-				string estagioMovimentoFisioTemp = "null";
-				double tempoInicialTemp = 0;
-				double tempoFinalTemp = 0;
+			int idRotuloFisioterapeutaTemp = 0;
+			int idMovimentoTemp = 0;
+			string estagioMovimentoFisioTemp = "";
+			float tempoInicialTemp = 0;
+			float tempoFinalTemp = 0;
 
-				if (!reader.IsDBNull(0))
-				{
-					idRotuloFisioterapeutaTemp = reader.GetInt32(0);
-				}
-				if (!reader.IsDBNull(1))
-				{
-					idMovimentoTemp = reader.GetInt32(1);
-				}
-				if (!reader.IsDBNull(2))
-				{
-					estagioMovimentoFisioTemp = reader.GetString(2);
-				}
-				if (!reader.IsDBNull(3))
-				{
-					tempoInicialTemp = reader.GetDouble(3);
-				}
-				if (!reader.IsDBNull(4))
-				{
-					tempoFinalTemp = reader.GetDouble(4);
-				}
+			Object[] columns = new Object[] {idRotuloFisioterapeutaTemp,idMovimentoTemp,estagioMovimentoFisioTemp,tempoInicialTemp,tempoFinalTemp};
 
-				PontosRotuloFisioterapeuta physioLabelPoint = new PontosRotuloFisioterapeuta (idRotuloFisioterapeutaTemp,idMovimentoTemp,tempoInicialTemp,tempoFinalTemp,estagioMovimentoFisioTemp);
+			PontosRotuloFisioterapeuta physioLabelPoint = banco.ReadValue<PontosRotuloFisioterapeuta>(GlobalController.instance.path, TablesManager.Tables[tableId].tableName,
+				TablesManager.Tables[tableId].colName[0], id, columns);
 
-				reader.Close();
-				reader = null;
-				banco.cmd.Dispose();
-				banco.cmd = null;
-				banco.conn.Close();
-				banco.conn = null;
-				return physioLabelPoint;
-			}
+			return physioLabelPoint;
 		}
 
 		/**
@@ -303,17 +183,7 @@ namespace pontosrotulofisioterapeuta
 		public static void DeleteValue(int id)
 		{
 			DataBase banco = new DataBase();
-			using (banco.conn = new SqliteConnection(GlobalController.instance.path))
-			{
-				banco.conn.Open();
-				banco.cmd = banco.conn.CreateCommand();
-
-				banco.sqlQuery = string.Format("delete from \"{0}\" WHERE \"{1}\" = \"{2}\"", TablesManager.Tables[tableId].tableName, TablesManager.Tables[tableId].colName[0], id);
-
-				banco.cmd.CommandText = banco.sqlQuery;
-				banco.cmd.ExecuteScalar();
-				banco.conn.Close();
-			}
+			banco.DeleteValue (tableId, id);
 		}
 
 		/**
@@ -322,17 +192,7 @@ namespace pontosrotulofisioterapeuta
 		public static void Drop()
 		{
 			DataBase banco = new DataBase();
-			using (banco.conn = new SqliteConnection(GlobalController.instance.path))
-			{
-				banco.conn.Open();
-				banco.cmd = banco.conn.CreateCommand();
-
-				banco.sqlQuery = string.Format("DROP TABLE IF EXISTS \"{0}\"", TablesManager.Tables[tableId].tableName);
-
-				banco.cmd.CommandText = banco.sqlQuery;
-				banco.cmd.ExecuteScalar();
-				banco.conn.Close();
-			}
+			banco.Drop (tableId);
 		}
 	}
 }

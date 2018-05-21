@@ -11,15 +11,13 @@ using paciente;
  */
 public class loadPatient : MonoBehaviour 
 {
-	public Text namePatient;
-	public Text date;
-	public Text phone1;
-	public Text phone2;
-	public Text notes;
-	public Toggle male;
-	public Toggle female;
+	[SerializeField]
+	protected Text namePatient, date, phone1, phone2, notes;
 
-	void Start()
+	[SerializeField]
+	protected Toggle male, female;
+
+	public void Start()
 	{
 		if(GlobalController.instance != null &&
 		   GlobalController.instance.user != null)

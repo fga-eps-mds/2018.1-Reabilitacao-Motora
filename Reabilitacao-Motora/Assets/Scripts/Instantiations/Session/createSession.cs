@@ -4,27 +4,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 using System.IO;
 
 using sessao;
 
 
 /**
- * Cria um novo paciente no banco de dados.
+ * Cria uma nova sessão no banco de dados.
  */
-public class createSession : MonoBehaviour 
+public class createSession : MonoBehaviour
 {
+	[SerializeField]
+	protected Button nextPage;
+
+	public void Awake ()
+	{
+		nextPage.onClick.AddListener(delegate{CreateSessao();});
+	}
+
 	/**
-	 * Salva o paciente no banco.
+	 * Salva a sessão no banco.
 	 */
-	public void CreateSessao()
+	public static void CreateSessao()
 	{
 
 		string date = DateTime.Now.ToString("yyyy-MM-dd-HH-mm", System.Globalization.DateTimeFormatInfo.InvariantInfo);
-		
-		Sessao.Insert (GlobalController.instance.admin.idFisioterapeuta, 
-			GlobalController.instance.user.idPaciente, date);
+
+		Sessao.Insert (GlobalController.instance.admin.idFisioterapeuta,
+			GlobalController.instance.user.idPaciente, date, "");
 
 		string namePatientUnderscored = (GlobalController.instance.user.persona.nomePessoa).Replace(' ', '_');
 		string pathNameSession = "Assets\\Exercicios\\" + string.Format("{0}-{1}", GlobalController.instance.user.persona.idPessoa, namePatientUnderscored) + "\\" + date;

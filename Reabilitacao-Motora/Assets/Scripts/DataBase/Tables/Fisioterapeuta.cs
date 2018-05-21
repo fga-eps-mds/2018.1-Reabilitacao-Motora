@@ -1,4 +1,4 @@
-using UnityEngine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Mono.Data.Sqlite;
@@ -117,8 +117,18 @@ namespace fisioterapeuta
 			this.senha = s;
 			this.regiao = r;
 			this.crefito = c;
-			this.persona = Pessoa.ReadValue(idp);
-			
+			this.persona = Pessoa.ReadValue(idp);		
+		}
+
+		public Fisioterapeuta(Object[] columns)
+		{
+			this.idFisioterapeuta = (int)columns[0];
+			this.idPessoa = (int)columns[1];
+			this.login = (string)columns[2];
+			this.senha = (string)columns[3];
+			this.regiao = (string)columns[4];
+			this.crefito = (string)columns[5];
+			this.persona = Pessoa.ReadValue((int)columns[1]);		
 		}
 
 		/**
@@ -127,57 +137,8 @@ namespace fisioterapeuta
 		public static void Create()
 		{
 			DataBase banco = new DataBase();
-			using (banco.conn = new SqliteConnection(GlobalController.instance.path))
-			{
-				banco.conn.Open();
-				banco.cmd = banco.conn.CreateCommand();
-
-				banco.sqlQuery = "CREATE TABLE IF NOT EXISTS FISIOTERAPEUTA (idFisioterapeuta INTEGER primary key AUTOINCREMENT,idPessoa INTEGER not null,login VARCHAR (255) not null,senha VARCHAR (255) not null,regiao VARCHAR (2),crefito VARCHAR (10),foreign key (idPessoa) references PESSOA (idPessoa),constraint crefito_regiao UNIQUE (crefito, regiao), constraint login_senha UNIQUE (login, senha));";
-
-				banco.cmd.CommandText = banco.sqlQuery;
-				banco.cmd.ExecuteScalar();
-				banco.conn.Close();
-			}
-		}
-
-		/**
-		 * Função que insere dados necessários para cadastro dos fisioterapeutas na relação fisioterapeuta.
-		 */
-		public static void Insert(int idPessoa, string login, string senha)
-		{
-			DataBase banco = new DataBase();
-			using (banco.conn = new SqliteConnection(GlobalController.instance.path))
-			{
-				banco.conn.Open();
-				banco.cmd = banco.conn.CreateCommand();
-				banco.sqlQuery = "insert into FISIOTERAPEUTA (";
-
-				int tableSize =	 TablesManager.Tables[tableId].colName.Count;
-
-				for (int i = 1; i < tableSize; ++i) 
-				{
-					string aux;
-
-					if (i + 1 == tableSize)
-					{
-						aux = ")";
-					}
-					else
-					{
-						aux = ",";
-					}
-					
-					banco.sqlQuery += ( TablesManager.Tables[tableId].colName[i] + aux);
-				}
-
-				banco.sqlQuery += string.Format(" values (\"{0}\",\"{1}\",\"{2}\")", idPessoa,
-					login,
-					senha);
-
-				banco.cmd.CommandText = banco.sqlQuery;
-				banco.cmd.ExecuteScalar();
-				banco.conn.Close();
-			}
+			string query = "CREATE TABLE IF NOT EXISTS FISIOTERAPEUTA (idFisioterapeuta INTEGER primary key AUTOINCREMENT,idPessoa INTEGER not null,login VARCHAR (255) not null,senha VARCHAR (255) not null,regiao VARCHAR (2),crefito VARCHAR (10),foreign key (idPessoa) references PESSOA (idPessoa),constraint crefito_regiao UNIQUE (crefito, regiao), constraint login_senha UNIQUE (login));";
+			banco.Create(GlobalController.instance.path, query);
 		}
 
 		/**
@@ -190,40 +151,8 @@ namespace fisioterapeuta
 			string crefito)
 		{
 			DataBase banco = new DataBase();
-			using (banco.conn = new SqliteConnection(GlobalController.instance.path))
-			{
-				banco.conn.Open();
-				banco.cmd = banco.conn.CreateCommand();
-				banco.sqlQuery = "insert into FISIOTERAPEUTA (";
-
-				int tableSize =	 TablesManager.Tables[tableId].colName.Count;
-
-				for (int i = 1; i < tableSize; ++i) 
-				{
-					string aux;
-
-					if (i + 1 == tableSize)
-					{
-						aux = ")";
-					}
-					else
-					{
-						aux = ",";
-					}
-					
-					banco.sqlQuery += ( TablesManager.Tables[tableId].colName[i] + aux);
-				}
-
-				banco.sqlQuery += string.Format(" values (\"{0}\",\"{1}\",\"{2}\",\"{3}\", \"{4}\")", idPessoa,
-					login,
-					senha,
-					regiao,
-					crefito);
-
-				banco.cmd.CommandText = banco.sqlQuery;
-				banco.cmd.ExecuteScalar();
-				banco.conn.Close();
-			}
+			Object[] columns = new Object[] {idPessoa, login, senha, regiao, crefito};
+			banco.Insert(GlobalController.instance.path, columns, TablesManager.Tables[tableId].tableName, tableId);	
 		}
 
 		/**
@@ -231,54 +160,15 @@ namespace fisioterapeuta
 		 */
 		public static void Update(int id,
 			int idPessoa,
-			string senha)
-		{
-			DataBase banco = new DataBase();
-			using (banco.conn = new SqliteConnection(GlobalController.instance.path))
-			{
-				banco.conn.Open();
-				banco.cmd = banco.conn.CreateCommand();
-
-				banco.sqlQuery = string.Format("UPDATE \"{0}\" set ",  TablesManager.Tables[tableId].tableName);
-				banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",",	 TablesManager.Tables[tableId].colName[1], idPessoa);
-				banco.sqlQuery += string.Format("\"{0}\"=\"{1}\" ",	 TablesManager.Tables[tableId].colName[3], senha);
-
-				banco.sqlQuery += string.Format("WHERE \"{0}\" = \"{1}\"",	TablesManager.Tables[tableId].colName[0], id);
-
-				banco.cmd.CommandText = banco.sqlQuery;
-				banco.cmd.ExecuteScalar();
-				banco.conn.Close();
-			}
-		}
-
-
-		/**
-		 * Função que atualiza dados já cadastrados anteriormente na relação fisioterapeuta.
-		 */
-		public static void Update(int id,
-			int idPessoa,
+			string login,
 			string senha,
 			string regiao,
 			string crefito)
 		{
 			DataBase banco = new DataBase();
-			using (banco.conn = new SqliteConnection(GlobalController.instance.path))
-			{
-				banco.conn.Open();
-				banco.cmd = banco.conn.CreateCommand();
+			Object[] columns = new Object[] {id, idPessoa, login, senha, regiao, crefito};
+			banco.Update(GlobalController.instance.path, columns, TablesManager.Tables[tableId].tableName, tableId);
 
-				banco.sqlQuery = string.Format("UPDATE \"{0}\" set ",  TablesManager.Tables[tableId].tableName);
-				banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",",	 TablesManager.Tables[tableId].colName[1], idPessoa);
-				banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",",	 TablesManager.Tables[tableId].colName[4], regiao);
-				banco.sqlQuery += string.Format("\"{0}\"=\"{1}\" ",	 TablesManager.Tables[tableId].colName[5], crefito);
-				banco.sqlQuery += string.Format("\"{0}\"=\"{1}\" ",	 TablesManager.Tables[tableId].colName[3], senha);
-
-				banco.sqlQuery += string.Format("WHERE \"{0}\" = \"{1}\"",	TablesManager.Tables[tableId].colName[0], id);
-
-				banco.cmd.CommandText = banco.sqlQuery;
-				banco.cmd.ExecuteScalar();
-				banco.conn.Close();
-			}
 		}
 
 		/**
@@ -287,120 +177,38 @@ namespace fisioterapeuta
 		public static List<Fisioterapeuta> Read()
 		{
 			DataBase banco = new DataBase();
-			using (banco.conn = new SqliteConnection(GlobalController.instance.path))
-			{
-				banco.conn.Open();
-				banco.cmd = banco.conn.CreateCommand();
-				banco.sqlQuery = "SELECT * " + "FROM FISIOTERAPEUTA";
-				banco.cmd.CommandText = banco.sqlQuery;
-				IDataReader reader = banco.cmd.ExecuteReader();
-				List<Fisioterapeuta> physiotherapeuts = new List<Fisioterapeuta>();
 
-				while (reader.Read())
-				{
-					int idFisioterapeutaTemp = 0;
-					int idPessoaTemp = 0;
-					string loginTemp = "null";
-					string senhaTemp = "null";
-					string regiaoTemp = "null";
-					string crefitoTemp = "null";
+			int idFisioterapeutaTemp = 0;
+			int idPessoaTemp = 0;
+			string loginTemp = "";
+			string senhaTemp = "";
+			string regiaoTemp = "";
+			string crefitoTemp = "";
 
-					if (!reader.IsDBNull(0))
-					{
-						idFisioterapeutaTemp = reader.GetInt32(0);
-					}
-					if (!reader.IsDBNull(1))
-					{
-						idPessoaTemp = reader.GetInt32(1);
-					}
-					if (!reader.IsDBNull(2))
-					{
-						loginTemp = reader.GetString(2);
-					}
-					if (!reader.IsDBNull(3))
-					{
-						senhaTemp = reader.GetString(3);
-					}
-					if (!reader.IsDBNull(4))
-					{
-						regiaoTemp = reader.GetString(4);
-					}
-					if (!reader.IsDBNull(5))
-					{
-						crefitoTemp = reader.GetString(5);
-					}
+			Object[] columns = new Object[] {idFisioterapeutaTemp, idPessoaTemp, loginTemp, senhaTemp, regiaoTemp, crefitoTemp};
 
-					Fisioterapeuta physiotherapeut = new Fisioterapeuta (idFisioterapeutaTemp, idPessoaTemp, loginTemp, senhaTemp, regiaoTemp, crefitoTemp);
-					physiotherapeuts.Add(physiotherapeut);
-				}
+			List<Fisioterapeuta> physiotherapeuts = banco.Read<Fisioterapeuta>(GlobalController.instance.path, TablesManager.Tables[tableId].tableName, columns);
 
-				reader.Close();
-				reader = null;
-				banco.cmd.Dispose();
-				banco.cmd = null;
-				banco.conn.Close();
-				banco.conn = null;
-				return physiotherapeuts;
-			}
+			return physiotherapeuts;
 		}
 
 		public static Fisioterapeuta ReadValue (int id)
 		{
 			DataBase banco = new DataBase();
-			using (banco.conn = new SqliteConnection(GlobalController.instance.path))
-			{
-				banco.conn.Open();
-				banco.cmd = banco.conn.CreateCommand();
-				banco.sqlQuery = "SELECT * " + string.Format("FROM \"{0}\" WHERE \"{1}\" = \"{2}\";",  TablesManager.Tables[tableId].tableName, 
-					 TablesManager.Tables[tableId].colName[0], 
-					id);
-				banco.cmd.CommandText = banco.sqlQuery;
-				IDataReader reader = banco.cmd.ExecuteReader();
 
-				reader.Read();
+			int idFisioterapeutaTemp = 0;
+			int idPessoaTemp = 0;
+			string loginTemp = "";
+			string senhaTemp = "";
+			string regiaoTemp = "";
+			string crefitoTemp = "";
 
-				int idFisioterapeutaTemp = 0;
-				int idPessoaTemp = 0;
-				string loginTemp = "null";
-				string senhaTemp = "null";
-				string regiaoTemp = "null";
-				string crefitoTemp = "null";
+			Object[] columns = new Object[] {idFisioterapeutaTemp, idPessoaTemp, loginTemp, senhaTemp, regiaoTemp, crefitoTemp};
 
-				if (!reader.IsDBNull(0))
-				{
-					idFisioterapeutaTemp = reader.GetInt32(0);
-				}
-				if (!reader.IsDBNull(1))
-				{
-					idPessoaTemp = reader.GetInt32(1);
-				}
-				if (!reader.IsDBNull(2))
-				{
-					loginTemp = reader.GetString(2);
-				}
-				if (!reader.IsDBNull(3))
-				{
-					senhaTemp = reader.GetString(3);
-				}
-				if (!reader.IsDBNull(4))
-				{
-					regiaoTemp = reader.GetString(4);
-				}
-				if (!reader.IsDBNull(5))
-				{
-					crefitoTemp = reader.GetString(5);
-				}
+			Fisioterapeuta physiotherapeut = banco.ReadValue<Fisioterapeuta>(GlobalController.instance.path, TablesManager.Tables[tableId].tableName,
+				TablesManager.Tables[tableId].colName[0], id, columns);
 
-				Fisioterapeuta physiotherapeut = new Fisioterapeuta (idFisioterapeutaTemp,idPessoaTemp,loginTemp,senhaTemp,regiaoTemp,crefitoTemp);
-
-				reader.Close();
-				reader = null;
-				banco.cmd.Dispose();
-				banco.cmd = null;
-				banco.conn.Close();
-				banco.conn = null;
-				return physiotherapeut;
-			}
+			return physiotherapeut;
 		}
 
 		/**
@@ -409,36 +217,16 @@ namespace fisioterapeuta
 		public static void DeleteValue(int id)
 		{
 			DataBase banco = new DataBase();
-			using (banco.conn = new SqliteConnection(GlobalController.instance.path))
-			{
-				banco.conn.Open();
-				banco.cmd = banco.conn.CreateCommand();
-
-				banco.sqlQuery = string.Format("delete from \"{0}\" WHERE \"{1}\" = \"{2}\"",  TablesManager.Tables[tableId].tableName,	 TablesManager.Tables[tableId].colName[0], id);
-
-				banco.cmd.CommandText = banco.sqlQuery;
-				banco.cmd.ExecuteScalar();
-				banco.conn.Close();
-			}
+			banco.DeleteValue (tableId, id);
 		}
 
 		/**
 		 * Função que apaga a relação fisioterapeuta inteira de uma vez.
 		 */
-		public static void Drop()
-		{
-			DataBase banco = new DataBase();
-			using (banco.conn = new SqliteConnection(GlobalController.instance.path))
-			{
-				banco.conn.Open();
-				banco.cmd = banco.conn.CreateCommand();
-
-				banco.sqlQuery = string.Format("DROP TABLE IF EXISTS \"{0}\"",	TablesManager.Tables[tableId].tableName);
-
-				banco.cmd.CommandText = banco.sqlQuery;
-				banco.cmd.ExecuteScalar();
-				banco.conn.Close();
-			}
-		}
+		 public static void Drop()
+		 {
+		 	DataBase banco = new DataBase();
+		 	banco.Drop (tableId);
+		 }
 	}
 }
