@@ -34,6 +34,7 @@ Data|Versão|Descrição|Autor
 12/05|1.14.3|Adição de imagem explicando a arquitetura dos adapters| Djorkaeff Alexandre
 12/05|1.15.0|Justificando uso do TCP no adapter entre o unity e o módulo de processamento| Djorkaeff Alexandre
 15/05|1.15.1|Revisão dos tópicos e imagens| João Lucas
+23/05|1.16.0|Adição do subitem 5.5| Davi Alves
 
 # Sumário
 ----------------
@@ -192,6 +193,15 @@ O protocolo TCP não seria viável para o adapter Sensor-Unity, pois sua transfe
 <p align="justify">
 O módulo de processamento não poderá ter perda de dados recebidos e nem perca de dados enviados para o sistema pois isso causaria grandes anomalias ao sistema, isso justifica o uso de TCP neste adapter.
 </p>
+
+### 5.5 Documentação de interface Adapter Sensor-Unity UDP
+<p align="justify">Com a ultilização do protocolo de transferência de dados UDP, o adapter que fará o contato entre o sensor e o Unity enviara dados padrões para que seja espelhado no avatar do unity. Esses dados inicialmente estarão organizados da seguinte forma: </p> 
+
+* Tempo dado em número real. 
+* Posições dadas em números reais de x, y, z. 
+* Rotações dadas em números reais de x, y, z. 
+* Essas posições serão das partes: mão, braço, ombro e cotovelo. 
+* Ao final todos esses valores são convertidos em uma única string e enviados ao unity para leitura das posições. 
 
 ## 6. Visão de Dados
 
