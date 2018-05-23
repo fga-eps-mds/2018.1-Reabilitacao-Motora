@@ -179,5 +179,59 @@ namespace Tests
 			Assert.AreEqual(test_shortUnCaps, shortbig+unformated);
 			Assert.AreEqual(test_bigUnCaps, shortbig+unformated);
 		}
+
+		[Test]
+		public static void TestLoginField ()
+		{
+			var test_empty = TreatFields.LoginField ("");
+			var test_shortNonAlphaNumeric = TreatFields.LoginField ("@#k4");
+			var test_nonAlphaNumeric = TreatFields.LoginField ("k$%k4@1%s");
+			var test_short = TreatFields.LoginField ("alpe");
+			var test_good = TreatFields.LoginField ("joaozinho2");
+			
+			string nonAlphaNumeric = "Login deve conter apenas letras e/ou números!|";
+			string shorty = "Login deve ter no mínimo 6 caractéres.|";
+			string empty = "Campo Obrigatório!|";
+
+			Assert.AreEqual (test_empty, shorty+empty);
+			Assert.AreEqual (test_shortNonAlphaNumeric, nonAlphaNumeric+shorty);
+			Assert.AreEqual (test_nonAlphaNumeric, nonAlphaNumeric);
+			Assert.AreEqual (test_short, shorty);
+			Assert.AreEqual (test_good, "");
+		}
+
+		[Test]
+		public static void TestPasswordField ()
+		{
+			var test_empty = TreatFields.PasswordField ("");
+			var test_shorty = TreatFields.PasswordField ("abc12");
+			var test_good = TreatFields.PasswordField ("abcdh$!24jfnsaf!@$5");
+
+			string shorty = "A senha deve possuir no mínimo 8 caractéres!|";
+			string empty = "Campo Obrigatório!|";
+
+			Assert.AreEqual (test_empty, shorty+empty);
+			Assert.AreEqual (test_shorty, shorty); 
+			Assert.AreEqual (test_good, "");
+		}
+
+		[Test]
+		public static void TestConfirmPasswordField ()
+		{
+			var test_oneEmpty = TreatFields.ConfirmPasswordField ("", "abcdefghj1");
+			var test_secondEmpty = TreatFields.ConfirmPasswordField ("abcdefghj1", "");
+			var test_bothEmpty = TreatFields.ConfirmPasswordField ("", "");
+			var test_unEqual = TreatFields.ConfirmPasswordField ("ausdihasifj4", "14j1o2hui124");
+			var test_good = TreatFields.ConfirmPasswordField ("abracadabra", "abracadabra");
+
+			string unequal = "As senhas não condizem!|";
+			string empty = "Campo Obrigatório!|";
+
+			Assert.AreEqual (test_oneEmpty, unequal);
+			Assert.AreEqual (test_secondEmpty, unequal+empty);
+			Assert.AreEqual (test_bothEmpty, empty);
+			Assert.AreEqual (test_unEqual, unequal);
+			Assert.AreEqual (test_good, "");
+		}
 	}
 }
