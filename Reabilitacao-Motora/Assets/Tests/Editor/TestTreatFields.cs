@@ -16,7 +16,7 @@ namespace Tests
 	public static class TestTreatFields
 	{
 		[Test]
-		public static void NameField ()
+		public static void TestNameField ()
 		{
 			var test_empty = TreatFields.NameField ("");
 			var test_nonAlpha = TreatFields.NameField ("asdu98792kl$# lpl´~çpo");
@@ -38,7 +38,7 @@ namespace Tests
 		}
 
 		[Test]
-		public static void DateField ()
+		public static void TestDateField ()
 		{
 			int currentDay = System.DateTime.Now.Day;
 			int currentMonth = System.DateTime.Now.Month;
@@ -93,7 +93,7 @@ namespace Tests
 		}
 
 		[Test]
-		public static void EmptyField ()
+		public static void TestEmptyField ()
 		{
 			var test_empty = TreatFields.EmptyField ("");
 			var test_filled = TreatFields.EmptyField("abc");
@@ -105,13 +105,14 @@ namespace Tests
 		}
 
 		[Test]
-		public static void PhoneField ()
+		public static void TestPhoneField ()
 		{
 			var test_empty = TreatFields.PhoneField ("");
 			var test_unformated = TreatFields.PhoneField ("(+55) 61 9997-0123");
 			var test_nonnumeric = TreatFields.PhoneField ("auahsuhasuhs");
 			var test_short = TreatFields.PhoneField ("9998777");
 			var test_shortNonNumeric = TreatFields.PhoneField("sadh");
+			var test_good = TreatFields.PhoneField("61 9969-0107");
 
 			string empty = "Campo Obrigatório!|";
 			string unformated = "Apenas números e/ou hífens!|";
@@ -122,6 +123,61 @@ namespace Tests
 			Assert.AreEqual(test_nonnumeric, unformated);
 			Assert.AreEqual(test_short, shorty);
 			Assert.AreEqual(test_shortNonNumeric, unformated+shorty);
+			Assert.AreEqual(test_good, "");
+		}
+
+		[Test]
+		public static void TestCrefitoField ()
+		{
+			var test_empty = TreatFields.CrefitoField ("");
+			var test_nonNumeric = TreatFields.CrefitoField ("12718b");
+			var test_nonNumericShort = TreatFields.CrefitoField ("asd65");
+			var test_nonNumericBig = TreatFields.CrefitoField ("12718bda8sg8");
+			var test_good = TreatFields.CrefitoField ("123456");
+			var test_short = TreatFields.CrefitoField ("1234");
+			var test_big = TreatFields.CrefitoField ("123456789");
+
+			string nonNumeric = "Insira apenas 6 dígitos/números!|";
+			string shortbig = "Insira exatamente 6 dígitos/números!|";
+			string empty = "Campo Obrigatório!|";
+
+			Assert.AreEqual(test_empty, shortbig+empty);
+			Assert.AreEqual(test_nonNumeric, nonNumeric);
+			Assert.AreEqual(test_nonNumericShort, nonNumeric+shortbig);
+			Assert.AreEqual(test_nonNumericBig, nonNumeric+shortbig);
+			Assert.AreEqual(test_good, "");
+			Assert.AreEqual(test_short, shortbig);
+			Assert.AreEqual(test_big, shortbig);
+		}
+
+		[Test]
+		public static void TestRegionField ()
+		{
+			var test_empty = TreatFields.RegionField ("");
+			var test_good = TreatFields.RegionField ("DF");
+			var test_short = TreatFields.RegionField ("D");
+			var test_big = TreatFields.RegionField ("DEEFF");
+			var test_shortNonAlpha = TreatFields.RegionField ("1");
+			var test_bigNonAlpha = TreatFields.RegionField ("123");
+			var test_nonAlpha = TreatFields.RegionField ("12");
+			var test_unCaps = TreatFields.RegionField ("df");
+			var test_shortUnCaps = TreatFields.RegionField ("d");
+			var test_bigUnCaps = TreatFields.RegionField ("deeff");
+
+			string shortbig = "Insira uma região válida!|";
+			string unformated = "Região deve conter apenas letras maiúsculas!|";
+			string empty = "Campo Obrigatório!|";
+
+			Assert.AreEqual(test_empty, shortbig+empty);
+			Assert.AreEqual(test_good, "");
+			Assert.AreEqual(test_short, shortbig);
+			Assert.AreEqual(test_big, shortbig);
+			Assert.AreEqual(test_shortNonAlpha, shortbig+unformated);
+			Assert.AreEqual(test_bigNonAlpha, shortbig+unformated);
+			Assert.AreEqual(test_nonAlpha, unformated);
+			Assert.AreEqual(test_unCaps, unformated);
+			Assert.AreEqual(test_shortUnCaps, shortbig+unformated);
+			Assert.AreEqual(test_bigUnCaps, shortbig+unformated);
 		}
 	}
 }
