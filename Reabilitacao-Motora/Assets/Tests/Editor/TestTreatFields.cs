@@ -91,5 +91,37 @@ namespace Tests
 			Assert.AreEqual(test_neutralDayMonth, invalidDay+invalidMonth);
 			Assert.AreEqual(test_Normal, "");
 		}
+
+		[Test]
+		public static void EmptyField ()
+		{
+			var test_empty = TreatFields.EmptyField ("");
+			var test_filled = TreatFields.EmptyField("abc");
+			
+			string empty = "Campo Obrigatório!|";
+
+			Assert.AreEqual(test_empty, empty);
+			Assert.AreEqual(test_filled, "");
+		}
+
+		[Test]
+		public static void PhoneField ()
+		{
+			var test_empty = TreatFields.PhoneField ("");
+			var test_unformated = TreatFields.PhoneField ("(+55) 61 9997-0123");
+			var test_nonnumeric = TreatFields.PhoneField ("auahsuhasuhs");
+			var test_short = TreatFields.PhoneField ("9998777");
+			var test_shortNonNumeric = TreatFields.PhoneField("sadh");
+
+			string empty = "Campo Obrigatório!|";
+			string unformated = "Apenas números e/ou hífens!|";
+			string shorty = "Insira um número válido!|";
+
+			Assert.AreEqual(test_empty, shorty+empty);
+			Assert.AreEqual(test_unformated, unformated);
+			Assert.AreEqual(test_nonnumeric, unformated);
+			Assert.AreEqual(test_short, shorty);
+			Assert.AreEqual(test_shortNonNumeric, unformated+shorty);
+		}
 	}
 }
