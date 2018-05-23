@@ -7,7 +7,7 @@ UDP_PORT = 5005
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM) # UDP
 
-x = 0.0
+time = 0.0
 
 while 1:
     mao_x = random.uniform(-15.0, 15.0)
@@ -43,7 +43,7 @@ while 1:
     r_cotovelo_y = random.uniform(-15.0, 15.0)
     r_cotovelo_z = random.uniform(-15.0, 15.0)
 
-    x+=0.2
+    time+=0.2
     message = str(x) + ' '
     message += str(mao_x) + ' ' + str(mao_y) + ' ' + str(mao_z) + ' '
     message += str(r_mao_x) + ' ' + str(r_mao_y) + ' ' + str(r_mao_z) + ' ' 

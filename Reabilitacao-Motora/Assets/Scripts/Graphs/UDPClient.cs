@@ -14,7 +14,6 @@ using System.Threading;
  */
 public class UDPClient : MonoBehaviour
 {
-    // broadcast address
     private string host = "127.0.0.1";
     private int port = 5005;
     private UdpClient client;
