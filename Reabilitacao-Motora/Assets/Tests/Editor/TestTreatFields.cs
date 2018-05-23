@@ -7,6 +7,8 @@ using System;
 using UnityEngine.TestTools;
 using NUnit.Framework;
 using System.Text.RegularExpressions;
+using fisioterapeuta;
+using pessoa;
 
 /**
  * Cria um novo Fisioterapeuta no banco de dados.
@@ -232,6 +234,74 @@ namespace Tests
 			Assert.AreEqual (test_bothEmpty, empty);
 			Assert.AreEqual (test_unEqual, unequal);
 			Assert.AreEqual (test_good, "");
+		}
+
+		[Test]
+		public static void TestSexField ()
+		{
+			var test_wrongMinus = TreatFields.SexField (false, false);
+			var test_wrongPlus = TreatFields.SexField (true, true);
+			var test_goodMale = TreatFields.SexField (true, false);
+			var test_goodFemale = TreatFields.SexField (false, true);
+
+			var wrong = "Selecione um, e apenas um, sexo!|";
+
+			Assert.AreEqual (test_wrongMinus, wrong);
+			Assert.AreEqual (test_wrongPlus, wrong);
+			Assert.AreEqual (test_goodMale, "");
+			Assert.AreEqual (test_goodFemale, "");
+		}
+
+		[Test]
+		public static void TestUniqueCrefitoRegion ()
+		{
+			GlobalController.Initialize();
+
+			Pessoa.Insert("fake name", "m", "1930-01-01", "61235235", null);
+			List<Pessoa> pessoas = Pessoa.Read();
+			var idPessoa = pessoas[pessoas.Count - 1].idPessoa;
+			Fisioterapeuta.Insert(idPessoa, "abcdefghj1", "asuihasiudh11829", "DF", "123456");
+			List<Fisioterapeuta> allPhysios = Fisioterapeuta.Read();
+			var idFisio = allPhysios[allPhysios.Count - 1].idFisioterapeuta;
+
+			var test_exists = TreatFields.UniqueCrefitoRegion ("123456", "DF");
+			var test_dontRegion = TreatFields.UniqueCrefitoRegion ("123456", "PE");
+			var test_dontCrefito = TreatFields.UniqueCrefitoRegion ("613752", "DF");
+			var test_dont = TreatFields.UniqueCrefitoRegion ("516523", "SL");
+			
+			Fisioterapeuta.DeleteValue(idFisio);
+			Pessoa.DeleteValue(idPessoa);
+
+			string exists = "Regiao + Crefito inválidos! (já cadastrados)";
+
+			Assert.AreEqual (test_exists, exists);
+			Assert.AreEqual (test_dontRegion, "");
+			Assert.AreEqual (test_dontCrefito, "");
+			Assert.AreEqual (test_dont, "");
+		}
+
+		[Test]
+		public static void TestUniqueLoginPassword ()
+		{
+			GlobalController.Initialize();
+
+			Pessoa.Insert("fake name", "m", "1930-01-01", "61235235", null);
+			List<Pessoa> pessoas = Pessoa.Read();
+			var idPessoa = pessoas[pessoas.Count - 1].idPessoa;
+			Fisioterapeuta.Insert(idPessoa, "abcdefghj1", "asuihasiudh11829", "DF", "123456");
+			List<Fisioterapeuta> allPhysios = Fisioterapeuta.Read();
+			var idFisio = allPhysios[allPhysios.Count - 1].idFisioterapeuta;
+
+			var test_exists = TreatFields.UniqueLoginPassword ("abcdefghj1");
+			var test_dontexist = TreatFields.UniqueLoginPassword ("oaijfo3u4194j12");
+
+			string exists = "Login inválido! (já cadastrado)";
+
+			Fisioterapeuta.DeleteValue(idFisio);
+			Pessoa.DeleteValue(idPessoa);
+
+			Assert.AreEqual (test_exists, exists);
+			Assert.AreEqual (test_dontexist, "");
 		}
 	}
 }

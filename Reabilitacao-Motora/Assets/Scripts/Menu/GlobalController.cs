@@ -29,7 +29,7 @@ public class GlobalController : MonoBehaviour
 	private Exercicio Exercise;
 	private PontosRotuloPaciente Prp;
 	private PontosRotuloFisioterapeuta Prf;
-	public string path;
+	public static string path;
 
 
 	public Fisioterapeuta admin
@@ -132,13 +132,13 @@ public class GlobalController : MonoBehaviour
 
 			instance = this;
 			DontDestroyOnLoad(gameObject);
-			path = "URI=file:" + Application.dataPath + "/Plugins/fisiotech.db";
 			Initialize();
 		}
 	}
 
-	private static void Initialize()
+	public static void Initialize()
 	{
+		path = "URI=file:" + Application.dataPath + "/Plugins/fisiotech.db";
 		Pessoa.Create();
 		Fisioterapeuta.Create();
 		Paciente.Create();

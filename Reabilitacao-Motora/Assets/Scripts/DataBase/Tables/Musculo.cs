@@ -64,7 +64,7 @@ namespace musculo
 		{
 			DataBase banco = new DataBase();
 			string query = "CREATE TABLE IF NOT EXISTS MUSCULO (idMusculo INTEGER primary key AUTOINCREMENT,nomeMusculo VARCHAR (20) not null, constraint musculo UNIQUE (nomeMusculo));";
-			banco.Create(GlobalController.instance.path, query);	
+			banco.Create(GlobalController.path, query);	
 		}
 
 		/**
@@ -74,7 +74,7 @@ namespace musculo
 		{
 			DataBase banco = new DataBase();
 			Object[] columns = new Object[] {nomeMusculo};
-			banco.Insert(GlobalController.instance.path, columns, TablesManager.Tables[tableId].tableName, tableId);
+			banco.Insert(GlobalController.path, columns, TablesManager.Tables[tableId].tableName, tableId);
 		}
 
 		/**
@@ -85,7 +85,7 @@ namespace musculo
 		{
 			DataBase banco = new DataBase();
 			Object[] columns = new Object[] {id, nomeMusculo};
-			banco.Update(GlobalController.instance.path, columns, TablesManager.Tables[tableId].tableName, tableId);
+			banco.Update(GlobalController.path, columns, TablesManager.Tables[tableId].tableName, tableId);
 		}
 
 		/**
@@ -100,7 +100,7 @@ namespace musculo
 
 			Object[] columns = new Object[] {idMusculoTemp, nomeMusculoTemp};
 
-			List<Musculo> muscles = banco.Read<Musculo>(GlobalController.instance.path, TablesManager.Tables[tableId].tableName, columns);
+			List<Musculo> muscles = banco.Read<Musculo>(GlobalController.path, TablesManager.Tables[tableId].tableName, columns);
 
 			return muscles;
 		}
@@ -113,7 +113,7 @@ namespace musculo
 
 			Object[] columns = new Object[] {idMusculoTemp, nomeMusculoTemp};
 
-			Musculo muscle = banco.ReadValue<Musculo>(GlobalController.instance.path, TablesManager.Tables[tableId].tableName,
+			Musculo muscle = banco.ReadValue<Musculo>(GlobalController.path, TablesManager.Tables[tableId].tableName,
 				TablesManager.Tables[tableId].colName[0], id, columns);
 
 			return muscle;

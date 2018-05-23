@@ -77,7 +77,6 @@ namespace DataBaseAttributes
 				bld.Append(string.Format("insert into {0} (", tableName));
 
 				int tableSize = TablesManager.Tables[tableId].colName.Count;
-				Debug.Log(tableSize + " " + columns.Length);
 				for (int i = 1; i < tableSize; ++i) 
 				{
 					if (columns[i-1] != null)
@@ -165,7 +164,6 @@ namespace DataBaseAttributes
 				bld.Append(string.Format("WHERE \"{0}\" = \"{1}\"", TablesManager.Tables[tableId].colName[0], columns[0]));
 
 				sqlQuery = bld.ToString();
-				Debug.Log(sqlQuery);
 
 				cmd.CommandText = sqlQuery;
 				
@@ -238,7 +236,7 @@ namespace DataBaseAttributes
 		 */
 		public void DeleteValue(int tableId, int id)
 		{
-			using (conn = new SqliteConnection(GlobalController.instance.path))
+			using (conn = new SqliteConnection(GlobalController.path))
 			{
 				conn.Open();
 				cmd = conn.CreateCommand();
@@ -256,7 +254,7 @@ namespace DataBaseAttributes
 		 */
 		public void Drop(int tableId)
 		{
-			using (conn = new SqliteConnection(GlobalController.instance.path))
+			using (conn = new SqliteConnection(GlobalController.path))
 			{
 				conn.Open();
 				cmd = conn.CreateCommand();

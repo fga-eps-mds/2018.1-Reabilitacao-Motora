@@ -109,7 +109,7 @@ namespace pontosrotulofisioterapeuta
 		{
 			DataBase banco = new DataBase();
 			string query = "CREATE TABLE IF NOT EXISTS PONTOSROTULOFISIOTERAPEUTA (idRotuloFisioterapeuta INTEGER primary key AUTOINCREMENT,idMovimento INTEGER not null,estagioMovimentoFisio VARCHAR (30) not null,tempoInicial REAL not null,tempoFinal REAL not null,foreign key (idMovimento) references MOVIMENTO (idMovimento));";
-			banco.Create(GlobalController.instance.path, query);
+			banco.Create(GlobalController.path, query);
 		}
 
 		/**
@@ -122,7 +122,7 @@ namespace pontosrotulofisioterapeuta
 		{
 			DataBase banco = new DataBase();
 			Object[] columns = new Object[] {idMovimento, estagioMovimentoFisio, tempoInicial, tempoFinal};
-			banco.Insert(GlobalController.instance.path, columns, TablesManager.Tables[tableId].tableName, tableId);
+			banco.Insert(GlobalController.path, columns, TablesManager.Tables[tableId].tableName, tableId);
 		}
 
 		/**
@@ -136,7 +136,7 @@ namespace pontosrotulofisioterapeuta
 		{
 			DataBase banco = new DataBase();
 			Object[] columns = new Object[] {id, idMovimento, estagioMovimentoFisio, tempoInicial, tempoFinal};
-			banco.Update(GlobalController.instance.path, columns, TablesManager.Tables[tableId].tableName, tableId);
+			banco.Update(GlobalController.path, columns, TablesManager.Tables[tableId].tableName, tableId);
 		}
 
 		/**
@@ -154,7 +154,7 @@ namespace pontosrotulofisioterapeuta
 
 			Object[] columns = new Object[] {idRotuloFisioterapeutaTemp,idMovimentoTemp,estagioMovimentoFisioTemp,tempoInicialTemp,tempoFinalTemp};
 
-			List<PontosRotuloFisioterapeuta> physioLabelPoints = banco.Read<PontosRotuloFisioterapeuta>(GlobalController.instance.path, TablesManager.Tables[tableId].tableName, columns);
+			List<PontosRotuloFisioterapeuta> physioLabelPoints = banco.Read<PontosRotuloFisioterapeuta>(GlobalController.path, TablesManager.Tables[tableId].tableName, columns);
 
 			return physioLabelPoints;
 		}
@@ -171,7 +171,7 @@ namespace pontosrotulofisioterapeuta
 
 			Object[] columns = new Object[] {idRotuloFisioterapeutaTemp,idMovimentoTemp,estagioMovimentoFisioTemp,tempoInicialTemp,tempoFinalTemp};
 
-			PontosRotuloFisioterapeuta physioLabelPoint = banco.ReadValue<PontosRotuloFisioterapeuta>(GlobalController.instance.path, TablesManager.Tables[tableId].tableName,
+			PontosRotuloFisioterapeuta physioLabelPoint = banco.ReadValue<PontosRotuloFisioterapeuta>(GlobalController.path, TablesManager.Tables[tableId].tableName,
 				TablesManager.Tables[tableId].colName[0], id, columns);
 
 			return physioLabelPoint;

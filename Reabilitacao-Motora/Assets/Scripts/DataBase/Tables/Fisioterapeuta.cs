@@ -138,7 +138,7 @@ namespace fisioterapeuta
 		{
 			DataBase banco = new DataBase();
 			string query = "CREATE TABLE IF NOT EXISTS FISIOTERAPEUTA (idFisioterapeuta INTEGER primary key AUTOINCREMENT,idPessoa INTEGER not null,login VARCHAR (255) not null,senha VARCHAR (255) not null,regiao VARCHAR (2),crefito VARCHAR (10),foreign key (idPessoa) references PESSOA (idPessoa),constraint crefito_regiao UNIQUE (crefito, regiao), constraint login_senha UNIQUE (login));";
-			banco.Create(GlobalController.instance.path, query);
+			banco.Create(GlobalController.path, query);
 		}
 
 		/**
@@ -152,7 +152,7 @@ namespace fisioterapeuta
 		{
 			DataBase banco = new DataBase();
 			Object[] columns = new Object[] {idPessoa, login, senha, regiao, crefito};
-			banco.Insert(GlobalController.instance.path, columns, TablesManager.Tables[tableId].tableName, tableId);	
+			banco.Insert(GlobalController.path, columns, TablesManager.Tables[tableId].tableName, tableId);	
 		}
 
 		/**
@@ -167,7 +167,7 @@ namespace fisioterapeuta
 		{
 			DataBase banco = new DataBase();
 			Object[] columns = new Object[] {id, idPessoa, login, senha, regiao, crefito};
-			banco.Update(GlobalController.instance.path, columns, TablesManager.Tables[tableId].tableName, tableId);
+			banco.Update(GlobalController.path, columns, TablesManager.Tables[tableId].tableName, tableId);
 
 		}
 
@@ -187,7 +187,7 @@ namespace fisioterapeuta
 
 			Object[] columns = new Object[] {idFisioterapeutaTemp, idPessoaTemp, loginTemp, senhaTemp, regiaoTemp, crefitoTemp};
 
-			List<Fisioterapeuta> physiotherapeuts = banco.Read<Fisioterapeuta>(GlobalController.instance.path, TablesManager.Tables[tableId].tableName, columns);
+			List<Fisioterapeuta> physiotherapeuts = banco.Read<Fisioterapeuta>(GlobalController.path, TablesManager.Tables[tableId].tableName, columns);
 
 			return physiotherapeuts;
 		}
@@ -205,7 +205,7 @@ namespace fisioterapeuta
 
 			Object[] columns = new Object[] {idFisioterapeutaTemp, idPessoaTemp, loginTemp, senhaTemp, regiaoTemp, crefitoTemp};
 
-			Fisioterapeuta physiotherapeut = banco.ReadValue<Fisioterapeuta>(GlobalController.instance.path, TablesManager.Tables[tableId].tableName,
+			Fisioterapeuta physiotherapeut = banco.ReadValue<Fisioterapeuta>(GlobalController.path, TablesManager.Tables[tableId].tableName,
 				TablesManager.Tables[tableId].colName[0], id, columns);
 
 			return physiotherapeut;

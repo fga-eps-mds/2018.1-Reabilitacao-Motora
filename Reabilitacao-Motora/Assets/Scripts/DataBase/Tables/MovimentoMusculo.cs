@@ -67,7 +67,7 @@ namespace movimentomusculo
 		{
 			DataBase banco = new DataBase();
 			string query = "CREATE TABLE IF NOT EXISTS MOVIMENTOMUSCULO (idMusculo INTEGER not null,idMovimento INTEGER not null, foreign key (idMovimento) references MOVIMENTO (idMovimento),foreign key (idMusculo) references MUSCULO (idMusculo),primary key (idMusculo, idMovimento));";
-			banco.Create(GlobalController.instance.path, query);
+			banco.Create(GlobalController.path, query);
 		}
 
 		/**
@@ -77,7 +77,7 @@ namespace movimentomusculo
 			int idMovimento)
 		{
 			DataBase banco = new DataBase();
-			using (banco.conn = new SqliteConnection(GlobalController.instance.path))
+			using (banco.conn = new SqliteConnection(GlobalController.path))
 			{
 				banco.conn.Open();
 				banco.cmd = banco.conn.CreateCommand();
@@ -116,7 +116,7 @@ namespace movimentomusculo
 		public static void Update(int idMusculo, int idMovimento)
 		{
 			DataBase banco = new DataBase();
-			using (banco.conn = new SqliteConnection(GlobalController.instance.path))
+			using (banco.conn = new SqliteConnection(GlobalController.path))
 			{
 				banco.conn.Open();
 				banco.cmd = banco.conn.CreateCommand();
@@ -144,7 +144,7 @@ namespace movimentomusculo
 
 			Object[] columns = new Object[] {idMusculoTemp,idMovimentoTemp};
 
-			List<MovimentoMusculo> muscleMovements = banco.Read<MovimentoMusculo>(GlobalController.instance.path, TablesManager.Tables[tableId].tableName, columns);
+			List<MovimentoMusculo> muscleMovements = banco.Read<MovimentoMusculo>(GlobalController.path, TablesManager.Tables[tableId].tableName, columns);
 
 			return muscleMovements;
 		}
@@ -155,7 +155,7 @@ namespace movimentomusculo
 		public static void DeleteValue(int id1, int id2)
 		{
 			DataBase banco = new DataBase();
-			using (banco.conn = new SqliteConnection(GlobalController.instance.path))
+			using (banco.conn = new SqliteConnection(GlobalController.path))
 			{
 				banco.conn.Open();
 				banco.cmd = banco.conn.CreateCommand();

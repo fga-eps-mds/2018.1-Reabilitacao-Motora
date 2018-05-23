@@ -94,7 +94,7 @@ namespace paciente
 		{
 			DataBase banco = new DataBase();
 			string query = "CREATE TABLE IF NOT EXISTS PACIENTE (idPaciente INTEGER primary key AUTOINCREMENT,idPessoa INTEGER not null,observacoes VARCHAR (300),foreign key (idPessoa) references PESSOA (idPessoa));";
-			banco.Create(GlobalController.instance.path, query);	
+			banco.Create(GlobalController.path, query);	
 		}
 
 		/**
@@ -105,7 +105,7 @@ namespace paciente
 		{
 			DataBase banco = new DataBase();
 			Object[] columns = new Object[] {idPessoa, observacoes};
-			banco.Insert(GlobalController.instance.path, columns, TablesManager.Tables[tableId].tableName, tableId);
+			banco.Insert(GlobalController.path, columns, TablesManager.Tables[tableId].tableName, tableId);
 		}
 
 		/**
@@ -117,7 +117,7 @@ namespace paciente
 		{
 			DataBase banco = new DataBase();
 			Object[] columns = new Object[] {id, idPessoa, observacoes};
-			banco.Update(GlobalController.instance.path, columns, TablesManager.Tables[tableId].tableName, tableId);
+			banco.Update(GlobalController.path, columns, TablesManager.Tables[tableId].tableName, tableId);
 		}
 
 		/**
@@ -131,7 +131,7 @@ namespace paciente
 			string observacoesTemp = "";
 
 			Object[] columns = new Object[] {idPacienteTemp,idPessoaTemp,observacoesTemp};
-			List<Paciente> patients = banco.Read<Paciente>(GlobalController.instance.path, TablesManager.Tables[tableId].tableName, columns);
+			List<Paciente> patients = banco.Read<Paciente>(GlobalController.path, TablesManager.Tables[tableId].tableName, columns);
 
 			return patients;
 		}
@@ -145,7 +145,7 @@ namespace paciente
 
 			Object[] columns = new Object[] {idPacienteTemp,idPessoaTemp,observacoesTemp};
 
-			Paciente patient = banco.ReadValue<Paciente>(GlobalController.instance.path, TablesManager.Tables[tableId].tableName,
+			Paciente patient = banco.ReadValue<Paciente>(GlobalController.path, TablesManager.Tables[tableId].tableName,
 				TablesManager.Tables[tableId].colName[0], id, columns);
 
 			return patient;
