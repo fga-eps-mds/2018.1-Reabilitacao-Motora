@@ -17,12 +17,15 @@ namespace Tests
 {
 	public static class TestMovement
 	{
-    /*
+
     [Test]
-    public static void TestValidInput ()
+    public static void TestValidInput()
     {
-        InputField nomeMovimento = new InputField ();
-        InputField musculos = new InputField ();
+				var test_nomeMovimento = new GameObject();
+				var test_musculos = new GameObject();
+
+        InputField nomeMovimento =  test_nomeMovimento.AddComponent<InputField>() as InputField;
+        InputField musculos = test_musculos.AddComponent<InputField>() as InputField;
 
         List<InputField> inputs = new List<InputField>();
 
@@ -34,45 +37,22 @@ namespace Tests
 
         bool response = createMovement.ValidInput(inputs);
 
-        Assert.AreEqual(response, true);
+        Assert.AreEqual(response, false);
     }
-    
-    [Test]
-    public static void TestSaveMovement()
-    {
+		[Test]
+		public static void TestApplyColor ()
+		{
+				var test_colorExpected = new GameObject();
+				var test_colorResponse = new GameObject();
 
-        Flow.StaticNewMovement();
+				var inputExpected = test_colorExpected.AddComponent<InputField>() as InputField;
+				var inputResponse = test_colorResponse.AddComponent<InputField>() as InputField;
 
-        yield return null;
+        inputExpected.colors = ColorManager.SetColor(inputExpected.colors, true);
 
-        var objectMovement = GameObject.Find("Movement Manager");
-        var MovementManager = objectMovement.GetComponentInChildren<createMovement>();
+        createMovement.ApplyColor(inputResponse, true);
 
-        var objectButton = GameObject.Find("Canvas/PanelShowMovement/SaveBt");
-        var button = objectButton.GetComponentInChildren<Button>();
-
-        InputField aux = (InputField)MovementManager.GetMemberValue("nomeMovimento");
-        aux.text = "Movimento Inexistente";
-        MovementManager.SetMemberValue("nomeMovimento", aux);
-
-        InputField aux1 = (InputField)MovementManager.GetMemberValue("musculos");
-        aux1.text = "Musculo Inexistente";
-        MovementManager.SetMemberValue("musculos", aux1);
-
-        button.OnPointerClick(new PointerEventData(EventSystem.current));
-
-        int idMovimento = GlobalController.instance.admin.idMovimento;
-        int idMusculo = GlobalController.instance.admin.idMusculo;
-        Movimento.DeleteValue(idMovimento);
-        Musculo.DeleteValue(idMusculo);
-
-        yield return new WaitForSeconds(0.5f);
-
-        var currentscene = SceneManager.GetActiveScene().nomeMovimento;
-        var expectedscene = "NewMovement";
-
-        Assert.AreEqual(expectedscene, currentscene);
-    }
-    */
+        Assert.AreEqual(inputExpected.colors, inputResponse.colors);
+        }
   }
 }
