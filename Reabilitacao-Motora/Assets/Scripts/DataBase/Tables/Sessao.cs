@@ -19,79 +19,15 @@ namespace sessao
 		private string DataSessao;
 		private string ObservacaoSessao;
 
-		public int idSessao 
-		{
-			get 
-			{
-				return IdSessao; 
-			} 
-			set 
-			{
-				IdSessao = value; 
-			}
-		}
-
-		public int idFisioterapeuta 
-		{
-			get 
-			{
-				return IdFisioterapeuta; 
-			} 
-			set 
-			{
-				IdFisioterapeuta = value; 
-			}
-		}
-
-		public int idPaciente 
-		{
-			get 
-			{
-				return IdPaciente; 
-			} 
-			set 
-			{
-				IdPaciente = value; 
-			}
-		}
-
-		public string dataSessao 
-		{
-			get 
-			{
-				return DataSessao; 
-			} 
-			set 
-			{
-				DataSessao = value; 
-			}
-		}
-
-		public string observacaoSessao 
-		{
-			get 
-			{
-				return ObservacaoSessao; 
-			} 
-			set 
-			{
-				ObservacaoSessao = value; 
-			}
-		}
-
+		public int idSessao { get { return IdSessao; } set { IdSessao = value; }}
+		public int idFisioterapeuta { get { return IdFisioterapeuta; } set { IdFisioterapeuta = value; }}
+		public int idPaciente { get { return IdPaciente; } set { IdPaciente = value; }}
+		public string dataSessao { get { return DataSessao; } set { DataSessao = value; }}
+		public string observacaoSessao { get { return ObservacaoSessao; } set { ObservacaoSessao = value; }}
 
 		/**
 		 * Classe com todos os atributos de uma sessao.
 		 */
-		public Sessao(int ids, int idf, int idp, string ds, string os)
-		{
-			this.idSessao = ids;
-			this.idFisioterapeuta = idf;
-			this.idPaciente = idp;
-			this.dataSessao = ds;
-			this.observacaoSessao = os;
-		}
-
 		public Sessao(Object[] columns)
 		{
 			this.idSessao = (int)columns[0];
@@ -110,7 +46,6 @@ namespace sessao
 			banco.Create(query);
 		}
 
-
 		/**
 		* Função que insere dados na tabela de sessão.
 		 */
@@ -123,7 +58,6 @@ namespace sessao
 			Object[] columns = new Object[] {idFisioterapeuta,idPaciente,dataSessao,observacaoSessao};
 			banco.Insert(columns, TablesManager.Tables[tableId].tableName, tableId);
 		}
-
 
 		/**
 		* Função que atualiza dados já cadastrados anteriormente na relação de sessão.
@@ -145,30 +79,17 @@ namespace sessao
 		public static List<Sessao> Read()
 		{
 			DataBase banco = new DataBase();
-			int idSessaoTemp = 0;
-			int idFisioterapeutaTemp = 0;
-			int idPacienteTemp = 0;
-			string dataSessaoTemp = "";
-			string observacaoSessaoTemp = "";
-
-			Object[] columns = new Object[] {idSessaoTemp,idFisioterapeutaTemp,idPacienteTemp,dataSessaoTemp,observacaoSessaoTemp};
+			Object[] columns = new Object[] {0, 0, 0, "", ""};
 
 			List<Sessao> sessions = banco.Read<Sessao>(TablesManager.Tables[tableId].tableName, columns);
 
 			return sessions;
 		}
 
-
 		public static Sessao ReadValue (int id)
 		{
 			DataBase banco = new DataBase();
-			int idSessaoTemp = 0;
-			int idFisioterapeutaTemp = 0;
-			int idPacienteTemp = 0;
-			string dataSessaoTemp = "";
-			string observacaoSessaoTemp = "";
-
-			Object[] columns = new Object[] {idSessaoTemp,idFisioterapeutaTemp,idPacienteTemp,dataSessaoTemp,observacaoSessaoTemp};
+			Object[] columns = new Object[] {0, 0, 0, "", ""};
 
 			Sessao session = banco.ReadValue<Sessao>(TablesManager.Tables[tableId].tableName,
 				TablesManager.Tables[tableId].colName[0], id, columns);
@@ -194,5 +115,4 @@ namespace sessao
 			banco.Drop (tableId);
 		}
 	}
-
 }

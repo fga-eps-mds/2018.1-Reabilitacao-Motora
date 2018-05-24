@@ -13,6 +13,7 @@ namespace exercicio
 	public class Exercicio
 	{
 		private const int tableId = 6;
+		
 		private int IdExercicio;
 		private int IdPaciente;
 		private int IdMovimento;
@@ -20,92 +21,17 @@ namespace exercicio
 		private string DescricaoExercicio;
 		private string PontosExercicio;
 
-		public int idExercicio 
-		{
-			get 
-			{
-				return IdExercicio; 
-			} 
-			set 
-			{
-				IdExercicio = value; 
-			}
-		}
-
-		public int idPaciente 
-		{
-			get 
-			{
-				return IdPaciente; 
-			} 
-			set 
-			{
-				IdPaciente = value; 
-			}
-		}
-
-		public int idMovimento 
-		{
-			get 
-			{
-				return IdMovimento; 
-			} 
-			set 
-			{
-				IdMovimento = value; 
-			}
-		}
-
-		public int idSessao 
-		{
-			get 
-			{
-				return IdSessao; 
-			} 
-			set 
-			{
-				IdSessao = value; 
-			}
-		}
-
-		public string descricaoExercicio 
-		{
-			get 
-			{
-				return DescricaoExercicio; 
-			} 
-			set 
-			{
-				DescricaoExercicio = value; 
-			}
-		}
-
-		public string pontosExercicio 
-		{
-			get 
-			{
-				return PontosExercicio; 
-			} 
-			set 
-			{
-				PontosExercicio = value; 
-			}
-		}
+		public int idExercicio { get { return IdExercicio; } set { IdExercicio = value; }}
+		public int idPaciente { get { return IdPaciente; } set { IdPaciente = value; }}
+		public int idMovimento { get { return IdMovimento; } set { IdMovimento = value; }}
+		public int idSessao { get { return IdSessao; } set { IdSessao = value; }}
+		public string descricaoExercicio { get { return DescricaoExercicio; } set { DescricaoExercicio = value; }}
+		public string pontosExercicio { get { return PontosExercicio; } set { PontosExercicio = value; }}
 
 
 		/**
 		 * Classe com todos os atributos de um exercicio.
 		 */
-		public Exercicio (int ide, int idp, int idm, int ids, string de, string pe)
-		{
-			this.idExercicio = ide;
-			this.idPaciente = idp;
-			this.idMovimento = idm;
-			this.idSessao = ids;
-			this.descricaoExercicio = de;
-			this.pontosExercicio = pe;
-		}
-
 		public Exercicio (Object[] columns)
 		{
 			this.idExercicio = (int)columns[0];
@@ -115,6 +41,7 @@ namespace exercicio
 			this.descricaoExercicio = (string)columns[4];
 			this.pontosExercicio = (string)columns[5];
 		}
+
 		/**
 		 * Cria a relação para exercicios, contendo um id gerado automaticamente pelo banco como chave primária.
 		 */
@@ -160,15 +87,7 @@ namespace exercicio
 		public static List<Exercicio> Read()
 		{
 			DataBase banco = new DataBase();
-			int idExercicioTemp = 0;
-			int idPacienteTemp = 0;
-			int idMovimentoTemp = 0;
-			int idSessaoTemp = 0;
-			string descricaoExercicioTemp = "";
-			string pontosExercicioTemp = "";
-
-			Object[] columns = new Object[] {idExercicioTemp, idPacienteTemp, idMovimentoTemp, idSessaoTemp, descricaoExercicioTemp, pontosExercicioTemp};
-
+			Object[] columns = new Object[] {0, 0, 0, 0, "", ""};
 			List<Exercicio> exerciseList = banco.Read<Exercicio>(TablesManager.Tables[tableId].tableName, columns);
 
 			return exerciseList;
@@ -178,16 +97,7 @@ namespace exercicio
 		public static Exercicio ReadValue(int id)
 		{
 			DataBase banco = new DataBase();
-
-			int idExercicioTemp = 0;
-			int idPacienteTemp = 0;
-			int idMovimentoTemp = 0;
-			int idSessaoTemp = 0;
-			string descricaoExercicioTemp = "";
-			string pontosExercicioTemp = "";
-
-			Object[] columns = new Object[] {idExercicioTemp, idPacienteTemp, idMovimentoTemp, idSessaoTemp, descricaoExercicioTemp, pontosExercicioTemp};
-
+			Object[] columns = new Object[] {0, 0, 0, 0, "", ""};
 			Exercicio exercise = banco.ReadValue<Exercicio>(TablesManager.Tables[tableId].tableName,
 				TablesManager.Tables[tableId].colName[0], id, columns);
 

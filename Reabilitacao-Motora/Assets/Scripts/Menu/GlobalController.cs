@@ -30,91 +30,15 @@ public class GlobalController : MonoBehaviour
 	private PontosRotuloPaciente Prp;
 	private PontosRotuloFisioterapeuta Prf;
 	public static string path;
+	public static bool test;
 
-
-	public Fisioterapeuta admin
-	{
-		get
-		{
-			return Admin;
-		}
-		set
-		{
-			Admin = value;
-		}
-	}
-
-	public Paciente user
-	{
-		get
-		{
-			return User;
-		}
-		set
-		{
-			User = value;
-		}
-	}
-
-	public Movimento movement
-	{
-		get
-		{
-			return Movement;
-		}
-		set
-		{
-			Movement = value;
-		}
-	}
-
-	public Sessao session
-	{
-		get
-		{
-			return Session;
-		}
-		set
-		{
-			Session = value;
-		}
-	}
-
-	public Exercicio exercise
-	{
-		get
-		{
-			return Exercise;
-		}
-		set
-		{
-			Exercise = value;
-		}
-	}
-
-	public PontosRotuloFisioterapeuta prf
-	{
-		get
-		{
-			return Prf;
-		}
-		set
-		{
-			Prf = value;
-		}
-	}
-
-	public PontosRotuloPaciente prp
-	{
-		get
-		{
-			return Prp;
-		}
-		set
-		{
-			Prp = value;
-		}
-	}
+	public Fisioterapeuta admin { get { return Admin; } set { Admin = value; }}
+	public Paciente user { get { return User; } set { User = value; }}
+	public Movimento movement { get { return Movement; } set { Movement = value; }}
+	public Sessao session { get { return Session; } set { Session = value; }}
+	public Exercicio exercise { get { return Exercise; } set { Exercise = value; }}
+	public PontosRotuloFisioterapeuta prf { get { return Prf; } set { Prf = value; }}
+	public PontosRotuloPaciente prp { get { return Prp; } set { Prp = value; }}
 
 	public void Awake ()
 	{
@@ -138,7 +62,15 @@ public class GlobalController : MonoBehaviour
 
 	public static void Initialize()
 	{
-		path = "URI=file:" + Application.dataPath + "/Plugins/fisiotech.db";
+		if (test == null || test == false) 
+		{
+			path = "URI=file:" + Application.dataPath + "/Plugins/fisiotech.db";
+		}
+		else
+		{
+			path = "URI=file:" + Application.dataPath + "/Plugins/test_fisiotech.db";
+		}
+		
 		Pessoa.Create();
 		Fisioterapeuta.Create();
 		Paciente.Create();

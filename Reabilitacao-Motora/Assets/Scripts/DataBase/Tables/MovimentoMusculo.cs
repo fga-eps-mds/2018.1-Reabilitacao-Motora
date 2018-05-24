@@ -17,42 +17,11 @@ namespace movimentomusculo
 		private int IdMusculo;
 		private int IdMovimento;
 
-		public int idMusculo
-		{
-			get
-			{
-				return IdMusculo;
-			}
-			set
-			{
-				IdMusculo = value;
-			}
-		}
-
-		public int idMovimento
-		{
-			get
-			{
-				return IdMovimento;
-			}
-			set
-			{
-				IdMovimento = value;
-			}
-		}
-
+		public int idMusculo { get { return IdMusculo; } set { IdMusculo = value; }}
+		public int idMovimento { get { return IdMovimento; } set { IdMovimento = value; }}
 
 		/**
 		 * Classe com todos os atributos de um movimentomusculo.
-		 */
-		public MovimentoMusculo (int idmu, int idmo)
-		{
-			this.idMusculo = idmu;
-			this.idMovimento = idmo;
-		}
-
-		/**
-		 * Classe que cria outra versão do construtor.
 		 */
 		public MovimentoMusculo (Object[] columns)
 		{
@@ -76,7 +45,6 @@ namespace movimentomusculo
 		public static void Insert(int idMusculo,
 			int idMovimento)
 		{
-			DataBase banco = new DataBase();
 			using (var conn = new SqliteConnection(GlobalController.path))
 			{
 				conn.Open();
@@ -117,7 +85,6 @@ namespace movimentomusculo
 		 */
 		public static void Update(int idMusculo, int idMovimento)
 		{
-			DataBase banco = new DataBase();
 			using (var conn = new SqliteConnection(GlobalController.path))
 			{
 				conn.Open();
@@ -143,10 +110,7 @@ namespace movimentomusculo
 		public static List<MovimentoMusculo> Read()
 		{
 			DataBase banco = new DataBase();
-			int idMusculoTemp = 0;
-			int idMovimentoTemp = 0;
-
-			Object[] columns = new Object[] {idMusculoTemp,idMovimentoTemp};
+			Object[] columns = new Object[] {0, 0};
 
 			List<MovimentoMusculo> muscleMovements = banco.Read<MovimentoMusculo>(TablesManager.Tables[tableId].tableName, columns);
 
@@ -158,7 +122,6 @@ namespace movimentomusculo
 		 */
 		public static void DeleteValue(int id1, int id2)
 		{
-			DataBase banco = new DataBase();
 			using (var conn = new SqliteConnection(GlobalController.path))
 			{
 				conn.Open();

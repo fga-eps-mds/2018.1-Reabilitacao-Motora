@@ -28,6 +28,8 @@ namespace Tests
 		{
 			database = new DataBase();
 			var create = "CREATE TABLE IF NOT EXISTS TESTE (idTable INTEGER primary key AUTOINCREMENT,nome VARCHAR (255) not null);";
+			GlobalController.test = true;
+			
 			GlobalController.Initialize();
 			database.Create (create);
 		}

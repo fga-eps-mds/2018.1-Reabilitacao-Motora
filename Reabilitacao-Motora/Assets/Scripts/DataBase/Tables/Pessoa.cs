@@ -21,93 +21,16 @@ namespace pessoa
 		private string Telefone1;
 		private string Telefone2;
 
-		public int idPessoa 
-		{
-			get 
-			{
-				return IdPessoa; 
-			}
-			set 
-			{
-				IdPessoa = value; 
-			}
-		}
-
-		public string nomePessoa 
-		{
-			get 
-			{
-				return NomePessoa; 
-			}
-			set 
-			{
-				NomePessoa = value; 
-			}
-		}
-
-		public string sexo 
-		{
-			get 
-			{
-				return Sexo; 
-			}
-			set 
-			{
-				Sexo = value; 
-			}
-		}
-
-		public string dataNascimento 
-		{
-			get 
-			{
-				return DataNascimento; 
-			}
-			set 
-			{
-				DataNascimento = value; 
-			}
-		}
-
-		public string telefone1 
-		{
-			get 
-			{
-				return Telefone1; 
-			}
-			set 
-			{
-				Telefone1 = value; 
-			}
-		}
-
-		public string telefone2 
-		{
-			get 
-			{
-				return Telefone2; 
-			}
-			set 
-			{
-				Telefone2 = value; 
-			}
-		}
-
-
-		public Pessoa(){}
+		public int idPessoa { get { return IdPessoa; } set { IdPessoa = value; }}
+		public string nomePessoa { get { return NomePessoa; } set { NomePessoa = value; }}
+		public string sexo { get { return Sexo; } set { Sexo = value; }}
+		public string dataNascimento { get { return DataNascimento; } set { DataNascimento = value; }}
+		public string telefone1 { get { return Telefone1; } set { Telefone1 = value; }}
+		public string telefone2 { get { return Telefone2; } set { Telefone2 = value; }}
 
 		/**
 		 * Classe com todos os atributos de uma pessoa.
 		 */
-		public Pessoa(int id, string nome, string s, string d, string t1, string t2)
-		{
-			this.idPessoa = id;
-			this.nomePessoa = nome;
-			this.sexo = s;
-			this.dataNascimento = d;
-			this.telefone1 = t1;
-			this.telefone2 = t2;	
-		}
 
 		public Pessoa (Object[] columns)
 		{
@@ -165,16 +88,7 @@ namespace pessoa
 		public static List<Pessoa> Read()
 		{
 			DataBase banco = new DataBase();
-
-			int idPessoaTemp = 0;
-			string nomePessoaTemp = "";
-			string sexoTemp = "";
-			string dataNascimentoTemp = "";
-			string telefone1Temp = "";
-			string telefone2Temp = "";
-
-			Object[] columns = new Object[] {idPessoaTemp, nomePessoaTemp, sexoTemp, dataNascimentoTemp, telefone1Temp, telefone2Temp};
-
+			Object[] columns = new Object[] {0, "", "", "", "", ""};
 			List<Pessoa> personList = banco.Read<Pessoa>(TablesManager.Tables[tableId].tableName, columns);
 
 			return personList;		
@@ -183,18 +97,10 @@ namespace pessoa
 		public static Pessoa ReadValue(int id)
 		{
 			DataBase banco = new DataBase();
-			
-			int idPessoaTemp = 0;
-			string nomePessoaTemp = "";
-			string sexoTemp = "";
-			string dataNascimentoTemp = "";
-			string telefone1Temp = "";
-			string telefone2Temp = "";
-
-			Object[] columns = new Object[] {idPessoaTemp, nomePessoaTemp, sexoTemp, dataNascimentoTemp, telefone1Temp, telefone2Temp};
-
+			Object[] columns = new Object[] {0, "", "", "", "", ""};
 			Pessoa person = banco.ReadValue<Pessoa>(TablesManager.Tables[tableId].tableName,
 				TablesManager.Tables[tableId].colName[0], id, columns);
+
 			return person;
 		}
 
