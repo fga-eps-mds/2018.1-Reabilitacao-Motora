@@ -200,55 +200,80 @@ namespace Tests
 			return;
 		}
 
-		// [Test]
-		// public void TestPessoaUpdate ()
-		// {
-		// 	using (var conn = new SqliteConnection(GlobalController.path))
-		// 	{
-		// 		conn.Open();
+		[Test]
+		public void TestPessoaUpdate ()
+		{
+			using (var conn = new SqliteConnection(GlobalController.path))
+			{
+				conn.Open();
 
-		// 		System.Object[] columnsToInsert = new System.Object[] {"fake testname"};
-		// 		database.Insert(columnsToInsert, TablesManager.Tables[tableId].tableName, tableId);
+				Pessoa.Insert("fake name1", "m", "1995-01-01", "6198732711", null);
+				Pessoa.Update(1, "name1 fake", "f", "1996-09-07", "6132329094", "6187651234");
+				
+				var check = "SELECT * FROM PESSOA;";
 
-		// 		System.Object[] columnsToUpdate = new System.Object[] {1, "testname fake"};
-		// 		database.Update(columnsToUpdate, TablesManager.Tables[tableId].tableName, tableId);
+				var id = 0;
+				var result = "";
 
-		// 		var check = "SELECT * FROM PESSOA;";
+				using (var cmd = new SqliteCommand(check, conn))
+				{
+					using (IDataReader reader = cmd.ExecuteReader())
+					{
+						try
+						{
+							while (reader.Read())
+							{
+								if (!reader.IsDBNull(0)) 
+								{
+									id = reader.GetInt32(0);
+									Assert.AreEqual (id, 1);
+								}
 
-		// 		var result = "";
+								if (!reader.IsDBNull(1)) 
+								{
+									result = reader.GetString(1);
+									Assert.AreEqual (result, "name1 fake");
+								}
 
-		// 		using (var cmd = new SqliteCommand(check, conn))
-		// 		{
-		// 			using (IDataReader reader = cmd.ExecuteReader())
-		// 			{
-		// 				try
-		// 				{
-		// 					while (reader.Read())
-		// 					{
-		// 						if (!reader.IsDBNull(1)) 
-		// 						{
-		// 							result = reader.GetString(1);
-		// 						}
-		// 					}
-		// 				}
-		// 				finally
-		// 				{
-		// 					reader.Dispose();
-		// 					reader.Close();
-		// 				}
-		// 			}
-		// 			cmd.Dispose();
-		// 		}
+								if (!reader.IsDBNull(2)) 
+								{
+									result = reader.GetString(2);
+									Assert.AreEqual (result, "f");
+								}
 
-		// 		Assert.AreNotEqual (result, "fake testname");
-		// 		Assert.AreEqual (result, "testname fake");
+								if (!reader.IsDBNull(3)) 
+								{
+									result = reader.GetString(3);
+									Assert.AreEqual (result, "1996-09-07");
+								}
 
-		// 		conn.Dispose();
-		// 		conn.Close();			
-		// 	}
+								if (!reader.IsDBNull(4)) 
+								{
+									result = reader.GetString(4);
+									Assert.AreEqual (result, "6132329094");
+								}
 
-		// 	return;
-		// }
+								if (!reader.IsDBNull(5)) 
+								{
+									result = reader.GetString(5);
+									Assert.AreEqual (result, "6187651234");
+								}
+							}
+						}
+						finally
+						{
+							reader.Dispose();
+							reader.Close();
+						}
+					}
+					cmd.Dispose();
+				}
+				conn.Dispose();
+				conn.Close();
+			}
+			return;
+		}
+		
 
 		// [Test]
 		// public void TestPessoaRead ()
