@@ -275,37 +275,35 @@ namespace Tests
 		}
 		
 
-		// [Test]
-		// public void TestPessoaRead ()
-		// {
-		// 	using (var conn = new SqliteConnection(GlobalController.path))
-		// 	{
-		// 		conn.Open();
+		[Test]
+		public void TestPessoaRead ()
+		{
+			using (var conn = new SqliteConnection(GlobalController.path))
+			{
+				conn.Open();
 
-		// 		System.Object[] columnsToInsert = new System.Object[] {"fake testname0"};
-		// 		database.Insert(columnsToInsert, TablesManager.Tables[tableId].tableName, tableId);
-		// 		columnsToInsert = new System.Object[] {"fake testname1"};
-		// 		database.Insert(columnsToInsert, TablesManager.Tables[tableId].tableName, tableId);
-		// 		columnsToInsert = new System.Object[] {"fake testname2"};
-		// 		database.Insert(columnsToInsert, TablesManager.Tables[tableId].tableName, tableId);
+				Pessoa.Insert("fake name1", "m", "1995-01-01", "6198732711", "615236621");
+				Pessoa.Insert("fake name2", "m", "1995-01-02", "6198732712", "615236622");
+				Pessoa.Insert("fake name3", "m", "1995-01-03", "6198732713", "615236623");
 
+				List<Pessoa> allPpls = Pessoa.Read(); 
 
-		// 		System.Object[] columnsToRead = new System.Object[] {0, ""};
-		// 		List<PESSOA> allTests = database.Read<PESSOA>(TablesManager.Tables[tableId].tableName, columnsToRead);
+				for (int i = 0; i < allPpls.Count; ++i)
+				{
+					Assert.AreEqual (allPpls[i].idPessoa, i+1);
+					Assert.AreEqual (allPpls[i].nomePessoa, string.Format("fake name{0}", i+1));
+					Assert.AreEqual (allPpls[i].sexo, "m");
+					Assert.AreEqual (allPpls[i].dataNascimento, string.Format("1995-01-0{0}", i+1));
+					Assert.AreEqual (allPpls[i].telefone1, string.Format("619873271{0}", i+1));
+					Assert.AreEqual (allPpls[i].telefone2, string.Format("61523662{0}", i+1));
+				}
+				
+				conn.Dispose();
+				conn.Close();
+			}
 
-		// 		for (int i = 0; i < allTests.Count; ++i)
-		// 		{
-		// 			Assert.AreEqual (allTests[i].idTable, i+1);
-		// 			Assert.AreEqual (allTests[i].nome, string.Format("fake testname{0}", i));
-		// 		}
-
-
-		// 		conn.Dispose();
-		// 		conn.Close();
-		// 	}
-
-		// 	return;
-		// }
+			return;
+		}
 
 		// [Test]
 		// public void TestPessoaReadValue ()
