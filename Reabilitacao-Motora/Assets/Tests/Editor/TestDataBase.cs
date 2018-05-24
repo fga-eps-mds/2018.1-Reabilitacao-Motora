@@ -248,6 +248,77 @@ namespace Tests
 			return;
 		}
 
+		
+		[Test]
+		public void TestDeleteValue ()
+		{
+			using (var conn = new SqliteConnection(GlobalController.path))
+			{
+				conn.Open();
+				System.Object[] columnsToInsert = new System.Object[] {"fake testname"};
+				database.Insert(columnsToInsert, TablesManager.Tables[10].tableName, 10);
+
+				var check = "SELECT EXISTS(SELECT 1 FROM 'TESTE' WHERE \"idTable\" = \"1\" and \"nome\"=\"fake testname\" LIMIT 1)";
+				
+				var result = 0;
+				using (var cmd = new SqliteCommand(check, conn))
+				{
+					using (IDataReader reader = cmd.ExecuteReader())
+					{
+						try
+						{
+							while (reader.Read())
+							{
+								if (!reader.IsDBNull(0)) 
+								{
+									result = reader.GetInt32(0);
+								}
+							}
+						}
+						finally
+						{
+							reader.Dispose();
+							reader.Close();
+						}
+					}
+					cmd.Dispose();
+				}
+
+				Assert.AreEqual (result, 1);
+				database.DeleteValue(10, 1);
+
+				result = 0;
+				using (var cmd = new SqliteCommand(check, conn))
+				{
+					using (IDataReader reader = cmd.ExecuteReader())
+					{
+						try
+						{
+							while (reader.Read())
+							{
+								if (!reader.IsDBNull(0)) 
+								{
+									result = reader.GetInt32(0);
+								}
+							}
+						}
+						finally
+						{
+							reader.Dispose();
+							reader.Close();
+						}
+					}
+					cmd.Dispose();
+				}
+
+				Assert.AreEqual (result, 0);
+
+				conn.Dispose();
+				conn.Close();
+			}
+			return;
+		}
+
 		[TearDown]
 		public void AfterEveryTest ()
 		{
