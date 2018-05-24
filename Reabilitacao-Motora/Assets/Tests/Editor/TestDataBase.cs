@@ -80,92 +80,63 @@ namespace Tests
 			return;
 		}
 
-// using (var conn = new SqliteConnection(GlobalController.path))
-// 			{
-// 				conn.Open();
-// 				var cmd = conn.CreateCommand();
-				
-// 				var sqlQuery = "DROP TABLE IF EXISTS \"TESTE\"";
-				
-// 				cmd.CommandText = sqlQuery;
+		
+		[Test]
+		public void TestInsert ()
+		{
+			GlobalController.Initialize();
+			using (var conn = new SqliteConnection(GlobalController.path))
+			{
+				conn.Open();
+				var create = "CREATE TABLE IF NOT EXISTS TESTE (idTable INTEGER primary key AUTOINCREMENT,nome VARCHAR (255) not null);";
+				database.Create (create);
 
-// 				cmd.ExecuteScalar();
-// 				conn.Close();
-// 			}
-// 		[Test]
-// 		public void Insert (string path, System.Object[] columns, string tableName, int tableId)
-// 		{
-// 			database.Insert (string path, System.Object[] columns, string tableName, int tableId);
-// 			using (conn = new SqliteConnection(path))
-// 			{
-// 				conn.Open();
-// 				cmd = conn.CreateCommand();
+				System.Object[] columns = new System.Object[] {"fake testname"};
+				database.Insert(columns, TablesManager.Tables[10].tableName, 10);
 
-// 				StringBuilder bld = new StringBuilder();
+				var check = "SELECT * FROM TESTE;";
 
-// 				bld.Append(string.Format("insert into {0} (", tableName));
+				var result = "";
 
-// 				int tableSize = TablesManager.Tables[tableId].colName.Count;
-// 				for (int i = 1; i < tableSize; ++i) 
-// 				{
-// 					if (columns[i-1] != null)
-// 					{
-// 						string aux;											
-// 						if (i + 1 == tableSize)
-// 						{
-// 							aux = "";
-// 						}
-// 						else
-// 						{
-// 							aux = ",";
-// 						}
+				using (var cmd = new SqliteCommand(check, conn))
+				{
+					using (IDataReader reader = cmd.ExecuteReader())
+					{
+						try
+						{
+							while (reader.Read())
+							{
+								if (!reader.IsDBNull(1)) 
+								{
+									result = reader.GetString(1);
+								}
+							}
+						}
+						finally
+						{
+							reader.Dispose();
+							reader.Close();
+						}
+					}
+					cmd.Dispose();
+				}
 
-// 						bld.Append(TablesManager.Tables[tableId].colName[i] + aux);
-// 					}
-// 				}
+				Assert.AreEqual (result, "fake testname");
 
-// 				if (bld[bld.Length - 1] == ',')
-// 				{
-// 					bld.Remove(bld.Length - 1, 1);
-// 				}
+				conn.Dispose();
+				conn.Close();
+				SqliteConnection.ClearAllPools();
 
-// 				bld.Append(") values (");
+				GC.Collect();
+				GC.WaitForPendingFinalizers();
+			}
 
-// 				for (int i = 0; i < columns.Length; ++i) 
-// 				{
-// 					if (columns[i] != null)
-// 					{
-// 						string aux;
-// 						if (i + 1 == columns.Length)
-// 						{
-// 							aux = "";
-// 						}
-// 						else
-// 						{
-// 							aux = ",";
-// 						}
-
-// 						bld.Append((string.Format("\"{0}\"", columns[i]) + aux));
-// 					}
-// 				}
-
-// 				if (bld[bld.Length - 1] == ',')
-// 				{
-// 					bld.Remove(bld.Length - 1, 1);
-// 				}
-
-// 				bld.Append(")");
-
-// 				sqlQuery = bld.ToString();
-
-// 				cmd.CommandText = sqlQuery;
-// 				cmd.ExecuteScalar();
-// 				conn.Close();
-// 			}
-// 		}
+			database.Drop(10);
+			return;
+		}
 
 // 		[Test]
-// 		public void Update (string path, System.Object[] columns, string tableName, int tableId)
+// 		public void TestUpdate ()
 // 		{
 // 			database.Update (string path, System.Object[] columns, string tableName, int tableId);
 
@@ -206,7 +177,7 @@ namespace Tests
 
 
 // 		[Test]
-// 		public List<T> Read<T> (string path, string tableName, System.Object[] columns)
+// 		public List<T> Read<T> ()
 // 		{
 // 			database.Read<T> (string path, string tableName, System.Object[] columns);
 
@@ -240,7 +211,7 @@ namespace Tests
 // 		}
 
 // 		[Test]
-// 		public T ReadValue<T> (string path, string tableName, string colName, int idTable, System.Object[] columns)
+// 		public T ReadValue<T> ()
 // 		{
 // 			database.ReadValue<T> (string path, string tableName, string colName, int idTable, System.Object[] columns);
 
@@ -273,7 +244,7 @@ namespace Tests
 // 		* Função que deleta dados cadastrados anteriormente na relação de pessoas.
 // 		 */
 // 		[Test]
-// 		public void DeleteValue(int tableId, int id)
+// 		public void TestDeleteValue()
 // 		{
 // 			database.DeleteValue(int tableId, int id);
 
@@ -294,7 +265,7 @@ namespace Tests
 // 		* Função que apaga a relação de pessoas inteira de uma vez.
 // 		 */
 // 		[Test]
-// 		public void Drop(int tableId)
+// 		public void TestDrop()
 // 		{
 // 			database.Drop(int tableId);
 
@@ -311,18 +282,10 @@ namespace Tests
 // 			}
 // 		}
 
-// 		[Test]
-// 		private static void CloseDB (IDataReader reader, IDbCommand cmd, IDbConnection conn)
-// 		{
-// 			database.CloseDB (IDataReader reader, IDbCommand cmd, IDbConnection conn);
-
-// 			reader.Close();
-// 			cmd.Dispose();
-// 			conn.Close();
-// 		}
+// 	
 
 // 		[Test]
-// 		private static void ObjectArray (ref System.Object[] columns, ref IDataReader reader)
+// 		private static void ObjectArray ()
 // 		{
 // 			database.ObjectArray (ref System.Object[] columns, ref IDataReader reader);
 
