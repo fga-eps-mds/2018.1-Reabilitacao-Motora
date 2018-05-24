@@ -19,28 +19,30 @@ namespace Tests
         /** 
          * Este método testa a função de mudar a cor de um inputfield.
          */
-        /* 
+        
         [Test]
 		public static void TestApplyColor ()
 		{
-            InputField inputResponse = null;
-            InputField inputExpeted = null;
+            GameObject gameobject1 = new GameObject ();
+            var inputExpected = gameobject1.AddComponent<InputField>() as InputField;
 
-            inputExpeted.colors = ColorManager.SetColor(inputExpeted.colors, true);
+            GameObject gameobject2 = new GameObject ();
+            var inputResponse = gameobject2.AddComponent<InputField>() as InputField;
+
+            inputExpected.colors = ColorManager.SetColor(inputExpected.colors, true);
 
             createPatient.ApplyColor(inputResponse, true);
             
-            Assert.AreEqual(inputExpeted.colors, inputResponse.colors);
+            Assert.AreEqual(inputExpected.colors, inputResponse.colors);
         }
-        */
 
         /* 
         [Test]
         public static void TestValidInput ()
         {
-            InputField name = new InputField ();
-            InputField date = new InputField ();
-            InputField phone1 = new InputField ();
+            var name = new InputField ();
+            var date = new InputField ();
+            var phone1 = new InputField ();
             Toggle masc = new Toggle ();
             Toggle fem = new Toggle ();
 

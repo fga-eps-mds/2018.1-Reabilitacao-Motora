@@ -83,7 +83,7 @@ public class createPatient : MonoBehaviour
 		}
 	}
 
-	private static bool ValidInput (List<InputField> inputs, List<Toggle> toggles)
+	public static bool ValidInput (List<InputField> inputs, List<Toggle> toggles)
 	{
 		bool valid = true;
 
@@ -148,7 +148,7 @@ public class createPatient : MonoBehaviour
 		return valid;
 	}
 
-	private static void ApplyColor (InputField input, bool ok)
+	public static void ApplyColor (InputField input, bool ok)
 	{
 		input.colors = ColorManager.SetColor(input.colors, ok);
 	}
