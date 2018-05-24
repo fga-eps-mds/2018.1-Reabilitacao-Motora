@@ -274,7 +274,6 @@ namespace Tests
 			return;
 		}
 		
-
 		[Test]
 		public void TestPessoaRead ()
 		{
@@ -297,7 +296,7 @@ namespace Tests
 					Assert.AreEqual (allPpls[i].telefone1, string.Format("619873271{0}", i+1));
 					Assert.AreEqual (allPpls[i].telefone2, string.Format("61523662{0}", i+1));
 				}
-				
+
 				conn.Dispose();
 				conn.Close();
 			}
@@ -305,38 +304,34 @@ namespace Tests
 			return;
 		}
 
-		// [Test]
-		// public void TestPessoaReadValue ()
-		// {
-		// 	using (var conn = new SqliteConnection(GlobalController.path))
-		// 	{
-		// 		conn.Open();
+		[Test]
+		public void TestPessoaReadValue ()
+		{
+			using (var conn = new SqliteConnection(GlobalController.path))
+			{
+				conn.Open();
 
-		// 		System.Object[] columnsToInsert = new System.Object[] {"fake testname0"};
-		// 		database.Insert(columnsToInsert, TablesManager.Tables[tableId].tableName, tableId);
-		// 		columnsToInsert = new System.Object[] {"fake testname1"};
-		// 		database.Insert(columnsToInsert, TablesManager.Tables[tableId].tableName, tableId);
-		// 		columnsToInsert = new System.Object[] {"fake testname2"};
-		// 		database.Insert(columnsToInsert, TablesManager.Tables[tableId].tableName, tableId);
+				Pessoa.Insert("fake name1", "m", "1995-01-01", "6198732711", "615236621");
+				Pessoa.Insert("fake name2", "m", "1995-01-02", "6198732712", "615236622");
+				Pessoa.Insert("fake name3", "m", "1995-01-03", "6198732713", "615236623");
 
+				for (int i = 0; i < 3; ++i)
+				{
+					Pessoa auxPpl = Pessoa.ReadValue(i+1);
+					Assert.AreEqual (auxPpl.idPessoa, i+1);
+					Assert.AreEqual (auxPpl.nomePessoa, string.Format("fake name{0}", i+1));
+					Assert.AreEqual (auxPpl.sexo, "m");
+					Assert.AreEqual (auxPpl.dataNascimento, string.Format("1995-01-0{0}", i+1));
+					Assert.AreEqual (auxPpl.telefone1, string.Format("619873271{0}", i+1));
+					Assert.AreEqual (auxPpl.telefone2, string.Format("61523662{0}", i+1));
+				}
 
-		// 		System.Object[] columnsToRead = new System.Object[] {0, ""};
-		// 		for (int i = 0; i < 3; ++i)
-		// 		{
-		// 			PESSOA allTests = database.ReadValue<PESSOA>(TablesManager.Tables[tableId].tableName,
-		// 			TablesManager.Tables[tableId].colName[0], i+1, columnsToRead);
+				conn.Dispose();
+				conn.Close();
+			}
 
-		// 			Assert.AreEqual (allTests.idTable, i+1);
-		// 			Assert.AreEqual (allTests.nome, string.Format("fake testname{0}", i));
-		// 		}
-
-				
-		// 		conn.Dispose();
-		// 		conn.Close();
-		// 	}
-
-		// 	return;
-		// }
+			return;
+		}
 
 		
 		// [Test]
