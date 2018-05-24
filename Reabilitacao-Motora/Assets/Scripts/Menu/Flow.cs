@@ -68,10 +68,18 @@ public class Flow : MonoBehaviour
 		SceneManager.LoadScene ("ClinicToMoveMenu", LoadSceneMode.Additive);
 	}
 
-	/**
+    /**
+     * Leva para scene de gravar um movimento.
+     */
+    public static void ChoiceSensor()
+    {
+        SceneManager.LoadScene("ChoiceSensor");
+    }
+
+    /**
 	 * Leva para scene de registrar novo paciente.
 	 */
-	public static void StaticNewPatient()
+    public static void StaticNewPatient()
 	{
 		SceneManager.LoadScene("NewPatient");
 	}
