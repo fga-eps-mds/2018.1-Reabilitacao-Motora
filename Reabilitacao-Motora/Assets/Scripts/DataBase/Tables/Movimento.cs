@@ -111,7 +111,7 @@ namespace movimento
 		{
 			DataBase banco = new DataBase();
 			string query = "CREATE TABLE IF NOT EXISTS MOVIMENTO (idMovimento INTEGER primary key AUTOINCREMENT,idFisioterapeuta INTEGER not null,nomeMovimento VARCHAR (50) not null,descricaoMovimento VARCHAR (150),pontosMovimento VARCHAR (150) not null,foreign key (idFisioterapeuta) references FISIOTERAPEUTA (idFisioterapeuta));";
-			banco.Create(GlobalController.path, query);	
+			banco.Create(query);	
 		}
 
 		/**
@@ -124,7 +124,7 @@ namespace movimento
 		{
 			DataBase banco = new DataBase();
 			Object[] columns = new Object[] {idFisioterapeuta, nomeMovimento, descricaoMovimento, pontosMovimento};
-			banco.Insert(GlobalController.path, columns, TablesManager.Tables[tableId].tableName, tableId);
+			banco.Insert(columns, TablesManager.Tables[tableId].tableName, tableId);
 		}
 
 		/**
@@ -138,7 +138,7 @@ namespace movimento
 		{
 			DataBase banco = new DataBase();
 			Object[] columns = new Object[] {id, idFisioterapeuta, nomeMovimento, descricaoMovimento, pontosMovimento};
-			banco.Update(GlobalController.path, columns, TablesManager.Tables[tableId].tableName, tableId);
+			banco.Update(columns, TablesManager.Tables[tableId].tableName, tableId);
 		}
 
 		/**
@@ -155,7 +155,7 @@ namespace movimento
 
 			Object[] columns = new Object[] {idMovimentoTemp,idFisioterapeutaTemp,nomeMovimentoTemp,descricaoMovimentoTemp,pontosMovimentoTemp};
 
-			List<Movimento> movements = banco.Read<Movimento>(GlobalController.path, TablesManager.Tables[tableId].tableName, columns);
+			List<Movimento> movements = banco.Read<Movimento>(TablesManager.Tables[tableId].tableName, columns);
 
 			return movements;
 		}
@@ -172,7 +172,7 @@ namespace movimento
 
 			Object[] columns = new Object[] {idMovimentoTemp,idFisioterapeutaTemp,nomeMovimentoTemp,descricaoMovimentoTemp,pontosMovimentoTemp};
 
-			Movimento movement = banco.ReadValue<Movimento>(GlobalController.path, TablesManager.Tables[tableId].tableName,
+			Movimento movement = banco.ReadValue<Movimento>(TablesManager.Tables[tableId].tableName,
 				TablesManager.Tables[tableId].colName[0], id, columns);
 
 			return movement;

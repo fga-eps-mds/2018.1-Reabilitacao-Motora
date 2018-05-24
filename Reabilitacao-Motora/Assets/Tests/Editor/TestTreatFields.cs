@@ -37,6 +37,8 @@ namespace Tests
 			Assert.AreEqual(test_shortName, shortname);
 			Assert.AreEqual(test_shortNonAlpha, nonalpha+shortname);
 			Assert.AreEqual(test_nonAlphaWithoutSpaces, nonalpha+shortname);
+
+			return;
 		}
 
 		[Test]
@@ -92,6 +94,8 @@ namespace Tests
 			Assert.AreEqual(test_Today, "");
 			Assert.AreEqual(test_neutralDayMonth, invalidDay+invalidMonth);
 			Assert.AreEqual(test_Normal, "");
+
+			return;
 		}
 
 		[Test]
@@ -104,6 +108,8 @@ namespace Tests
 
 			Assert.AreEqual(test_empty, empty);
 			Assert.AreEqual(test_filled, "");
+
+			return;
 		}
 
 		[Test]
@@ -126,6 +132,8 @@ namespace Tests
 			Assert.AreEqual(test_short, shorty);
 			Assert.AreEqual(test_shortNonNumeric, unformated+shorty);
 			Assert.AreEqual(test_good, "");
+
+			return;
 		}
 
 		[Test]
@@ -150,6 +158,8 @@ namespace Tests
 			Assert.AreEqual(test_good, "");
 			Assert.AreEqual(test_short, shortbig);
 			Assert.AreEqual(test_big, shortbig);
+
+			return;
 		}
 
 		[Test]
@@ -180,6 +190,8 @@ namespace Tests
 			Assert.AreEqual(test_unCaps, unformated);
 			Assert.AreEqual(test_shortUnCaps, shortbig+unformated);
 			Assert.AreEqual(test_bigUnCaps, shortbig+unformated);
+
+			return;
 		}
 
 		[Test]
@@ -200,6 +212,8 @@ namespace Tests
 			Assert.AreEqual (test_nonAlphaNumeric, nonAlphaNumeric);
 			Assert.AreEqual (test_short, shorty);
 			Assert.AreEqual (test_good, "");
+
+			return;
 		}
 
 		[Test]
@@ -215,6 +229,8 @@ namespace Tests
 			Assert.AreEqual (test_empty, shorty+empty);
 			Assert.AreEqual (test_shorty, shorty); 
 			Assert.AreEqual (test_good, "");
+
+			return;
 		}
 
 		[Test]
@@ -234,6 +250,8 @@ namespace Tests
 			Assert.AreEqual (test_bothEmpty, empty);
 			Assert.AreEqual (test_unEqual, unequal);
 			Assert.AreEqual (test_good, "");
+
+			return;
 		}
 
 		[Test]
@@ -250,6 +268,8 @@ namespace Tests
 			Assert.AreEqual (test_wrongPlus, wrong);
 			Assert.AreEqual (test_goodMale, "");
 			Assert.AreEqual (test_goodFemale, "");
+
+			return;
 		}
 
 		[Test]
@@ -260,6 +280,7 @@ namespace Tests
 			Pessoa.Insert("fake name", "m", "1930-01-01", "61235235", null);
 			List<Pessoa> pessoas = Pessoa.Read();
 			var idPessoa = pessoas[pessoas.Count - 1].idPessoa;
+			
 			Fisioterapeuta.Insert(idPessoa, "abcdefghj1", "asuihasiudh11829", "DF", "123456");
 			List<Fisioterapeuta> allPhysios = Fisioterapeuta.Read();
 			var idFisio = allPhysios[allPhysios.Count - 1].idFisioterapeuta;
@@ -278,6 +299,8 @@ namespace Tests
 			Assert.AreEqual (test_dontRegion, "");
 			Assert.AreEqual (test_dontCrefito, "");
 			Assert.AreEqual (test_dont, "");
+
+			return;
 		}
 
 		[Test]
@@ -288,6 +311,7 @@ namespace Tests
 			Pessoa.Insert("fake name", "m", "1930-01-01", "61235235", null);
 			List<Pessoa> pessoas = Pessoa.Read();
 			var idPessoa = pessoas[pessoas.Count - 1].idPessoa;
+
 			Fisioterapeuta.Insert(idPessoa, "abcdefghj1", "asuihasiudh11829", "DF", "123456");
 			List<Fisioterapeuta> allPhysios = Fisioterapeuta.Read();
 			var idFisio = allPhysios[allPhysios.Count - 1].idFisioterapeuta;
@@ -302,6 +326,8 @@ namespace Tests
 
 			Assert.AreEqual (test_exists, exists);
 			Assert.AreEqual (test_dontexist, "");
+
+			return;
 		}
 	}
 }

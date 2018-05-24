@@ -165,9 +165,19 @@ public static class TablesManager
 		}
 	};
 
+	private static readonly Table TESTE =
+	new Table 
+	{
+		tableName = "TESTE", 
+		colName = new List<string>{
+			"idTable",
+			"nome"
+		}
+	};
+
 	public static readonly Table[] Tables = new []{
 		Pessoa, Fisioterapeuta, Paciente, Musculo,
 		Movimento, Sessao, Exercicio, MovimentoMusculo,
-		PRF, PRP
+		PRF, PRP, TESTE
 	};
 }

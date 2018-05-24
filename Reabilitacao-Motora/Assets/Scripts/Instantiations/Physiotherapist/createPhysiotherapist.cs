@@ -261,6 +261,7 @@ public class createPhysiotherapist : MonoBehaviour
 
 	private static void CreateDirectoryPhysio (string name, int idPessoa)
 	{
+		Debug.Log("entrou " + name + " " + idPessoa);
 		string namePhysioUnderscored = name.Replace(' ', '_');
 		string pathnamephysio = "Assets\\Movimentos\\" + string.Format("{0}-{1}", idPessoa, namePhysioUnderscored);
 		Directory.CreateDirectory(pathnamephysio);

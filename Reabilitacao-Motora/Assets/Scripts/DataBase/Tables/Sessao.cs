@@ -107,7 +107,7 @@ namespace sessao
 		{
 			DataBase banco = new DataBase();
 			string query = "CREATE TABLE IF NOT EXISTS SESSAO (idSessao INTEGER primary key AUTOINCREMENT,idFisioterapeuta INTEGER not null,idPaciente INTEGER not null,dataSessao DATE not null,observacaoSessao VARCHAR (300),foreign key (idPaciente) references PACIENTE (idPaciente),foreign key (idFisioterapeuta) references FISIOTERAPEUTA (idFisioterapeuta));";
-			banco.Create(GlobalController.path, query);
+			banco.Create(query);
 		}
 
 
@@ -121,7 +121,7 @@ namespace sessao
 		{
 			DataBase banco = new DataBase();
 			Object[] columns = new Object[] {idFisioterapeuta,idPaciente,dataSessao,observacaoSessao};
-			banco.Insert(GlobalController.path, columns, TablesManager.Tables[tableId].tableName, tableId);
+			banco.Insert(columns, TablesManager.Tables[tableId].tableName, tableId);
 		}
 
 
@@ -136,7 +136,7 @@ namespace sessao
 		{
 			DataBase banco = new DataBase();
 			Object[] columns = new Object[] {id,idFisioterapeuta,idPaciente,dataSessao,observacaoSessao};
-			banco.Update(GlobalController.path, columns, TablesManager.Tables[tableId].tableName, tableId);
+			banco.Update(columns, TablesManager.Tables[tableId].tableName, tableId);
 		}
 
 		/**
@@ -153,7 +153,7 @@ namespace sessao
 
 			Object[] columns = new Object[] {idSessaoTemp,idFisioterapeutaTemp,idPacienteTemp,dataSessaoTemp,observacaoSessaoTemp};
 
-			List<Sessao> sessions = banco.Read<Sessao>(GlobalController.path, TablesManager.Tables[tableId].tableName, columns);
+			List<Sessao> sessions = banco.Read<Sessao>(TablesManager.Tables[tableId].tableName, columns);
 
 			return sessions;
 		}
@@ -170,7 +170,7 @@ namespace sessao
 
 			Object[] columns = new Object[] {idSessaoTemp,idFisioterapeutaTemp,idPacienteTemp,dataSessaoTemp,observacaoSessaoTemp};
 
-			Sessao session = banco.ReadValue<Sessao>(GlobalController.path, TablesManager.Tables[tableId].tableName,
+			Sessao session = banco.ReadValue<Sessao>(TablesManager.Tables[tableId].tableName,
 				TablesManager.Tables[tableId].colName[0], id, columns);
 
 			return session;

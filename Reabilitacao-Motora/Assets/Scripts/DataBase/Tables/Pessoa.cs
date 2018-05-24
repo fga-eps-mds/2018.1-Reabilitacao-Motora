@@ -126,7 +126,7 @@ namespace pessoa
 		{
 			DataBase banco = new DataBase();
 			string query = "CREATE TABLE IF NOT EXISTS PESSOA (idPessoa INTEGER primary key AUTOINCREMENT,nomePessoa VARCHAR (30) not null,sexo CHAR (1) not null,dataNascimento DATE not null,telefone1 VARCHAR (11) not null,telefone2 VARCHAR (11));";
-			banco.Create(GlobalController.path, query);
+			banco.Create(query);
 		}
 
 		/**
@@ -141,7 +141,7 @@ namespace pessoa
 		{
 			DataBase banco = new DataBase();
 			Object[] columns = new Object[] {nomePessoa, sexo, dataNascimento, telefone1, telefone2};
-			banco.Insert(GlobalController.path, columns, TablesManager.Tables[tableId].tableName, tableId);	
+			banco.Insert(columns, TablesManager.Tables[tableId].tableName, tableId);	
 		}
 
 		/**
@@ -156,7 +156,7 @@ namespace pessoa
 		{
 			DataBase banco = new DataBase();
 			Object[] columns = new Object[] {id, nomePessoa, sexo, dataNascimento, telefone1, telefone2};
-			banco.Update(GlobalController.path, columns, TablesManager.Tables[tableId].tableName, tableId);
+			banco.Update(columns, TablesManager.Tables[tableId].tableName, tableId);
 		}
 
 		/**
@@ -175,7 +175,7 @@ namespace pessoa
 
 			Object[] columns = new Object[] {idPessoaTemp, nomePessoaTemp, sexoTemp, dataNascimentoTemp, telefone1Temp, telefone2Temp};
 
-			List<Pessoa> personList = banco.Read<Pessoa>(GlobalController.path, TablesManager.Tables[tableId].tableName, columns);
+			List<Pessoa> personList = banco.Read<Pessoa>(TablesManager.Tables[tableId].tableName, columns);
 
 			return personList;		
 		}
@@ -193,7 +193,7 @@ namespace pessoa
 
 			Object[] columns = new Object[] {idPessoaTemp, nomePessoaTemp, sexoTemp, dataNascimentoTemp, telefone1Temp, telefone2Temp};
 
-			Pessoa person = banco.ReadValue<Pessoa>(GlobalController.path, TablesManager.Tables[tableId].tableName,
+			Pessoa person = banco.ReadValue<Pessoa>(TablesManager.Tables[tableId].tableName,
 				TablesManager.Tables[tableId].colName[0], id, columns);
 			return person;
 		}

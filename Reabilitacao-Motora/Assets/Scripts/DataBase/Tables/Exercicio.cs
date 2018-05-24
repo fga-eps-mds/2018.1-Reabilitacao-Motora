@@ -122,7 +122,7 @@ namespace exercicio
 		{
 			DataBase banco = new DataBase();   
 			string query = "CREATE TABLE IF NOT EXISTS EXERCICIO (idExercicio INTEGER primary key AUTOINCREMENT,idPaciente INTEGER not null,idMovimento INTEGER not null,idSessao INTEGER not null,descricaoExercicio VARCHAR (150),pontosExercicio VARCHAR (150) not null,foreign key (idSessao) references SESSAO (idSessao),foreign key (idMovimento) references MOVIMENTO (idMovimento),foreign key (idPaciente) references PACIENTE (idPaciente));";
-			banco.Create(GlobalController.path, query);
+			banco.Create(query);
 		}
 
 		/**
@@ -136,7 +136,7 @@ namespace exercicio
 		{
 			DataBase banco = new DataBase();
 			Object[] columns = new Object[] {idPaciente, idMovimento, idSessao, descricaoExercicio, pontosExercicio};
-			banco.Insert(GlobalController.path, columns, TablesManager.Tables[tableId].tableName, tableId);	
+			banco.Insert(columns, TablesManager.Tables[tableId].tableName, tableId);	
 		}
 
 		/**
@@ -151,7 +151,7 @@ namespace exercicio
 		{
 			DataBase banco = new DataBase();
 			Object[] columns = new Object[] {id, idPaciente, idMovimento, idSessao, descricaoExercicio, pontosExercicio};
-			banco.Update(GlobalController.path, columns, TablesManager.Tables[tableId].tableName, tableId);
+			banco.Update(columns, TablesManager.Tables[tableId].tableName, tableId);
 		}
 
 		/**
@@ -169,7 +169,7 @@ namespace exercicio
 
 			Object[] columns = new Object[] {idExercicioTemp, idPacienteTemp, idMovimentoTemp, idSessaoTemp, descricaoExercicioTemp, pontosExercicioTemp};
 
-			List<Exercicio> exerciseList = banco.Read<Exercicio>(GlobalController.path, TablesManager.Tables[tableId].tableName, columns);
+			List<Exercicio> exerciseList = banco.Read<Exercicio>(TablesManager.Tables[tableId].tableName, columns);
 
 			return exerciseList;
 		}
@@ -188,7 +188,7 @@ namespace exercicio
 
 			Object[] columns = new Object[] {idExercicioTemp, idPacienteTemp, idMovimentoTemp, idSessaoTemp, descricaoExercicioTemp, pontosExercicioTemp};
 
-			Exercicio exercise = banco.ReadValue<Exercicio>(GlobalController.path, TablesManager.Tables[tableId].tableName,
+			Exercicio exercise = banco.ReadValue<Exercicio>(TablesManager.Tables[tableId].tableName,
 				TablesManager.Tables[tableId].colName[0], id, columns);
 
 			return exercise;

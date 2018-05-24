@@ -67,7 +67,7 @@ namespace movimentomusculo
 		{
 			DataBase banco = new DataBase();
 			string query = "CREATE TABLE IF NOT EXISTS MOVIMENTOMUSCULO (idMusculo INTEGER not null,idMovimento INTEGER not null, foreign key (idMovimento) references MOVIMENTO (idMovimento),foreign key (idMusculo) references MUSCULO (idMusculo),primary key (idMusculo, idMovimento));";
-			banco.Create(GlobalController.path, query);
+			banco.Create(query);
 		}
 
 		/**
@@ -77,11 +77,10 @@ namespace movimentomusculo
 			int idMovimento)
 		{
 			DataBase banco = new DataBase();
-			using (banco.conn = new SqliteConnection(GlobalController.path))
+			using (var conn = new SqliteConnection(GlobalController.path))
 			{
-				banco.conn.Open();
-				banco.cmd = banco.conn.CreateCommand();
-				banco.sqlQuery = "insert into MOVIMENTOMUSCULO (";
+				conn.Open();
+				var sqlQuery = "insert into MOVIMENTOMUSCULO (";
 
 				int tableSize = TablesManager.Tables[tableId].colName.Count;
 
@@ -98,15 +97,18 @@ namespace movimentomusculo
 						aux = ",";
 					}
 
-					banco.sqlQuery += (TablesManager.Tables[tableId].colName[i] + aux);
+					sqlQuery += (TablesManager.Tables[tableId].colName[i] + aux);
 				}
 
-				banco.sqlQuery += string.Format(" values (\"{0}\",\"{1}\")", idMusculo,
+				sqlQuery += string.Format(" values (\"{0}\",\"{1}\")", idMusculo,
 					idMovimento);
 
-				banco.cmd.CommandText = banco.sqlQuery;
-				banco.cmd.ExecuteScalar();
-				banco.conn.Close();
+				using (var cmd = new SqliteCommand(sqlQuery, conn))
+				{
+					cmd.ExecuteNonQuery();
+				}
+
+				conn.Close();
 			}
 		}
 
@@ -116,20 +118,22 @@ namespace movimentomusculo
 		public static void Update(int idMusculo, int idMovimento)
 		{
 			DataBase banco = new DataBase();
-			using (banco.conn = new SqliteConnection(GlobalController.path))
+			using (var conn = new SqliteConnection(GlobalController.path))
 			{
-				banco.conn.Open();
-				banco.cmd = banco.conn.CreateCommand();
+				conn.Open();
 
-				banco.sqlQuery = string.Format("UPDATE \"{0}\" set ", TablesManager.Tables[tableId].tableName);
-				banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",", TablesManager.Tables[tableId].colName[0], idMusculo);
-				banco.sqlQuery += string.Format("\"{0}\"=\"{1}\" ", TablesManager.Tables[tableId].colName[1], idMovimento);
+				var sqlQuery = string.Format("UPDATE \"{0}\" set ", TablesManager.Tables[tableId].tableName);
+				sqlQuery += string.Format("\"{0}\"=\"{1}\",", TablesManager.Tables[tableId].colName[0], idMusculo);
+				sqlQuery += string.Format("\"{0}\"=\"{1}\" ", TablesManager.Tables[tableId].colName[1], idMovimento);
 
-				banco.sqlQuery += string.Format("WHERE \"{0}\" = \"{1}\", \"{2}\" = \"{3}\"", TablesManager.Tables[tableId].colName[0], idMusculo, TablesManager.Tables[tableId].colName[1], idMusculo);
+				sqlQuery += string.Format("WHERE \"{0}\" = \"{1}\", \"{2}\" = \"{3}\"", TablesManager.Tables[tableId].colName[0], idMusculo, TablesManager.Tables[tableId].colName[1], idMusculo);
 
-				banco.cmd.CommandText = banco.sqlQuery;
-				banco.cmd.ExecuteScalar();
-				banco.conn.Close();
+				using (var cmd = new SqliteCommand(sqlQuery, conn))
+				{
+					cmd.ExecuteNonQuery();
+				}
+
+				conn.Close();
 			}
 		}
 
@@ -144,7 +148,7 @@ namespace movimentomusculo
 
 			Object[] columns = new Object[] {idMusculoTemp,idMovimentoTemp};
 
-			List<MovimentoMusculo> muscleMovements = banco.Read<MovimentoMusculo>(GlobalController.path, TablesManager.Tables[tableId].tableName, columns);
+			List<MovimentoMusculo> muscleMovements = banco.Read<MovimentoMusculo>(TablesManager.Tables[tableId].tableName, columns);
 
 			return muscleMovements;
 		}
@@ -155,16 +159,18 @@ namespace movimentomusculo
 		public static void DeleteValue(int id1, int id2)
 		{
 			DataBase banco = new DataBase();
-			using (banco.conn = new SqliteConnection(GlobalController.path))
+			using (var conn = new SqliteConnection(GlobalController.path))
 			{
-				banco.conn.Open();
-				banco.cmd = banco.conn.CreateCommand();
+				conn.Open();
 
-				banco.sqlQuery = string.Format("delete from \"{0}\" WHERE \"{1}\" = \"{2}\" AND \"{3}\" = \"{4}\"", TablesManager.Tables[tableId].tableName, TablesManager.Tables[tableId].colName[0], id1, TablesManager.Tables[tableId].colName[1], id2);
+				var sqlQuery = string.Format("delete from \"{0}\" WHERE \"{1}\" = \"{2}\" AND \"{3}\" = \"{4}\"", TablesManager.Tables[tableId].tableName, TablesManager.Tables[tableId].colName[0], id1, TablesManager.Tables[tableId].colName[1], id2);
 
-				banco.cmd.CommandText = banco.sqlQuery;
-				banco.cmd.ExecuteScalar();
-				banco.conn.Close();
+				using (var cmd = new SqliteCommand(sqlQuery, conn))
+				{
+					cmd.ExecuteNonQuery();
+				}
+
+				conn.Close();
 			}
 		}
 
