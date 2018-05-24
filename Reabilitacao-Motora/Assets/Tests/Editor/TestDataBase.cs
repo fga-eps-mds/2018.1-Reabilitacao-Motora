@@ -27,19 +27,31 @@ namespace Tests
 		public void SetUp()
 		{
 			database = new DataBase();
+			var create = "CREATE TABLE IF NOT EXISTS TESTE (idTable INTEGER primary key AUTOINCREMENT,nome VARCHAR (255) not null);";
+			GlobalController.Initialize();
+			database.Create (create);
 		}
 
+		public class Teste
+		{
+			private int IdTable;
+			private string Nome;
+			public int idTable {get{return IdTable;} set {IdTable = value;}}
+			public string nome {get{return Nome;} set {Nome = value;}}
+			public Teste (System.Object[] cols)
+			{
+				this.idTable = (int) cols[0];
+				this.nome = (string) cols[1];
+			}
+		}
+		
 		[Test]
 		public void TestCreate ()
 		{
-			GlobalController.Initialize();
 			using (var conn = new SqliteConnection(GlobalController.path))
 			{
 				conn.Open();
-				var query = "CREATE TABLE IF NOT EXISTS TESTE (idTable INTEGER primary key AUTOINCREMENT,nome VARCHAR (255) not null);";
 				var check = "SELECT count(*) FROM sqlite_master WHERE type='table' AND name='TESTE';";
-
-				database.Create (query);
 
 				var result = 0;
 
@@ -70,10 +82,6 @@ namespace Tests
 
 				conn.Dispose();
 				conn.Close();
-				SqliteConnection.ClearAllPools();
-
-				GC.Collect();
-				GC.WaitForPendingFinalizers();
 			}
 			return;
 		}
@@ -82,12 +90,9 @@ namespace Tests
 		[Test]
 		public void TestInsert ()
 		{
-			GlobalController.Initialize();
 			using (var conn = new SqliteConnection(GlobalController.path))
 			{
 				conn.Open();
-				var create = "CREATE TABLE IF NOT EXISTS TESTE (idTable INTEGER primary key AUTOINCREMENT,nome VARCHAR (255) not null);";
-				database.Create (create);
 
 				System.Object[] columns = new System.Object[] {"fake testname"};
 				database.Insert(columns, TablesManager.Tables[10].tableName, 10);
@@ -123,11 +128,6 @@ namespace Tests
 
 				conn.Dispose();
 				conn.Close();
-				SqliteConnection.ClearAllPools();
-
-				GC.Collect();
-				GC.WaitForPendingFinalizers();
-				
 			}
 
 			return;
@@ -136,12 +136,9 @@ namespace Tests
 		[Test]
 		public void TestUpdate ()
 		{
-			GlobalController.Initialize();
 			using (var conn = new SqliteConnection(GlobalController.path))
 			{
 				conn.Open();
-				var create = "CREATE TABLE IF NOT EXISTS TESTE (idTable INTEGER primary key AUTOINCREMENT,nome VARCHAR (255) not null);";
-				database.Create (create);
 
 				System.Object[] columnsToInsert = new System.Object[] {"fake testname"};
 				database.Insert(columnsToInsert, TablesManager.Tables[10].tableName, 10);
@@ -180,39 +177,18 @@ namespace Tests
 				Assert.AreEqual (result, "testname fake");
 
 				conn.Dispose();
-				conn.Close();
-				SqliteConnection.ClearAllPools();
-
-				GC.Collect();
-				GC.WaitForPendingFinalizers();
-				
+				conn.Close();			
 			}
 
 			return;
 		}
 
-		public class Teste
-		{
-			private int IdTable;
-			private string Nome;
-			public int idTable {get{return IdTable;} set {IdTable = value;}}
-			public string nome {get{return Nome;} set {Nome = value;}}
-			public Teste (System.Object[] cols)
-			{
-				this.idTable = (int) cols[0];
-				this.nome = (string) cols[1];
-			}
-		}
-
 		[Test]
 		public void TestRead ()
 		{
-			GlobalController.Initialize();
 			using (var conn = new SqliteConnection(GlobalController.path))
 			{
 				conn.Open();
-				var create = "CREATE TABLE IF NOT EXISTS TESTE (idTable INTEGER primary key AUTOINCREMENT,nome VARCHAR (255) not null);";
-				database.Create (create);
 
 				System.Object[] columnsToInsert = new System.Object[] {"fake testname0"};
 				database.Insert(columnsToInsert, TablesManager.Tables[10].tableName, 10);
@@ -234,11 +210,39 @@ namespace Tests
 
 				conn.Dispose();
 				conn.Close();
-				SqliteConnection.ClearAllPools();
+			}
 
-				GC.Collect();
-				GC.WaitForPendingFinalizers();
+			return;
+		}
+
+		[Test]
+		public void TestReadValue ()
+		{
+			using (var conn = new SqliteConnection(GlobalController.path))
+			{
+				conn.Open();
+
+				System.Object[] columnsToInsert = new System.Object[] {"fake testname0"};
+				database.Insert(columnsToInsert, TablesManager.Tables[10].tableName, 10);
+				columnsToInsert = new System.Object[] {"fake testname1"};
+				database.Insert(columnsToInsert, TablesManager.Tables[10].tableName, 10);
+				columnsToInsert = new System.Object[] {"fake testname2"};
+				database.Insert(columnsToInsert, TablesManager.Tables[10].tableName, 10);
+
+
+				System.Object[] columnsToRead = new System.Object[] {0, ""};
+				for (int i = 0; i < 3; ++i)
+				{
+					Teste allTests = database.ReadValue<Teste>(TablesManager.Tables[10].tableName,
+					TablesManager.Tables[10].colName[0], i+1, columnsToRead);
+
+					Assert.AreEqual (allTests.idTable, i+1);
+					Assert.AreEqual (allTests.nome, string.Format("fake testname{0}", i));
+				}
+
 				
+				conn.Dispose();
+				conn.Close();
 			}
 
 			return;
@@ -247,38 +251,15 @@ namespace Tests
 		[TearDown]
 		public void AfterEveryTest ()
 		{
+			SqliteConnection.ClearAllPools();
+
+			GC.Collect();
+			GC.WaitForPendingFinalizers();
+
 			database.Drop(10);
+			database = null;
 		}
 
-// 		[Test]
-// 		public T ReadValue<T> ()
-// 		{
-// 			database.ReadValue<T> (string path, string tableName, string colName, int idTable, System.Object[] columns);
-
-// 			using (conn = new SqliteConnection(path))
-// 			{
-// 				conn.Open();
-// 				cmd = conn.CreateCommand();
-// 				sqlQuery = "SELECT * " + string.Format("FROM \"{0}\" WHERE \"{1}\" = \"{2}\";", tableName,
-// 																		    					  colName,
-// 																								 idTable);
-// 				cmd.CommandText = sqlQuery;
-// 				IDataReader reader = cmd.ExecuteReader();
-// 				reader.Read();
-
-// 				var aux = columns;
-// 				ObjectArray (ref aux, ref reader);
-// 				var columnsCopy = aux;
-
-// 				Type classType = typeof(T);
-// 				ConstructorInfo classConstructor = classType.GetConstructor(new [] { columnsCopy.GetType() });
-// 				T classInstance = (T)classConstructor.Invoke(new object[] { columnsCopy });
-
-// 				CloseDB(reader, cmd, conn);
-
-// 				return classInstance;	 
-// 			}
-// 		}
 
 // 		/**
 // 		* Função que deleta dados cadastrados anteriormente na relação de pessoas.
