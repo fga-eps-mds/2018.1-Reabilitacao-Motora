@@ -86,6 +86,47 @@ namespace Tests
 			return;
 		}
 
+		[Test]
+		public void TestDrop ()
+		{
+			using (var conn = new SqliteConnection(GlobalController.path))
+			{
+				conn.Open();
+				database.Drop(10);
+				var check = "SELECT count(*) FROM sqlite_master WHERE type='table' AND name='TESTE';";
+
+				var result = 0;
+
+				using (var cmd = new SqliteCommand(check, conn))
+				{
+					using (IDataReader reader = cmd.ExecuteReader())
+					{
+						try
+						{
+							while (reader.Read())
+							{
+								if (!reader.IsDBNull(0)) 
+								{
+									result = reader.GetInt32(0);
+								}
+							}
+						}
+						finally
+						{
+							reader.Dispose();
+							reader.Close();
+						}
+					}
+					cmd.Dispose();
+				}
+
+				Assert.AreEqual (result, 0);
+
+				conn.Dispose();
+				conn.Close();
+			}
+			return;
+		}
 		
 		[Test]
 		public void TestInsert ()
@@ -319,6 +360,7 @@ namespace Tests
 			return;
 		}
 
+
 		[TearDown]
 		public void AfterEveryTest ()
 		{
@@ -332,47 +374,11 @@ namespace Tests
 		}
 
 
-// 		/**
-// 		* Função que deleta dados cadastrados anteriormente na relação de pessoas.
-// 		 */
-// 		[Test]
-// 		public void TestDeleteValue()
-// 		{
-// 			database.DeleteValue(int tableId, int id);
 
-// 			using (conn = new SqliteConnection(GlobalController.path))
-// 			{
-// 				conn.Open();
-// 				cmd = conn.CreateCommand();
-
-// 				sqlQuery = string.Format("delete from \"{0}\" WHERE \"{1}\" = \"{2}\"", TablesManager.Tables[tableId].tableName, TablesManager.Tables[tableId].colName[0], id);
-
-// 				cmd.CommandText = sqlQuery;
-// 				cmd.ExecuteScalar();
-// 				conn.Close();
-// 			}
-// 		}
 
 // 		/**
 // 		* Função que apaga a relação de pessoas inteira de uma vez.
 // 		 */
-// 		[Test]
-// 		public void TestDrop()
-// 		{
-// 			database.Drop(int tableId);
-
-// 			using (conn = new SqliteConnection(GlobalController.path))
-// 			{
-// 				conn.Open();
-// 				cmd = conn.CreateCommand();
-
-// 				sqlQuery = string.Format("DROP TABLE IF EXISTS \"{0}\"", TablesManager.Tables[tableId].tableName);
-
-// 				cmd.CommandText = sqlQuery;
-// 				cmd.ExecuteScalar();
-// 				conn.Close();
-// 			}
-// 		}
 
 // 	
 
