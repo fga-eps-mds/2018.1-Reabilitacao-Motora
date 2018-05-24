@@ -291,6 +291,7 @@ namespace DataBaseAttributes
 				conn.Open();
 
 				var sqlQuery = string.Format("DROP TABLE IF EXISTS \"{0}\"", TablesManager.Tables[tableId].tableName);
+
 				using (var cmd = new SqliteCommand(sqlQuery, conn))
 				{
 					cmd.ExecuteNonQuery();

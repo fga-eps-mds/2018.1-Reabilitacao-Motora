@@ -129,51 +129,71 @@ namespace Tests
 
 				GC.Collect();
 				GC.WaitForPendingFinalizers();
+				
+				database.Drop(10);
 			}
 
-			database.Drop(10);
 			return;
 		}
 
-// 		[Test]
-// 		public void TestUpdate ()
-// 		{
-// 			database.Update (string path, System.Object[] columns, string tableName, int tableId);
+		[Test]
+		public void TestUpdate ()
+		{
+			GlobalController.Initialize();
+			using (var conn = new SqliteConnection(GlobalController.path))
+			{
+				conn.Open();
+				var create = "CREATE TABLE IF NOT EXISTS TESTE (idTable INTEGER primary key AUTOINCREMENT,nome VARCHAR (255) not null);";
+				database.Create (create);
 
-// 			using (conn = new SqliteConnection(path))
-// 			{
-// 				conn.Open();
-// 				cmd = conn.CreateCommand();
-// 				StringBuilder bld = new StringBuilder();
+				System.Object[] columnsToInsert = new System.Object[] {"fake testname"};
+				database.Insert(columnsToInsert, TablesManager.Tables[10].tableName, 10);
 
-// 				bld.Append(string.Format("UPDATE \"{0}\" set ", tableName));
+				System.Object[] columnsToUpdate = new System.Object[] {1, "testname fake"};
+				database.Update(columnsToUpdate, TablesManager.Tables[10].tableName, 10);
 
-// 				for (int i = 1; i < TablesManager.Tables[tableId].colName.Count; ++i)
-// 				{
-// 					string aux;
+				var check = "SELECT * FROM TESTE;";
 
-// 					if (i + 1 == columns.Length)
-// 					{
-// 						aux = " ";
-// 					}
-// 					else
-// 					{
-// 						aux = ",";
-// 					}
+				var result = "";
 
-// 					bld.Append(string.Format("\"{0}\"=\"{1}\"{2}", TablesManager.Tables[tableId].colName[i], columns[i], aux));
-// 				}
+				using (var cmd = new SqliteCommand(check, conn))
+				{
+					using (IDataReader reader = cmd.ExecuteReader())
+					{
+						try
+						{
+							while (reader.Read())
+							{
+								if (!reader.IsDBNull(1)) 
+								{
+									result = reader.GetString(1);
+								}
+							}
+						}
+						finally
+						{
+							reader.Dispose();
+							reader.Close();
+						}
+					}
+					cmd.Dispose();
+				}
 
-// 				bld.Append(string.Format("WHERE \"{0}\" = \"{1}\"", TablesManager.Tables[tableId].colName[0], columns[0]));
+				Assert.AreNotEqual (result, "fake testname");
+				Assert.AreEqual (result, "testname fake");
 
-// 				sqlQuery = bld.ToString();
+				conn.Dispose();
+				conn.Close();
+				SqliteConnection.ClearAllPools();
 
-// 				cmd.CommandText = sqlQuery;
+				GC.Collect();
+				GC.WaitForPendingFinalizers();
 				
-// 				cmd.ExecuteScalar();
-// 				conn.Close();
-// 			}
-// 		}
+				database.Drop(10);
+			}
+
+			return;
+		}
 
 
 // 		[Test]
