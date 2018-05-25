@@ -45,8 +45,18 @@ public class createMovement : MonoBehaviour
 			pathSave += movunderscored + "-";
 			pathSave += DateTime.Now.ToString("HHmmss", System.Globalization.DateTimeFormatInfo.InvariantInfo);
 
+			string description;
+			if (descricao.text == "")
+			{
+				description = null;
+			}
+			else
+			{
+				description = descricao.text;
+			}
+
 			Movimento.Insert (GlobalController.instance.admin.idFisioterapeuta,
-				nomeMovimento.text, descricao.text, pathSave);
+				nomeMovimento.text, pathSave, description);
 
 			List<Movimento> movementsList = Movimento.Read();
 

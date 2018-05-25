@@ -125,6 +125,21 @@ namespace Tests
 			{
 				conn.Open();
 
+				Pessoa.Insert("patient name1", "m", "1995-01-01", "6198732711", null);
+				Pessoa.Insert("patient name2", "m", "1995-01-02", "6198732712", null);
+				Pessoa.Insert("patient name3", "m", "1995-01-03", "6198732713", null);
+				Pessoa.Insert("physio name1", "m", "1995-01-04", "6198732714", null);
+				Pessoa.Insert("physio name2", "m", "1995-01-05", "6198732715", null);
+				Pessoa.Insert("physio name3", "m", "1995-01-06", "6198732716", null);
+				
+				Fisioterapeuta.Insert(4, "abracadabra1", "demais1", null, null);
+				Fisioterapeuta.Insert(5, "abracadabra2", "demais2", null, null);
+				Fisioterapeuta.Insert(6, "abracadabra3", "demais3", null, null);
+
+				Paciente.Insert(1, null);
+				Paciente.Insert(2, null);
+				Paciente.Insert(3, null);
+
 				Sessao.Insert(1, 1, "2018-03-01", null);
 				Sessao.Insert(2, 2, "2018-03-02", "procedimento2");
                 Sessao.Insert(3, 3, "2018-03-03", "procedimento3");
@@ -198,6 +213,21 @@ namespace Tests
 			{
 				conn.Open();
 
+				Pessoa.Insert("patient name1", "m", "1995-01-01", "6198732711", null);
+				Pessoa.Insert("patient name2", "m", "1995-01-02", "6198732712", null);
+				Pessoa.Insert("patient name3", "m", "1995-01-03", "6198732713", null);
+				Pessoa.Insert("physio name1", "m", "1995-01-04", "6198732714", null);
+				Pessoa.Insert("physio name2", "m", "1995-01-05", "6198732715", null);
+				Pessoa.Insert("physio name3", "m", "1995-01-06", "6198732716", null);
+				
+				Fisioterapeuta.Insert(4, "abracadabra1", "demais1", null, null);
+				Fisioterapeuta.Insert(5, "abracadabra2", "demais2", null, null);
+				Fisioterapeuta.Insert(6, "abracadabra3", "demais3", null, null);
+
+				Paciente.Insert(1, null);
+				Paciente.Insert(2, null);
+				Paciente.Insert(3, null);
+
                 Sessao.Insert(1, 1, "2018-03-01", null);
                 Sessao.Insert(2, 2, "2018-03-02", "procedimento2");
                 Sessao.Insert(3, 3, "2018-03-03", "procedimento3");
@@ -270,6 +300,21 @@ namespace Tests
 			{
 				conn.Open();
 
+				Pessoa.Insert("patient name1", "m", "1995-01-01", "6198732711", null);
+				Pessoa.Insert("patient name2", "m", "1995-01-02", "6198732712", null);
+				Pessoa.Insert("patient name3", "m", "1995-01-03", "6198732713", null);
+				Pessoa.Insert("physio name1", "m", "1995-01-04", "6198732714", null);
+				Pessoa.Insert("physio name2", "m", "1995-01-05", "6198732715", null);
+				Pessoa.Insert("physio name3", "m", "1995-01-06", "6198732716", null);
+				
+				Fisioterapeuta.Insert(4, "abracadabra1", "demais1", null, null);
+				Fisioterapeuta.Insert(5, "abracadabra2", "demais2", null, null);
+				Fisioterapeuta.Insert(6, "abracadabra3", "demais3", null, null);
+
+				Paciente.Insert(1, null);
+				Paciente.Insert(2, null);
+				Paciente.Insert(3, null);
+
                 Sessao.Insert(1, 1, "2018-03-01", null);
                 Sessao.Insert(2, 2, "2018-03-02", "procedimento2");
                 Sessao.Insert(3, 3, "2018-03-03", "procedimento3");
@@ -281,8 +326,7 @@ namespace Tests
 					Assert.AreEqual (allSessions[i].idSessao, i+1);
 					Assert.AreEqual (allSessions[i].idFisioterapeuta, i+1);
 					Assert.AreEqual (allSessions[i].idPaciente, i+1);
-					Assert.AreEqual (allSessions[i].dataSessao, string.Format("1995-01-0{0}", i+1));
-					Assert.AreEqual (allSessions[i].observacaoSessao, string.Format("procedimento{0}", i+1));
+					Assert.AreEqual (allSessions[i].dataSessao, string.Format("2018-03-0{0}", i+1));
 
                     if (i == 0)
                     {
@@ -307,6 +351,21 @@ namespace Tests
 			using (var conn = new SqliteConnection(GlobalController.path))
 			{
 				conn.Open();
+
+				Pessoa.Insert("patient name1", "m", "1995-01-01", "6198732711", null);
+				Pessoa.Insert("patient name2", "m", "1995-01-02", "6198732712", null);
+				Pessoa.Insert("patient name3", "m", "1995-01-03", "6198732713", null);
+				Pessoa.Insert("physio name1", "m", "1995-01-04", "6198732714", null);
+				Pessoa.Insert("physio name2", "m", "1995-01-05", "6198732715", null);
+				Pessoa.Insert("physio name3", "m", "1995-01-06", "6198732716", null);
+				
+				Fisioterapeuta.Insert(4, "abracadabra1", "demais1", null, null);
+				Fisioterapeuta.Insert(5, "abracadabra2", "demais2", null, null);
+				Fisioterapeuta.Insert(6, "abracadabra3", "demais3", null, null);
+
+				Paciente.Insert(1, null);
+				Paciente.Insert(2, null);
+				Paciente.Insert(3, null);
 
                 Sessao.Insert(1, 1, "2018-03-01", null);
                 Sessao.Insert(2, 2, "2018-03-02", "procedimento2");
@@ -344,6 +403,21 @@ namespace Tests
 			using (var conn = new SqliteConnection(GlobalController.path))
 			{
 				conn.Open();
+
+				Pessoa.Insert("patient name1", "m", "1995-01-01", "6198732711", null);
+				Pessoa.Insert("patient name2", "m", "1995-01-02", "6198732712", null);
+				Pessoa.Insert("patient name3", "m", "1995-01-03", "6198732713", null);
+				Pessoa.Insert("physio name1", "m", "1995-01-04", "6198732714", null);
+				Pessoa.Insert("physio name2", "m", "1995-01-05", "6198732715", null);
+				Pessoa.Insert("physio name3", "m", "1995-01-06", "6198732716", null);
+				
+				Fisioterapeuta.Insert(4, "abracadabra1", "demais1", null, null);
+				Fisioterapeuta.Insert(5, "abracadabra2", "demais2", null, null);
+				Fisioterapeuta.Insert(6, "abracadabra3", "demais3", null, null);
+
+				Paciente.Insert(1, null);
+				Paciente.Insert(2, null);
+				Paciente.Insert(3, null);
 
                 Sessao.Insert(1, 1, "2018-03-01", null);
                 Sessao.Insert(2, 2, "2018-03-02", "procedimento2");

@@ -97,8 +97,8 @@ public static class TablesManager
 			"idMovimento",
 			"idFisioterapeuta",
 			"nomeMovimento",
-			"descricaoMovimento",
-			"pontosMovimento"
+			"pontosMovimento",
+			"descricaoMovimento"
 		}
 	};
 
@@ -124,8 +124,8 @@ public static class TablesManager
 			"idPaciente",
 			"idMovimento",
 			"idSessao",
-			"descricaoExercicio",
-			"pontosExercicio"
+			"pontosExercicio",
+			"descricaoExercicio"
 		}
 	};
 

@@ -38,7 +38,7 @@ public class createExercise : MonoBehaviour
 		Exercicio.Insert(GlobalController.instance.user.idPaciente, 
 			GlobalController.instance.movement.idMovimento,
 			GlobalController.instance.session.idSessao, 
-			null, pathSave);
+			pathSave, null);
 
 		List<Exercicio> exercises = Exercicio.Read();
 		GlobalController.instance.exercise = exercises[exercises.Count - 1];

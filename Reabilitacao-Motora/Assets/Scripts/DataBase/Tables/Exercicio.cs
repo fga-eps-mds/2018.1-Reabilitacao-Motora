@@ -18,15 +18,15 @@ namespace exercicio
 		private int IdPaciente;
 		private int IdMovimento;
 		private int IdSessao;
-		private string DescricaoExercicio;
 		private string PontosExercicio;
+		private string DescricaoExercicio;
 
 		public int idExercicio { get { return IdExercicio; } set { IdExercicio = value; }}
 		public int idPaciente { get { return IdPaciente; } set { IdPaciente = value; }}
 		public int idMovimento { get { return IdMovimento; } set { IdMovimento = value; }}
 		public int idSessao { get { return IdSessao; } set { IdSessao = value; }}
-		public string descricaoExercicio { get { return DescricaoExercicio; } set { DescricaoExercicio = value; }}
 		public string pontosExercicio { get { return PontosExercicio; } set { PontosExercicio = value; }}
+		public string descricaoExercicio { get { return DescricaoExercicio; } set { DescricaoExercicio = value; }}
 
 
 		/**
@@ -38,8 +38,8 @@ namespace exercicio
 			this.idPaciente = (int)columns[1];
 			this.idMovimento = (int)columns[2];
 			this.idSessao = (int)columns[3];
-			this.descricaoExercicio = (string)columns[4];
-			this.pontosExercicio = (string)columns[5];
+			this.pontosExercicio = (string)columns[4];
+			this.descricaoExercicio = (string)columns[5];
 		}
 
 		/**
@@ -48,7 +48,7 @@ namespace exercicio
 		public static void Create()
 		{
 			DataBase banco = new DataBase();   
-			string query = "CREATE TABLE IF NOT EXISTS EXERCICIO (idExercicio INTEGER primary key AUTOINCREMENT,idPaciente INTEGER not null,idMovimento INTEGER not null,idSessao INTEGER not null,descricaoExercicio VARCHAR (150),pontosExercicio VARCHAR (150) not null,foreign key (idSessao) references SESSAO (idSessao),foreign key (idMovimento) references MOVIMENTO (idMovimento),foreign key (idPaciente) references PACIENTE (idPaciente));";
+			string query = "CREATE TABLE IF NOT EXISTS EXERCICIO (idExercicio INTEGER primary key AUTOINCREMENT,idPaciente INTEGER not null,idMovimento INTEGER not null,idSessao INTEGER not null,pontosExercicio VARCHAR (150) not null,descricaoExercicio VARCHAR (150),foreign key (idSessao) references SESSAO (idSessao),foreign key (idMovimento) references MOVIMENTO (idMovimento),foreign key (idPaciente) references PACIENTE (idPaciente));";
 			banco.Create(query);
 		}
 
@@ -58,11 +58,11 @@ namespace exercicio
 		public static void Insert(int idPaciente,
 			int idMovimento,
 			int idSessao,
-			string descricaoExercicio,
-			string pontosExercicio)
+			string pontosExercicio,
+			string descricaoExercicio)
 		{
 			DataBase banco = new DataBase();
-			Object[] columns = new Object[] {idPaciente, idMovimento, idSessao, descricaoExercicio, pontosExercicio};
+			Object[] columns = new Object[] {idPaciente, idMovimento, idSessao, pontosExercicio, descricaoExercicio};
 			banco.Insert(columns, TablesManager.Tables[tableId].tableName, tableId);	
 		}
 
@@ -73,11 +73,11 @@ namespace exercicio
 			int idPaciente,
 			int idMovimento,
 			int idSessao,
-			string descricaoExercicio,
-			string pontosExercicio)
+			string pontosExercicio,
+			string descricaoExercicio)
 		{
 			DataBase banco = new DataBase();
-			Object[] columns = new Object[] {id, idPaciente, idMovimento, idSessao, descricaoExercicio, pontosExercicio};
+			Object[] columns = new Object[] {id, idPaciente, idMovimento, idSessao, pontosExercicio, descricaoExercicio};
 			banco.Update(columns, TablesManager.Tables[tableId].tableName, tableId);
 		}
 

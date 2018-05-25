@@ -124,11 +124,14 @@ namespace Tests
 			{
 				conn.Open();
 
+				Pessoa.Insert("fake name1", "m", "1995-01-01", "6198732711", null);
+				Pessoa.Insert("fake name2", "m", "1995-01-02", "6198732712", null);
+
 				Fisioterapeuta.Insert(1, "abracadabra1", "demais1", null, null);
 				Fisioterapeuta.Insert(2, "abracadabra2", "demais2", "DF", "123424");
 
-                Movimento.Insert(1, "Movimento1", null, "Musculo Redondo Maior");
-				Movimento.Insert(2, "Movimento2", "Dificuldade nesse local", "Musculo Redondo Maior");
+				Movimento.Insert(1, "Movimento1", "Musculo Redondo Maior", null);
+				Movimento.Insert(2, "Movimento2", "Musculo Redondo Maior", "Dificuldade nesse local");
 
 				var check = "SELECT * FROM MOVIMENTO;";
 
@@ -162,22 +165,22 @@ namespace Tests
 									Assert.AreEqual (result, string.Format("Movimento{0}", i));
 								}
 
-                                if (!reader.IsDBNull(3))
+								if (!reader.IsDBNull(3))
 								{
 									result = reader.GetString(3);
-									Assert.AreEqual (result, "Dificuldade nesse local");
+									Assert.AreEqual (result, "Musculo Redondo Maior");
 								}
 
 								if (!reader.IsDBNull(4))
 								{
 									result = reader.GetString(4);
-									Assert.AreEqual (result, "Musculo Redondo Maior");
+									Assert.AreEqual (result, "Dificuldade nesse local");
 								}
 
 								i++;
 							}
 						}
-						    finally
+						finally
 						{
 							reader.Dispose();
 							reader.Close();
@@ -198,14 +201,17 @@ namespace Tests
 			{
 				conn.Open();
 
-                Fisioterapeuta.Insert(1, "abracadabra1", "demais1", null, null);
+				Pessoa.Insert("fake name1", "m", "1995-01-01", "6198732711", null);
+				Pessoa.Insert("fake name2", "m", "1995-01-02", "6198732712", null);
+
+				Fisioterapeuta.Insert(1, "abracadabra1", "demais1", null, null);
 				Fisioterapeuta.Insert(2, "abracadabra2", "demais2", "DF", "123424");
 
-                Movimento.Insert(1, "Movimento1", null, "Musculo Redondo Maior");
-				Movimento.Insert(2, "Movimento2", "Dificuldade nesse local", "Musculo Redondo Maior");
+				Movimento.Insert(1, "Movimento1", "Musculo Redondo Maior", null);
+				Movimento.Insert(2, "Movimento2", "Musculo Redondo Maior", "Dificuldade nesse local");
 
-				Movimento.Update(1, 2, "Movimento11", null, "Musculo do Braquiorradial");
-				Movimento.Update(2, 1, "Movimento12", null, "Musculo do Braquiorradial");
+				Movimento.Update(1, 2, "Movimento11", "Musculo do Braquiorradial", null);
+				Movimento.Update(2, 1, "Movimento12", "Musculo do Braquiorradial", null);
 
 				var check = "SELECT * FROM MOVIMENTO;";
 
@@ -233,24 +239,25 @@ namespace Tests
 									Assert.AreEqual (id, 3-i);
 								}
 
-                                if (!reader.IsDBNull(2))
+								if (!reader.IsDBNull(2))
 								{
 									result = reader.GetString(2);
 									Assert.AreEqual (result, string.Format("Movimento1{0}", i));
 								}
 
-								if (!reader.IsDBNull(4))
+								if (!reader.IsDBNull(3))
 								{
-									result = reader.GetString(4);
+									result = reader.GetString(3);
 									Assert.AreEqual (result, "Musculo do Braquiorradial");
 								}
 
-                                Assert.AreEqual (reader.IsDBNull(3), true);
+								Assert.AreEqual (reader.IsDBNull(4), true);
+
 
 								i++;
 							}
 						}
-						    finally
+						finally
 						{
 							reader.Dispose();
 							reader.Close();
@@ -264,172 +271,178 @@ namespace Tests
 			return;
 		}
 
-    [Test]
-    public void TestReadMovement ()
-    {
-      using (var conn = new SqliteConnection(GlobalController.path))
-      {
-        conn.Open();
+		[Test]
+		public void TestReadMovement ()
+		{
+			using (var conn = new SqliteConnection(GlobalController.path))
+			{
+				conn.Open();
 
-                Fisioterapeuta.Insert(1, "abracadabra1", "demais1", null, null);
+				Pessoa.Insert("fake name1", "m", "1995-01-01", "6198732711", null);
+				Pessoa.Insert("fake name2", "m", "1995-01-02", "6198732712", null);
+
+				Fisioterapeuta.Insert(1, "abracadabra1", "demais1", null, null);
 				Fisioterapeuta.Insert(2, "abracadabra2", "demais2", "DF", "123424");
 
-                Movimento.Insert(1, "Movimento1", null, "Musculo Redondo Maior");
-				Movimento.Insert(2, "Movimento2", "Dificuldade nesse local", "Musculo Redondo Maior");
+				Movimento.Insert(1, "Movimento1", "Musculo Redondo Maior", null);
+				Movimento.Insert(2, "Movimento2", "Musculo Redondo Maior", "Dificuldade nesse local");
 
-        List<Movimento> allMovements = Movimento.Read();
+				List<Movimento> allMovements = Movimento.Read();
 
-        for (int i = 0; i < allMovements.Count; ++i)
-        {
-          Assert.AreEqual (allMovements[i].physio.idFisioterapeuta, (i+1));
-          Assert.AreEqual (allMovements[i].physio.login, string.Format("abracadabra{0}", (i+1)));
-          Assert.AreEqual (allMovements[i].physio.senha, string.Format("demais{0}", (i+1)));
-          Assert.AreEqual (allMovements[i].idMovimento, i+1);
-          Assert.AreEqual (allMovements[i].nomeMovimento, string.Format("Movimento{0}", (i+1)));
-          Assert.AreEqual (allMovements[i].pontosMovimento, "Musculo Redondo Maior");
-          if (i == 0)
-          {
-            Assert.AreEqual (allMovements[i].descricaoMovimento, "Dificuldade nesse local");
-          }
-          else
-          {
-            Assert.AreEqual (allMovements[i].descricaoMovimento, null);
-          }
-        }
+				for (int i = 0; i < allMovements.Count; ++i)
+				{
+					Assert.AreEqual (allMovements[i].physio.idFisioterapeuta, (i+1));
+					Assert.AreEqual (allMovements[i].physio.login, string.Format("abracadabra{0}", (i+1)));
+					Assert.AreEqual (allMovements[i].physio.senha, string.Format("demais{0}", (i+1)));
+					Assert.AreEqual (allMovements[i].idMovimento, i+1);
+					Assert.AreEqual (allMovements[i].nomeMovimento, string.Format("Movimento{0}", (i+1)));
+					Assert.AreEqual (allMovements[i].pontosMovimento, "Musculo Redondo Maior");
+					if (i == 1)
+					{
+						Assert.AreEqual (allMovements[i].descricaoMovimento, "Dificuldade nesse local");
+					}
+					else
+					{
+						Assert.AreEqual (allMovements[i].descricaoMovimento, null);
+					}
+				}
 
-        conn.Dispose();
-        conn.Close();
-      }
+				conn.Dispose();
+				conn.Close();
+			}
 
-      return;
-    }
+			return;
+		}
 
-    [Test]
-    public void TestReadValueMovement ()
-    {
-      using (var conn = new SqliteConnection(GlobalController.path))
-      {
-        conn.Open();
-
-                Fisioterapeuta.Insert(1, "abracadabra1", "demais1", null, null);
+		[Test]
+		public void TestReadValueMovement ()
+		{
+			using (var conn = new SqliteConnection(GlobalController.path))
+			{
+				conn.Open();
+				Pessoa.Insert("fake name1", "m", "1995-01-01", "6198732711", null);
+				Pessoa.Insert("fake name2", "m", "1995-01-02", "6198732712", null);
+				
+				Fisioterapeuta.Insert(1, "abracadabra1", "demais1", null, null);
 				Fisioterapeuta.Insert(2, "abracadabra2", "demais2", "DF", "123424");
 
-                Movimento.Insert(1, "Movimento1", null, "Musculo Redondo Maior");
-				Movimento.Insert(2, "Movimento2", "Dificuldade nesse local", "Musculo Redondo Maior");
+				Movimento.Insert(1, "Movimento1", "Musculo Redondo Maior", null);
+				Movimento.Insert(2, "Movimento2", "Musculo Redondo Maior", "Dificuldade nesse local");
 
 
-        for (int i = 0; i < 2; ++i)
-        {
+				for (int i = 0; i < 2; ++i)
+				{
+					Movimento auxMovements = Movimento.ReadValue(i+1);
 
-          Movimento auxMovements = Movimento.ReadValue(i+1);
+					Assert.AreEqual (auxMovements.physio.idFisioterapeuta, (i+1));
+					Assert.AreEqual (auxMovements.physio.login, string.Format("abracadabra{0}", (i+1)));
+					Assert.AreEqual (auxMovements.physio.senha, string.Format("demais{0}", (i+1)));
+					Assert.AreEqual (auxMovements.idMovimento, i+1);
+					Assert.AreEqual (auxMovements.nomeMovimento, string.Format("Movimento{0}", (i+1)));
+					Assert.AreEqual (auxMovements.pontosMovimento, "Musculo Redondo Maior");
 
-          Assert.AreEqual (auxMovements.physio.idFisioterapeuta, (i+1));
-          Assert.AreEqual (auxMovements.physio.login, string.Format("abracadabra{0}", (i+1)));
-          Assert.AreEqual (auxMovements.physio.senha, string.Format("demais{0}", (i+1)));
-          Assert.AreEqual (auxMovements.idMovimento, i+1);
-          Assert.AreEqual (auxMovements.nomeMovimento, string.Format("Movimento{0}", (i+1)));
-          Assert.AreEqual (auxMovements.pontosMovimento, "Musculo Redondo Maior");
+					if (i == 1)
+					{
+						Assert.AreEqual (auxMovements.descricaoMovimento, "Dificuldade nesse local");
+					}
+					else
+					{
+						Assert.AreEqual (auxMovements.descricaoMovimento, null);
+					}
+				}
 
-          if (i == 0)
-          {
-            Assert.AreEqual (auxMovements.descricaoMovimento, "Dificuldade nesse local");
-          }
-          else
-          {
-            Assert.AreEqual (auxMovements.descricaoMovimento, null);
-          }
-        }
+				conn.Dispose();
+				conn.Close();
+			}
 
-        conn.Dispose();
-        conn.Close();
-      }
-
-      return;
-    }
-
-
-    [Test]
-    public void TestDeleteValueMovement ()
-    {
-      using (var conn = new SqliteConnection(GlobalController.path))
-      {
-        conn.Open();
-
-        Fisioterapeuta.Insert(1, "abracadabra1", "demais1", null, null);
-
-        Movimento.Insert(1, "Movimento1", null, "Musculo Redondo Maior");
-
-        var check = "SELECT EXISTS(SELECT 1 FROM 'MOVIMENTO' WHERE \"idMovimento\" = \"1\" LIMIT 1)";
-
-        var result = 0;
-        using (var cmd = new SqliteCommand(check, conn))
-        {
-          using (IDataReader reader = cmd.ExecuteReader())
-          {
-            try
-            {
-              while (reader.Read())
-              {
-                if (!reader.IsDBNull(0))
-                {
-                  result = reader.GetInt32(0);
-                }
-              }
-            }
-            finally
-            {
-              reader.Dispose();
-              reader.Close();
-            }
-          }
-          cmd.Dispose();
-        }
-
-        Assert.AreEqual (result, 1);
-        Movimento.DeleteValue(1);
-
-        result = 0;
-        using (var cmd = new SqliteCommand(check, conn))
-        {
-          using (IDataReader reader = cmd.ExecuteReader())
-          {
-            try
-            {
-              while (reader.Read())
-              {
-                if (!reader.IsDBNull(0))
-                {
-                  result = reader.GetInt32(0);
-                }
-              }
-            }
-            finally
-            {
-              reader.Dispose();
-              reader.Close();
-            }
-          }
-          cmd.Dispose();
-        }
-
-        Assert.AreEqual (result, 0);
-
-        conn.Dispose();
-        conn.Close();
-      }
-      return;
-    }
+			return;
+		}
 
 
-    [TearDown]
-    public static void AfterEveryTest ()
-    {
-      SqliteConnection.ClearAllPools();
+		[Test]
+		public void TestDeleteValueMovement ()
+		{
+			using (var conn = new SqliteConnection(GlobalController.path))
+			{
+				conn.Open();
 
-      GC.Collect();
-      GC.WaitForPendingFinalizers();
+				Pessoa.Insert("fake name1", "m", "1995-01-01", "6198732711", null);
 
-      GlobalController.DropAll();
-    }
-  }
+				Fisioterapeuta.Insert(1, "abracadabra1", "demais1", null, null);
+
+				Movimento.Insert(1, "Movimento1", "Musculo Redondo Maior", null);
+
+				var check = "SELECT EXISTS(SELECT 1 FROM 'MOVIMENTO' WHERE \"idMovimento\" = \"1\" LIMIT 1)";
+
+				var result = 0;
+				using (var cmd = new SqliteCommand(check, conn))
+				{
+					using (IDataReader reader = cmd.ExecuteReader())
+					{
+						try
+						{
+							while (reader.Read())
+							{
+								if (!reader.IsDBNull(0))
+								{
+									result = reader.GetInt32(0);
+								}
+							}
+						}
+						finally
+						{
+							reader.Dispose();
+							reader.Close();
+						}
+					}
+					cmd.Dispose();
+				}
+
+				Assert.AreEqual (result, 1);
+				Movimento.DeleteValue(1);
+
+				result = 0;
+				using (var cmd = new SqliteCommand(check, conn))
+				{
+					using (IDataReader reader = cmd.ExecuteReader())
+					{
+						try
+						{
+							while (reader.Read())
+							{
+								if (!reader.IsDBNull(0))
+								{
+									result = reader.GetInt32(0);
+								}
+							}
+						}
+						finally
+						{
+							reader.Dispose();
+							reader.Close();
+						}
+					}
+					cmd.Dispose();
+				}
+
+				Assert.AreEqual (result, 0);
+
+				conn.Dispose();
+				conn.Close();
+			}
+			return;
+		}
+
+
+		[TearDown]
+		public static void AfterEveryTest ()
+		{
+			SqliteConnection.ClearAllPools();
+
+			GC.Collect();
+			GC.WaitForPendingFinalizers();
+
+			GlobalController.DropAll();
+		}
+	}
 }
