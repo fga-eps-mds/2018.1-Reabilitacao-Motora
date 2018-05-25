@@ -127,7 +127,7 @@ namespace Tests
 				Fisioterapeuta.Insert(1, "abracadabra1", "demais1", null, null);
 				Fisioterapeuta.Insert(2, "abracadabra2", "demais2", "DF", "123424");
 
-        Movimento.Insert(1, "Movimento1", null, "Musculo Redondo Maior");
+                Movimento.Insert(1, "Movimento1", null, "Musculo Redondo Maior");
 				Movimento.Insert(2, "Movimento2", "Dificuldade nesse local", "Musculo Redondo Maior");
 
 				var check = "SELECT * FROM MOVIMENTO;";
@@ -162,7 +162,7 @@ namespace Tests
 									Assert.AreEqual (result, string.Format("Movimento{0}", i));
 								}
 
-                if (!reader.IsDBNull(3))
+                                if (!reader.IsDBNull(3))
 								{
 									result = reader.GetString(3);
 									Assert.AreEqual (result, "Dificuldade nesse local");
@@ -177,7 +177,7 @@ namespace Tests
 								i++;
 							}
 						}
-						finally
+						    finally
 						{
 							reader.Dispose();
 							reader.Close();
@@ -198,10 +198,10 @@ namespace Tests
 			{
 				conn.Open();
 
-        Fisioterapeuta.Insert(1, "abracadabra1", "demais1", null, null);
+                Fisioterapeuta.Insert(1, "abracadabra1", "demais1", null, null);
 				Fisioterapeuta.Insert(2, "abracadabra2", "demais2", "DF", "123424");
 
-        Movimento.Insert(1, "Movimento1", null, "Musculo Redondo Maior");
+                Movimento.Insert(1, "Movimento1", null, "Musculo Redondo Maior");
 				Movimento.Insert(2, "Movimento2", "Dificuldade nesse local", "Musculo Redondo Maior");
 
 				Movimento.Update(1, 2, "Movimento11", null, "Musculo do Braquiorradial");
@@ -233,7 +233,7 @@ namespace Tests
 									Assert.AreEqual (id, 3-i);
 								}
 
-                if (!reader.IsDBNull(2))
+                                if (!reader.IsDBNull(2))
 								{
 									result = reader.GetString(2);
 									Assert.AreEqual (result, string.Format("Movimento1{0}", i));
@@ -245,12 +245,12 @@ namespace Tests
 									Assert.AreEqual (result, "Musculo do Braquiorradial");
 								}
 
-                  Assert.AreEqual (reader.IsDBNull(3), true);
+                                Assert.AreEqual (reader.IsDBNull(3), true);
 
 								i++;
 							}
 						}
-						finally
+						    finally
 						{
 							reader.Dispose();
 							reader.Close();
@@ -271,10 +271,10 @@ namespace Tests
       {
         conn.Open();
 
-        Fisioterapeuta.Insert(1, "abracadabra1", "demais1", null, null);
+                Fisioterapeuta.Insert(1, "abracadabra1", "demais1", null, null);
 				Fisioterapeuta.Insert(2, "abracadabra2", "demais2", "DF", "123424");
 
-        Movimento.Insert(1, "Movimento1", null, "Musculo Redondo Maior");
+                Movimento.Insert(1, "Movimento1", null, "Musculo Redondo Maior");
 				Movimento.Insert(2, "Movimento2", "Dificuldade nesse local", "Musculo Redondo Maior");
 
         List<Movimento> allMovements = Movimento.Read();
@@ -311,10 +311,10 @@ namespace Tests
       {
         conn.Open();
 
-        Fisioterapeuta.Insert(1, "abracadabra1", "demais1", null, null);
+                Fisioterapeuta.Insert(1, "abracadabra1", "demais1", null, null);
 				Fisioterapeuta.Insert(2, "abracadabra2", "demais2", "DF", "123424");
 
-        Movimento.Insert(1, "Movimento1", null, "Musculo Redondo Maior");
+                Movimento.Insert(1, "Movimento1", null, "Musculo Redondo Maior");
 				Movimento.Insert(2, "Movimento2", "Dificuldade nesse local", "Musculo Redondo Maior");
 
 
