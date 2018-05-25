@@ -8,6 +8,9 @@ using UnityEngine.TestTools;
 using NUnit.Framework;
 using paciente;
 using pessoa;
+using Mono.Data.Sqlite;
+using System.Data;
+
 
 /**
  * Esta classe testa os métodos referentes a paciente.
@@ -16,74 +19,80 @@ namespace Tests
 {
 	public static class TestPatient
 	{
-        /** 
-         * Este método testa a função de mudar a cor de um inputfield.
-         */
-        
-        [Test]
+		[SetUp]
+		public static void SetUp()
+		{
+			GlobalController.test = true;           
+			GlobalController.Initialize();
+		}
+		
+		/** 
+		 * Este método testa a função de mudar a cor de um inputfield.
+		 */
+		[Test]
 		public static void TestApplyColor ()
 		{
-            GameObject gameobject1 = new GameObject ();
-            var inputExpected = gameobject1.AddComponent<InputField>() as InputField;
+			GameObject gameobject1 = new GameObject ();
+			var inputExpected = gameobject1.AddComponent<InputField>() as InputField;
 
-            GameObject gameobject2 = new GameObject ();
-            var inputResponse = gameobject2.AddComponent<InputField>() as InputField;
+			GameObject gameobject2 = new GameObject ();
+			var inputResponse = gameobject2.AddComponent<InputField>() as InputField;
 
-            inputExpected.colors = ColorManager.SetColor(inputExpected.colors, true);
+			inputExpected.colors = ColorManager.SetColor(inputExpected.colors, true);
 
-            createPatient.ApplyColor(inputResponse, true);
-            
-            Assert.AreEqual(inputExpected.colors, inputResponse.colors);
-        }
+			createPatient.ApplyColor(inputResponse, true);
+			
+			Assert.AreEqual(inputExpected.colors, inputResponse.colors);
+		}
 
-        [Test]
-        public static void TestValidInput ()
-        {
+		[Test]
+		public static void TestValidInput ()
+		{
 
-            GameObject gameobject1 = new GameObject ();
-            var name = gameobject1.AddComponent<InputField>() as InputField;
+			GameObject gameobject1 = new GameObject ();
+			var name = gameobject1.AddComponent<InputField>() as InputField;
 
-            GameObject gameobject2 = new GameObject ();
-            var date = gameobject2.AddComponent<InputField>() as InputField;
+			GameObject gameobject2 = new GameObject ();
+			var date = gameobject2.AddComponent<InputField>() as InputField;
 
-            GameObject gameobject3 = new GameObject ();
-            var phone1 = gameobject3.AddComponent<InputField>() as InputField;
+			GameObject gameobject3 = new GameObject ();
+			var phone1 = gameobject3.AddComponent<InputField>() as InputField;
 
-            GameObject gameobject4 = new GameObject ();
-            var masc = gameobject4.AddComponent<Toggle>() as Toggle;
+			GameObject gameobject4 = new GameObject ();
+			var masc = gameobject4.AddComponent<Toggle>() as Toggle;
 
-            GameObject gameobject5 = new GameObject ();
-            var fem = gameobject5.AddComponent<Toggle>() as Toggle;
+			GameObject gameobject5 = new GameObject ();
+			var fem = gameobject5.AddComponent<Toggle>() as Toggle;
 
-            GameObject gameobject6 = new GameObject ();
-            var phone2 = gameobject6.AddComponent<InputField>() as InputField;
+			GameObject gameobject6 = new GameObject ();
+			var phone2 = gameobject6.AddComponent<InputField>() as InputField;
 
-            List<InputField> inputs = new List<InputField>();
-            List<Toggle> toggles = new List<Toggle>();
+			List<InputField> inputs = new List<InputField>();
+			List<Toggle> toggles = new List<Toggle>();
 
-            masc.isOn = true;
-            name.text = "Izabella Ribeiro";
-            date.text = "15/10/1998";
-            phone1.text = "61992960111";
-            phone2.text = "61984105449";
+			masc.isOn = true;
+			name.text = "Izabella Ribeiro";
+			date.text = "15/10/1998";
+			phone1.text = "61992960111";
+			phone2.text = "61984105449";
 
-            inputs.Add(name);
-            inputs.Add(date);
-            inputs.Add(phone1);
-            inputs.Add(phone2);
-            toggles.Add(masc);
-            toggles.Add(fem);
+			inputs.Add(name);
+			inputs.Add(date);
+			inputs.Add(phone1);
+			inputs.Add(phone2);
+			toggles.Add(masc);
+			toggles.Add(fem);
 
-            bool response = createPatient.ValidInput(inputs, toggles);
+			bool response = createPatient.ValidInput(inputs, toggles);
 
-            Assert.AreEqual(response, true);
-        }
+			Assert.AreEqual(response, true);
+		}
 
-        /*
-        [Test]
-        public static void TestSavePatient ()
-        {
-            Flow.StaticLogin();
+		/*
+		[Test]
+		public static void TestSavePatient ()
+		{
+			Flow.StaticLogin();
 			Flow.StaticNewPatient();
 
 			yield return null;
@@ -139,7 +148,28 @@ namespace Tests
 			var expectedscene = "Login";
 
 			Assert.AreEqual(expectedscene, currentscene);
-        }
-        */
-    }
+		}
+		*/
+
+		[TearDown]
+		public static void AfterEveryTest ()
+		{
+			SqliteConnection.ClearAllPools();
+
+			GC.Collect();
+			GC.WaitForPendingFinalizers();
+
+			GlobalController.DropAll();
+
+			foreach (var go in UnityEngine.Object.FindObjectsOfType<InputField>())
+			{
+				UnityEngine.Object.DestroyImmediate(go.gameObject);
+			}
+
+			foreach (var go in UnityEngine.Object.FindObjectsOfType<Toggle>())
+			{
+				UnityEngine.Object.DestroyImmediate(go.gameObject);
+			}
+		}
+	}
 }

@@ -360,75 +360,76 @@ namespace Tests
 		}
 
 		
-		// [Test]
-		// public void TestFisioterapeutaDeleteValue ()
-		// {
-		// 	using (var conn = new SqliteConnection(GlobalController.path))
-		// 	{
-		// 		conn.Open();
+		[Test]
+		public void TestFisioterapeutaDeleteValue ()
+		{
+			using (var conn = new SqliteConnection(GlobalController.path))
+			{
+				conn.Open();
 
-		// 		Fisioterapeuta.Insert("fake name1", "m", "1995-01-01", "6198732711", "615236621");
+				Pessoa.Insert("fake name2", "m", "1995-01-02", "6198732712", null);	
+				Fisioterapeuta.Insert(1, "abracadabra1", "demais1", null, null);
 
-		// 		var check = "SELECT EXISTS(SELECT 1 FROM 'FISIOTERAPEUTA' WHERE \"idFisioterapeuta\" = \"1\" LIMIT 1)";
+				var check = "SELECT EXISTS(SELECT 1 FROM 'FISIOTERAPEUTA' WHERE \"idFisioterapeuta\" = \"1\" LIMIT 1)";
 				
-		// 		var result = 0;
-		// 		using (var cmd = new SqliteCommand(check, conn))
-		// 		{
-		// 			using (IDataReader reader = cmd.ExecuteReader())
-		// 			{
-		// 				try
-		// 				{
-		// 					while (reader.Read())
-		// 					{
-		// 						if (!reader.IsDBNull(0)) 
-		// 						{
-		// 							result = reader.GetInt32(0);
-		// 						}
-		// 					}
-		// 				}
-		// 				finally
-		// 				{
-		// 					reader.Dispose();
-		// 					reader.Close();
-		// 				}
-		// 			}
-		// 			cmd.Dispose();
-		// 		}
+				var result = 0;
+				using (var cmd = new SqliteCommand(check, conn))
+				{
+					using (IDataReader reader = cmd.ExecuteReader())
+					{
+						try
+						{
+							while (reader.Read())
+							{
+								if (!reader.IsDBNull(0)) 
+								{
+									result = reader.GetInt32(0);
+								}
+							}
+						}
+						finally
+						{
+							reader.Dispose();
+							reader.Close();
+						}
+					}
+					cmd.Dispose();
+				}
 
-		// 		Assert.AreEqual (result, 1);
-		// 		database.DeleteValue(tableId, 1);
+				Assert.AreEqual (result, 1);
+				Fisioterapeuta.DeleteValue(1);
 
-		// 		result = 0;
-		// 		using (var cmd = new SqliteCommand(check, conn))
-		// 		{
-		// 			using (IDataReader reader = cmd.ExecuteReader())
-		// 			{
-		// 				try
-		// 				{
-		// 					while (reader.Read())
-		// 					{
-		// 						if (!reader.IsDBNull(0)) 
-		// 						{
-		// 							result = reader.GetInt32(0);
-		// 						}
-		// 					}
-		// 				}
-		// 				finally
-		// 				{
-		// 					reader.Dispose();
-		// 					reader.Close();
-		// 				}
-		// 			}
-		// 			cmd.Dispose();
-		// 		}
+				result = 0;
+				using (var cmd = new SqliteCommand(check, conn))
+				{
+					using (IDataReader reader = cmd.ExecuteReader())
+					{
+						try
+						{
+							while (reader.Read())
+							{
+								if (!reader.IsDBNull(0)) 
+								{
+									result = reader.GetInt32(0);
+								}
+							}
+						}
+						finally
+						{
+							reader.Dispose();
+							reader.Close();
+						}
+					}
+					cmd.Dispose();
+				}
 
-		// 		Assert.AreEqual (result, 0);
+				Assert.AreEqual (result, 0);
 
-		// 		conn.Dispose();
-		// 		conn.Close();
-		// 	}
-		// 	return;
-		// }
+				conn.Dispose();
+				conn.Close();
+			}
+			return;
+		}
 
 
 		[TearDown]
