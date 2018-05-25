@@ -5,7 +5,7 @@ from time import sleep
 UDP_IP = "127.0.0.1"
 UDP_PORT = 5005
 
-sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM) # UDP
+UDPClientSocket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM) # UDP
 
 time = 0.0
 
@@ -54,7 +54,7 @@ while 1:
     message += str(braco_x) + ' ' + str(braco_y) + ' ' + str(braco_z) + ' '
     message += str(r_braco_x) + ' ' + str(r_braco_y) + ' ' + str(r_braco_z) + ' ' 
     
-    sock.sendto(bytes(message), (UDP_IP, UDP_PORT))
+    UDPClientSocket.sendto(bytes(message), (UDP_IP, UDP_PORT))
     sleep(.02)
 
     

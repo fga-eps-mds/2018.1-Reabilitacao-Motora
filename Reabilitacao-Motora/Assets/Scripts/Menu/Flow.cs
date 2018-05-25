@@ -28,14 +28,17 @@ public class Flow : MonoBehaviour
 		SceneManager.LoadScene("NewMovement");
 	}
 
-
-
 	/**
 	 * Leva para scene de gravar um movimento.
 	 */
-	public static void StaticClinic()
+	public static void StaticRealtimeGraph1()
 	{
-		SceneManager.LoadScene("Clinic");
+		SceneManager.LoadScene("RealtimeGraph1");
+	}
+
+	public static void StaticRealtimeGraph2()
+	{
+		SceneManager.LoadScene("RealtimeGraph2");
 	}
 
 

@@ -30,6 +30,7 @@ public class GlobalController : MonoBehaviour
 	private PontosRotuloPaciente Prp;
 	private PontosRotuloFisioterapeuta Prf;
 	public string path;
+	public static bool Sensor;
 
 
 	public Fisioterapeuta admin
@@ -149,5 +150,6 @@ public class GlobalController : MonoBehaviour
 		MovimentoMusculo.Create();
 		PontosRotuloPaciente.Create();
 		PontosRotuloFisioterapeuta.Create();
+		Sensor = true;
 	}
 }

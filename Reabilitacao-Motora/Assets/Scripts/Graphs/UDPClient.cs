@@ -7,7 +7,7 @@ using System.IO;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
-
+using System;
 
 /**
  * Classe que inicia a comunicação udp para envio de dados a um servidor
@@ -17,17 +17,38 @@ public class UDPClient : MonoBehaviour
     private string host = "127.0.0.1";
     private int port = 5005;
     private UdpClient client;
+    private UdpClient UdpRecieve;
 
     public Transform mao, cotovelo, ombro, braco; //o ponto final de mao é o inicial de cotovelo, o final de cotovelo é o inicial de ombro; ou seja, sao apenas 2 retas
     float current_time_movement = 0; //tempo do movimento inicial
+
+    string rxString;
+    IPEndPoint remoteEP;
+    IPAddress groupIP = IPAddress.Parse("127.0.0.1");
 
     /**
     * Metodo que ao dar start no unity instancia um client e o conecta ao servidor
     */
     void Start()
     {
+
         client = new UdpClient();
         client.Connect(host, port);
+
+        remoteEP = new IPEndPoint(IPAddress.Any, port);
+        UdpRecieve = new UdpClient(remoteEP);
+        //client.JoinMulticastGroup(groupIP);
+        client.BeginReceive(new AsyncCallback(ReceiveServerInfo), null);
+
+    }
+
+    void ReceiveServerInfo(IAsyncResult result)
+    {
+        Debug.Log("Received Server Info");
+        byte[] receivedBytes = client.EndReceive(result, ref remoteEP);
+
+        rxString = System.Text.Encoding.UTF8.GetString(receivedBytes);
+        Debug.Log("  with bytes: " + rxString);
     }
 
 

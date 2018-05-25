@@ -62,7 +62,7 @@ public class createMovement : MonoBehaviour
 			}
 
 			GlobalController.instance.movement = movementsList[movementsList.Count - 1];
-			Flow.StaticClinic();
+			Flow.ChoiceSensor();
 		}
 	}
 
