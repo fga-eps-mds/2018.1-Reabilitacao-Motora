@@ -29,7 +29,7 @@ namespace fisioterapeuta
 		public string regiao { get { return Regiao; } set { Regiao = value; }}
 		public string crefito { get { return Crefito; } set { Crefito = value; }}
 		public Pessoa persona { get { return Persona; } set { Persona = value; }}
-		
+
 		/**
 		 * Classe com todos os atributos de um fisioterapeuta.
 		 */
@@ -41,7 +41,7 @@ namespace fisioterapeuta
 			this.senha = (string)columns[3];
 			this.regiao = (string)columns[4];
 			this.crefito = (string)columns[5];
-			this.persona = Pessoa.ReadValue((int)columns[1]);		
+			this.persona = Pessoa.ReadValue ((int)columns[1]);		
 		}
 
 		/**
@@ -65,7 +65,7 @@ namespace fisioterapeuta
 		{
 			DataBase banco = new DataBase();
 			Object[] columns = new Object[] {idPessoa, login, senha, regiao, crefito};
-			banco.Insert(columns, TablesManager.Tables[tableId].tableName, tableId);	
+			banco.Insert(columns, TablesManager.Tables[tableId].tableName, tableId);
 		}
 
 		/**

@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using Mono.Data.Sqlite;
 using System.Data;
+using pessoa;
+using fisioterapeuta;
 using DataBaseAttributes;
 
 namespace movimento
@@ -19,13 +21,15 @@ namespace movimento
 		private string NomeMovimento;
 		private string DescricaoMovimento;
 		private string PontosMovimento;
+		private Fisioterapeuta Physio;
 
 		public int idMovimento { get { return IdMovimento; } set { IdMovimento = value; }}
 		public int idFisioterapeuta { get { return IdFisioterapeuta; } set { IdFisioterapeuta = value; }}
 		public string nomeMovimento { get { return NomeMovimento; } set { NomeMovimento = value; }}
 		public string descricaoMovimento { get { return DescricaoMovimento; } set { DescricaoMovimento = value; }}
 		public string pontosMovimento { get { return PontosMovimento; } set { PontosMovimento = value; }}
-		
+		public Fisioterapeuta physio { get { return Physio; } set { Physio = value; }}
+
 		/**
 		 * Classe com todos os atributos de um movimento.
 		 */
@@ -36,6 +40,7 @@ namespace movimento
 			this.nomeMovimento = (string)columns[2];
 			this.descricaoMovimento = (string)columns[3];
 			this.pontosMovimento = (string)columns[4];
+			this.physio = Fisioterapeuta.ReadValue((int)columns[1]);
 		}
 
 		/**
@@ -45,7 +50,7 @@ namespace movimento
 		{
 			DataBase banco = new DataBase();
 			string query = "CREATE TABLE IF NOT EXISTS MOVIMENTO (idMovimento INTEGER primary key AUTOINCREMENT,idFisioterapeuta INTEGER not null,nomeMovimento VARCHAR (50) not null,descricaoMovimento VARCHAR (150),pontosMovimento VARCHAR (150) not null,foreign key (idFisioterapeuta) references FISIOTERAPEUTA (idFisioterapeuta));";
-			banco.Create(query);	
+			banco.Create(query);
 		}
 
 		/**

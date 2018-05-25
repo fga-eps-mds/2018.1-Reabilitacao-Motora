@@ -24,7 +24,7 @@ namespace Tests
 		[SetUp]
 		public void SetUp()
 		{
-			GlobalController.test = true;			
+			GlobalController.test = true;
 			GlobalController.Initialize();
 		}
 
@@ -34,7 +34,7 @@ namespace Tests
 			using (var conn = new SqliteConnection(GlobalController.path))
 			{
 				conn.Open();
-				
+
 				// tabela sendo criada no SetUp, no "Initialize" da GlobalController
 
 				var check = "SELECT count(*) FROM sqlite_master WHERE type='table' AND name='FISIOTERAPEUTA';";
@@ -49,7 +49,7 @@ namespace Tests
 						{
 							while (reader.Read())
 							{
-								if (!reader.IsDBNull(0)) 
+								if (!reader.IsDBNull(0))
 								{
 									result = reader.GetInt32(0);
 								}
@@ -93,7 +93,7 @@ namespace Tests
 						{
 							while (reader.Read())
 							{
-								if (!reader.IsDBNull(0)) 
+								if (!reader.IsDBNull(0))
 								{
 									result = reader.GetInt32(0);
 								}
@@ -115,7 +115,7 @@ namespace Tests
 			}
 			return;
 		}
-		
+
 		[Test]
 		public void TestFisioterapeutaInsert ()
 		{
@@ -125,7 +125,7 @@ namespace Tests
 
 				Pessoa.Insert("fake name1", "m", "1995-01-01", "6198732711", null);
 				Pessoa.Insert("fake name2", "m", "1995-01-02", "6198732712", null);
-				
+
 				Fisioterapeuta.Insert(2, "abracadabra1", "demais1", null, null);
 				Fisioterapeuta.Insert(1, "abracadabra2", "demais2", "DF", "123424");
 
@@ -143,37 +143,37 @@ namespace Tests
 						{
 							while (reader.Read())
 							{
-								if (!reader.IsDBNull(0)) 
+								if (!reader.IsDBNull(0))
 								{
 									id = reader.GetInt32(0);
 									Assert.AreEqual (id, i);
 								}
 
-								if (!reader.IsDBNull(1)) 
+								if (!reader.IsDBNull(1))
 								{
 									id = reader.GetInt32(1);
 									Assert.AreEqual (id, 3-i);
 								}
 
-								if (!reader.IsDBNull(2)) 
+								if (!reader.IsDBNull(2))
 								{
 									result = reader.GetString(2);
 									Assert.AreEqual (result, string.Format("abracadabra{0}", i));
 								}
 
-								if (!reader.IsDBNull(3)) 
+								if (!reader.IsDBNull(3))
 								{
 									result = reader.GetString(3);
 									Assert.AreEqual (result, string.Format("demais{0}", i));
 								}
 
-								if (!reader.IsDBNull(4)) 
+								if (!reader.IsDBNull(4))
 								{
 									result = reader.GetString(4);
 									Assert.AreEqual (result, "DF");
 								}
 
-								if (!reader.IsDBNull(5)) 
+								if (!reader.IsDBNull(5))
 								{
 									result = reader.GetString(5);
 									Assert.AreEqual (result, "123424");
@@ -205,7 +205,7 @@ namespace Tests
 
 				Pessoa.Insert("fake name1", "m", "1995-01-01", "6198732711", null);
 				Pessoa.Insert("fake name2", "m", "1995-01-02", "6198732712", null);
-				
+
 				Fisioterapeuta.Insert(2, "abracadabra1", "demais1", null, null);
 				Fisioterapeuta.Insert(1, "abracadabra2", "demais2", "DF", "123424");
 
@@ -226,25 +226,25 @@ namespace Tests
 						{
 							while (reader.Read())
 							{
-								if (!reader.IsDBNull(0)) 
+								if (!reader.IsDBNull(0))
 								{
 									id = reader.GetInt32(0);
 									Assert.AreEqual (id, i);
 								}
 
-								if (!reader.IsDBNull(1)) 
+								if (!reader.IsDBNull(1))
 								{
 									id = reader.GetInt32(1);
 									Assert.AreEqual (id, i);
 								}
 
-								if (!reader.IsDBNull(2)) 
+								if (!reader.IsDBNull(2))
 								{
 									result = reader.GetString(2);
 									Assert.AreEqual (result, string.Format("abracadabra1{0}", 3-i));
 								}
 
-								if (!reader.IsDBNull(3)) 
+								if (!reader.IsDBNull(3))
 								{
 									result = reader.GetString(3);
 									Assert.AreEqual (result, "demais2");
@@ -269,7 +269,7 @@ namespace Tests
 			}
 			return;
 		}
-		
+
 		[Test]
 		public void TestFisioterapeutaRead ()
 		{
@@ -279,11 +279,11 @@ namespace Tests
 
 				Pessoa.Insert("fake name1", "m", "1995-01-01", "6198732711", null);
 				Pessoa.Insert("fake name2", "m", "1995-01-02", "6198732712", null);
-				
+
 				Fisioterapeuta.Insert(2, "abracadabra1", "demais1", null, null);
 				Fisioterapeuta.Insert(1, "abracadabra2", "demais2", "DF", "123424");
 
-				List<Fisioterapeuta> allPhysios = Fisioterapeuta.Read(); 
+				List<Fisioterapeuta> allPhysios = Fisioterapeuta.Read();
 
 				for (int i = 0; i < allPhysios.Count; ++i)
 				{
@@ -324,14 +324,14 @@ namespace Tests
 
 				Pessoa.Insert("fake name1", "m", "1995-01-01", "6198732711", null);
 				Pessoa.Insert("fake name2", "m", "1995-01-02", "6198732712", null);
-				
+
 				Fisioterapeuta.Insert(2, "abracadabra1", "demais1", null, null);
 				Fisioterapeuta.Insert(1, "abracadabra2", "demais2", "DF", "123424");
 
 
 				for (int i = 0; i < 2; ++i)
 				{
-					Fisioterapeuta auxPhysio = Fisioterapeuta.ReadValue(i+1); 
+					Fisioterapeuta auxPhysio = Fisioterapeuta.ReadValue(i+1);
 
 					Assert.AreEqual (auxPhysio.persona.idPessoa, 3 - (i+1));
 					Assert.AreEqual (auxPhysio.persona.nomePessoa, string.Format("fake name{0}", 3-(i+1)));
@@ -360,7 +360,7 @@ namespace Tests
 			return;
 		}
 
-		
+
 		[Test]
 		public void TestFisioterapeutaDeleteValue ()
 		{
@@ -368,11 +368,11 @@ namespace Tests
 			{
 				conn.Open();
 
-				Pessoa.Insert("fake name2", "m", "1995-01-02", "6198732712", null);	
+				Pessoa.Insert("fake name2", "m", "1995-01-02", "6198732712", null);
 				Fisioterapeuta.Insert(1, "abracadabra1", "demais1", null, null);
 
 				var check = "SELECT EXISTS(SELECT 1 FROM 'FISIOTERAPEUTA' WHERE \"idFisioterapeuta\" = \"1\" LIMIT 1)";
-				
+
 				var result = 0;
 				using (var cmd = new SqliteCommand(check, conn))
 				{
@@ -382,7 +382,7 @@ namespace Tests
 						{
 							while (reader.Read())
 							{
-								if (!reader.IsDBNull(0)) 
+								if (!reader.IsDBNull(0))
 								{
 									result = reader.GetInt32(0);
 								}
@@ -409,7 +409,7 @@ namespace Tests
 						{
 							while (reader.Read())
 							{
-								if (!reader.IsDBNull(0)) 
+								if (!reader.IsDBNull(0))
 								{
 									result = reader.GetInt32(0);
 								}
