@@ -15,7 +15,7 @@ using System.Data;
 
 
 /**
-* Cria um novo Paciente no banco de dados.
+* Testa a Tabela Paciente do banco de dados.
 */
 namespace Tests
 {
@@ -24,7 +24,7 @@ namespace Tests
 		[SetUp]
 		public void SetUp()
 		{
-			GlobalController.test = true;			
+			GlobalController.test = true;
 			GlobalController.Initialize();
 		}
 
@@ -34,7 +34,7 @@ namespace Tests
 			using (var conn = new SqliteConnection(GlobalController.path))
 			{
 				conn.Open();
-				
+
 				// tabela sendo criada no SetUp, no "Initialize" da GlobalController
 
 				var check = "SELECT count(*) FROM sqlite_master WHERE type='table' AND name='PACIENTE';";
@@ -49,7 +49,7 @@ namespace Tests
 						{
 							while (reader.Read())
 							{
-								if (!reader.IsDBNull(0)) 
+								if (!reader.IsDBNull(0))
 								{
 									result = reader.GetInt32(0);
 								}
@@ -93,7 +93,7 @@ namespace Tests
 						{
 							while (reader.Read())
 							{
-								if (!reader.IsDBNull(0)) 
+								if (!reader.IsDBNull(0))
 								{
 									result = reader.GetInt32(0);
 								}
@@ -115,7 +115,7 @@ namespace Tests
 			}
 			return;
 		}
-		
+
 		[Test]
 		public void TestPacienteInsert ()
 		{
@@ -125,7 +125,7 @@ namespace Tests
 
 				Pessoa.Insert("fake name1", "m", "1995-01-01", "6198732711", null);
 				Pessoa.Insert("fake name2", "m", "1995-01-02", "6198732712", null);
-				
+
 				Paciente.Insert(1, "observacao teste");
 				Paciente.Insert(2, null);
 
@@ -143,19 +143,19 @@ namespace Tests
 						{
 							while (reader.Read())
 							{
-								if (!reader.IsDBNull(0)) 
+								if (!reader.IsDBNull(0))
 								{
 									id = reader.GetInt32(0);
 									Assert.AreEqual (id, i);
 								}
 
-								if (!reader.IsDBNull(1)) 
+								if (!reader.IsDBNull(1))
 								{
 									id = reader.GetInt32(1);
 									Assert.AreEqual (id, i);
 								}
 
-								if (!reader.IsDBNull(2)) 
+								if (!reader.IsDBNull(2))
 								{
 									result = reader.GetString(2);
 									Assert.AreEqual (result, "observacao teste");
@@ -187,7 +187,7 @@ namespace Tests
 
 				Pessoa.Insert("fake name1", "m", "1995-01-01", "6198732711", null);
 				Pessoa.Insert("fake name2", "m", "1995-01-02", "6198732712", null);
-				
+
 				Paciente.Insert(1, "observacao teste");
 				Paciente.Insert(2, null);
 
@@ -208,19 +208,19 @@ namespace Tests
 						{
 							while (reader.Read())
 							{
-								if (!reader.IsDBNull(0)) 
+								if (!reader.IsDBNull(0))
 								{
 									id = reader.GetInt32(0);
 									Assert.AreEqual (id, i);
 								}
 
-								if (!reader.IsDBNull(1)) 
+								if (!reader.IsDBNull(1))
 								{
 									id = reader.GetInt32(1);
 									Assert.AreEqual (id, 3-i);
 								}
 
-								if (!reader.IsDBNull(2)) 
+								if (!reader.IsDBNull(2))
 								{
 									result = reader.GetString(2);
 									Assert.AreEqual (result, "teste observacao");
@@ -242,7 +242,7 @@ namespace Tests
 			}
 			return;
 		}
-		
+
 		[Test]
 		public void TestPacienteRead ()
 		{
@@ -252,11 +252,11 @@ namespace Tests
 
 				Pessoa.Insert("fake name1", "m", "1995-01-01", "6198732711", null);
 				Pessoa.Insert("fake name2", "m", "1995-01-02", "6198732712", null);
-				
+
 				Paciente.Insert(1, "observacao teste");
 				Paciente.Insert(2, null);
 
-				List<Paciente> allPatients = Paciente.Read(); 
+				List<Paciente> allPatients = Paciente.Read();
 
 				for (int i = 0; i < allPatients.Count; ++i)
 				{
@@ -293,14 +293,14 @@ namespace Tests
 
 				Pessoa.Insert("fake name1", "m", "1995-01-01", "6198732711", null);
 				Pessoa.Insert("fake name2", "m", "1995-01-02", "6198732712", null);
-				
+
 				Paciente.Insert(1, "observacao teste");
 				Paciente.Insert(2, null);
 
 
 				for (int i = 0; i < 2; ++i)
 				{
-					Paciente auxPatient = Paciente.ReadValue(i+1); 
+					Paciente auxPatient = Paciente.ReadValue(i+1);
 
 					Assert.AreEqual (auxPatient.persona.idPessoa, (i+1));
 					Assert.AreEqual (auxPatient.persona.nomePessoa, string.Format("fake name{0}", (i+1)));
@@ -325,7 +325,7 @@ namespace Tests
 			return;
 		}
 
-		
+
 		[Test]
 		public void TestPacienteDeleteValue ()
 		{
@@ -337,7 +337,7 @@ namespace Tests
 				Paciente.Insert(1, "observacao teste");
 
 				var check = "SELECT EXISTS(SELECT 1 FROM 'PACIENTE' WHERE \"idPaciente\" = \"1\" LIMIT 1)";
-				
+
 				var result = 0;
 				using (var cmd = new SqliteCommand(check, conn))
 				{
@@ -347,7 +347,7 @@ namespace Tests
 						{
 							while (reader.Read())
 							{
-								if (!reader.IsDBNull(0)) 
+								if (!reader.IsDBNull(0))
 								{
 									result = reader.GetInt32(0);
 								}
@@ -374,7 +374,7 @@ namespace Tests
 						{
 							while (reader.Read())
 							{
-								if (!reader.IsDBNull(0)) 
+								if (!reader.IsDBNull(0))
 								{
 									result = reader.GetInt32(0);
 								}

@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using Mono.Data.Sqlite;
 using System.Data;
 using DataBaseAttributes;
+using movimento;
+using pessoa;
+using fisioterapeuta;
 
 namespace pontosrotulofisioterapeuta
 {
@@ -19,13 +22,14 @@ namespace pontosrotulofisioterapeuta
 		private string EstagioMovimentoFisio;
 		private float TempoInicial;
 		private float TempoFinal;
+        private Movimento Moves;
 
 		public int idRotuloFisioterapeuta { get { return IdRotuloFisioterapeuta; } set { IdRotuloFisioterapeuta = value; }}
 		public int idMovimento { get { return IdMovimento; } set { IdMovimento = value; }}
 		public string estagioMovimentoFisio { get { return EstagioMovimentoFisio; } set { EstagioMovimentoFisio = value; }}
 		public float tempoInicial { get { return TempoInicial; } set { TempoInicial = value; }}
 		public float tempoFinal { get { return TempoFinal; } set { TempoFinal = value; }}
-		
+		public Movimento moves { get { return Moves; } set { Moves = value; } }
 		/**
 		 * Classe com todos os atributos de um pontosrotulofisioterapeuta.
 		 */
@@ -36,7 +40,8 @@ namespace pontosrotulofisioterapeuta
 				this.estagioMovimentoFisio = (string)columns[2];
 				this.tempoInicial = (float)columns[3];
 				this.tempoFinal = (float)columns[4];
-		}
+            this.moves = Movimento.ReadValue((int) columns[1]);
+          }
 
 		/**
 		* Cria a relação para pontosrotulofisioterapeuta, contendo um id gerado automaticamente pelo banco como chave primária.
@@ -81,7 +86,7 @@ namespace pontosrotulofisioterapeuta
 		public static List<PontosRotuloFisioterapeuta> Read()
 		{
 			DataBase banco = new DataBase();
-			Object[] columns = new Object[] {0, 0, "", 0, 0};
+			Object[] columns = new Object[] {0, 0, "", 0.00f, 0.00f};
 
 			List<PontosRotuloFisioterapeuta> physioLabelPoints = banco.Read<PontosRotuloFisioterapeuta>(TablesManager.Tables[tableId].tableName, columns);
 
@@ -91,7 +96,7 @@ namespace pontosrotulofisioterapeuta
 		public static PontosRotuloFisioterapeuta ReadValue (int id)
 		{
 			DataBase banco = new DataBase();
-			Object[] columns = new Object[] {0, 0, "", 0, 0};
+			Object[] columns = new Object[] {0, 0, "", 0.00f, 0.00f};
 
 			PontosRotuloFisioterapeuta physioLabelPoint = banco.ReadValue<PontosRotuloFisioterapeuta>(TablesManager.Tables[tableId].tableName,
 				TablesManager.Tables[tableId].colName[0], id, columns);
