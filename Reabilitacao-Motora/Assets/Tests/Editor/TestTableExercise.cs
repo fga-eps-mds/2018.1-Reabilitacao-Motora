@@ -325,6 +325,128 @@ namespace Tests
 			return;
 		}
 
+		[Test]
+		public void TestExercicioRead ()
+		{
+			using (var conn = new SqliteConnection(GlobalController.path))
+			{
+				conn.Open();
+
+				Pessoa.Insert("patient name1", "m", "1995-01-01", "6198732711", null);
+				Pessoa.Insert("patient name2", "m", "1995-01-02", "6198732712", null);
+				Pessoa.Insert("physio name1", "m", "1995-01-03", "6198732713", null);
+				Pessoa.Insert("physio name2", "m", "1995-01-04", "6198732714", null);
+				
+				Fisioterapeuta.Insert(3, "abracadabra1", "demais1", null, null);
+				Fisioterapeuta.Insert(4, "abracadabra2", "demais2", null, null);
+
+				Paciente.Insert(1, null);
+				Paciente.Insert(2, null);
+
+				Movimento.Insert (1,"levantamento de peso", "caminhoy.com", null);
+				Movimento.Insert (2,"levantamento de pena", "caminhox.com", null);
+
+				Sessao.Insert (1, 1, "1940-10-10", null);
+				Sessao.Insert (1, 2, "2010-10-10", null);
+
+				Exercicio.Insert (1, 1, 1, "caminhopaciente4.ponto", null);
+				Exercicio.Insert (1, 2, 1, "caminhopaciente6.ponto", "levantou mt coisa1");
+				Exercicio.Insert (2, 1, 2, "caminhopaciente8.ponto", null);
+				Exercicio.Insert (2, 2, 2, "caminhopaciente10.ponto", "levantou mt coisa2");
+
+				List<Exercicio> allExers = Exercicio.Read();
+
+				for (int i = 1, k = 1, j = 1; i <= allExers.Count; ++i, k = 3-k)
+				{
+					Assert.AreEqual (allExers[i-1].idExercicio, i);
+					Assert.AreEqual (allExers[i-1].idPaciente, j);
+					Assert.AreEqual (allExers[i-1].idMovimento, k);
+					Assert.AreEqual (allExers[i-1].idSessao, j);
+					Assert.AreEqual (allExers[i-1].pontosExercicio, string.Format("caminhopaciente{0}.ponto", i+j+j+k));
+					
+					if (i == 1 || i == 3)
+					{
+						Assert.AreEqual (allExers[i-1].descricaoExercicio, null);
+					}
+					else
+					{
+						Assert.AreEqual (allExers[i-1].descricaoExercicio, string.Format("levantou mt coisa{0}", j));
+					}
+
+					if (i == 2)
+					{
+						j++;
+					}
+				}
+
+				conn.Dispose();
+				conn.Close();
+			}
+
+			return;
+		}
+
+		[Test]
+		public void TestExercicioReadValue ()
+		{
+			using (var conn = new SqliteConnection(GlobalController.path))
+			{
+				conn.Open();
+
+				Pessoa.Insert("patient name1", "m", "1995-01-01", "6198732711", null);
+				Pessoa.Insert("patient name2", "m", "1995-01-02", "6198732712", null);
+				Pessoa.Insert("physio name1", "m", "1995-01-03", "6198732713", null);
+				Pessoa.Insert("physio name2", "m", "1995-01-04", "6198732714", null);
+				
+				Fisioterapeuta.Insert(3, "abracadabra1", "demais1", null, null);
+				Fisioterapeuta.Insert(4, "abracadabra2", "demais2", null, null);
+
+				Paciente.Insert(1, null);
+				Paciente.Insert(2, null);
+
+				Movimento.Insert (1,"levantamento de peso", "caminhoy.com", null);
+				Movimento.Insert (2,"levantamento de pena", "caminhox.com", null);
+
+				Sessao.Insert (1, 1, "1940-10-10", null);
+				Sessao.Insert (1, 2, "2010-10-10", null);
+
+				Exercicio.Insert (1, 1, 1, "caminhopaciente4.ponto", null);
+				Exercicio.Insert (1, 2, 1, "caminhopaciente6.ponto", "levantou mt coisa1");
+				Exercicio.Insert (2, 1, 2, "caminhopaciente8.ponto", null);
+				Exercicio.Insert (2, 2, 2, "caminhopaciente10.ponto", "levantou mt coisa2");
+
+
+				for (int i = 1, k = 1, j = 1; i <= 4; ++i, k = 3-k)
+				{
+					Exercicio auxEx = Exercicio.ReadValue(i);
+					Assert.AreEqual (auxEx.idExercicio, i);
+					Assert.AreEqual (auxEx.idPaciente, j);
+					Assert.AreEqual (auxEx.idMovimento, k);
+					Assert.AreEqual (auxEx.idSessao, j);
+					Assert.AreEqual (auxEx.pontosExercicio, string.Format("caminhopaciente{0}.ponto", i+j+j+k));
+					
+					if (i == 1 || i == 3)
+					{
+						Assert.AreEqual (auxEx.descricaoExercicio, null);
+					}
+					else
+					{
+						Assert.AreEqual (auxEx.descricaoExercicio, string.Format("levantou mt coisa{0}", j));
+					}
+
+					if (i == 2)
+					{
+						j++;
+					}
+				}
+
+				conn.Dispose();
+				conn.Close();
+			}
+
+			return;
+		}
+
 		[TearDown]
 		public static void AfterEveryTest ()
 		{
