@@ -270,35 +270,49 @@ namespace Tests
 			return;
 		}
 		
-		// [Test]
-		// public void TestFisioterapeutaRead ()
-		// {
-		// 	using (var conn = new SqliteConnection(GlobalController.path))
-		// 	{
-		// 		conn.Open();
+		[Test]
+		public void TestFisioterapeutaRead ()
+		{
+			using (var conn = new SqliteConnection(GlobalController.path))
+			{
+				conn.Open();
 
-		// 		Fisioterapeuta.Insert("fake name1", "m", "1995-01-01", "6198732711", "615236621");
-		// 		Fisioterapeuta.Insert("fake name2", "m", "1995-01-02", "6198732712", "615236622");
-		// 		Fisioterapeuta.Insert("fake name3", "m", "1995-01-03", "6198732713", "615236623");
+				Pessoa.Insert("fake name1", "m", "1995-01-01", "6198732711", null);
+				Pessoa.Insert("fake name2", "m", "1995-01-02", "6198732712", null);
+				
+				Fisioterapeuta.Insert(2, "abracadabra1", "demais1", null, null);
+				Fisioterapeuta.Insert(1, "abracadabra2", "demais2", "DF", "123424");
 
-		// 		List<Fisioterapeuta> allPpls = Fisioterapeuta.Read(); 
+				List<Fisioterapeuta> allPhysios = Fisioterapeuta.Read(); 
 
-		// 		for (int i = 0; i < allPpls.Count; ++i)
-		// 		{
-		// 			Assert.AreEqual (allPpls[i].idFisioterapeuta, i+1);
-		// 			Assert.AreEqual (allPpls[i].nomeFisioterapeuta, string.Format("fake name{0}", i+1));
-		// 			Assert.AreEqual (allPpls[i].sexo, "m");
-		// 			Assert.AreEqual (allPpls[i].dataNascimento, string.Format("1995-01-0{0}", i+1));
-		// 			Assert.AreEqual (allPpls[i].telefone1, string.Format("619873271{0}", i+1));
-		// 			Assert.AreEqual (allPpls[i].telefone2, string.Format("61523662{0}", i+1));
-		// 		}
+				for (int i = 0; i < allPhysios.Count; ++i)
+				{
+					Assert.AreEqual (allPhysios[i].persona.idPessoa, 3 - (i+1));
+					Assert.AreEqual (allPhysios[i].persona.nomePessoa, string.Format("fake name{0}", 3-(i+1)));
+					Assert.AreEqual (allPhysios[i].persona.sexo, "m");
+					Assert.AreEqual (allPhysios[i].persona.dataNascimento, string.Format("1995-01-0{0}", 3-(i+1)));
+					Assert.AreEqual (allPhysios[i].persona.telefone1, string.Format("619873271{0}", 3-(i+1)));
+					Assert.AreEqual (allPhysios[i].idFisioterapeuta, i+1);
+					Assert.AreEqual (allPhysios[i].login, string.Format("abracadabra{0}", i+1));
+					Assert.AreEqual (allPhysios[i].senha, string.Format("demais{0}", i+1));
+					if (i == 0)
+					{
+						Assert.AreEqual (allPhysios[i].regiao, "");
+						Assert.AreEqual (allPhysios[i].crefito, "");
+					}
+					else
+					{
+						Assert.AreEqual (allPhysios[i].regiao, "DF");
+						Assert.AreEqual (allPhysios[i].crefito, "123424");
+					}
+				}
 
-		// 		conn.Dispose();
-		// 		conn.Close();
-		// 	}
+				conn.Dispose();
+				conn.Close();
+			}
 
-		// 	return;
-		// }
+			return;
+		}
 
 		// [Test]
 		// public void TestFisioterapeutaReadValue ()

@@ -11,6 +11,13 @@ namespace Tests
 {
 	public static class TestFlow
 	{
+		[SetUp]
+		public static void SetUp()
+		{
+			GlobalController.test = true;			
+			GlobalController.Initialize();
+		}
+
 		[UnityTest]
 		public static IEnumerator TestNewMovement()
 		{
