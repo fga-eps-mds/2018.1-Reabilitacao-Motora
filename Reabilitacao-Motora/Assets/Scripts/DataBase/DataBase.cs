@@ -335,6 +335,10 @@ namespace DataBaseAttributes
 						columns[i] = (float) reader.GetDouble(i);
 					}
 				}
+				else
+				{
+					columns[i] = null;
+				}
 			}
 
 			return;

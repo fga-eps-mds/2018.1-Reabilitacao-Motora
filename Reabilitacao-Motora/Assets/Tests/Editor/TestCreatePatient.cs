@@ -17,7 +17,7 @@ using System.Data;
  */
 namespace Tests
 {
-	public static class TestPatient
+	public static class TestCreatePatient
 	{
 		[SetUp]
 		public static void SetUp()

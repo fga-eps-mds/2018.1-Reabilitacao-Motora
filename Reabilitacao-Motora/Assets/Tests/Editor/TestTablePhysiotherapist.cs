@@ -19,7 +19,7 @@ using System.Data;
 */
 namespace Tests
 {
-	public class TestTablePerson
+	public class TestTablePhysiotherapist
 	{
 		[SetUp]
 		public void SetUp()
@@ -29,7 +29,7 @@ namespace Tests
 		}
 
 		[Test]
-		public void TestPessoaCreate ()
+		public void TestFisioterapeutaCreate ()
 		{
 			using (var conn = new SqliteConnection(GlobalController.path))
 			{
@@ -37,7 +37,7 @@ namespace Tests
 				
 				// tabela sendo criada no SetUp, no "Initialize" da GlobalController
 
-				var check = "SELECT count(*) FROM sqlite_master WHERE type='table' AND name='PESSOA';";
+				var check = "SELECT count(*) FROM sqlite_master WHERE type='table' AND name='FISIOTERAPEUTA';";
 
 				var result = 0;
 
@@ -73,15 +73,15 @@ namespace Tests
 		}
 
 		[Test]
-		public void TestPessoaDrop ()
+		public void TestFisioterapeutaDrop ()
 		{
 			using (var conn = new SqliteConnection(GlobalController.path))
 			{
 				conn.Open();
 
-				Pessoa.Drop();
+				Fisioterapeuta.Drop();
 
-				var check = "SELECT count(*) FROM sqlite_master WHERE type='table' AND name='PESSOA';";
+				var check = "SELECT count(*) FROM sqlite_master WHERE type='table' AND name='FISIOTERAPEUTA';";
 
 				var result = 0;
 
@@ -117,16 +117,19 @@ namespace Tests
 		}
 		
 		[Test]
-		public void TestPessoaInsert ()
+		public void TestFisioterapeutaInsert ()
 		{
 			using (var conn = new SqliteConnection(GlobalController.path))
 			{
 				conn.Open();
 
 				Pessoa.Insert("fake name1", "m", "1995-01-01", "6198732711", null);
-				Pessoa.Insert("fake name2", "m", "1995-01-02", "6198732712", "615236622");
+				Pessoa.Insert("fake name2", "m", "1995-01-02", "6198732712", null);
+				
+				Fisioterapeuta.Insert(2, "abracadabra1", "demais1", null, null);
+				Fisioterapeuta.Insert(1, "abracadabra2", "demais2", "DF", "123424");
 
-				var check = "SELECT * FROM PESSOA;";
+				var check = "SELECT * FROM FISIOTERAPEUTA;";
 
 				var id = 0;
 				var result = "";
@@ -148,33 +151,32 @@ namespace Tests
 
 								if (!reader.IsDBNull(1)) 
 								{
-									result = reader.GetString(1);
-									Assert.AreEqual (result, string.Format("fake name{0}", i));
+									id = reader.GetInt32(1);
+									Assert.AreEqual (id, 3-i);
 								}
 
 								if (!reader.IsDBNull(2)) 
 								{
 									result = reader.GetString(2);
-									Assert.AreEqual (result, "m");
+									Assert.AreEqual (result, string.Format("abracadabra{0}", i));
 								}
 
 								if (!reader.IsDBNull(3)) 
 								{
 									result = reader.GetString(3);
-									Assert.AreEqual (result, string.Format("1995-01-0{0}", i));
+									Assert.AreEqual (result, string.Format("demais{0}", i));
 								}
 
 								if (!reader.IsDBNull(4)) 
 								{
 									result = reader.GetString(4);
-									Assert.AreEqual (result, string.Format("619873271{0}", i));
+									Assert.AreEqual (result, "DF");
 								}
 
 								if (!reader.IsDBNull(5)) 
 								{
 									result = reader.GetString(5);
-									// null não entrará, logo só a segunda "pessoa" entra
-									Assert.AreEqual (result, "615236622");
+									Assert.AreEqual (result, "123424");
 								}
 
 								i++;
@@ -195,19 +197,26 @@ namespace Tests
 		}
 
 		[Test]
-		public void TestPessoaUpdate ()
+		public void TestFisioterapeutaUpdate ()
 		{
 			using (var conn = new SqliteConnection(GlobalController.path))
 			{
 				conn.Open();
 
 				Pessoa.Insert("fake name1", "m", "1995-01-01", "6198732711", null);
-				Pessoa.Update(1, "name1 fake", "f", "1996-09-07", "6132329094", "6187651234");
+				Pessoa.Insert("fake name2", "m", "1995-01-02", "6198732712", null);
 				
-				var check = "SELECT * FROM PESSOA;";
+				Fisioterapeuta.Insert(2, "abracadabra1", "demais1", null, null);
+				Fisioterapeuta.Insert(1, "abracadabra2", "demais2", "DF", "123424");
+
+				Fisioterapeuta.Update(1, 1, "abracadabra12", "demais2", null, null);
+				Fisioterapeuta.Update(2, 2, "abracadabra11", "demais2", null, null);
+
+				var check = "SELECT * FROM FISIOTERAPEUTA;";
 
 				var id = 0;
 				var result = "";
+				int i = 1;
 
 				using (var cmd = new SqliteCommand(check, conn))
 				{
@@ -220,38 +229,31 @@ namespace Tests
 								if (!reader.IsDBNull(0)) 
 								{
 									id = reader.GetInt32(0);
-									Assert.AreEqual (id, 1);
+									Assert.AreEqual (id, i);
 								}
 
 								if (!reader.IsDBNull(1)) 
 								{
-									result = reader.GetString(1);
-									Assert.AreEqual (result, "name1 fake");
+									id = reader.GetInt32(1);
+									Assert.AreEqual (id, i);
 								}
 
 								if (!reader.IsDBNull(2)) 
 								{
 									result = reader.GetString(2);
-									Assert.AreEqual (result, "f");
+									Assert.AreEqual (result, string.Format("abracadabra1{0}", 3-i));
 								}
 
 								if (!reader.IsDBNull(3)) 
 								{
 									result = reader.GetString(3);
-									Assert.AreEqual (result, "1996-09-07");
+									Assert.AreEqual (result, "demais2");
 								}
 
-								if (!reader.IsDBNull(4)) 
-								{
-									result = reader.GetString(4);
-									Assert.AreEqual (result, "6132329094");
-								}
+								Assert.AreEqual (reader.IsDBNull(4), true);
+								Assert.AreEqual (reader.IsDBNull(5), true);
 
-								if (!reader.IsDBNull(5)) 
-								{
-									result = reader.GetString(5);
-									Assert.AreEqual (result, "6187651234");
-								}
+								i++;
 							}
 						}
 						finally
@@ -269,26 +271,40 @@ namespace Tests
 		}
 		
 		[Test]
-		public void TestPessoaRead ()
+		public void TestFisioterapeutaRead ()
 		{
 			using (var conn = new SqliteConnection(GlobalController.path))
 			{
 				conn.Open();
 
-				Pessoa.Insert("fake name1", "m", "1995-01-01", "6198732711", "615236621");
-				Pessoa.Insert("fake name2", "m", "1995-01-02", "6198732712", "615236622");
-				Pessoa.Insert("fake name3", "m", "1995-01-03", "6198732713", "615236623");
+				Pessoa.Insert("fake name1", "m", "1995-01-01", "6198732711", null);
+				Pessoa.Insert("fake name2", "m", "1995-01-02", "6198732712", null);
+				
+				Fisioterapeuta.Insert(2, "abracadabra1", "demais1", null, null);
+				Fisioterapeuta.Insert(1, "abracadabra2", "demais2", "DF", "123424");
 
-				List<Pessoa> allPpls = Pessoa.Read(); 
+				List<Fisioterapeuta> allPhysios = Fisioterapeuta.Read(); 
 
-				for (int i = 0; i < allPpls.Count; ++i)
+				for (int i = 0; i < allPhysios.Count; ++i)
 				{
-					Assert.AreEqual (allPpls[i].idPessoa, i+1);
-					Assert.AreEqual (allPpls[i].nomePessoa, string.Format("fake name{0}", i+1));
-					Assert.AreEqual (allPpls[i].sexo, "m");
-					Assert.AreEqual (allPpls[i].dataNascimento, string.Format("1995-01-0{0}", i+1));
-					Assert.AreEqual (allPpls[i].telefone1, string.Format("619873271{0}", i+1));
-					Assert.AreEqual (allPpls[i].telefone2, string.Format("61523662{0}", i+1));
+					Assert.AreEqual (allPhysios[i].persona.idPessoa, 3 - (i+1));
+					Assert.AreEqual (allPhysios[i].persona.nomePessoa, string.Format("fake name{0}", 3-(i+1)));
+					Assert.AreEqual (allPhysios[i].persona.sexo, "m");
+					Assert.AreEqual (allPhysios[i].persona.dataNascimento, string.Format("1995-01-0{0}", 3-(i+1)));
+					Assert.AreEqual (allPhysios[i].persona.telefone1, string.Format("619873271{0}", 3-(i+1)));
+					Assert.AreEqual (allPhysios[i].idFisioterapeuta, i+1);
+					Assert.AreEqual (allPhysios[i].login, string.Format("abracadabra{0}", i+1));
+					Assert.AreEqual (allPhysios[i].senha, string.Format("demais{0}", i+1));
+					if (i == 0)
+					{
+						Assert.AreEqual (allPhysios[i].regiao, null);
+						Assert.AreEqual (allPhysios[i].crefito, null);
+					}
+					else
+					{
+						Assert.AreEqual (allPhysios[i].regiao, "DF");
+						Assert.AreEqual (allPhysios[i].crefito, "123424");
+					}
 				}
 
 				conn.Dispose();
@@ -299,25 +315,41 @@ namespace Tests
 		}
 
 		[Test]
-		public void TestPessoaReadValue ()
+		public void TestFisioterapeutaReadValue ()
 		{
 			using (var conn = new SqliteConnection(GlobalController.path))
 			{
 				conn.Open();
 
-				Pessoa.Insert("fake name1", "m", "1995-01-01", "6198732711", "615236621");
-				Pessoa.Insert("fake name2", "m", "1995-01-02", "6198732712", "615236622");
-				Pessoa.Insert("fake name3", "m", "1995-01-03", "6198732713", "615236623");
+				Pessoa.Insert("fake name1", "m", "1995-01-01", "6198732711", null);
+				Pessoa.Insert("fake name2", "m", "1995-01-02", "6198732712", null);
+				
+				Fisioterapeuta.Insert(2, "abracadabra1", "demais1", null, null);
+				Fisioterapeuta.Insert(1, "abracadabra2", "demais2", "DF", "123424");
 
-				for (int i = 0; i < 3; ++i)
+
+				for (int i = 0; i < 2; ++i)
 				{
-					Pessoa auxPpl = Pessoa.ReadValue(i+1);
-					Assert.AreEqual (auxPpl.idPessoa, i+1);
-					Assert.AreEqual (auxPpl.nomePessoa, string.Format("fake name{0}", i+1));
-					Assert.AreEqual (auxPpl.sexo, "m");
-					Assert.AreEqual (auxPpl.dataNascimento, string.Format("1995-01-0{0}", i+1));
-					Assert.AreEqual (auxPpl.telefone1, string.Format("619873271{0}", i+1));
-					Assert.AreEqual (auxPpl.telefone2, string.Format("61523662{0}", i+1));
+					Fisioterapeuta auxPhysio = Fisioterapeuta.ReadValue(i+1); 
+
+					Assert.AreEqual (auxPhysio.persona.idPessoa, 3 - (i+1));
+					Assert.AreEqual (auxPhysio.persona.nomePessoa, string.Format("fake name{0}", 3-(i+1)));
+					Assert.AreEqual (auxPhysio.persona.sexo, "m");
+					Assert.AreEqual (auxPhysio.persona.dataNascimento, string.Format("1995-01-0{0}", 3-(i+1)));
+					Assert.AreEqual (auxPhysio.persona.telefone1, string.Format("619873271{0}", 3-(i+1)));
+					Assert.AreEqual (auxPhysio.idFisioterapeuta, i+1);
+					Assert.AreEqual (auxPhysio.login, string.Format("abracadabra{0}", i+1));
+					Assert.AreEqual (auxPhysio.senha, string.Format("demais{0}", i+1));
+					if (i == 0)
+					{
+						Assert.AreEqual (auxPhysio.regiao, null);
+						Assert.AreEqual (auxPhysio.crefito, null);
+					}
+					else
+					{
+						Assert.AreEqual (auxPhysio.regiao, "DF");
+						Assert.AreEqual (auxPhysio.crefito, "123424");
+					}
 				}
 
 				conn.Dispose();
@@ -329,15 +361,16 @@ namespace Tests
 
 		
 		[Test]
-		public void TestPessoaDeleteValue ()
+		public void TestFisioterapeutaDeleteValue ()
 		{
 			using (var conn = new SqliteConnection(GlobalController.path))
 			{
 				conn.Open();
 
-				Pessoa.Insert("fake name1", "m", "1995-01-01", "6198732711", "615236621");
+				Pessoa.Insert("fake name2", "m", "1995-01-02", "6198732712", null);	
+				Fisioterapeuta.Insert(1, "abracadabra1", "demais1", null, null);
 
-				var check = "SELECT EXISTS(SELECT 1 FROM 'PESSOA' WHERE \"idPessoa\" = \"1\" LIMIT 1)";
+				var check = "SELECT EXISTS(SELECT 1 FROM 'FISIOTERAPEUTA' WHERE \"idFisioterapeuta\" = \"1\" LIMIT 1)";
 				
 				var result = 0;
 				using (var cmd = new SqliteCommand(check, conn))
@@ -364,7 +397,7 @@ namespace Tests
 				}
 
 				Assert.AreEqual (result, 1);
-				Pessoa.DeleteValue(1);
+				Fisioterapeuta.DeleteValue(1);
 
 				result = 0;
 				using (var cmd = new SqliteCommand(check, conn))

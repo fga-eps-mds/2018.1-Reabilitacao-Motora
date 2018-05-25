@@ -18,7 +18,7 @@ using System.Data;
  */
 namespace Tests
 {
-	public static class TestMovement
+	public static class TestCreateMovement
 	{
 		[SetUp]
 		public static void SetUp()
