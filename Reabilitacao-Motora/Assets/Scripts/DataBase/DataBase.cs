@@ -347,7 +347,11 @@ namespace DataBaseAttributes
 						{
 							columns[i] = (float) reader.GetDouble(i);
 						}
-					}
+                        else if (t.Equals(typeof(float)))
+                        {
+                            columns[i] = (float) reader.GetFloat(i);
+                        }
+                    }
 				}
 				else
 				{
