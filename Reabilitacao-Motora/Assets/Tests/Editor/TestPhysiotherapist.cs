@@ -314,34 +314,50 @@ namespace Tests
 			return;
 		}
 
-		// [Test]
-		// public void TestFisioterapeutaReadValue ()
-		// {
-		// 	using (var conn = new SqliteConnection(GlobalController.path))
-		// 	{
-		// 		conn.Open();
+		[Test]
+		public void TestFisioterapeutaReadValue ()
+		{
+			using (var conn = new SqliteConnection(GlobalController.path))
+			{
+				conn.Open();
 
-		// 		Fisioterapeuta.Insert("fake name1", "m", "1995-01-01", "6198732711", "615236621");
-		// 		Fisioterapeuta.Insert("fake name2", "m", "1995-01-02", "6198732712", "615236622");
-		// 		Fisioterapeuta.Insert("fake name3", "m", "1995-01-03", "6198732713", "615236623");
+				Pessoa.Insert("fake name1", "m", "1995-01-01", "6198732711", null);
+				Pessoa.Insert("fake name2", "m", "1995-01-02", "6198732712", null);
+				
+				Fisioterapeuta.Insert(2, "abracadabra1", "demais1", null, null);
+				Fisioterapeuta.Insert(1, "abracadabra2", "demais2", "DF", "123424");
 
-		// 		for (int i = 0; i < 3; ++i)
-		// 		{
-		// 			Fisioterapeuta auxPpl = Fisioterapeuta.ReadValue(i+1);
-		// 			Assert.AreEqual (auxPpl.idFisioterapeuta, i+1);
-		// 			Assert.AreEqual (auxPpl.nomeFisioterapeuta, string.Format("fake name{0}", i+1));
-		// 			Assert.AreEqual (auxPpl.sexo, "m");
-		// 			Assert.AreEqual (auxPpl.dataNascimento, string.Format("1995-01-0{0}", i+1));
-		// 			Assert.AreEqual (auxPpl.telefone1, string.Format("619873271{0}", i+1));
-		// 			Assert.AreEqual (auxPpl.telefone2, string.Format("61523662{0}", i+1));
-		// 		}
 
-		// 		conn.Dispose();
-		// 		conn.Close();
-		// 	}
+				for (int i = 0; i < 2; ++i)
+				{
+					Fisioterapeuta auxPhysio = Fisioterapeuta.ReadValue(i+1); 
 
-		// 	return;
-		// }
+					Assert.AreEqual (auxPhysio.persona.idPessoa, 3 - (i+1));
+					Assert.AreEqual (auxPhysio.persona.nomePessoa, string.Format("fake name{0}", 3-(i+1)));
+					Assert.AreEqual (auxPhysio.persona.sexo, "m");
+					Assert.AreEqual (auxPhysio.persona.dataNascimento, string.Format("1995-01-0{0}", 3-(i+1)));
+					Assert.AreEqual (auxPhysio.persona.telefone1, string.Format("619873271{0}", 3-(i+1)));
+					Assert.AreEqual (auxPhysio.idFisioterapeuta, i+1);
+					Assert.AreEqual (auxPhysio.login, string.Format("abracadabra{0}", i+1));
+					Assert.AreEqual (auxPhysio.senha, string.Format("demais{0}", i+1));
+					if (i == 0)
+					{
+						Assert.AreEqual (auxPhysio.regiao, "");
+						Assert.AreEqual (auxPhysio.crefito, "");
+					}
+					else
+					{
+						Assert.AreEqual (auxPhysio.regiao, "DF");
+						Assert.AreEqual (auxPhysio.crefito, "123424");
+					}
+				}
+
+				conn.Dispose();
+				conn.Close();
+			}
+
+			return;
+		}
 
 		
 		// [Test]
