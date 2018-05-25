@@ -17,40 +17,12 @@ namespace musculo
 		private int IdMusculo;
 		private string NomeMusculo;
 
-		public int idMusculo 
-		{
-			get 
-			{
-				return IdMusculo; 
-			} 
-			set 
-			{
-				IdMusculo = value; 
-			}
-		}
-
-		public string nomeMusculo 
-		{
-			get 
-			{
-				return NomeMusculo; 
-			} 
-			set 
-			{
-				NomeMusculo = value; 
-			}
-		}
-
+		public int idMusculo { get { return IdMusculo; } set { IdMusculo = value; }}
+		public string nomeMusculo { get { return NomeMusculo; } set { NomeMusculo = value; }}
 
 		/**
 		 * Classe com todos os atributos de um musculo.
 		 */
-		public Musculo(int idm, string nm)
-		{
-			this.idMusculo = idm;
-			this.nomeMusculo = nm;
-		}
-
 		public Musculo(Object[] columns)
 		{
 			this.idMusculo = (int)columns[0];
@@ -94,11 +66,7 @@ namespace musculo
 		public static List<Musculo> Read()
 		{
 			DataBase banco = new DataBase();
-
-			int idMusculoTemp = 0;
-			string nomeMusculoTemp = "";
-
-			Object[] columns = new Object[] {idMusculoTemp, nomeMusculoTemp};
+			Object[] columns = new Object[] {0, ""};
 
 			List<Musculo> muscles = banco.Read<Musculo>(TablesManager.Tables[tableId].tableName, columns);
 
@@ -108,10 +76,7 @@ namespace musculo
 		public static Musculo ReadValue (int id)
 		{
 			DataBase banco = new DataBase();
-			int idMusculoTemp = 0;
-			string nomeMusculoTemp = "";
-
-			Object[] columns = new Object[] {idMusculoTemp, nomeMusculoTemp};
+			Object[] columns = new Object[] {0, ""};
 
 			Musculo muscle = banco.ReadValue<Musculo>(TablesManager.Tables[tableId].tableName,
 				TablesManager.Tables[tableId].colName[0], id, columns);

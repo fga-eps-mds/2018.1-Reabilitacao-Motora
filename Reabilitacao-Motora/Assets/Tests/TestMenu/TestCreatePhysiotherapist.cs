@@ -12,10 +12,16 @@ namespace Tests
 {
 	public static class TestCreatePhysiotherapist
 	{
+		[SetUp]
+		public static void BeforeEveryTest ()
+		{
+			GlobalController.test = true;
+			GlobalController.Initialize();
+		}
+
 		[UnityTest]
 		public static IEnumerator TestPhysioManagerInputFields()
 		{
-			Flow.StaticLogin();
 			Flow.StaticNewPhysiotherapist();
 
 			yield return null;
@@ -41,7 +47,6 @@ namespace Tests
 		[UnityTest]
 		public static IEnumerator TestSaveButton()
 		{
-			Flow.StaticLogin();
 			Flow.StaticNewPhysiotherapist();
 
 			yield return null;

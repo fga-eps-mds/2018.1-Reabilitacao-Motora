@@ -19,41 +19,31 @@ using System.Data;
 */
 namespace Tests
 {
-	public class TestDataBase
+	public class TestPessoa
 	{
 		private DataBase database;
+		private int tableId;
 
 		[SetUp]
 		public void SetUp()
 		{
 			database = new DataBase();
-			var create = "CREATE TABLE IF NOT EXISTS TESTE (idTable INTEGER primary key AUTOINCREMENT,nome VARCHAR (255) not null);";
-			GlobalController.test = true;
-			
+			tableId = 0;
+
+			GlobalController.test = true;			
 			GlobalController.Initialize();
-			database.Create (create);
 		}
 
-		public class Teste
-		{
-			private int IdTable;
-			private string Nome;
-			public int idTable {get{return IdTable;} set {IdTable = value;}}
-			public string nome {get{return Nome;} set {Nome = value;}}
-			public Teste (System.Object[] cols)
-			{
-				this.idTable = (int) cols[0];
-				this.nome = (string) cols[1];
-			}
-		}
-		
 		[Test]
-		public void TestCreate ()
+		public void TestPessoaCreate ()
 		{
 			using (var conn = new SqliteConnection(GlobalController.path))
 			{
 				conn.Open();
-				var check = "SELECT count(*) FROM sqlite_master WHERE type='table' AND name='TESTE';";
+				
+				// tabela sendo criada no SetUp, no "Initialize" da GlobalController
+
+				var check = "SELECT count(*) FROM sqlite_master WHERE type='table' AND name='PESSOA';";
 
 				var result = 0;
 
@@ -89,13 +79,15 @@ namespace Tests
 		}
 
 		[Test]
-		public void TestDrop ()
+		public void TestPessoaDrop ()
 		{
 			using (var conn = new SqliteConnection(GlobalController.path))
 			{
 				conn.Open();
-				database.Drop(10);
-				var check = "SELECT count(*) FROM sqlite_master WHERE type='table' AND name='TESTE';";
+
+				Pessoa.Drop();
+
+				var check = "SELECT count(*) FROM sqlite_master WHERE type='table' AND name='PESSOA';";
 
 				var result = 0;
 
@@ -131,17 +123,96 @@ namespace Tests
 		}
 		
 		[Test]
-		public void TestInsert ()
+		public void TestPessoaInsert ()
 		{
 			using (var conn = new SqliteConnection(GlobalController.path))
 			{
 				conn.Open();
 
-				System.Object[] columns = new System.Object[] {"fake testname"};
-				database.Insert(columns, TablesManager.Tables[10].tableName, 10);
+				Pessoa.Insert("fake name1", "m", "1995-01-01", "6198732711", null);
+				Pessoa.Insert("fake name2", "m", "1995-01-02", "6198732712", "615236622");
 
-				var check = "SELECT * FROM TESTE;";
+				var check = "SELECT * FROM PESSOA;";
 
+				var id = 0;
+				var result = "";
+				int i = 1;
+
+				using (var cmd = new SqliteCommand(check, conn))
+				{
+					using (IDataReader reader = cmd.ExecuteReader())
+					{
+						try
+						{
+							while (reader.Read())
+							{
+								if (!reader.IsDBNull(0)) 
+								{
+									id = reader.GetInt32(0);
+									Assert.AreEqual (id, i);
+								}
+
+								if (!reader.IsDBNull(1)) 
+								{
+									result = reader.GetString(1);
+									Assert.AreEqual (result, string.Format("fake name{0}", i));
+								}
+
+								if (!reader.IsDBNull(2)) 
+								{
+									result = reader.GetString(2);
+									Assert.AreEqual (result, "m");
+								}
+
+								if (!reader.IsDBNull(3)) 
+								{
+									result = reader.GetString(3);
+									Assert.AreEqual (result, string.Format("1995-01-0{0}", i));
+								}
+
+								if (!reader.IsDBNull(4)) 
+								{
+									result = reader.GetString(4);
+									Assert.AreEqual (result, string.Format("619873271{0}", i));
+								}
+
+								if (!reader.IsDBNull(5)) 
+								{
+									result = reader.GetString(5);
+									// null não entrará, logo só a segunda "pessoa" entra
+									Assert.AreEqual (result, "615236622");
+								}
+
+								i++;
+							}
+						}
+						finally
+						{
+							reader.Dispose();
+							reader.Close();
+						}
+					}
+					cmd.Dispose();
+				}
+				conn.Dispose();
+				conn.Close();
+			}
+			return;
+		}
+
+		[Test]
+		public void TestPessoaUpdate ()
+		{
+			using (var conn = new SqliteConnection(GlobalController.path))
+			{
+				conn.Open();
+
+				Pessoa.Insert("fake name1", "m", "1995-01-01", "6198732711", null);
+				Pessoa.Update(1, "name1 fake", "f", "1996-09-07", "6132329094", "6187651234");
+				
+				var check = "SELECT * FROM PESSOA;";
+
+				var id = 0;
 				var result = "";
 
 				using (var cmd = new SqliteCommand(check, conn))
@@ -152,9 +223,40 @@ namespace Tests
 						{
 							while (reader.Read())
 							{
+								if (!reader.IsDBNull(0)) 
+								{
+									id = reader.GetInt32(0);
+									Assert.AreEqual (id, 1);
+								}
+
 								if (!reader.IsDBNull(1)) 
 								{
 									result = reader.GetString(1);
+									Assert.AreEqual (result, "name1 fake");
+								}
+
+								if (!reader.IsDBNull(2)) 
+								{
+									result = reader.GetString(2);
+									Assert.AreEqual (result, "f");
+								}
+
+								if (!reader.IsDBNull(3)) 
+								{
+									result = reader.GetString(3);
+									Assert.AreEqual (result, "1996-09-07");
+								}
+
+								if (!reader.IsDBNull(4)) 
+								{
+									result = reader.GetString(4);
+									Assert.AreEqual (result, "6132329094");
+								}
+
+								if (!reader.IsDBNull(5)) 
+								{
+									result = reader.GetString(5);
+									Assert.AreEqual (result, "6187651234");
 								}
 							}
 						}
@@ -166,8 +268,34 @@ namespace Tests
 					}
 					cmd.Dispose();
 				}
+				conn.Dispose();
+				conn.Close();
+			}
+			return;
+		}
+		
+		[Test]
+		public void TestPessoaRead ()
+		{
+			using (var conn = new SqliteConnection(GlobalController.path))
+			{
+				conn.Open();
 
-				Assert.AreEqual (result, "fake testname");
+				Pessoa.Insert("fake name1", "m", "1995-01-01", "6198732711", "615236621");
+				Pessoa.Insert("fake name2", "m", "1995-01-02", "6198732712", "615236622");
+				Pessoa.Insert("fake name3", "m", "1995-01-03", "6198732713", "615236623");
+
+				List<Pessoa> allPpls = Pessoa.Read(); 
+
+				for (int i = 0; i < allPpls.Count; ++i)
+				{
+					Assert.AreEqual (allPpls[i].idPessoa, i+1);
+					Assert.AreEqual (allPpls[i].nomePessoa, string.Format("fake name{0}", i+1));
+					Assert.AreEqual (allPpls[i].sexo, "m");
+					Assert.AreEqual (allPpls[i].dataNascimento, string.Format("1995-01-0{0}", i+1));
+					Assert.AreEqual (allPpls[i].telefone1, string.Format("619873271{0}", i+1));
+					Assert.AreEqual (allPpls[i].telefone2, string.Format("61523662{0}", i+1));
+				}
 
 				conn.Dispose();
 				conn.Close();
@@ -177,113 +305,27 @@ namespace Tests
 		}
 
 		[Test]
-		public void TestUpdate ()
+		public void TestPessoaReadValue ()
 		{
 			using (var conn = new SqliteConnection(GlobalController.path))
 			{
 				conn.Open();
 
-				System.Object[] columnsToInsert = new System.Object[] {"fake testname"};
-				database.Insert(columnsToInsert, TablesManager.Tables[10].tableName, 10);
+				Pessoa.Insert("fake name1", "m", "1995-01-01", "6198732711", "615236621");
+				Pessoa.Insert("fake name2", "m", "1995-01-02", "6198732712", "615236622");
+				Pessoa.Insert("fake name3", "m", "1995-01-03", "6198732713", "615236623");
 
-				System.Object[] columnsToUpdate = new System.Object[] {1, "testname fake"};
-				database.Update(columnsToUpdate, TablesManager.Tables[10].tableName, 10);
-
-				var check = "SELECT * FROM TESTE;";
-
-				var result = "";
-
-				using (var cmd = new SqliteCommand(check, conn))
-				{
-					using (IDataReader reader = cmd.ExecuteReader())
-					{
-						try
-						{
-							while (reader.Read())
-							{
-								if (!reader.IsDBNull(1)) 
-								{
-									result = reader.GetString(1);
-								}
-							}
-						}
-						finally
-						{
-							reader.Dispose();
-							reader.Close();
-						}
-					}
-					cmd.Dispose();
-				}
-
-				Assert.AreNotEqual (result, "fake testname");
-				Assert.AreEqual (result, "testname fake");
-
-				conn.Dispose();
-				conn.Close();			
-			}
-
-			return;
-		}
-
-		[Test]
-		public void TestRead ()
-		{
-			using (var conn = new SqliteConnection(GlobalController.path))
-			{
-				conn.Open();
-
-				System.Object[] columnsToInsert = new System.Object[] {"fake testname0"};
-				database.Insert(columnsToInsert, TablesManager.Tables[10].tableName, 10);
-				columnsToInsert = new System.Object[] {"fake testname1"};
-				database.Insert(columnsToInsert, TablesManager.Tables[10].tableName, 10);
-				columnsToInsert = new System.Object[] {"fake testname2"};
-				database.Insert(columnsToInsert, TablesManager.Tables[10].tableName, 10);
-
-
-				System.Object[] columnsToRead = new System.Object[] {0, ""};
-				List<Teste> allTests = database.Read<Teste>(TablesManager.Tables[10].tableName, columnsToRead);
-
-				for (int i = 0; i < allTests.Count; ++i)
-				{
-					Assert.AreEqual (allTests[i].idTable, i+1);
-					Assert.AreEqual (allTests[i].nome, string.Format("fake testname{0}", i));
-				}
-
-
-				conn.Dispose();
-				conn.Close();
-			}
-
-			return;
-		}
-
-		[Test]
-		public void TestReadValue ()
-		{
-			using (var conn = new SqliteConnection(GlobalController.path))
-			{
-				conn.Open();
-
-				System.Object[] columnsToInsert = new System.Object[] {"fake testname0"};
-				database.Insert(columnsToInsert, TablesManager.Tables[10].tableName, 10);
-				columnsToInsert = new System.Object[] {"fake testname1"};
-				database.Insert(columnsToInsert, TablesManager.Tables[10].tableName, 10);
-				columnsToInsert = new System.Object[] {"fake testname2"};
-				database.Insert(columnsToInsert, TablesManager.Tables[10].tableName, 10);
-
-
-				System.Object[] columnsToRead = new System.Object[] {0, ""};
 				for (int i = 0; i < 3; ++i)
 				{
-					Teste allTests = database.ReadValue<Teste>(TablesManager.Tables[10].tableName,
-					TablesManager.Tables[10].colName[0], i+1, columnsToRead);
-
-					Assert.AreEqual (allTests.idTable, i+1);
-					Assert.AreEqual (allTests.nome, string.Format("fake testname{0}", i));
+					Pessoa auxPpl = Pessoa.ReadValue(i+1);
+					Assert.AreEqual (auxPpl.idPessoa, i+1);
+					Assert.AreEqual (auxPpl.nomePessoa, string.Format("fake name{0}", i+1));
+					Assert.AreEqual (auxPpl.sexo, "m");
+					Assert.AreEqual (auxPpl.dataNascimento, string.Format("1995-01-0{0}", i+1));
+					Assert.AreEqual (auxPpl.telefone1, string.Format("619873271{0}", i+1));
+					Assert.AreEqual (auxPpl.telefone2, string.Format("61523662{0}", i+1));
 				}
 
-				
 				conn.Dispose();
 				conn.Close();
 			}
@@ -293,15 +335,15 @@ namespace Tests
 
 		
 		[Test]
-		public void TestDeleteValue ()
+		public void TestPessoaDeleteValue ()
 		{
 			using (var conn = new SqliteConnection(GlobalController.path))
 			{
 				conn.Open();
-				System.Object[] columnsToInsert = new System.Object[] {"fake testname"};
-				database.Insert(columnsToInsert, TablesManager.Tables[10].tableName, 10);
 
-				var check = "SELECT EXISTS(SELECT 1 FROM 'TESTE' WHERE \"idTable\" = \"1\" and \"nome\"=\"fake testname\" LIMIT 1)";
+				Pessoa.Insert("fake name1", "m", "1995-01-01", "6198732711", "615236621");
+
+				var check = "SELECT EXISTS(SELECT 1 FROM 'PESSOA' WHERE \"idPessoa\" = \"1\" LIMIT 1)";
 				
 				var result = 0;
 				using (var cmd = new SqliteCommand(check, conn))
@@ -328,7 +370,7 @@ namespace Tests
 				}
 
 				Assert.AreEqual (result, 1);
-				database.DeleteValue(10, 1);
+				database.DeleteValue(tableId, 1);
 
 				result = 0;
 				using (var cmd = new SqliteCommand(check, conn))
@@ -371,44 +413,8 @@ namespace Tests
 			GC.Collect();
 			GC.WaitForPendingFinalizers();
 
-			database.Drop(10);
+			database.Drop(tableId);
 			database = null;
 		}
-
-
-
-
-// 		/**
-// 		* Função que apaga a relação de pessoas inteira de uma vez.
-// 		 */
-
-// 	
-
-// 		[Test]
-// 		private static void ObjectArray ()
-// 		{
-// 			database.ObjectArray (ref System.Object[] columns, ref IDataReader reader);
-
-// 			for (int i = 0; i < columns.Length; ++i)
-// 			{
-// 				Type t = columns[i].GetType();
-// 				if (!reader.IsDBNull(i))
-// 				{
-// 					if ( t.Equals(typeof(int)) ) 
-// 					{
-// 						columns[i] = reader.GetInt32(i);
-// 					}
-// 					else if ( t.Equals(typeof(string)) ) 
-// 					{
-// 						columns[i] = reader.GetString(i);
-// 					}
-// 					else if ( t.Equals(typeof(float)) ) 
-// 					{
-// 						columns[i] = (float) reader.GetDouble(i);
-// 					}
-// 				}
-// 			}
-// 		}
-
 	}
 }

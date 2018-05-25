@@ -20,81 +20,15 @@ namespace movimento
 		private string DescricaoMovimento;
 		private string PontosMovimento;
 
-		public int idMovimento 
-		{
-			get 
-			{
-				return IdMovimento; 
-			} 
-			set 
-			{
-				IdMovimento = value; 
-			}
-		}
-
-		public int idFisioterapeuta 
-		{
-			get 
-			{
-				return IdFisioterapeuta; 
-			} 
-			set 
-			{
-				IdFisioterapeuta = value; 
-			}
-		}
-
-		public string nomeMovimento 
-		{
-			get 
-			{
-				return NomeMovimento; 
-			} 
-			set 
-			{
-				NomeMovimento = value; 
-			}
-		}
-
-		public string descricaoMovimento 
-		{
-			get 
-			{
-				return DescricaoMovimento; 
-			} 
-			set 
-			{
-				DescricaoMovimento = value; 
-			}
-		}
-
-		public string pontosMovimento 
-		{
-			get 
-			{
-				return PontosMovimento; 
-			} 
-			set 
-			{
-				PontosMovimento = value; 
-			}
-		}
-
+		public int idMovimento { get { return IdMovimento; } set { IdMovimento = value; }}
+		public int idFisioterapeuta { get { return IdFisioterapeuta; } set { IdFisioterapeuta = value; }}
+		public string nomeMovimento { get { return NomeMovimento; } set { NomeMovimento = value; }}
+		public string descricaoMovimento { get { return DescricaoMovimento; } set { DescricaoMovimento = value; }}
+		public string pontosMovimento { get { return PontosMovimento; } set { PontosMovimento = value; }}
 		
-		public Movimento(){}
-
 		/**
 		 * Classe com todos os atributos de um movimento.
 		 */
-		public Movimento(int idm, int idf, string nm, string dm, string pm)
-		{
-			this.idMovimento = idm;
-			this.idFisioterapeuta = idf;
-			this.nomeMovimento = nm;
-			this.descricaoMovimento = dm;
-			this.pontosMovimento = pm;
-		}
-
 		public Movimento(Object[] columns)
 		{
 			this.idMovimento = (int)columns[0];
@@ -147,13 +81,7 @@ namespace movimento
 		public static List<Movimento> Read()
 		{
 			DataBase banco = new DataBase();
-			int idMovimentoTemp = 0;
-			int idFisioterapeutaTemp = 0;
-			string nomeMovimentoTemp = "";
-			string descricaoMovimentoTemp = "";
-			string pontosMovimentoTemp = "";
-
-			Object[] columns = new Object[] {idMovimentoTemp,idFisioterapeutaTemp,nomeMovimentoTemp,descricaoMovimentoTemp,pontosMovimentoTemp};
+			Object[] columns = new Object[] {0, 0, "", "", ""};
 
 			List<Movimento> movements = banco.Read<Movimento>(TablesManager.Tables[tableId].tableName, columns);
 
@@ -164,13 +92,7 @@ namespace movimento
 		public static Movimento ReadValue (int id)
 		{
 			DataBase banco = new DataBase();
-			int idMovimentoTemp = 0;
-			int idFisioterapeutaTemp = 0;
-			string nomeMovimentoTemp = "";
-			string descricaoMovimentoTemp = "";
-			string pontosMovimentoTemp = "";
-
-			Object[] columns = new Object[] {idMovimentoTemp,idFisioterapeutaTemp,nomeMovimentoTemp,descricaoMovimentoTemp,pontosMovimentoTemp};
+			Object[] columns = new Object[] {0, 0, "", "", ""};
 
 			Movimento movement = banco.ReadValue<Movimento>(TablesManager.Tables[tableId].tableName,
 				TablesManager.Tables[tableId].colName[0], id, columns);

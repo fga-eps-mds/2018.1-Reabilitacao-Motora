@@ -81,7 +81,7 @@ public class createMovement : MonoBehaviour
 		return false;
 	}
 
-	private static bool ValidInput (List<InputField> inputs)
+	public static bool ValidInput (List<InputField> inputs)
 	{
 		bool valid = true;
 
@@ -102,7 +102,7 @@ public class createMovement : MonoBehaviour
 		return valid;
 	}
 
-	private static void ApplyColor (InputField input, bool ok)
+	public static void ApplyColor (InputField input, bool ok)
 	{
 		input.colors = ColorManager.SetColor(input.colors, ok);
 	}

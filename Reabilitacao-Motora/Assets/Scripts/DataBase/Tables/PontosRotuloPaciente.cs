@@ -20,80 +20,16 @@ namespace pontosrotulopaciente
 		private float TempoInicial;
 		private float TempoFinal;
 
-		public int idRotuloPaciente 
-		{
-			get 
-			{
-				return IdRotuloPaciente; 
-			} 
-			set 
-			{
-				IdRotuloPaciente = value; 
-			}
-		}
-
-		public int idExercicio 
-		{
-			get 
-			{
-				return IdExercicio; 
-			} 
-			set 
-			{
-				IdExercicio = value; 
-			}
-		}
-
-		public string estagioMovimentoPaciente 
-		{
-			get 
-			{
-				return EstagioMovimentoPaciente; 
-			} 
-			set 
-			{
-				EstagioMovimentoPaciente = value; 
-			}
-		}
-		
-		public float tempoInicial 
-		{
-			get 
-			{
-				return TempoInicial; 
-			} 
-			set 
-			{
-				TempoInicial = value; 
-			}
-		}
-
-		public float tempoFinal 
-		{
-			get 
-			{
-				return TempoFinal; 
-			} 
-			set 
-			{
-				TempoFinal = value; 
-			}
-		}
-
+		public int idRotuloPaciente { get { return IdRotuloPaciente; } set { IdRotuloPaciente = value; }}
+		public int idExercicio { get { return IdExercicio; } set { IdExercicio = value; }}
+		public string estagioMovimentoPaciente { get { return EstagioMovimentoPaciente; } set { EstagioMovimentoPaciente = value; }}		
+		public float tempoInicial { get { return TempoInicial; } set { TempoInicial = value; }}
+		public float tempoFinal { get { return TempoFinal; } set { TempoFinal = value; }}
 
 
 		/**
 		 * Classe com todos os atributos de um pontosrotulopaciente.
 		 */
-		public PontosRotuloPaciente(int idrp, int ide, string e, float ti, float tf)
-		{
-				this.idRotuloPaciente = idrp;
-				this.idExercicio = ide;
-				this.estagioMovimentoPaciente = e;
-				this.tempoInicial = ti;
-				this.tempoFinal = tf;
-		}
-
 		public PontosRotuloPaciente(Object[] columns)
 		{
 				this.idRotuloPaciente = (int)columns[0];
@@ -146,14 +82,7 @@ namespace pontosrotulopaciente
 		public static List<PontosRotuloPaciente> Read()
 		{
 			DataBase banco = new DataBase();
-
-			int idRotuloPacienteTemp = 0;
-			int idExercicioTemp = 0;
-			string estagioMovimentoPacienteTemp = "";
-			float tempoInicialTemp = 0;
-			float tempoFinalTemp = 0;
-
-			Object[] columns = new Object[] {idRotuloPacienteTemp,idExercicioTemp,estagioMovimentoPacienteTemp,tempoInicialTemp,tempoFinalTemp};
+			Object[] columns = new Object[] {0, 0, "", 0, 0};
 
 			List<PontosRotuloPaciente> patientLabelPoints = banco.Read<PontosRotuloPaciente>(TablesManager.Tables[tableId].tableName, columns);
 
@@ -164,14 +93,7 @@ namespace pontosrotulopaciente
 		public static PontosRotuloPaciente ReadValue (int id)
 		{
 			DataBase banco = new DataBase();
-
-			int idRotuloPacienteTemp = 0;
-			int idExercicioTemp = 0;
-			string estagioMovimentoPacienteTemp = "";
-			float tempoInicialTemp = 0;
-			float tempoFinalTemp = 0;
-
-			Object[] columns = new Object[] {idRotuloPacienteTemp,idExercicioTemp,estagioMovimentoPacienteTemp,tempoInicialTemp,tempoFinalTemp};
+			Object[] columns = new Object[] {0, 0, "", 0, 0};
 
 			PontosRotuloPaciente patientLabelPoint = banco.ReadValue<PontosRotuloPaciente>(TablesManager.Tables[tableId].tableName,
 				TablesManager.Tables[tableId].colName[0], id, columns);

@@ -22,104 +22,17 @@ namespace fisioterapeuta
 		private string Crefito;
 		private Pessoa Persona;
 
-		public int idFisioterapeuta 
-		{
-			get 
-			{
-				return IdFisioterapeuta; 
-			} 
-			set 
-			{
-				IdFisioterapeuta = value; 
-			}
-		}
-
-		public int idPessoa 
-		{
-			get 
-			{
-				return IdPessoa; 
-			} 
-			set 
-			{
-				IdPessoa = value; 
-			}
-		}
-
-		public string login 
-		{
-			get 
-			{
-				return Login; 
-			} 
-			set 
-			{
-				Login = value; 
-			}
-		}
-
-		public string senha 
-		{
-			get 
-			{
-				return Senha; 
-			} 
-			set 
-			{
-				Senha = value; 
-			}
-		}
-
-		public string regiao 
-		{
-			get 
-			{
-				return Regiao; 
-			} 
-			set 
-			{
-				Regiao = value; 
-			}
-		}
-
-		public string crefito 
-		{
-			get 
-			{
-				return Crefito; 
-			} 
-			set 
-			{
-				Crefito = value; 
-			}
-		}
-
-		public Pessoa persona 
-		{
-			get 
-			{
-				return Persona; 
-			} 
-			set 
-			{
-				Persona = value; 
-			}
-		}
-
+		public int idFisioterapeuta { get { return IdFisioterapeuta; } set { IdFisioterapeuta = value; }}
+		public int idPessoa { get { return IdPessoa; } set { IdPessoa = value; }}
+		public string login { get { return Login; } set { Login = value; }}
+		public string senha { get { return Senha; } set { Senha = value; }}
+		public string regiao { get { return Regiao; } set { Regiao = value; }}
+		public string crefito { get { return Crefito; } set { Crefito = value; }}
+		public Pessoa persona { get { return Persona; } set { Persona = value; }}
+		
 		/**
 		 * Classe com todos os atributos de um fisioterapeuta.
 		 */
-		public Fisioterapeuta(int idf, int idp, string l, string s, string r, string c)
-		{
-			this.idFisioterapeuta = idf;
-			this.idPessoa = idp;
-			this.login = l;
-			this.senha = s;
-			this.regiao = r;
-			this.crefito = c;
-			this.persona = Pessoa.ReadValue(idp);		
-		}
-
 		public Fisioterapeuta(Object[] columns)
 		{
 			this.idFisioterapeuta = (int)columns[0];
@@ -177,15 +90,7 @@ namespace fisioterapeuta
 		public static List<Fisioterapeuta> Read()
 		{
 			DataBase banco = new DataBase();
-
-			int idFisioterapeutaTemp = 0;
-			int idPessoaTemp = 0;
-			string loginTemp = "";
-			string senhaTemp = "";
-			string regiaoTemp = "";
-			string crefitoTemp = "";
-
-			Object[] columns = new Object[] {idFisioterapeutaTemp, idPessoaTemp, loginTemp, senhaTemp, regiaoTemp, crefitoTemp};
+			Object[] columns = new Object[] {0, 0, "", "", "", ""};
 
 			List<Fisioterapeuta> physiotherapeuts = banco.Read<Fisioterapeuta>(TablesManager.Tables[tableId].tableName, columns);
 
@@ -195,15 +100,7 @@ namespace fisioterapeuta
 		public static Fisioterapeuta ReadValue (int id)
 		{
 			DataBase banco = new DataBase();
-
-			int idFisioterapeutaTemp = 0;
-			int idPessoaTemp = 0;
-			string loginTemp = "";
-			string senhaTemp = "";
-			string regiaoTemp = "";
-			string crefitoTemp = "";
-
-			Object[] columns = new Object[] {idFisioterapeutaTemp, idPessoaTemp, loginTemp, senhaTemp, regiaoTemp, crefitoTemp};
+			Object[] columns = new Object[] {0, 0, "", "", "", ""};
 
 			Fisioterapeuta physiotherapeut = banco.ReadValue<Fisioterapeuta>(TablesManager.Tables[tableId].tableName,
 				TablesManager.Tables[tableId].colName[0], id, columns);

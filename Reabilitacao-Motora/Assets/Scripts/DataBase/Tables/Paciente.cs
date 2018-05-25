@@ -19,66 +19,14 @@ namespace paciente
 		private string Observacoes;
 		private Pessoa Persona;
 
-		public int idPaciente 
-		{
-			get 
-			{
-				return IdPaciente; 
-			} 
-			set 
-			{
-				IdPaciente = value; 
-			}
-		}
-
-		public int idPessoa 
-		{
-			get 
-			{
-				return IdPessoa; 
-			} 
-			set 
-			{
-				IdPessoa = value; 
-			}
-		}
-
-		public string observacoes 
-		{
-			get 
-			{
-				return Observacoes; 
-			} 
-			set 
-			{
-				Observacoes = value; 
-			}
-		}
-
-		public Pessoa persona 
-		{
-			get 
-			{
-				return Persona; 
-			} 
-			set 
-			{
-				Persona = value; 
-			}
-		} 
-
+		public int idPaciente { get { return IdPaciente; } set { IdPaciente = value; }}
+		public int idPessoa { get { return IdPessoa; } set { IdPessoa = value; }}
+		public string observacoes { get { return Observacoes; } set { Observacoes = value; }}
+		public Pessoa persona { get { return Persona; } set { Persona = value; }}
 
 		/**
 		 * Classe com todos os atributos de um paciente.
 		 */
-		public Paciente(int idpa, int idpe, string obs)
-		{
-			this.idPaciente = idpa;
-			this.idPessoa = idpe;
-			this.observacoes = obs;
-			this.persona = Pessoa.ReadValue (idpe);
-		}
-
 		public Paciente(Object[] columns)
 		{
 			this.idPaciente = (int)columns[0];
@@ -126,11 +74,8 @@ namespace paciente
 		public static List<Paciente> Read()
 		{
 			DataBase banco = new DataBase();
-			int idPacienteTemp = 0;
-			int idPessoaTemp = 0;
-			string observacoesTemp = "";
+			Object[] columns = new Object[] {0, 0, ""};
 
-			Object[] columns = new Object[] {idPacienteTemp,idPessoaTemp,observacoesTemp};
 			List<Paciente> patients = banco.Read<Paciente>(TablesManager.Tables[tableId].tableName, columns);
 
 			return patients;
@@ -139,11 +84,7 @@ namespace paciente
 		public static Paciente ReadValue (int id)
 		{
 			DataBase banco = new DataBase();
-			int idPacienteTemp = 0;
-			int idPessoaTemp = 0;
-			string observacoesTemp = "";
-
-			Object[] columns = new Object[] {idPacienteTemp,idPessoaTemp,observacoesTemp};
+			Object[] columns = new Object[] {0, 0, ""};
 
 			Paciente patient = banco.ReadValue<Paciente>(TablesManager.Tables[tableId].tableName,
 				TablesManager.Tables[tableId].colName[0], id, columns);
