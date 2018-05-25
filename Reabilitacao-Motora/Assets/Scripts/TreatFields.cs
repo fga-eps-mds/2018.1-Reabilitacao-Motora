@@ -18,20 +18,13 @@ public static class TreatFields
 		string result = "";
 
 		int count = 0;
-		foreach (char c in name)
-		{
-			if (c == ' ')
-			{
-				count++;
-			}
-		}
 
 		if(!normalString.IsMatch(name))
 		{
 			result += "Nome deve conter apenas letras!|";
 		}
 
-		if (name.Length < 8 || count == 0)
+		if (name.Length < 1)
 		{
 			result += "Insira nome e sobrenome!|";
 		}
@@ -68,7 +61,7 @@ public static class TreatFields
 			}
 		}
 
-		if (dia > 31 || (dia > 28 && mes == 2) || dia < 0)
+		if (dia > 31 || (dia > 29 && mes == 2) || dia < 0)
 		{
 			result += "Dia inválido!|";
 		}
@@ -76,7 +69,7 @@ public static class TreatFields
 		{
 			result += "Mês inválido!|";
 		}
-		if (ano < 1910 || ano > currentYear)
+		if (ano < 1900 || ano > currentYear)
 		{
 			result += "Ano inválido!|";
 		}
