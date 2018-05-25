@@ -36,15 +36,27 @@ namespace Tests
             Assert.AreEqual(inputExpected.colors, inputResponse.colors);
         }
 
-        /* 
         [Test]
         public static void TestValidInput ()
         {
-            var name = new InputField ();
-            var date = new InputField ();
-            var phone1 = new InputField ();
-            Toggle masc = new Toggle ();
-            Toggle fem = new Toggle ();
+
+            GameObject gameobject1 = new GameObject ();
+            var name = gameobject1.AddComponent<InputField>() as InputField;
+
+            GameObject gameobject2 = new GameObject ();
+            var date = gameobject2.AddComponent<InputField>() as InputField;
+
+            GameObject gameobject3 = new GameObject ();
+            var phone1 = gameobject3.AddComponent<InputField>() as InputField;
+
+            GameObject gameobject4 = new GameObject ();
+            var masc = gameobject4.AddComponent<Toggle>() as Toggle;
+
+            GameObject gameobject5 = new GameObject ();
+            var fem = gameobject5.AddComponent<Toggle>() as Toggle;
+
+            GameObject gameobject6 = new GameObject ();
+            var phone2 = gameobject6.AddComponent<InputField>() as InputField;
 
             List<InputField> inputs = new List<InputField>();
             List<Toggle> toggles = new List<Toggle>();
@@ -53,10 +65,12 @@ namespace Tests
             name.text = "Izabella Ribeiro";
             date.text = "15/10/1998";
             phone1.text = "61992960111";
+            phone2.text = "61984105449";
 
             inputs.Add(name);
             inputs.Add(date);
             inputs.Add(phone1);
+            inputs.Add(phone2);
             toggles.Add(masc);
             toggles.Add(fem);
 
@@ -64,7 +78,6 @@ namespace Tests
 
             Assert.AreEqual(response, true);
         }
-        */
 
         /*
         [Test]
