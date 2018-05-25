@@ -295,6 +295,7 @@ namespace Tests
 					Assert.AreEqual (allPhysios[i].idFisioterapeuta, i+1);
 					Assert.AreEqual (allPhysios[i].login, string.Format("abracadabra{0}", i+1));
 					Assert.AreEqual (allPhysios[i].senha, string.Format("demais{0}", i+1));
+					
 					if (i == 0)
 					{
 						Assert.AreEqual (allPhysios[i].regiao, null);

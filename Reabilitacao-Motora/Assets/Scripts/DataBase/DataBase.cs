@@ -170,6 +170,14 @@ namespace DataBaseAttributes
 
 		public List<T> Read<T> (string tableName, System.Object[] columns)
 		{
+			// uma copia do array já que não é possivel passá-lo sem ser por referencia
+			System.Object[] backup = new System.Object [] {};
+			foreach (var col in columns)
+			{
+				Array.Resize(ref backup, backup.Length + 1);
+				backup[backup.Length - 1] = col;
+			}
+
 			using (var conn = new SqliteConnection(GlobalController.path))
 			{
 				conn.Open();
@@ -184,11 +192,16 @@ namespace DataBaseAttributes
 					{
 						try 
 						{
+							int j = 0;
 							while (reader.Read())
 							{
-								var aux = columns;
-								ObjectArray (ref aux, reader);
-								var columnsCopy = aux;
+								// recuperando cópia aos valores originais
+								for (int i = 0; i < columns.Length; ++i)
+								{
+									columns[i] = backup[i];
+								}
+								
+								var columnsCopy = ObjectArray (columns, reader);
 
 								Type classType = typeof(T);
 								ConstructorInfo classConstructor = classType.GetConstructor(new [] { columnsCopy.GetType() });
@@ -196,7 +209,6 @@ namespace DataBaseAttributes
 
 								classList.Add(classInstance);
 							}
-
 						}
 						finally
 						{
@@ -233,9 +245,8 @@ namespace DataBaseAttributes
 						try 
 						{
 							reader.Read();
-							var aux = columns;
-							ObjectArray (ref aux, reader);
-							var columnsCopy = aux;
+							
+							var columnsCopy = ObjectArray (columns, reader);
 
 							Type classType = typeof(T);
 							ConstructorInfo classConstructor = classType.GetConstructor(new [] { columnsCopy.GetType() });
@@ -315,24 +326,27 @@ namespace DataBaseAttributes
 			return;
 		}
 
-		private static void ObjectArray (ref System.Object[] columns, SqliteDataReader reader)
+		private static System.Object[] ObjectArray (System.Object[] columns, SqliteDataReader reader)
 		{
 			for (int i = 0; i < columns.Length; ++i)
 			{
-				Type t = columns[i].GetType();
 				if (!reader.IsDBNull(i))
 				{
-					if ( t.Equals(typeof(int)) ) 
+					if (columns[i] != null)
 					{
-						columns[i] = reader.GetInt32(i);
-					}
-					else if ( t.Equals(typeof(string)) ) 
-					{
-						columns[i] = reader.GetString(i);
-					}
-					else if ( t.Equals(typeof(float)) ) 
-					{
-						columns[i] = (float) reader.GetDouble(i);
+						Type t = columns[i].GetType();
+						if ( t.Equals(typeof(int)) ) 
+						{
+							columns[i] = reader.GetInt32(i);
+						}
+						else if ( t.Equals(typeof(string)) ) 
+						{
+							columns[i] = reader.GetString(i);
+						}
+						else if ( t.Equals(typeof(float)) ) 
+						{
+							columns[i] = (float) reader.GetDouble(i);
+						}
 					}
 				}
 				else
@@ -340,8 +354,7 @@ namespace DataBaseAttributes
 					columns[i] = null;
 				}
 			}
-
-			return;
+			return columns;
 		}
 	}
 }
