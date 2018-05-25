@@ -21,15 +21,9 @@ namespace Tests
 {
 	public class TestPessoa
 	{
-		private DataBase database;
-		private int tableId;
-
 		[SetUp]
 		public void SetUp()
 		{
-			database = new DataBase();
-			tableId = 0;
-
 			GlobalController.test = true;			
 			GlobalController.Initialize();
 		}
@@ -370,7 +364,7 @@ namespace Tests
 				}
 
 				Assert.AreEqual (result, 1);
-				database.DeleteValue(tableId, 1);
+				Pessoa.DeleteValue(1);
 
 				result = 0;
 				using (var cmd = new SqliteCommand(check, conn))
@@ -406,15 +400,14 @@ namespace Tests
 
 
 		[TearDown]
-		public void AfterEveryTest ()
+		public static void AfterEveryTest ()
 		{
 			SqliteConnection.ClearAllPools();
 
 			GC.Collect();
 			GC.WaitForPendingFinalizers();
 
-			database.Drop(tableId);
-			database = null;
+			GlobalController.DropAll();
 		}
 	}
 }

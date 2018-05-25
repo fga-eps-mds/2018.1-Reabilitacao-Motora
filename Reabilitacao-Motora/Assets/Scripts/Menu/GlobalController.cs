@@ -82,4 +82,21 @@ public class GlobalController : MonoBehaviour
 		PontosRotuloPaciente.Create();
 		PontosRotuloFisioterapeuta.Create();
 	}
+
+	public static void DropAll()
+	{
+		if (test == true)
+		{
+			Pessoa.Drop();
+			Fisioterapeuta.Drop();
+			Paciente.Drop();
+			Musculo.Drop();
+			Movimento.Drop();
+			Sessao.Drop();
+			Exercicio.Drop();
+			MovimentoMusculo.Drop();
+			PontosRotuloPaciente.Drop();
+			PontosRotuloFisioterapeuta.Drop();
+		}
+	}
 }

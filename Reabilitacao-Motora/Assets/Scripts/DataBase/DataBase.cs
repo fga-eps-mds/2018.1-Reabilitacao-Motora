@@ -137,13 +137,20 @@ namespace DataBaseAttributes
 						aux = ",";
 					}
 
-					bld.Append(string.Format("\"{0}\"=\"{1}\"{2}", TablesManager.Tables[tableId].colName[i], columns[i], aux));
+					if (columns[i] != null)
+					{
+						bld.Append(string.Format("\"{0}\"=\"{1}\"{2}", TablesManager.Tables[tableId].colName[i], columns[i], aux));
+					}
+					else
+					{
+						bld.Append(string.Format("\"{0}\"=null{2}", TablesManager.Tables[tableId].colName[i], columns[i], aux));
+					}
 				}
 
 				bld.Append(string.Format("WHERE \"{0}\" = \"{1}\"", TablesManager.Tables[tableId].colName[0], columns[0]));
 
 				var sqlQuery = bld.ToString();
-
+				UnityEngine.Debug.Log(sqlQuery);
 				using (var cmd = new SqliteCommand(sqlQuery, conn))
 				{
 					cmd.ExecuteNonQuery();

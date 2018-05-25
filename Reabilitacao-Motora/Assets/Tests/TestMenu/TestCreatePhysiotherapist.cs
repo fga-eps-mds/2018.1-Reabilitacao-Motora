@@ -7,6 +7,8 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using pessoa;
 using fisioterapeuta;
+using Mono.Data.Sqlite;
+using System;
 
 namespace Tests
 {
@@ -47,6 +49,7 @@ namespace Tests
 		[UnityTest]
 		public static IEnumerator TestSaveButton()
 		{
+			Flow.StaticLogin();
 			Flow.StaticNewPhysiotherapist();
 
 			yield return null;
@@ -102,6 +105,17 @@ namespace Tests
 			var expectedscene = "Login";
 
 			Assert.AreEqual(expectedscene, currentscene);
+		}
+
+		[TearDown]
+		public static void AfterEveryTest ()
+		{
+			SqliteConnection.ClearAllPools();
+
+			GC.Collect();
+			GC.WaitForPendingFinalizers();
+
+			GlobalController.DropAll();
 		}
 	}
 }
