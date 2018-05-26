@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -1833,7 +1833,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -250, y: 10.000061}
+  m_AnchoredPosition: {x: -250, y: 10}
   m_SizeDelta: {x: 100, y: 30}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &983809215
@@ -1955,7 +1955,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -250, y: 10.000061}
+  m_AnchoredPosition: {x: -250, y: 10}
   m_SizeDelta: {x: 100, y: 30}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &985618748
@@ -2388,9 +2388,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Campos com * s\xE3o OBRIGAT\xD3RIOS\n\n- Data de nascimento deve conter
-    somente n\xFAmeros e barras, e deve ser real;\n- O n\xFAmero de telefone deve
-    possuir mais de 8 digitos num\xE9ricos;\n"
+  m_Text: "Campos com * s\xE3o OBRIGAT\xD3RIOS\n\n- A data de nascimento deve ser
+    real. Insira apenas n\xFAmeros;\n- O n\xFAmero de telefone deve possuir mais de
+    8 digitos num\xE9ricos;\n"
 --- !u!222 &1079689941
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4839,6 +4839,7 @@ GameObject:
   - component: {fileID: 1971330098}
   - component: {fileID: 1971330097}
   - component: {fileID: 1971330096}
+  - component: {fileID: 1971330099}
   m_Layer: 5
   m_Name: InputFieldDateOfBirth
   m_TagString: Untagged
@@ -4963,6 +4964,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1971330094}
+--- !u!114 &1971330099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1971330094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 929532b861d6b3a4893f9a3563ace703, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  date: {fileID: 1971330096}
 --- !u!1 &2036182836
 GameObject:
   m_ObjectHideFlags: 0
