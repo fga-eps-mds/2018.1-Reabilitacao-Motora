@@ -81,30 +81,6 @@ namespace movimentomusculo
 		}
 
 		/**
-		 * Função que atualiza dados já cadastrados anteriormente na relação MovimentoMusculo.
-		 */
-		public static void Update(int idMusculo, int idMovimento)
-		{
-			using (var conn = new SqliteConnection(GlobalController.path))
-			{
-				conn.Open();
-
-				var sqlQuery = string.Format("UPDATE \"{0}\" set ", TablesManager.Tables[tableId].tableName);
-				sqlQuery += string.Format("\"{0}\"=\"{1}\",", TablesManager.Tables[tableId].colName[0], idMusculo);
-				sqlQuery += string.Format("\"{0}\"=\"{1}\" ", TablesManager.Tables[tableId].colName[1], idMovimento);
-
-				sqlQuery += string.Format("WHERE \"{0}\" = \"{1}\", \"{2}\" = \"{3}\"", TablesManager.Tables[tableId].colName[0], idMusculo, TablesManager.Tables[tableId].colName[1], idMusculo);
-
-				using (var cmd = new SqliteCommand(sqlQuery, conn))
-				{
-					cmd.ExecuteNonQuery();
-				}
-
-				conn.Close();
-			}
-		}
-
-		/**
 		 * Função que lê dados já cadastrados anteriormente na relação MovimentoMusculo.
 		 */
 		public static List<MovimentoMusculo> Read()
