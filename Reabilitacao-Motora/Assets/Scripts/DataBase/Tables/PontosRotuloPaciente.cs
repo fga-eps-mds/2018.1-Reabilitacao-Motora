@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Mono.Data.Sqlite;
 using System.Data;
 using DataBaseAttributes;
+using exercicio;
 
 namespace pontosrotulopaciente
 {
@@ -19,12 +20,14 @@ namespace pontosrotulopaciente
 		private string EstagioMovimentoPaciente;
 		private float TempoInicial;
 		private float TempoFinal;
+        private Exercicio Exer;
 
 		public int idRotuloPaciente { get { return IdRotuloPaciente; } set { IdRotuloPaciente = value; }}
 		public int idExercicio { get { return IdExercicio; } set { IdExercicio = value; }}
 		public string estagioMovimentoPaciente { get { return EstagioMovimentoPaciente; } set { EstagioMovimentoPaciente = value; }}		
 		public float tempoInicial { get { return TempoInicial; } set { TempoInicial = value; }}
 		public float tempoFinal { get { return TempoFinal; } set { TempoFinal = value; }}
+        public Exercicio exer { get { return Exer; } set { Exer = value; } }
 
 
 		/**
@@ -37,6 +40,7 @@ namespace pontosrotulopaciente
 				this.estagioMovimentoPaciente = (string)columns[2];
 				this.tempoInicial = (float)columns[3];
 				this.tempoFinal = (float)columns[4];
+            this.exer = Exercicio.ReadValue((int)columns[1]);
 		}
 
 		/**
@@ -82,7 +86,7 @@ namespace pontosrotulopaciente
 		public static List<PontosRotuloPaciente> Read()
 		{
 			DataBase banco = new DataBase();
-			Object[] columns = new Object[] {0, 0, "", 0, 0};
+			Object[] columns = new Object[] {0, 0, "", 0.00f, 0.00f};
 
 			List<PontosRotuloPaciente> patientLabelPoints = banco.Read<PontosRotuloPaciente>(TablesManager.Tables[tableId].tableName, columns);
 
@@ -93,7 +97,7 @@ namespace pontosrotulopaciente
 		public static PontosRotuloPaciente ReadValue (int id)
 		{
 			DataBase banco = new DataBase();
-			Object[] columns = new Object[] {0, 0, "", 0, 0};
+			Object[] columns = new Object[] {0, 0, "", 0.00f, 0.00f};
 
 			PontosRotuloPaciente patientLabelPoint = banco.ReadValue<PontosRotuloPaciente>(TablesManager.Tables[tableId].tableName,
 				TablesManager.Tables[tableId].colName[0], id, columns);
