@@ -12,7 +12,7 @@ public class GenerateLineChartRealTime : MonoBehaviour
 	[SerializeField]
 	protected Transform pointPrefab, mao, cotovelo, ombro, braco; //o ponto final de mao é o inicial de cotovelo, o final de cotovelo é o inicial de ombro; ou seja, sao apenas 2 retas
 	
-	private const int RESOLUTION = 750;
+	private const int RESOLUTION = 1600;
 	
 	Vector2 m_p, c_p, o_p, grafico;
 
@@ -32,10 +32,7 @@ public class GenerateLineChartRealTime : MonoBehaviour
 		{
 			t = !t;
 		}
-	}
 
-	public void FixedUpdate () 
-	{
 		if (t) 
 		{
 			current_time_movement += Time.fixedDeltaTime;
@@ -48,7 +45,7 @@ public class GenerateLineChartRealTime : MonoBehaviour
 
 			SavePoints ();
 
-			if (i >= RESOLUTION) 
+			if (i >= RESOLUTION || current_time_movement >= 15f) 
 			{
 				t = false;
 			}
@@ -67,7 +64,7 @@ public class GenerateLineChartRealTime : MonoBehaviour
 			point.SetParent (transform, false);
 			points2.Add (point.localPosition);
 
-			lineRenderer.SetVertexCount(points2.Count); 
+			lineRenderer.positionCount = points2.Count; 
 			lineRenderer.SetPosition(points2.Count-1, point.localPosition);
 
 			i++;
@@ -115,7 +112,7 @@ public class GenerateLineChartRealTime : MonoBehaviour
 		lineRenderer.widthMultiplier = 0.2f;
 		lineRenderer.positionCount = 4000;
 		lineRenderer.sortingOrder = 5;
-		lineRenderer.SetVertexCount(2);
+		lineRenderer.positionCount = 2;
 
 	// A simple 2 color gradient with a fixed alpha of 1.0f.
 		float alpha = 1.0f;

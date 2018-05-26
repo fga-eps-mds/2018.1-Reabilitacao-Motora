@@ -198,7 +198,6 @@ namespace DataBaseAttributes
 					{
 						try 
 						{
-							int j = 0;
 							while (reader.Read())
 							{
 								// recuperando cópia aos valores originais

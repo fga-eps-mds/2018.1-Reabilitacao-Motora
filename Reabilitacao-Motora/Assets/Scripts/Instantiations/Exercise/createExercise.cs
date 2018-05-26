@@ -33,6 +33,9 @@ public class createExercise : MonoBehaviour
 		var token = (GlobalController.instance.movement.pontosMovimento).Split('/');
 		string date = DateTime.Now.ToString("ss", System.Globalization.DateTimeFormatInfo.InvariantInfo);
 
+		Debug.Log (GlobalController.instance.movement.pontosMovimento);
+		Debug.Log (token[0]);
+		Debug.Log (pathSave);
 		pathSave += date + "-" + token[1] + ".points";
 
 		Exercicio.Insert(GlobalController.instance.user.idPaciente, 

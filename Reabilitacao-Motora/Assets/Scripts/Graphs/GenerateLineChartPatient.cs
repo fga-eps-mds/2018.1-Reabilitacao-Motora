@@ -96,7 +96,6 @@ public class GenerateLineChartPatient : MonoBehaviour
 
 			string[] p1 = System.IO.File.ReadAllLines(string.Format("Assets/Exercicios/{0}", GlobalController.instance.exercise.pontosExercicio));
 			LoadData (p1);
-			
 			LoadLineRenderer();
 		}
 		else
@@ -139,7 +138,7 @@ public class GenerateLineChartPatient : MonoBehaviour
 			mao.localPosition = p_mao_pos[i];
 			mao.localEulerAngles = p_mao_rot[i];
 
-			yield return new WaitForSeconds(0.02f);        
+			yield return new WaitForSeconds(0.01f);        
 		} 
 	}
 
@@ -166,10 +165,10 @@ public class GenerateLineChartPatient : MonoBehaviour
 			point.SetParent (transform, false);
 			points2.Add (point.localPosition);
 
-			lineRenderer.SetVertexCount(points2.Count); 
+			lineRenderer.positionCount = points2.Count; 
 			lineRenderer.SetPosition(points2.Count-1, point.localPosition);
 			
-			yield return new WaitForSeconds(0.02f);
+			yield return new WaitForSeconds(0.01f);
 		}
 	}
 
@@ -180,7 +179,7 @@ public class GenerateLineChartPatient : MonoBehaviour
 		lineRenderer.widthMultiplier = 0.2f;
 		lineRenderer.positionCount = 4000;
 		lineRenderer.sortingOrder = 5;
-		lineRenderer.SetVertexCount(2);
+		lineRenderer.positionCount = 2;
 
 	// A simple 2 color gradient with a fixed alpha of 1.0f.
 		float alpha = 1.0f;

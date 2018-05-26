@@ -25,6 +25,7 @@ public class GetMovementPoints : MonoBehaviour
 		{
 			t = !t;
 		}
+		
 	}
 
 	public void Awake ()

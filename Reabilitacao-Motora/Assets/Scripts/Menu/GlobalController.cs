@@ -57,12 +57,13 @@ public class GlobalController : MonoBehaviour
 			instance = this;
 			DontDestroyOnLoad(gameObject);
 			Initialize();
+			Debug.Log(GlobalController.path == null);
 		}
 	}
 
 	public static void Initialize()
 	{
-		if (test == null || test == false) 
+		if (test == false) 
 		{
 			path = "URI=file:" + Application.dataPath + "/Plugins/fisiotech.db";
 		}
