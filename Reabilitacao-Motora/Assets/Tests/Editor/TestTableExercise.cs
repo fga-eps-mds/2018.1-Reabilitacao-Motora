@@ -447,6 +447,82 @@ namespace Tests
 			return;
 		}
 
+		[Test]
+		public void TestExercicioDeleteValue ()
+		{
+			using (var conn = new SqliteConnection(GlobalController.path))
+			{
+				conn.Open();
+
+				Pessoa.Insert("patient name1", "m", "1995-01-01", "6198732711", null);
+				Pessoa.Insert("patient name2", "m", "1995-01-02", "6198732712", null);
+				Fisioterapeuta.Insert(2, "abracadabra1", "demais1", null, null);
+				Paciente.Insert(1, null);
+				Movimento.Insert (1,"levantamento de peso", "caminhoy.com", null);
+				Sessao.Insert (1, 1, "1940-10-10", null);
+				Exercicio.Insert (1, 1, 1, "caminhopaciente4.ponto", null);
+
+				var check = "SELECT EXISTS(SELECT 1 FROM 'EXERCICIO' WHERE \"idExercicio\" = \"1\" LIMIT 1)";
+
+				var result = 0;
+				using (var cmd = new SqliteCommand(check, conn))
+				{
+					using (IDataReader reader = cmd.ExecuteReader())
+					{
+						try
+						{
+							while (reader.Read())
+							{
+								if (!reader.IsDBNull(0))
+								{
+									result = reader.GetInt32(0);
+								}
+							}
+						}
+						finally
+						{
+							reader.Dispose();
+							reader.Close();
+						}
+					}
+					cmd.Dispose();
+				}
+
+				Assert.AreEqual (result, 1);
+				Exercicio.DeleteValue(1);
+
+				result = 0;
+				using (var cmd = new SqliteCommand(check, conn))
+				{
+					using (IDataReader reader = cmd.ExecuteReader())
+					{
+						try
+						{
+							while (reader.Read())
+							{
+								if (!reader.IsDBNull(0))
+								{
+									result = reader.GetInt32(0);
+								}
+							}
+						}
+						finally
+						{
+							reader.Dispose();
+							reader.Close();
+						}
+					}
+					cmd.Dispose();
+				}
+
+				Assert.AreEqual (result, 0);
+
+				conn.Dispose();
+				conn.Close();
+			}
+			return;
+		}
+
 		[TearDown]
 		public static void AfterEveryTest ()
 		{
