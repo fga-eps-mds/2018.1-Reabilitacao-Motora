@@ -44,7 +44,7 @@ public class GenerateLineChartRealTime : MonoBehaviour
 			c_p = new Vector2 (cotovelo.position.x, cotovelo.position.y);
 			o_p = new Vector2 (ombro.position.x, ombro.position.y);
 
-			grafico = new Vector2 (current_time_movement, _Joint.Angle(m_p, c_p, c_p, o_p));
+			grafico = new Vector2 (current_time_movement, _Joint.Angle(m_p, c_p, o_p, c_p));
 
 			SavePoints ();
 
