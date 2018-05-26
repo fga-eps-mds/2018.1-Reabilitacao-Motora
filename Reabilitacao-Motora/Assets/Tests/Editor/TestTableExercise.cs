@@ -527,10 +527,6 @@ namespace Tests
 		public static void AfterEveryTest ()
 		{
 			SqliteConnection.ClearAllPools();
-
-			GC.Collect();
-			GC.WaitForPendingFinalizers();
-
 			GlobalController.DropAll();
 		}
 	}

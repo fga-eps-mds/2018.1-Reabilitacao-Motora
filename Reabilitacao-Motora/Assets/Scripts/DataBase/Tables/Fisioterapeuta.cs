@@ -49,9 +49,8 @@ namespace fisioterapeuta
 		 */
 		public static void Create()
 		{
-			DataBase banco = new DataBase();
 			string query = "CREATE TABLE IF NOT EXISTS FISIOTERAPEUTA (idFisioterapeuta INTEGER primary key AUTOINCREMENT,idPessoa INTEGER not null,login VARCHAR (255) not null,senha VARCHAR (255) not null,regiao VARCHAR (2),crefito VARCHAR (10),foreign key (idPessoa) references PESSOA (idPessoa),constraint crefito_regiao UNIQUE (crefito, regiao), constraint login_senha UNIQUE (login));";
-			banco.Create(query);
+			DataBase.Create(query);
 		}
 
 		/**
@@ -63,9 +62,8 @@ namespace fisioterapeuta
 			string regiao,
 			string crefito)
 		{
-			DataBase banco = new DataBase();
 			Object[] columns = new Object[] {idPessoa, login, senha, regiao, crefito};
-			banco.Insert(columns, TablesManager.Tables[tableId].tableName, tableId);
+			DataBase.Insert(columns, TablesManager.Tables[tableId].tableName, tableId);
 		}
 
 		/**
@@ -78,9 +76,8 @@ namespace fisioterapeuta
 			string regiao,
 			string crefito)
 		{
-			DataBase banco = new DataBase();
 			Object[] columns = new Object[] {id, idPessoa, login, senha, regiao, crefito};
-			banco.Update(columns, TablesManager.Tables[tableId].tableName, tableId);
+			DataBase.Update(columns, TablesManager.Tables[tableId].tableName, tableId);
 
 		}
 
@@ -89,20 +86,18 @@ namespace fisioterapeuta
 		 */
 		public static List<Fisioterapeuta> Read()
 		{
-			DataBase banco = new DataBase();
 			Object[] columns = new Object[] {0, 0, "", "", "", ""};
 
-			List<Fisioterapeuta> physiotherapeuts = banco.Read<Fisioterapeuta>(TablesManager.Tables[tableId].tableName, columns);
+			List<Fisioterapeuta> physiotherapeuts = DataBase.Read<Fisioterapeuta>(TablesManager.Tables[tableId].tableName, columns);
 
 			return physiotherapeuts;
 		}
 
 		public static Fisioterapeuta ReadValue (int id)
 		{
-			DataBase banco = new DataBase();
 			Object[] columns = new Object[] {0, 0, "", "", "", ""};
 
-			Fisioterapeuta physiotherapeut = banco.ReadValue<Fisioterapeuta>(TablesManager.Tables[tableId].tableName,
+			Fisioterapeuta physiotherapeut = DataBase.ReadValue<Fisioterapeuta>(TablesManager.Tables[tableId].tableName,
 				TablesManager.Tables[tableId].colName[0], id, columns);
 
 			return physiotherapeut;
@@ -113,8 +108,7 @@ namespace fisioterapeuta
 		 */
 		public static void DeleteValue(int id)
 		{
-			DataBase banco = new DataBase();
-			banco.DeleteValue (tableId, id);
+			DataBase.DeleteValue (tableId, id);
 		}
 
 		/**
@@ -122,8 +116,7 @@ namespace fisioterapeuta
 		 */
 		 public static void Drop()
 		 {
-		 	DataBase banco = new DataBase();
-		 	banco.Drop (tableId);
+		 	DataBase.Drop (tableId);
 		 }
 	}
 }

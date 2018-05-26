@@ -21,17 +21,14 @@ namespace Tests
 {
 	public class TestDataBase
 	{
-		private DataBase database;
-
 		[SetUp]
 		public void SetUp()
 		{
-			database = new DataBase();
 			var create = "CREATE TABLE IF NOT EXISTS TESTE (idTable INTEGER primary key AUTOINCREMENT,nome VARCHAR (255) not null);";
 			GlobalController.test = true;
 			
 			GlobalController.Initialize();
-			database.Create (create);
+			DataBase.Create (create);
 		}
 
 		public class Teste
@@ -94,7 +91,7 @@ namespace Tests
 			using (var conn = new SqliteConnection(GlobalController.path))
 			{
 				conn.Open();
-				database.Drop(10);
+				DataBase.Drop(10);
 				var check = "SELECT count(*) FROM sqlite_master WHERE type='table' AND name='TESTE';";
 
 				var result = 0;
@@ -138,7 +135,7 @@ namespace Tests
 				conn.Open();
 
 				System.Object[] columns = new System.Object[] {"fake testname"};
-				database.Insert(columns, TablesManager.Tables[10].tableName, 10);
+				DataBase.Insert(columns, TablesManager.Tables[10].tableName, 10);
 
 				var check = "SELECT * FROM TESTE;";
 
@@ -184,10 +181,10 @@ namespace Tests
 				conn.Open();
 
 				System.Object[] columnsToInsert = new System.Object[] {"fake testname"};
-				database.Insert(columnsToInsert, TablesManager.Tables[10].tableName, 10);
+				DataBase.Insert(columnsToInsert, TablesManager.Tables[10].tableName, 10);
 
 				System.Object[] columnsToUpdate = new System.Object[] {1, "testname fake"};
-				database.Update(columnsToUpdate, TablesManager.Tables[10].tableName, 10);
+				DataBase.Update(columnsToUpdate, TablesManager.Tables[10].tableName, 10);
 
 				var check = "SELECT * FROM TESTE;";
 
@@ -234,15 +231,15 @@ namespace Tests
 				conn.Open();
 
 				System.Object[] columnsToInsert = new System.Object[] {"fake testname0"};
-				database.Insert(columnsToInsert, TablesManager.Tables[10].tableName, 10);
+				DataBase.Insert(columnsToInsert, TablesManager.Tables[10].tableName, 10);
 				columnsToInsert = new System.Object[] {"fake testname1"};
-				database.Insert(columnsToInsert, TablesManager.Tables[10].tableName, 10);
+				DataBase.Insert(columnsToInsert, TablesManager.Tables[10].tableName, 10);
 				columnsToInsert = new System.Object[] {"fake testname2"};
-				database.Insert(columnsToInsert, TablesManager.Tables[10].tableName, 10);
+				DataBase.Insert(columnsToInsert, TablesManager.Tables[10].tableName, 10);
 
 
 				System.Object[] columnsToRead = new System.Object[] {0, ""};
-				List<Teste> allTests = database.Read<Teste>(TablesManager.Tables[10].tableName, columnsToRead);
+				List<Teste> allTests = DataBase.Read<Teste>(TablesManager.Tables[10].tableName, columnsToRead);
 
 				for (int i = 0; i < allTests.Count; ++i)
 				{
@@ -266,17 +263,17 @@ namespace Tests
 				conn.Open();
 
 				System.Object[] columnsToInsert = new System.Object[] {"fake testname0"};
-				database.Insert(columnsToInsert, TablesManager.Tables[10].tableName, 10);
+				DataBase.Insert(columnsToInsert, TablesManager.Tables[10].tableName, 10);
 				columnsToInsert = new System.Object[] {"fake testname1"};
-				database.Insert(columnsToInsert, TablesManager.Tables[10].tableName, 10);
+				DataBase.Insert(columnsToInsert, TablesManager.Tables[10].tableName, 10);
 				columnsToInsert = new System.Object[] {"fake testname2"};
-				database.Insert(columnsToInsert, TablesManager.Tables[10].tableName, 10);
+				DataBase.Insert(columnsToInsert, TablesManager.Tables[10].tableName, 10);
 
 
 				System.Object[] columnsToRead = new System.Object[] {0, ""};
 				for (int i = 0; i < 3; ++i)
 				{
-					Teste allTests = database.ReadValue<Teste>(TablesManager.Tables[10].tableName,
+					Teste allTests = DataBase.ReadValue<Teste>(TablesManager.Tables[10].tableName,
 					TablesManager.Tables[10].colName[0], i+1, columnsToRead);
 
 					Assert.AreEqual (allTests.idTable, i+1);
@@ -299,7 +296,7 @@ namespace Tests
 			{
 				conn.Open();
 				System.Object[] columnsToInsert = new System.Object[] {"fake testname"};
-				database.Insert(columnsToInsert, TablesManager.Tables[10].tableName, 10);
+				DataBase.Insert(columnsToInsert, TablesManager.Tables[10].tableName, 10);
 
 				var check = "SELECT EXISTS(SELECT 1 FROM 'TESTE' WHERE \"idTable\" = \"1\" and \"nome\"=\"fake testname\" LIMIT 1)";
 				
@@ -328,7 +325,7 @@ namespace Tests
 				}
 
 				Assert.AreEqual (result, 1);
-				database.DeleteValue(10, 1);
+				DataBase.DeleteValue(10, 1);
 
 				result = 0;
 				using (var cmd = new SqliteCommand(check, conn))
@@ -367,12 +364,7 @@ namespace Tests
 		public void AfterEveryTest ()
 		{
 			SqliteConnection.ClearAllPools();
-
-			GC.Collect();
-			GC.WaitForPendingFinalizers();
-
-			database.Drop(10);
-			database = null;
+			DataBase.Drop(10);
 		}
 
 
@@ -387,7 +379,7 @@ namespace Tests
 // 		[Test]
 // 		private static void ObjectArray ()
 // 		{
-// 			database.ObjectArray (ref System.Object[] columns, ref IDataReader reader);
+// 			DataBase.ObjectArray (ref System.Object[] columns, ref IDataReader reader);
 
 // 			for (int i = 0; i < columns.Length; ++i)
 // 			{

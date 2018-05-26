@@ -47,9 +47,8 @@ namespace pessoa
 		 */
 		public static void Create()
 		{
-			DataBase banco = new DataBase();
 			string query = "CREATE TABLE IF NOT EXISTS PESSOA (idPessoa INTEGER primary key AUTOINCREMENT,nomePessoa VARCHAR (30) not null,sexo CHAR (1) not null,dataNascimento DATE not null,telefone1 VARCHAR (11) not null,telefone2 VARCHAR (11));";
-			banco.Create(query);
+			DataBase.Create(query);
 		}
 
 		/**
@@ -62,9 +61,8 @@ namespace pessoa
 			string telefone1,
 			string telefone2)
 		{
-			DataBase banco = new DataBase();
 			Object[] columns = new Object[] {nomePessoa, sexo, dataNascimento, telefone1, telefone2};
-			banco.Insert(columns, TablesManager.Tables[tableId].tableName, tableId);	
+			DataBase.Insert(columns, TablesManager.Tables[tableId].tableName, tableId);	
 		}
 
 		/**
@@ -77,9 +75,8 @@ namespace pessoa
 			string telefone1,
 			string telefone2)
 		{
-			DataBase banco = new DataBase();
 			Object[] columns = new Object[] {id, nomePessoa, sexo, dataNascimento, telefone1, telefone2};
-			banco.Update(columns, TablesManager.Tables[tableId].tableName, tableId);
+			DataBase.Update(columns, TablesManager.Tables[tableId].tableName, tableId);
 		}
 
 		/**
@@ -87,18 +84,16 @@ namespace pessoa
 		 */
 		public static List<Pessoa> Read()
 		{
-			DataBase banco = new DataBase();
 			Object[] columns = new Object[] {0, "", "", "", "", ""};
-			List<Pessoa> personList = banco.Read<Pessoa>(TablesManager.Tables[tableId].tableName, columns);
+			List<Pessoa> personList = DataBase.Read<Pessoa>(TablesManager.Tables[tableId].tableName, columns);
 
 			return personList;		
 		}
 
 		public static Pessoa ReadValue(int id)
 		{
-			DataBase banco = new DataBase();
 			Object[] columns = new Object[] {0, "", "", "", "", ""};
-			Pessoa person = banco.ReadValue<Pessoa>(TablesManager.Tables[tableId].tableName,
+			Pessoa person = DataBase.ReadValue<Pessoa>(TablesManager.Tables[tableId].tableName,
 				TablesManager.Tables[tableId].colName[0], id, columns);
 
 			return person;
@@ -109,8 +104,7 @@ namespace pessoa
 		 */
 		public static void DeleteValue(int id)
 		{
-			DataBase banco = new DataBase();
-			banco.DeleteValue (tableId, id);
+			DataBase.DeleteValue (tableId, id);
 		}
 
 		/**
@@ -118,8 +112,7 @@ namespace pessoa
 		 */
 		public static void Drop()
 		{
-			DataBase banco = new DataBase();
-			banco.Drop (tableId);
+			DataBase.Drop (tableId);
 		}
 	}
 }

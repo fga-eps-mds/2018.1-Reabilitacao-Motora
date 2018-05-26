@@ -44,13 +44,12 @@ namespace movimento
 		}
 
 		/**
-		 * Cria a relação para movimento, contendo um id gerado automaticamente pelo banco como chave primária.
+		 * Cria a relação para movimento, contendo um id gerado automaticamente pelo DataBase como chave primária.
 		 */
 		public static void Create()
 		{
-			DataBase banco = new DataBase();
 			string query = "CREATE TABLE IF NOT EXISTS MOVIMENTO (idMovimento INTEGER primary key AUTOINCREMENT,idFisioterapeuta INTEGER not null,nomeMovimento VARCHAR (50) not null,pontosMovimento VARCHAR (150) not null,descricaoMovimento VARCHAR (150),foreign key (idFisioterapeuta) references FISIOTERAPEUTA (idFisioterapeuta));";
-			banco.Create(query);
+			DataBase.Create(query);
 		}
 
 		/**
@@ -61,9 +60,8 @@ namespace movimento
 			string pontosMovimento,
 			string descricaoMovimento)
 		{
-			DataBase banco = new DataBase();
 			Object[] columns = new Object[] {idFisioterapeuta, nomeMovimento, pontosMovimento, descricaoMovimento};
-			banco.Insert(columns, TablesManager.Tables[tableId].tableName, tableId);
+			DataBase.Insert(columns, TablesManager.Tables[tableId].tableName, tableId);
 		}
 
 		/**
@@ -75,9 +73,8 @@ namespace movimento
 			string pontosMovimento,
 			string descricaoMovimento)
 		{
-			DataBase banco = new DataBase();
 			Object[] columns = new Object[] {id, idFisioterapeuta, nomeMovimento, pontosMovimento, descricaoMovimento};
-			banco.Update(columns, TablesManager.Tables[tableId].tableName, tableId);
+			DataBase.Update(columns, TablesManager.Tables[tableId].tableName, tableId);
 		}
 
 		/**
@@ -85,10 +82,9 @@ namespace movimento
 		 */
 		public static List<Movimento> Read()
 		{
-			DataBase banco = new DataBase();
 			Object[] columns = new Object[] {0, 0, "", "", ""};
 
-			List<Movimento> movements = banco.Read<Movimento>(TablesManager.Tables[tableId].tableName, columns);
+			List<Movimento> movements = DataBase.Read<Movimento>(TablesManager.Tables[tableId].tableName, columns);
 
 			return movements;
 		}
@@ -96,10 +92,9 @@ namespace movimento
 
 		public static Movimento ReadValue (int id)
 		{
-			DataBase banco = new DataBase();
 			Object[] columns = new Object[] {0, 0, "", "", ""};
 
-			Movimento movement = banco.ReadValue<Movimento>(TablesManager.Tables[tableId].tableName,
+			Movimento movement = DataBase.ReadValue<Movimento>(TablesManager.Tables[tableId].tableName,
 				TablesManager.Tables[tableId].colName[0], id, columns);
 
 			return movement;
@@ -110,8 +105,7 @@ namespace movimento
 		 */
 		public static void DeleteValue(int id)
 		{
-			DataBase banco = new DataBase();
-			banco.DeleteValue (tableId, id);
+			DataBase.DeleteValue (tableId, id);
 		}
 
 		/**
@@ -119,8 +113,7 @@ namespace movimento
 		 */
 		public static void Drop()
 		{
-			DataBase banco = new DataBase();
-			banco.Drop (tableId);
+			DataBase.Drop (tableId);
 		}
 	}
 }

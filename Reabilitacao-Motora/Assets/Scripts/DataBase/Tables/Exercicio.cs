@@ -47,9 +47,8 @@ namespace exercicio
 		 */
 		public static void Create()
 		{
-			DataBase banco = new DataBase();   
 			string query = "CREATE TABLE IF NOT EXISTS EXERCICIO (idExercicio INTEGER primary key AUTOINCREMENT,idPaciente INTEGER not null,idMovimento INTEGER not null,idSessao INTEGER not null,pontosExercicio VARCHAR (150) not null,descricaoExercicio VARCHAR (150),foreign key (idSessao) references SESSAO (idSessao),foreign key (idMovimento) references MOVIMENTO (idMovimento),foreign key (idPaciente) references PACIENTE (idPaciente));";
-			banco.Create(query);
+			DataBase.Create(query);
 		}
 
 		/**
@@ -61,9 +60,8 @@ namespace exercicio
 			string pontosExercicio,
 			string descricaoExercicio)
 		{
-			DataBase banco = new DataBase();
 			Object[] columns = new Object[] {idPaciente, idMovimento, idSessao, pontosExercicio, descricaoExercicio};
-			banco.Insert(columns, TablesManager.Tables[tableId].tableName, tableId);	
+			DataBase.Insert(columns, TablesManager.Tables[tableId].tableName, tableId);	
 		}
 
 		/**
@@ -76,9 +74,8 @@ namespace exercicio
 			string pontosExercicio,
 			string descricaoExercicio)
 		{
-			DataBase banco = new DataBase();
 			Object[] columns = new Object[] {id, idPaciente, idMovimento, idSessao, pontosExercicio, descricaoExercicio};
-			banco.Update(columns, TablesManager.Tables[tableId].tableName, tableId);
+			DataBase.Update(columns, TablesManager.Tables[tableId].tableName, tableId);
 		}
 
 		/**
@@ -86,9 +83,8 @@ namespace exercicio
 		 */
 		public static List<Exercicio> Read()
 		{
-			DataBase banco = new DataBase();
 			Object[] columns = new Object[] {0, 0, 0, 0, "", ""};
-			List<Exercicio> exerciseList = banco.Read<Exercicio>(TablesManager.Tables[tableId].tableName, columns);
+			List<Exercicio> exerciseList = DataBase.Read<Exercicio>(TablesManager.Tables[tableId].tableName, columns);
 
 			return exerciseList;
 		}
@@ -96,9 +92,8 @@ namespace exercicio
 
 		public static Exercicio ReadValue(int id)
 		{
-			DataBase banco = new DataBase();
 			Object[] columns = new Object[] {0, 0, 0, 0, "", ""};
-			Exercicio exercise = banco.ReadValue<Exercicio>(TablesManager.Tables[tableId].tableName,
+			Exercicio exercise = DataBase.ReadValue<Exercicio>(TablesManager.Tables[tableId].tableName,
 				TablesManager.Tables[tableId].colName[0], id, columns);
 
 			return exercise;
@@ -109,8 +104,7 @@ namespace exercicio
 		 */
 		public static void DeleteValue(int id)
 		{
-			DataBase banco = new DataBase();
-			banco.DeleteValue (tableId, id);
+			DataBase.DeleteValue (tableId, id);
 		}
 
 		/**
@@ -118,8 +112,7 @@ namespace exercicio
 		 */
 		public static void Drop()
 		{
-			DataBase banco = new DataBase();
-			banco.Drop (tableId);
+			DataBase.Drop (tableId);
 		}
 	}
 }

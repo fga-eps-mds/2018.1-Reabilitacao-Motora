@@ -34,9 +34,8 @@ namespace movimentomusculo
 		 */
 		public static void Create()
 		{
-			DataBase banco = new DataBase();
 			string query = "CREATE TABLE IF NOT EXISTS MOVIMENTOMUSCULO (idMusculo INTEGER not null,idMovimento INTEGER not null, foreign key (idMovimento) references MOVIMENTO (idMovimento),foreign key (idMusculo) references MUSCULO (idMusculo),primary key (idMusculo, idMovimento));";
-			banco.Create(query);
+			DataBase.Create(query);
 		}
 
 		/**
@@ -85,10 +84,9 @@ namespace movimentomusculo
 		 */
 		public static List<MovimentoMusculo> Read()
 		{
-			DataBase banco = new DataBase();
 			Object[] columns = new Object[] {0, 0};
 
-			List<MovimentoMusculo> muscleMovements = banco.Read<MovimentoMusculo>(TablesManager.Tables[tableId].tableName, columns);
+			List<MovimentoMusculo> muscleMovements = DataBase.Read<MovimentoMusculo>(TablesManager.Tables[tableId].tableName, columns);
 
 			return muscleMovements;
 		}
@@ -118,8 +116,7 @@ namespace movimentomusculo
 		 */
 		public static void Drop()
 		{
-		 	DataBase banco = new DataBase();
-		 	banco.Drop (tableId);
+		 	DataBase.Drop (tableId);
 		}
 	}
 }

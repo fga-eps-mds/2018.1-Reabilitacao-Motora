@@ -40,9 +40,8 @@ namespace paciente
 		 */
 		public static void Create()
 		{
-			DataBase banco = new DataBase();
 			string query = "CREATE TABLE IF NOT EXISTS PACIENTE (idPaciente INTEGER primary key AUTOINCREMENT,idPessoa INTEGER not null,observacoes VARCHAR (300),foreign key (idPessoa) references PESSOA (idPessoa));";
-			banco.Create(query);	
+			DataBase.Create(query);	
 		}
 
 		/**
@@ -51,9 +50,8 @@ namespace paciente
 		public static void Insert(int idPessoa,
 			string observacoes)
 		{
-			DataBase banco = new DataBase();
 			Object[] columns = new Object[] {idPessoa, observacoes};
-			banco.Insert(columns, TablesManager.Tables[tableId].tableName, tableId);
+			DataBase.Insert(columns, TablesManager.Tables[tableId].tableName, tableId);
 		}
 
 		/**
@@ -63,9 +61,8 @@ namespace paciente
 			int idPessoa,
 			string observacoes)
 		{
-			DataBase banco = new DataBase();
 			Object[] columns = new Object[] {id, idPessoa, observacoes};
-			banco.Update(columns, TablesManager.Tables[tableId].tableName, tableId);
+			DataBase.Update(columns, TablesManager.Tables[tableId].tableName, tableId);
 		}
 
 		/**
@@ -73,20 +70,18 @@ namespace paciente
 		 */
 		public static List<Paciente> Read()
 		{
-			DataBase banco = new DataBase();
 			Object[] columns = new Object[] {0, 0, ""};
 
-			List<Paciente> patients = banco.Read<Paciente>(TablesManager.Tables[tableId].tableName, columns);
+			List<Paciente> patients = DataBase.Read<Paciente>(TablesManager.Tables[tableId].tableName, columns);
 
 			return patients;
 		}
 
 		public static Paciente ReadValue (int id)
 		{
-			DataBase banco = new DataBase();
 			Object[] columns = new Object[] {0, 0, ""};
 
-			Paciente patient = banco.ReadValue<Paciente>(TablesManager.Tables[tableId].tableName,
+			Paciente patient = DataBase.ReadValue<Paciente>(TablesManager.Tables[tableId].tableName,
 				TablesManager.Tables[tableId].colName[0], id, columns);
 
 			return patient;
@@ -97,8 +92,7 @@ namespace paciente
 		 */
 		public static void DeleteValue(int id)
 		{
-			DataBase banco = new DataBase();
-			banco.DeleteValue (tableId, id);
+			DataBase.DeleteValue (tableId, id);
 		}
 
 		/**
@@ -106,8 +100,7 @@ namespace paciente
 		 */
 		public static void Drop()
 		{
-			DataBase banco = new DataBase();
-			banco.Drop (tableId);
+			DataBase.Drop (tableId);
 		}
 	}
 }

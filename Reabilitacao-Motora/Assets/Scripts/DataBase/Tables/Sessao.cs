@@ -41,9 +41,8 @@ namespace sessao
 		 */
 		public static void Create()
 		{
-			DataBase banco = new DataBase();
 			string query = "CREATE TABLE IF NOT EXISTS SESSAO (idSessao INTEGER primary key AUTOINCREMENT,idFisioterapeuta INTEGER not null,idPaciente INTEGER not null,dataSessao DATE not null,observacaoSessao VARCHAR (300),foreign key (idPaciente) references PACIENTE (idPaciente),foreign key (idFisioterapeuta) references FISIOTERAPEUTA (idFisioterapeuta));";
-			banco.Create(query);
+			DataBase.Create(query);
 		}
 
 		/**
@@ -54,9 +53,8 @@ namespace sessao
 			string dataSessao,
 			string observacaoSessao)
 		{
-			DataBase banco = new DataBase();
 			Object[] columns = new Object[] {idFisioterapeuta,idPaciente,dataSessao,observacaoSessao};
-			banco.Insert(columns, TablesManager.Tables[tableId].tableName, tableId);
+			DataBase.Insert(columns, TablesManager.Tables[tableId].tableName, tableId);
 		}
 
 		/**
@@ -68,9 +66,8 @@ namespace sessao
 			string dataSessao,
 			string observacaoSessao)
 		{
-			DataBase banco = new DataBase();
 			Object[] columns = new Object[] {id,idFisioterapeuta,idPaciente,dataSessao,observacaoSessao};
-			banco.Update(columns, TablesManager.Tables[tableId].tableName, tableId);
+			DataBase.Update(columns, TablesManager.Tables[tableId].tableName, tableId);
 		}
 
 		/**
@@ -78,20 +75,18 @@ namespace sessao
 		 */
 		public static List<Sessao> Read()
 		{
-			DataBase banco = new DataBase();
 			Object[] columns = new Object[] {0, 0, 0, "", ""};
 
-			List<Sessao> sessions = banco.Read<Sessao>(TablesManager.Tables[tableId].tableName, columns);
+			List<Sessao> sessions = DataBase.Read<Sessao>(TablesManager.Tables[tableId].tableName, columns);
 
 			return sessions;
 		}
 
 		public static Sessao ReadValue (int id)
 		{
-			DataBase banco = new DataBase();
 			Object[] columns = new Object[] {0, 0, 0, "", ""};
 
-			Sessao session = banco.ReadValue<Sessao>(TablesManager.Tables[tableId].tableName,
+			Sessao session = DataBase.ReadValue<Sessao>(TablesManager.Tables[tableId].tableName,
 				TablesManager.Tables[tableId].colName[0], id, columns);
 
 			return session;
@@ -102,8 +97,7 @@ namespace sessao
 		 */
 		public static void DeleteValue(int id)
 		{
-			DataBase banco = new DataBase();
-			banco.DeleteValue (tableId, id);
+			DataBase.DeleteValue (tableId, id);
 		}
 
 		/**
@@ -111,8 +105,7 @@ namespace sessao
 		 */
 		public static void Drop()
 		{
-			DataBase banco = new DataBase();
-			banco.Drop (tableId);
+			DataBase.Drop (tableId);
 		}
 	}
 }

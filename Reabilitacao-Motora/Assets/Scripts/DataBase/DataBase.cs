@@ -11,9 +11,9 @@ namespace DataBaseAttributes
   /**
    * Classe que cria a base de dados em que as relações serão criadas.
    */
-	public class DataBase
+	public static class DataBase
 	{
-		public void Create (string query)
+		public static void Create (string query)
 		{
 			using (var conn = new SqliteConnection(GlobalController.path))
 			{
@@ -36,7 +36,7 @@ namespace DataBaseAttributes
 			return;
 		}
 
-		public void Insert (System.Object[] columns, string tableName, int tableId)
+		public static void Insert (System.Object[] columns, string tableName, int tableId)
 		{
 			using (var conn = new SqliteConnection(GlobalController.path))
 			{
@@ -71,7 +71,6 @@ namespace DataBaseAttributes
 				}
 
 				bld.Append(") values (");
-
 				for (int i = 0; i < columns.Length; ++i) 
 				{
 					if (columns[i] != null)
@@ -86,7 +85,7 @@ namespace DataBaseAttributes
 							aux = ",";
 						}
 
-						bld.Append((string.Format("\"{0}\"", columns[i]) + aux));
+						bld.Append((string.Format("@param{0}", i) + aux));
 					}
 				}
 
@@ -95,12 +94,21 @@ namespace DataBaseAttributes
 					bld.Remove(bld.Length - 1, 1);
 				}
 
+
 				bld.Append(")");
 
 				var sqlQuery = bld.ToString();
 
 				using (var cmd = new SqliteCommand(sqlQuery, conn))
 				{
+					for (int i = 0; i < columns.Length; ++i) 
+					{
+						if (columns[i] != null)
+						{
+							cmd.Parameters.AddWithValue(string.Format("@param{0}", i), columns[i]);
+						}
+					}
+
 					cmd.ExecuteNonQuery();
 					cmd.Dispose();
 				}
@@ -115,7 +123,7 @@ namespace DataBaseAttributes
 			return;
 		}
 
-		public void Update (System.Object[] columns, string tableName, int tableId)
+		public static void Update (System.Object[] columns, string tableName, int tableId)
 		{
 			using (var conn = new SqliteConnection(GlobalController.path))
 			{
@@ -137,15 +145,9 @@ namespace DataBaseAttributes
 						aux = ",";
 					}
 
-					if (columns[i] != null)
-					{
-						bld.Append(string.Format("\"{0}\"=\"{1}\"{2}", TablesManager.Tables[tableId].colName[i], columns[i], aux));
-					}
-					else
-					{
-						bld.Append(string.Format("\"{0}\"=null{2}", TablesManager.Tables[tableId].colName[i], columns[i], aux));
-					}
+					bld.Append(string.Format("\"{0}\"=@param{1}{2}", TablesManager.Tables[tableId].colName[i], i, aux));
 				}
+
 
 				bld.Append(string.Format("WHERE \"{0}\" = \"{1}\"", TablesManager.Tables[tableId].colName[0], columns[0]));
 
@@ -153,6 +155,10 @@ namespace DataBaseAttributes
 				UnityEngine.Debug.Log(sqlQuery);
 				using (var cmd = new SqliteCommand(sqlQuery, conn))
 				{
+					for (int i = 1; i < TablesManager.Tables[tableId].colName.Count; ++i)
+					{
+						cmd.Parameters.AddWithValue(string.Format("@param{0}", i), columns[i]);
+					}
 					cmd.ExecuteNonQuery();
 					cmd.Dispose();
 				}
@@ -168,7 +174,7 @@ namespace DataBaseAttributes
 		}
 
 
-		public List<T> Read<T> (string tableName, System.Object[] columns)
+		public static List<T> Read<T> (string tableName, System.Object[] columns)
 		{
 			// uma copia do array já que não é possivel passá-lo sem ser por referencia
 			System.Object[] backup = new System.Object [] {};
@@ -229,7 +235,7 @@ namespace DataBaseAttributes
 			}
 		}
 
-		public T ReadValue<T> (string tableName, string colName, int idTable, System.Object[] columns)
+		public static T ReadValue<T> (string tableName, string colName, int idTable, System.Object[] columns)
 		{
 			using (var conn = new SqliteConnection(GlobalController.path))
 			{
@@ -276,7 +282,7 @@ namespace DataBaseAttributes
 		/**
 		* Função que deleta dados cadastrados anteriormente na relação de pessoas.
 		 */
-		public void DeleteValue(int tableId, int id)
+		public static void DeleteValue(int tableId, int id)
 		{
 			using (var conn = new SqliteConnection(GlobalController.path))
 			{
@@ -302,7 +308,7 @@ namespace DataBaseAttributes
 		/**
 		* Função que apaga a relação de pessoas inteira de uma vez.
 		 */
-		public void Drop(int tableId)
+		public static void Drop(int tableId)
 		{
 			using (var conn = new SqliteConnection(GlobalController.path))
 			{

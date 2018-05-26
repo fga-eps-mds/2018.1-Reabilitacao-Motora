@@ -19,14 +19,6 @@ public class GetMovementPoints : MonoBehaviour
 	/**
 	 * Descrever aqui o que esse método realiza.
 	 */
-	public void ActivateCaption () 
-	{
-		t = true;
-	}
-
-	/**
-	 * Descrever aqui o que esse método realiza.
-	 */
 	public void Update () 
 	{
 		if (Input.GetKeyDown(KeyCode.Space)) 

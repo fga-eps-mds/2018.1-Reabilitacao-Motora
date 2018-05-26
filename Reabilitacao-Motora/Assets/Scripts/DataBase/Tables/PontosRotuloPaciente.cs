@@ -35,11 +35,11 @@ namespace pontosrotulopaciente
 		 */
 		public PontosRotuloPaciente(Object[] columns)
 		{
-				this.idRotuloPaciente = (int)columns[0];
-				this.idExercicio = (int)columns[1];
-				this.estagioMovimentoPaciente = (string)columns[2];
-				this.tempoInicial = (float)columns[3];
-				this.tempoFinal = (float)columns[4];
+			this.idRotuloPaciente = (int)columns[0];
+			this.idExercicio = (int)columns[1];
+			this.estagioMovimentoPaciente = (string)columns[2];
+			this.tempoInicial = (float)columns[3];
+			this.tempoFinal = (float)columns[4];
             this.exer = Exercicio.ReadValue((int)columns[1]);
 		}
 
@@ -48,9 +48,8 @@ namespace pontosrotulopaciente
 		 */
 		public static void Create()
 		{
-			DataBase banco = new DataBase();
 			string query = "CREATE TABLE IF NOT EXISTS PONTOSROTULOPACIENTE (idRotuloPaciente INTEGER primary key AUTOINCREMENT,idExercicio INTEGER not null,estagioMovimentoPaciente VARCHAR (30) not null,tempoInicial REAL not null,tempoFinal REAL not null,foreign key (idExercicio) references EXERCICIO (idExercicio));";
-			banco.Create(query);
+			DataBase.Create(query);
 		}
 
 		/**
@@ -61,9 +60,8 @@ namespace pontosrotulopaciente
 			float tempoInicial,
 			float tempoFinal)
 		{
-			DataBase banco = new DataBase();
 			Object[] columns = new Object[] {idExercicio, estagioMovimentoPaciente, tempoInicial, tempoFinal};
-			banco.Insert(columns, TablesManager.Tables[tableId].tableName, tableId);
+			DataBase.Insert(columns, TablesManager.Tables[tableId].tableName, tableId);
 		}
 
 		/**
@@ -75,9 +73,8 @@ namespace pontosrotulopaciente
 			float tempoInicial,
 			float tempoFinal)
 		{
-			DataBase banco = new DataBase();
 			Object[] columns = new Object[] {id, idExercicio, estagioMovimentoPaciente, tempoInicial, tempoFinal};
-			banco.Update(columns, TablesManager.Tables[tableId].tableName, tableId);
+			DataBase.Update(columns, TablesManager.Tables[tableId].tableName, tableId);
 		}
 
 		/**
@@ -85,10 +82,9 @@ namespace pontosrotulopaciente
 		 */
 		public static List<PontosRotuloPaciente> Read()
 		{
-			DataBase banco = new DataBase();
 			Object[] columns = new Object[] {0, 0, "", 0.00f, 0.00f};
 
-			List<PontosRotuloPaciente> patientLabelPoints = banco.Read<PontosRotuloPaciente>(TablesManager.Tables[tableId].tableName, columns);
+			List<PontosRotuloPaciente> patientLabelPoints = DataBase.Read<PontosRotuloPaciente>(TablesManager.Tables[tableId].tableName, columns);
 
 			return patientLabelPoints;
 		}
@@ -96,10 +92,9 @@ namespace pontosrotulopaciente
 
 		public static PontosRotuloPaciente ReadValue (int id)
 		{
-			DataBase banco = new DataBase();
 			Object[] columns = new Object[] {0, 0, "", 0.00f, 0.00f};
 
-			PontosRotuloPaciente patientLabelPoint = banco.ReadValue<PontosRotuloPaciente>(TablesManager.Tables[tableId].tableName,
+			PontosRotuloPaciente patientLabelPoint = DataBase.ReadValue<PontosRotuloPaciente>(TablesManager.Tables[tableId].tableName,
 				TablesManager.Tables[tableId].colName[0], id, columns);
 
 			return patientLabelPoint;
@@ -110,8 +105,7 @@ namespace pontosrotulopaciente
 		 */
 		public static void DeleteValue(int id)
 		{
-			DataBase banco = new DataBase();
-			banco.DeleteValue (tableId, id);
+			DataBase.DeleteValue (tableId, id);
 		}
 
 		/**
@@ -119,8 +113,7 @@ namespace pontosrotulopaciente
 		 */
 		public static void Drop()
 		{
-			DataBase banco = new DataBase();
-			banco.Drop (tableId);
+			DataBase.Drop (tableId);
 		}
 	}
 }
