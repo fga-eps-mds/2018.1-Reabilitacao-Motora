@@ -48,16 +48,17 @@ public class GlobalController : MonoBehaviour
 		}
 		else
 		{
-			string pathEx = "Assets\\Exercicios";
-			string pathMv = "Assets\\Movimentos";
+			string pathEx =  Application.dataPath + "/Exercicios";
+			string pathMv =  Application.dataPath + "/Movimentos";
+			string dbStream = Application.dataPath + "/StreamingAssets";
 
 			Directory.CreateDirectory(pathEx);
 			Directory.CreateDirectory(pathMv);
+			Directory.CreateDirectory(dbStream);
 
 			instance = this;
 			DontDestroyOnLoad(gameObject);
 			Initialize();
-			Debug.Log(GlobalController.path == null);
 		}
 	}
 
@@ -65,13 +66,20 @@ public class GlobalController : MonoBehaviour
 	{
 		if (test == false) 
 		{
-			path = "URI=file:" + Application.dataPath + "/Plugins/fisiotech.db";
+			path = "URI=file:" +  Application.streamingAssetsPath + "/fisiotech.sqlite";
 		}
 		else
 		{
-			path = "URI=file:" + Application.dataPath + "/Plugins/test_fisiotech.db";
+			path = "URI=file:" +  Application.streamingAssetsPath + "/test_fisiotech.sqlite";
 		}
 		
+		var directory = path.Substring(9, path.Length - 9);
+
+		if (!System.IO.File.Exists(directory))
+		{
+			SqliteConnection.CreateFile(directory);
+		}
+
 		Pessoa.Create();
 		Fisioterapeuta.Create();
 		Paciente.Create();
