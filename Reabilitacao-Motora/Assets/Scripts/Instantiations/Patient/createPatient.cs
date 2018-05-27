@@ -80,6 +80,8 @@ public class createPatient : MonoBehaviour
 			Directory.CreateDirectory(pathNamePatient);
 
 			Flow.StaticNewPatient();
+			Flow.StaticNewPatient();
+
 		}
 	}
 
@@ -141,7 +143,7 @@ public class createPatient : MonoBehaviour
 
 				ApplyColor (inputs[3], false);
 			}
-			
+
 			valid = false;
 		}
 
