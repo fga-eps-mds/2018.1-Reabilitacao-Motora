@@ -48,11 +48,13 @@ public class GlobalController : MonoBehaviour
 		}
 		else
 		{
-			string pathEx = "Assets\\Exercicios";
-			string pathMv = "Assets\\Movimentos";
+			string pathEx =  Application.dataPath + "/Exercicios";
+			string pathMv =  Application.dataPath + "/Movimentos";
+			string dbStream = Application.dataPath + "/StreamingAssets";
 
 			Directory.CreateDirectory(pathEx);
 			Directory.CreateDirectory(pathMv);
+			Directory.CreateDirectory(dbStream);
 
 			instance = this;
 			DontDestroyOnLoad(gameObject);
@@ -65,11 +67,11 @@ public class GlobalController : MonoBehaviour
 	{
 		if (test == false) 
 		{
-			instance.path = "URI=file:" + Application.dataPath + "/Plugins/fisiotech.sqlite";
+			instance.path = "URI=file:" +  Application.streamingAssetsPath + "/fisiotech.sqlite";
 		}
 		else
 		{
-			instance.path = "URI=file:" + Application.dataPath + "/Plugins/test_fisiotech.sqlite";
+			instance.path = "URI=file:" +  Application.streamingAssetsPath + "/test_fisiotech.sqlite";
 		}
 		
 		var directory = instance.path.Substring(9, instance.path.Length - 9);
