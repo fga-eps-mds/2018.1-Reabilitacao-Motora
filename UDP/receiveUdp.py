@@ -1,14 +1,15 @@
 import socket
+from time import sleep
 
-localIP = "127.0.0.1"
-localPort   = 5005
+UDP_IP = "127.0.0.1"
+UDP_PORT   = 5005
 bufferSize  = 1024
 
 # Create a datagram socket
 UDPServerSocket = socket.socket(family=socket.AF_INET, type=socket.SOCK_DGRAM)
 
 # Bind to address and ip
-UDPServerSocket.bind((localIP, localPort))
+UDPServerSocket.bind((UDP_IP, UDP_PORT))
 
 print("UDP server up and listening")
 
@@ -22,5 +23,4 @@ while(True):
     address = bytesAddressPair[1]
 
     clientMsg = "Message from Client: {}".format(message)
-    
     print(clientMsg)
