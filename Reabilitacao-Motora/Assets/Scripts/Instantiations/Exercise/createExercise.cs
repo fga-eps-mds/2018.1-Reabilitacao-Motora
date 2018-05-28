@@ -4,7 +4,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 using exercicio;
 
@@ -13,10 +12,17 @@ using exercicio;
  */
 public class createExercise : MonoBehaviour 
 {
+	[SerializeField]
+	protected Button nextPage;
+
+	public void Awake ()
+	{
+		nextPage.onClick.AddListener(delegate{CreateExercise();});
+	}
 	/**
 	 * Salva o paciente no banco.
 	 */
-	public void CreateExercise()
+	public static void CreateExercise()
 	{
 		string patientUnderscored = (GlobalController.instance.user.persona.nomePessoa).Replace(' ', '_');
 
@@ -25,13 +31,14 @@ public class createExercise : MonoBehaviour
 		pathSave += GlobalController.instance.session.dataSessao + "/";
 
 		var token = (GlobalController.instance.movement.pontosMovimento).Split('/');
+		string date = DateTime.Now.ToString("ss", System.Globalization.DateTimeFormatInfo.InvariantInfo);
 
-		pathSave += token[1] + ".points";
+		pathSave += date + "-" + token[1] + ".points";
 
 		Exercicio.Insert(GlobalController.instance.user.idPaciente, 
 			GlobalController.instance.movement.idMovimento,
 			GlobalController.instance.session.idSessao, 
-			pathSave);
+			null, pathSave);
 
 		List<Exercicio> exercises = Exercicio.Read();
 		GlobalController.instance.exercise = exercises[exercises.Count - 1];

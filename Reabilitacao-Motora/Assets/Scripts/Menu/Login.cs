@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-
+using pessoa;
 using cryptpw;
 
 using fisioterapeuta;
@@ -14,14 +14,20 @@ using fisioterapeuta;
  */
 public class Login : MonoBehaviour 
 {
+	[SerializeField]
+	protected InputField login, pass;
 
-	public InputField login;
-	public InputField pass;
+	[SerializeField]
+	protected Button nextPage;
 
+	public void Awake ()
+	{
+		nextPage.onClick.AddListener(delegate{Enter();});
+	}
 	/**
 	 * Salva o Fisioterapeuta no banco.
 	 */
-	public void Flow()
+	public void Enter()
 	{
 		Fisioterapeuta idcheck = CheckLoginPass();
 
@@ -33,8 +39,7 @@ public class Login : MonoBehaviour
 			pass.colors = cb;
 
 			GlobalController.instance.admin = idcheck;
-
-			SceneManager.LoadScene("Menu");
+			Flow.StaticMenu();
 		} 
 		else 
 		{

@@ -2,22 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.UI;
 using paciente;
 using sessao;
 using pessoa;
 using exercicio;
 using pontosrotulopaciente;
 
-public class DeletePatientButton : MonoBehaviour 
+public class DeletePatientButton : MonoBehaviour
 {
+	[SerializeField]
+	protected Button nextPage;
 
-	public void DeletePatient ()
+	public void Awake ()
+	{
+		nextPage.onClick.AddListener(delegate{DeletePatient();});
+	}
+
+	public static void DeletePatient ()
 	{
 		int IdPaciente = GlobalController.instance.user.idPaciente;
 		int IdPessoa = GlobalController.instance.user.persona.idPessoa;
 
 		string nomePessoa = (GlobalController.instance.user.persona.nomePessoa).Replace(' ', '_');
-		string nomePasta = string.Format("{0}/Exercicios/{1}-{2}", Application.dataPath, IdPessoa, nomePessoa);
+		string nomePasta = string.Format("Assets\\Exercicios\\{1}-{2}", Application.dataPath, IdPessoa, nomePessoa);
 
 		List<Sessao> allSessions = Sessao.Read();
 		List<Exercicio> allExercises = Exercicio.Read();
