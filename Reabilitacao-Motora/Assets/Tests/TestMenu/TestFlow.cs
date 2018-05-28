@@ -32,23 +32,6 @@ namespace Tests
 		}
 
 		[UnityTest]
-		public static IEnumerator TestClinic()
-		{
-			Flow.StaticClinic();
-
-			yield return null;
-
-			var currentscene = SceneManager.GetActiveScene().name;
-			var expectedscene = "Clinic";
-			
-			var device = @"^(.*?(\bDevice|SDK\b)[^$]*)$";
-			Regex rgx1 = new Regex(device, RegexOptions.IgnoreCase);
-			LogAssert.Expect(LogType.Error, rgx1);
-
-			Assert.AreEqual(currentscene, expectedscene);
-		}
-
-		[UnityTest]
 		public static IEnumerator TestPatient()
 		{
 			Flow.StaticPatient();

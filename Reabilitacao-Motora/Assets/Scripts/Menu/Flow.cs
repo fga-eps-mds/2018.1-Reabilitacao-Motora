@@ -28,14 +28,17 @@ public class Flow : MonoBehaviour
 		SceneManager.LoadScene("NewMovement");
 	}
 
-
-
 	/**
 	 * Leva para scene de gravar um movimento.
 	 */
-	public static void StaticClinic()
+	public static void StaticRealtimeGraph1()
 	{
-		SceneManager.LoadScene("Clinic");
+		SceneManager.LoadScene("RealtimeGraph1");
+	}
+
+	public static void StaticRealtimeGraph2()
+	{
+		SceneManager.LoadScene("RealtimeGraph2");
 	}
 
 
@@ -68,10 +71,18 @@ public class Flow : MonoBehaviour
 		SceneManager.LoadScene ("ClinicToMoveMenu", LoadSceneMode.Additive);
 	}
 
-	/**
+    /**
+     * Leva para scene de gravar um movimento.
+     */
+    public static void ChoiceSensor()
+    {
+        SceneManager.LoadScene("ChoiceSensor");
+    }
+
+    /**
 	 * Leva para scene de registrar novo paciente.
 	 */
-	public static void StaticNewPatient()
+    public static void StaticNewPatient()
 	{
 		SceneManager.LoadScene("NewPatient");
 	}
