@@ -10,12 +10,12 @@ ls
 echo "${TEXTOVERDE} ======================================================================================================== ${NORMAL}"
 
 echo "${TEXTOAMARELO} Iniciando Script de PlayTest ${NORMAL}"
-/Applications/Unity/Unity.app/Contents/MacOS/Unity -batchmode -logFile /dev/stdout -runTests -projectPath $(pwd) -testPlatform playmode -testResults $(pwd)/test.xml
+/Applications/Unity/Unity.app/Contents/MacOS/Unity -batchmode -logFile /dev/stdout -runTests -projectPath $(pwd) -testPlatform playmode -testResults /Users/travis/build/fga-gpp-mds/2018.1-Reabilitacao-Motora/Reabilitacao-Motora/test.xml
 rc0=$?
 echo "${TEXTOVERDE} ======================================= FIM DO SCRIPT PLAYTEST ======================================= ${NORMAL}"
 
 echo " ${TEXTOAMARELO} Exibindo Log do Script de PlayTest ${NORMAL}"
-cat $(pwd)/test.xml
+python /Users/travis/build/fga-gpp-mds/2018.1-Reabilitacao-Motora/Reabilitacao-Motora/Assets/Scripts/test_log_converter.py
 echo "${TEXTOVERDE} ======================================= FIM DOS LOGS DE TEST ======================================= ${NORMAL}"
 
 if [ $rc0 -ne 0 ]; then { echo " PlayTest Falhando -- Consultar Log de Teste -- "; exit $rc0; } fi

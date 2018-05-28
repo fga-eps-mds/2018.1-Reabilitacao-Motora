@@ -78,7 +78,7 @@ public static class TreatFields
 
 		string result = "";
 
-		if (dia > 31 || (dia > 28 && mes == 2) || dia < 1 || 
+		if (dia > 31 || (dia > 29 && mes == 2) || dia < 1 || 
 		   (dia > currentDay && ano == currentYear && mes == currentMonth))
 		{
 			result += "Dia inválido!|";
