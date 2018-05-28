@@ -141,7 +141,7 @@ public class createPatient : MonoBehaviour
 
 				ApplyColor (inputs[3], false);
 			}
-			
+
 			valid = false;
 		}
 
