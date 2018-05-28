@@ -19,6 +19,7 @@ public class LogHangler : MonoBehaviour
 		Application.logMessageReceived -= HandleLog;
 	}
 
+
 	private void HandleLog(string logstring, string stackTrace, LogType type)
 	{
 		File.AppendAllText("log.txt", logstring+"\n");
