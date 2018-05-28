@@ -1,12 +1,17 @@
 import random
 import socket
 from time import sleep
+import sys
 
 UDP_IP = "127.0.0.1"
-UDP_PORT = 5005
+UDP_PORT = 5004
 
-UDPClientSocket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM) # UDP
-
+try:
+    UDPClientSocket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+except socket.error as msg:
+    print ('Failed to create socket. Error Code : ' + str(msg[0]) + ' Message ' + msg[1])
+    sys.exit()
+    
 time = 0.0
 
 while 1:
@@ -44,7 +49,7 @@ while 1:
     r_cotovelo_z = random.uniform(-15.0, 15.0)
 
     time+=0.2
-    message = str(x) + ' '
+    message = str(time) + ' '
     message += str(mao_x) + ' ' + str(mao_y) + ' ' + str(mao_z) + ' '
     message += str(r_mao_x) + ' ' + str(r_mao_y) + ' ' + str(r_mao_z) + ' ' 
     message += str(cotovelo_x) + ' ' + str(cotovelo_y) + ' ' + str(cotovelo_z) + ' '
