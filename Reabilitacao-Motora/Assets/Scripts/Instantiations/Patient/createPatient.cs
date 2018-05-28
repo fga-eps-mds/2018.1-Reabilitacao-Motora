@@ -80,8 +80,6 @@ public class createPatient : MonoBehaviour
 			Directory.CreateDirectory(pathNamePatient);
 
 			Flow.StaticNewPatient();
-			Flow.StaticNewPatient();
-
 		}
 	}
 
