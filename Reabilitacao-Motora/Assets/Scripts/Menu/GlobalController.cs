@@ -31,6 +31,7 @@ public class GlobalController : MonoBehaviour
 	private PontosRotuloFisioterapeuta Prf;
 	public static string path;
 	public static bool test;
+	public static bool Sensor;
 
 	public Fisioterapeuta admin { get { return Admin; } set { Admin = value; }}
 	public Paciente user { get { return User; } set { User = value; }}

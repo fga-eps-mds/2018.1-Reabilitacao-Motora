@@ -56,7 +56,7 @@ namespace Tests
 			var test_nonNumber = TreatFields.DateField ("aa/bb/19cD");
 			var test_impossibleOld = TreatFields.DateField ("01/01/1500");
 			var test_terminatorMcFly = TreatFields.DateField (string.Format("01/01/{0}", (currentYear+1)));
-			var test_carnivalTillEndOfYear = TreatFields.DateField ("29/02/2018");
+			var test_carnivalTillEndOfYear = TreatFields.DateField ("30/02/2018");
 			var test_whatMonth = TreatFields.DateField ("01/13/1930");
 			var test_whatDay = TreatFields.DateField ("32/01/1930");
 			var test_negativeDay = TreatFields.DateField ("-01/01/1930");
