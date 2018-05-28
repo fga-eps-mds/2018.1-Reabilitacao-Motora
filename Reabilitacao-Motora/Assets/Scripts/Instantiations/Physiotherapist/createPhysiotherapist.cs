@@ -140,7 +140,7 @@ public class createPhysiotherapist : MonoBehaviour
 				var splitBar = treatName.Split('|');
 				foreach (var erro in splitBar)
 				{
-					print (erro);
+					Debug.Log (erro);
 				}
 
 				ApplyColor (inputs[0], false);
@@ -150,7 +150,7 @@ public class createPhysiotherapist : MonoBehaviour
 				var splitBar = treatDate.Split('|');
 				foreach (var erro in splitBar)
 				{
-					print (erro);
+					Debug.Log (erro);
 				}
 
 				ApplyColor (inputs[1], false);
@@ -160,7 +160,7 @@ public class createPhysiotherapist : MonoBehaviour
 				var splitBar = treatPhone1.Split('|');
 				foreach (var erro in splitBar)
 				{
-					print (erro);
+					Debug.Log (erro);
 				}
 
 				ApplyColor (inputs[2], false);
@@ -170,7 +170,7 @@ public class createPhysiotherapist : MonoBehaviour
 				var splitBar = treatLogin.Split('|');
 				foreach (var erro in splitBar)
 				{
-					print (erro);
+					Debug.Log (erro);
 				}
 
 				ApplyColor (inputs[3], false);
@@ -180,7 +180,7 @@ public class createPhysiotherapist : MonoBehaviour
 				var splitBar = treatPass.Split('|');
 				foreach (var erro in splitBar)
 				{
-					print (erro);
+					Debug.Log (erro);
 				}
 
 				ApplyColor (inputs[4], false);
@@ -190,7 +190,7 @@ public class createPhysiotherapist : MonoBehaviour
 				var splitBar = treatConfirm.Split('|');
 				foreach (var erro in splitBar)
 				{
-					print (erro);
+					Debug.Log (erro);
 				}
 
 				ApplyColor (inputs[5], false);
@@ -200,7 +200,7 @@ public class createPhysiotherapist : MonoBehaviour
 				var splitBar = treatCrefito.Split('|');
 				foreach (var erro in splitBar)
 				{
-					print (erro);
+					Debug.Log (erro);
 				}
 
 				ApplyColor (inputs[6], false);
@@ -210,7 +210,7 @@ public class createPhysiotherapist : MonoBehaviour
 				var splitBar = treatRegiao.Split('|');
 				foreach (var erro in splitBar)
 				{
-					print (erro);
+					Debug.Log (erro);
 				}
 
 				ApplyColor (inputs[7], false);
@@ -220,7 +220,7 @@ public class createPhysiotherapist : MonoBehaviour
 				var splitBar = treatPhone2.Split('|');
 				foreach (var erro in splitBar)
 				{
-					print (erro);
+					Debug.Log (erro);
 				}
 
 				ApplyColor (inputs[8], false);
@@ -230,7 +230,7 @@ public class createPhysiotherapist : MonoBehaviour
 				var splitBar = treatUniqueCR.Split('|');
 				foreach (var erro in splitBar)
 				{
-					print (erro);
+					Debug.Log (erro);
 				}
 
 				ApplyColor (inputs[6], false);
@@ -241,7 +241,7 @@ public class createPhysiotherapist : MonoBehaviour
 				var splitBar = treatUniqueLP.Split('|');
 				foreach (var erro in splitBar)
 				{
-					print (erro);
+					Debug.Log (erro);
 				}
 
 				ApplyColor (inputs[3], false);

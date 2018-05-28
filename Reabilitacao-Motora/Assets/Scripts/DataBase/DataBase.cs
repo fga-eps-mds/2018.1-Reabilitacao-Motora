@@ -196,41 +196,35 @@ namespace DataBaseAttributes
 				{
 					using (SqliteDataReader reader = cmd.ExecuteReader())
 					{
-						try 
+						while (reader.Read())
 						{
-							while (reader.Read())
+							// recuperando cópia aos valores originais
+							for (int i = 0; i < columns.Length; ++i)
 							{
-								// recuperando cópia aos valores originais
-								for (int i = 0; i < columns.Length; ++i)
-								{
-									columns[i] = backup[i];
-								}
-								
-								var columnsCopy = ObjectArray (columns, reader);
-
-								Type classType = typeof(T);
-								ConstructorInfo classConstructor = classType.GetConstructor(new [] { columnsCopy.GetType() });
-								T classInstance = (T)classConstructor.Invoke(new object[] { columnsCopy });
-
-								classList.Add(classInstance);
+								columns[i] = backup[i];
 							}
+							
+							var columnsCopy = ObjectArray (columns, reader);
+
+							Type classType = typeof(T);
+							ConstructorInfo classConstructor = classType.GetConstructor(new [] { columnsCopy.GetType() });
+							T classInstance = (T)classConstructor.Invoke(new object[] { columnsCopy });
+
+							classList.Add(classInstance);
 						}
-						finally
-						{
-							reader.Dispose();
-							reader.Close();
-						}
+						
+						reader.Dispose();
+						reader.Close();
+						cmd.Dispose();
+						conn.Dispose();
+						conn.Close();
+						SqliteConnection.ClearAllPools();
+						GC.Collect();
+						GC.WaitForPendingFinalizers();
+
+						return classList;	 
 					}
-					cmd.Dispose();
 				}
-
-				conn.Dispose();
-				conn.Close();
-				SqliteConnection.ClearAllPools();
-				GC.Collect();
-				GC.WaitForPendingFinalizers();
-
-				return classList;	 
 			}
 		}
 
@@ -247,31 +241,27 @@ namespace DataBaseAttributes
 					using (SqliteDataReader reader = cmd.ExecuteReader())
 					{
 						T classInstance;
-						try 
-						{
-							reader.Read();
-							
-							var columnsCopy = ObjectArray (columns, reader);
 
-							Type classType = typeof(T);
-							ConstructorInfo classConstructor = classType.GetConstructor(new [] { columnsCopy.GetType() });
-							classInstance = (T)classConstructor.Invoke(new object[] { columnsCopy });
-						}
-						finally
-						{
-							reader.Dispose();
-							reader.Close();
+						reader.Read();
+						
+						var columnsCopy = ObjectArray (columns, reader);
 
-							cmd.Dispose();
+						Type classType = typeof(T);
+						ConstructorInfo classConstructor = classType.GetConstructor(new [] { columnsCopy.GetType() });
+						classInstance = (T)classConstructor.Invoke(new object[] { columnsCopy });
 
-							conn.Dispose();
-							conn.Close();
-							SqliteConnection.ClearAllPools();
+						reader.Dispose();
+						reader.Close();
 
-							GC.Collect();
-							GC.WaitForPendingFinalizers();
+						cmd.Dispose();
 
-						}
+						conn.Dispose();
+						conn.Close();
+						SqliteConnection.ClearAllPools();
+
+						GC.Collect();
+						GC.WaitForPendingFinalizers();
+
 						return classInstance;
 					}
 				} 

@@ -66,11 +66,11 @@ public class GlobalController : MonoBehaviour
 	{
 		if (test == false) 
 		{
-			path = "URI=file:" +  Application.streamingAssetsPath + "/fisiotech.sqlite";
+			path = "URI=file:" +  Application.streamingAssetsPath + "/fisiotech.db";
 		}
 		else
 		{
-			path = "URI=file:" +  Application.streamingAssetsPath + "/test_fisiotech.sqlite";
+			path = "URI=file:" +  Application.streamingAssetsPath + "/test_fisiotech.db";
 		}
 		
 		var directory = path.Substring(9, path.Length - 9);
