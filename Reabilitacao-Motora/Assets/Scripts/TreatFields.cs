@@ -71,7 +71,6 @@ public static class TreatFields
 		mes = Int32.Parse(trip[1]);
 		ano = Int32.Parse(trip[2]);
 		
-
 		int currentMonth = DateTime.Now.Month;
 		int currentYear = DateTime.Now.Year;
 		int currentDay = DateTime.Now.Day;
