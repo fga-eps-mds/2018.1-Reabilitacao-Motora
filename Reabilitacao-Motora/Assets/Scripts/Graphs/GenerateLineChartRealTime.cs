@@ -17,7 +17,8 @@ public class GenerateLineChartRealTime : MonoBehaviour
 
 	LineRenderer lineRenderer;
 	private static readonly Color c1 = Color.black;
-	private static readonly Color c2 = Color.blue;
+	private static readonly Color c2 = Color.red;
+	private static readonly Color c3 = Color.blue;
 
 	public void Update () 
 	{
@@ -68,7 +69,14 @@ public class GenerateLineChartRealTime : MonoBehaviour
 		t = false;
 		current_time_movement = 0;
 		var go = gameObject;
-		
-		GetMovementPoints.LoadLineRenderer(ref go, ref lineRenderer, c1, c2);
+
+		if (GlobalController.patientOrPhysio)
+		{
+			GetMovementPoints.LoadLineRenderer(ref go, ref lineRenderer, c1, c2);
+		}
+		else
+		{
+			GetMovementPoints.LoadLineRenderer(ref go, ref lineRenderer, c1, c3);
+		}
 	}
 }

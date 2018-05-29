@@ -20,6 +20,7 @@ public class GenerateLineChart : MonoBehaviour
 
 	private static readonly Color c1 = Color.black;
 	private static readonly Color c2 = Color.red;
+	private static readonly Color c3 = Color.blue;
 
 	bool t;
 	bool drawed;
@@ -97,20 +98,29 @@ public class GenerateLineChart : MonoBehaviour
 			string file;
 
 			var currentscene = SceneManager.GetActiveScene().name;
+			var go = gameObject;
+			
 			if (currentscene == "Graphs2")
 			{
 				file = Application.dataPath + "/Movimentos/" + GlobalController.instance.movement.pontosMovimento;
+				GetMovementPoints.LoadLineRenderer(ref go, ref lineRenderer, c1, c2);
 			}
 			else
 			{
-				file = Application.dataPath + "/Exercicios/" + GlobalController.instance.exercise.pontosExercicio;
+				if (transform.root.gameObject.name == "Grafico Fisio")
+				{
+					file = Application.dataPath + "/Movimentos/" + GlobalController.instance.movement.pontosMovimento;
+					GetMovementPoints.LoadLineRenderer(ref go, ref lineRenderer, c1, c2);
+				}
+				else
+				{
+					file = Application.dataPath + "/Exercicios/" + GlobalController.instance.exercise.pontosExercicio;
+					GetMovementPoints.LoadLineRenderer(ref go, ref lineRenderer, c1, c3);
+				}
 			}
-
 
 			string[] p1 = System.IO.File.ReadAllLines(file);
 			LoadData (p1);
-			var go = gameObject;
-			GetMovementPoints.LoadLineRenderer(ref go, ref lineRenderer, c1, c2);
 		}
 		else
 		{
