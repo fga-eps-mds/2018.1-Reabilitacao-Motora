@@ -1,65 +1,79 @@
-﻿using System.Text;
-using System.Collections;
+﻿using System.Collections;
+using System.Text;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using System.IO;
 
 /**
  * Descrever aqui o que essa classe realiza.
  */
-public class GetMovementPoints : MonoBehaviour
+public static class GetMovementPoints
 {
-	[SerializeField]
-	protected Transform mao, cotovelo, ombro, braco; //o ponto final de mao é o inicial de cotovelo, o final de cotovelo é o inicial de ombro; ou seja, sao apenas 2 retas
-	
-	float current_time_movement;
-	bool t;
-
-	/**
-	 * Descrever aqui o que esse método realiza.
-	 */
-	public void Update () 
+	public static void SavePoints (float current_time_movement, string folder, string path, Transform mao, Transform cotovelo, Transform ombro, Transform braco) 
 	{
-		if (Input.GetKeyDown(KeyCode.Space)) 
-		{
-			t = !t;
-		}
-		
+		StringBuilder sb = new StringBuilder();
+		sb.Append(current_time_movement).Append(" ");
+
+		sb.Append(mao.localPosition.x).Append(" ").Append(mao.localPosition.y).Append(" ").Append(mao.localPosition.z).Append(" ");
+		sb.Append(mao.localEulerAngles.x).Append(" ").Append(mao.localEulerAngles.y).Append(" ").Append(mao.localEulerAngles.z).Append(" ");
+
+		sb.Append(cotovelo.localPosition.x).Append(" ").Append(cotovelo.localPosition.y).Append(" ").Append(cotovelo.localPosition.z).Append(" ");
+		sb.Append(cotovelo.localEulerAngles.x).Append(" ").Append(cotovelo.localEulerAngles.y).Append(" ").Append(cotovelo.localEulerAngles.z).Append(" ");
+
+		sb.Append(ombro.localPosition.x).Append(" ").Append(ombro.localPosition.y).Append(" ").Append(ombro.localPosition.z).Append(" ");
+		sb.Append(ombro.localEulerAngles.x).Append(" ").Append(ombro.localEulerAngles.y).Append(" ").Append(ombro.localEulerAngles.z).Append(" ");
+
+		sb.Append(braco.localPosition.x).Append(" ").Append(braco.localPosition.y).Append(" ").Append(braco.localPosition.z).Append(" ");
+		sb.Append(braco.localEulerAngles.x).Append(" ").Append(braco.localEulerAngles.y).Append(" ").Append(braco.localEulerAngles.z).Append("\n");
+		// /movimentos/
+		string file = Application.dataPath + folder + path;
+		File.AppendAllText(file, sb.ToString());
 	}
 
-	public void Awake ()
+	public static void LoadLineRenderer (ref GameObject gameObject, ref LineRenderer lineRenderer, Color c1, Color c2)
 	{
-		current_time_movement = 0;
-		t = false;
+		lineRenderer = gameObject.AddComponent<LineRenderer>();
+		lineRenderer.material = new Material(Shader.Find("Particles/Multiply (Double)"));
+		lineRenderer.widthMultiplier = 0.2f;
+		lineRenderer.positionCount = 4000;
+		lineRenderer.sortingOrder = 5;
+		lineRenderer.positionCount = 2;
+
+		// A simple 2 color gradient with a fixed alpha of 1.0f.
+		float alpha = 1.0f;
+		Gradient gradient = new Gradient();
+		gradient.SetKeys( 
+			new [] { new GradientColorKey(c1, 0.0f), new GradientColorKey(c2, 1.0f) },
+			new [] { new GradientAlphaKey(alpha, 0.0f), new GradientAlphaKey(alpha, 1.0f)}
+		);
+		lineRenderer.colorGradient = gradient;
+		lineRenderer.useWorldSpace = false;
+		lineRenderer.alignment = LineAlignment.Local;
 	}
-	
-	/**
-	 * Descrever aqui o que esse método realiza.
-	 */
-	public void FixedUpdate () 
+
+	public static void graphSpawner (Transform transform, Transform pointPrefab, Transform mao, Transform cotovelo, Transform ombro, float current_time,
+		ref LineRenderer lineRenderer)
 	{
-		if (t) 
-		{
-			current_time_movement += Time.fixedDeltaTime;
-			
-			StringBuilder sb = new StringBuilder();
-			sb.Append(current_time_movement).Append(" ");
+		float step = 2f / 70;
+		Vector3 scale = Vector3.one * step;
+		Vector3 position = Vector3.zero;
+		Vector2 m_p, c_p, o_p, grafico;
 
-			sb.Append(mao.localPosition.x).Append(" ").Append(mao.localPosition.y).Append(" ").Append(mao.localPosition.z).Append(" ");
-			sb.Append(mao.localEulerAngles.x).Append(" ").Append(mao.localEulerAngles.y).Append(" ").Append(mao.localEulerAngles.z).Append(" ");
+		m_p = new Vector2 (mao.position.x, mao.position.y);
+		c_p = new Vector2 (cotovelo.position.x, cotovelo.position.y);
+		o_p = new Vector2 (ombro.position.x, ombro.position.y);
+		grafico = new Vector2 (current_time, _Joint.Angle(m_p, c_p, o_p, c_p));
 
-			sb.Append(cotovelo.localPosition.x).Append(" ").Append(cotovelo.localPosition.y).Append(" ").Append(cotovelo.localPosition.z).Append(" ");
-			sb.Append(cotovelo.localEulerAngles.x).Append(" ").Append(cotovelo.localEulerAngles.y).Append(" ").Append(cotovelo.localEulerAngles.z).Append(" ");
+		Transform point = Transform.Instantiate(pointPrefab);
+		position.x = (grafico.x) + 0.05f;
+		position.y = (grafico.y/24);
+		position.z = 0.0f;
+		point.localPosition = position;
+		point.localScale = scale;
+		point.SetParent (transform, false);
 
-			sb.Append(ombro.localPosition.x).Append(" ").Append(ombro.localPosition.y).Append(" ").Append(ombro.localPosition.z).Append(" ");
-			sb.Append(ombro.localEulerAngles.x).Append(" ").Append(ombro.localEulerAngles.y).Append(" ").Append(ombro.localEulerAngles.z).Append(" ");
-
-			sb.Append(braco.localPosition.x).Append(" ").Append(braco.localPosition.y).Append(" ").Append(braco.localPosition.z).Append(" ");
-			sb.Append(braco.localEulerAngles.x).Append(" ").Append(braco.localEulerAngles.y).Append(" ").Append(braco.localEulerAngles.z).Append("\n");
-
-			string path = Application.dataPath + "/Movimentos/" + GlobalController.instance.movement.pontosMovimento + ".points";
-			File.AppendAllText(path, sb.ToString());
-		}
+		lineRenderer.positionCount++; 
+		lineRenderer.SetPosition(lineRenderer.positionCount-1, point.localPosition);
 	}
 }

@@ -1,13 +1,13 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class RealtimeGraphBt : MonoBehaviour 
+public class RealtimeGraph2Bt : MonoBehaviour 
 {
 	[SerializeField]
 	protected Button nextPage;
 
 	public void Awake ()
 	{
-		nextPage.onClick.AddListener(delegate{Flow.StaticRealtimeGraph();});
+		nextPage.onClick.AddListener(delegate{Flow.StaticRealtimeGraph2();});
 	}
 }

@@ -44,6 +44,7 @@ public class createMovement : MonoBehaviour
 			pathSave += physiounderscored + "/";
 			pathSave += movunderscored + "-";
 			pathSave += DateTime.Now.ToString("HHmmss", System.Globalization.DateTimeFormatInfo.InvariantInfo);
+			pathSave += ".points";
 
 			string description;
 			if (descricao.text == "")
@@ -72,6 +73,7 @@ public class createMovement : MonoBehaviour
 			}
 
 			GlobalController.instance.movement = movementsList[movementsList.Count - 1];
+			GlobalController.patientOrPhysio = true;
 			Flow.ChoiceSensor();
 		}
 	}

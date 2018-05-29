@@ -168,9 +168,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 74571551}
-  - component: {fileID: 74571549}
   - component: {fileID: 74571550}
-  - component: {fileID: 74571552}
+  - component: {fileID: 74571549}
   m_Layer: 0
   m_Name: Grafico
   m_TagString: Untagged
@@ -181,28 +180,28 @@ GameObject:
 --- !u!114 &74571549
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114134276876835728, guid: 184deb3dde3eaaf44a893367924f55a9,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 74571548}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6acad5343919bf24f8e376117e2a4035, type: 3}
+  m_Script: {fileID: 11500000, guid: 7f3c49014a10ef44d838dd1065f1f101, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   pointPrefab: {fileID: 4656512534540884, guid: a4f789d83ab98b945b53862a4ed28fb1,
     type: 2}
   mao: {fileID: 1147544571}
-  cotovelo: {fileID: 88849257}
   ombro: {fileID: 46466736}
-  braco: {fileID: 1885446797}
+  cotovelo: {fileID: 88849257}
+  braco: {fileID: 1885446798}
+  receivePort: 5005
 --- !u!114 &74571550
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 74571548}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0712d378953bf7544ad16060728732c2, type: 3}
   m_Name: 
@@ -248,21 +247,6 @@ RectTransform:
   m_AnchoredPosition: {x: 137, y: 29}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &74571552
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 74571548}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f16e57e409ac1a4c99ffdb7b8fe4ada, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mao: {fileID: 1147544571}
-  cotovelo: {fileID: 88849257}
-  ombro: {fileID: 46466736}
-  braco: {fileID: 1885446798}
 --- !u!1 &78221884
 GameObject:
   m_ObjectHideFlags: 0
@@ -654,7 +638,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 266885234}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66f19ee13740274489512c0f8749d092, type: 3}
+  m_Script: {fileID: 11500000, guid: 922e0021207c2fa4394d8880d3b460ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   nextPage: {fileID: 266885236}
@@ -967,9 +951,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 2
   m_Convex: 0
-  m_CookingOptions: 14
+  m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!33 &300183116
@@ -1338,9 +1322,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 2
   m_Convex: 0
-  m_CookingOptions: 14
+  m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!33 &504441455
@@ -1583,9 +1567,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 2
   m_Convex: 0
-  m_CookingOptions: 14
+  m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!33 &705288948
@@ -3811,7 +3795,6 @@ Camera:
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -4000,10 +3983,6 @@ MonoBehaviour:
   verticalMovement: 0
   smoothFactor: 5
   offsetRelativeToSensor: 0
---- !u!4 &1885446797 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 400078, guid: f5e05f20199c880499cc033d19de1bcd, type: 3}
-  m_PrefabInternal: {fileID: 1885446794}
 --- !u!4 &1885446798 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400018, guid: f5e05f20199c880499cc033d19de1bcd, type: 3}
@@ -4265,9 +4244,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 2
   m_Convex: 0
-  m_CookingOptions: 14
+  m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!33 &2024492255

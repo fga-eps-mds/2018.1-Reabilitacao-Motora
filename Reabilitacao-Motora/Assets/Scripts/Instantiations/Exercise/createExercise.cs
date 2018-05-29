@@ -45,7 +45,7 @@ public class createExercise : MonoBehaviour
 
 		List<Exercicio> exercises = Exercicio.Read();
 		GlobalController.instance.exercise = exercises[exercises.Count - 1];
-
-		Flow.StaticRealtimeGraph();
+		GlobalController.patientOrPhysio = false;
+		Flow.ChoiceSensor();
 	}
 }

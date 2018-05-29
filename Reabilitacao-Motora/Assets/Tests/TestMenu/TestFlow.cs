@@ -29,6 +29,7 @@ namespace Tests
 			var expectedscene = "NewMovement";
 
 			Assert.AreEqual(currentscene, expectedscene);
+			Debug.Log("saindo de " + currentscene);
 		}
 
 		[UnityTest]
@@ -42,6 +43,7 @@ namespace Tests
 			var expectedscene = "Patient";
 
 			Assert.AreEqual(currentscene, expectedscene);
+			Debug.Log("saindo de " + currentscene);
 		}
 
 		[UnityTest]
@@ -55,6 +57,7 @@ namespace Tests
 			var expectedscene = "Login";
 
 			Assert.AreEqual(currentscene, expectedscene);
+			Debug.Log("saindo de " + currentscene);
 		}
 
 		[UnityTest]
@@ -68,6 +71,7 @@ namespace Tests
 			var expectedscene = "Movements";
 
 			Assert.AreEqual(currentscene, expectedscene);
+			Debug.Log("saindo de " + currentscene);
 		}
 
 		[UnityTest]
@@ -81,6 +85,7 @@ namespace Tests
 			var expectedscene = "NewPatient";
 
 			Assert.AreEqual(currentscene, expectedscene);
+			Debug.Log("saindo de " + currentscene);
 		}
 
 		[UnityTest]
@@ -94,25 +99,47 @@ namespace Tests
 			var expectedscene = "UpdatePatient";
 
 			Assert.AreEqual(currentscene, expectedscene);
+			Debug.Log("saindo de " + currentscene);
 		}
 
 
 		[UnityTest]
-		public static IEnumerator TestRealtimeGraph()
+		public static IEnumerator TestRealtimeGraph1()
 		{
-			Flow.StaticRealtimeGraph();
+			Flow.StaticRealtimeGraph1();
 
 			yield return null;
 
 			var currentscene = SceneManager.GetActiveScene().name;
-			var expectedscene = "RealtimeGraph";
+			var expectedscene = "RealtimeGraph1";
 			
 			var device = @"^(.*?(\bDevice|SDK\b)[^$]*)$";
 			Regex rgx1 = new Regex(device, RegexOptions.IgnoreCase);
 			LogAssert.Expect(LogType.Error, rgx1);
 
 			Assert.AreEqual(currentscene, expectedscene);     
+			Debug.Log("saindo de " + currentscene);
 		}
+
+		[UnityTest]
+		public static IEnumerator TestRealtimeGraph2()
+		{
+			Flow.StaticRealtimeGraph2();
+
+			yield return null;
+
+			var currentscene = SceneManager.GetActiveScene().name;
+			var expectedscene = "RealtimeGraph2";
+			
+			var device = @"^(.*?(\bDevice|SDK\b)[^$]*)$";
+			Regex rgx1 = new Regex(device, RegexOptions.IgnoreCase);
+			LogAssert.Expect(LogType.Error, rgx1);
+
+			Assert.AreEqual(currentscene, expectedscene);     
+			Debug.Log("saindo de " + currentscene);
+		}
+
+
 
 		[UnityTest]
 		public static IEnumerator TestNewPhysiotherapist()
@@ -125,6 +152,7 @@ namespace Tests
 			var expectedscene = "NewPhysiotherapist";
 
 			Assert.AreEqual(currentscene, expectedscene);
+			Debug.Log("saindo de " + currentscene);
 		}
 
 		[UnityTest]
@@ -138,6 +166,7 @@ namespace Tests
 			var expectedscene = "Menu";
 
 			Assert.AreEqual(currentscene, expectedscene);
+			Debug.Log("saindo de " + currentscene);
 		}
 
 		[UnityTest]
@@ -151,6 +180,7 @@ namespace Tests
 			var expectedscene = "Graphs2";
 
 			Assert.AreEqual(currentscene, expectedscene);
+			Debug.Log("saindo de " + currentscene);
 		}
 
 		[UnityTest]
@@ -164,6 +194,7 @@ namespace Tests
 			var expectedscene = "NotImplemented";
 
 			Assert.AreEqual(currentscene, expectedscene);
+			Debug.Log("saindo de " + currentscene);
 		}
 
 		[UnityTest]
@@ -177,6 +208,7 @@ namespace Tests
 			var expectedscene = "Sessions";
 
 			Assert.AreEqual(currentscene, expectedscene);
+			Debug.Log("saindo de " + currentscene);
 		}
 
 		[UnityTest]
@@ -190,6 +222,7 @@ namespace Tests
 			var expectedscene = "Session";
 
 			Assert.AreEqual(currentscene, expectedscene);
+			Debug.Log("saindo de " + currentscene);
 		}
 
 		[UnityTest]
@@ -203,6 +236,7 @@ namespace Tests
 			var expectedscene = "NewSession";
 
 			Assert.AreEqual(currentscene, expectedscene);
+			Debug.Log("saindo de " + currentscene);
 		}
 
 		[UnityTest]
@@ -216,6 +250,7 @@ namespace Tests
 			var expectedscene = "MovementsToExercise";
 
 			Assert.AreEqual(currentscene, expectedscene);
+			Debug.Log("saindo de " + currentscene);
 		}
 	}
 }

@@ -134,15 +134,6 @@ public class Flow : MonoBehaviour
 
 
 	/**
-	 * Leva para scene de gráficos.
-	 */
-	public static void StaticRealtimeGraph()
-	{
-		SceneManager.LoadScene("RealtimeGraph");
-	}
-
-
-	/**
 	 * Volta para o menu.
 	 */
 	public static void StaticMenu()
