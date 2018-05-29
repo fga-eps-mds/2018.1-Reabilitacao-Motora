@@ -59,7 +59,7 @@ while 1:
     message += str(braco_x) + ' ' + str(braco_y) + ' ' + str(braco_z) + ' '
     message += str(r_braco_x) + ' ' + str(r_braco_y) + ' ' + str(r_braco_z) + ' ' 
     
-    UDPClientSocket.sendto(bytes(message), (UDP_IP, UDP_PORT))
+    UDPClientSocket.sendto(str.encode(message), (UDP_IP, UDP_PORT))
     sleep(.02)
 
     
