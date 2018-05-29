@@ -228,4 +228,12 @@ public class Flow : MonoBehaviour
 		SceneManager.LoadScene("Graphs3");
 	}
 
+    /**
+	 * Leva para scene de tela de Ajuda.
+	 */
+    public static void StaticHelp()
+    {
+        SceneManager.LoadScene("Help");
+    }
+
 }
