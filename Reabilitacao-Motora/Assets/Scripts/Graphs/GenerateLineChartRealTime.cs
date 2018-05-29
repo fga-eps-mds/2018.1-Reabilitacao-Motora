@@ -68,6 +68,7 @@ public class GenerateLineChartRealTime : MonoBehaviour
 		t = false;
 		current_time_movement = 0;
 		var go = gameObject;
+		
 		GetMovementPoints.LoadLineRenderer(ref go, ref lineRenderer, c1, c2);
 	}
 }

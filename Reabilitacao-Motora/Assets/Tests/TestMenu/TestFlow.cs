@@ -104,14 +104,33 @@ namespace Tests
 
 
 		[UnityTest]
-		public static IEnumerator TestRealtimeGraph1()
+		public static IEnumerator TestRealtimeGraphUDPPatient()
 		{
-			Flow.StaticRealtimeGraph1();
+			Flow.StaticRealtimeGraphUDPPatient();
 
 			yield return null;
 
 			var currentscene = SceneManager.GetActiveScene().name;
-			var expectedscene = "RealtimeGraph1";
+			var expectedscene = "RealtimeGraphUDPPatient";
+			
+			var device = @"^(.*?(\bDevice|Socket|SDK\b)[^$]*)$";
+			Regex rgx1 = new Regex(device, RegexOptions.IgnoreCase);
+			LogAssert.Expect(LogType.Error, rgx1);
+			LogAssert.Expect(LogType.Exception, rgx1);
+
+			Assert.AreEqual(currentscene, expectedscene);     
+			Debug.Log("saindo de " + currentscene);
+		}
+
+		[UnityTest]
+		public static IEnumerator TestRealtimeGraphKinectPatient()
+		{
+			Flow.StaticRealtimeGraphKinectPatient();
+
+			yield return null;
+
+			var currentscene = SceneManager.GetActiveScene().name;
+			var expectedscene = "RealtimeGraphKinectPatient";
 			
 			var device = @"^(.*?(\bDevice|SDK\b)[^$]*)$";
 			Regex rgx1 = new Regex(device, RegexOptions.IgnoreCase);
@@ -122,14 +141,33 @@ namespace Tests
 		}
 
 		[UnityTest]
-		public static IEnumerator TestRealtimeGraph2()
+		public static IEnumerator TestRealtimeGraphUDPPhysio()
 		{
-			Flow.StaticRealtimeGraph2();
+			Flow.StaticRealtimeGraphUDPPhysio();
 
 			yield return null;
 
 			var currentscene = SceneManager.GetActiveScene().name;
-			var expectedscene = "RealtimeGraph2";
+			var expectedscene = "RealtimeGraphUDPPhysio";
+			
+			var device = @"^(.*?(\bDevice|Socket|SDK\b)[^$]*)$";
+			Regex rgx1 = new Regex(device, RegexOptions.IgnoreCase);
+			LogAssert.Expect(LogType.Error, rgx1);
+			LogAssert.Expect(LogType.Exception, rgx1);
+
+			Assert.AreEqual(currentscene, expectedscene);     
+			Debug.Log("saindo de " + currentscene);
+		}
+
+		[UnityTest]
+		public static IEnumerator TestRealtimeGraphKinectPhysio()
+		{
+			Flow.StaticRealtimeGraphKinectPhysio();
+
+			yield return null;
+
+			var currentscene = SceneManager.GetActiveScene().name;
+			var expectedscene = "RealtimeGraphKinectPhysio";
 			
 			var device = @"^(.*?(\bDevice|SDK\b)[^$]*)$";
 			Regex rgx1 = new Regex(device, RegexOptions.IgnoreCase);
@@ -138,6 +176,7 @@ namespace Tests
 			Assert.AreEqual(currentscene, expectedscene);     
 			Debug.Log("saindo de " + currentscene);
 		}
+
 
 
 
