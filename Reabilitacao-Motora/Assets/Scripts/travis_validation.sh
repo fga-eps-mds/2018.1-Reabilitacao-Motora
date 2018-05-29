@@ -24,7 +24,7 @@ validaBuild=1
 
  if [ $validaKey -eq 0 ] && [ $validateste -eq 0 ]; then
    echo "${TEXTOAMARELO} Ativação e Testes concluídos com êxito ... Iniciando Build do Projeto ! ${NORMAL}"
-   ./Reabilitacao-Motora/Assets/Scripts/travis_build.sh
+   #./Reabilitacao-Motora/Assets/Scripts/travis_build.sh
    validaBuild=$?
   else
     echo "${TEXTOAMARELO} Erro nos Testes do Unity... Iniciando a desativação da Máquina Virtual ${NORMAL} "
