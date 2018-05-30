@@ -383,6 +383,7 @@ GameObject:
   - component: {fileID: 468339893}
   - component: {fileID: 468339892}
   - component: {fileID: 468339891}
+  - component: {fileID: 468339894}
   m_Layer: 5
   m_Name: HelpUpdateBt
   m_TagString: Untagged
@@ -483,6 +484,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 468339889}
+--- !u!114 &468339894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 468339889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1a2926450ecf0345a01dea1d26a117e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextPage: {fileID: 468339891}
 --- !u!1 &508793808
 GameObject:
   m_ObjectHideFlags: 0

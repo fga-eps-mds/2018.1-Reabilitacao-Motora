@@ -242,5 +242,12 @@ public class Flow : MonoBehaviour
     {
         SceneManager.LoadScene("HelpPatient");
     }
+    /**
+	 * Leva para scene de tela de Ajuda de Atualizar o Paciente.
+	 */
+    public static void StaticHelpUpdate()
+    {
+        SceneManager.LoadScene("HelpUpdate");
+    }
 
 }
