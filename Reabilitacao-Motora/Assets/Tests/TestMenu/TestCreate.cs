@@ -125,9 +125,6 @@ namespace Tests
 			var objectPhysio = GameObject.Find("Physiotherapist Manager");
 			var physioManager = objectPhysio.GetComponentInChildren<createPhysiotherapist>();
 
-			var objectButton = GameObject.Find("Canvas/PanelPhysiotherapist/SaveBt");
-			var button = objectButton.GetComponentInChildren<Button>();
-
 			InputField aux = (InputField)physioManager.GetMemberValue("namePhysio");
 			aux.text = "Fake Name";
 			physioManager.SetMemberValue("namePhysio", aux);
@@ -172,7 +169,7 @@ namespace Tests
 
 			var fisios = Fisioterapeuta.Read();
 
-			Assert.AreEqual(IdFisioterapeuta, fisios[fisios.Count - 1].idFisioterapeuta)
+			Assert.AreEqual(IdFisioterapeuta, fisios[fisios.Count - 1].idFisioterapeuta);
 			Assert.AreEqual(expectedscene, currentscene);
 		}
 
