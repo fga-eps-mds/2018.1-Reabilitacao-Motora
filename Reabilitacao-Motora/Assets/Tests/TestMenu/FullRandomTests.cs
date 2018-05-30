@@ -132,36 +132,74 @@ namespace Tests
 
 		public static void MenuPaciente()
 		{
-
+			var button = GameObject.Find("/Canvas/PacientsBt").GetComponent<Button>();
+			button.OnPointerClick(new PointerEventData(EventSystem.current));
 		}
+
 		public static void MenuMovimentos()
 		{
-
+			var button = GameObject.Find("/Canvas/MovesBt").GetComponent<Button>();
+			button.OnPointerClick(new PointerEventData(EventSystem.current));
 		}
+
 		public static void MenuAjuda()
 		{
-
+			var button = GameObject.Find("/Canvas/HelpBt").GetComponent<Button>();
+			button.OnPointerClick(new PointerEventData(EventSystem.current));
 		}
+
 		public static void MenuSair()
 		{
-
+			var button = GameObject.Find("/Canvas/ExitBt").GetComponent<Button>();
+			button.OnPointerClick(new PointerEventData(EventSystem.current));
 		}
 		
 		public static void MovementsVoltar()
 		{
-
+			MovementsCancelarDeletarMovimento();
+			var button = GameObject.Find("/Canvas/BackBt").GetComponent<Button>();
+			button.OnPointerClick(new PointerEventData(EventSystem.current));
 		}
+
 		public static void MovementsVisualizarMovimento()
 		{
-
+			MovementsCancelarDeletarMovimento();
+			var button = GameObject.Find("/Canvas/MovimentoMovements(Clone)/movimento").GetComponent<Button>();
+			button.OnPointerClick(new PointerEventData(EventSystem.current));
 		}
+
 		public static void MovementsDeletarMovimento()
 		{
-
+			MovementsCancelarDeletarMovimento();
+			var button = GameObject.Find("/Canvas/MovimentoMovements(Clone)/DeleteBt").GetComponent<Button>();
+			button.OnPointerClick(new PointerEventData(EventSystem.current));
 		}
+
+		public static void MovementsCancelarDeletarMovimento()
+		{
+			bool active = GameObject.Find("/Canvas/PanelDelete/CancelBt");
+			if (active)
+			{
+				var button = GameObject.Find("/Canvas/PanelDelete/CancelBt").GetComponent<Button>();
+				button.OnPointerClick(new PointerEventData(EventSystem.current));
+			}
+		}
+
+		public static void MovementsConfirmarDeletarMovimento()
+		{
+			bool active = GameObject.Find("/Canvas/PanelDelete/DeleteBt");
+			if (active)
+			{
+				var button = GameObject.Find("/Canvas/PanelDelete/DeleteBt").GetComponent<Button>();
+				button.OnPointerClick(new PointerEventData(EventSystem.current));
+			}
+		}
+
 		public static void MovementsGravarMovimento()
 		{
-
+			MovementsCancelarDeletarMovimento();
+			var button = GameObject.Find("/Canvas/Gravar Movimento").GetComponent<Button>();
+			button.OnPointerClick(new PointerEventData(EventSystem.current));
 		}
 		
 		public static void NewMovementVoltar()
@@ -393,8 +431,8 @@ namespace Tests
 			var scenes = new Dictionary<string, Action[]>();
 			scenes["Login"] = new Action[] {()=> LoginEnter(), ()=> LoginCadastrar(), ()=> LoginSair(), ()=> LoginCancelarSair()};
 			scenes["NewPhysiotherapist"] = new Action[] {()=> NewPhysiotherapistCancelar(), ()=> NewPhysiotherapistSalvar(), ()=> NewPhysiotherapistVoltar(), ()=> NewPhysiotherapistAjuda(), ()=> NewPhysiotherapistOkPopUp()};
-			// scenes["Menu"] = new Action[] {()=> MenuSair(), ()=> MenuAjuda(), ()=> MenuMovimentos(), ()=> MenuPaciente()};
-			// scenes["Movements"] = new Action[] {()=> MovementsVoltar(), ()=> MovementsGravarMovimento(), ()=> MovementsDeletarMovimento(), ()=> MovementsVisualizarMovimento()};
+			scenes["Menu"] = new Action[] {()=> MenuSair(), ()=> MenuAjuda(), ()=> MenuMovimentos(), ()=> MenuPaciente()};
+			scenes["Movements"] = new Action[] {()=> MovementsVoltar(), ()=> MovementsGravarMovimento(), ()=> MovementsDeletarMovimento(), ()=> MovementsVisualizarMovimento(), ()=> MovementsCancelarDeletarMovimento(), ()=> MovementsConfirmarDeletarMovimento()};
 			// scenes["NewMovement"] = new Action[] {()=> NewMovementCancelar(), ()=> NewMovementSalvar(), ()=> NewMovementVoltar()};
 			// scenes["ChoiceSensor"] = new Action[] {()=> ChoiceSensorVoltar(), ()=> ChoiceSensorEscolherSensor()};
 			// scenes["RealtimeGraphKinectPatient"] = new Action[] {()=> RealtimeGraphKinectPatientrotular(), ()=> RealtimeGraphKinectPatientvoltar(), ()=> RealtimeGraphKinectPatientdeletarRotulo(), ()=> RealtimeGraphKinectPatientComecarAGravar()};
@@ -413,10 +451,7 @@ namespace Tests
 
 			Flow.StaticLogin();
 			yield return new WaitForSeconds(1f);
-			// scenes["Login"][2]();
-			// yield return new WaitForSeconds(1f);
-			// scenes["Login"][3]();
-			// yield return new WaitForSeconds(1f);		
+				
 			var i = 0;			
 			while (UnityEditor.EditorApplication.isPlaying == true)
 			{
@@ -435,6 +470,8 @@ namespace Tests
 				else
 				{
 					Flow.StaticQuit();
+					//se teste nao quebrou em nenhum lugar, então tá tudo certo
+					Assert.IsTrue(true);
 					break;
 				}
 				i++;
