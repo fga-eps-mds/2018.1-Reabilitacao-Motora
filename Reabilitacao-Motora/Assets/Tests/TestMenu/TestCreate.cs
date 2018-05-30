@@ -305,9 +305,6 @@ namespace Tests
 			var objectPatient = GameObject.Find("PatientManager");
 			var PatientManager = objectPatient.GetComponentInChildren<createPatient>();
 
-			var objectButton = GameObject.Find("Canvas/PanelPatient/SaveBt");
-			var button = objectButton.GetComponentInChildren<Button>();
-
 			InputField aux = (InputField)PatientManager.GetMemberValue("namePatient");
 			aux.text = "Fake Name";
 			PatientManager.SetMemberValue("namePatient", aux);
