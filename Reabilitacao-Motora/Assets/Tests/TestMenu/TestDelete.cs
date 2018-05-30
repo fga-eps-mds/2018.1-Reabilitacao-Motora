@@ -32,106 +32,142 @@ namespace Tests
 			GlobalController.Initialize();
 		}
 
-		// //unitário
-		// [UnityTest]
-		// public static IEnumerator TestDeletePhysio()
-		// {
-		// 	Flow.StaticLogin();
-		// 	Flow.StaticNewPhysiotherapist();
+		//unitário
+		[UnityTest]
+		public static IEnumerator TestDeletePhysio()
+		{
+			Flow.StaticLogin();
+			Flow.StaticNewPhysiotherapist();
 
-		// 	yield return null;
+			yield return null;
 			
-		// 	var objectPhysio = GameObject.Find("Physiotherapist Manager");
-		// 	var physioManager = objectPhysio.GetComponentInChildren<createPhysiotherapist>();
+			var objectPhysio = GameObject.Find("Physiotherapist Manager");
+			var physioManager = objectPhysio.GetComponentInChildren<createPhysiotherapist>();
 
-		// 	InputField aux = (InputField)physioManager.GetMemberValue("namePhysio");
-		// 	aux.text = "Fake Name";
-		// 	physioManager.SetMemberValue("namePhysio", aux);
+			InputField aux = (InputField)physioManager.GetMemberValue("namePhysio");
+			aux.text = "Fake Name";
+			physioManager.SetMemberValue("namePhysio", aux);
 
-		// 	InputField aux1 = (InputField)physioManager.GetMemberValue("date");
-		// 	aux1.text = "01/01/1920";
-		// 	physioManager.SetMemberValue("date", aux1);
+			InputField aux1 = (InputField)physioManager.GetMemberValue("date");
+			aux1.text = "01/01/1920";
+			physioManager.SetMemberValue("date", aux1);
 			
-		// 	InputField aux3 = (InputField)physioManager.GetMemberValue("phone1");
-		// 	aux3.text = "61999999";
-		// 	physioManager.SetMemberValue("phone1", aux3);
+			InputField aux3 = (InputField)physioManager.GetMemberValue("phone1");
+			aux3.text = "61999999";
+			physioManager.SetMemberValue("phone1", aux3);
 
-		// 	InputField aux7 = (InputField)physioManager.GetMemberValue("login");
-		// 	aux7.text = "fake_login";
-		// 	physioManager.SetMemberValue("login", aux7);
+			InputField aux7 = (InputField)physioManager.GetMemberValue("login");
+			aux7.text = "fake_login";
+			physioManager.SetMemberValue("login", aux7);
 
-		// 	InputField aux8 = (InputField)physioManager.GetMemberValue("pass");
-		// 	aux8.text = "fake_pass";
-		// 	physioManager.SetMemberValue("pass", aux8);
+			InputField aux8 = (InputField)physioManager.GetMemberValue("pass");
+			aux8.text = "fake_pass";
+			physioManager.SetMemberValue("pass", aux8);
 
-		// 	InputField aux9 = (InputField)physioManager.GetMemberValue("confirmPass");
-		// 	aux9.text = "fake_pass";
-		// 	physioManager.SetMemberValue("confirmPass", aux9);
+			InputField aux9 = (InputField)physioManager.GetMemberValue("confirmPass");
+			aux9.text = "fake_pass";
+			physioManager.SetMemberValue("confirmPass", aux9);
 
-		// 	Toggle aux2 = (Toggle)physioManager.GetMemberValue("male");
-		// 	aux2.isOn = true;
-		// 	physioManager.SetMemberValue("male", aux2);
+			Toggle aux2 = (Toggle)physioManager.GetMemberValue("male");
+			aux2.isOn = true;
+			physioManager.SetMemberValue("male", aux2);
 
-		// 	Toggle aux0 = (Toggle)physioManager.GetMemberValue("female");
-		// 	aux0.isOn = false;
-		// 	physioManager.SetMemberValue("female", aux0);
+			Toggle aux0 = (Toggle)physioManager.GetMemberValue("female");
+			aux0.isOn = false;
+			physioManager.SetMemberValue("female", aux0);
 
-		// 	physioManager.savePhysiotherapist();
+			physioManager.savePhysiotherapist();
 
-		// 	int IdFisioterapeuta = GlobalController.instance.admin.idFisioterapeuta;
-		// 	int IdPessoa = GlobalController.instance.admin.persona.idPessoa;
+			int IdFisioterapeuta = GlobalController.instance.admin.idFisioterapeuta;
+			int IdPessoa = GlobalController.instance.admin.persona.idPessoa;
 
-		// 	yield return new WaitForSeconds(0.5f);
+			yield return new WaitForSeconds(0.5f);
 
-		// 	var currentscene = SceneManager.GetActiveScene().name;
-		// 	var expectedscene = "Login";
+			DeletePhysioButton.DeletePhysiotherapist();
 
-		// 	var fisios = Fisioterapeuta.Read();
+			yield return new WaitForSeconds(0.5f);
 
-		// 	Assert.AreEqual(IdFisioterapeuta, fisios[fisios.Count - 1].idFisioterapeuta);
-		// 	Assert.AreEqual(expectedscene, currentscene);
-		// }
+			var allMovements = Movimento.Read();
+			foreach (var movs in allMovements)
+			{
+				Assert.AreNotEqual(movs.idFisioterapeuta, IdFisioterapeuta);
+			}
 
-		// [UnityTest]
-		// public static IEnumerator TestDeleteExercise()
-		// {
-		// 	Flow.StaticLogin();
+			var allSessions = Sessao.Read();
+			foreach (var ses in allSessions)
+			{
+				Assert.AreNotEqual(ses.idFisioterapeuta, IdFisioterapeuta);
+			}
 
-		// 	yield return new WaitForSeconds(0.5f);
+			var allPhysios = Fisioterapeuta.Read();
+			foreach (var physio in allPhysios)
+			{
+				Assert.AreNotEqual(physio.idFisioterapeuta, IdFisioterapeuta);
+			}			
 
-		// 	Pessoa.Insert("patient name1", "m", "1995-01-01", "6198732711", null);
-		// 	Pessoa.Insert("physio name1", "m", "1995-01-03", "6198732713", null);
-		// 	Fisioterapeuta.Insert(2, "abracadabra1", "demais1", null, null);
-		// 	Paciente.Insert(1, null);
-		// 	Movimento.Insert (1,"levantamento de peso", "asuhasu/caminhoy.com", null);
-		// 	Sessao.Insert (1, 1, "1940-10-10", null);
+			string nomePessoa = (GlobalController.instance.admin.persona.nomePessoa).Replace(' ', '_');
+			string nomePasta = string.Format("{0}/Movimentos/{1}-{2}", Application.dataPath, IdPessoa, nomePessoa);
+			bool dir = System.IO.File.Exists(nomePasta.Replace('/', '\\'));
 
-		// 	var pacient = Paciente.Read();
-		// 	var fisio = Fisioterapeuta.Read();
-		// 	var moves = Movimento.Read();
-		// 	var sessions = Sessao.Read();
+			Assert.AreEqual (dir, false);
+		}
 
-		// 	GlobalController.instance.user = pacient[pacient.Count - 1];
-		// 	GlobalController.instance.admin = fisio[fisio.Count - 1];
-		// 	GlobalController.instance.movement = moves[moves.Count - 1];
-		// 	GlobalController.instance.session = sessions[sessions.Count - 1];
+		[UnityTest]
+		public static IEnumerator TestDeleteExercise()
+		{
+			Flow.StaticLogin();
 
-		// 	Flow.StaticMovementsToExercise();
+			yield return new WaitForSeconds(0.5f);
 
-		// 	yield return new WaitForSeconds(0.5f);
+			Pessoa.Insert("patient name1", "m", "1995-01-01", "6198732711", null);
+			Pessoa.Insert("physio name1", "m", "1995-01-03", "6198732713", null);
+			Fisioterapeuta.Insert(2, "abracadabra1", "demais1", null, null);
+			Paciente.Insert(1, null);
+			Movimento.Insert (1,"levantamento de peso", "asuhasu/caminhoy.com", null);
+			Sessao.Insert (1, 1, "1940-10-10", null);
 
-		// 	createExercise.CreateExercise();
+			var pacient = Paciente.Read();
+			var fisio = Fisioterapeuta.Read();
+			var moves = Movimento.Read();
+			var sessions = Sessao.Read();
 
-		// 	yield return new WaitForSeconds(0.5f);
+			GlobalController.instance.user = pacient[pacient.Count - 1];
+			GlobalController.instance.admin = fisio[fisio.Count - 1];
+			GlobalController.instance.movement = moves[moves.Count - 1];
+			GlobalController.instance.session = sessions[sessions.Count - 1];
 
-		// 	var currentscene = SceneManager.GetActiveScene().name;
-		// 	var expectedscene = "ChoiceSensor";
+			Flow.StaticMovementsToExercise();
 
-		// 	var exer = Exercicio.Read();
+			yield return new WaitForSeconds(0.5f);
 
-		// 	Assert.AreEqual(currentscene, expectedscene);
-		// 	Assert.AreEqual(GlobalController.instance.exercise.idExercicio, exer[exer.Count - 1].idExercicio);
-		// }
+			createExercise.CreateExercise();
+
+			yield return new WaitForSeconds(0.5f);
+
+			DeleteExerciseButton.DeleteExercise();
+
+			yield return new WaitForSeconds(0.5f);
+
+			int IdExercicio = GlobalController.instance.exercise.idExercicio;
+
+			List<PontosRotuloPaciente> allPrps = PontosRotuloPaciente.Read();
+
+			foreach (var prp in allPrps)
+			{
+				Assert.AreNotEqual(prp.idExercicio, IdExercicio);
+			}
+
+			var exers = Exercicio.Read();
+			foreach (var exer in exers)
+			{
+				Assert.AreNotEqual(exer.idExercicio, IdExercicio);
+			}
+
+			string pathEx = string.Format("{0}/Exercicios/{1}", Application.dataPath, GlobalController.instance.exercise.pontosExercicio);
+			bool dir = System.IO.File.Exists(pathEx);
+
+			Assert.AreEqual (dir, false);
+		}
 
 		[UnityTest]
 		public static IEnumerator TestDeleteSession()
