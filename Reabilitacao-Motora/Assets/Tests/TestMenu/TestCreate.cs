@@ -178,7 +178,7 @@ namespace Tests
 		{
 			Flow.StaticLogin();
 
-			yield return new WaitForSeconds(2f);
+			yield return new WaitForSeconds(0.5f);
 
 			Pessoa.Insert("patient name1", "m", "1995-01-01", "6198732711", null);
 			Pessoa.Insert("physio name1", "m", "1995-01-03", "6198732713", null);
@@ -199,11 +199,11 @@ namespace Tests
 
 			Flow.StaticMovementsToExercise();
 
-			yield return new WaitForSeconds(2f);
+			yield return new WaitForSeconds(0.5f);
 
 			createExercise.CreateExercise();
 
-			yield return new WaitForSeconds(2f);
+			yield return new WaitForSeconds(0.5f);
 
 			var currentscene = SceneManager.GetActiveScene().name;
 			var expectedscene = "ChoiceSensor";
@@ -219,7 +219,7 @@ namespace Tests
 		{
 			Flow.StaticLogin();
 
-			yield return new WaitForSeconds(2f);
+			yield return new WaitForSeconds(0.5f);
 
 			Pessoa.Insert("patient name1", "m", "1995-01-01", "6198732711", null);
 			Pessoa.Insert("physio name1", "m", "1995-01-03", "6198732713", null);
@@ -234,11 +234,11 @@ namespace Tests
 
 			Flow.StaticSessions();
 
-			yield return new WaitForSeconds(2f);
+			yield return new WaitForSeconds(0.5f);
 
 			createSession.CreateSessao();
 
-			yield return new WaitForSeconds(2f);
+			yield return new WaitForSeconds(0.5f);
 
 			var currentscene = SceneManager.GetActiveScene().name;
 			var expectedscene = "NewSession";

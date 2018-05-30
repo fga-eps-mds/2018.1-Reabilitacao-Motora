@@ -32,6 +32,158 @@ namespace Tests
 			GlobalController.Initialize();
 		}
 
+		// //unitário
+		// [UnityTest]
+		// public static IEnumerator TestDeletePhysio()
+		// {
+		// 	Flow.StaticLogin();
+		// 	Flow.StaticNewPhysiotherapist();
+
+		// 	yield return null;
+			
+		// 	var objectPhysio = GameObject.Find("Physiotherapist Manager");
+		// 	var physioManager = objectPhysio.GetComponentInChildren<createPhysiotherapist>();
+
+		// 	InputField aux = (InputField)physioManager.GetMemberValue("namePhysio");
+		// 	aux.text = "Fake Name";
+		// 	physioManager.SetMemberValue("namePhysio", aux);
+
+		// 	InputField aux1 = (InputField)physioManager.GetMemberValue("date");
+		// 	aux1.text = "01/01/1920";
+		// 	physioManager.SetMemberValue("date", aux1);
+			
+		// 	InputField aux3 = (InputField)physioManager.GetMemberValue("phone1");
+		// 	aux3.text = "61999999";
+		// 	physioManager.SetMemberValue("phone1", aux3);
+
+		// 	InputField aux7 = (InputField)physioManager.GetMemberValue("login");
+		// 	aux7.text = "fake_login";
+		// 	physioManager.SetMemberValue("login", aux7);
+
+		// 	InputField aux8 = (InputField)physioManager.GetMemberValue("pass");
+		// 	aux8.text = "fake_pass";
+		// 	physioManager.SetMemberValue("pass", aux8);
+
+		// 	InputField aux9 = (InputField)physioManager.GetMemberValue("confirmPass");
+		// 	aux9.text = "fake_pass";
+		// 	physioManager.SetMemberValue("confirmPass", aux9);
+
+		// 	Toggle aux2 = (Toggle)physioManager.GetMemberValue("male");
+		// 	aux2.isOn = true;
+		// 	physioManager.SetMemberValue("male", aux2);
+
+		// 	Toggle aux0 = (Toggle)physioManager.GetMemberValue("female");
+		// 	aux0.isOn = false;
+		// 	physioManager.SetMemberValue("female", aux0);
+
+		// 	physioManager.savePhysiotherapist();
+
+		// 	int IdFisioterapeuta = GlobalController.instance.admin.idFisioterapeuta;
+		// 	int IdPessoa = GlobalController.instance.admin.persona.idPessoa;
+
+		// 	yield return new WaitForSeconds(0.5f);
+
+		// 	var currentscene = SceneManager.GetActiveScene().name;
+		// 	var expectedscene = "Login";
+
+		// 	var fisios = Fisioterapeuta.Read();
+
+		// 	Assert.AreEqual(IdFisioterapeuta, fisios[fisios.Count - 1].idFisioterapeuta);
+		// 	Assert.AreEqual(expectedscene, currentscene);
+		// }
+
+		// [UnityTest]
+		// public static IEnumerator TestDeleteExercise()
+		// {
+		// 	Flow.StaticLogin();
+
+		// 	yield return new WaitForSeconds(0.5f);
+
+		// 	Pessoa.Insert("patient name1", "m", "1995-01-01", "6198732711", null);
+		// 	Pessoa.Insert("physio name1", "m", "1995-01-03", "6198732713", null);
+		// 	Fisioterapeuta.Insert(2, "abracadabra1", "demais1", null, null);
+		// 	Paciente.Insert(1, null);
+		// 	Movimento.Insert (1,"levantamento de peso", "asuhasu/caminhoy.com", null);
+		// 	Sessao.Insert (1, 1, "1940-10-10", null);
+
+		// 	var pacient = Paciente.Read();
+		// 	var fisio = Fisioterapeuta.Read();
+		// 	var moves = Movimento.Read();
+		// 	var sessions = Sessao.Read();
+
+		// 	GlobalController.instance.user = pacient[pacient.Count - 1];
+		// 	GlobalController.instance.admin = fisio[fisio.Count - 1];
+		// 	GlobalController.instance.movement = moves[moves.Count - 1];
+		// 	GlobalController.instance.session = sessions[sessions.Count - 1];
+
+		// 	Flow.StaticMovementsToExercise();
+
+		// 	yield return new WaitForSeconds(0.5f);
+
+		// 	createExercise.CreateExercise();
+
+		// 	yield return new WaitForSeconds(0.5f);
+
+		// 	var currentscene = SceneManager.GetActiveScene().name;
+		// 	var expectedscene = "ChoiceSensor";
+
+		// 	var exer = Exercicio.Read();
+
+		// 	Assert.AreEqual(currentscene, expectedscene);
+		// 	Assert.AreEqual(GlobalController.instance.exercise.idExercicio, exer[exer.Count - 1].idExercicio);
+		// }
+
+		[UnityTest]
+		public static IEnumerator TestDeleteSession()
+		{
+			Flow.StaticLogin();
+
+			yield return new WaitForSeconds(0.5f);
+
+			Pessoa.Insert("patient name1", "m", "1995-01-01", "6198732711", null);
+			Pessoa.Insert("physio name1", "m", "1995-01-03", "6198732713", null);
+			Fisioterapeuta.Insert(2, "abracadabra1", "demais1", null, null);
+			Paciente.Insert(1, null);
+
+			var pacient = Paciente.Read();
+			var fisio = Fisioterapeuta.Read();
+
+			GlobalController.instance.user = pacient[pacient.Count - 1];
+			GlobalController.instance.admin = fisio[fisio.Count - 1];
+
+			Flow.StaticSessions();
+
+			yield return new WaitForSeconds(0.5f);
+
+			createSession.CreateSessao();
+
+			yield return new WaitForSeconds(0.5f);
+
+			DeleteSessionButton.DeleteSession();
+
+			yield return new WaitForSeconds(0.5f);
+
+			var currentscene = SceneManager.GetActiveScene().name;
+			var expectedscene = "Sessions";
+
+			Assert.AreEqual(expectedscene, currentscene);
+
+			int IdSessao = GlobalController.instance.session.idSessao;
+
+			var exers = Exercicio.Read();
+			foreach (var exer in exers)
+			{
+				Assert.AreNotEqual(exer.idSessao, IdSessao);
+			}
+
+			var sess = Sessao.Read();
+			foreach (var ses in sess)
+			{
+				Assert.AreNotEqual(ses.idSessao, IdSessao);
+			}
+		}
+
+
 		[UnityTest]
 		public static IEnumerator TestDeleteMovement()
 		{
@@ -94,6 +246,12 @@ namespace Tests
 			foreach (var mm in mms)
 			{
 				Assert.AreNotEqual(mm.idMovimento, IdMovimento);
+			}
+
+			var movements = Movimento.Read();
+			foreach (var movement in movements)
+			{
+				Assert.AreNotEqual(movement.idMovimento, IdMovimento);
 			}
 
 			string pathMov = string.Format("{0}/Movimentos/{1}", Application.dataPath, GlobalController.instance.movement.pontosMovimento);
