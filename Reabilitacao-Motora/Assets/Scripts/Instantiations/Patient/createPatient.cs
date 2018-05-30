@@ -79,6 +79,9 @@ public class createPatient : MonoBehaviour
 			string pathNamePatient = "Assets\\Exercicios\\" + string.Format("{0}-{1}", personsList[personsList.Count-1].idPessoa, namePatientUnderscored);
 			Directory.CreateDirectory(pathNamePatient);
 
+			var patients = Paciente.Read();
+
+			GlobalController.instance.user = patients[patients.Count - 1];
 			Flow.StaticNewPatient();
 		}
 	}

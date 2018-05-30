@@ -50,7 +50,6 @@ namespace Tests
 		[Test]
 		public static void TestValidInput ()
 		{
-
 			GameObject gameobject1 = new GameObject ();
 			var name = gameobject1.AddComponent<InputField>() as InputField;
 
@@ -89,107 +88,6 @@ namespace Tests
 
 			Assert.AreEqual(response, true);
 		}
-
-		/* 
-		[Test]
-		public static void TestSavePatient ()
-		{	
-			var objectPatient = GameObject.Find("PatientManager");
-			var PatientManager = objectPatient.GetComponentInChildren<createPatient>();
-
-			InputField aux = (InputField)PatientManager.GetMemberValue("namePatient");
-			aux.text = "Fake Name";
-			PatientManager.SetMemberValue("namePatient", aux);
-
-			InputField aux1 = (InputField)PatientManager.GetMemberValue("date");
-			aux1.text = "01/01/1920";
-			PatientManager.SetMemberValue("date", aux1);
-			
-			InputField aux3 = (InputField)PatientManager.GetMemberValue("phone1");
-			aux3.text = "61999999";
-			PatientManager.SetMemberValue("phone1", aux3);
-
-			InputField aux7 = (InputField)PatientManager.GetMemberValue("notes");
-			aux7.text = "fake notes lorem ipsum";
-			PatientManager.SetMemberValue("notes", aux7);
-
-			Toggle aux2 = (Toggle)PatientManager.GetMemberValue("male");
-			aux2.isOn = true;
-			PatientManager.SetMemberValue("male", aux2);
-
-			Toggle aux0 = (Toggle)PatientManager.GetMemberValue("female");
-			aux0.isOn = false;
-			PatientManager.SetMemberValue("female", aux0);
-
-			PatientManager.savePatient();
-
-			int IdPaciente = GlobalController.instance.user.idPaciente;
-			int IdPessoa = GlobalController.instance.user.persona.idPessoa;		
-
-			List<Paciente> allPatients = Paciente.Read();
-
-			for (int i = 0; i < allPatients.Count; ++i)
-			{
-				if(allPatients[i].persona.idPessoa == IdPessoa) {
-					Assert.AreEqual (allPatients[i].observacoes, "fake notes lorem ipsum");
-				}
-			}
-
-		}
-		*/
-
-		[UnityTest]
-		public static IEnumerator TestSaveButton()
-		{
-			Flow.StaticNewPatient();
-
-			yield return null;
-			
-			var objectPatient = GameObject.Find("PatientManager");
-			var PatientManager = objectPatient.GetComponentInChildren<createPatient>();
-
-			var objectButton = GameObject.Find("Canvas/PanelPatient/SaveBt");
-			var button = objectButton.GetComponentInChildren<Button>();
-
-			InputField aux = (InputField)PatientManager.GetMemberValue("namePatient");
-			aux.text = "Fake Name";
-			PatientManager.SetMemberValue("namePatient", aux);
-
-			InputField aux1 = (InputField)PatientManager.GetMemberValue("date");
-			aux1.text = "01/01/1920";
-			PatientManager.SetMemberValue("date", aux1);
-			
-			InputField aux3 = (InputField)PatientManager.GetMemberValue("phone1");
-			aux3.text = "61999999";
-			PatientManager.SetMemberValue("phone1", aux3);
-
-			InputField aux8 = (InputField)PatientManager.GetMemberValue("notes");
-			aux8.text = "lorem ipsum";
-			PatientManager.SetMemberValue("notes", aux8);
-
-			Toggle aux2 = (Toggle)PatientManager.GetMemberValue("male");
-			aux2.isOn = true;
-			PatientManager.SetMemberValue("male", aux2);
-
-			Toggle aux0 = (Toggle)PatientManager.GetMemberValue("female");
-			aux0.isOn = false;
-			PatientManager.SetMemberValue("female", aux0);
-
-			button.OnPointerClick(new PointerEventData(EventSystem.current));
-
-			int IdPaciente = GlobalController.instance.user.idPaciente;
-			int IdPessoa = GlobalController.instance.user.persona.idPessoa;
-			Paciente.DeleteValue(IdPaciente);
-			Pessoa.DeleteValue(IdPessoa);
-
-			yield return new WaitForSeconds(0.5f);
-
-			var currentscene = SceneManager.GetActiveScene().name;
-			var expectedscene = "newPatient";
-
-			Assert.AreEqual(expectedscene, currentscene);
-		}
-		
 
 		[TearDown]
 		public static void AfterEveryTest ()

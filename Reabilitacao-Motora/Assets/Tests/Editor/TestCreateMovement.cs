@@ -1,17 +1,21 @@
+using System;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using System.IO;
-using System;
 using UnityEngine.TestTools;
 using NUnit.Framework;
-using musculo;
-using movimentomusculo;
-using movimento;
+using UnityEngine.EventSystems;
 using Mono.Data.Sqlite;
-using System.Data;
 
+using exercicio;
+using pessoa;
+using paciente;
+using fisioterapeuta;
+using sessao;
+using movimento;
 
 /**
  * Esta classe testa os métodos referentes aos Movimentos.
