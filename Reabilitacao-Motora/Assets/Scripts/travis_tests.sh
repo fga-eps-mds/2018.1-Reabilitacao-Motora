@@ -10,19 +10,17 @@ ls
 echo "${TEXTOVERDE} ======================================================================================================== ${NORMAL}"
 
 echo "${TEXTOAMARELO} Iniciando Script de PlayTest ${NORMAL}"
-#/Applications/Unity/Unity.app/Contents/MacOS/Unity -batchmode -runTests -projectPath $(pwd) -testPlatform playmode -testResults /Users/travis/build/fga-gpp-mds/2018.1-Reabilitacao-Motora/Reabilitacao-Motora/playTest.xml
+/Applications/Unity/Unity.app/Contents/MacOS/Unity -batchmode -runTests -projectPath $(pwd) -testPlatform playmode -testResults /Users/travis/build/fga-gpp-mds/2018.1-Reabilitacao-Motora/Reabilitacao-Motora/playTest.xml
 rc0=$?
-/Applications/Unity/Unity.app/Contents/MacOS/Unity -batchmode -runEditorTests -projectPath $(pwd) -editorTestsResultFile $(pwd)/test.xml
-rc1=$?
-echo "${TEXTOVERDE} ======================================= FIM DO SCRIPT PLAYTEST ======================================= ${NORMAL}"
-
 echo " ${TEXTOAMARELO} Exibindo Log do Script de PlayTest ${NORMAL}"
-cat $(pwd)/test.xml
-#python /Users/travis/build/fga-gpp-mds/2018.1-Reabilitacao-Motora/Reabilitacao-Motora/Assets/Scripts/test_log_converter.py
-echo "${TEXTOVERDE} ======================================= FIM DOS LOGS DE TEST ======================================= ${NORMAL}"
-
+python /Users/travis/build/fga-gpp-mds/2018.1-Reabilitacao-Motora/Reabilitacao-Motora/Assets/Scripts/playTest_log_converter.py
+echo "${TEXTOVERDE} ======================================= FIM DOS LOGS DO PLAY TEST ======================================= ${NORMAL}"
 if [ $rc0 -ne 0 ]; then { echo " PlayTest Falhando -- Consultar Log de Teste -- "; exit $rc0; } fi
+
+echo "${TEXTOAMARELO} Iniciando Script de EditorTest ${NORMAL}"
+/Applications/Unity/Unity.app/Contents/MacOS/Unity -batchmode  -projectPath $(pwd) -runEditorTests -editorTestsResultFile /Users/travis/build/fga-gpp-mds/2018.1-Reabilitacao-Motora/Reabilitacao-Motora/editorTest.xml
+rc1=$?
+echo " ${TEXTOAMARELO} Exibindo Log do Script de EditorsTests ${NORMAL}"
+python /Users/travis/build/fga-gpp-mds/2018.1-Reabilitacao-Motora/Reabilitacao-Motora/Assets/Scripts/editorTest_log_converter.py
+echo "${TEXTOVERDE} ======================================= FIM DO SCRIPT EDITORS TEST ======================================= ${NORMAL}"
 if [ $rc1 -ne 0 ]; then { echo " Editors Tests Falhando -- Consultar Log de Teste -- "; exit $rc0; } fi
-
-
-#/Users/travis/build/fga-gpp-mds/2018.1-Reabilitacao-Motora/Reabilitacao-Motora/editorTest.xml
