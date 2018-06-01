@@ -581,11 +581,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 801593699e5924ce5919fc467630e109, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaleModel: {fileID: 1131394360}
-  MaleAvatar: {fileID: 9000000, guid: 0ed08faf6b2c64f13ae389013c74d2d7, type: 3}
-  FemaleModel: {fileID: 1885446795}
-  FemaleAvatar: {fileID: 9000000, guid: f5e05f20199c880499cc033d19de1bcd, type: 3}
-  Player: {fileID: 88954859}
+  naCena: {fileID: 1131394360}
+  entrada: {fileID: 0}
 --- !u!4 &250322929
 Transform:
   m_ObjectHideFlags: 0
@@ -2739,6 +2736,14 @@ Prefab:
       propertyPath: m_Avatar
       value: 
       objectReference: {fileID: 9000000, guid: f5e05f20199c880499cc033d19de1bcd, type: 3}
+    - target: {fileID: 9500000, guid: 0ed08faf6b2c64f13ae389013c74d2d7, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 13700000, guid: 0ed08faf6b2c64f13ae389013c74d2d7, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0ed08faf6b2c64f13ae389013c74d2d7, type: 3}
   m_IsPrefabParent: 0
@@ -4047,6 +4052,10 @@ Prefab:
       propertyPath: m_Avatar
       value: 
       objectReference: {fileID: 9000000, guid: f5e05f20199c880499cc033d19de1bcd, type: 3}
+    - target: {fileID: 9500000, guid: f5e05f20199c880499cc033d19de1bcd, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f5e05f20199c880499cc033d19de1bcd, type: 3}
   m_IsPrefabParent: 0
