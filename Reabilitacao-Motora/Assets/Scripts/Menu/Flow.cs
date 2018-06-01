@@ -236,7 +236,7 @@ public class Flow : MonoBehaviour
         SceneManager.LoadScene("Help");
     }
     /**
-	 * Leva para scene de tela de Ajuda do Paciente.
+	 * Leva para scene de tela de Ajuda de Criar Paciente.
 	 */
     public static void StaticHelpPatient()
     {
@@ -248,6 +248,13 @@ public class Flow : MonoBehaviour
     public static void StaticHelpUpdate()
     {
         SceneManager.LoadScene("HelpUpdate");
+    }
+    /**
+	 * Leva para scene de tela de Ajuda de Criar Exercício.
+	 */
+    public static void StaticHelpExercise()
+    {
+        SceneManager.LoadScene("HelpExercise");
     }
 
 }
