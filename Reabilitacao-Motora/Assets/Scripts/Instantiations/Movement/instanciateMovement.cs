@@ -11,7 +11,7 @@ public class instanciateMovement : MonoBehaviour
 
 	const int HEIGHT_PADDING = 55;
 
-	void ButtonSpawner(int posY, Movimento movement)
+	public void ButtonSpawner(int posY, Movimento movement)
 	{
 		GameObject go = Instantiate(buttonPrefab, transform);
 
