@@ -22,14 +22,14 @@ namespace Tests
 	public class TestTablePhysiotherapist
 	{
 		[SetUp]
-		public void SetUp()
+		public static void SetUp()
 		{
 			GlobalController.test = true;
 			GlobalController.Initialize();
 		}
 
 		[Test]
-		public void TestFisioterapeutaCreate ()
+		public static void TestFisioterapeutaCreate ()
 		{
 			using (var conn = new SqliteConnection(GlobalController.path))
 			{
@@ -69,11 +69,10 @@ namespace Tests
 				conn.Dispose();
 				conn.Close();
 			}
-			return;
 		}
 
 		[Test]
-		public void TestFisioterapeutaDrop ()
+		public static void TestFisioterapeutaDrop ()
 		{
 			using (var conn = new SqliteConnection(GlobalController.path))
 			{
@@ -113,11 +112,10 @@ namespace Tests
 				conn.Dispose();
 				conn.Close();
 			}
-			return;
 		}
 
 		[Test]
-		public void TestFisioterapeutaInsert ()
+		public static void TestFisioterapeutaInsert ()
 		{
 			using (var conn = new SqliteConnection(GlobalController.path))
 			{
@@ -193,11 +191,10 @@ namespace Tests
 				conn.Dispose();
 				conn.Close();
 			}
-			return;
 		}
 
 		[Test]
-		public void TestFisioterapeutaUpdate ()
+		public static void TestFisioterapeutaUpdate ()
 		{
 			using (var conn = new SqliteConnection(GlobalController.path))
 			{
@@ -267,11 +264,10 @@ namespace Tests
 				conn.Dispose();
 				conn.Close();
 			}
-			return;
 		}
 
 		[Test]
-		public void TestFisioterapeutaRead ()
+		public static void TestFisioterapeutaRead ()
 		{
 			using (var conn = new SqliteConnection(GlobalController.path))
 			{
@@ -312,11 +308,10 @@ namespace Tests
 				conn.Close();
 			}
 
-			return;
 		}
 
 		[Test]
-		public void TestFisioterapeutaReadValue ()
+		public static void TestFisioterapeutaReadValue ()
 		{
 			using (var conn = new SqliteConnection(GlobalController.path))
 			{
@@ -357,12 +352,11 @@ namespace Tests
 				conn.Close();
 			}
 
-			return;
 		}
 
 
 		[Test]
-		public void TestFisioterapeutaDeleteValue ()
+		public static void TestFisioterapeutaDeleteValue ()
 		{
 			using (var conn = new SqliteConnection(GlobalController.path))
 			{
@@ -429,7 +423,6 @@ namespace Tests
 				conn.Dispose();
 				conn.Close();
 			}
-			return;
 		}
 
 

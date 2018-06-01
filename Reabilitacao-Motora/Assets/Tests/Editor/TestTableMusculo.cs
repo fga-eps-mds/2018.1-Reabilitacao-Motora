@@ -21,14 +21,14 @@ namespace Tests
 	public class TestTableMuscle
 	{
 		[SetUp]
-		public void SetUp()
+		public static void SetUp()
 		{
 			GlobalController.test = true;
 			GlobalController.Initialize();
 		}
 
 		[Test]
-		public void TestMusculoCreate ()
+		public static void TestMusculoCreate ()
 		{
 			using (var conn = new SqliteConnection(GlobalController.path))
 			{
@@ -68,11 +68,10 @@ namespace Tests
 				conn.Dispose();
 				conn.Close();
 			}
-			return;
 		}
 
 		[Test]
-		public void TestMusculoDrop ()
+		public static void TestMusculoDrop ()
 		{
 			using (var conn = new SqliteConnection(GlobalController.path))
 			{
@@ -112,11 +111,10 @@ namespace Tests
 				conn.Dispose();
 				conn.Close();
 			}
-			return;
 		}
 
 		[Test]
-		public void TestMusculoInsert ()
+		public static void TestMusculoInsert ()
 		{
 			using (var conn = new SqliteConnection(GlobalController.path))
 			{
@@ -168,11 +166,10 @@ namespace Tests
 				conn.Dispose();
 				conn.Close();
 			}
-			return;
 		}
 
 		[Test]
-		public void TestMusculoUpdate ()
+		public static void TestMusculoUpdate ()
 		{
 			using (var conn = new SqliteConnection(GlobalController.path))
 			{
@@ -228,11 +225,10 @@ namespace Tests
 				conn.Dispose();
 				conn.Close();
 			}
-			return;
 		}
 
 		[Test]
-		public void TestMusculoRead ()
+		public static void TestMusculoRead ()
 		{
 			using (var conn = new SqliteConnection(GlobalController.path))
 			{
@@ -256,11 +252,10 @@ namespace Tests
 				conn.Close();
 			}
 
-			return;
 		}
 
 		[Test]
-		public void TestMusculoReadValue ()
+		public static void TestMusculoReadValue ()
 		{
 			using (var conn = new SqliteConnection(GlobalController.path))
 			{
@@ -283,11 +278,10 @@ namespace Tests
 				conn.Close();
 			}
 
-			return;
 		}
 
 		[Test]
-		public void TestMusculoDeleteValue ()
+		public static void TestMusculoDeleteValue ()
 		{
 			using (var conn = new SqliteConnection(GlobalController.path))
 			{
@@ -353,7 +347,6 @@ namespace Tests
 				conn.Dispose();
 				conn.Close();
 			}
-			return;
 		}
 
 		[TearDown]

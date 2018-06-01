@@ -7,18 +7,17 @@ using System;
 
 public class LogHangler : MonoBehaviour
 {
-	void Awake()
+	public void Awake()
 	{
 		DontDestroyOnLoad(gameObject);
 	}
 
-	void OnEnable() {
+	public void OnEnable() {
 		Application.logMessageReceived += HandleLog;
 	}
-	void OnDisable() {
+	public void OnDisable() {
 		Application.logMessageReceived -= HandleLog;
 	}
-
 
 	private void HandleLog(string logstring, string stackTrace, LogType type)
 	{

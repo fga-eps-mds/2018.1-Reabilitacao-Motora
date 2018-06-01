@@ -22,14 +22,14 @@ namespace Tests
 	public class TestTablePatient
 	{
 		[SetUp]
-		public void SetUp()
+		public static void SetUp()
 		{
 			GlobalController.test = true;
 			GlobalController.Initialize();
 		}
 
 		[Test]
-		public void TestPacienteCreate ()
+		public static void TestPacienteCreate ()
 		{
 			using (var conn = new SqliteConnection(GlobalController.path))
 			{
@@ -69,11 +69,10 @@ namespace Tests
 				conn.Dispose();
 				conn.Close();
 			}
-			return;
 		}
 
 		[Test]
-		public void TestPacienteDrop ()
+		public static void TestPacienteDrop ()
 		{
 			using (var conn = new SqliteConnection(GlobalController.path))
 			{
@@ -113,11 +112,10 @@ namespace Tests
 				conn.Dispose();
 				conn.Close();
 			}
-			return;
 		}
 
 		[Test]
-		public void TestPacienteInsert ()
+		public static void TestPacienteInsert ()
 		{
 			using (var conn = new SqliteConnection(GlobalController.path))
 			{
@@ -175,11 +173,10 @@ namespace Tests
 				conn.Dispose();
 				conn.Close();
 			}
-			return;
 		}
 
 		[Test]
-		public void TestPacienteUpdate ()
+		public static void TestPacienteUpdate ()
 		{
 			using (var conn = new SqliteConnection(GlobalController.path))
 			{
@@ -240,11 +237,10 @@ namespace Tests
 				conn.Dispose();
 				conn.Close();
 			}
-			return;
 		}
 
 		[Test]
-		public void TestPacienteRead ()
+		public static void TestPacienteRead ()
 		{
 			using (var conn = new SqliteConnection(GlobalController.path))
 			{
@@ -281,11 +277,10 @@ namespace Tests
 				conn.Close();
 			}
 
-			return;
 		}
 
 		[Test]
-		public void TestPacienteReadValue ()
+		public static void TestPacienteReadValue ()
 		{
 			using (var conn = new SqliteConnection(GlobalController.path))
 			{
@@ -322,12 +317,11 @@ namespace Tests
 				conn.Close();
 			}
 
-			return;
 		}
 
 
 		[Test]
-		public void TestPacienteDeleteValue ()
+		public static void TestPacienteDeleteValue ()
 		{
 			using (var conn = new SqliteConnection(GlobalController.path))
 			{
@@ -394,7 +388,6 @@ namespace Tests
 				conn.Dispose();
 				conn.Close();
 			}
-			return;
 		}
 
 

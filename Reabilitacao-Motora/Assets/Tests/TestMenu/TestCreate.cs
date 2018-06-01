@@ -102,9 +102,6 @@ namespace Tests
 
 			button.OnPointerClick(new PointerEventData(EventSystem.current));
 
-			int IdFisioterapeuta = GlobalController.instance.admin.idFisioterapeuta;
-			int IdPessoa = GlobalController.instance.admin.persona.idPessoa;
-
 			yield return new WaitForSeconds(0.5f);
 
 			var currentscene = SceneManager.GetActiveScene().name;

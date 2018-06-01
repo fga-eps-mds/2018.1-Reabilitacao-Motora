@@ -24,14 +24,14 @@ namespace Tests
 	public class TestTableSession
 	{
 		[SetUp]
-		public void SetUp()
+		public static void SetUp()
 		{
 			GlobalController.test = true;
 			GlobalController.Initialize();
 		}
 
 		[Test]
-		public void TestSessionCreate ()
+		public static void TestSessionCreate ()
 		{
 			using (var conn = new SqliteConnection(GlobalController.path))
 			{
@@ -71,11 +71,10 @@ namespace Tests
 				conn.Dispose();
 				conn.Close();
 			}
-			return;
 		}
 
 		[Test]
-		public void TestSessionDrop ()
+		public static void TestSessionDrop ()
 		{
 			using (var conn = new SqliteConnection(GlobalController.path))
 			{
@@ -115,11 +114,10 @@ namespace Tests
 				conn.Dispose();
 				conn.Close();
 			}
-			return;
 		}
 
 		[Test]
-		public void TestSessionInsert()
+		public static void TestSessionInsert()
 		{
 			using (var conn = new SqliteConnection(GlobalController.path))
 			{
@@ -203,11 +201,10 @@ namespace Tests
 				conn.Dispose();
 				conn.Close();
 			}
-			return;
 		}
 
 		[Test]
-		public void TestSessionUpdate ()
+		public static void TestSessionUpdate ()
 		{
 			using (var conn = new SqliteConnection(GlobalController.path))
 			{
@@ -290,11 +287,10 @@ namespace Tests
 				conn.Dispose();
 				conn.Close();
 			}
-			return;
 		}
 
 		[Test]
-		public void TestSessionRead()
+		public static void TestSessionRead()
 		{
 			using (var conn = new SqliteConnection(GlobalController.path))
 			{
@@ -342,11 +338,10 @@ namespace Tests
 				conn.Close();
 			}
 
-			return;
 		}
 
 		[Test]
-		public void TestSessionReadValue ()
+		public static void TestSessionReadValue ()
 		{
 			using (var conn = new SqliteConnection(GlobalController.path))
 			{
@@ -393,12 +388,11 @@ namespace Tests
 				conn.Close();
 			}
 
-			return;
 		}
 
 
 		[Test]
-		public void TestSessionDeleteValue ()
+		public static void TestSessionDeleteValue ()
 		{
 			using (var conn = new SqliteConnection(GlobalController.path))
 			{
@@ -481,7 +475,6 @@ namespace Tests
 				conn.Dispose();
 				conn.Close();
 			}
-			return;
 		}
 
 

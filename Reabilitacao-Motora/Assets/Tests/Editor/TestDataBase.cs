@@ -22,7 +22,7 @@ namespace Tests
 	public class TestDataBase
 	{
 		[SetUp]
-		public void SetUp()
+		public static void SetUp()
 		{
 			var create = "CREATE TABLE IF NOT EXISTS TESTE (idTable INTEGER primary key AUTOINCREMENT,nome VARCHAR (255) not null);";
 			GlobalController.test = true;
@@ -45,7 +45,7 @@ namespace Tests
 		}
 		
 		[Test]
-		public void TestCreate ()
+		public static void TestCreate ()
 		{
 			using (var conn = new SqliteConnection(GlobalController.path))
 			{
@@ -82,11 +82,10 @@ namespace Tests
 				conn.Dispose();
 				conn.Close();
 			}
-			return;
 		}
 
 		[Test]
-		public void TestDrop ()
+		public static void TestDrop ()
 		{
 			using (var conn = new SqliteConnection(GlobalController.path))
 			{
@@ -124,11 +123,10 @@ namespace Tests
 				conn.Dispose();
 				conn.Close();
 			}
-			return;
 		}
 		
 		[Test]
-		public void TestInsert ()
+		public static void TestInsert ()
 		{
 			using (var conn = new SqliteConnection(GlobalController.path))
 			{
@@ -170,11 +168,10 @@ namespace Tests
 				conn.Close();
 			}
 
-			return;
 		}
 
 		[Test]
-		public void TestUpdate ()
+		public static void TestUpdate ()
 		{
 			using (var conn = new SqliteConnection(GlobalController.path))
 			{
@@ -220,11 +217,10 @@ namespace Tests
 				conn.Close();			
 			}
 
-			return;
 		}
 
 		[Test]
-		public void TestRead ()
+		public static void TestRead ()
 		{
 			using (var conn = new SqliteConnection(GlobalController.path))
 			{
@@ -252,11 +248,10 @@ namespace Tests
 				conn.Close();
 			}
 
-			return;
 		}
 
 		[Test]
-		public void TestReadValue ()
+		public static void TestReadValue ()
 		{
 			using (var conn = new SqliteConnection(GlobalController.path))
 			{
@@ -285,12 +280,11 @@ namespace Tests
 				conn.Close();
 			}
 
-			return;
 		}
 
 		
 		[Test]
-		public void TestDeleteValue ()
+		public static void TestDeleteValue ()
 		{
 			using (var conn = new SqliteConnection(GlobalController.path))
 			{
@@ -356,51 +350,14 @@ namespace Tests
 				conn.Dispose();
 				conn.Close();
 			}
-			return;
 		}
 
 
 		[TearDown]
-		public void AfterEveryTest ()
+		public static void AfterEveryTest ()
 		{
 			SqliteConnection.ClearAllPools();
 			DataBase.Drop(10);
 		}
-
-
-
-
-// 		/**
-// 		* Função que apaga a relação de pessoas inteira de uma vez.
-// 		 */
-
-// 	
-
-// 		[Test]
-// 		private static void ObjectArray ()
-// 		{
-// 			DataBase.ObjectArray (ref System.Object[] columns, ref IDataReader reader);
-
-// 			for (int i = 0; i < columns.Length; ++i)
-// 			{
-// 				Type t = columns[i].GetType();
-// 				if (!reader.IsDBNull(i))
-// 				{
-// 					if ( t.Equals(typeof(int)) ) 
-// 					{
-// 						columns[i] = reader.GetInt32(i);
-// 					}
-// 					else if ( t.Equals(typeof(string)) ) 
-// 					{
-// 						columns[i] = reader.GetString(i);
-// 					}
-// 					else if ( t.Equals(typeof(float)) ) 
-// 					{
-// 						columns[i] = (float) reader.GetDouble(i);
-// 					}
-// 				}
-// 			}
-// 		}
-
 	}
 }

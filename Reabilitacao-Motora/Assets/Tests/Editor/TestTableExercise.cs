@@ -26,14 +26,14 @@ namespace Tests
 	public class TestTableExercise
 	{
 		[SetUp]
-		public void SetUp()
+		public static void SetUp()
 		{
 			GlobalController.test = true;
 			GlobalController.Initialize();
 		}
 
 		[Test]
-		public void TestExercicioCreate ()
+		public static void TestExercicioCreate ()
 		{
 			using (var conn = new SqliteConnection(GlobalController.path))
 			{
@@ -72,12 +72,10 @@ namespace Tests
 
 				conn.Dispose();
 				conn.Close();
-			}
-			return;
-		}
+			}		}
 
 		[Test]
-		public void TestExercicioDrop ()
+		public static void TestExercicioDrop ()
 		{
 			using (var conn = new SqliteConnection(GlobalController.path))
 			{
@@ -116,12 +114,10 @@ namespace Tests
 
 				conn.Dispose();
 				conn.Close();
-			}
-			return;
-		}
+			}		}
 
 		[Test]
-		public void TestExercicioInsert ()
+		public static void TestExercicioInsert ()
 		{
 			using (var conn = new SqliteConnection(GlobalController.path))
 			{
@@ -219,12 +215,10 @@ namespace Tests
 				}
 				conn.Dispose();
 				conn.Close();
-			}
-			return;
-		}
+			}		}
 
 		[Test]
-		public void TestExercicioUpdate ()
+		public static void TestExercicioUpdate ()
 		{
 			using (var conn = new SqliteConnection(GlobalController.path))
 			{
@@ -321,12 +315,10 @@ namespace Tests
 				}
 				conn.Dispose();
 				conn.Close();
-			}
-			return;
-		}
+			}		}
 
 		[Test]
-		public void TestExercicioRead ()
+		public static void TestExercicioRead ()
 		{
 			using (var conn = new SqliteConnection(GlobalController.path))
 			{
@@ -382,12 +374,10 @@ namespace Tests
 				conn.Dispose();
 				conn.Close();
 			}
-
-			return;
 		}
 
 		[Test]
-		public void TestExercicioReadValue ()
+		public static void TestExercicioReadValue ()
 		{
 			using (var conn = new SqliteConnection(GlobalController.path))
 			{
@@ -443,12 +433,10 @@ namespace Tests
 				conn.Dispose();
 				conn.Close();
 			}
-
-			return;
 		}
 
 		[Test]
-		public void TestExercicioDeleteValue ()
+		public static void TestExercicioDeleteValue ()
 		{
 			using (var conn = new SqliteConnection(GlobalController.path))
 			{
@@ -519,9 +507,7 @@ namespace Tests
 
 				conn.Dispose();
 				conn.Close();
-			}
-			return;
-		}
+			}		}
 
 		[TearDown]
 		public static void AfterEveryTest ()

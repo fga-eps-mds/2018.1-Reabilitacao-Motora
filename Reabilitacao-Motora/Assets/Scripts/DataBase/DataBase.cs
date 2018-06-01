@@ -32,8 +32,6 @@ namespace DataBaseAttributes
 				GC.Collect();
 				GC.WaitForPendingFinalizers();
 			}
-
-			return;
 		}
 
 		public static void Insert (System.Object[] columns, string tableName, int tableId)
@@ -119,8 +117,6 @@ namespace DataBaseAttributes
 				GC.Collect();
 				GC.WaitForPendingFinalizers();
 			}
-
-			return;
 		}
 
 		public static void Update (System.Object[] columns, string tableName, int tableId)
@@ -169,8 +165,6 @@ namespace DataBaseAttributes
 				GC.Collect();
 				GC.WaitForPendingFinalizers();
 			}
-
-			return;
 		}
 
 
@@ -290,8 +284,6 @@ namespace DataBaseAttributes
 				GC.Collect();
 				GC.WaitForPendingFinalizers();
 			}
-
-			return;
 		}
 
 		/**
@@ -317,8 +309,6 @@ namespace DataBaseAttributes
 				GC.Collect();
 				GC.WaitForPendingFinalizers();
 			}
-
-			return;
 		}
 
 		private static System.Object[] ObjectArray (System.Object[] columns, SqliteDataReader reader)
@@ -338,13 +328,9 @@ namespace DataBaseAttributes
 						{
 							columns[i] = reader.GetString(i);
 						}
-						else if ( t.Equals(typeof(float)) ) 
-						{
-							columns[i] = (float) reader.GetDouble(i);
-						}
                         else if (t.Equals(typeof(float)))
                         {
-                            columns[i] = (float) reader.GetFloat(i);
+                            columns[i] = reader.GetFloat(i);
                         }
                     }
 				}

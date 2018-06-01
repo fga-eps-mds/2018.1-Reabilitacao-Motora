@@ -22,14 +22,14 @@ namespace Tests
 	public class TestTablePerson
 	{
 		[SetUp]
-		public void SetUp()
+		public static void SetUp()
 		{
 			GlobalController.test = true;
 			GlobalController.Initialize();
 		}
 
 		[Test]
-		public void TestPessoaCreate ()
+		public static void TestPessoaCreate ()
 		{
 			using (var conn = new SqliteConnection(GlobalController.path))
 			{
@@ -69,11 +69,10 @@ namespace Tests
 				conn.Dispose();
 				conn.Close();
 			}
-			return;
 		}
 
 		[Test]
-		public void TestPessoaDrop ()
+		public static void TestPessoaDrop ()
 		{
 			using (var conn = new SqliteConnection(GlobalController.path))
 			{
@@ -113,11 +112,10 @@ namespace Tests
 				conn.Dispose();
 				conn.Close();
 			}
-			return;
 		}
 
 		[Test]
-		public void TestPessoaInsert ()
+		public static void TestPessoaInsert ()
 		{
 			using (var conn = new SqliteConnection(GlobalController.path))
 			{
@@ -191,11 +189,10 @@ namespace Tests
 				conn.Dispose();
 				conn.Close();
 			}
-			return;
 		}
 
 		[Test]
-		public void TestPessoaUpdate ()
+		public static void TestPessoaUpdate ()
 		{
 			using (var conn = new SqliteConnection(GlobalController.path))
 			{
@@ -265,11 +262,10 @@ namespace Tests
 				conn.Dispose();
 				conn.Close();
 			}
-			return;
 		}
 
 		[Test]
-		public void TestPessoaRead ()
+		public static void TestPessoaRead ()
 		{
 			using (var conn = new SqliteConnection(GlobalController.path))
 			{
@@ -295,11 +291,10 @@ namespace Tests
 				conn.Close();
 			}
 
-			return;
 		}
 
 		[Test]
-		public void TestPessoaReadValue ()
+		public static void TestPessoaReadValue ()
 		{
 			using (var conn = new SqliteConnection(GlobalController.path))
 			{
@@ -324,12 +319,11 @@ namespace Tests
 				conn.Close();
 			}
 
-			return;
 		}
 
 
 		[Test]
-		public void TestPessoaDeleteValue ()
+		public static void TestPessoaDeleteValue ()
 		{
 			using (var conn = new SqliteConnection(GlobalController.path))
 			{
@@ -395,7 +389,6 @@ namespace Tests
 				conn.Dispose();
 				conn.Close();
 			}
-			return;
 		}
 
 
