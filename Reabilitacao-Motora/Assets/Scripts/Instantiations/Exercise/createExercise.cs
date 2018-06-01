@@ -36,7 +36,7 @@ public class createExercise : MonoBehaviour
 		Debug.Log (GlobalController.instance.movement.pontosMovimento);
 		Debug.Log (token[0]);
 		Debug.Log (pathSave);
-		pathSave += date + "-" + token[1] + ".points";
+		pathSave += date + "-" + token[1];
 
 		Exercicio.Insert(GlobalController.instance.user.idPaciente, 
 			GlobalController.instance.movement.idMovimento,

@@ -11,7 +11,7 @@ public class instanciateSession : MonoBehaviour
 
 	const int HEIGHT_PADDING = 55;
 
-	void ButtonSpawner(int posY, Sessao session)
+	public void ButtonSpawner(int posY, Sessao session)
 	{
 		GameObject go = Instantiate(buttonPrefab, transform);
 
