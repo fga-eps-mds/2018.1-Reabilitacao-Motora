@@ -28,7 +28,7 @@ public class MoveByUDP : MonoBehaviour
 	bool drawed;
 
     UdpClient client;
-    public int receivePort = 5005;
+    public int receivePort = 5004;
     IPAddress groupIP = IPAddress.Parse("127.0.0.1");
     IPEndPoint remoteEP;   
 
@@ -50,7 +50,6 @@ public class MoveByUDP : MonoBehaviour
         byte[] receivedBytes = client.EndReceive(result, ref remoteEP);
 
         rxString = System.Text.Encoding.UTF8.GetString(receivedBytes);
-        Debug.Log ("  with bytes: " + rxString);
         LoadData(rxString);
     }
 

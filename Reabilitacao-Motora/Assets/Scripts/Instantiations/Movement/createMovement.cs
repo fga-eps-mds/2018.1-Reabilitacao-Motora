@@ -62,8 +62,15 @@ public class createMovement : MonoBehaviour
 			}
 
 			GlobalController.instance.movement = movementsList[movementsList.Count - 1];
-			Flow.ChoiceSensor();
-		}
+            if (GlobalController.Sensor == false)
+            {
+                Flow.StaticRealtimeGraph2();
+            }
+            else
+            {
+                Flow.StaticRealtimeGraph1();
+            }
+        }
 	}
 
 	static bool checkMuscle (string name)

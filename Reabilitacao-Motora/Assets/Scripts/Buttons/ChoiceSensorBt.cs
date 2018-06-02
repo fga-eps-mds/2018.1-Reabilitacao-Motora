@@ -9,6 +9,6 @@ public class ChoiceSensorBt : MonoBehaviour {
 
     public void Awake()
     {
-        nextPage.onClick.AddListener(delegate { Flow.ChoiceSensor(); });
+        nextPage.onClick.AddListener(delegate{Flow.ChoiceSensor();});
     }
 }

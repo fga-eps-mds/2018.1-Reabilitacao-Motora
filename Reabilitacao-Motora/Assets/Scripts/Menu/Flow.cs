@@ -29,19 +29,20 @@ public class Flow : MonoBehaviour
 	}
 
 	/**
-	 * Leva para scene de gravar um movimento.
+	 * Leva para scene de gravar um movimento com kinect.
 	 */
 	public static void StaticRealtimeGraph1()
 	{
 		SceneManager.LoadScene("RealtimeGraph1");
 	}
 
-	public static void StaticRealtimeGraph2()
+    /**
+    * Leva para scene de gravar um movimento com sensor.
+    */
+    public static void StaticRealtimeGraph2()
 	{
 		SceneManager.LoadScene("RealtimeGraph2");
 	}
-
-
 
 	/**
 	 * Leva para scene de detalhe de paciente.
