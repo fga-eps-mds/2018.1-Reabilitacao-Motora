@@ -2,12 +2,31 @@
 
 from xml.dom import minidom
 
-testResult = minidom.parse('/Users/travis/build/fga-gpp-mds/2018.1-Reabilitacao-Motora/Reabilitacao-Motora/test.xml')
-testCase = testResult.getElementsByTagName('test-case')
+playTestResult = minidom.parse('/Users/travis/build/fga-gpp-mds/2018.1-Reabilitacao-Motora/Reabilitacao-Motora/playTest.xml')
+playTestCase = playTestResult.getElementsByTagName('test-case')
 
-print('\nResultado dos Testes\n')
+editorTestResult = minidom.parse('/Users/travis/build/fga-gpp-mds/2018.1-Reabilitacao-Motora/Reabilitacao-Motora/editorTest.xml')
+editorTestCase = editorTestResult.getElementsByTagName('test-case')
 
-for elem in testCase:
+print('\n Play Tests Results\n')
+
+for elem in playTestCase:
+    if elem.attributes['result'].value == "Passed":
+        print(('\033[01;32m Test Name: ')+elem.attributes['name'].value)
+        print(('\033[01;32m  Test Full Name: ')+elem.attributes['fullname'].value)
+        print(('\033[01;32m  Tested Method: ')+elem.attributes['methodname'].value)
+        print(('\033[01;32m  Test Result: ')+elem.attributes['result'].value)
+        print('\n')
+    else:
+        print(('\033[01;31m Test Name: ')+elem.attributes['name'].value)
+        print(('\033[01;31m Test Full Name: ')+elem.attributes['fullname'].value)
+        print(('\033[01;31m Tested Method: ')+elem.attributes['methodname'].value)
+        print(('\033[01;31m Test Result: ')+elem.attributes['result'].value)
+        print('\n')
+
+print('\n Editor Tests Results\n')
+
+for elem in editorTestCase:
     if elem.attributes['result'].value == "Passed":
         print(('\033[01;32m Test Name: ')+elem.attributes['name'].value)
         print(('\033[01;32m  Test Full Name: ')+elem.attributes['fullname'].value)
