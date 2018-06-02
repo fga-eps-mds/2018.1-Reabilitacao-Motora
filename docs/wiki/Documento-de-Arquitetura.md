@@ -36,6 +36,8 @@ Data|Versão|Descrição|Autor
 15/05|1.15.1|Revisão dos tópicos e imagens| João Lucas
 23/05|1.16.0|Adição do subitem 5.5| Davi Alves
 27/05|1.16.1|Revisão e Complementação dos subitens 5.3 e 5.4| Davi Alves
+30/05|1.16.2|Revisão do subitem 5.4| Davi Alves
+
 # Sumário
 ----------------
  1. [Introdução](#1)
@@ -189,14 +191,20 @@ O protocolo TCP não seria viável para o adapter Sensor-Unity, pois sua transfe
 O módulo de processamento terá de enviar fluxos de dados em tempo real, com uma maior velocidade e com retransmissões constantes.
 </p>
 
-### 5.4 Documentação de interface Adapter Sensor-Unity UDP
-<p align="justify">Com a ultilização do protocolo de transferência de dados UDP, o adapter que fará o contato entre o sensor e o Unity enviara dados padrões para que seja espelhado no avatar do unity. Esses dados inicialmente estarão organizados da seguinte forma: </p> 
+### 5.4 Documentação de interface Adapter e Sensor via UDP
+<p align="justify">Com a ultilização do protocolo de transferência de dados UDP, os adapters que farão o contato entre os modulos irá enviar e receber dados padrões. Formatados da seguinte forma: </p> 
 
 * Tempo dado em número real. 
-* Posições dadas em números reais de x, y, z. 
-* Rotações dadas em números reais de x, y, z. 
-* Essas posições serão das partes: mão, braço, ombro e cotovelo. 
-* Ao final todos esses valores são convertidos em uma única string e enviados ao unity para leitura das posições. 
+* Posições dadas em doubles com 8 bytes cada, das variaveis x, y, z. 
+* Rotações dadas em doubles com 8 bytes cada, das variaveis x, y, z.  
+* Tamanho maximo Buffer Size - 1024 bytes.
+
+<p align="justify">Caracteristicas importantes sobre interface de rede: </p>
+
+* IP - 127.0.0.1.
+* Porta Sender - 5005.
+* Porta Receive - 5004.
+* Pacotes - Ipv4 e Ipv6.
 
 ## 6. Visão de Dados
 
