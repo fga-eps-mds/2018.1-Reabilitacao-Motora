@@ -194,7 +194,7 @@ O módulo de processamento terá de enviar fluxos de dados em tempo real, com um
 ### 5.4 Documentação de interface Adapter e Sensor via UDP
 <p align="justify">Com a ultilização do protocolo de transferência de dados UDP, os adapters que farão o contato entre os modulos irá enviar e receber dados padrões. Formatados da seguinte forma: </p> 
 
-* Tempo dado em número real. 
+* Tempo dado em um double com 8 bytes, variavel time. 
 * Posições dadas em doubles com 8 bytes cada, das variaveis x, y, z. 
 * Rotações dadas em doubles com 8 bytes cada, das variaveis x, y, z.  
 * Tamanho maximo Buffer Size - 1024 bytes.
