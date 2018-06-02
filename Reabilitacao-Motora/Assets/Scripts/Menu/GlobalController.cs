@@ -31,7 +31,7 @@ public class GlobalController : MonoBehaviour
 	private PontosRotuloFisioterapeuta Prf;
 	public string path;
 	public static bool Sensor;
-
+	public static int choiceAvatar;
 
 	public Fisioterapeuta admin
 	{
