@@ -256,8 +256,11 @@ public class Flow : MonoBehaviour
     {
         SceneManager.LoadScene("HelpExercise");
     }
-    public static void StaticHelpMoviments()
+    /**
+	 * Leva para scene de tela de Ajuda de Criar Movimento.
+	 */
+    public static void StaticHelpMovements()
     {
-        SceneManager.LoadScene("HelpMoviment");
+        SceneManager.LoadScene("HelpMovement");
     }
 }
