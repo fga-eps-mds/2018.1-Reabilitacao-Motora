@@ -17,42 +17,11 @@ namespace movimentomusculo
 		private int IdMusculo;
 		private int IdMovimento;
 
-		public int idMusculo
-		{
-			get
-			{
-				return IdMusculo;
-			}
-			set
-			{
-				IdMusculo = value;
-			}
-		}
-
-		public int idMovimento
-		{
-			get
-			{
-				return IdMovimento;
-			}
-			set
-			{
-				IdMovimento = value;
-			}
-		}
-
+		public int idMusculo { get { return IdMusculo; } set { IdMusculo = value; }}
+		public int idMovimento { get { return IdMovimento; } set { IdMovimento = value; }}
 
 		/**
 		 * Classe com todos os atributos de um movimentomusculo.
-		 */
-		public MovimentoMusculo (int idmu, int idmo)
-		{
-			this.idMusculo = idmu;
-			this.idMovimento = idmo;
-		}
-
-		/**
-		 * Classe que cria outra versão do construtor.
 		 */
 		public MovimentoMusculo (Object[] columns)
 		{
@@ -65,9 +34,8 @@ namespace movimentomusculo
 		 */
 		public static void Create()
 		{
-			DataBase banco = new DataBase();
 			string query = "CREATE TABLE IF NOT EXISTS MOVIMENTOMUSCULO (idMusculo INTEGER not null,idMovimento INTEGER not null, foreign key (idMovimento) references MOVIMENTO (idMovimento),foreign key (idMusculo) references MUSCULO (idMusculo),primary key (idMusculo, idMovimento));";
-			banco.Create(GlobalController.instance.path, query);
+			DataBase.Create(query);
 		}
 
 		/**
@@ -76,12 +44,10 @@ namespace movimentomusculo
 		public static void Insert(int idMusculo,
 			int idMovimento)
 		{
-			DataBase banco = new DataBase();
-			using (banco.conn = new SqliteConnection(GlobalController.instance.path))
+			using (var conn = new SqliteConnection(GlobalController.path))
 			{
-				banco.conn.Open();
-				banco.cmd = banco.conn.CreateCommand();
-				banco.sqlQuery = "insert into MOVIMENTOMUSCULO (";
+				conn.Open();
+				var sqlQuery = "insert into MOVIMENTOMUSCULO (";
 
 				int tableSize = TablesManager.Tables[tableId].colName.Count;
 
@@ -98,38 +64,18 @@ namespace movimentomusculo
 						aux = ",";
 					}
 
-					banco.sqlQuery += (TablesManager.Tables[tableId].colName[i] + aux);
+					sqlQuery += (TablesManager.Tables[tableId].colName[i] + aux);
 				}
 
-				banco.sqlQuery += string.Format(" values (\"{0}\",\"{1}\")", idMusculo,
+				sqlQuery += string.Format(" values (\"{0}\",\"{1}\")", idMusculo,
 					idMovimento);
 
-				banco.cmd.CommandText = banco.sqlQuery;
-				banco.cmd.ExecuteScalar();
-				banco.conn.Close();
-			}
-		}
+				using (var cmd = new SqliteCommand(sqlQuery, conn))
+				{
+					cmd.ExecuteNonQuery();
+				}
 
-		/**
-		 * Função que atualiza dados já cadastrados anteriormente na relação MovimentoMusculo.
-		 */
-		public static void Update(int idMusculo, int idMovimento)
-		{
-			DataBase banco = new DataBase();
-			using (banco.conn = new SqliteConnection(GlobalController.instance.path))
-			{
-				banco.conn.Open();
-				banco.cmd = banco.conn.CreateCommand();
-
-				banco.sqlQuery = string.Format("UPDATE \"{0}\" set ", TablesManager.Tables[tableId].tableName);
-				banco.sqlQuery += string.Format("\"{0}\"=\"{1}\",", TablesManager.Tables[tableId].colName[0], idMusculo);
-				banco.sqlQuery += string.Format("\"{0}\"=\"{1}\" ", TablesManager.Tables[tableId].colName[1], idMovimento);
-
-				banco.sqlQuery += string.Format("WHERE \"{0}\" = \"{1}\", \"{2}\" = \"{3}\"", TablesManager.Tables[tableId].colName[0], idMusculo, TablesManager.Tables[tableId].colName[1], idMusculo);
-
-				banco.cmd.CommandText = banco.sqlQuery;
-				banco.cmd.ExecuteScalar();
-				banco.conn.Close();
+				conn.Close();
 			}
 		}
 
@@ -138,13 +84,9 @@ namespace movimentomusculo
 		 */
 		public static List<MovimentoMusculo> Read()
 		{
-			DataBase banco = new DataBase();
-			int idMusculoTemp = 0;
-			int idMovimentoTemp = 0;
+			Object[] columns = new Object[] {0, 0};
 
-			Object[] columns = new Object[] {idMusculoTemp,idMovimentoTemp};
-
-			List<MovimentoMusculo> muscleMovements = banco.Read<MovimentoMusculo>(GlobalController.instance.path, TablesManager.Tables[tableId].tableName, columns);
+			List<MovimentoMusculo> muscleMovements = DataBase.Read<MovimentoMusculo>(TablesManager.Tables[tableId].tableName, columns);
 
 			return muscleMovements;
 		}
@@ -154,17 +96,18 @@ namespace movimentomusculo
 		 */
 		public static void DeleteValue(int id1, int id2)
 		{
-			DataBase banco = new DataBase();
-			using (banco.conn = new SqliteConnection(GlobalController.instance.path))
+			using (var conn = new SqliteConnection(GlobalController.path))
 			{
-				banco.conn.Open();
-				banco.cmd = banco.conn.CreateCommand();
+				conn.Open();
 
-				banco.sqlQuery = string.Format("delete from \"{0}\" WHERE \"{1}\" = \"{2}\" AND \"{3}\" = \"{4}\"", TablesManager.Tables[tableId].tableName, TablesManager.Tables[tableId].colName[0], id1, TablesManager.Tables[tableId].colName[1], id2);
+				var sqlQuery = string.Format("delete from \"{0}\" WHERE \"{1}\" = \"{2}\" AND \"{3}\" = \"{4}\"", TablesManager.Tables[tableId].tableName, TablesManager.Tables[tableId].colName[0], id1, TablesManager.Tables[tableId].colName[1], id2);
 
-				banco.cmd.CommandText = banco.sqlQuery;
-				banco.cmd.ExecuteScalar();
-				banco.conn.Close();
+				using (var cmd = new SqliteCommand(sqlQuery, conn))
+				{
+					cmd.ExecuteNonQuery();
+				}
+
+				conn.Close();
 			}
 		}
 
@@ -173,8 +116,7 @@ namespace movimentomusculo
 		 */
 		public static void Drop()
 		{
-		 	DataBase banco = new DataBase();
-		 	banco.Drop (tableId);
+		 	DataBase.Drop (tableId);
 		}
 	}
 }

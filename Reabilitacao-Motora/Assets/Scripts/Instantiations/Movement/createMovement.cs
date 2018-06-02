@@ -44,9 +44,20 @@ public class createMovement : MonoBehaviour
 			pathSave += physiounderscored + "/";
 			pathSave += movunderscored + "-";
 			pathSave += DateTime.Now.ToString("HHmmss", System.Globalization.DateTimeFormatInfo.InvariantInfo);
+			pathSave += ".points";
+
+			string description;
+			if (descricao.text == "")
+			{
+				description = null;
+			}
+			else
+			{
+				description = descricao.text;
+			}
 
 			Movimento.Insert (GlobalController.instance.admin.idFisioterapeuta,
-				nomeMovimento.text, descricao.text, pathSave);
+				nomeMovimento.text, pathSave, description);
 
 			List<Movimento> movementsList = Movimento.Read();
 
@@ -62,6 +73,7 @@ public class createMovement : MonoBehaviour
 			}
 
 			GlobalController.instance.movement = movementsList[movementsList.Count - 1];
+			GlobalController.patientOrPhysio = true;
 			Flow.ChoiceSensor();
 		}
 	}
@@ -81,7 +93,7 @@ public class createMovement : MonoBehaviour
 		return false;
 	}
 
-	private static bool ValidInput (List<InputField> inputs)
+	public static bool ValidInput (List<InputField> inputs)
 	{
 		bool valid = true;
 
@@ -102,7 +114,7 @@ public class createMovement : MonoBehaviour
 		return valid;
 	}
 
-	private static void ApplyColor (InputField input, bool ok)
+	public static void ApplyColor (InputField input, bool ok)
 	{
 		input.colors = ColorManager.SetColor(input.colors, ok);
 	}

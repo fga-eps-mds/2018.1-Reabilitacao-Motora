@@ -1,6 +1,9 @@
 ﻿using System.Collections;
+using System.Text;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /**
 * Descrever aqui o que essa classe realiza.
@@ -11,12 +14,13 @@ public class GenerateLineChart : MonoBehaviour
 	protected Transform pointPrefab, mao, ombro, cotovelo, braco;
 
 	List <float> current_time;
-	List <Vector3> f_mao_pos, f_mao_rot, f_ombro_pos, f_ombro_rot, f_cotovelo_pos, f_cotovelo_rot, f_braco_pos, f_braco_rot, points2;
+	List <Vector3> f_mao_pos, f_mao_rot, f_ombro_pos, f_ombro_rot, f_cotovelo_pos, f_cotovelo_rot, f_braco_pos, f_braco_rot;
 
 	LineRenderer lineRenderer;
 
 	private static readonly Color c1 = Color.black;
 	private static readonly Color c2 = Color.red;
+	private static readonly Color c3 = Color.blue;
 
 	bool t;
 	bool drawed;
@@ -69,35 +73,6 @@ public class GenerateLineChart : MonoBehaviour
 			f_braco_rot.Add(new Vector3 (a, b, c));					
 		}
 	}
-
-	public void LoadLineRenderer ()
-	{
-		lineRenderer = gameObject.AddComponent<LineRenderer>();
-		lineRenderer.material = new Material(Shader.Find("Particles/Multiply (Double)"));
-		lineRenderer.widthMultiplier = 0.2f;
-		lineRenderer.positionCount = 4000;
-		lineRenderer.sortingOrder = 5;
-		lineRenderer.SetVertexCount(2);
-
-	// A simple 2 color gradient with a fixed alpha of 1.0f.
-		float alpha = 1.0f;
-		Gradient gradient = new Gradient();
-		gradient.SetKeys(
-			new []
-			{
-				new GradientColorKey(c1, 0.0f), 
-				new GradientColorKey(c2, 1.0f) 
-			},
-			new [] 
-			{
-				new GradientAlphaKey(alpha, 0.0f), 
-				new GradientAlphaKey(alpha, 1.0f) 
-			}
-		);
-		lineRenderer.colorGradient = gradient;
-		lineRenderer.useWorldSpace = false;
-		lineRenderer.alignment = LineAlignment.Local;
-	}
 	
 	/**
 	* Descrever aqui o que esse método realiza.
@@ -119,13 +94,33 @@ public class GenerateLineChart : MonoBehaviour
 			f_cotovelo_rot = new List<Vector3>();
 			f_braco_pos = new List<Vector3>();
 			f_braco_rot = new List<Vector3>();
-
-			points2 = new List<Vector3>();
-
-			string[] p1 = System.IO.File.ReadAllLines(string.Format("Assets/Movimentos/{0}.points", GlobalController.instance.movement.pontosMovimento));
-			LoadData (p1);
 			
-			LoadLineRenderer();
+			string file;
+
+			var currentscene = SceneManager.GetActiveScene().name;
+			var go = gameObject;
+			
+			if (currentscene == "Graphs2")
+			{
+				file = Application.dataPath + "/Movimentos/" + GlobalController.instance.movement.pontosMovimento;
+				GetMovementPoints.LoadLineRenderer(ref go, ref lineRenderer, c1, c2);
+			}
+			else
+			{
+				if (transform.root.gameObject.name == "Grafico Fisio")
+				{
+					file = Application.dataPath + "/Movimentos/" + GlobalController.instance.movement.pontosMovimento;
+					GetMovementPoints.LoadLineRenderer(ref go, ref lineRenderer, c1, c2);
+				}
+				else
+				{
+					file = Application.dataPath + "/Exercicios/" + GlobalController.instance.exercise.pontosExercicio;
+					GetMovementPoints.LoadLineRenderer(ref go, ref lineRenderer, c1, c3);
+				}
+			}
+
+			string[] p1 = System.IO.File.ReadAllLines(file);
+			LoadData (p1);
 		}
 		else
 		{
@@ -167,36 +162,16 @@ public class GenerateLineChart : MonoBehaviour
 			mao.localPosition = f_mao_pos[i];
 			mao.localEulerAngles = f_mao_rot[i];
 
-			yield return new WaitForSeconds(0.02f);        
+			yield return new WaitForSeconds(0.01f);        
 		} 
 	}
 
 	public IEnumerator drawGraphic ()
 	{
-		float step = 2f / 70;
-		Vector3 scale = Vector3.one * step;
-		Vector3 position = Vector3.zero;
-		Vector2 m_p, c_p, o_p, grafico;
-
 		for (int j = 0; j < current_time.Count; ++j) 
 		{
-			m_p = new Vector2 (mao.position.x, mao.position.y);
-			c_p = new Vector2 (cotovelo.position.x, cotovelo.position.y);
-			o_p = new Vector2 (ombro.position.x, ombro.position.y);
-			grafico = new Vector2 (current_time[j], _Joint.Angle(m_p, c_p, c_p, o_p));
-
-			Transform point = Instantiate(pointPrefab);
-			position.x = (grafico.x) + 0.05f;
-			position.y = (grafico.y/24);
-			position.z = 0.0f;
-			point.localPosition = position;
-			point.localScale = scale;
-			point.SetParent (transform, false);
-			points2.Add (point.localPosition);
-
-			lineRenderer.SetVertexCount(points2.Count); 
-			lineRenderer.SetPosition(points2.Count-1, point.localPosition);
-			yield return new WaitForSeconds(0.02f);
+			GetMovementPoints.graphSpawner(transform, pointPrefab, mao, cotovelo, ombro, current_time[j], ref lineRenderer);
+			yield return new WaitForSeconds(0.01f);
 		}
 	}
 }
