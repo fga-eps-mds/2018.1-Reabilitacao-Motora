@@ -17,23 +17,14 @@ public static class TreatFields
 		var normalString = new System.Text.RegularExpressions.Regex("^[a-zA-Z ]*$");
 		string result = "";
 
-		int count = 0;
-		foreach (char c in name)
-		{
-			if (c == ' ')
-			{
-				count++;
-			}
-		}
-
 		if(!normalString.IsMatch(name))
 		{
 			result += "Nome deve conter apenas letras!|";
 		}
 
-		if (name.Length < 8 || count == 0)
+		if (name.Length < 1)
 		{
-			result += "Insira nome e sobrenome!|";
+			result += "Insira o nome!|";
 		}
 
 		result += EmptyField (name);
@@ -49,7 +40,7 @@ public static class TreatFields
 		{
 			return "Data deve conter apenas números!|";
 		}
-		
+
 		int count = 0;
 
 		foreach (char c in date)
@@ -70,14 +61,14 @@ public static class TreatFields
 		dia = Int32.Parse(trip[0]);
 		mes = Int32.Parse(trip[1]);
 		ano = Int32.Parse(trip[2]);
-		
+
 		int currentMonth = DateTime.Now.Month;
 		int currentYear = DateTime.Now.Year;
 		int currentDay = DateTime.Now.Day;
 
 		string result = "";
 
-		if (dia > 31 || (dia > 29 && mes == 2) || dia < 1 || 
+		if (dia > 31 || (dia > 29 && mes == 2) || dia < 1 ||
 		   (dia > currentDay && ano == currentYear && mes == currentMonth))
 		{
 			result += "Dia inválido!|";

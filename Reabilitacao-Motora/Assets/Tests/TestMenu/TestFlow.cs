@@ -14,7 +14,7 @@ namespace Tests
 		[SetUp]
 		public static void SetUp()
 		{
-			GlobalController.test = true;			
+			GlobalController.test = true;
 			GlobalController.Initialize();
 		}
 
@@ -36,7 +36,7 @@ namespace Tests
 		public static IEnumerator TestPatient()
 		{
 			Flow.StaticPatient();
-			
+
 			yield return null;
 
 			var currentscene = SceneManager.GetActiveScene().name;
@@ -112,13 +112,13 @@ namespace Tests
 
 			var currentscene = SceneManager.GetActiveScene().name;
 			var expectedscene = "RealtimeGraphUDPPatient";
-			
+
 			var device = @"^(.*?(\bDevice|Socket|SDK\b)[^$]*)$";
 			Regex rgx1 = new Regex(device, RegexOptions.IgnoreCase);
 			LogAssert.Expect(LogType.Error, rgx1);
 			LogAssert.Expect(LogType.Exception, rgx1);
 
-			Assert.AreEqual(currentscene, expectedscene);     
+			Assert.AreEqual(currentscene, expectedscene);
 			Debug.Log("saindo de " + currentscene);
 		}
 
@@ -131,12 +131,12 @@ namespace Tests
 
 			var currentscene = SceneManager.GetActiveScene().name;
 			var expectedscene = "RealtimeGraphKinectPatient";
-			
+
 			var device = @"^(.*?(\bDevice|SDK\b)[^$]*)$";
 			Regex rgx1 = new Regex(device, RegexOptions.IgnoreCase);
 			LogAssert.Expect(LogType.Error, rgx1);
 
-			Assert.AreEqual(currentscene, expectedscene);     
+			Assert.AreEqual(currentscene, expectedscene);
 			Debug.Log("saindo de " + currentscene);
 		}
 
@@ -149,13 +149,13 @@ namespace Tests
 
 			var currentscene = SceneManager.GetActiveScene().name;
 			var expectedscene = "RealtimeGraphUDPPhysio";
-			
+
 			var device = @"^(.*?(\bDevice|Socket|SDK\b)[^$]*)$";
 			Regex rgx1 = new Regex(device, RegexOptions.IgnoreCase);
 			LogAssert.Expect(LogType.Error, rgx1);
 			LogAssert.Expect(LogType.Exception, rgx1);
 
-			Assert.AreEqual(currentscene, expectedscene);     
+			Assert.AreEqual(currentscene, expectedscene);
 			Debug.Log("saindo de " + currentscene);
 		}
 
@@ -168,12 +168,12 @@ namespace Tests
 
 			var currentscene = SceneManager.GetActiveScene().name;
 			var expectedscene = "RealtimeGraphKinectPhysio";
-			
+
 			var device = @"^(.*?(\bDevice|SDK\b)[^$]*)$";
 			Regex rgx1 = new Regex(device, RegexOptions.IgnoreCase);
 			LogAssert.Expect(LogType.Error, rgx1);
 
-			Assert.AreEqual(currentscene, expectedscene);     
+			Assert.AreEqual(currentscene, expectedscene);
 			Debug.Log("saindo de " + currentscene);
 		}
 
@@ -291,5 +291,20 @@ namespace Tests
 			Assert.AreEqual(currentscene, expectedscene);
 			Debug.Log("saindo de " + currentscene);
 		}
+
+		[UnityTest]
+		public static IEnumerator TestCharacterMenu()
+		{
+			Flow.StaticCharacterMenu();
+
+			yield return null;
+
+			var currentscene = SceneManager.GetActiveScene().name;
+			var expectedscene = "CharacterMenu";
+
+			Assert.AreEqual(currentscene, expectedscene);
+			Debug.Log("saindo de " + currentscene);
+		}
+
 	}
 }

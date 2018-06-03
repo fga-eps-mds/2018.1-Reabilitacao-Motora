@@ -28,15 +28,15 @@ namespace Tests
 			var test_nonAlphaWithoutSpaces = TreatFields.NameField("a#hk7%1kfa@");
 
 			var nonalpha = "Nome deve conter apenas letras!|";
-			var shortname = "Insira nome e sobrenome!|";
+			var shortname = "Insira o nome!|";
 			var empty = "Campo Obrigatório!|";
 
 			Assert.AreEqual(test_empty, shortname+empty);
 			Assert.AreEqual(test_nonAlpha, nonalpha);
 			Assert.AreEqual(test_goodName, "");
-			Assert.AreEqual(test_shortName, shortname);
-			Assert.AreEqual(test_shortNonAlpha, nonalpha+shortname);
-			Assert.AreEqual(test_nonAlphaWithoutSpaces, nonalpha+shortname);
+			Assert.AreEqual(test_shortName, "");
+			Assert.AreEqual(test_shortNonAlpha, nonalpha);
+			Assert.AreEqual(test_nonAlphaWithoutSpaces, nonalpha);
 
 			return;
 		}
@@ -103,7 +103,7 @@ namespace Tests
 		{
 			var test_empty = TreatFields.EmptyField ("");
 			var test_filled = TreatFields.EmptyField("abc");
-			
+
 			string empty = "Campo Obrigatório!|";
 
 			Assert.AreEqual(test_empty, empty);
@@ -202,7 +202,7 @@ namespace Tests
 			var test_nonAlphaNumeric = TreatFields.LoginField ("k$%k4@1%s");
 			var test_short = TreatFields.LoginField ("alpe");
 			var test_good = TreatFields.LoginField ("joaozinho2");
-			
+
 			string nonAlphaNumeric = "Login deve conter apenas letras e/ou números!|";
 			string shorty = "Login deve ter no mínimo 6 caractéres.|";
 			string empty = "Campo Obrigatório!|";
@@ -227,7 +227,7 @@ namespace Tests
 			string empty = "Campo Obrigatório!|";
 
 			Assert.AreEqual (test_empty, shorty+empty);
-			Assert.AreEqual (test_shorty, shorty); 
+			Assert.AreEqual (test_shorty, shorty);
 			Assert.AreEqual (test_good, "");
 
 			return;
@@ -280,7 +280,7 @@ namespace Tests
 			Pessoa.Insert("fake name", "m", "1930-01-01", "61235235", null);
 			List<Pessoa> pessoas = Pessoa.Read();
 			var idPessoa = pessoas[pessoas.Count - 1].idPessoa;
-			
+
 			Fisioterapeuta.Insert(idPessoa, "abcdefghj1", "asuihasiudh11829", "DF", "123456");
 			List<Fisioterapeuta> allPhysios = Fisioterapeuta.Read();
 			var idFisio = allPhysios[allPhysios.Count - 1].idFisioterapeuta;
@@ -289,7 +289,7 @@ namespace Tests
 			var test_dontRegion = TreatFields.UniqueCrefitoRegion ("123456", "PE");
 			var test_dontCrefito = TreatFields.UniqueCrefitoRegion ("613752", "DF");
 			var test_dont = TreatFields.UniqueCrefitoRegion ("516523", "SL");
-			
+
 			Fisioterapeuta.DeleteValue(idFisio);
 			Pessoa.DeleteValue(idPessoa);
 
