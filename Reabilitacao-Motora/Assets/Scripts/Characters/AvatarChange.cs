@@ -18,7 +18,7 @@ public class AvatarChange : MonoBehaviour
      */
     void Start ()
     {
-        if(GlobalController.choiceAvatar==1)
+        if (GlobalController.choiceAvatar==1)
         {
             man1Avatar.SetActive(true);
             man1Avatar.GetComponent<Renderer>().enabled = true;
