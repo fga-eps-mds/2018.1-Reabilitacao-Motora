@@ -210,5 +210,96 @@ namespace Tests
 
 			Assert.AreEqual(currentscene, expectedscene);
 		}
-	}
+
+        [UnityTest]
+        public static IEnumerator TestHelp()
+        {
+            Flow.StaticHelp();
+
+            yield return null;
+
+            var currentscene = SceneManager.GetActiveScene().name;
+            var expectedscene = "Help";
+
+            Assert.AreEqual(currentscene, expectedscene);
+        }
+
+        [UnityTest]
+        public static IEnumerator TestHelpPatient()
+        {
+            Flow.StaticHelpPatient();
+
+            yield return null;
+
+            var currentscene = SceneManager.GetActiveScene().name;
+            var expectedscene = "HelpPatient";
+
+            Assert.AreEqual(currentscene, expectedscene);
+        }
+
+        [UnityTest]
+        public static IEnumerator TestHelpUpdate()
+        {
+            Flow.StaticHelpUpdate();
+
+            yield return null;
+
+            var currentscene = SceneManager.GetActiveScene().name;
+            var expectedscene = "HelpUpdate";
+
+            Assert.AreEqual(currentscene, expectedscene);
+        }
+
+        [UnityTest]
+        public static IEnumerator TestHelpExercise()
+        {
+            Flow.StaticHelpExercise();
+
+            yield return null;
+
+            var currentscene = SceneManager.GetActiveScene().name;
+            var expectedscene = "HelpExercise";
+
+            Assert.AreEqual(currentscene, expectedscene);
+        }
+
+        [UnityTest]
+        public static IEnumerator TestHelpMovement()
+        {
+            Flow.StaticHelpMovement();
+
+            yield return null;
+
+            var currentscene = SceneManager.GetActiveScene().name;
+            var expectedscene = "HelpMovement";
+
+            Assert.AreEqual(currentscene, expectedscene);
+        }
+
+        [UnityTest]
+        public static IEnumerator TestHelpSession()
+        {
+            Flow.StaticHelpSession();
+
+            yield return null;
+
+            var currentscene = SceneManager.GetActiveScene().name;
+            var expectedscene = "HelpSession";
+
+            Assert.AreEqual(currentscene, expectedscene);
+        }
+
+        [UnityTest]
+        public static IEnumerator TestHelpResults()
+        {
+            Flow.StaticHelpResults();
+
+            yield return null;
+
+            var currentscene = SceneManager.GetActiveScene().name;
+            var expectedscene = "HelpResults";
+
+            Assert.AreEqual(currentscene, expectedscene);
+        }
+    }
 }

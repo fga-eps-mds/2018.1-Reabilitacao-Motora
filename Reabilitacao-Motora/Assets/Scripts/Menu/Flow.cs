@@ -259,8 +259,22 @@ public class Flow : MonoBehaviour
     /**
 	 * Leva para scene de tela de Ajuda de Criar Movimento.
 	 */
-    public static void StaticHelpMovements()
+    public static void StaticHelpMovement()
     {
         SceneManager.LoadScene("HelpMovement");
+    }
+    /**
+	 * Leva para scene de tela de Ajuda de Criar Sessão.
+	 */
+    public static void StaticHelpSession()
+    {
+        SceneManager.LoadScene("HelpSession");
+    }
+    /**
+	 * Leva para scene de tela de Ajuda de Resultado da Sessão.
+	 */
+    public static void StaticHelpResults()
+    {
+        SceneManager.LoadScene("HelpResults");
     }
 }
