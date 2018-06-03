@@ -8,13 +8,16 @@ using UnityEngine.UI;
  */
 public class ChoiceAvatarMenu : MonoBehaviour 
 {   
+	[SerializeField]
+	protected Button nextPage;
+
     /** 
      *  Estas função seleciona o personagem boy1.
      */
     public void boy1 () 
     {
         GlobalController.choiceAvatar = 1;
-        Debug.Log("cacete");
+		nextPage.onClick.AddListener(delegate{Flow.StaticMovements();});
     }
 
     /** 
@@ -23,6 +26,7 @@ public class ChoiceAvatarMenu : MonoBehaviour
     public void boy2 () 
     {
         GlobalController.choiceAvatar = 2;
+		nextPage.onClick.AddListener(delegate{Flow.StaticMovements();});
     }
 
     /** 
@@ -31,6 +35,7 @@ public class ChoiceAvatarMenu : MonoBehaviour
     public void boy3 () 
     {
         GlobalController.choiceAvatar = 3;
+		nextPage.onClick.AddListener(delegate{Flow.StaticMovements();});
     }
 
     /** 
@@ -39,6 +44,7 @@ public class ChoiceAvatarMenu : MonoBehaviour
     public void girl1 () 
     {
         GlobalController.choiceAvatar = 4;
+		nextPage.onClick.AddListener(delegate{Flow.StaticMovements();});
     }
 
     /** 
@@ -47,5 +53,6 @@ public class ChoiceAvatarMenu : MonoBehaviour
     public void girl2 () 
     {
         GlobalController.choiceAvatar = 5;
+		nextPage.onClick.AddListener(delegate{Flow.StaticMovements();});
     }
 }

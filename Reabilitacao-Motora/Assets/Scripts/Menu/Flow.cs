@@ -228,4 +228,12 @@ public class Flow : MonoBehaviour
 		SceneManager.LoadScene("Graphs3");
 	}
 
+	/**
+	 * Leva para a scene que lista os personagens que podem ser escolhidos pelo paciente/fisioterapeuta.
+	 */
+	public static void StaticCharacterMenu()
+	{
+		SceneManager.LoadScene("CharacterMenu");
+	}
+
 }
