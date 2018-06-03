@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Mono.Data.Sqlite;
 using System.Data;
 using DataBaseAttributes;
+using exercicio;
 
 namespace pontosrotulopaciente
 {
@@ -19,88 +20,27 @@ namespace pontosrotulopaciente
 		private string EstagioMovimentoPaciente;
 		private float TempoInicial;
 		private float TempoFinal;
+        private Exercicio Exer;
 
-		public int idRotuloPaciente 
-		{
-			get 
-			{
-				return IdRotuloPaciente; 
-			} 
-			set 
-			{
-				IdRotuloPaciente = value; 
-			}
-		}
-
-		public int idExercicio 
-		{
-			get 
-			{
-				return IdExercicio; 
-			} 
-			set 
-			{
-				IdExercicio = value; 
-			}
-		}
-
-		public string estagioMovimentoPaciente 
-		{
-			get 
-			{
-				return EstagioMovimentoPaciente; 
-			} 
-			set 
-			{
-				EstagioMovimentoPaciente = value; 
-			}
-		}
-		
-		public float tempoInicial 
-		{
-			get 
-			{
-				return TempoInicial; 
-			} 
-			set 
-			{
-				TempoInicial = value; 
-			}
-		}
-
-		public float tempoFinal 
-		{
-			get 
-			{
-				return TempoFinal; 
-			} 
-			set 
-			{
-				TempoFinal = value; 
-			}
-		}
-
+		public int idRotuloPaciente { get { return IdRotuloPaciente; } set { IdRotuloPaciente = value; }}
+		public int idExercicio { get { return IdExercicio; } set { IdExercicio = value; }}
+		public string estagioMovimentoPaciente { get { return EstagioMovimentoPaciente; } set { EstagioMovimentoPaciente = value; }}		
+		public float tempoInicial { get { return TempoInicial; } set { TempoInicial = value; }}
+		public float tempoFinal { get { return TempoFinal; } set { TempoFinal = value; }}
+        public Exercicio exer { get { return Exer; } set { Exer = value; } }
 
 
 		/**
 		 * Classe com todos os atributos de um pontosrotulopaciente.
 		 */
-		public PontosRotuloPaciente(int idrp, int ide, string e, float ti, float tf)
-		{
-				this.idRotuloPaciente = idrp;
-				this.idExercicio = ide;
-				this.estagioMovimentoPaciente = e;
-				this.tempoInicial = ti;
-				this.tempoFinal = tf;
-		}
-
 		public PontosRotuloPaciente(Object[] columns)
 		{
-				this.idRotuloPaciente = (int)columns[0];
-				this.idExercicio = (int)columns[1];
-				this.estagioMovimentoPaciente = (string)columns[2];
-				this.tempoInicial = (float)columns[3];
-				this.tempoFinal = (float)columns[4];
+			this.idRotuloPaciente = (int)columns[0];
+			this.idExercicio = (int)columns[1];
+			this.estagioMovimentoPaciente = (string)columns[2];
+			this.tempoInicial = (float)columns[3];
+			this.tempoFinal = (float)columns[4];
+            this.exer = Exercicio.ReadValue((int)columns[1]);
 		}
 
 		/**
@@ -108,9 +48,8 @@ namespace pontosrotulopaciente
 		 */
 		public static void Create()
 		{
-			DataBase banco = new DataBase();
 			string query = "CREATE TABLE IF NOT EXISTS PONTOSROTULOPACIENTE (idRotuloPaciente INTEGER primary key AUTOINCREMENT,idExercicio INTEGER not null,estagioMovimentoPaciente VARCHAR (30) not null,tempoInicial REAL not null,tempoFinal REAL not null,foreign key (idExercicio) references EXERCICIO (idExercicio));";
-			banco.Create(GlobalController.instance.path, query);
+			DataBase.Create(query);
 		}
 
 		/**
@@ -121,9 +60,8 @@ namespace pontosrotulopaciente
 			float tempoInicial,
 			float tempoFinal)
 		{
-			DataBase banco = new DataBase();
 			Object[] columns = new Object[] {idExercicio, estagioMovimentoPaciente, tempoInicial, tempoFinal};
-			banco.Insert(GlobalController.instance.path, columns, TablesManager.Tables[tableId].tableName, tableId);
+			DataBase.Insert(columns, TablesManager.Tables[tableId].tableName, tableId);
 		}
 
 		/**
@@ -135,9 +73,8 @@ namespace pontosrotulopaciente
 			float tempoInicial,
 			float tempoFinal)
 		{
-			DataBase banco = new DataBase();
 			Object[] columns = new Object[] {id, idExercicio, estagioMovimentoPaciente, tempoInicial, tempoFinal};
-			banco.Update(GlobalController.instance.path, columns, TablesManager.Tables[tableId].tableName, tableId);
+			DataBase.Update(columns, TablesManager.Tables[tableId].tableName, tableId);
 		}
 
 		/**
@@ -145,17 +82,9 @@ namespace pontosrotulopaciente
 		 */
 		public static List<PontosRotuloPaciente> Read()
 		{
-			DataBase banco = new DataBase();
+			Object[] columns = new Object[] {0, 0, "", 0.00f, 0.00f};
 
-			int idRotuloPacienteTemp = 0;
-			int idExercicioTemp = 0;
-			string estagioMovimentoPacienteTemp = "";
-			float tempoInicialTemp = 0;
-			float tempoFinalTemp = 0;
-
-			Object[] columns = new Object[] {idRotuloPacienteTemp,idExercicioTemp,estagioMovimentoPacienteTemp,tempoInicialTemp,tempoFinalTemp};
-
-			List<PontosRotuloPaciente> patientLabelPoints = banco.Read<PontosRotuloPaciente>(GlobalController.instance.path, TablesManager.Tables[tableId].tableName, columns);
+			List<PontosRotuloPaciente> patientLabelPoints = DataBase.Read<PontosRotuloPaciente>(TablesManager.Tables[tableId].tableName, columns);
 
 			return patientLabelPoints;
 		}
@@ -163,17 +92,9 @@ namespace pontosrotulopaciente
 
 		public static PontosRotuloPaciente ReadValue (int id)
 		{
-			DataBase banco = new DataBase();
+			Object[] columns = new Object[] {0, 0, "", 0.00f, 0.00f};
 
-			int idRotuloPacienteTemp = 0;
-			int idExercicioTemp = 0;
-			string estagioMovimentoPacienteTemp = "";
-			float tempoInicialTemp = 0;
-			float tempoFinalTemp = 0;
-
-			Object[] columns = new Object[] {idRotuloPacienteTemp,idExercicioTemp,estagioMovimentoPacienteTemp,tempoInicialTemp,tempoFinalTemp};
-
-			PontosRotuloPaciente patientLabelPoint = banco.ReadValue<PontosRotuloPaciente>(GlobalController.instance.path, TablesManager.Tables[tableId].tableName,
+			PontosRotuloPaciente patientLabelPoint = DataBase.ReadValue<PontosRotuloPaciente>(TablesManager.Tables[tableId].tableName,
 				TablesManager.Tables[tableId].colName[0], id, columns);
 
 			return patientLabelPoint;
@@ -184,8 +105,7 @@ namespace pontosrotulopaciente
 		 */
 		public static void DeleteValue(int id)
 		{
-			DataBase banco = new DataBase();
-			banco.DeleteValue (tableId, id);
+			DataBase.DeleteValue (tableId, id);
 		}
 
 		/**
@@ -193,8 +113,7 @@ namespace pontosrotulopaciente
 		 */
 		public static void Drop()
 		{
-			DataBase banco = new DataBase();
-			banco.Drop (tableId);
+			DataBase.Drop (tableId);
 		}
 	}
 }

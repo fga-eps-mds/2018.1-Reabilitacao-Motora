@@ -67,23 +67,20 @@ Otimização do fluxo entre cenas para melhor apresentação ao usuário. Melhor
 
 ---
 
-### [Implementação das conexões TCP/UDP (Central de processamento)](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/170)
+### [Melhorar exibição dos logs de teste no Travis](https://github.com/fga-gpp-mds/2018.1-reabilitacao-motora/issues/182)
 
 #### Descrição:
-A comunicação entre módulos fora da aplicação é dada como necessária.
+Atualmente, os logs de teste estão em formato xml e sendo exibidos no stdout com uma formatação que dificulta a leitura.
 
 #### Critérios de Aceitação
-- Estabelecer conexão com uma central de processamento qualquer
-
+- Melhorar visualmente a exibição dos resultados dos testes
+- Não quebrar a build
 
 #### Tarefas
-- Criar uma central de processamento que converse com nossa aplicação
-- Criar um adapter universal
-- Estabelecer conexão entre ambos
-- Mostrar ao menos um exemplo de resposta utilizável vinda da central de processamento.
+- Script que exiba o arquivo xml de uma forma amigável
 
 
-**Pontos:** 13.
+**Pontos:** 5.
 
 ---
 
@@ -102,24 +99,6 @@ Um launcher para controle de versão da aplicação é necessário.
 - Launcher baixando e instalando a versão mais recente
 - Alguma outra tarefa
 
-
-**Pontos:** 08.
-
----
-
-### [US06 - Visualizar Movimento](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/135)
-
-#### Descrição:
-Eu, como fisioterapeuta, desejo sair do sistema sem fechar a aplicação.
-
-#### Critérios de Aceitação:
-- Testes Unity passando.
-- Usuário deslogando com sucesso
-- Realizar o login de outro usuário após efetuar o logout
-
-#### Tarefas:
-- Botão de logout redirecionando para a tela de login
-- Sair completamente da conta.
 
 **Pontos:** 3.
 
@@ -147,7 +126,7 @@ Deve-se refinar a solução implementada para que ela gere máximo valor ao prod
 ### [Launcher para controlar versionamento](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/169)
 
 #### Descrição:
-Um launcher para controle de versão da aplicação é necessário.
+A refatoração do launcher é necessária.
 
 #### Critérios de Aceitação:
 - Launcher atualizando de acordo com a versão mais atual

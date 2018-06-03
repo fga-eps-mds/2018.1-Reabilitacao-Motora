@@ -33,16 +33,19 @@ public class createExercise : MonoBehaviour
 		var token = (GlobalController.instance.movement.pontosMovimento).Split('/');
 		string date = DateTime.Now.ToString("ss", System.Globalization.DateTimeFormatInfo.InvariantInfo);
 
-		pathSave += date + "-" + token[1] + ".points";
+		Debug.Log (GlobalController.instance.movement.pontosMovimento);
+		Debug.Log (token[0]);
+		Debug.Log (pathSave);
+		pathSave += date + "-" + token[1];
 
 		Exercicio.Insert(GlobalController.instance.user.idPaciente, 
 			GlobalController.instance.movement.idMovimento,
 			GlobalController.instance.session.idSessao, 
-			null, pathSave);
+			pathSave, null);
 
 		List<Exercicio> exercises = Exercicio.Read();
 		GlobalController.instance.exercise = exercises[exercises.Count - 1];
-
-		Flow.StaticRealtimeGraph();
+		GlobalController.patientOrPhysio = false;
+		Flow.ChoiceSensor();
 	}
 }

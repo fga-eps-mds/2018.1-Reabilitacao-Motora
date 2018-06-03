@@ -31,17 +31,25 @@ public class Flow : MonoBehaviour
 	/**
 	 * Leva para scene de gravar um movimento.
 	 */
-	public static void StaticRealtimeGraph1()
+	public static void StaticRealtimeGraphKinectPatient()
 	{
-		SceneManager.LoadScene("RealtimeGraph1");
+		SceneManager.LoadScene("RealtimeGraphKinectPatient");
 	}
 
-	public static void StaticRealtimeGraph2()
+	public static void StaticRealtimeGraphKinectPhysio()
 	{
-		SceneManager.LoadScene("RealtimeGraph2");
+		SceneManager.LoadScene("RealtimeGraphKinectPhysio");
 	}
 
+	public static void StaticRealtimeGraphUDPPatient()
+	{
+		SceneManager.LoadScene("RealtimeGraphUDPPatient");
+	}
 
+	public static void StaticRealtimeGraphUDPPhysio()
+	{
+		SceneManager.LoadScene("RealtimeGraphUDPPhysio");
+	}
 
 	/**
 	 * Leva para scene de detalhe de paciente.
@@ -50,8 +58,6 @@ public class Flow : MonoBehaviour
 	{
 		SceneManager.LoadScene("Patient");
 	}
-
-
 
 	/**
 	 * Leva para scene de tela de login.
@@ -130,15 +136,6 @@ public class Flow : MonoBehaviour
 	public static void StaticGraphs2()
 	{
 		SceneManager.LoadScene("Graphs2");
-	}
-
-
-	/**
-	 * Leva para scene de gráficos.
-	 */
-	public static void StaticRealtimeGraph()
-	{
-		SceneManager.LoadScene("RealtimeGraph");
 	}
 
 

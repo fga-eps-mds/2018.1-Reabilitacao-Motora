@@ -79,11 +79,14 @@ public class createPatient : MonoBehaviour
 			string pathNamePatient = "Assets\\Exercicios\\" + string.Format("{0}-{1}", personsList[personsList.Count-1].idPessoa, namePatientUnderscored);
 			Directory.CreateDirectory(pathNamePatient);
 
+			var patients = Paciente.Read();
+
+			GlobalController.instance.user = patients[patients.Count - 1];
 			Flow.StaticNewPatient();
 		}
 	}
 
-	private static bool ValidInput (List<InputField> inputs, List<Toggle> toggles)
+	public static bool ValidInput (List<InputField> inputs, List<Toggle> toggles)
 	{
 		bool valid = true;
 
@@ -148,7 +151,7 @@ public class createPatient : MonoBehaviour
 		return valid;
 	}
 
-	private static void ApplyColor (InputField input, bool ok)
+	public static void ApplyColor (InputField input, bool ok)
 	{
 		input.colors = ColorManager.SetColor(input.colors, ok);
 	}
