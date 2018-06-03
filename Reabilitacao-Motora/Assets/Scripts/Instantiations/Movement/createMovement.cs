@@ -99,7 +99,7 @@ public class createMovement : MonoBehaviour
 
 		string treatName = TreatFields.NameField (inputs[0].text);
 
-		if (treatName != "")
+		if (treatName == "")
 		{
 			var splitBar = treatName.Split('|');
 			foreach (var erro in splitBar)
