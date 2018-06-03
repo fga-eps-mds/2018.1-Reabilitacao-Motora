@@ -172,7 +172,9 @@ A implementação do projeto será a linguagem de programação C# (C-Sharp).Ele
 <p align = "justify">Para a conexão com diversos sensores será usado um adapter com a capacidade de receber informações específicas para a usabilidade da aplicação através de portas UDP. A escolha das portas UDP em relação as portas TCP para uso no adapter entre o sensor-unity foi motivada pelo fato de que utilizando o protocolo UDP a transferência é feita de forma mais rápida do que utilizando o protocolo TCP, pois o TCP garante que dados são entregues integralmente, sem erros (pois ele não só envia pacote de dados, como também recebe), ao custo de ser mais lento que o UDP.</p>
 <p align = "justify">O UDP provê um serviço sem conexão não confiável, usando IP para transportar mensagens entre duas máquinas. Este protocolo, igualmente o TCP, provê um mecanismo que o transmissor usa para distinguir entre múltiplos receptores numa mesma máquina.</p>
 <p align="center">
+
 ![DiagramaGeralDeArquitetura](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/development/docs/imagens/Arquitetura/Diagrama_geral_de_arquitetura.png)
+
 **Figura 4**- Representação do diagrama da arquitetura dos adapters
 [Clique aqui para visualizar a imagem](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/development/docs/imagens/Arquitetura/Diagrama_geral_de_arquitetura.png)
 </p>
