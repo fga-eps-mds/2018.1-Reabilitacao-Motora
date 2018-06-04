@@ -107,7 +107,7 @@ namespace Tests
 
 			string nomePessoa = (GlobalController.instance.admin.persona.nomePessoa).Replace(' ', '_');
 			string nomePasta = string.Format("{0}/Movimentos/{1}-{2}", Application.dataPath, IdPessoa, nomePessoa);
-			bool dir = System.IO.File.Exists(nomePasta.Replace('/', '\\'));
+			bool dir = System.IO.Directory.Exists(nomePasta);
 
 			Assert.AreEqual (dir, false);
 		}
@@ -373,9 +373,9 @@ namespace Tests
 			}
 
 			string nomePessoa = (GlobalController.instance.user.persona.nomePessoa).Replace(' ', '_');
-			string nomePasta = string.Format("Assets\\Exercicios\\{1}-{2}", Application.dataPath, IdPessoa, nomePessoa);
+			string nomePasta = string.Format("Assets/Exercicios/{1}-{2}", Application.dataPath, IdPessoa, nomePessoa);
 
-			bool dir = System.IO.File.Exists(nomePasta.Replace('/', '\\'));
+			bool dir = System.IO.Directory.Exists(nomePasta);
 
 			Assert.AreEqual (dir, false);
 		}
