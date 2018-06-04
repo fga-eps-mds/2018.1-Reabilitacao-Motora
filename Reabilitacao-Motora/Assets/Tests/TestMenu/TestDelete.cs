@@ -33,84 +33,6 @@ namespace Tests
 		}
 
 		//unitário
-		[UnityTest]
-		public static IEnumerator TestDeletePhysio()
-		{
-			Flow.StaticLogin();
-			Flow.StaticNewPhysiotherapist();
-
-			yield return null;
-			
-			var objectPhysio = GameObject.Find("Physiotherapist Manager");
-			var physioManager = objectPhysio.GetComponentInChildren<createPhysiotherapist>();
-
-			InputField aux = (InputField)physioManager.GetMemberValue("namePhysio");
-			aux.text = "Fake Name";
-			physioManager.SetMemberValue("namePhysio", aux);
-
-			InputField aux1 = (InputField)physioManager.GetMemberValue("date");
-			aux1.text = "01/01/1920";
-			physioManager.SetMemberValue("date", aux1);
-			
-			InputField aux3 = (InputField)physioManager.GetMemberValue("phone1");
-			aux3.text = "61999999";
-			physioManager.SetMemberValue("phone1", aux3);
-
-			InputField aux7 = (InputField)physioManager.GetMemberValue("login");
-			aux7.text = "fake_login";
-			physioManager.SetMemberValue("login", aux7);
-
-			InputField aux8 = (InputField)physioManager.GetMemberValue("pass");
-			aux8.text = "fake_pass";
-			physioManager.SetMemberValue("pass", aux8);
-
-			InputField aux9 = (InputField)physioManager.GetMemberValue("confirmPass");
-			aux9.text = "fake_pass";
-			physioManager.SetMemberValue("confirmPass", aux9);
-
-			Toggle aux2 = (Toggle)physioManager.GetMemberValue("male");
-			aux2.isOn = true;
-			physioManager.SetMemberValue("male", aux2);
-
-			Toggle aux0 = (Toggle)physioManager.GetMemberValue("female");
-			aux0.isOn = false;
-			physioManager.SetMemberValue("female", aux0);
-
-			physioManager.savePhysiotherapist();
-
-			int IdFisioterapeuta = GlobalController.instance.admin.idFisioterapeuta;
-			int IdPessoa = GlobalController.instance.admin.persona.idPessoa;
-
-			yield return new WaitForSeconds(0.5f);
-
-			DeletePhysioButton.DeletePhysiotherapist();
-
-			yield return new WaitForSeconds(0.5f);
-
-			var allMovements = Movimento.Read();
-			foreach (var movs in allMovements)
-			{
-				Assert.AreNotEqual(movs.idFisioterapeuta, IdFisioterapeuta);
-			}
-
-			var allSessions = Sessao.Read();
-			foreach (var ses in allSessions)
-			{
-				Assert.AreNotEqual(ses.idFisioterapeuta, IdFisioterapeuta);
-			}
-
-			var allPhysios = Fisioterapeuta.Read();
-			foreach (var physio in allPhysios)
-			{
-				Assert.AreNotEqual(physio.idFisioterapeuta, IdFisioterapeuta);
-			}			
-
-			string nomePessoa = (GlobalController.instance.admin.persona.nomePessoa).Replace(' ', '_');
-			string nomePasta = string.Format("{0}/Movimentos/{1}-{2}", Application.dataPath, IdPessoa, nomePessoa);
-			bool dir = System.IO.File.Exists(nomePasta.Replace('/', '\\'));
-
-			Assert.AreEqual (dir, false);
-		}
 
 		[UnityTest]
 		public static IEnumerator TestDeleteExercise()
@@ -246,11 +168,11 @@ namespace Tests
 			InputField aux1 = (InputField)moveManager.GetMemberValue("musculos");
 			aux1.text = "Deltoide";
 			moveManager.SetMemberValue("musculos", aux1);
-			
+
 			InputField aux3 = (InputField)moveManager.GetMemberValue("descricao");
 			aux3.text = "Ahaha seloco";
 			moveManager.SetMemberValue("descricao", aux3);
-			
+
 			moveManager.saveMovement();
 
 			yield return new WaitForSeconds(1f);
@@ -304,7 +226,7 @@ namespace Tests
 			Flow.StaticNewPatient();
 
 			yield return null;
-			
+
 			var objectPatient = GameObject.Find("PatientManager");
 			var PatientManager = objectPatient.GetComponentInChildren<createPatient>();
 
@@ -315,7 +237,7 @@ namespace Tests
 			InputField aux1 = (InputField)PatientManager.GetMemberValue("date");
 			aux1.text = "01/01/1920";
 			PatientManager.SetMemberValue("date", aux1);
-			
+
 			InputField aux3 = (InputField)PatientManager.GetMemberValue("phone1");
 			aux3.text = "61999999";
 			PatientManager.SetMemberValue("phone1", aux3);
