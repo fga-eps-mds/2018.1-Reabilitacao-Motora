@@ -112,8 +112,8 @@ namespace Tests
 
 			var currentscene = SceneManager.GetActiveScene().name;
 			var expectedscene = "RealtimeGraphUDPPatient";
-
-			var device = @"^(.*?(\bDevice|Socket|SDK\b)[^$]*)$";
+			
+			var device = @"^(.*?(\bDevice|Socket|SDK|expected\b)[^$]*)$";
 			Regex rgx1 = new Regex(device, RegexOptions.IgnoreCase);
 			LogAssert.Expect(LogType.Error, rgx1);
 			LogAssert.Expect(LogType.Exception, rgx1);
@@ -149,8 +149,8 @@ namespace Tests
 
 			var currentscene = SceneManager.GetActiveScene().name;
 			var expectedscene = "RealtimeGraphUDPPhysio";
-
-			var device = @"^(.*?(\bDevice|Socket|SDK\b)[^$]*)$";
+			
+			var device = @"^(.*?(\bDevice|Socket|SDK|expected\b)[^$]*)$";
 			Regex rgx1 = new Regex(device, RegexOptions.IgnoreCase);
 			LogAssert.Expect(LogType.Error, rgx1);
 			LogAssert.Expect(LogType.Exception, rgx1);

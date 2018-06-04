@@ -723,11 +723,9 @@ namespace Tests
 			Flow.StaticLogin();
 			yield return new WaitForSeconds(1f);
 
-			var i = 0;
-			while (UnityEditor.EditorApplication.isPlaying == true)
+			for (int i = 0; i < 121; ++i)
 			{
 				var currentscene = SceneManager.GetActiveScene().name;
-
 
 				if (scenes.ContainsKey(currentscene) && i < 120)
 				{
@@ -745,7 +743,7 @@ namespace Tests
 
 					if (currentscene == "ChoiceSensor")
 					{
-						var device = @"^(.*?(\bDevice|Socket|SDK\b)[^$]*)$";
+						var device = @"^(.*?(\bDevice|Socket|SDK|expected\b)[^$]*)$";
 						Regex rgx1 = new Regex(device, RegexOptions.IgnoreCase);
 						LogAssert.Expect(LogType.Error, rgx1);
 					}
@@ -758,7 +756,6 @@ namespace Tests
 					Assert.IsTrue(true);
 					break;
 				}
-				i++;
 			}
 		}
 

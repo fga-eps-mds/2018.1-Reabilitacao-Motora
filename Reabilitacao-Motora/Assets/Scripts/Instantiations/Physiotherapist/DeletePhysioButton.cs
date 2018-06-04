@@ -79,7 +79,10 @@ public class DeletePhysioButton : MonoBehaviour
 
 		Fisioterapeuta.DeleteValue(IdFisioterapeuta);
 		
-		Directory.Delete(nomePasta.Replace('/', '\\'), true);
+		if (Directory.Exists(nomePasta))
+		{
+			Directory.Delete(nomePasta, true);
+		}
 
 		Flow.StaticNewPhysiotherapist();
 	}
