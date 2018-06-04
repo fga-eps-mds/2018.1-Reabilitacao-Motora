@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MovementsBt : MonoBehaviour 
+public class MovementsBt : MonoBehaviour
 {
 	[SerializeField]
 	protected Button nextPage;
