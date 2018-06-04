@@ -225,4 +225,53 @@ public class Flow : MonoBehaviour
 		SceneManager.LoadScene("Graphs3");
 	}
 
+    /**
+	 * Leva para scene de tela de Ajuda.
+	 */
+    public static void StaticHelp()
+    {
+        SceneManager.LoadScene("Help");
+    }
+    /**
+	 * Leva para scene de tela de Ajuda de Criar Paciente.
+	 */
+    public static void StaticHelpPatient()
+    {
+        SceneManager.LoadScene("HelpPatient");
+    }
+    /**
+	 * Leva para scene de tela de Ajuda de Atualizar o Paciente.
+	 */
+    public static void StaticHelpUpdate()
+    {
+        SceneManager.LoadScene("HelpUpdate");
+    }
+    /**
+	 * Leva para scene de tela de Ajuda de Criar Exercício.
+	 */
+    public static void StaticHelpExercise()
+    {
+        SceneManager.LoadScene("HelpExercise");
+    }
+    /**
+	 * Leva para scene de tela de Ajuda de Criar Movimento.
+	 */
+    public static void StaticHelpMovement()
+    {
+        SceneManager.LoadScene("HelpMovement");
+    }
+    /**
+	 * Leva para scene de tela de Ajuda de Criar Sessão.
+	 */
+    public static void StaticHelpSession()
+    {
+        SceneManager.LoadScene("HelpSession");
+    }
+    /**
+	 * Leva para scene de tela de Ajuda de Resultado da Sessão.
+	 */
+    public static void StaticHelpResults()
+    {
+        SceneManager.LoadScene("HelpResults");
+    }
 }
