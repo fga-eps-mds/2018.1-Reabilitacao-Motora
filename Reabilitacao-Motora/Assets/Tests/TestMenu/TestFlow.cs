@@ -306,8 +306,6 @@ namespace Tests
 			Debug.Log("saindo de " + currentscene);
 		}
 
-	}
-}
         [UnityTest]
         public static IEnumerator TestHelp()
         {

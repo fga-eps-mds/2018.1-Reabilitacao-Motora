@@ -233,8 +233,6 @@ public class Flow : MonoBehaviour
 		SceneManager.LoadScene("CharacterMenu");
 	}
 
-	}
-
     /**
 	 * Leva para scene de tela de Ajuda.
 	 */
