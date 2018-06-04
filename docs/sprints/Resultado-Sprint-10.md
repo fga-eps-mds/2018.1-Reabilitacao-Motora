@@ -20,8 +20,8 @@
 
 ### 2.3 Pontuação Final
 
-* **Pontuação Total:** 39
-* **Pontos Concluídos:** 39
+* **Pontuação Total:** 47
+* **Pontos Concluídos:** 47
 * **Pontos Não Agregados:** 0
 
 ---

@@ -11,6 +11,13 @@ namespace Tests
 {
 	public static class TestFlow
 	{
+		[SetUp]
+		public static void SetUp()
+		{
+			GlobalController.test = true;			
+			GlobalController.Initialize();
+		}
+
 		[UnityTest]
 		public static IEnumerator TestNewMovement()
 		{
@@ -22,6 +29,7 @@ namespace Tests
 			var expectedscene = "NewMovement";
 
 			Assert.AreEqual(currentscene, expectedscene);
+			Debug.Log("saindo de " + currentscene);
 		}
 
 		[UnityTest]
@@ -35,6 +43,7 @@ namespace Tests
 			var expectedscene = "Patient";
 
 			Assert.AreEqual(currentscene, expectedscene);
+			Debug.Log("saindo de " + currentscene);
 		}
 
 		[UnityTest]
@@ -48,6 +57,7 @@ namespace Tests
 			var expectedscene = "Login";
 
 			Assert.AreEqual(currentscene, expectedscene);
+			Debug.Log("saindo de " + currentscene);
 		}
 
 		[UnityTest]
@@ -61,6 +71,7 @@ namespace Tests
 			var expectedscene = "Movements";
 
 			Assert.AreEqual(currentscene, expectedscene);
+			Debug.Log("saindo de " + currentscene);
 		}
 
 		[UnityTest]
@@ -74,6 +85,7 @@ namespace Tests
 			var expectedscene = "NewPatient";
 
 			Assert.AreEqual(currentscene, expectedscene);
+			Debug.Log("saindo de " + currentscene);
 		}
 
 		[UnityTest]
@@ -87,25 +99,86 @@ namespace Tests
 			var expectedscene = "UpdatePatient";
 
 			Assert.AreEqual(currentscene, expectedscene);
+			Debug.Log("saindo de " + currentscene);
 		}
 
 
 		[UnityTest]
-		public static IEnumerator TestRealtimeGraph()
+		public static IEnumerator TestRealtimeGraphUDPPatient()
 		{
-			Flow.StaticRealtimeGraph();
+			Flow.StaticRealtimeGraphUDPPatient();
 
 			yield return null;
 
 			var currentscene = SceneManager.GetActiveScene().name;
-			var expectedscene = "RealtimeGraph";
+			var expectedscene = "RealtimeGraphUDPPatient";
+			
+			var device = @"^(.*?(\bDevice|Socket|SDK|expected\b)[^$]*)$";
+			Regex rgx1 = new Regex(device, RegexOptions.IgnoreCase);
+			LogAssert.Expect(LogType.Error, rgx1);
+			LogAssert.Expect(LogType.Exception, rgx1);
+
+			Assert.AreEqual(currentscene, expectedscene);     
+			Debug.Log("saindo de " + currentscene);
+		}
+
+		[UnityTest]
+		public static IEnumerator TestRealtimeGraphKinectPatient()
+		{
+			Flow.StaticRealtimeGraphKinectPatient();
+
+			yield return null;
+
+			var currentscene = SceneManager.GetActiveScene().name;
+			var expectedscene = "RealtimeGraphKinectPatient";
 			
 			var device = @"^(.*?(\bDevice|SDK\b)[^$]*)$";
 			Regex rgx1 = new Regex(device, RegexOptions.IgnoreCase);
 			LogAssert.Expect(LogType.Error, rgx1);
 
 			Assert.AreEqual(currentscene, expectedscene);     
+			Debug.Log("saindo de " + currentscene);
 		}
+
+		[UnityTest]
+		public static IEnumerator TestRealtimeGraphUDPPhysio()
+		{
+			Flow.StaticRealtimeGraphUDPPhysio();
+
+			yield return null;
+
+			var currentscene = SceneManager.GetActiveScene().name;
+			var expectedscene = "RealtimeGraphUDPPhysio";
+			
+			var device = @"^(.*?(\bDevice|Socket|SDK|expected\b)[^$]*)$";
+			Regex rgx1 = new Regex(device, RegexOptions.IgnoreCase);
+			LogAssert.Expect(LogType.Error, rgx1);
+			LogAssert.Expect(LogType.Exception, rgx1);
+
+			Assert.AreEqual(currentscene, expectedscene);     
+			Debug.Log("saindo de " + currentscene);
+		}
+
+		[UnityTest]
+		public static IEnumerator TestRealtimeGraphKinectPhysio()
+		{
+			Flow.StaticRealtimeGraphKinectPhysio();
+
+			yield return null;
+
+			var currentscene = SceneManager.GetActiveScene().name;
+			var expectedscene = "RealtimeGraphKinectPhysio";
+			
+			var device = @"^(.*?(\bDevice|SDK\b)[^$]*)$";
+			Regex rgx1 = new Regex(device, RegexOptions.IgnoreCase);
+			LogAssert.Expect(LogType.Error, rgx1);
+
+			Assert.AreEqual(currentscene, expectedscene);     
+			Debug.Log("saindo de " + currentscene);
+		}
+
+
+
 
 		[UnityTest]
 		public static IEnumerator TestNewPhysiotherapist()
@@ -118,6 +191,7 @@ namespace Tests
 			var expectedscene = "NewPhysiotherapist";
 
 			Assert.AreEqual(currentscene, expectedscene);
+			Debug.Log("saindo de " + currentscene);
 		}
 
 		[UnityTest]
@@ -131,6 +205,7 @@ namespace Tests
 			var expectedscene = "Menu";
 
 			Assert.AreEqual(currentscene, expectedscene);
+			Debug.Log("saindo de " + currentscene);
 		}
 
 		[UnityTest]
@@ -144,6 +219,7 @@ namespace Tests
 			var expectedscene = "Graphs2";
 
 			Assert.AreEqual(currentscene, expectedscene);
+			Debug.Log("saindo de " + currentscene);
 		}
 
 		[UnityTest]
@@ -157,6 +233,7 @@ namespace Tests
 			var expectedscene = "NotImplemented";
 
 			Assert.AreEqual(currentscene, expectedscene);
+			Debug.Log("saindo de " + currentscene);
 		}
 
 		[UnityTest]
@@ -170,6 +247,7 @@ namespace Tests
 			var expectedscene = "Sessions";
 
 			Assert.AreEqual(currentscene, expectedscene);
+			Debug.Log("saindo de " + currentscene);
 		}
 
 		[UnityTest]
@@ -183,6 +261,7 @@ namespace Tests
 			var expectedscene = "Session";
 
 			Assert.AreEqual(currentscene, expectedscene);
+			Debug.Log("saindo de " + currentscene);
 		}
 
 		[UnityTest]
@@ -196,6 +275,7 @@ namespace Tests
 			var expectedscene = "NewSession";
 
 			Assert.AreEqual(currentscene, expectedscene);
+			Debug.Log("saindo de " + currentscene);
 		}
 
 		[UnityTest]
@@ -209,6 +289,98 @@ namespace Tests
 			var expectedscene = "MovementsToExercise";
 
 			Assert.AreEqual(currentscene, expectedscene);
+			Debug.Log("saindo de " + currentscene);
 		}
-	}
+
+        [UnityTest]
+        public static IEnumerator TestHelp()
+        {
+            Flow.StaticHelp();
+
+            yield return null;
+
+            var currentscene = SceneManager.GetActiveScene().name;
+            var expectedscene = "Help";
+
+            Assert.AreEqual(currentscene, expectedscene);
+        }
+
+        [UnityTest]
+        public static IEnumerator TestHelpPatient()
+        {
+            Flow.StaticHelpPatient();
+
+            yield return null;
+
+            var currentscene = SceneManager.GetActiveScene().name;
+            var expectedscene = "HelpPatient";
+
+            Assert.AreEqual(currentscene, expectedscene);
+        }
+
+        [UnityTest]
+        public static IEnumerator TestHelpUpdate()
+        {
+            Flow.StaticHelpUpdate();
+
+            yield return null;
+
+            var currentscene = SceneManager.GetActiveScene().name;
+            var expectedscene = "HelpUpdate";
+
+            Assert.AreEqual(currentscene, expectedscene);
+        }
+
+        [UnityTest]
+        public static IEnumerator TestHelpExercise()
+        {
+            Flow.StaticHelpExercise();
+
+            yield return null;
+
+            var currentscene = SceneManager.GetActiveScene().name;
+            var expectedscene = "HelpExercise";
+
+            Assert.AreEqual(currentscene, expectedscene);
+        }
+
+        [UnityTest]
+        public static IEnumerator TestHelpMovement()
+        {
+            Flow.StaticHelpMovement();
+
+            yield return null;
+
+            var currentscene = SceneManager.GetActiveScene().name;
+            var expectedscene = "HelpMovement";
+
+            Assert.AreEqual(currentscene, expectedscene);
+        }
+
+        [UnityTest]
+        public static IEnumerator TestHelpSession()
+        {
+            Flow.StaticHelpSession();
+
+            yield return null;
+
+            var currentscene = SceneManager.GetActiveScene().name;
+            var expectedscene = "HelpSession";
+
+            Assert.AreEqual(currentscene, expectedscene);
+        }
+
+        [UnityTest]
+        public static IEnumerator TestHelpResults()
+        {
+            Flow.StaticHelpResults();
+
+            yield return null;
+
+            var currentscene = SceneManager.GetActiveScene().name;
+            var expectedscene = "HelpResults";
+
+            Assert.AreEqual(currentscene, expectedscene);
+        }
+    }
 }

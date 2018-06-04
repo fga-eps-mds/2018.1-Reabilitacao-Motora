@@ -4,7 +4,7 @@ using UnityEngine;
 
 public static class _Joint
 {
-	private static float Hypot (float a, float b)
+	public static float Hypot (float a, float b)
 	{
 		return Mathf.Sqrt(Mathf.Pow(a, 2) + Mathf.Pow(b, 2));
 	}
