@@ -246,11 +246,11 @@ namespace Tests
 			InputField aux1 = (InputField)moveManager.GetMemberValue("musculos");
 			aux1.text = "Deltoide";
 			moveManager.SetMemberValue("musculos", aux1);
-			
+
 			InputField aux3 = (InputField)moveManager.GetMemberValue("descricao");
 			aux3.text = "Ahaha seloco";
 			moveManager.SetMemberValue("descricao", aux3);
-			
+
 			moveManager.saveMovement();
 
 			yield return new WaitForSeconds(1f);
@@ -304,7 +304,7 @@ namespace Tests
 			Flow.StaticNewPatient();
 
 			yield return null;
-			
+
 			var objectPatient = GameObject.Find("PatientManager");
 			var PatientManager = objectPatient.GetComponentInChildren<createPatient>();
 
@@ -315,7 +315,7 @@ namespace Tests
 			InputField aux1 = (InputField)PatientManager.GetMemberValue("date");
 			aux1.text = "01/01/1920";
 			PatientManager.SetMemberValue("date", aux1);
-			
+
 			InputField aux3 = (InputField)PatientManager.GetMemberValue("phone1");
 			aux3.text = "61999999";
 			PatientManager.SetMemberValue("phone1", aux3);
