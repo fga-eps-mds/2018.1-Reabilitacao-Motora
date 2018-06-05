@@ -16,13 +16,13 @@ public class MoveByUDP : MonoBehaviour
 	protected Transform pointPrefab, mao, ombro, cotovelo, braco;
 
 	Vector3 f_mao_pos, f_mao_rot, f_ombro_pos, f_ombro_rot, f_cotovelo_pos, f_cotovelo_rot, f_braco_pos, f_braco_rot;
-
+	float current_time_movement;
 	LineRenderer lineRenderer;
+	bool t;
 
 	private static readonly Color c1 = Color.black;
 	private static readonly Color c2 = Color.red;
-
-	bool t;
+	private static readonly Color c3 = Color.blue;
 
     UdpClient client;
     public int receivePort = 5004;
@@ -94,35 +94,6 @@ public class MoveByUDP : MonoBehaviour
 		f_braco_rot = (new Vector3 (a, b, c));					
 	
 	}
-
-	public void LoadLineRenderer ()
-	{
-		lineRenderer = gameObject.AddComponent<LineRenderer>();
-		lineRenderer.material = new Material(Shader.Find("Particles/Multiply (Double)"));
-		lineRenderer.widthMultiplier = 0.2f;
-		lineRenderer.positionCount = 4000;
-		lineRenderer.sortingOrder = 5;
-		lineRenderer.positionCount = 2;
-
-	// A simple 2 color gradient with a fixed alpha of 1.0f.
-		float alpha = 1.0f;
-		Gradient gradient = new Gradient();
-		gradient.SetKeys(
-			new []
-			{
-				new GradientColorKey(c1, 0.0f), 
-				new GradientColorKey(c2, 1.0f) 
-			},
-			new [] 
-			{
-				new GradientAlphaKey(alpha, 0.0f), 
-				new GradientAlphaKey(alpha, 1.0f) 
-			}
-		);
-		lineRenderer.colorGradient = gradient;
-		lineRenderer.useWorldSpace = false;
-		lineRenderer.alignment = LineAlignment.Local;
-	}
 	
 	/**
 	* Descrever aqui o que esse método realiza.
@@ -130,11 +101,21 @@ public class MoveByUDP : MonoBehaviour
 	void Awake()
 	{
 		if(GlobalController.instance != null && 
-		   GlobalController.instance.movement != null)
+		   (GlobalController.instance.movement != null ||
+		   	GlobalController.instance.movement != null)
+		  )
 		{
 			t = false;
-
-			LoadLineRenderer();
+			var go = gameObject;
+			current_time_movement = 0;
+			if (GlobalController.patientOrPhysio)
+			{
+				GetMovementPoints.LoadLineRenderer(ref go, ref lineRenderer, c1, c2);
+			}
+			else
+			{
+				GetMovementPoints.LoadLineRenderer(ref go, ref lineRenderer, c1, c3);
+			}
 		}
 		else
 		{
@@ -158,25 +139,47 @@ public class MoveByUDP : MonoBehaviour
 	{
 		if (t){
 			client.BeginReceive (new AsyncCallback (ReceiveServerInfo), null);
-	        Playback();
+
+			current_time_movement += Time.fixedDeltaTime;
+
+			ombro.localPosition = f_ombro_pos;
+			ombro.localEulerAngles = f_ombro_rot;
+
+			braco.localPosition = f_braco_pos;
+			braco.localEulerAngles = f_braco_rot;
+
+			cotovelo.localPosition = f_cotovelo_pos;
+			cotovelo.localEulerAngles = f_cotovelo_rot;
+
+			mao.localPosition = f_mao_pos;
+			mao.localEulerAngles = f_mao_rot;
+
+			if (GlobalController.patientOrPhysio)
+			{
+				GetMovementPoints.SavePoints (current_time_movement,
+					"/Movimentos/", 
+					GlobalController.instance.movement.pontosMovimento,
+					mao, 
+					cotovelo,
+					ombro, 
+					braco);
+			}
+			else
+			{
+				GetMovementPoints.SavePoints (current_time_movement,
+					"/Exercicios/", 
+					GlobalController.instance.exercise.pontosExercicio,
+					mao, 
+					cotovelo,
+					ombro, 
+					braco);
+			}	
+
+			GetMovementPoints.graphSpawner(transform, pointPrefab, mao, cotovelo, ombro, current_time_movement, ref lineRenderer); 
+			if (current_time_movement > 15)
+			{
+				t = false;
+			}
 		}
-	}
-
-	public void Playback ()
-	{  
-			
-		ombro.localPosition = f_ombro_pos;
-		ombro.localEulerAngles = f_ombro_rot;
-
-		braco.localPosition = f_braco_pos;
-		braco.localEulerAngles = f_braco_rot;
-
-		cotovelo.localPosition = f_cotovelo_pos;
-		cotovelo.localEulerAngles = f_cotovelo_rot;
-
-		mao.localPosition = f_mao_pos;
-		mao.localEulerAngles = f_mao_rot;
-       
-	 
 	}
 }
