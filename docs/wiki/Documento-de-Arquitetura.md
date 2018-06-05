@@ -34,6 +34,10 @@ Data|Versão|Descrição|Autor
 12/05|1.14.3|Adição de imagem explicando a arquitetura dos adapters| Djorkaeff Alexandre
 12/05|1.15.0|Justificando uso do TCP no adapter entre o unity e o módulo de processamento| Djorkaeff Alexandre
 15/05|1.15.1|Revisão dos tópicos e imagens| João Lucas
+23/05|1.16.0|Adição do subitem 5.5| Davi Alves
+27/05|1.16.1|Revisão e Complementação dos subitens 5.3 e 5.4| Davi Alves
+30/05|1.16.2|Revisão do subitem 5.4| Davi Alves
+02/06|1.16.3|Revisão de imagem da arquitetura de adapters| João Lucas
 
 # Sumário
 ----------------
@@ -167,9 +171,12 @@ A implementação do projeto será a linguagem de programação C# (C-Sharp).Ele
 <p align = "justify"> O Módulo de Processamento (pode ser considerado um plugin que realiza processamentos externos) é uma unidade de processamento, podendo ser escrita em qualquer linguagem de programação, que receberá dados do movimento e poderá utilizá-los para realizar cálculos não abordados pelo sistema. A sua comunicação com o software também é feita por meio de um adapter. </p>
 <p align = "justify">Para a conexão com diversos sensores será usado um adapter com a capacidade de receber informações específicas para a usabilidade da aplicação através de portas UDP. A escolha das portas UDP em relação as portas TCP para uso no adapter entre o sensor-unity foi motivada pelo fato de que utilizando o protocolo UDP a transferência é feita de forma mais rápida do que utilizando o protocolo TCP, pois o TCP garante que dados são entregues integralmente, sem erros (pois ele não só envia pacote de dados, como também recebe), ao custo de ser mais lento que o UDP.</p>
 <p align = "justify">O UDP provê um serviço sem conexão não confiável, usando IP para transportar mensagens entre duas máquinas. Este protocolo, igualmente o TCP, provê um mecanismo que o transmissor usa para distinguir entre múltiplos receptores numa mesma máquina.</p>
-<p align = "justify"> Representação do diagrama da arquitetura dos adapters </p>
 <p align="center">
-  <img src="https://i.imgur.com/vs8OLhl.png" alt="test" />
+
+![DiagramaGeralDeArquitetura](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/development/docs/imagens/Arquitetura/Diagrama_geral_de_arquitetura.png)
+
+**Figura 4**- Representação do diagrama da arquitetura dos adapters
+[Clique aqui para visualizar a imagem](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/development/docs/imagens/Arquitetura/Diagrama_geral_de_arquitetura.png)
 </p>
 
 ### 5.1 Formato do Datagrama UDP
@@ -183,15 +190,25 @@ O protocolo de transferência de dados UDP será utilizado no adapter que fará 
 O protocolo TCP não seria viável para o adapter Sensor-Unity, pois sua transferência de dados retorna um valor de sucesso, enquanto os próximos pacotes ficam na espera de que exista sucesso na transferência do último pacote. Isso causaria atraso na chegada dos dados ao Unity, pois mesmo que não haja perda de pacote de dados utilizando protocolo TCP, os movimentos realizados pelo paciente estão em uma frequência muito alta, e por isso é necessário utilizar o UDP ao invés do TCP, pois há uma necessidade de velocidade. Para dados que serão usados em Real-time o protocolo mais utilizado é o UDP.
 </p>
 
-### 5.3 Formato do Datagrama TCP
-<p align = "justify">
- O TCP (Transmission Control Protocol) é responsável pela divisão da mensagem em datagramas, pelo seu reagrupamento e retransmissão dos datagramas perdidos. O IP (Internet Protocol) é responsável pelo roteamento dos datagramas. A camada IP precisa de conhecer todas as rotas possíveis e lidar com possíveis incompatibilidades entre os diferentes meios de transporte. A interface entre TCP e IP é relativamente simples, a camada TCP entrega à camada IP um datagrama de cada vez, não havendo nenhuma relação entre o datagrama atual e os anteriores.
- </p>
-
-### 5.4 Justificativa para uso do TCP no Adapter Unity-Módulo de Processamento
+### 5.3 Justificativa para uso do UDP no Adapter Unity-Módulo de Processamento
 <p align="justify">
-O módulo de processamento não poderá ter perda de dados recebidos e nem perca de dados enviados para o sistema pois isso causaria grandes anomalias ao sistema, isso justifica o uso de TCP neste adapter.
+O módulo de processamento terá de enviar fluxos de dados em tempo real, com uma maior velocidade e com retransmissões constantes.
 </p>
+
+### 5.4 Documentação de interface Adapter e Sensor via UDP
+<p align="justify">Com a ultilização do protocolo de transferência de dados UDP, os adapters que farão o contato entre os modulos irá enviar e receber dados padrões. Formatados da seguinte forma: </p>
+
+* Tempo dado em um double com 8 bytes, variavel time.
+* Posições dadas em doubles com 8 bytes cada, das variaveis x, y, z.
+* Rotações dadas em doubles com 8 bytes cada, das variaveis x, y, z.  
+* Tamanho maximo Buffer Size - 1024 bytes.
+
+<p align="justify">Caracteristicas importantes sobre interface de rede: </p>
+
+* IP - 127.0.0.1.
+* Porta Sender - 5005.
+* Porta Receive - 5004.
+* Pacotes - Ipv4 e Ipv6.
 
 ## 6. Visão de Dados
 
@@ -333,11 +350,11 @@ Um exercício gera n pontos nos eixos x e y.
 
 ### 6.2 DER
 ![DER](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/development/docs/imagens/Arquitetura/der.png)
-**Figura 4**- Diagrama Entidade-Relacionamento
+**Figura 5**- Diagrama Entidade-Relacionamento
 [Clique aqui para visualizar a imagem](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/development/docs/imagens/Arquitetura/der.png)
 ### 6.3 Diagrama Lógico
 ![LÓGICO](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/development/docs/imagens/Arquitetura/logico.png)
-**Figura 5**- Diagrama ME-R Lógico
+**Figura 6**- Diagrama ME-R Lógico
 [Clique aqui para visualizar a imagem](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/development/docs/imagens/Arquitetura/logico.png)
 
 

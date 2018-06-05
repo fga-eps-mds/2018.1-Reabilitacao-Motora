@@ -28,17 +28,28 @@ public class Flow : MonoBehaviour
 		SceneManager.LoadScene("NewMovement");
 	}
 
-
-
 	/**
 	 * Leva para scene de gravar um movimento.
 	 */
-	public static void StaticClinic()
+	public static void StaticRealtimeGraphKinectPatient()
 	{
-		SceneManager.LoadScene("Clinic");
+		SceneManager.LoadScene("RealtimeGraphKinectPatient");
 	}
 
+	public static void StaticRealtimeGraphKinectPhysio()
+	{
+		SceneManager.LoadScene("RealtimeGraphKinectPhysio");
+	}
 
+	public static void StaticRealtimeGraphUDPPatient()
+	{
+		SceneManager.LoadScene("RealtimeGraphUDPPatient");
+	}
+
+	public static void StaticRealtimeGraphUDPPhysio()
+	{
+		SceneManager.LoadScene("RealtimeGraphUDPPhysio");
+	}
 
 	/**
 	 * Leva para scene de detalhe de paciente.
@@ -47,8 +58,6 @@ public class Flow : MonoBehaviour
 	{
 		SceneManager.LoadScene("Patient");
 	}
-
-
 
 	/**
 	 * Leva para scene de tela de login.
@@ -68,10 +77,18 @@ public class Flow : MonoBehaviour
 		SceneManager.LoadScene ("ClinicToMoveMenu", LoadSceneMode.Additive);
 	}
 
-	/**
+    /**
+     * Leva para scene de gravar um movimento.
+     */
+    public static void ChoiceSensor()
+    {
+        SceneManager.LoadScene("ChoiceSensor");
+    }
+
+    /**
 	 * Leva para scene de registrar novo paciente.
 	 */
-	public static void StaticNewPatient()
+    public static void StaticNewPatient()
 	{
 		SceneManager.LoadScene("NewPatient");
 	}
@@ -119,15 +136,6 @@ public class Flow : MonoBehaviour
 	public static void StaticGraphs2()
 	{
 		SceneManager.LoadScene("Graphs2");
-	}
-
-
-	/**
-	 * Leva para scene de gráficos.
-	 */
-	public static void StaticRealtimeGraph()
-	{
-		SceneManager.LoadScene("RealtimeGraph");
 	}
 
 
@@ -217,4 +225,61 @@ public class Flow : MonoBehaviour
 		SceneManager.LoadScene("Graphs3");
 	}
 
+	/**
+	 * Leva para a scene que lista os personagens que podem ser escolhidos pelo paciente/fisioterapeuta.
+	 */
+	public static void StaticCharacterMenu()
+	{
+		SceneManager.LoadScene("CharacterMenu");
+	}
+
+    /**
+	 * Leva para scene de tela de Ajuda.
+	 */
+    public static void StaticHelp()
+    {
+        SceneManager.LoadScene("Help");
+    }
+    /**
+	 * Leva para scene de tela de Ajuda de Criar Paciente.
+	 */
+    public static void StaticHelpPatient()
+    {
+        SceneManager.LoadScene("HelpPatient");
+    }
+    /**
+	 * Leva para scene de tela de Ajuda de Atualizar o Paciente.
+	 */
+    public static void StaticHelpUpdate()
+    {
+        SceneManager.LoadScene("HelpUpdate");
+    }
+    /**
+	 * Leva para scene de tela de Ajuda de Criar Exercício.
+	 */
+    public static void StaticHelpExercise()
+    {
+        SceneManager.LoadScene("HelpExercise");
+    }
+    /**
+	 * Leva para scene de tela de Ajuda de Criar Movimento.
+	 */
+    public static void StaticHelpMovement()
+    {
+        SceneManager.LoadScene("HelpMovement");
+    }
+    /**
+	 * Leva para scene de tela de Ajuda de Criar Sessão.
+	 */
+    public static void StaticHelpSession()
+    {
+        SceneManager.LoadScene("HelpSession");
+    }
+    /**
+	 * Leva para scene de tela de Ajuda de Resultado da Sessão.
+	 */
+    public static void StaticHelpResults()
+    {
+        SceneManager.LoadScene("HelpResults");
+    }
 }

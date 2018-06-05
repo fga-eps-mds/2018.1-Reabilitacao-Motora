@@ -21,93 +21,16 @@ namespace pessoa
 		private string Telefone1;
 		private string Telefone2;
 
-		public int idPessoa 
-		{
-			get 
-			{
-				return IdPessoa; 
-			}
-			set 
-			{
-				IdPessoa = value; 
-			}
-		}
-
-		public string nomePessoa 
-		{
-			get 
-			{
-				return NomePessoa; 
-			}
-			set 
-			{
-				NomePessoa = value; 
-			}
-		}
-
-		public string sexo 
-		{
-			get 
-			{
-				return Sexo; 
-			}
-			set 
-			{
-				Sexo = value; 
-			}
-		}
-
-		public string dataNascimento 
-		{
-			get 
-			{
-				return DataNascimento; 
-			}
-			set 
-			{
-				DataNascimento = value; 
-			}
-		}
-
-		public string telefone1 
-		{
-			get 
-			{
-				return Telefone1; 
-			}
-			set 
-			{
-				Telefone1 = value; 
-			}
-		}
-
-		public string telefone2 
-		{
-			get 
-			{
-				return Telefone2; 
-			}
-			set 
-			{
-				Telefone2 = value; 
-			}
-		}
-
-
-		public Pessoa(){}
+		public int idPessoa { get { return IdPessoa; } set { IdPessoa = value; }}
+		public string nomePessoa { get { return NomePessoa; } set { NomePessoa = value; }}
+		public string sexo { get { return Sexo; } set { Sexo = value; }}
+		public string dataNascimento { get { return DataNascimento; } set { DataNascimento = value; }}
+		public string telefone1 { get { return Telefone1; } set { Telefone1 = value; }}
+		public string telefone2 { get { return Telefone2; } set { Telefone2 = value; }}
 
 		/**
 		 * Classe com todos os atributos de uma pessoa.
 		 */
-		public Pessoa(int id, string nome, string s, string d, string t1, string t2)
-		{
-			this.idPessoa = id;
-			this.nomePessoa = nome;
-			this.sexo = s;
-			this.dataNascimento = d;
-			this.telefone1 = t1;
-			this.telefone2 = t2;	
-		}
 
 		public Pessoa (Object[] columns)
 		{
@@ -124,9 +47,8 @@ namespace pessoa
 		 */
 		public static void Create()
 		{
-			DataBase banco = new DataBase();
 			string query = "CREATE TABLE IF NOT EXISTS PESSOA (idPessoa INTEGER primary key AUTOINCREMENT,nomePessoa VARCHAR (30) not null,sexo CHAR (1) not null,dataNascimento DATE not null,telefone1 VARCHAR (11) not null,telefone2 VARCHAR (11));";
-			banco.Create(GlobalController.instance.path, query);
+			DataBase.Create(query);
 		}
 
 		/**
@@ -139,9 +61,8 @@ namespace pessoa
 			string telefone1,
 			string telefone2)
 		{
-			DataBase banco = new DataBase();
 			Object[] columns = new Object[] {nomePessoa, sexo, dataNascimento, telefone1, telefone2};
-			banco.Insert(GlobalController.instance.path, columns, TablesManager.Tables[tableId].tableName, tableId);	
+			DataBase.Insert(columns, TablesManager.Tables[tableId].tableName, tableId);	
 		}
 
 		/**
@@ -154,9 +75,8 @@ namespace pessoa
 			string telefone1,
 			string telefone2)
 		{
-			DataBase banco = new DataBase();
 			Object[] columns = new Object[] {id, nomePessoa, sexo, dataNascimento, telefone1, telefone2};
-			banco.Update(GlobalController.instance.path, columns, TablesManager.Tables[tableId].tableName, tableId);
+			DataBase.Update(columns, TablesManager.Tables[tableId].tableName, tableId);
 		}
 
 		/**
@@ -164,37 +84,18 @@ namespace pessoa
 		 */
 		public static List<Pessoa> Read()
 		{
-			DataBase banco = new DataBase();
-
-			int idPessoaTemp = 0;
-			string nomePessoaTemp = "";
-			string sexoTemp = "";
-			string dataNascimentoTemp = "";
-			string telefone1Temp = "";
-			string telefone2Temp = "";
-
-			Object[] columns = new Object[] {idPessoaTemp, nomePessoaTemp, sexoTemp, dataNascimentoTemp, telefone1Temp, telefone2Temp};
-
-			List<Pessoa> personList = banco.Read<Pessoa>(GlobalController.instance.path, TablesManager.Tables[tableId].tableName, columns);
+			Object[] columns = new Object[] {0, "", "", "", "", ""};
+			List<Pessoa> personList = DataBase.Read<Pessoa>(TablesManager.Tables[tableId].tableName, columns);
 
 			return personList;		
 		}
 
 		public static Pessoa ReadValue(int id)
 		{
-			DataBase banco = new DataBase();
-			
-			int idPessoaTemp = 0;
-			string nomePessoaTemp = "";
-			string sexoTemp = "";
-			string dataNascimentoTemp = "";
-			string telefone1Temp = "";
-			string telefone2Temp = "";
-
-			Object[] columns = new Object[] {idPessoaTemp, nomePessoaTemp, sexoTemp, dataNascimentoTemp, telefone1Temp, telefone2Temp};
-
-			Pessoa person = banco.ReadValue<Pessoa>(GlobalController.instance.path, TablesManager.Tables[tableId].tableName,
+			Object[] columns = new Object[] {0, "", "", "", "", ""};
+			Pessoa person = DataBase.ReadValue<Pessoa>(TablesManager.Tables[tableId].tableName,
 				TablesManager.Tables[tableId].colName[0], id, columns);
+
 			return person;
 		}
 
@@ -203,8 +104,7 @@ namespace pessoa
 		 */
 		public static void DeleteValue(int id)
 		{
-			DataBase banco = new DataBase();
-			banco.DeleteValue (tableId, id);
+			DataBase.DeleteValue (tableId, id);
 		}
 
 		/**
@@ -212,8 +112,7 @@ namespace pessoa
 		 */
 		public static void Drop()
 		{
-			DataBase banco = new DataBase();
-			banco.Drop (tableId);
+			DataBase.Drop (tableId);
 		}
 	}
 }

@@ -5,45 +5,44 @@ from time import sleep
 UDP_IP = "127.0.0.1"
 UDP_PORT = 5005
 
-sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM) # UDP
+UDPClientSocket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM) # UDP
 
-x = 0.0
+time = 0.0
 
 while 1:
-    mao_x = random.uniform(-15.0, 15.0)
-    mao_y = random.uniform(-15.0, 15.0)
-    mao_z = random.uniform(-15.0, 15.0)
+    mao_x = random.uniform(-1.0, 1.0)
+    mao_y = random.uniform(-1.0, 1.0)
+    mao_z = random.uniform(-1.0, 1.0)
     
-    r_mao_x = random.uniform(-15.0, 15.0)
-    r_mao_y = random.uniform(-15.0, 15.0)
-    r_mao_z = random.uniform(-15.0, 15.0)
+    r_mao_x = random.uniform(-1.0, 1.0)
+    r_mao_y = random.uniform(-1.0, 1.0)
+    r_mao_z = random.uniform(-1.0, 1.0)
 
-
-    braco_x = random.uniform(-15.0, 15.0)
-    braco_y = random.uniform(-15.0, 15.0)
-    braco_z = random.uniform(-15.0, 15.0)
+    braco_x = random.uniform(-1.0, 1.0)
+    braco_y = random.uniform(-1.0, 1.0)
+    braco_z = random.uniform(-1.0, 1.0)
     
-    r_braco_x = random.uniform(-15.0, 15.0)
-    r_braco_y = random.uniform(-15.0, 15.0)
-    r_braco_z = random.uniform(-15.0, 15.0)
+    r_braco_x = random.uniform(-1.0, 1.0)
+    r_braco_y = random.uniform(-1.0, 1.0)
+    r_braco_z = random.uniform(-1.0, 1.0)
 
-    ombro_x = random.uniform(-15.0, 15.0)
-    ombro_y = random.uniform(-15.0, 15.0)
-    ombro_z = random.uniform(-15.0, 15.0)
+    ombro_x = random.uniform(-1.0, 1.0)
+    ombro_y = random.uniform(-1.0, 1.0)
+    ombro_z = random.uniform(-1.0, 1.0)
     
-    r_ombro_x = random.uniform(-15.0, 15.0)
-    r_ombro_y = random.uniform(-15.0, 15.0)
-    r_ombro_z = random.uniform(-15.0, 15.0)
+    r_ombro_x = random.uniform(-1.0, 1.0)
+    r_ombro_y = random.uniform(-1.0, 1.0)
+    r_ombro_z = random.uniform(-1.0, 1.0)
 
-    cotovelo_x = random.uniform(-15.0, 15.0)
-    cotovelo_y = random.uniform(-15.0, 15.0)
-    cotovelo_z = random.uniform(-15.0, 15.0)
+    cotovelo_x = random.uniform(-1.0, 1.0)
+    cotovelo_y = random.uniform(-1.0, 1.0)
+    cotovelo_z = random.uniform(-1.0, 1.0)
     
-    r_cotovelo_x = random.uniform(-15.0, 15.0)
-    r_cotovelo_y = random.uniform(-15.0, 15.0)
-    r_cotovelo_z = random.uniform(-15.0, 15.0)
+    r_cotovelo_x = random.uniform(-1.0, 1.0)
+    r_cotovelo_y = random.uniform(-1.0, 1.0)
+    r_cotovelo_z = random.uniform(-1.0, 1.0)
 
-    x+=0.2
+    time+=0.2
     message = str(x) + ' '
     message += str(mao_x) + ' ' + str(mao_y) + ' ' + str(mao_z) + ' '
     message += str(r_mao_x) + ' ' + str(r_mao_y) + ' ' + str(r_mao_z) + ' ' 
@@ -54,7 +53,7 @@ while 1:
     message += str(braco_x) + ' ' + str(braco_y) + ' ' + str(braco_z) + ' '
     message += str(r_braco_x) + ' ' + str(r_braco_y) + ' ' + str(r_braco_z) + ' ' 
     
-    sock.sendto(bytes(message), (UDP_IP, UDP_PORT))
+    UDPClientSocket.sendto(bytes(message), (UDP_IP, UDP_PORT))
     sleep(.02)
 
     
