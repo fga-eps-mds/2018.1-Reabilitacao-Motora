@@ -11,73 +11,40 @@ namespace DataBaseAttributes
   /**
    * Classe que cria a base de dados em que as relações serão criadas.
    */
-	public class DataBase
+	public static class DataBase
 	{
-		private string SqlQuery;
-		public string sqlQuery 
+		public static void Create (string query)
 		{
-			get
-			{
-				return SqlQuery;
-			}
-			set
-			{
-				SqlQuery = value;
-			}
-		}
-		private IDbConnection Conn;
-		public IDbConnection conn
-		{
-			get
-			{
-				return Conn;
-			}
-			set
-			{
-				Conn = value;
-			}
-		}
-		private IDbCommand Cmd;
-		public IDbCommand cmd
-		{
-			get
-			{
-				return Cmd;
-			}
-			set
-			{
-				Cmd = value;
-			}
-		}
-
-		public void Create (string path, string query)
-		{
-			using (conn = new SqliteConnection(path))
+			using (var conn = new SqliteConnection(GlobalController.path))
 			{
 				conn.Open();
-				cmd = conn.CreateCommand();
+				var sqlQuery = query;
+				
+				using (var cmd = new SqliteCommand(sqlQuery, conn))
+				{
+					cmd.ExecuteNonQuery();
+					cmd.Dispose();
+				}
 
-				sqlQuery = query;
-
-				cmd.CommandText = sqlQuery;
-				cmd.ExecuteScalar();
+				conn.Dispose();
 				conn.Close();
+				SqliteConnection.ClearAllPools();
+				GC.Collect();
+				GC.WaitForPendingFinalizers();
 			}
 		}
 
-		public void Insert (string path, System.Object[] columns, string tableName, int tableId)
+		public static void Insert (System.Object[] columns, string tableName, int tableId)
 		{
-			using (conn = new SqliteConnection(path))
+			using (var conn = new SqliteConnection(GlobalController.path))
 			{
 				conn.Open();
-				cmd = conn.CreateCommand();
 
 				StringBuilder bld = new StringBuilder();
 
 				bld.Append(string.Format("insert into {0} (", tableName));
 
 				int tableSize = TablesManager.Tables[tableId].colName.Count;
-				Debug.Log(tableSize + " " + columns.Length);
 				for (int i = 1; i < tableSize; ++i) 
 				{
 					if (columns[i-1] != null)
@@ -102,7 +69,6 @@ namespace DataBaseAttributes
 				}
 
 				bld.Append(") values (");
-
 				for (int i = 0; i < columns.Length; ++i) 
 				{
 					if (columns[i] != null)
@@ -117,7 +83,7 @@ namespace DataBaseAttributes
 							aux = ",";
 						}
 
-						bld.Append((string.Format("\"{0}\"", columns[i]) + aux));
+						bld.Append((string.Format("@param{0}", i) + aux));
 					}
 				}
 
@@ -126,22 +92,38 @@ namespace DataBaseAttributes
 					bld.Remove(bld.Length - 1, 1);
 				}
 
+
 				bld.Append(")");
 
-				sqlQuery = bld.ToString();
+				var sqlQuery = bld.ToString();
 
-				cmd.CommandText = sqlQuery;
-				cmd.ExecuteScalar();
+				using (var cmd = new SqliteCommand(sqlQuery, conn))
+				{
+					for (int i = 0; i < columns.Length; ++i) 
+					{
+						if (columns[i] != null)
+						{
+							cmd.Parameters.AddWithValue(string.Format("@param{0}", i), columns[i]);
+						}
+					}
+
+					cmd.ExecuteNonQuery();
+					cmd.Dispose();
+				}
+
+				conn.Dispose();
 				conn.Close();
+				SqliteConnection.ClearAllPools();
+				GC.Collect();
+				GC.WaitForPendingFinalizers();
 			}
 		}
 
-		public void Update (string path, System.Object[] columns, string tableName, int tableId)
+		public static void Update (System.Object[] columns, string tableName, int tableId)
 		{
-			using (conn = new SqliteConnection(path))
+			using (var conn = new SqliteConnection(GlobalController.path))
 			{
 				conn.Open();
-				cmd = conn.CreateCommand();
 				StringBuilder bld = new StringBuilder();
 
 				bld.Append(string.Format("UPDATE \"{0}\" set ", tableName));
@@ -159,144 +141,205 @@ namespace DataBaseAttributes
 						aux = ",";
 					}
 
-					bld.Append(string.Format("\"{0}\"=\"{1}\"{2}", TablesManager.Tables[tableId].colName[i], columns[i], aux));
+					bld.Append(string.Format("\"{0}\"=@param{1}{2}", TablesManager.Tables[tableId].colName[i], i, aux));
 				}
+
 
 				bld.Append(string.Format("WHERE \"{0}\" = \"{1}\"", TablesManager.Tables[tableId].colName[0], columns[0]));
 
-				sqlQuery = bld.ToString();
-				Debug.Log(sqlQuery);
-
-				cmd.CommandText = sqlQuery;
-				
-				cmd.ExecuteScalar();
-				conn.Close();
-			}
-		}
-
-
-		public List<T> Read<T> (string path, string tableName, System.Object[] columns)
-		{
-			using (conn = new SqliteConnection(path))
-			{
-				conn.Open();
-				cmd = conn.CreateCommand();
-
-				sqlQuery = "SELECT * " + string.Format("FROM \"{0}\";", tableName);
-				cmd.CommandText = sqlQuery;
-
-				IDataReader reader = cmd.ExecuteReader();
-				List<T> classList = new List<T>();
-				while (reader.Read())
+				var sqlQuery = bld.ToString();
+				UnityEngine.Debug.Log(sqlQuery);
+				using (var cmd = new SqliteCommand(sqlQuery, conn))
 				{
-
-					var aux = columns;
-					ObjectArray (ref aux, ref reader);
-					var columnsCopy = aux;
-
-					Type classType = typeof(T);
-					ConstructorInfo classConstructor = classType.GetConstructor(new [] { columnsCopy.GetType() });
-					T classInstance = (T)classConstructor.Invoke(new object[] { columnsCopy });
-
-					classList.Add(classInstance);
+					for (int i = 1; i < TablesManager.Tables[tableId].colName.Count; ++i)
+					{
+						cmd.Parameters.AddWithValue(string.Format("@param{0}", i), columns[i]);
+					}
+					cmd.ExecuteNonQuery();
+					cmd.Dispose();
 				}
 
-				CloseDB(reader, cmd, conn);
-				return classList;	 
+				conn.Dispose();
+				conn.Close();
+				SqliteConnection.ClearAllPools();
+				GC.Collect();
+				GC.WaitForPendingFinalizers();
 			}
 		}
 
-		public T ReadValue<T> (string path, string tableName, string colName, int idTable, System.Object[] columns)
+
+		public static List<T> Read<T> (string tableName, System.Object[] columns)
 		{
-			using (conn = new SqliteConnection(path))
+			// uma copia do array já que não é possivel passá-lo sem ser por referencia
+			System.Object[] backup = new System.Object [] {};
+			foreach (var col in columns)
+			{
+				Array.Resize(ref backup, backup.Length + 1);
+				backup[backup.Length - 1] = col;
+			}
+
+			using (var conn = new SqliteConnection(GlobalController.path))
 			{
 				conn.Open();
-				cmd = conn.CreateCommand();
-				sqlQuery = "SELECT * " + string.Format("FROM \"{0}\" WHERE \"{1}\" = \"{2}\";", tableName,
+
+				var sqlQuery = "SELECT * " + string.Format("FROM \"{0}\";", tableName);
+
+				List<T> classList = new List<T>();
+
+				using (var cmd = new SqliteCommand(sqlQuery, conn))
+				{
+					using (SqliteDataReader reader = cmd.ExecuteReader())
+					{
+						while (reader.Read())
+						{
+							// recuperando cópia aos valores originais
+							for (int i = 0; i < columns.Length; ++i)
+							{
+								columns[i] = backup[i];
+							}
+							
+							var columnsCopy = ObjectArray (columns, reader);
+
+							Type classType = typeof(T);
+							ConstructorInfo classConstructor = classType.GetConstructor(new [] { columnsCopy.GetType() });
+							T classInstance = (T)classConstructor.Invoke(new object[] { columnsCopy });
+
+							classList.Add(classInstance);
+						}
+						
+						reader.Dispose();
+						reader.Close();
+						cmd.Dispose();
+						conn.Dispose();
+						conn.Close();
+						SqliteConnection.ClearAllPools();
+						GC.Collect();
+						GC.WaitForPendingFinalizers();
+
+						return classList;	 
+					}
+				}
+			}
+		}
+
+		public static T ReadValue<T> (string tableName, string colName, int idTable, System.Object[] columns)
+		{
+			using (var conn = new SqliteConnection(GlobalController.path))
+			{
+				conn.Open();
+				var sqlQuery = "SELECT * " + string.Format("FROM \"{0}\" WHERE \"{1}\" = \"{2}\";", tableName,
 																		    					  colName,
 																								 idTable);
-				cmd.CommandText = sqlQuery;
-				IDataReader reader = cmd.ExecuteReader();
-				reader.Read();
+				using (var cmd = new SqliteCommand(sqlQuery, conn))
+				{
+					using (SqliteDataReader reader = cmd.ExecuteReader())
+					{
+						T classInstance;
 
-				var aux = columns;
-				ObjectArray (ref aux, ref reader);
-				var columnsCopy = aux;
+						reader.Read();
+						
+						var columnsCopy = ObjectArray (columns, reader);
 
-				Type classType = typeof(T);
-				ConstructorInfo classConstructor = classType.GetConstructor(new [] { columnsCopy.GetType() });
-				T classInstance = (T)classConstructor.Invoke(new object[] { columnsCopy });
+						Type classType = typeof(T);
+						ConstructorInfo classConstructor = classType.GetConstructor(new [] { columnsCopy.GetType() });
+						classInstance = (T)classConstructor.Invoke(new object[] { columnsCopy });
 
-				CloseDB(reader, cmd, conn);
+						reader.Dispose();
+						reader.Close();
 
-				return classInstance;	 
+						cmd.Dispose();
+
+						conn.Dispose();
+						conn.Close();
+						SqliteConnection.ClearAllPools();
+
+						GC.Collect();
+						GC.WaitForPendingFinalizers();
+
+						return classInstance;
+					}
+				} 
 			}
 		}
 
 		/**
 		* Função que deleta dados cadastrados anteriormente na relação de pessoas.
 		 */
-		public void DeleteValue(int tableId, int id)
+		public static void DeleteValue(int tableId, int id)
 		{
-			using (conn = new SqliteConnection(GlobalController.instance.path))
+			using (var conn = new SqliteConnection(GlobalController.path))
 			{
 				conn.Open();
-				cmd = conn.CreateCommand();
 
-				sqlQuery = string.Format("delete from \"{0}\" WHERE \"{1}\" = \"{2}\"", TablesManager.Tables[tableId].tableName, TablesManager.Tables[tableId].colName[0], id);
+				var sqlQuery = string.Format("delete from \"{0}\" WHERE \"{1}\" = \"{2}\"", TablesManager.Tables[tableId].tableName, TablesManager.Tables[tableId].colName[0], id);
+				using (var cmd = new SqliteCommand(sqlQuery, conn))
+				{
+					cmd.ExecuteNonQuery();
+					cmd.Dispose();
+				}
 
-				cmd.CommandText = sqlQuery;
-				cmd.ExecuteScalar();
+				conn.Dispose();
 				conn.Close();
+				SqliteConnection.ClearAllPools();
+				GC.Collect();
+				GC.WaitForPendingFinalizers();
 			}
 		}
 
 		/**
 		* Função que apaga a relação de pessoas inteira de uma vez.
 		 */
-		public void Drop(int tableId)
+		public static void Drop(int tableId)
 		{
-			using (conn = new SqliteConnection(GlobalController.instance.path))
+			using (var conn = new SqliteConnection(GlobalController.path))
 			{
 				conn.Open();
-				cmd = conn.CreateCommand();
 
-				sqlQuery = string.Format("DROP TABLE IF EXISTS \"{0}\"", TablesManager.Tables[tableId].tableName);
+				var sqlQuery = string.Format("DROP TABLE IF EXISTS \"{0}\"", TablesManager.Tables[tableId].tableName);
 
-				cmd.CommandText = sqlQuery;
-				cmd.ExecuteScalar();
+				using (var cmd = new SqliteCommand(sqlQuery, conn))
+				{
+					cmd.ExecuteNonQuery();
+					cmd.Dispose();
+				}
+
+				conn.Dispose();
 				conn.Close();
+				SqliteConnection.ClearAllPools();
+				GC.Collect();
+				GC.WaitForPendingFinalizers();
 			}
 		}
 
-		private static void CloseDB (IDataReader reader, IDbCommand cmd, IDbConnection conn)
-		{
-			reader.Close();
-			cmd.Dispose();
-			conn.Close();
-		}
-
-		private static void ObjectArray (ref System.Object[] columns, ref IDataReader reader)
+		private static System.Object[] ObjectArray (System.Object[] columns, SqliteDataReader reader)
 		{
 			for (int i = 0; i < columns.Length; ++i)
 			{
-				Type t = columns[i].GetType();
 				if (!reader.IsDBNull(i))
 				{
-					if ( t.Equals(typeof(int)) ) 
+					if (columns[i] != null)
 					{
-						columns[i] = reader.GetInt32(i);
-					}
-					else if ( t.Equals(typeof(string)) ) 
-					{
-						columns[i] = reader.GetString(i);
-					}
-					else if ( t.Equals(typeof(float)) ) 
-					{
-						columns[i] = (float) reader.GetDouble(i);
-					}
+						Type t = columns[i].GetType();
+						if ( t.Equals(typeof(int)) ) 
+						{
+							columns[i] = reader.GetInt32(i);
+						}
+						else if ( t.Equals(typeof(string)) ) 
+						{
+							columns[i] = reader.GetString(i);
+						}
+                        else if (t.Equals(typeof(float)))
+                        {
+                            columns[i] = reader.GetFloat(i);
+                        }
+                    }
+				}
+				else
+				{
+					columns[i] = null;
 				}
 			}
+			return columns;
 		}
 	}
 }

@@ -11,7 +11,7 @@ public class instanciatePatient : MonoBehaviour
 
 	const int HEIGHT_PADDING = 55;
 
-	void ButtonSpawner(int posY, Paciente patient)
+	public void ButtonSpawner(int posY, Paciente patient)
 	{
 		GameObject go = Instantiate(buttonPrefab, transform);
 
