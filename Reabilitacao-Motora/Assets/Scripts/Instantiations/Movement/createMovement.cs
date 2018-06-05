@@ -31,7 +31,7 @@ public class createMovement : MonoBehaviour
 		{
 			foreach (var x in allInputs)
 			{
-				ApplyColor (x, true);
+				ApplyColor (x, 1);
 			}
 
 			var muscles = musculos.text.Split(',');
@@ -107,14 +107,18 @@ public class createMovement : MonoBehaviour
 				print (erro);
 			}
 
-			ApplyColor (inputs[0], false);
+			ApplyColor (inputs[0], 0);
 			valid = false;
+		}
+		else
+		{
+			ApplyColor (inputs[0], 2);
 		}
 
 		return valid;
 	}
 
-	public static void ApplyColor (InputField input, bool ok)
+	public static void ApplyColor (InputField input, int ok)
 	{
 		input.colors = ColorManager.SetColor(input.colors, ok);
 	}

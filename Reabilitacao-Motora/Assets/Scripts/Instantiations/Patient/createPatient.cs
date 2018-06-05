@@ -39,7 +39,7 @@ public class createPatient : MonoBehaviour
 		{
 			foreach (var x in allInputs)
 			{
-				ApplyColor (x, true);
+				ApplyColor (x, 1);
 			}
 
 			var trip = date.text.Split('/');
@@ -112,7 +112,11 @@ public class createPatient : MonoBehaviour
 					print (erro);
 				}
 
-				ApplyColor (inputs[0], false);
+				ApplyColor (inputs[0], 0);
+			}
+			else
+			{
+				ApplyColor (inputs[0], 2);	
 			}
 			if (treatDate != "")
 			{
@@ -122,7 +126,11 @@ public class createPatient : MonoBehaviour
 					print (erro);
 				}
 
-				ApplyColor (inputs[1], false);
+				ApplyColor (inputs[1], 0);
+			}
+			else
+			{
+				ApplyColor (inputs[1], 2);	
 			}
 			if (treatPhone1 != "")
 			{
@@ -132,7 +140,11 @@ public class createPatient : MonoBehaviour
 					print (erro);
 				}
 
-				ApplyColor (inputs[2], false);
+				ApplyColor (inputs[2], 0);
+			}
+			else
+			{
+				ApplyColor (inputs[2], 2);	
 			}
 			if (treatPhone2 != "")
 			{
@@ -142,7 +154,11 @@ public class createPatient : MonoBehaviour
 					print (erro);
 				}
 
-				ApplyColor (inputs[3], false);
+				ApplyColor (inputs[3], 0);
+			}
+			else
+			{
+				ApplyColor (inputs[3], 2);	
 			}
 
 			valid = false;
@@ -151,7 +167,7 @@ public class createPatient : MonoBehaviour
 		return valid;
 	}
 
-	public static void ApplyColor (InputField input, bool ok)
+	public static void ApplyColor (InputField input, int ok)
 	{
 		input.colors = ColorManager.SetColor(input.colors, ok);
 	}
