@@ -2,9 +2,11 @@
 
 <p align="justify">Esta <i>Sprint</i> tem como objetivo:</p>
 
-- Manter o ritmo de trabalho
-- Encerrar o backlog do produto inicialmente proposto e previsto na EAP
-- Entrega dos testes e resolução de bugs críticos
+- Retomar o ritmo de trabalho (as soon as possible)
+- Iniciar os trabalhos de integração com o software do cliente
+- Aproveitar a estabilidade do pipeline de produção para realizarmos engenharia de software (entrega contínua)
+- Fechar o backlog do produto previsto pela EAP
+- Reduzir, sempre que possível, bugs encontrados
 
 ## 2. Papéis
 
@@ -41,82 +43,224 @@ O Quadro de pareamento está disponível no -A realizar-
 
 ## 5. Sprint Backlog
 
-A Milestone desta Sprint encontra-se neste [link](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/milestone/15)
+A Milestone desta Sprint encontra-se neste [link](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/milestone/16)
 
 -------
 
 ## 6. Tarefas a serem realizadas
 
 
-### [Criação dos testes pendentes](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/188)
+### [US15 - Gerenciamento de interface gráfica](https://github.com/fga-gpp-mds/2018.1-reabilitacao-motora/issues/194)
 
 #### Descrição:
-Adiciona testes unitários para maioria dos métodos/scripts.
+Eu, como fisioterapeuta desejo configurar o ambiente gráfico para melhor adaptar às condições do tratamento.
 
 #### Critérios de aceitação
-- Testes criados.
 - Testes passando.
 - Build passando
-- Sem conflitos com a branch development
 
 
-**Pontos:** 5.
+**Pontos:** 13.
 
 ---
 
-### [Refatorar documentação das interfaces UDP](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/197)
+### [Correção de bugs UDP](https://github.com/fga-gpp-mds/2018.1-reabilitacao-motora/issues/195)
 
 #### Descrição:
-Revisar documento de arquitetura para que esteja completamente de acordo com as propostas.
+Scene e scripts UDP contem alguns erros, deve-se arruma-los.
 
 #### Critérios de Aceitação
-- Obter dados complementares sobre a conexão UDP.
+- Refatorar scripts UDP.
+- Corrigir scenes relacionadas a conexão UDP.
+
+**Pontos:** 2.
+
+---
+
+### [Adicionar tutorial para rotular movimento dentro do software](https://github.com/fga-gpp-mds/2018.1-reabilitacao-motora/issues/207)
+
+#### Descrição:
+Adicionar tutorial para rotular movimento dentro do software
+#### Critérios de Aceitação
+- Testes Unit passando.
+- Build passando
+
 
 **Pontos:** 3.
 
 ---
 
-### [US16 - Menu de Ajuda](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/192)
+### [Não há avisos sobre erros no login](https://github.com/fga-gpp-mds/2018.1-reabilitacao-motora/issues/209)
 
 #### Descrição:
-Eu, como fisioterapeuta, desejo ter acesso a um ambiente de suporte para me auxiliar na operação do software.
-
-#### Critérios de Aceitação
-- Testes passando
-- Build passando
-
-
-#### Tarefas
-- Menu de ajuda contendo informações para o usuário
-
-**Pontos:** 5.
-
----
-
-### [US15 - Gerenciamento de interface gráfica](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/194)
-
-#### Descrição:
-Eu, como fisioterapeuta desejo configurar o ambiente gráfico para melhor adaptar às condições do tratamento.
+Ao logar-se incorretamente, ambos campos se tornam vermelhos, mas não há um aviso específico sobre qual o problema no login.
 
 #### Critérios de Aceitação:
 - Testes Unity passando.
 - Build passando
 
 #### Tarefas:
-- Customização do ambiente gráfico
-- Customização do sensor a ser utilizado
+- Criar um pop-up avisando sobre o tipo de erro que ocorreu.
 
-**Pontos:** 13.
+**Pontos:** 1.
 
 ---
 
-### [Correção dos bugs UDP](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/195)
+### [Tutorial de criação de paciente com bug de não conseguir voltar](https://github.com/fga-gpp-mds/2018.1-reabilitacao-motora/issues/210)
 
 #### Descrição:
-Scene e scripts UDP contem alguns erros, deve-se arruma-los.
+Ao entrar na pagina de tutorial sobre a criação de novos paciente não consegui voltar para o menu.
 
 #### Critérios de Aceitação:
-- Refatorar scripts UDP.
-- Corrigir scenes relacionadas a conexão UDP
+- Ao clicar no botão conseguir voltar
+- Build passando
+- Testes passando
 
-**Pontos:** 2.
+#### Tarefas:
+- Analisar causa do bug
+- Corrigir bug
+
+**Pontos:** 1.
+
+---
+
+### [Não há avisos sobre erros durante o cadastro de fisioterapeuta](https://github.com/fga-gpp-mds/2018.1-reabilitacao-motora/issues/211)
+
+#### Descrição:
+Não há avisos específicos para os erros indicados em vermelho durante o cadastro de conta de fisioterapeuta. Necessita-se:
+
+#### Critérios de Aceitação:
+- Criar um pop-up explicando o porque do preenchimento de tal campo ser inválido
+
+
+**Pontos:** 1.
+
+---
+
+### [Tutorial de criação de novos pacientes desformatado](https://github.com/fga-gpp-mds/2018.1-reabilitacao-motora/issues/212)
+
+#### Descrição:
+Descrição do tutoria de criação de novos pacientes está desformatado
+
+#### Critérios de Aceitação:
+- Tutorial sem sobreposição de layouts
+- Build passando
+- Testes passando
+
+#### Tarefas:
+- Analisar causa do bug
+- Corrigir bug
+
+**Pontos:** 1.
+
+---
+
+### [Não há avisos sobre erros durante o cadastro de paciente](https://github.com/fga-gpp-mds/2018.1-reabilitacao-motora/issues/213)
+
+#### Descrição:
+Não há avisos específicos para os erros indicados em vermelho durante o cadastro de conta de paciente. Necessita-se:
+
+#### Critérios de Aceitação:
+- Criar um pop-up explicando o porque do preenchimento de tal campo ser inválido
+
+
+**Pontos:** 1.
+
+---
+
+### [Login sem a identificação dos campos](https://github.com/fga-gpp-mds/2018.1-reabilitacao-motora/issues/214)
+
+#### Descrição:
+Ao entrar na pagina de login os campos de login e senha não estão corretamente identificados, eles podem ser identificados com um hint interno ou um campo de texto em cima.
+
+#### Critérios de Aceitação:
+- Visualizar a identificação dos campos
+- Build passando
+- Testes passando
+
+#### Tarefas:
+- Analisar causa do bug
+- Corrigir bug
+
+**Pontos:** 1.
+
+---
+
+### [Botão de retorno não funciona - Seleção de Sensor](https://github.com/fga-gpp-mds/2018.1-reabilitacao-motora/issues/215)
+
+#### Descrição:
+O botão de retornar não está funcionando na tela de seleção de Sensor. Necessita-se:
+
+#### Critérios de Aceitação:
+- Tornar o botão de retorno funcional.
+
+**Pontos:** 1.
+
+---
+
+### [Botão de retorno não funciona - Tela de movimento](https://github.com/fga-gpp-mds/2018.1-reabilitacao-motora/issues/216)
+
+#### Descrição:
+O botão de retornar não está funcionando na tela de movimento (Paciente -> Sessão -> exercício -> movimento). Necessita-se:
+
+#### Critérios de Aceitação:
+- Tornar o botão de retorno funcional.
+
+**Pontos:** 1.
+
+---
+
+### [Tela de salvar sensor não volta para o menu inicial ao salvar o sensor a ser utilizado](https://github.com/fga-gpp-mds/2018.1-reabilitacao-motora/issues/217)
+
+#### Descrição:
+Ao entrar na tela de seleção sensores e clicar em salvar a aplicação vai para tela de gravação de movimento onde apenas deveria voltar para o menu iniciar e salvar a instancia do sensor a ser usado.
+Além disso a tela de gravação em que o usuário é levado nao é possivel voltar e nem um campo desformatado perto da localização de voltar.
+
+#### Critérios de Aceitação:
+- Após salvar um sensor voltar para o menu
+- Arrumar a tela de gravação que o usuário é levado
+- Build passando
+- Testes passando
+
+#### Tarefas:
+- Analisar causa do bug
+- Corrigir bug
+
+**Pontos:** 1.
+
+---
+
+### [Botão salvar, na tela de escolha de sensor, muito pequeno](https://github.com/fga-gpp-mds/2018.1-reabilitacao-motora/issues/218)
+
+#### Descrição:
+Ao entrar na tela de seleção sensores o botão de salvar está muito pequeno comparado ao de outras telas.
+
+#### Critérios de Aceitação:
+- Botão com tamanho proporcional
+- Build passando
+- Testes passando
+
+#### Tarefas:
+- Fazer correção
+
+**Pontos:** 1.
+
+---
+
+### [Criação dos adapters para o código do cliente](https://github.com/fga-gpp-mds/2018.1-reabilitacao-motora/issues/221)
+
+#### Descrição:
+Criação dos adapters necessários para se acoplar o código do cliente ao projeto.
+
+#### Critérios de Aceitação:
+- Adapters criados
+- Adapters funcionando
+
+#### Tarefas:
+- Estudos sobre o código
+- Criação do adapter do módulo do sensor
+- Criação do adapter do módulo de processamento
+
+**Pontos:** 8.
+
+---
