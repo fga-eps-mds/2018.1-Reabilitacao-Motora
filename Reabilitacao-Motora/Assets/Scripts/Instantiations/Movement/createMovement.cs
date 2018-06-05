@@ -44,20 +44,9 @@ public class createMovement : MonoBehaviour
 			pathSave += physiounderscored + "/";
 			pathSave += movunderscored + "-";
 			pathSave += DateTime.Now.ToString("HHmmss", System.Globalization.DateTimeFormatInfo.InvariantInfo);
-			pathSave += ".points";
-
-			string description;
-			if (descricao.text == "")
-			{
-				description = null;
-			}
-			else
-			{
-				description = descricao.text;
-			}
 
 			Movimento.Insert (GlobalController.instance.admin.idFisioterapeuta,
-				nomeMovimento.text, pathSave, description);
+				nomeMovimento.text, descricao.text, pathSave);
 
 			List<Movimento> movementsList = Movimento.Read();
 
@@ -72,9 +61,17 @@ public class createMovement : MonoBehaviour
 				}
 			}
 
-			GlobalController.instance.movement = movementsList[movementsList.Count - 1];
 			GlobalController.patientOrPhysio = true;
-			Flow.ChoiceSensor();
+			GlobalController.instance.movement = movementsList[movementsList.Count - 1];
+			if(GlobalController.Sensor == false)
+			{
+				Flow.StaticRealtimeGraphKinectPhysio();
+			}
+			else
+			{
+				Flow.StaticRealtimeGraphUDPPhysio();				
+			
+			}
 		}
 	}
 

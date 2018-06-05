@@ -44,8 +44,16 @@ public class createExercise : MonoBehaviour
 			pathSave, null);
 
 		List<Exercicio> exercises = Exercicio.Read();
-		GlobalController.instance.exercise = exercises[exercises.Count - 1];
 		GlobalController.patientOrPhysio = false;
-		Flow.ChoiceSensor();
+		GlobalController.instance.exercise = exercises[exercises.Count - 1];
+		if(GlobalController.Sensor == false)
+		{
+			Flow.StaticRealtimeGraphKinectPhysio();
+		}
+		else
+		{
+			Flow.StaticRealtimeGraphUDPPhysio();				
+		
+		}
 	}
 }

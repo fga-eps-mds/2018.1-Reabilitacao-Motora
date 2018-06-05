@@ -59,6 +59,6 @@ while 1:
     message += str(r_braco_x) + ' ' + str(r_braco_y) + ' ' + str(r_braco_z) + ' ' 
     
     UDPClientSocket.sendto(str.encode(message), (UDP_IP, UDP_PORT))
-    sleep(.02)
+    sleep(.01)
 
     

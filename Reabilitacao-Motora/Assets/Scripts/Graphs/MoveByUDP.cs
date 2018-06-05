@@ -43,7 +43,7 @@ public class MoveByUDP : MonoBehaviour
     }
 
     void ReceiveServerInfo (IAsyncResult result) {        
-        Debug.Log("Received Server Info");
+        //Debug.Log("Received Server Info");
         byte[] receivedBytes = client.EndReceive(result, ref remoteEP);
 
         rxString = System.Text.Encoding.UTF8.GetString(receivedBytes);
