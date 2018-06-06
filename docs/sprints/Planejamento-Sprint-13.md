@@ -28,10 +28,10 @@
 
 ## 3. Tamanho da _Sprint_
 
-| Data de Início | 20/05/2018 |
+| Data de Início | 04/06/2018 |
 |:--|:--:|
-| **Data de Término** | **03/06/2018** |
-| **Pontos Planejados** | **29**|
+| **Data de Término** | **10/06/2018** |
+| **Pontos Planejados** | **37**|
 | **Duração** | **7 dias** |
 
 
