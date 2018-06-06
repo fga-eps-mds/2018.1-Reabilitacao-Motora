@@ -40,9 +40,9 @@ namespace Tests
 			GameObject gameobject2 = new GameObject ();
 			var inputResponse = gameobject2.AddComponent<InputField>() as InputField;
 
-			inputExpected.colors = ColorManager.SetColor(inputExpected.colors, true);
+			inputExpected.colors = ColorManager.SetColor(inputExpected.colors, 1);
 
-			createPatient.ApplyColor(inputResponse, true);
+			createPatient.ApplyColor(inputResponse, 1);
 			
 			Assert.AreEqual(inputExpected.colors, inputResponse.colors);
 		}

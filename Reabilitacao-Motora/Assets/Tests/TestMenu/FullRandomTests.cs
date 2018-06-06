@@ -112,7 +112,7 @@ namespace Tests
 				var input6 = GameObject.Find("/Canvas/PanelPhysiotherapist/InputFieldConfirmPassword").GetComponentInChildren<InputField>();
 				input6.text = "rapaziada";
 			}
-			
+
 			button.OnPointerClick(new PointerEventData(EventSystem.current));
 		}
 
@@ -129,7 +129,7 @@ namespace Tests
 			var button = GameObject.Find("/Canvas/Help").GetComponent<Button>();
 			button.OnPointerClick(new PointerEventData(EventSystem.current));
 		}
-		
+
 		public static void NewPhysiotherapistOkPopUp()
 		{
 			bool active = GameObject.Find("/Canvas/PanelValidation/OkBt");
@@ -163,7 +163,7 @@ namespace Tests
 			var button = GameObject.Find("/Canvas/ExitBt").GetComponent<Button>();
 			button.OnPointerClick(new PointerEventData(EventSystem.current));
 		}
-		
+
 		public static void MovementsVoltar()
 		{
 			MovementsCancelarDeletarMovimento();
@@ -219,7 +219,7 @@ namespace Tests
 			var button = GameObject.Find("/Canvas/Gravar Movimento").GetComponent<Button>();
 			button.OnPointerClick(new PointerEventData(EventSystem.current));
 		}
-		
+
 		public static void NewMovementVoltar()
 		{
 			var button = GameObject.Find("/Canvas/BackBt").GetComponent<Button>();
@@ -249,7 +249,7 @@ namespace Tests
 				var input3 = GameObject.Find("/Canvas/PanelShowPatient/InputFieldNotes").GetComponentInChildren<InputField>();
 				input3.text = "haHaAhAHaHAa";
 			}
-			
+
 			button.OnPointerClick(new PointerEventData(EventSystem.current));
 		}
 
@@ -258,7 +258,7 @@ namespace Tests
 			var button = GameObject.Find("/Canvas/PanelShowPatient/CancelBt").GetComponent<Button>();
 			button.OnPointerClick(new PointerEventData(EventSystem.current));
 		}
-		
+
 		public static void ChoiceSensorVoltar()
 		{
 			var button = GameObject.Find("/Canvas/BackBt").GetComponent<Button>();
@@ -288,7 +288,7 @@ namespace Tests
 		{
 			RealtimeGraphKinectPatientCancelardeletarRotulo();
 			var button = GameObject.Find("/Canvas/BackBt").GetComponent<Button>();
-			button.OnPointerClick(new PointerEventData(EventSystem.current));	
+			button.OnPointerClick(new PointerEventData(EventSystem.current));
 		}
 
 		public static void RealtimeGraphKinectPatientrotular()
@@ -353,7 +353,7 @@ namespace Tests
 
 		public static void RealtimeGraphKinectPhysiovoltar()
 		{
-			RealtimeGraphKinectPhysioCancelardeletarRotulo();	
+			RealtimeGraphKinectPhysioCancelardeletarRotulo();
 			var button = GameObject.Find("/Canvas/BackBt").GetComponent<Button>();
 			button.OnPointerClick(new PointerEventData(EventSystem.current));
 		}
