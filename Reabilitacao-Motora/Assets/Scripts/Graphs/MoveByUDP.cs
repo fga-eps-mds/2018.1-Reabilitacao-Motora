@@ -102,7 +102,7 @@ public class MoveByUDP : MonoBehaviour
 	{
 		if(GlobalController.instance != null && 
 		   (GlobalController.instance.movement != null ||
-		   	GlobalController.instance.movement != null)
+		   	GlobalController.instance.exercise != null)
 		  )
 		{
 			t = false;

@@ -33,14 +33,91 @@ public class GlobalController : MonoBehaviour
 	public static bool test;
 	public static bool patientOrPhysio;
 	public static bool Sensor;
+	public static int choiceAvatar;
 
-	public Fisioterapeuta admin { get { return Admin; } set { Admin = value; }}
-	public Paciente user { get { return User; } set { User = value; }}
-	public Movimento movement { get { return Movement; } set { Movement = value; }}
-	public Sessao session { get { return Session; } set { Session = value; }}
-	public Exercicio exercise { get { return Exercise; } set { Exercise = value; }}
-	public PontosRotuloFisioterapeuta prf { get { return Prf; } set { Prf = value; }}
-	public PontosRotuloPaciente prp { get { return Prp; } set { Prp = value; }}
+	public Fisioterapeuta admin
+	{
+		get
+		{
+			return Admin;
+		}
+		set
+		{
+			Admin = value;
+		}
+	}
+
+	public Paciente user
+	{
+		get
+		{
+			return User;
+		}
+		set
+		{
+			User = value;
+		}
+	}
+
+	public Movimento movement
+	{
+		get
+		{
+			return Movement;
+		}
+		set
+		{
+			Movement = value;
+		}
+	}
+
+	public Sessao session
+	{
+		get
+		{
+			return Session;
+		}
+		set
+		{
+			Session = value;
+		}
+	}
+
+	public Exercicio exercise
+	{
+		get
+		{
+			return Exercise;
+		}
+		set
+		{
+			Exercise = value;
+		}
+	}
+
+	public PontosRotuloFisioterapeuta prf
+	{
+		get
+		{
+			return Prf;
+		}
+		set
+		{
+			Prf = value;
+		}
+	}
+
+	public PontosRotuloPaciente prp
+	{
+		get
+		{
+			return Prp;
+		}
+		set
+		{
+			Prp = value;
+		}
+	}
 
 	public void Awake ()
 	{
@@ -66,7 +143,7 @@ public class GlobalController : MonoBehaviour
 
 	public static void Initialize()
 	{
-		if (test == false) 
+		if (test == false)
 		{
 			path = "URI=file:" +  Application.streamingAssetsPath + "/fisiotech.db";
 		}
@@ -74,7 +151,7 @@ public class GlobalController : MonoBehaviour
 		{
 			path = "URI=file:" +  Application.streamingAssetsPath + "/test_fisiotech.db";
 		}
-		
+
 		var directory = path.Substring(9, path.Length - 9);
 
 		if (!System.IO.File.Exists(directory))

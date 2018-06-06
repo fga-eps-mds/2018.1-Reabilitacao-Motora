@@ -3,6 +3,7 @@ using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Text.RegularExpressions;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.TestTools;
@@ -199,11 +200,14 @@ namespace Tests
 			yield return new WaitForSeconds(0.5f);
 
 			createExercise.CreateExercise();
+			var device = @"^(.*?(\bDevice|SDK\b)[^$]*)$";
+			Regex rgx1 = new Regex(device, RegexOptions.IgnoreCase);
+			LogAssert.Expect(LogType.Error, rgx1);
 
 			yield return new WaitForSeconds(0.5f);
 
 			var currentscene = SceneManager.GetActiveScene().name;
-			var expectedscene = "ChoiceSensor";
+			var expectedscene = "RealtimeGraphKinectPatient";
 
 			var exer = Exercicio.Read();
 
@@ -280,10 +284,14 @@ namespace Tests
 			
 			moveManager.saveMovement();
 
+			var device = @"^(.*?(\bDevice|SDK\b)[^$]*)$";
+			Regex rgx1 = new Regex(device, RegexOptions.IgnoreCase);
+			LogAssert.Expect(LogType.Error, rgx1);
+
 			yield return new WaitForSeconds(1f);
 
 			var currentscene = SceneManager.GetActiveScene().name;
-			var expectedscene = "ChoiceSensor";
+			var expectedscene = "RealtimeGraphKinectPhysio";
 
 			var move = Movimento.Read();
 

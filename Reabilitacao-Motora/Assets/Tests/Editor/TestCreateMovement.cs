@@ -62,9 +62,9 @@ namespace Tests
 			var inputExpected = test_colorExpected.AddComponent<InputField>() as InputField;
 			var inputResponse = test_colorResponse.AddComponent<InputField>() as InputField;
 
-			inputExpected.colors = ColorManager.SetColor(inputExpected.colors, true);
+			inputExpected.colors = ColorManager.SetColor(inputExpected.colors, 1);
 
-			createMovement.ApplyColor(inputResponse, true);
+			createMovement.ApplyColor(inputResponse, 1);
 
 			Assert.AreEqual(inputExpected.colors, inputResponse.colors);
 		}
