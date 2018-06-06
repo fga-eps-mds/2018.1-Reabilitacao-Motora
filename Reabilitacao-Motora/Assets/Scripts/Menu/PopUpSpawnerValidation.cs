@@ -22,9 +22,9 @@ public class PopUpSpawnerValidation : MonoBehaviour
 		defaultText.text = "Campos com * são OBRIGATÓRIOS\n\n- A data de nascimento deve ser real. Insira apenas números;\n- O número de telefone deve possuir mais de 8 digitos numéricos;\n- A sigla da região deve ser escrita em letra maiúscula;\n- CREFITO deve possuir exatamente 6 digitos numéricos;\n- Login do fisioterapeuta deve conter no minimo 6 digitos;\n- A senha do fisioterapeuta deve conter no minimo 8 digitos.";
 
 		PopUpValidationPrefab.GetComponent<RectTransform>().offsetMin = new Vector2(
-			PopUpValidationPrefab.GetComponent<RectTransform>().offsetMin.x, -150);
+			-80, -150);
 		PopUpValidationPrefab.GetComponent<RectTransform>().offsetMax = new Vector2(
-			PopUpValidationPrefab.GetComponent<RectTransform>().offsetMax.x, 150);
+			80, 150);
 		PopUpValidationPrefab.SetActive(true);
 
 	}

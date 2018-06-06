@@ -26,6 +26,15 @@ public class createPhysiotherapist : MonoBehaviour
 	[SerializeField]
 	protected Text helpPopUp;
 
+	private Font txtFont;
+	private int fontSize;
+
+	public void Awake ()
+	{
+		txtFont = helpPopUp.font;
+		fontSize = helpPopUp.fontSize;
+	}
+
 	/**
 	 * Salva o Fisioterapeuta no banco.
 	 */
@@ -140,9 +149,10 @@ public class createPhysiotherapist : MonoBehaviour
 			treatPass != "" || treatConfirm != "" || treatPhone2 != "" ||
 			treatSex != "" || treatUniqueCR != "" || treatUniqueLP != "")
 		{
+			bool flag = true;
 			StringBuilder fullerror = new StringBuilder();
 
-			if (treatName != "")
+			if ((treatName != "") && flag)
 			{
 				var splitBar = treatName.Split('|');
 				fullerror.Append("[Nome]: ");
@@ -151,13 +161,15 @@ public class createPhysiotherapist : MonoBehaviour
 					fullerror.Append(erro+'\n');
 				}
 
+				flag = false;
 				ApplyColor (inputs[0], 0);
 			}
-			else
+			else if (treatName == "")
 			{
 				ApplyColor (inputs[0], 2);
-			} 
-			if (treatDate != "")
+			}
+
+			if ((treatDate != "") && flag)
 			{
 				var splitBar = treatDate.Split('|');
 				fullerror.Append("[Data de Nascimento]: ");
@@ -166,13 +178,15 @@ public class createPhysiotherapist : MonoBehaviour
 					fullerror.Append(erro+'\n');
 				}
 
+				flag = false;
 				ApplyColor (inputs[1], 0);
 			}
-			else
+			else if (treatDate == "")
 			{
 				ApplyColor (inputs[1], 2);
 			} 
-			if (treatPhone1 != "")
+
+			if ((treatPhone1 != "") && flag)
 			{
 				var splitBar = treatPhone1.Split('|');
 				fullerror.Append("[Telefone1]: ");
@@ -181,13 +195,15 @@ public class createPhysiotherapist : MonoBehaviour
 					fullerror.Append(erro+'\n');
 				}
 
+				flag = false;
 				ApplyColor (inputs[2], 0);
 			}
-			else
+			else if (treatPhone1 == "")
 			{
 				ApplyColor (inputs[2], 2);
 			} 
-			if (treatLogin != "" || treatUniqueLP != "")
+
+			if ((treatLogin != "" || treatUniqueLP != "") && flag)
 			{
 				var splitBar = treatLogin.Split('|');
 				fullerror.Append("[Login]: ");
@@ -208,13 +224,15 @@ public class createPhysiotherapist : MonoBehaviour
 					}
 				}
 
+				flag = false;
 				ApplyColor (inputs[3], 0);
 			}
-			else
+			else if (treatLogin == "" && treatUniqueLP == "")
 			{
 				ApplyColor (inputs[3], 2);
 			}
-			if (treatPass != "")
+
+			if ((treatPass != "") && flag)
 			{
 				var splitBar = treatPass.Split('|');
 				fullerror.Append("[Senha]: ");
@@ -223,13 +241,15 @@ public class createPhysiotherapist : MonoBehaviour
 					fullerror.Append(erro+'\n');
 				}
 
+				flag = false;
 				ApplyColor (inputs[4], 0);
 			}
-			else
+			else if (treatPass == "")
 			{
 				ApplyColor (inputs[4], 2);
 			} 
-			if (treatConfirm != "")
+
+			if ((treatConfirm != "") && flag)
 			{
 				var splitBar = treatConfirm.Split('|');
 				fullerror.Append("[Confirmar Senha]: ");
@@ -238,13 +258,15 @@ public class createPhysiotherapist : MonoBehaviour
 					fullerror.Append(erro+'\n');
 				}
 
+				flag = false;
 				ApplyColor (inputs[5], 0);
 			}
-			else
+			else if (treatConfirm == "")
 			{
 				ApplyColor (inputs[5], 2);
 			} 
-			if (treatCrefito != "" || treatUniqueCR != "")
+
+			if ((treatCrefito != "" || treatUniqueCR != "") && flag)
 			{
 				var splitBar = treatCrefito.Split('|');
 				fullerror.Append("[CREFITO]: ");
@@ -265,13 +287,15 @@ public class createPhysiotherapist : MonoBehaviour
 					}
 				}
 
+				flag = false;
 				ApplyColor (inputs[6], 0);
 			}
-			else
+			else if (treatCrefito == "" && treatUniqueCR == "")
 			{
 				ApplyColor (inputs[6], 2);
 			} 
-			if (treatRegiao != "" || treatUniqueCR != "")
+
+			if ((treatRegiao != "" || treatUniqueCR != "") && flag)
 			{
 				var splitBar = treatRegiao.Split('|');
 				fullerror.Append("[Regiao]: ");
@@ -292,13 +316,15 @@ public class createPhysiotherapist : MonoBehaviour
 					}
 				}
 
+				flag = false;
 				ApplyColor (inputs[7], 0);
 			}
-			else
+			else if (treatRegiao == "" && treatUniqueCR == "")
 			{
 				ApplyColor (inputs[7], 2);
 			} 
-			if (treatPhone2 != "")
+
+			if ((treatPhone2 != "") && flag)
 			{
 				var splitBar = treatPhone2.Split('|');
 				fullerror.Append("[Telefone2]: ");
@@ -307,9 +333,10 @@ public class createPhysiotherapist : MonoBehaviour
 					fullerror.Append(erro+'\n');
 				}
 
+				flag = false;
 				ApplyColor (inputs[8], 0);
 			}
-			else
+			else if (treatPhone2 == "")
 			{
 				ApplyColor (inputs[8], 2);
 			}
@@ -317,13 +344,12 @@ public class createPhysiotherapist : MonoBehaviour
 			helpPopUp.text = fullerror.ToString();
 			int count = fullerror.ToString().Count(f => f == '\n');
 			int top = -90 + (count * 30);
+			float right = 300.0f - helpPopUp.preferredWidth;
 
 			helpPopUp.transform.localPosition = new Vector3(helpPopUp.transform.localPosition.x, 0, helpPopUp.transform.localPosition.z);
 
-			helpPopUp.transform.parent.gameObject.GetComponent<RectTransform>().offsetMin = new Vector2(
-				helpPopUp.transform.parent.gameObject.GetComponent<RectTransform>().offsetMin.x, -top);
-			helpPopUp.transform.parent.gameObject.GetComponent<RectTransform>().offsetMax = new Vector2(
-				helpPopUp.transform.parent.gameObject.GetComponent<RectTransform>().offsetMax.x, top);
+			helpPopUp.transform.parent.gameObject.GetComponent<RectTransform>().offsetMin = new Vector2(right, -top);
+			helpPopUp.transform.parent.gameObject.GetComponent<RectTransform>().offsetMax = new Vector2(-right, top);
 			helpPopUp.transform.parent.gameObject.SetActive(true);
 
 			valid = false;
