@@ -104,7 +104,7 @@ public class createPhysiotherapist : MonoBehaviour
 		} 
 	}
 
-	private bool ValidInput (List<InputField> inputs, List<Toggle> toggles)
+	public bool ValidInput (List<InputField> inputs, List<Toggle> toggles)
 	{
 		bool valid = true;
 
