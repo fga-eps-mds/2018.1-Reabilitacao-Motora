@@ -133,7 +133,7 @@ Não há avisos específicos para os erros indicados em vermelho durante o cadas
 - Criar um pop-up explicando o porque do preenchimento de tal campo ser inválido
 
 
-**Pontos:** 1.
+**Pontos:** 2.
 
 ---
 
