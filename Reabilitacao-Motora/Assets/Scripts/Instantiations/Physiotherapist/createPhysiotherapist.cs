@@ -26,15 +26,6 @@ public class createPhysiotherapist : MonoBehaviour
 	[SerializeField]
 	protected Text helpPopUp;
 
-	private Font txtFont;
-	private int fontSize;
-
-	public void Awake ()
-	{
-		txtFont = helpPopUp.font;
-		fontSize = helpPopUp.fontSize;
-	}
-
 	/**
 	 * Salva o Fisioterapeuta no banco.
 	 */
