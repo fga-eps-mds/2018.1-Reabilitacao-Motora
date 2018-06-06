@@ -245,6 +245,7 @@ GameObject:
   - component: {fileID: 74571549}
   - component: {fileID: 74571552}
   - component: {fileID: 74571550}
+  - component: {fileID: 74571553}
   m_Layer: 0
   m_Name: Grafico
   m_TagString: Untagged
@@ -335,6 +336,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   labelPrefab: {fileID: 1828936037844164, guid: 53c8b1271ccb49845ad6c558833dbcc5,
     type: 2}
+--- !u!114 &74571553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 74571548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e53d8e6a7dd8e394aa5ab383ab242e2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mao: {fileID: 1147544571}
+  cotovelo: {fileID: 88849257}
+  ombro: {fileID: 46466736}
+  braco: {fileID: 1885446798}
 --- !u!1 &78221884
 GameObject:
   m_ObjectHideFlags: 0
