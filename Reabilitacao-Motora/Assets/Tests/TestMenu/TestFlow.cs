@@ -106,18 +106,16 @@ namespace Tests
 		[UnityTest]
 		public static IEnumerator TestRealtimeGraphUDPPatient()
 		{
+			var device = @"^(.*?(\bDevice|Socket|SDK|expected|contexto\b)[^$]*)$";
+			Regex rgx1 = new Regex(device, RegexOptions.IgnoreCase);
 			Flow.StaticRealtimeGraphUDPPatient();
+			LogAssert.Expect(LogType.Exception, rgx1);
 
 			yield return null;
 
 			var currentscene = SceneManager.GetActiveScene().name;
 			var expectedscene = "RealtimeGraphUDPPatient";
 			
-			var device = @"^(.*?(\bDevice|Socket|SDK|expected\b)[^$]*)$";
-			Regex rgx1 = new Regex(device, RegexOptions.IgnoreCase);
-			LogAssert.Expect(LogType.Error, rgx1);
-			LogAssert.Expect(LogType.Exception, rgx1);
-
 			Assert.AreEqual(currentscene, expectedscene);
 			Debug.Log("saindo de " + currentscene);
 		}
@@ -143,18 +141,16 @@ namespace Tests
 		[UnityTest]
 		public static IEnumerator TestRealtimeGraphUDPPhysio()
 		{
+			var device = @"^(.*?(\bDevice|Socket|SDK|expected|contexto\b)[^$]*)$";
+			Regex rgx1 = new Regex(device, RegexOptions.IgnoreCase);
 			Flow.StaticRealtimeGraphUDPPhysio();
+			LogAssert.Expect(LogType.Exception, rgx1);
 
 			yield return null;
 
 			var currentscene = SceneManager.GetActiveScene().name;
 			var expectedscene = "RealtimeGraphUDPPhysio";
 			
-			var device = @"^(.*?(\bDevice|Socket|SDK|expected\b)[^$]*)$";
-			Regex rgx1 = new Regex(device, RegexOptions.IgnoreCase);
-			LogAssert.Expect(LogType.Error, rgx1);
-			LogAssert.Expect(LogType.Exception, rgx1);
-
 			Assert.AreEqual(currentscene, expectedscene);
 			Debug.Log("saindo de " + currentscene);
 		}

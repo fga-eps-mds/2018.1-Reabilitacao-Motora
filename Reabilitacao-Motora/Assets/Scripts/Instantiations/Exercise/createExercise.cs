@@ -48,12 +48,11 @@ public class createExercise : MonoBehaviour
 		GlobalController.instance.exercise = exercises[exercises.Count - 1];
 		if(GlobalController.Sensor == false)
 		{
-			Flow.StaticRealtimeGraphKinectPhysio();
+			Flow.StaticRealtimeGraphKinectPatient();
 		}
 		else
 		{
-			Flow.StaticRealtimeGraphUDPPhysio();				
-		
+			Flow.StaticRealtimeGraphUDPPatient();
 		}
 	}
 }
