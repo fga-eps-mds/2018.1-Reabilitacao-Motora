@@ -163,6 +163,25 @@ public class createPatient : MonoBehaviour
 				ApplyColor (inputs[2], 2);	
 			}
 
+			if (treatSex != "" && flag)
+			{
+				var splitBar = treatSex.Split('|');
+				fullerror.Append("[Sexo]: ");
+				foreach (var erro in splitBar)
+				{
+					fullerror.Append(erro+'\n');
+				}
+
+				flag = false;
+				ApplyColor (toggles[0], 0);
+				ApplyColor (toggles[1], 0);
+			}
+			else if (treatSex == "")
+			{
+				ApplyColor (toggles[0], 2);
+				ApplyColor (toggles[1], 2);
+			}
+
 			if (treatPhone2 != "" && flag)
 			{
 				var splitBar = treatPhone2.Split('|');
@@ -200,6 +219,11 @@ public class createPatient : MonoBehaviour
 	public static void ApplyColor (InputField input, int ok)
 	{
 		input.colors = ColorManager.SetColor(input.colors, ok);
+	}
+
+	public static void ApplyColor (Toggle toggle, int ok)
+	{
+		toggle.colors = ColorManager.SetColor(toggle.colors, ok);
 	}
 
 }
