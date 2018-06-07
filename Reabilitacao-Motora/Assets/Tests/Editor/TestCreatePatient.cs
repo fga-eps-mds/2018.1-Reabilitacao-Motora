@@ -47,47 +47,47 @@ namespace Tests
 			Assert.AreEqual(inputExpected.colors, inputResponse.colors);
 		}
 
-		[Test]
-		public static void TestValidInput ()
-		{
-			GameObject gameobject1 = new GameObject ();
-			var name = gameobject1.AddComponent<InputField>() as InputField;
+		// [Test]
+		// public static void TestValidInput ()
+		// {
+		// 	GameObject gameobject1 = new GameObject ();
+		// 	var name = gameobject1.AddComponent<InputField>() as InputField;
 
-			GameObject gameobject2 = new GameObject ();
-			var date = gameobject2.AddComponent<InputField>() as InputField;
+		// 	GameObject gameobject2 = new GameObject ();
+		// 	var date = gameobject2.AddComponent<InputField>() as InputField;
 
-			GameObject gameobject3 = new GameObject ();
-			var phone1 = gameobject3.AddComponent<InputField>() as InputField;
+		// 	GameObject gameobject3 = new GameObject ();
+		// 	var phone1 = gameobject3.AddComponent<InputField>() as InputField;
 
-			GameObject gameobject4 = new GameObject ();
-			var masc = gameobject4.AddComponent<Toggle>() as Toggle;
+		// 	GameObject gameobject4 = new GameObject ();
+		// 	var masc = gameobject4.AddComponent<Toggle>() as Toggle;
 
-			GameObject gameobject5 = new GameObject ();
-			var fem = gameobject5.AddComponent<Toggle>() as Toggle;
+		// 	GameObject gameobject5 = new GameObject ();
+		// 	var fem = gameobject5.AddComponent<Toggle>() as Toggle;
 
-			GameObject gameobject6 = new GameObject ();
-			var phone2 = gameobject6.AddComponent<InputField>() as InputField;
+		// 	GameObject gameobject6 = new GameObject ();
+		// 	var phone2 = gameobject6.AddComponent<InputField>() as InputField;
 
-			List<InputField> inputs = new List<InputField>();
-			List<Toggle> toggles = new List<Toggle>();
+		// 	List<InputField> inputs = new List<InputField>();
+		// 	List<Toggle> toggles = new List<Toggle>();
 
-			masc.isOn = true;
-			name.text = "Izabella Ribeiro";
-			date.text = "15/10/1998";
-			phone1.text = "61992960111";
-			phone2.text = "61984105449";
+		// 	masc.isOn = true;
+		// 	name.text = "Izabella Ribeiro";
+		// 	date.text = "15/10/1998";
+		// 	phone1.text = "61992960111";
+		// 	phone2.text = "61984105449";
 
-			inputs.Add(name);
-			inputs.Add(date);
-			inputs.Add(phone1);
-			inputs.Add(phone2);
-			toggles.Add(masc);
-			toggles.Add(fem);
+		// 	inputs.Add(name);
+		// 	inputs.Add(date);
+		// 	inputs.Add(phone1);
+		// 	inputs.Add(phone2);
+		// 	toggles.Add(masc);
+		// 	toggles.Add(fem);
 
-			bool response = createPatient.ValidInput(inputs, toggles);
+		// 	bool response = createPatient.ValidInput(inputs, toggles);
 
-			Assert.AreEqual(response, true);
-		}
+		// 	Assert.AreEqual(response, true);
+		// }
 
 		[TearDown]
 		public static void AfterEveryTest ()

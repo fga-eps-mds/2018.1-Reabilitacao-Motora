@@ -48,9 +48,9 @@ namespace Tests
 			aux.text = "Fake Name";
 			physioManager.SetMemberValue("namePhysio", aux);
 
-			InputField aux1 = (InputField)physioManager.GetMemberValue("date");
+			Text aux1 = (Text)physioManager.GetMemberValue("outDate");
 			aux1.text = "01/01/1920";
-			physioManager.SetMemberValue("date", aux1);
+			physioManager.SetMemberValue("outDate", aux1);
 			
 			InputField aux3 = (InputField)physioManager.GetMemberValue("phone1");
 			aux3.text = "61999999";
@@ -305,16 +305,16 @@ namespace Tests
 
 			yield return null;
 
-			var objectPatient = GameObject.Find("PatientManager");
+			var objectPatient = GameObject.Find("Patient Manager");
 			var PatientManager = objectPatient.GetComponentInChildren<createPatient>();
 
 			InputField aux = (InputField)PatientManager.GetMemberValue("namePatient");
 			aux.text = "Fake Name";
 			PatientManager.SetMemberValue("namePatient", aux);
 
-			InputField aux1 = (InputField)PatientManager.GetMemberValue("date");
+			Text aux1 = (Text)PatientManager.GetMemberValue("outDate");
 			aux1.text = "01/01/1920";
-			PatientManager.SetMemberValue("date", aux1);
+			PatientManager.SetMemberValue("outDate", aux1);
 
 			InputField aux3 = (InputField)PatientManager.GetMemberValue("phone1");
 			aux3.text = "61999999";

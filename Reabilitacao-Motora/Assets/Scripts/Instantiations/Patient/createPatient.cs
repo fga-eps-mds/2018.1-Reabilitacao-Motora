@@ -18,6 +18,9 @@ public class createPatient : MonoBehaviour
 	[SerializeField]
 	protected Toggle male, female;
 
+	[SerializeField]
+	protected Text outDate;
+
 	/**
 	 * Salva o paciente no banco.
 	 */
@@ -42,7 +45,7 @@ public class createPatient : MonoBehaviour
 				ApplyColor (x, 1);
 			}
 
-			var trip = date.text.Split('/');
+			var trip = outDate.text.Split('/');
 			var dateFormate = trip[2] + "/" + trip[1] + "/" + trip[0];
 			string _phone2, _notes;
 
@@ -86,12 +89,12 @@ public class createPatient : MonoBehaviour
 		}
 	}
 
-	public static bool ValidInput (List<InputField> inputs, List<Toggle> toggles)
+	public  bool ValidInput (List<InputField> inputs, List<Toggle> toggles)
 	{
 		bool valid = true;
 
 		string treatName = TreatFields.NameField (inputs[0].text);
-		string treatDate = TreatFields.DateField (inputs[1].text);
+		string treatDate = TreatFields.DateField (outDate.text);
 		string treatPhone1 = TreatFields.PhoneField (inputs[2].text);
 		string treatSex = TreatFields.SexField (toggles[0].isOn, toggles[1].isOn);
 
