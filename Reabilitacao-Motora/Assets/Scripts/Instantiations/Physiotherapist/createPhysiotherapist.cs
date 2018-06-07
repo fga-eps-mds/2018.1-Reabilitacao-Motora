@@ -104,7 +104,7 @@ public class createPhysiotherapist : MonoBehaviour
 		} 
 	}
 
-	private bool ValidInput (List<InputField> inputs, List<Toggle> toggles)
+	public bool ValidInput (List<InputField> inputs, List<Toggle> toggles)
 	{
 		bool valid = true;
 
@@ -158,6 +158,25 @@ public class createPhysiotherapist : MonoBehaviour
 			else if (treatName == "")
 			{
 				ApplyColor (inputs[0], 2);
+			}
+
+			if (treatSex != "" && flag)
+			{
+				var splitBar = treatSex.Split('|');
+				fullerror.Append("[Sexo]: ");
+				foreach (var erro in splitBar)
+				{
+					fullerror.Append(erro+'\n');
+				}
+
+				flag = false;
+				ApplyColor (toggles[0], 0);
+				ApplyColor (toggles[1], 0);
+			}
+			else if (treatSex == "")
+			{
+				ApplyColor (toggles[0], 2);
+				ApplyColor (toggles[1], 2);
 			}
 
 			if ((treatDate != "") && flag)
@@ -349,10 +368,16 @@ public class createPhysiotherapist : MonoBehaviour
 		return valid;
 	}
 
-	private static void ApplyColor (InputField input, int ok)
+	public static void ApplyColor (InputField input, int ok)
 	{
 		input.colors = ColorManager.SetColor(input.colors, ok);
 	}
+
+	public static void ApplyColor (Toggle toggle, int ok)
+	{
+		toggle.colors = ColorManager.SetColor(toggle.colors, ok);
+	}
+
 
 	private static void CreateDirectoryPhysio (string name, int idPessoa)
 	{

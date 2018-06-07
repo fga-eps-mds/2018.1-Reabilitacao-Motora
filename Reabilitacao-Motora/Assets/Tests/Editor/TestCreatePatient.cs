@@ -84,6 +84,10 @@ namespace Tests
 			toggles.Add(masc);
 			toggles.Add(fem);
 
+			UnityEditor.SceneManagement.EditorSceneManager.OpenScene(Application.dataPath + "/Scenes/NewPatient.unity");
+			var patientManager = GameObject.Find("Patient Manager");
+			var createPatient = patientManager.GetComponentInChildren<createPatient>();
+
 			bool response = createPatient.ValidInput(inputs, toggles);
 
 			Assert.AreEqual(response, true);

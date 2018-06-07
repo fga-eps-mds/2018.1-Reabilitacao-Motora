@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
+using System.Text;
+using System.Linq;
 
 using pessoa;
 using paciente;
@@ -17,6 +19,9 @@ public class createPatient : MonoBehaviour
 
 	[SerializeField]
 	protected Toggle male, female;
+
+	[SerializeField]
+	protected Text helpPopUp;
 
 	/**
 	 * Salva o paciente no banco.
@@ -86,7 +91,7 @@ public class createPatient : MonoBehaviour
 		}
 	}
 
-	public static bool ValidInput (List<InputField> inputs, List<Toggle> toggles)
+	public bool ValidInput (List<InputField> inputs, List<Toggle> toggles)
 	{
 		bool valid = true;
 
@@ -104,62 +109,106 @@ public class createPatient : MonoBehaviour
 		if (treatName != "" || treatDate != "" || treatPhone1 != "" ||
 			treatPhone2 != "" || treatSex != "")
 		{
-			if (treatName != "")
+			bool flag = true;
+			StringBuilder fullerror = new StringBuilder();
+
+			if (treatName != "" && flag)
 			{
 				var splitBar = treatName.Split('|');
+				fullerror.Append("[Nome]: ");
 				foreach (var erro in splitBar)
 				{
-					print (erro);
+					fullerror.Append(erro+'\n');
 				}
 
+				flag = false;
 				ApplyColor (inputs[0], 0);
 			}
-			else
+			else if (treatName == "")
 			{
 				ApplyColor (inputs[0], 2);	
 			}
-			if (treatDate != "")
+
+			if (treatDate != "" && flag)
 			{
 				var splitBar = treatDate.Split('|');
+				fullerror.Append("[Data de Nascimento]: ");
 				foreach (var erro in splitBar)
 				{
-					print (erro);
+					fullerror.Append(erro+'\n');
 				}
 
+				flag = false;
 				ApplyColor (inputs[1], 0);
 			}
-			else
+			else if (treatDate == "")
 			{
 				ApplyColor (inputs[1], 2);	
 			}
-			if (treatPhone1 != "")
+
+			if (treatPhone1 != "" && flag)
 			{
 				var splitBar = treatPhone1.Split('|');
+				fullerror.Append("[Telefone1]: ");
 				foreach (var erro in splitBar)
 				{
-					print (erro);
+					fullerror.Append(erro+'\n');
 				}
 
+				flag = false;
 				ApplyColor (inputs[2], 0);
 			}
-			else
+			else if (treatPhone1 == "")
 			{
 				ApplyColor (inputs[2], 2);	
 			}
-			if (treatPhone2 != "")
+
+			if (treatSex != "" && flag)
 			{
-				var splitBar = treatPhone2.Split('|');
+				var splitBar = treatSex.Split('|');
+				fullerror.Append("[Sexo]: ");
 				foreach (var erro in splitBar)
 				{
-					print (erro);
+					fullerror.Append(erro+'\n');
 				}
 
+				flag = false;
+				ApplyColor (toggles[0], 0);
+				ApplyColor (toggles[1], 0);
+			}
+			else if (treatSex == "")
+			{
+				ApplyColor (toggles[0], 2);
+				ApplyColor (toggles[1], 2);
+			}
+
+			if (treatPhone2 != "" && flag)
+			{
+				var splitBar = treatPhone2.Split('|');
+				fullerror.Append("[Telefone2]: ");
+				foreach (var erro in splitBar)
+				{
+					fullerror.Append(erro+'\n');
+				}
+
+				flag = false;
 				ApplyColor (inputs[3], 0);
 			}
-			else
+			else if (treatPhone2 == "")
 			{
 				ApplyColor (inputs[3], 2);	
 			}
+
+			helpPopUp.text = fullerror.ToString();
+			int count = fullerror.ToString().Count(f => f == '\n');
+			int top = -90 + (count * 30);
+			float right = 300.0f - helpPopUp.preferredWidth;
+
+			helpPopUp.transform.localPosition = new Vector3(helpPopUp.transform.localPosition.x, 0, helpPopUp.transform.localPosition.z);
+
+			helpPopUp.transform.parent.gameObject.GetComponent<RectTransform>().offsetMin = new Vector2(right, -top);
+			helpPopUp.transform.parent.gameObject.GetComponent<RectTransform>().offsetMax = new Vector2(-right, top);
+			helpPopUp.transform.parent.gameObject.SetActive(true);
 
 			valid = false;
 		}
@@ -170,6 +219,11 @@ public class createPatient : MonoBehaviour
 	public static void ApplyColor (InputField input, int ok)
 	{
 		input.colors = ColorManager.SetColor(input.colors, ok);
+	}
+
+	public static void ApplyColor (Toggle toggle, int ok)
+	{
+		toggle.colors = ColorManager.SetColor(toggle.colors, ok);
 	}
 
 }
