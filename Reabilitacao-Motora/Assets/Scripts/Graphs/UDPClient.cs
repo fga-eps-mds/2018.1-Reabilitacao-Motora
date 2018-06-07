@@ -27,7 +27,14 @@ public class UDPClient : MonoBehaviour
     void Start()
     {
         client = new UdpClient();
-        client.Connect(host, port);
+        try
+        {
+            client.Connect(host, port);
+        }
+        catch (Exception e)
+        {
+            Debug.Log(e);
+        }
     }
 
     /**

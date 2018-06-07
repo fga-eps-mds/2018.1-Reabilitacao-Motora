@@ -106,7 +106,7 @@ namespace Tests
 		[UnityTest]
 		public static IEnumerator TestRealtimeGraphUDPPatient()
 		{
-			var device = @"^(.*?(\bDevice|Socket|SDK|expected|contexto\b)[^$]*)$";
+			var device = @"^(.*?(\bDevice|Socket|SDK|expected|contexto|refused\b)[^$]*)$";
 			Regex rgx1 = new Regex(device, RegexOptions.IgnoreCase);
 			Flow.StaticRealtimeGraphUDPPatient();
 			LogAssert.Expect(LogType.Exception, rgx1);
@@ -115,6 +115,30 @@ namespace Tests
 
 			var currentscene = SceneManager.GetActiveScene().name;
 			var expectedscene = "RealtimeGraphUDPPatient";
+			
+			Assert.AreEqual(currentscene, expectedscene);
+			Debug.Log("saindo de " + currentscene);
+		}
+
+
+		[UnityTest]
+		public static IEnumerator TestRealtimeGraphUDPPhysio()
+		{
+			var device = @"^(.*?(\bDevice|Socket|SDK|expected|contexto|refused\b)[^$]*)$";
+			Regex rgx1 = new Regex(device, RegexOptions.IgnoreCase);
+			Flow.StaticRealtimeGraphUDPPhysio();
+			LogAssert.Expect(LogType.Exception, rgx1);
+			
+			int p = (int) Environment.OSVersion.Platform;
+			if ((p == 4) || (p == 6) || (p == 128)) //if linux (travis)
+			{
+				LogAssert.Expect(LogType.Exception, rgx1);
+			}
+
+			yield return null;
+
+			var currentscene = SceneManager.GetActiveScene().name;
+			var expectedscene = "RealtimeGraphUDPPhysio";
 			
 			Assert.AreEqual(currentscene, expectedscene);
 			Debug.Log("saindo de " + currentscene);
@@ -134,23 +158,6 @@ namespace Tests
 			Regex rgx1 = new Regex(device, RegexOptions.IgnoreCase);
 			LogAssert.Expect(LogType.Error, rgx1);
 
-			Assert.AreEqual(currentscene, expectedscene);
-			Debug.Log("saindo de " + currentscene);
-		}
-
-		[UnityTest]
-		public static IEnumerator TestRealtimeGraphUDPPhysio()
-		{
-			var device = @"^(.*?(\bDevice|Socket|SDK|expected|contexto\b)[^$]*)$";
-			Regex rgx1 = new Regex(device, RegexOptions.IgnoreCase);
-			Flow.StaticRealtimeGraphUDPPhysio();
-			LogAssert.Expect(LogType.Exception, rgx1);
-
-			yield return null;
-
-			var currentscene = SceneManager.GetActiveScene().name;
-			var expectedscene = "RealtimeGraphUDPPhysio";
-			
 			Assert.AreEqual(currentscene, expectedscene);
 			Debug.Log("saindo de " + currentscene);
 		}
