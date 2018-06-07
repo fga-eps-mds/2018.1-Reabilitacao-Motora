@@ -8,13 +8,27 @@ public class GraphsUDPBt : MonoBehaviour
 
 	public void Awake ()
 	{
-		if(GlobalController.Sensor == true)
+		if(GlobalController.Sensor == false)
 		{
-			nextPage.onClick.AddListener(delegate{Flow.StaticRealtimeGraph2();});
+			if (GlobalController.patientOrPhysio)
+			{
+				nextPage.onClick.AddListener(delegate{Flow.StaticRealtimeGraphKinectPhysio();});
+			}
+			else
+			{
+				nextPage.onClick.AddListener(delegate{Flow.StaticRealtimeGraphKinectPatient();});
+			}
 		}
 		else
 		{
-			nextPage.onClick.AddListener(delegate{Flow.StaticRealtimeGraph1();});
+			if (GlobalController.patientOrPhysio)
+			{
+				nextPage.onClick.AddListener(delegate{Flow.StaticRealtimeGraphUDPPhysio();});
+			}
+			else
+			{
+				nextPage.onClick.AddListener(delegate{Flow.StaticRealtimeGraphUDPPatient();});
+			}
 		}
 	}
 }

@@ -15,5 +15,4 @@ public class GetPopUpManagerFisio : MonoBehaviour {
 		PopUpSpawner script = popUpManager.GetComponent(typeof(PopUpSpawner)) as PopUpSpawner;
 		deleteButton.onClick.AddListener(script.Spawner);
 	}
-
 }

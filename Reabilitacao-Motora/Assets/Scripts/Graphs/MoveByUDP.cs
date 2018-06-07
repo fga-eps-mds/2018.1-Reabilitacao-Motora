@@ -15,9 +15,7 @@ public class MoveByUDP : MonoBehaviour
 	[SerializeField]
 	protected Transform pointPrefab, mao, ombro, cotovelo, braco;
 
-	float current_time;
 	Vector3 f_mao_pos, f_mao_rot, f_ombro_pos, f_ombro_rot, f_cotovelo_pos, f_cotovelo_rot, f_braco_pos, f_braco_rot;
-	List <Vector3> points2;
 
 	LineRenderer lineRenderer;
 
@@ -25,7 +23,6 @@ public class MoveByUDP : MonoBehaviour
 	private static readonly Color c2 = Color.red;
 
 	bool t;
-	bool drawed;
 
     UdpClient client;
     public int receivePort = 5005;
@@ -60,9 +57,7 @@ public class MoveByUDP : MonoBehaviour
 	public void LoadData(string line)
 	{
 		var pair = line.Split(' ');
-		float x = (float.Parse(pair[0]));
-		current_time = (x);
-
+		
 		float a = (float.Parse(pair[1]));
 		float b = (float.Parse(pair[2]));
 		float c = (float.Parse(pair[3]));
@@ -108,7 +103,7 @@ public class MoveByUDP : MonoBehaviour
 		lineRenderer.widthMultiplier = 0.2f;
 		lineRenderer.positionCount = 4000;
 		lineRenderer.sortingOrder = 5;
-		lineRenderer.SetVertexCount(2);
+		lineRenderer.positionCount = 2;
 
 	// A simple 2 color gradient with a fixed alpha of 1.0f.
 		float alpha = 1.0f;
@@ -139,10 +134,7 @@ public class MoveByUDP : MonoBehaviour
 		   GlobalController.instance.movement != null)
 		{
 			t = false;
-			drawed = false;
 
-			points2 = new List<Vector3>();
-			
 			LoadLineRenderer();
 		}
 		else

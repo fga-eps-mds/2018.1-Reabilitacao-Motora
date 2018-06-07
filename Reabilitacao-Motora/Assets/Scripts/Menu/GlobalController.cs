@@ -29,9 +29,11 @@ public class GlobalController : MonoBehaviour
 	private Exercicio Exercise;
 	private PontosRotuloPaciente Prp;
 	private PontosRotuloFisioterapeuta Prf;
-	public string path;
+	public static string path;
+	public static bool test;
+	public static bool patientOrPhysio;
 	public static bool Sensor;
-
+	public static int choiceAvatar;
 
 	public Fisioterapeuta admin
 	{
@@ -125,21 +127,38 @@ public class GlobalController : MonoBehaviour
 		}
 		else
 		{
-			string pathEx = "Assets\\Exercicios";
-			string pathMv = "Assets\\Movimentos";
+			string pathEx =  Application.dataPath + "/Exercicios";
+			string pathMv =  Application.dataPath + "/Movimentos";
+			string dbStream = Application.dataPath + "/StreamingAssets";
 
 			Directory.CreateDirectory(pathEx);
 			Directory.CreateDirectory(pathMv);
+			Directory.CreateDirectory(dbStream);
 
 			instance = this;
 			DontDestroyOnLoad(gameObject);
-			path = "URI=file:" + Application.dataPath + "/Plugins/fisiotech.db";
 			Initialize();
 		}
 	}
 
-	private static void Initialize()
+	public static void Initialize()
 	{
+		if (test == false)
+		{
+			path = "URI=file:" +  Application.streamingAssetsPath + "/fisiotech.db";
+		}
+		else
+		{
+			path = "URI=file:" +  Application.streamingAssetsPath + "/test_fisiotech.db";
+		}
+
+		var directory = path.Substring(9, path.Length - 9);
+
+		if (!System.IO.File.Exists(directory))
+		{
+			SqliteConnection.CreateFile(directory);
+		}
+
 		Pessoa.Create();
 		Fisioterapeuta.Create();
 		Paciente.Create();
@@ -150,6 +169,22 @@ public class GlobalController : MonoBehaviour
 		MovimentoMusculo.Create();
 		PontosRotuloPaciente.Create();
 		PontosRotuloFisioterapeuta.Create();
-		Sensor = true;
+	}
+
+	public static void DropAll()
+	{
+		if (test == true)
+		{
+			Pessoa.Drop();
+			Fisioterapeuta.Drop();
+			Paciente.Drop();
+			Musculo.Drop();
+			Movimento.Drop();
+			Sessao.Drop();
+			Exercicio.Drop();
+			MovimentoMusculo.Drop();
+			PontosRotuloPaciente.Drop();
+			PontosRotuloFisioterapeuta.Drop();
+		}
 	}
 }
