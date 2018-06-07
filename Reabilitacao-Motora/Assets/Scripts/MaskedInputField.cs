@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class MaskedInputField : MonoBehaviour
 {
     public InputField mainInputField;
-    public Text outputText;
+    public Text TextOutput;
 
     public void Start()
     {
@@ -51,11 +51,11 @@ public class MaskedInputField : MonoBehaviour
 
         if(output=="#") 
         {
-            outputText = "";
+            TextOutput.text = "";
         }
         else
         {
-            outputText = output;
+            TextOutput.text = output;
         }
 
         Debug.Log( output ); // Will output 95/3
