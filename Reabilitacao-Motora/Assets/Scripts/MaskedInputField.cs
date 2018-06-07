@@ -41,7 +41,5 @@ public class MaskedInputField : MonoBehaviour
             textOutput.text = "";
         else
             textOutput.text = output;
-        
-        Debug.Log( output ); // Will output 95/3
     }
 }
