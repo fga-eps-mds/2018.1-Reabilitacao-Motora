@@ -1071,13 +1071,14 @@ GameObject:
   - component: {fileID: 978669358}
   - component: {fileID: 978669357}
   - component: {fileID: 978669356}
+  - component: {fileID: 978669355}
   m_Layer: 5
   m_Name: HelpLabelBt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &978669354
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1097,6 +1098,18 @@ RectTransform:
   m_AnchoredPosition: {x: -243, y: -31.2}
   m_SizeDelta: {x: 200, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &978669355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 978669353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad431295cd4a801499ee228ba88057d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextPage: {fileID: 978669356}
 --- !u!114 &978669356
 MonoBehaviour:
   m_ObjectHideFlags: 0
