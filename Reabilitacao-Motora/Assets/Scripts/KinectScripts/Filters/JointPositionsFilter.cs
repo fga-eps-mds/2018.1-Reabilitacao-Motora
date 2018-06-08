@@ -9,7 +9,7 @@ using UnityEngine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-
+using Kalman;
 
 /// <summary>
 /// Implementation of a Holt Double Exponential Smoothing filter. The double exponential
@@ -26,8 +26,9 @@ public class JointPositionsFilter
 
     // True when the filter parameters are initialized.
     private bool init;
-	
-	
+    IKalmanWrapper kalman;
+    
+    
     /// Initializes a new instance of the class.
     public JointPositionsFilter()
     {
@@ -39,7 +40,8 @@ public class JointPositionsFilter
     {
         // Specify some defaults
         //this.Init(0.25f, 0.25f, 0.25f, 0.03f, 0.05f);
-		this.Init(0.5f, 0.5f, 0.5f, 0.05f, 0.04f);
+        this.Init(0.5f, 0.5f, 0.5f, 0.05f, 0.04f);
+        kalman = new MatrixKalmanWrapper ();
     }
 
     /// <summary>
@@ -204,7 +206,7 @@ public class JointPositionsFilter
 //        Joint j = skeleton.Joints[jt];
 //        j.Position = KinectHelper.Vector3ToSkeletonPoint(predictedPosition);
 //        skeleton.Joints[jt] = j;
-		skeleton.SkeletonPositions[jointIndex] = (Vector4)predictedPosition;
+		skeleton.SkeletonPositions[jointIndex] = (Vector4)(kalman.Update (predictedPosition));
     }
 	
 
