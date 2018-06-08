@@ -148,7 +148,7 @@ namespace DataBaseAttributes
 				bld.Append(string.Format("WHERE \"{0}\" = \"{1}\"", TablesManager.Tables[tableId].colName[0], columns[0]));
 
 				var sqlQuery = bld.ToString();
-				UnityEngine.Debug.Log(sqlQuery);
+
 				using (var cmd = new SqliteCommand(sqlQuery, conn))
 				{
 					for (int i = 1; i < TablesManager.Tables[tableId].colName.Count; ++i)
@@ -230,6 +230,49 @@ namespace DataBaseAttributes
 				var sqlQuery = "SELECT * " + string.Format("FROM \"{0}\" WHERE \"{1}\" = \"{2}\";", tableName,
 																		    					  colName,
 																								 idTable);
+				using (var cmd = new SqliteCommand(sqlQuery, conn))
+				{
+					using (SqliteDataReader reader = cmd.ExecuteReader())
+					{
+						T classInstance;
+
+						reader.Read();
+						
+						var columnsCopy = ObjectArray (columns, reader);
+
+						Type classType = typeof(T);
+						ConstructorInfo classConstructor = classType.GetConstructor(new [] { columnsCopy.GetType() });
+						classInstance = (T)classConstructor.Invoke(new object[] { columnsCopy });
+
+						reader.Dispose();
+						reader.Close();
+
+						cmd.Dispose();
+
+						conn.Dispose();
+						conn.Close();
+						SqliteConnection.ClearAllPools();
+
+						GC.Collect();
+						GC.WaitForPendingFinalizers();
+
+						return classInstance;
+					}
+				} 
+			}
+		}
+
+		public static T GetLast<T> (string tableName, string colName)
+		{
+			using (var conn = new SqliteConnection(GlobalController.path))
+			{
+				conn.Open();
+				SELECT * FROM FISIOTERAPEUTA WHERE idFisioterapeuta = (SELECT MAX(idFisioterapeuta) FROM FISIOTERAPEUTA)
+
+				var sqlQuery = "SELECT * FROM " + string.Format("\"{0}\" WHERE \"{1}\"= (SELECT MAX(\"{2}\") FROM \"{3}\")", tableName,
+																															 colName,
+																															 colName,
+																															 tableName);
 				using (var cmd = new SqliteCommand(sqlQuery, conn))
 				{
 					using (SqliteDataReader reader = cmd.ExecuteReader())
