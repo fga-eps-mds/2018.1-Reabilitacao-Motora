@@ -289,4 +289,11 @@ public class Flow : MonoBehaviour
     {
         SceneManager.LoadScene("HelpResults");
     }
+    /**
+	 * Leva para scene de tela de Ajuda de Rotular Movimento.
+	 */
+    public static void StaticHelpMovementLabel()
+    {
+        SceneManager.LoadScene("HelpMovementLabel");
+    }
 }
