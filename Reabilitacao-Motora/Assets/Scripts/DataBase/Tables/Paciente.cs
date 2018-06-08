@@ -19,66 +19,14 @@ namespace paciente
 		private string Observacoes;
 		private Pessoa Persona;
 
-		public int idPaciente 
-		{
-			get 
-			{
-				return IdPaciente; 
-			} 
-			set 
-			{
-				IdPaciente = value; 
-			}
-		}
-
-		public int idPessoa 
-		{
-			get 
-			{
-				return IdPessoa; 
-			} 
-			set 
-			{
-				IdPessoa = value; 
-			}
-		}
-
-		public string observacoes 
-		{
-			get 
-			{
-				return Observacoes; 
-			} 
-			set 
-			{
-				Observacoes = value; 
-			}
-		}
-
-		public Pessoa persona 
-		{
-			get 
-			{
-				return Persona; 
-			} 
-			set 
-			{
-				Persona = value; 
-			}
-		} 
-
+		public int idPaciente { get { return IdPaciente; } set { IdPaciente = value; }}
+		public int idPessoa { get { return IdPessoa; } set { IdPessoa = value; }}
+		public string observacoes { get { return Observacoes; } set { Observacoes = value; }}
+		public Pessoa persona { get { return Persona; } set { Persona = value; }}
 
 		/**
 		 * Classe com todos os atributos de um paciente.
 		 */
-		public Paciente(int idpa, int idpe, string obs)
-		{
-			this.idPaciente = idpa;
-			this.idPessoa = idpe;
-			this.observacoes = obs;
-			this.persona = Pessoa.ReadValue (idpe);
-		}
-
 		public Paciente(Object[] columns)
 		{
 			this.idPaciente = (int)columns[0];
@@ -92,9 +40,8 @@ namespace paciente
 		 */
 		public static void Create()
 		{
-			DataBase banco = new DataBase();
 			string query = "CREATE TABLE IF NOT EXISTS PACIENTE (idPaciente INTEGER primary key AUTOINCREMENT,idPessoa INTEGER not null,observacoes VARCHAR (300),foreign key (idPessoa) references PESSOA (idPessoa));";
-			banco.Create(GlobalController.instance.path, query);	
+			DataBase.Create(query);	
 		}
 
 		/**
@@ -103,9 +50,8 @@ namespace paciente
 		public static void Insert(int idPessoa,
 			string observacoes)
 		{
-			DataBase banco = new DataBase();
 			Object[] columns = new Object[] {idPessoa, observacoes};
-			banco.Insert(GlobalController.instance.path, columns, TablesManager.Tables[tableId].tableName, tableId);
+			DataBase.Insert(columns, TablesManager.Tables[tableId].tableName, tableId);
 		}
 
 		/**
@@ -115,9 +61,8 @@ namespace paciente
 			int idPessoa,
 			string observacoes)
 		{
-			DataBase banco = new DataBase();
 			Object[] columns = new Object[] {id, idPessoa, observacoes};
-			banco.Update(GlobalController.instance.path, columns, TablesManager.Tables[tableId].tableName, tableId);
+			DataBase.Update(columns, TablesManager.Tables[tableId].tableName, tableId);
 		}
 
 		/**
@@ -125,27 +70,18 @@ namespace paciente
 		 */
 		public static List<Paciente> Read()
 		{
-			DataBase banco = new DataBase();
-			int idPacienteTemp = 0;
-			int idPessoaTemp = 0;
-			string observacoesTemp = "";
+			Object[] columns = new Object[] {0, 0, ""};
 
-			Object[] columns = new Object[] {idPacienteTemp,idPessoaTemp,observacoesTemp};
-			List<Paciente> patients = banco.Read<Paciente>(GlobalController.instance.path, TablesManager.Tables[tableId].tableName, columns);
+			List<Paciente> patients = DataBase.Read<Paciente>(TablesManager.Tables[tableId].tableName, columns);
 
 			return patients;
 		}
 
 		public static Paciente ReadValue (int id)
 		{
-			DataBase banco = new DataBase();
-			int idPacienteTemp = 0;
-			int idPessoaTemp = 0;
-			string observacoesTemp = "";
+			Object[] columns = new Object[] {0, 0, ""};
 
-			Object[] columns = new Object[] {idPacienteTemp,idPessoaTemp,observacoesTemp};
-
-			Paciente patient = banco.ReadValue<Paciente>(GlobalController.instance.path, TablesManager.Tables[tableId].tableName,
+			Paciente patient = DataBase.ReadValue<Paciente>(TablesManager.Tables[tableId].tableName,
 				TablesManager.Tables[tableId].colName[0], id, columns);
 
 			return patient;
@@ -156,8 +92,7 @@ namespace paciente
 		 */
 		public static void DeleteValue(int id)
 		{
-			DataBase banco = new DataBase();
-			banco.DeleteValue (tableId, id);
+			DataBase.DeleteValue (tableId, id);
 		}
 
 		/**
@@ -165,8 +100,7 @@ namespace paciente
 		 */
 		public static void Drop()
 		{
-			DataBase banco = new DataBase();
-			banco.Drop (tableId);
+			DataBase.Drop (tableId);
 		}
 	}
 }

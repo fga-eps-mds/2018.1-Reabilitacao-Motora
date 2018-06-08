@@ -28,7 +28,6 @@ public class DeleteMovementButton : MonoBehaviour
 		List<PontosRotuloPaciente> allPrps = PontosRotuloPaciente.Read();
 		List<MovimentoMusculo> mm = MovimentoMusculo.Read();
 
-
 		foreach (var prf in allPrfs)
 		{
 			if (prf.idMovimento == IdMovimento)
@@ -66,7 +65,7 @@ public class DeleteMovementButton : MonoBehaviour
 			}
 		}
 
-		string pathMov = string.Format("{0}/Movimentos/{1}.points", Application.dataPath, GlobalController.instance.movement.pontosMovimento);
+		string pathMov = string.Format("{0}/Movimentos/{1}", Application.dataPath, GlobalController.instance.movement.pontosMovimento);
 
 		if(File.Exists(pathMov))
 		{

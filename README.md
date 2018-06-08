@@ -6,6 +6,10 @@
 ## Link para o site do projeto
 [Reabilitação motora](https://fga-gpp-mds.github.io/2018.1-Reabilitacao-Motora/)
 
+## Download do launcher da aplicação
+- [Arquivo zip](https://github.com/arthurbdiniz/Launcher/raw/master/build/distributions/launcher.zip)
+- [Arquivo tar](https://github.com/arthurbdiniz/Launcher/raw/master/build/distributions/launcher.tar)
+
 # Reabilitação Motora
 
 <p align="justify">&emsp;&emsp;Este trabalho propõe o desenvolvimento de uma plataforma de captura, monitoramento e avaliação de movimentos realizados em sessões de fisioterapia. Os dados coletados são fornecidos ao fisioterapeuta ou a qualquer outra aplicação capaz de operar o produto em questão.</p>
