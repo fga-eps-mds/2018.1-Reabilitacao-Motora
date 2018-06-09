@@ -399,5 +399,18 @@ namespace Tests
 
             Assert.AreEqual(currentscene, expectedscene);
         }
+
+        [UnityTest]
+        public static IEnumerator TestHelpMovementLabel()
+        {
+            Flow.StaticHelpMovementLabel();
+
+            yield return null;
+
+            var currentscene = SceneManager.GetActiveScene().name;
+            var expectedscene = "HelpMovementLabel";
+
+            Assert.AreEqual(currentscene, expectedscene);
+        }
     }
 }
