@@ -24,11 +24,11 @@ namespace Tests
 		[SetUp]
 		public static void SetUp()
 		{
-			GlobalController.test = true;           
+			GlobalController.test = true;
 			GlobalController.Initialize();
 		}
-		
-		/** 
+
+		/**
 		 * Este método testa a função de mudar a cor de um inputfield.
 		 */
 		[Test]
@@ -43,7 +43,7 @@ namespace Tests
 			inputExpected.colors = ColorManager.SetColor(inputExpected.colors, 1);
 
 			createPatient.ApplyColor(inputResponse, 1);
-			
+
 			Assert.AreEqual(inputExpected.colors, inputResponse.colors);
 		}
 

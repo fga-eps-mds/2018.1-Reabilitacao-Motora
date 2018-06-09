@@ -15,7 +15,7 @@ using System;
 public class UDPClient : MonoBehaviour
 {
     private string host = "127.0.0.1";
-    private int port = 5005;
+    private const int port = 5005;
     private UdpClient client;
 
     public Transform mao, cotovelo, ombro, braco; //o ponto final de mao é o inicial de cotovelo, o final de cotovelo é o inicial de ombro; ou seja, sao apenas 2 retas
@@ -27,7 +27,14 @@ public class UDPClient : MonoBehaviour
     void Start()
     {
         client = new UdpClient();
-        client.Connect(host, port);
+        try
+        {
+            client.Connect(host, port);
+        }
+        catch (Exception e)
+        {
+            Debug.Log(e);
+        }
     }
 
     /**

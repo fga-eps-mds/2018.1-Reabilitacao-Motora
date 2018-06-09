@@ -1,4 +1,5 @@
 using System;
+using System.Text.RegularExpressions;
 using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
@@ -142,6 +143,10 @@ namespace Tests
 
 			createExercise.CreateExercise();
 
+			var device = @"^(.*?(\bDevice|SDK\b)[^$]*)$";
+			Regex rgx1 = new Regex(device, RegexOptions.IgnoreCase);
+			LogAssert.Expect(LogType.Error, rgx1);
+
 			yield return new WaitForSeconds(0.5f);
 
 			DeleteExerciseButton.DeleteExercise();
@@ -252,6 +257,10 @@ namespace Tests
 			moveManager.SetMemberValue("descricao", aux3);
 
 			moveManager.saveMovement();
+
+			var device = @"^(.*?(\bDevice|SDK\b)[^$]*)$";
+			Regex rgx1 = new Regex(device, RegexOptions.IgnoreCase);
+			LogAssert.Expect(LogType.Error, rgx1);
 
 			yield return new WaitForSeconds(1f);
 
