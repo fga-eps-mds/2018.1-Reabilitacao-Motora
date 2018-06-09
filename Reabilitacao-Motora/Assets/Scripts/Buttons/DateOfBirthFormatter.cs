@@ -6,52 +6,44 @@ public class DateOfBirthFormatter : MonoBehaviour
 	[SerializeField]
 	protected InputField date;
 
-	private int lastsize;
-
 	public void Awake ()
 	{
 		date.characterLimit = 10;
-		lastsize = 0;
 	}
 
-	public void Update ()
+	public void Start()
 	{
-		int count = 0;
-		foreach (char c in date.text)
-		{ 
-			if (c == '/')
+		date.onValidateInput += delegate(string input, int charIndex, char addedChar) { return MyValidate(addedChar); };
+	}
+
+	private char MyValidate(char charToValidate)
+	{
+		if (charToValidate-'0' >= 0 && charToValidate-'0' <= 9)
+		{
+			if ((date.text.Length == 2 && charToValidate-'0' > 1)
+			|| (date.text.Length == 0 && charToValidate-'0' > 3))
 			{
-				count++;
+				date.text += 0;
+				date.caretPosition++;
+				return charToValidate;
 			}
+
+			if ((date.text.Length == 1 && date.text[0]-'0' == 3 && charToValidate-'0' > 1)
+			|| (date.text.Length == 1 && date.text[0]-'0' == 0 && charToValidate-'0' == 0)
+			|| (date.text.Length == 3 && date.text[2]-'0' == 1 && charToValidate-'0' > 2)
+			|| (date.text.Length == 4 && charToValidate-'0' > 1)
+			|| (date.text.Length == 5 && charToValidate-'0' < 9)
+			|| (date.text.Length == 6 && charToValidate-'0' < 2))
+			{
+				charToValidate = '\0';
+				return charToValidate;
+			}
+
+			return charToValidate;
 		}
-
-		// 01 2 34 5 6789
-		// 10 / 10 / 1900
-
-		if (count == 0 && date.text.Length == 2 && date.caretPosition == 2 && date.caretPosition > lastsize)
+		else
 		{
-			date.text += "/";
-			date.caretPosition = date.text.Length + 1;
+			return '\0';
 		}
-
-		if (count == 1 && date.text.Length == 5 && date.caretPosition == 5 && date.caretPosition > lastsize)
-		{
-			date.text += "/";
-			date.caretPosition = date.text.Length + 1;
-		}
-
-		if (count == 1 && date.text.Length == 3 && date.caretPosition == 3 && date.caretPosition < lastsize)
-		{
-			date.text.Remove(date.text.Length - 1, 1);
-			date.caretPosition = date.text.Length - 1;
-		}
-
-		if (count == 2 && date.text.Length == 6 && date.caretPosition == 6 && date.caretPosition < lastsize)
-		{
-			date.text.Remove(date.text.Length - 1, 1);
-			date.caretPosition = date.text.Length - 1;
-		}
-
-		lastsize = date.caretPosition;
 	}
 }
