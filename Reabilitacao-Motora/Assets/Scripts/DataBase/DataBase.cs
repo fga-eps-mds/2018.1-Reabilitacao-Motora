@@ -262,13 +262,11 @@ namespace DataBaseAttributes
 			}
 		}
 
-		public static T GetLast<T> (string tableName, string colName)
+		public static T GetLast<T> (string tableName, string colName, System.Object[] columns)
 		{
 			using (var conn = new SqliteConnection(GlobalController.path))
 			{
 				conn.Open();
-				SELECT * FROM FISIOTERAPEUTA WHERE idFisioterapeuta = (SELECT MAX(idFisioterapeuta) FROM FISIOTERAPEUTA)
-
 				var sqlQuery = "SELECT * FROM " + string.Format("\"{0}\" WHERE \"{1}\"= (SELECT MAX(\"{2}\") FROM \"{3}\")", tableName,
 																															 colName,
 																															 colName,
@@ -302,6 +300,41 @@ namespace DataBaseAttributes
 						return classInstance;
 					}
 				} 
+			}
+		}
+
+		public static int CountRead (string sqlQuery)
+		{
+			using (var conn = new SqliteConnection(GlobalController.path))
+			{
+				conn.Open();
+
+				var result = 0;
+
+				using (var cmd = new SqliteCommand(sqlQuery, conn))
+				{
+					using (IDataReader reader = cmd.ExecuteReader())
+					{
+						try
+						{
+							while (reader.Read())
+							{
+								if (!reader.IsDBNull(0)) 
+								{
+									result = reader.GetInt32(0);
+								}
+							}
+						}
+						finally
+						{
+							reader.Dispose();
+							reader.Close();
+						}
+					}
+					cmd.Dispose();
+				}
+
+				return result;
 			}
 		}
 

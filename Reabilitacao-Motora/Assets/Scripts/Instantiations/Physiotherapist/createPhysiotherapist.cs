@@ -93,7 +93,7 @@ public class createPhysiotherapist : MonoBehaviour
 			Pessoa.Insert(namePhysio.text, sex, dateFormate, phone1.text, _phone2);
 			List<Pessoa> p = Pessoa.Read();
 
-			Fisioterapeuta.Insert(p[p.Count -1].idPessoa, login.text, encryptedPassword, _crefito, _regiao);
+			Fisioterapeuta.Insert(p[p.Count -1].idPessoa, login.text, encryptedPassword, _regiao, _crefito);
 
 			CreateDirectoryPhysio (namePhysio.text, p[p.Count-1].idPessoa);
 
