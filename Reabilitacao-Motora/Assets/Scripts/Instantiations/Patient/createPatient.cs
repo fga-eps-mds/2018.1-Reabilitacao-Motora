@@ -21,6 +21,7 @@ public class createPatient : MonoBehaviour
 	protected Toggle male, female;
 
 	[SerializeField]
+	protected Text outDate;
 	protected Text helpPopUp;
 
 	/**
@@ -47,7 +48,7 @@ public class createPatient : MonoBehaviour
 				ApplyColor (x, 1);
 			}
 
-			var trip = date.text.Split('/');
+			var trip = outDate.text.Split('/');
 			var dateFormate = trip[2] + "/" + trip[1] + "/" + trip[0];
 			string _phone2, _notes;
 
@@ -91,12 +92,12 @@ public class createPatient : MonoBehaviour
 		}
 	}
 
-	public bool ValidInput (List<InputField> inputs, List<Toggle> toggles)
+	public  bool ValidInput (List<InputField> inputs, List<Toggle> toggles)
 	{
 		bool valid = true;
 
 		string treatName = TreatFields.NameField (inputs[0].text);
-		string treatDate = TreatFields.DateField (inputs[1].text);
+		string treatDate = TreatFields.DateField (outDate.text);
 		string treatPhone1 = TreatFields.PhoneField (inputs[2].text);
 		string treatSex = TreatFields.SexField (toggles[0].isOn, toggles[1].isOn);
 
@@ -126,7 +127,7 @@ public class createPatient : MonoBehaviour
 			}
 			else if (treatName == "")
 			{
-				ApplyColor (inputs[0], 2);	
+				ApplyColor (inputs[0], 2);
 			}
 
 			if (treatDate != "" && flag)
@@ -143,7 +144,7 @@ public class createPatient : MonoBehaviour
 			}
 			else if (treatDate == "")
 			{
-				ApplyColor (inputs[1], 2);	
+				ApplyColor (inputs[1], 2);
 			}
 
 			if (treatPhone1 != "" && flag)
@@ -160,7 +161,7 @@ public class createPatient : MonoBehaviour
 			}
 			else if (treatPhone1 == "")
 			{
-				ApplyColor (inputs[2], 2);	
+				ApplyColor (inputs[2], 2);
 			}
 
 			if (treatSex != "" && flag)
@@ -196,7 +197,7 @@ public class createPatient : MonoBehaviour
 			}
 			else if (treatPhone2 == "")
 			{
-				ApplyColor (inputs[3], 2);	
+				ApplyColor (inputs[3], 2);
 			}
 
 			helpPopUp.text = fullerror.ToString();

@@ -24,7 +24,7 @@ public class createPhysiotherapist : MonoBehaviour
 	protected Toggle male, female;
 
 	[SerializeField]
-	protected Text helpPopUp;
+	protected Text helpPopUp, outDate;
 
 	/**
 	 * Salva o Fisioterapeuta no banco.
@@ -56,7 +56,7 @@ public class createPhysiotherapist : MonoBehaviour
 			}
 
 			string encryptedPassword = CryptPassword.Encrypt(pass.text, login.text);			
-			var trip = date.text.Split('/');
+			var trip = outDate.text.Split('/');
 			var dateFormate = trip[2] + "/" + trip[1] + "/" + trip[0];
 			string sex, _phone2, _crefito, _regiao;
 			
@@ -109,7 +109,7 @@ public class createPhysiotherapist : MonoBehaviour
 		bool valid = true;
 
 		string treatName = TreatFields.NameField (inputs[0].text);
-		string treatDate = TreatFields.DateField (inputs[1].text);
+		string treatDate = TreatFields.DateField (outDate.text);
 		string treatPhone1 = TreatFields.PhoneField (inputs[2].text);
 		string treatLogin = TreatFields.LoginField (inputs[3].text);
 		string treatPass = TreatFields.PasswordField (inputs[4].text);
