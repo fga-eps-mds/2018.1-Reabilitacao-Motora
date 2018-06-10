@@ -99,6 +99,15 @@ namespace exercicio
 			return exercise;
 		}
 
+		public static Exercicio GetLast()
+		{
+			Object[] columns = new Object[] {0, 0, 0, 0, "", ""};
+			Exercicio exercise = DataBase.GetLast<Exercicio>(TablesManager.Tables[tableId].tableName,
+				TablesManager.Tables[tableId].colName[0], columns);
+
+			return exercise;
+		}
+
 		/**
 		 * Função que deleta dados cadastrados anteriormente na relação de exercicios.
 		 */

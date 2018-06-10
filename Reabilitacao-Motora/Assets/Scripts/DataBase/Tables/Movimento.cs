@@ -100,6 +100,16 @@ namespace movimento
 			return movement;
 		}
 
+		public static Movimento GetLast ()
+		{
+			Object[] columns = new Object[] {0, 0, "", "", ""};
+
+			Movimento movement = DataBase.GetLast<Movimento>(TablesManager.Tables[tableId].tableName,
+				TablesManager.Tables[tableId].colName[0], columns);
+
+			return movement;
+		}
+
 		/**
 		 * Função que deleta dados cadastrados anteriormente na relação movimento.
 		 */

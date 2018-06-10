@@ -278,12 +278,12 @@ namespace Tests
 			GlobalController.Initialize();
 
 			Pessoa.Insert("fake name", "m", "1930-01-01", "61235235", null);
-			List<Pessoa> pessoas = Pessoa.Read();
-			var idPessoa = pessoas[pessoas.Count - 1].idPessoa;
+			var pessoas = Pessoa.GetLast();
+			var idPessoa = pessoas.idPessoa;
 
 			Fisioterapeuta.Insert(idPessoa, "abcdefghj1", "asuihasiudh11829", "DF", "123456");
-			List<Fisioterapeuta> allPhysios = Fisioterapeuta.Read();
-			var idFisio = allPhysios[allPhysios.Count - 1].idFisioterapeuta;
+			var allPhysios = Fisioterapeuta.GetLast();
+			var idFisio = allPhysios.idFisioterapeuta;
 
 			var test_exists = TreatFields.UniqueCrefitoRegion ("123456", "DF");
 			var test_dontRegion = TreatFields.UniqueCrefitoRegion ("123456", "PE");
@@ -309,12 +309,12 @@ namespace Tests
 			GlobalController.Initialize();
 
 			Pessoa.Insert("fake name", "m", "1930-01-01", "61235235", null);
-			List<Pessoa> pessoas = Pessoa.Read();
-			var idPessoa = pessoas[pessoas.Count - 1].idPessoa;
+			var pessoas = Pessoa.GetLast();
+			var idPessoa = pessoas.idPessoa;
 
 			Fisioterapeuta.Insert(idPessoa, "abcdefghj1", "asuihasiudh11829", "DF", "123456");
-			List<Fisioterapeuta> allPhysios = Fisioterapeuta.Read();
-			var idFisio = allPhysios[allPhysios.Count - 1].idFisioterapeuta;
+			var allPhysios = Fisioterapeuta.GetLast();
+			var idFisio = allPhysios.idFisioterapeuta;
 
 			var test_exists = TreatFields.UniqueLoginPassword ("abcdefghj1");
 			var test_dontexist = TreatFields.UniqueLoginPassword ("oaijfo3u4194j12");

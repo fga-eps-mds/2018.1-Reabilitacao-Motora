@@ -165,9 +165,9 @@ namespace Tests
 			var currentscene = SceneManager.GetActiveScene().name;
 			var expectedscene = "Login";
 
-			var fisios = Fisioterapeuta.Read();
+			var fisios = Fisioterapeuta.GetLast();
 
-			Assert.AreEqual(IdFisioterapeuta, fisios[fisios.Count - 1].idFisioterapeuta);
+			Assert.AreEqual(IdFisioterapeuta, fisios.idFisioterapeuta);
 			Assert.AreEqual(expectedscene, currentscene);
 		}
 
@@ -185,15 +185,15 @@ namespace Tests
 			Movimento.Insert (1,"levantamento de peso", "asuhasu/caminhoy.com", null);
 			Sessao.Insert (1, 1, "1940-10-10", null);
 
-			var pacient = Paciente.Read();
-			var fisio = Fisioterapeuta.Read();
-			var moves = Movimento.Read();
-			var sessions = Sessao.Read();
+			var pacient = Paciente.GetLast();
+			var fisio = Fisioterapeuta.GetLast();
+			var moves = Movimento.GetLast();
+			var sessions = Sessao.GetLast();
 
-			GlobalController.instance.user = pacient[pacient.Count - 1];
-			GlobalController.instance.admin = fisio[fisio.Count - 1];
-			GlobalController.instance.movement = moves[moves.Count - 1];
-			GlobalController.instance.session = sessions[sessions.Count - 1];
+			GlobalController.instance.user = pacient;
+			GlobalController.instance.admin = fisio;
+			GlobalController.instance.movement = moves;
+			GlobalController.instance.session = sessions;
 
 			Flow.StaticMovementsToExercise();
 
@@ -209,10 +209,10 @@ namespace Tests
 			var currentscene = SceneManager.GetActiveScene().name;
 			var expectedscene = "RealtimeGraphKinectPatient";
 
-			var exer = Exercicio.Read();
+			var exer = Exercicio.GetLast();
 
 			Assert.AreEqual(currentscene, expectedscene);
-			Assert.AreEqual(GlobalController.instance.exercise.idExercicio, exer[exer.Count - 1].idExercicio);
+			Assert.AreEqual(GlobalController.instance.exercise.idExercicio, exer.idExercicio);
 		}
 
 		[UnityTest]
@@ -227,11 +227,11 @@ namespace Tests
 			Fisioterapeuta.Insert(2, "abracadabra1", "demais1", null, null);
 			Paciente.Insert(1, null);
 
-			var pacient = Paciente.Read();
-			var fisio = Fisioterapeuta.Read();
+			var pacient = Paciente.GetLast();
+			var fisio = Fisioterapeuta.GetLast();
 
-			GlobalController.instance.user = pacient[pacient.Count - 1];
-			GlobalController.instance.admin = fisio[fisio.Count - 1];
+			GlobalController.instance.user = pacient;
+			GlobalController.instance.admin = fisio;
 
 			Flow.StaticSessions();
 
@@ -244,10 +244,10 @@ namespace Tests
 			var currentscene = SceneManager.GetActiveScene().name;
 			var expectedscene = "NewSession";
 
-			var sess = Sessao.Read();
+			var sess = Sessao.GetLast();
 
 			Assert.AreEqual(currentscene, expectedscene);
-			Assert.AreEqual(GlobalController.instance.session.idSessao, sess[sess.Count - 1].idSessao);
+			Assert.AreEqual(GlobalController.instance.session.idSessao, sess.idSessao);
 		}
 
 
@@ -261,9 +261,9 @@ namespace Tests
 			Pessoa.Insert("physio name1", "m", "1995-01-01", "6198732711", null);
 			Fisioterapeuta.Insert(1, "abracadabra1", "demais1", null, null);
 
-			var fisio = Fisioterapeuta.Read();
+			var fisio = Fisioterapeuta.GetLast();
 
-			GlobalController.instance.admin = fisio[fisio.Count - 1];
+			GlobalController.instance.admin = fisio;
 
 			Flow.StaticNewMovement();
 
@@ -293,10 +293,10 @@ namespace Tests
 			var currentscene = SceneManager.GetActiveScene().name;
 			var expectedscene = "RealtimeGraphKinectPhysio";
 
-			var move = Movimento.Read();
+			var move = Movimento.GetLast();
 
 			Assert.AreEqual(currentscene, expectedscene);
-			Assert.AreEqual(GlobalController.instance.movement.idMovimento, move[move.Count - 1].idMovimento);
+			Assert.AreEqual(GlobalController.instance.movement.idMovimento, move.idMovimento);
 		}
 
 		[UnityTest]
@@ -344,9 +344,9 @@ namespace Tests
 			var currentscene = SceneManager.GetActiveScene().name;
 			var expectedscene = "NewPatient";
 
-			var patients = Paciente.Read();
+			var patients = Paciente.GetLast();
 
-			Assert.AreEqual(IdPaciente, patients[patients.Count - 1].idPaciente);
+			Assert.AreEqual(IdPaciente, patients.idPaciente);
 			Assert.AreEqual(expectedscene, currentscene);
 		}
 
