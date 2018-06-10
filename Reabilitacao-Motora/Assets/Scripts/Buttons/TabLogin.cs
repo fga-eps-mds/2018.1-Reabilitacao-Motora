@@ -7,7 +7,7 @@ using UnityEngine.UI;
  * Permite usar tab para transitar entre os input fields.
  */
 
-public class Tab : MonoBehaviour
+public class TabLogin : MonoBehaviour
 {
     private List<Selectable> m_orderedSelectables;
 
@@ -21,6 +21,11 @@ public class Tab : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             HandleHotkeySelect(Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift), true, false);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
+        {
+            HandleHotkeySelect(false, false, true);
         }
     }
 
