@@ -269,6 +269,13 @@ public class Flow : MonoBehaviour
         SceneManager.LoadScene("HelpMovement");
     }
     /**
+    * Leva para scene de tela de Ajuda de Rotular Movimento.
+    */
+    public static void StaticHelpMovimentsLabel()
+    {
+        SceneManager.LoadScene("HelpMovementLabel");
+    }
+    /**
 	 * Leva para scene de tela de Ajuda de Criar Sessão.
 	 */
     public static void StaticHelpSession()
@@ -281,5 +288,12 @@ public class Flow : MonoBehaviour
     public static void StaticHelpResults()
     {
         SceneManager.LoadScene("HelpResults");
+    }
+    /**
+	 * Leva para scene de tela de Ajuda de Rotular Movimento.
+	 */
+    public static void StaticHelpMovementLabel()
+    {
+        SceneManager.LoadScene("HelpMovementLabel");
     }
 }
