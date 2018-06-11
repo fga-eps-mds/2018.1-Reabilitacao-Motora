@@ -2,6 +2,7 @@
 #mainNav {
   border-bottom: 1px solid fade-out($gray-900, .9);
   background-color: $white;
+  min-height: 72px;
   @include sans-serif-font;
   @include transition-all;
   .navbar-brand {
@@ -14,6 +15,20 @@
       color: darken($primary, .1);
     }
   }
+  
+  .navbar-collapse {
+    background-color: #FFFFFF;
+    position: absolute;
+    top: 60px;
+    right: 5px;
+    width: 200px;
+    >ul {
+      >li {
+        text-align: center;
+      }
+    }
+  }
+
   .navbar-nav {
     > li.nav-item {
        > a.nav-link,
