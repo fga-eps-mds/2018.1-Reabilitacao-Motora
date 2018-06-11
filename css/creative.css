@@ -78,14 +78,6 @@ img::-moz-selection {
     font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif; }
     #mainNav .navbar-brand:focus, #mainNav .navbar-brand:hover {
       color: #f05f40; }
-  #mainNav .navbar-collapse {
-    background-color: #FFFFFF;
-    position: absolute;
-    top: 60px;
-    right: 5px;
-    width: 200px; }
-    #mainNav .navbar-collapse > ul > li {
-      text-align: center; }
   #mainNav .navbar-nav > li.nav-item > a.nav-link,
   #mainNav .navbar-nav > li.nav-item > a.nav-link:focus {
     font-size: .9rem;
@@ -102,6 +94,15 @@ img::-moz-selection {
       #mainNav .navbar-nav > li.nav-item > a.nav-link.active:hover,
       #mainNav .navbar-nav > li.nav-item > a.nav-link:focus.active:hover {
         background-color: transparent; }
+  @media (max-width: 992px) {
+    #mainNav .navbar-collapse {
+      background-color: #FFFFFF;
+      position: absolute;
+      top: 60px;
+      right: 5px;
+      width: 200px; }
+      #mainNav .navbar-collapse > ul > li {
+        text-align: center; } }
   @media (min-width: 992px) {
     #mainNav {
       border-color: transparent;

@@ -16,19 +16,6 @@
     }
   }
   
-  .navbar-collapse {
-    background-color: #FFFFFF;
-    position: absolute;
-    top: 60px;
-    right: 5px;
-    width: 200px;
-    >ul {
-      >li {
-        text-align: center;
-      }
-    }
-  }
-
   .navbar-nav {
     > li.nav-item {
        > a.nav-link,
@@ -50,6 +37,22 @@
       }
     }
   }
+
+  @media (max-width: 992px){
+    .navbar-collapse {
+      background-color: #FFFFFF;
+      position: absolute;
+      top: 60px;
+      right: 5px;
+      width: 200px;
+      >ul {
+        >li {
+          text-align: center;
+        }
+      }
+    }
+  }
+
   @media (min-width: 992px) {
     border-color: transparent;
     background-color: transparent;

@@ -4,7 +4,6 @@ let basicInfo = {};
 const getDocumentsInfo = () => {
     axios.get(`${base_url}/macros/echo?user_content_key=pQv4I-i3HkR2YtMeR59llQm0m7JELyQf-hueFut5fk0RG8PMj4JhZNaqyuHZmeGqMlwha5Zu8ldd6HsM-u_1bEx5S2TkCxLbm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnNnZ00wgiIYnBgciUyKcabn8OT5CsSrjUFcSe_QqaJKJTeLw5iscrUgCbddvEgp78vKfVnhjI6Uu&lib=MGukpczu3yrghHV9zyxgsmsh00DPSBbB3`)
         .then(function (response) {
-            console.log(response.data);
             basicInfo = response.data;
             setDocumentsDynamicData();
         }).catch(function (error) {
@@ -18,8 +17,6 @@ const setDocumentsDynamicData = () => {
     setRelease1Planning()
     setRelease1Review()
     let elements = document.getElementsByClassName("big-loader");
-    console.log(elements);
-    console.log(elements.length);
     for(let i=elements.length-1; i >= 0; i--){
       elements[i].remove();
     }
