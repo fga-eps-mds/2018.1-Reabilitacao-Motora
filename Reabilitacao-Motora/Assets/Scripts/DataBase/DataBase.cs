@@ -222,6 +222,60 @@ namespace DataBaseAttributes
 			}
 		}
 
+		public static List<T> SpecificSelect<T> (string tableName, System.Object[] columns, string query)
+		{
+			// uma copia do array já que não é possivel passá-lo sem ser por referencia
+			System.Object[] backup = new System.Object [] {};
+			foreach (var col in columns)
+			{
+				Array.Resize(ref backup, backup.Length + 1);
+				backup[backup.Length - 1] = col;
+			}
+
+			using (var conn = new SqliteConnection(GlobalController.path))
+			{
+				conn.Open();
+
+				var sqlQuery = query;
+				
+				List<T> classList = new List<T>();
+
+				using (var cmd = new SqliteCommand(sqlQuery, conn))
+				{
+					using (SqliteDataReader reader = cmd.ExecuteReader())
+					{
+						while (reader.Read())
+						{
+							// recuperando cópia aos valores originais
+							for (int i = 0; i < columns.Length; ++i)
+							{
+								columns[i] = backup[i];
+							}
+							
+							var columnsCopy = ObjectArray (columns, reader);
+
+							Type classType = typeof(T);
+							ConstructorInfo classConstructor = classType.GetConstructor(new [] { columnsCopy.GetType() });
+							T classInstance = (T)classConstructor.Invoke(new object[] { columnsCopy });
+
+							classList.Add(classInstance);
+						}
+						
+						reader.Dispose();
+						reader.Close();
+						cmd.Dispose();
+						conn.Dispose();
+						conn.Close();
+						SqliteConnection.ClearAllPools();
+						GC.Collect();
+						GC.WaitForPendingFinalizers();
+
+						return classList;	 
+					}
+				}
+			}
+		}
+
 		public static T ReadValue<T> (string tableName, string colName, int idTable, System.Object[] columns)
 		{
 			using (var conn = new SqliteConnection(GlobalController.path))

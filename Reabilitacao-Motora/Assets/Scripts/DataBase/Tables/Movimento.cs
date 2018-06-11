@@ -14,7 +14,6 @@ namespace movimento
    */
 	public class Movimento
 	{
-
 		private const int tableId = 4;
 		private int IdMovimento;
 		private int IdFisioterapeuta;
@@ -108,6 +107,15 @@ namespace movimento
 				TablesManager.Tables[tableId].colName[0], columns);
 
 			return movement;
+		}
+
+		public static List<Movimento> SpecificSelect(string query)
+		{
+			Object[] columns = new Object[] {0, 0, "", "", ""};
+
+			List<Movimento> movements = DataBase.SpecificSelect<Movimento>(TablesManager.Tables[tableId].tableName, columns, query);
+
+			return movements;
 		}
 
 		/**

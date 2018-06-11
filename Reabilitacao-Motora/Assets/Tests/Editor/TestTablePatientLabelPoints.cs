@@ -23,16 +23,16 @@ using System.Data;
 */
 namespace Tests
 {
-    public class TestTablePatientLabelPoints
+    public static class TestTablePatientLabelPoints
     {
         [SetUp]
-        public void SetUp()
+        public static void SetUp()
         {
             GlobalController.test = true;
             GlobalController.Initialize();
         }
         [Test]
-        public void TestPatientLabelPointsCreate()
+        public static void TestPatientLabelPointsCreate()
         {
             using (var conn = new SqliteConnection(GlobalController.path))
             {
@@ -76,7 +76,7 @@ namespace Tests
         }
 
         [Test]
-        public void TestPatientLabelPointsDrop()
+        public static void TestPatientLabelPointsDrop()
         {
             using (var conn = new SqliteConnection(GlobalController.path))
             {
@@ -120,7 +120,7 @@ namespace Tests
         }
 
         [Test]
-        public void TestPatientLabelPointsInsert()
+        public static void TestPatientLabelPointsInsert()
         {
             using (var conn = new SqliteConnection(GlobalController.path))
             {
@@ -223,7 +223,7 @@ namespace Tests
         }
         
         [Test]
-        public void TestPatientLabelPointsUpdate()
+        public static void TestPatientLabelPointsUpdate()
         {
             using (var conn = new SqliteConnection(GlobalController.path))
             {
@@ -329,7 +329,7 @@ namespace Tests
         }
         
         [Test]
-        public void TestPatientLabelPointsRead()
+        public static void TestPatientLabelPointsRead()
         {
             using (var conn = new SqliteConnection(GlobalController.path))
             {
@@ -388,7 +388,7 @@ namespace Tests
         }
        
         [Test]
-        public void TestPatientLabelPointsReadValue()
+        public static void TestPatientLabelPointsReadValue()
         {
             using (var conn = new SqliteConnection(GlobalController.path))
             {
@@ -447,7 +447,7 @@ namespace Tests
         }
         
         [Test]
-        public void TestPatientLabelPointsDeleteValue()
+        public static void TestPatientLabelPointsDeleteValue()
         {
             using (var conn = new SqliteConnection(GlobalController.path))
             {
