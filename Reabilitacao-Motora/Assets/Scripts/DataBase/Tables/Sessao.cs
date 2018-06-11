@@ -102,6 +102,15 @@ namespace sessao
 			return session;
 		}
 
+		public static List<Sessao> MultiSpecificSelect(string query)
+		{
+			Object[] columns = new Object[] {0, 0, 0, "", ""};
+
+			List<Sessao> sessions = DataBase.MultiSpecificSelect<Sessao>(TablesManager.Tables[tableId].tableName, columns, query);
+
+			return sessions;
+		}
+
 		/**
 		* Função que deleta dados cadastrados anteriormente na relação de sessão.
 		 */

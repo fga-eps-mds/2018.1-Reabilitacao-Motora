@@ -80,11 +80,10 @@ namespace Tests
 			
 			UnityEditor.SceneManagement.EditorSceneManager.OpenScene(Application.dataPath + "/Scenes/ExercisesToReview.unity");
 
-			var panelphysio = GameObject.Find("PanelShowMovements");
+			var panelphysio = GameObject.Find("Content");
 			var instanciate = panelphysio.GetComponentInChildren<instanciateExercise>();
 
 			var exers = Exercicio.GetLast();
-
 			instanciate.ButtonSpawner(60, exers);
 			int countExers = CountGameObjectsWithSameName("Exercise da Reproduce Exercise(Clone)");
 

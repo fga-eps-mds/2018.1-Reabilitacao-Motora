@@ -222,7 +222,7 @@ namespace DataBaseAttributes
 			}
 		}
 
-		public static List<T> SpecificSelect<T> (string tableName, System.Object[] columns, string query)
+		public static List<T> MultiSpecificSelect<T> (string tableName, System.Object[] columns, string query)
 		{
 			// uma copia do array já que não é possivel passá-lo sem ser por referencia
 			System.Object[] backup = new System.Object [] {};
@@ -237,7 +237,7 @@ namespace DataBaseAttributes
 				conn.Open();
 
 				var sqlQuery = query;
-				
+
 				List<T> classList = new List<T>();
 
 				using (var cmd = new SqliteCommand(sqlQuery, conn))
@@ -273,6 +273,45 @@ namespace DataBaseAttributes
 						return classList;	 
 					}
 				}
+			}
+		}
+
+		public static T SingleSpecificSelect<T> (string tableName, System.Object[] columns, string query)
+		{
+			using (var conn = new SqliteConnection(GlobalController.path))
+			{
+				conn.Open();
+				var sqlQuery = query;
+
+				using (var cmd = new SqliteCommand(sqlQuery, conn))
+				{
+					using (SqliteDataReader reader = cmd.ExecuteReader())
+					{
+						T classInstance;
+
+						reader.Read();
+						
+						var columnsCopy = ObjectArray (columns, reader);
+
+						Type classType = typeof(T);
+						ConstructorInfo classConstructor = classType.GetConstructor(new [] { columnsCopy.GetType() });
+						classInstance = (T)classConstructor.Invoke(new object[] { columnsCopy });
+
+						reader.Dispose();
+						reader.Close();
+
+						cmd.Dispose();
+
+						conn.Dispose();
+						conn.Close();
+						SqliteConnection.ClearAllPools();
+
+						GC.Collect();
+						GC.WaitForPendingFinalizers();
+
+						return classInstance;
+					}
+				} 
 			}
 		}
 
