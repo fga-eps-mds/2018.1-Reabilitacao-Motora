@@ -28,10 +28,10 @@
 
 ## 3. Tamanho da _Sprint_
 
-| Data de Início | 20/05/2018 |
+| Data de Início | 04/06/2018 |
 |:--|:--:|
-| **Data de Término** | **03/06/2018** |
-| **Pontos Planejados** | **29**|
+| **Data de Término** | **10/06/2018** |
+| **Pontos Planejados** | **37**|
 | **Duração** | **7 dias** |
 
 
@@ -133,7 +133,7 @@ Não há avisos específicos para os erros indicados em vermelho durante o cadas
 - Criar um pop-up explicando o porque do preenchimento de tal campo ser inválido
 
 
-**Pontos:** 1.
+**Pontos:** 2.
 
 ---
 
@@ -247,10 +247,10 @@ Ao entrar na tela de seleção sensores o botão de salvar está muito pequeno c
 
 ---
 
-### [Criação dos adapters para o código do cliente](https://github.com/fga-gpp-mds/2018.1-reabilitacao-motora/issues/221)
+### [Criação do adapter para o sensor do cliente](https://github.com/fga-gpp-mds/2018.1-reabilitacao-motora/issues/221)
 
 #### Descrição:
-Criação dos adapters necessários para se acoplar o código do cliente ao projeto.
+Criação do adapter necessário para se acoplar o sensor do cliente ao projeto.
 
 #### Critérios de Aceitação:
 - Adapters criados
@@ -259,7 +259,6 @@ Criação dos adapters necessários para se acoplar o código do cliente ao proj
 #### Tarefas:
 - Estudos sobre o código
 - Criação do adapter do módulo do sensor
-- Criação do adapter do módulo de processamento
 
 **Pontos:** 8.
 

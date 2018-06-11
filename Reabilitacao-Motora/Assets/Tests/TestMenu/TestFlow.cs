@@ -106,18 +106,40 @@ namespace Tests
 		[UnityTest]
 		public static IEnumerator TestRealtimeGraphUDPPatient()
 		{
+			var device = @"^(.*?(\bDevice|Socket|SDK|expected|contexto|refused\b)[^$]*)$";
+			Regex rgx1 = new Regex(device, RegexOptions.IgnoreCase);
 			Flow.StaticRealtimeGraphUDPPatient();
+			LogAssert.Expect(LogType.Exception, rgx1);
 
 			yield return null;
 
 			var currentscene = SceneManager.GetActiveScene().name;
 			var expectedscene = "RealtimeGraphUDPPatient";
 			
-			var device = @"^(.*?(\bDevice|Socket|SDK|expected\b)[^$]*)$";
-			Regex rgx1 = new Regex(device, RegexOptions.IgnoreCase);
-			LogAssert.Expect(LogType.Error, rgx1);
-			LogAssert.Expect(LogType.Exception, rgx1);
+			Assert.AreEqual(currentscene, expectedscene);
+			Debug.Log("saindo de " + currentscene);
+		}
 
+
+		[UnityTest]
+		public static IEnumerator TestRealtimeGraphUDPPhysio()
+		{
+			var device = @"^(.*?(\bDevice|Socket|SDK|expected|contexto|refused\b)[^$]*)$";
+			Regex rgx1 = new Regex(device, RegexOptions.IgnoreCase);
+			Flow.StaticRealtimeGraphUDPPhysio();
+			LogAssert.Expect(LogType.Exception, rgx1);
+			
+			int p = (int) Environment.OSVersion.Platform;
+			if ((p == 4) || (p == 6) || (p == 128)) //if linux (travis)
+			{
+				LogAssert.Expect(LogType.Exception, rgx1);
+			}
+
+			yield return null;
+
+			var currentscene = SceneManager.GetActiveScene().name;
+			var expectedscene = "RealtimeGraphUDPPhysio";
+			
 			Assert.AreEqual(currentscene, expectedscene);
 			Debug.Log("saindo de " + currentscene);
 		}
@@ -135,25 +157,6 @@ namespace Tests
 			var device = @"^(.*?(\bDevice|SDK\b)[^$]*)$";
 			Regex rgx1 = new Regex(device, RegexOptions.IgnoreCase);
 			LogAssert.Expect(LogType.Error, rgx1);
-
-			Assert.AreEqual(currentscene, expectedscene);
-			Debug.Log("saindo de " + currentscene);
-		}
-
-		[UnityTest]
-		public static IEnumerator TestRealtimeGraphUDPPhysio()
-		{
-			Flow.StaticRealtimeGraphUDPPhysio();
-
-			yield return null;
-
-			var currentscene = SceneManager.GetActiveScene().name;
-			var expectedscene = "RealtimeGraphUDPPhysio";
-			
-			var device = @"^(.*?(\bDevice|Socket|SDK|expected\b)[^$]*)$";
-			Regex rgx1 = new Regex(device, RegexOptions.IgnoreCase);
-			LogAssert.Expect(LogType.Error, rgx1);
-			LogAssert.Expect(LogType.Exception, rgx1);
 
 			Assert.AreEqual(currentscene, expectedscene);
 			Debug.Log("saindo de " + currentscene);
@@ -393,6 +396,19 @@ namespace Tests
 
             var currentscene = SceneManager.GetActiveScene().name;
             var expectedscene = "HelpResults";
+
+            Assert.AreEqual(currentscene, expectedscene);
+        }
+
+        [UnityTest]
+        public static IEnumerator TestHelpMovementLabel()
+        {
+            Flow.StaticHelpMovementLabel();
+
+            yield return null;
+
+            var currentscene = SceneManager.GetActiveScene().name;
+            var expectedscene = "HelpMovementLabel";
 
             Assert.AreEqual(currentscene, expectedscene);
         }

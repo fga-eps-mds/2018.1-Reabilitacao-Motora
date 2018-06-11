@@ -1,9 +1,11 @@
-﻿using System.Collections;
+﻿using System.Text;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
 using System;
+using System.Linq;
 
 using cryptpw;
 
@@ -20,6 +22,9 @@ public class createPhysiotherapist : MonoBehaviour
 
 	[SerializeField]
 	protected Toggle male, female;
+
+	[SerializeField]
+	protected Text helpPopUp, outDate;
 
 	/**
 	 * Salva o Fisioterapeuta no banco.
@@ -47,11 +52,11 @@ public class createPhysiotherapist : MonoBehaviour
 		{
 			foreach (var x in allInputs)
 			{
-				ApplyColor (x, true);
+				ApplyColor (x, 1);
 			}
 
 			string encryptedPassword = CryptPassword.Encrypt(pass.text, login.text);			
-			var trip = date.text.Split('/');
+			var trip = outDate.text.Split('/');
 			var dateFormate = trip[2] + "/" + trip[1] + "/" + trip[0];
 			string sex, _phone2, _crefito, _regiao;
 			
@@ -99,12 +104,12 @@ public class createPhysiotherapist : MonoBehaviour
 		} 
 	}
 
-	private static bool ValidInput (List<InputField> inputs, List<Toggle> toggles)
+	public bool ValidInput (List<InputField> inputs, List<Toggle> toggles)
 	{
 		bool valid = true;
 
 		string treatName = TreatFields.NameField (inputs[0].text);
-		string treatDate = TreatFields.DateField (inputs[1].text);
+		string treatDate = TreatFields.DateField (outDate.text);
 		string treatPhone1 = TreatFields.PhoneField (inputs[2].text);
 		string treatLogin = TreatFields.LoginField (inputs[3].text);
 		string treatPass = TreatFields.PasswordField (inputs[4].text);
@@ -135,118 +140,227 @@ public class createPhysiotherapist : MonoBehaviour
 			treatPass != "" || treatConfirm != "" || treatPhone2 != "" ||
 			treatSex != "" || treatUniqueCR != "" || treatUniqueLP != "")
 		{
-			if (treatName != "")
+			bool flag = true;
+			StringBuilder fullerror = new StringBuilder();
+
+			if ((treatName != "") && flag)
 			{
 				var splitBar = treatName.Split('|');
+				fullerror.Append("[Nome]: ");
 				foreach (var erro in splitBar)
 				{
-					Debug.Log (erro);
+					fullerror.Append(erro+'\n');
 				}
 
-				ApplyColor (inputs[0], false);
-			} 
-			if (treatDate != "")
+				flag = false;
+				ApplyColor (inputs[0], 0);
+			}
+			else if (treatName == "")
+			{
+				ApplyColor (inputs[0], 2);
+			}
+
+			if (treatSex != "" && flag)
+			{
+				var splitBar = treatSex.Split('|');
+				fullerror.Append("[Sexo]: ");
+				foreach (var erro in splitBar)
+				{
+					fullerror.Append(erro+'\n');
+				}
+
+				flag = false;
+				ApplyColor (toggles[0], 0);
+				ApplyColor (toggles[1], 0);
+			}
+			else if (treatSex == "")
+			{
+				ApplyColor (toggles[0], 2);
+				ApplyColor (toggles[1], 2);
+			}
+
+			if ((treatDate != "") && flag)
 			{
 				var splitBar = treatDate.Split('|');
+				fullerror.Append("[Data de Nascimento]: ");
 				foreach (var erro in splitBar)
 				{
-					Debug.Log (erro);
+					fullerror.Append(erro+'\n');
 				}
 
-				ApplyColor (inputs[1], false);
+				flag = false;
+				ApplyColor (inputs[1], 0);
+			}
+			else if (treatDate == "")
+			{
+				ApplyColor (inputs[1], 2);
 			} 
-			if (treatPhone1 != "")
+
+			if ((treatPhone1 != "") && flag)
 			{
 				var splitBar = treatPhone1.Split('|');
+				fullerror.Append("[Telefone1]: ");
 				foreach (var erro in splitBar)
 				{
-					Debug.Log (erro);
+					fullerror.Append(erro+'\n');
 				}
 
-				ApplyColor (inputs[2], false);
+				flag = false;
+				ApplyColor (inputs[2], 0);
+			}
+			else if (treatPhone1 == "")
+			{
+				ApplyColor (inputs[2], 2);
 			} 
-			if (treatLogin != "")
+
+			if ((treatLogin != "" || treatUniqueLP != "") && flag)
 			{
 				var splitBar = treatLogin.Split('|');
-				foreach (var erro in splitBar)
+				fullerror.Append("[Login]: ");
+				if (treatLogin != "")
 				{
-					Debug.Log (erro);
+					foreach (var erro in splitBar)
+					{
+						fullerror.Append(erro+'\n');
+					}
 				}
 
-				ApplyColor (inputs[3], false);
+				splitBar = treatUniqueLP.Split('|');
+				if (treatUniqueLP != "")
+				{
+					foreach (var erro in splitBar)
+					{
+						fullerror.Append(erro+'\n');
+					}
+				}
+
+				flag = false;
+				ApplyColor (inputs[3], 0);
 			}
-			if (treatPass != "")
+			else if (treatLogin == "" && treatUniqueLP == "")
+			{
+				ApplyColor (inputs[3], 2);
+			}
+
+			if ((treatPass != "") && flag)
 			{
 				var splitBar = treatPass.Split('|');
+				fullerror.Append("[Senha]: ");
 				foreach (var erro in splitBar)
 				{
-					Debug.Log (erro);
+					fullerror.Append(erro+'\n');
 				}
 
-				ApplyColor (inputs[4], false);
+				flag = false;
+				ApplyColor (inputs[4], 0);
+			}
+			else if (treatPass == "")
+			{
+				ApplyColor (inputs[4], 2);
 			} 
-			if (treatConfirm != "")
+
+			if ((treatConfirm != "") && flag)
 			{
 				var splitBar = treatConfirm.Split('|');
+				fullerror.Append("[Confirmar Senha]: ");
 				foreach (var erro in splitBar)
 				{
-					Debug.Log (erro);
+					fullerror.Append(erro+'\n');
 				}
 
-				ApplyColor (inputs[5], false);
+				flag = false;
+				ApplyColor (inputs[5], 0);
+			}
+			else if (treatConfirm == "")
+			{
+				ApplyColor (inputs[5], 2);
 			} 
-			if (treatCrefito != "")
+
+			if ((treatCrefito != "" || treatUniqueCR != "") && flag)
 			{
 				var splitBar = treatCrefito.Split('|');
-				foreach (var erro in splitBar)
+				fullerror.Append("[CREFITO]: ");
+				if (treatCrefito != "")
 				{
-					Debug.Log (erro);
+					foreach (var erro in splitBar)
+					{
+						fullerror.Append(erro+'\n');
+					}
 				}
 
-				ApplyColor (inputs[6], false);
+				splitBar = treatUniqueCR.Split('|');
+				if (treatUniqueCR != "")
+				{
+					foreach (var erro in splitBar)
+					{
+						fullerror.Append(erro+'\n');
+					}
+				}
+
+				flag = false;
+				ApplyColor (inputs[6], 0);
+			}
+			else if (treatCrefito == "" && treatUniqueCR == "")
+			{
+				ApplyColor (inputs[6], 2);
 			} 
-			if (treatRegiao != "")
+
+			if ((treatRegiao != "" || treatUniqueCR != "") && flag)
 			{
 				var splitBar = treatRegiao.Split('|');
-				foreach (var erro in splitBar)
+				fullerror.Append("[Regiao]: ");
+				if (treatRegiao != "")
 				{
-					Debug.Log (erro);
+					foreach (var erro in splitBar)
+					{
+						fullerror.Append(erro+'\n');
+					}
 				}
 
-				ApplyColor (inputs[7], false);
+				splitBar = treatUniqueCR.Split('|');
+				if (treatUniqueCR != "")
+				{
+					foreach (var erro in splitBar)
+					{
+						fullerror.Append(erro+'\n');
+					}
+				}
+
+				flag = false;
+				ApplyColor (inputs[7], 0);
+			}
+			else if (treatRegiao == "" && treatUniqueCR == "")
+			{
+				ApplyColor (inputs[7], 2);
 			} 
-			if (treatPhone2 != "")
+
+			if ((treatPhone2 != "") && flag)
 			{
 				var splitBar = treatPhone2.Split('|');
+				fullerror.Append("[Telefone2]: ");
 				foreach (var erro in splitBar)
 				{
-					Debug.Log (erro);
+					fullerror.Append(erro+'\n');
 				}
 
-				ApplyColor (inputs[8], false);
+				flag = false;
+				ApplyColor (inputs[8], 0);
 			}
-			if (treatUniqueCR != "")
+			else if (treatPhone2 == "")
 			{
-				var splitBar = treatUniqueCR.Split('|');
-				foreach (var erro in splitBar)
-				{
-					Debug.Log (erro);
-				}
-
-				ApplyColor (inputs[6], false);
-				ApplyColor (inputs[7], false);
+				ApplyColor (inputs[8], 2);
 			}
-			if (treatUniqueLP != "")
-			{
-				var splitBar = treatUniqueLP.Split('|');
-				foreach (var erro in splitBar)
-				{
-					Debug.Log (erro);
-				}
 
-				ApplyColor (inputs[3], false);
-				ApplyColor (inputs[4], false);
-			} 
+			helpPopUp.text = fullerror.ToString();
+			int count = fullerror.ToString().Count(f => f == '\n');
+			int top = -90 + (count * 30);
+			float right = 300.0f - helpPopUp.preferredWidth;
+
+			helpPopUp.transform.localPosition = new Vector3(helpPopUp.transform.localPosition.x, 0, helpPopUp.transform.localPosition.z);
+
+			helpPopUp.transform.parent.gameObject.GetComponent<RectTransform>().offsetMin = new Vector2(right, -top);
+			helpPopUp.transform.parent.gameObject.GetComponent<RectTransform>().offsetMax = new Vector2(-right, top);
+			helpPopUp.transform.parent.gameObject.SetActive(true);
 
 			valid = false;
 		}
@@ -254,16 +368,21 @@ public class createPhysiotherapist : MonoBehaviour
 		return valid;
 	}
 
-	private static void ApplyColor (InputField input, bool ok)
+	public static void ApplyColor (InputField input, int ok)
 	{
 		input.colors = ColorManager.SetColor(input.colors, ok);
 	}
 
+	public static void ApplyColor (Toggle toggle, int ok)
+	{
+		toggle.colors = ColorManager.SetColor(toggle.colors, ok);
+	}
+
+
 	private static void CreateDirectoryPhysio (string name, int idPessoa)
 	{
-		Debug.Log("entrou " + name + " " + idPessoa);
 		string namePhysioUnderscored = name.Replace(' ', '_');
-		string pathnamephysio = "Assets\\Movimentos\\" + string.Format("{0}-{1}", idPessoa, namePhysioUnderscored);
+		string pathnamephysio = Application.dataPath + string.Format("/Movimentos/{0}-{1}", idPessoa, namePhysioUnderscored);
 		Directory.CreateDirectory(pathnamephysio);
 	}
 }

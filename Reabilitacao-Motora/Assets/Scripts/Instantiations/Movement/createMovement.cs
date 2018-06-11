@@ -31,7 +31,7 @@ public class createMovement : MonoBehaviour
 		{
 			foreach (var x in allInputs)
 			{
-				ApplyColor (x, true);
+				ApplyColor (x, 1);
 			}
 
 			var muscles = musculos.text.Split(',');
@@ -44,20 +44,9 @@ public class createMovement : MonoBehaviour
 			pathSave += physiounderscored + "/";
 			pathSave += movunderscored + "-";
 			pathSave += DateTime.Now.ToString("HHmmss", System.Globalization.DateTimeFormatInfo.InvariantInfo);
-			pathSave += ".points";
-
-			string description;
-			if (descricao.text == "")
-			{
-				description = null;
-			}
-			else
-			{
-				description = descricao.text;
-			}
 
 			Movimento.Insert (GlobalController.instance.admin.idFisioterapeuta,
-				nomeMovimento.text, pathSave, description);
+				nomeMovimento.text, pathSave + ".points", descricao.text);
 
 			List<Movimento> movementsList = Movimento.Read();
 
@@ -72,9 +61,17 @@ public class createMovement : MonoBehaviour
 				}
 			}
 
-			GlobalController.instance.movement = movementsList[movementsList.Count - 1];
 			GlobalController.patientOrPhysio = true;
-			Flow.ChoiceSensor();
+			GlobalController.instance.movement = movementsList[movementsList.Count - 1];
+			if(GlobalController.Sensor == false)
+			{
+				Flow.StaticRealtimeGraphKinectPhysio();
+			}
+			else
+			{
+				Flow.StaticRealtimeGraphUDPPhysio();				
+			
+			}
 		}
 	}
 
@@ -107,14 +104,18 @@ public class createMovement : MonoBehaviour
 				print (erro);
 			}
 
-			ApplyColor (inputs[0], false);
+			ApplyColor (inputs[0], 0);
 			valid = false;
+		}
+		else
+		{
+			ApplyColor (inputs[0], 2);
 		}
 
 		return valid;
 	}
 
-	public static void ApplyColor (InputField input, bool ok)
+	public static void ApplyColor (InputField input, int ok)
 	{
 		input.colors = ColorManager.SetColor(input.colors, ok);
 	}
