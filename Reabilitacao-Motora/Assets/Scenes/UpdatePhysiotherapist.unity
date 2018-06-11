@@ -1314,14 +1314,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 959272777}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ca13ab64b65b4e48848e4d2368e860f, type: 3}
+  m_Script: {fileID: 11500000, guid: b15cf3f9c91c3354ab41bc7685c356d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  namePatient: {fileID: 723251579}
-  date: {fileID: 1430294835}
-  phone1: {fileID: 62153804}
-  phone2: {fileID: 221308293}
-  notes: {fileID: 0}
+  namePhysiotherapist: {fileID: 1459765480}
+  date: {fileID: 1757808395}
+  phone1: {fileID: 797901192}
+  phone2: {fileID: 1342027961}
+  region: {fileID: 1558938513}
+  crefito: {fileID: 973813090}
   male: {fileID: 2056863514}
   female: {fileID: 1421163159}
 --- !u!1 &970960812
@@ -2585,8 +2586,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: updatePatient
+      - m_Target: {fileID: 1816981474}
+        m_MethodName: updatePhysiotherapist
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

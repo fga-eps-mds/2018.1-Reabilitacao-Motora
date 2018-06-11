@@ -60,6 +60,14 @@ public class Flow : MonoBehaviour
 	}
 
 	/**
+	 * Leva para scene de detalhe de paciente.
+	 */
+	public static void StaticPhysiotherapist()
+	{
+		SceneManager.LoadScene("Physiotherapist");
+	}
+
+	/**
 	 * Leva para scene de tela de login.
 	 */
 	public static void StaticLogin()
@@ -102,6 +110,10 @@ public class Flow : MonoBehaviour
 		SceneManager.LoadScene("UpdatePatient");
 	}
 
+	public static void StaticUpdatePhysiotherapist()
+	{
+		SceneManager.LoadScene("UpdatePhysiotherapist");
+	}
 
 	/**
 	 * Leva para scene de detalhes de sessão.

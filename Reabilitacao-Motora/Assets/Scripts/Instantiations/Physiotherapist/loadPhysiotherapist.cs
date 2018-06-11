@@ -7,7 +7,7 @@ using pessoa;
 using fisioterapeuta;
 
 
-public class loadPhyisiotherapist : MonoBehaviour 
+public class loadPhysiotherapist : MonoBehaviour 
 {
 	[SerializeField]
 	protected Text namePhysiotherapist, date, phone1, phone2, region, crefito;

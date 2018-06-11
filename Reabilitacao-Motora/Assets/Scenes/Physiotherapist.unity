@@ -1369,7 +1369,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 735480369}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe4e95f271cef6d40b48a1346690f80b, type: 3}
+  m_Script: {fileID: 11500000, guid: 9711704ada24c504ea2b9293bd9d3cd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   nextPage: {fileID: 735480371}
@@ -1448,6 +1448,7 @@ GameObject:
   - component: {fileID: 1105347414}
   - component: {fileID: 1105347416}
   - component: {fileID: 1105347415}
+  - component: {fileID: 1105347417}
   m_Layer: 5
   m_Name: PanelShowPatient
   m_TagString: Untagged
@@ -1517,6 +1518,25 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1105347413}
+--- !u!114 &1105347417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1105347413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b15cf3f9c91c3354ab41bc7685c356d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  namePhysiotherapist: {fileID: 1139828802}
+  date: {fileID: 1832110097}
+  phone1: {fileID: 1253804764}
+  phone2: {fileID: 1506674205}
+  region: {fileID: 1622608252}
+  crefito: {fileID: 1932492063}
+  male: {fileID: 1679619760}
+  female: {fileID: 1298421320}
 --- !u!1 &1125858903
 GameObject:
   m_ObjectHideFlags: 0
@@ -3302,7 +3322,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2069691378}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe4e95f271cef6d40b48a1346690f80b, type: 3}
+  m_Script: {fileID: 11500000, guid: 9711704ada24c504ea2b9293bd9d3cd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   nextPage: {fileID: 2069691380}
