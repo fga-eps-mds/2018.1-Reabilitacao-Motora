@@ -152,9 +152,14 @@ public class Flow : MonoBehaviour
 	/**
 	 * Leva para a scene de novo fisioterapeuta.
 	 */
-	public static void StaticNewPhysiotherapist()
+	public static void StaticNewPhysiotherapistAdm()
 	{
-		SceneManager.LoadScene("NewPhysiotherapist");
+		SceneManager.LoadScene("NewPhysiotherapist Adm");
+	}
+
+	public static void StaticNewPhysiotherapistCommon()
+	{
+		SceneManager.LoadScene("NewPhysiotherapist Common");
 	}
 
 

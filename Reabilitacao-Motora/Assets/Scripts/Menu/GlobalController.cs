@@ -34,6 +34,7 @@ public class GlobalController : MonoBehaviour
 	public static bool patientOrPhysio;
 	public static bool Sensor;
 	public static int choiceAvatar;
+	public static bool superAdm;
 
 	public Fisioterapeuta admin
 	{
@@ -143,6 +144,8 @@ public class GlobalController : MonoBehaviour
 
 	public static void Initialize()
 	{
+		superAdm = false;
+		
 		if (test == false)
 		{
 			path = "URI=file:" +  Application.streamingAssetsPath + "/fisiotech.db";
