@@ -1,17 +1,18 @@
+# US X - Título da Issue
 ---
-name: Feature request
-about: Suggest an idea for this project
+### Descrição:
+Pequena e útil descrção a respeito da Issue.
 
----
+### Critérios de Aceitação
+Critérios de aceitação para a Issue ser aceita.
+- [ ] Testes Unit passando.
+- [ ] Alguma coisa
+- [ ] Acabou a criatividade
 
-**Is your feature request related to a problem? Please describe.**
-A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
 
-**Describe the solution you'd like**
-A clear and concise description of what you want to happen.
-
-**Describe alternatives you've considered**
-A clear and concise description of any alternative solutions or features you've considered.
-
-**Additional context**
-Add any other context or screenshots about the feature request here.
+### Tarefas
+Seção para tarefas de Issues mais complexas. As tarefas devem garantir o perfeito funcionamento da Issue.
+- [ ] Login redirecionando para a última página
+- [ ] Desenvolvedores tomando café constantemente
+- [ ] Página de login contém: "Esqueci minha senha!"
+- [ ] Alguma outra tarefa
