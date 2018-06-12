@@ -99,6 +99,15 @@ namespace pessoa
 			return person;
 		}
 
+		public static Pessoa GetLast ()
+		{
+			Object[] columns = new Object[] {0, "", "", "", "", ""};
+			Pessoa person = DataBase.GetLast<Pessoa>(TablesManager.Tables[tableId].tableName,
+				TablesManager.Tables[tableId].colName[0], columns);
+
+			return person;
+		}
+
 		/**
 		* Função que deleta dados cadastrados anteriormente na relação de pessoas.
 		 */

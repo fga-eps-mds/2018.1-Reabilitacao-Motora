@@ -26,20 +26,14 @@ public class instanciateMovementInSession : MonoBehaviour
 
 	public void Awake ()
 	{
-		List<Movimento> movements = Movimento.Read();
-		List<Exercicio> exercises = Exercicio.Read();
+		string query = string.Format("select * from MOVIMENTO INNER JOIN EXERCICIO ON MOVIMENTO.idMovimento = EXERCICIO.idMovimento AND idSessao = {0}", GlobalController.instance.session.idSessao);
+		List<Movimento> movements = Movimento.MultiSpecificSelect(query);
 
 		int heightOffset = 10;
 		foreach (var movement in movements)
 		{
-			foreach (var exercise in exercises)
-			{
-				if ((exercise.idMovimento == movement.idMovimento) && (exercise.idSessao == GlobalController.instance.session.idSessao))
-				{
-					ButtonSpawner(heightOffset, movement);
-					heightOffset += HEIGHT_PADDING;
-				}
-			}
+			ButtonSpawner(heightOffset, movement);
+			heightOffset += HEIGHT_PADDING;
 		}
 	}
 }

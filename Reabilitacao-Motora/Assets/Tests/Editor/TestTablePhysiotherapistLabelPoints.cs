@@ -20,16 +20,16 @@ using System.Data;
 */
 namespace Tests
 {
-  public class TestTablePhysiotherapistLabelPoints
+  public static class TestTablePhysiotherapistLabelPoints
   {
-    [SetUp]
-		public void SetUp()
+        [SetUp]
+		public static void SetUp()
 		{
 			GlobalController.test = true;
 			GlobalController.Initialize();
 		}
         [Test]
-        public void TestPhysiotherapistLabelPointsCreate()
+        public static void TestPhysiotherapistLabelPointsCreate()
         {
             using (var conn = new SqliteConnection(GlobalController.path))
             {
@@ -73,7 +73,7 @@ namespace Tests
         }
 
         [Test]
-        public void TestPhysiotherapistLabelPointsDrop()
+        public static void TestPhysiotherapistLabelPointsDrop()
         {
             using (var conn = new SqliteConnection(GlobalController.path))
             {
@@ -117,7 +117,7 @@ namespace Tests
         }
 
         [Test]
-        public void TestPhysiotherapistLabelPointsInsert()
+        public static void TestPhysiotherapistLabelPointsInsert()
         {
             using (var conn = new SqliteConnection(GlobalController.path))
             {
@@ -202,7 +202,7 @@ namespace Tests
         }
         
         [Test]
-        public void TestPhysiotherapistLabelPointsUpdate()
+        public static void TestPhysiotherapistLabelPointsUpdate()
         {
             using (var conn = new SqliteConnection(GlobalController.path))
             {
@@ -290,7 +290,7 @@ namespace Tests
         }
         
         [Test]
-        public void TestPhysiotherapistLabelPointsRead()
+        public static void TestPhysiotherapistLabelPointsRead()
         {
             using (var conn = new SqliteConnection(GlobalController.path))
             {
@@ -333,7 +333,7 @@ namespace Tests
         }
         
         [Test]
-        public void TestPhysiotherapistLabelPointsReadValue()
+        public static void TestPhysiotherapistLabelPointsReadValue()
         {
             using (var conn = new SqliteConnection(GlobalController.path))
             {
@@ -376,7 +376,7 @@ namespace Tests
         }
 
         [Test]
-        public void TestPhysiotherapistLabelPointsDeleteValue()
+        public static void TestPhysiotherapistLabelPointsDeleteValue()
         {
             using (var conn = new SqliteConnection(GlobalController.path))
             {
