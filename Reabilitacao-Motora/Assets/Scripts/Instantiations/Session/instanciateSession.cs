@@ -42,7 +42,7 @@ public class instanciateSession : MonoBehaviour
 	public static string formatName (string dataSessao)
 	{
 		var partsBetweenDashs = dataSessao.Split('-');
-		var result = string.Format("{0}:{1} - {2}/{3}/{4}", partsBetweenDashs[4], partsBetweenDashs[3], partsBetweenDashs[2], partsBetweenDashs[1], partsBetweenDashs[0]); 
+		var result = string.Format("{0}:{1} - {2}/{3}/{4}", partsBetweenDashs[3], partsBetweenDashs[4], partsBetweenDashs[2], partsBetweenDashs[1], partsBetweenDashs[0]); 
 		return result;
 	}
 }
