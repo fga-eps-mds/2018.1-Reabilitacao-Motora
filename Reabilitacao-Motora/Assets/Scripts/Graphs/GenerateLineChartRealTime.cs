@@ -64,7 +64,7 @@ public class GenerateLineChartRealTime : MonoBehaviour
 		}
 	}
 
-	public void Awake()
+	public void Start()
 	{	
 		t = false;
 		current_time_movement = 0;
@@ -82,7 +82,7 @@ public class GenerateLineChartRealTime : MonoBehaviour
 		StartCoroutine("Waiter");
 	}
 
-	IEnumerator Waiter()
+	public IEnumerator Waiter()
 	{
 		yield return new WaitForSeconds(0.8f);
 		ombro = GameObject.Find("mixamorig:LeftShoulder").transform;

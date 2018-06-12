@@ -44,7 +44,7 @@ public class MoveByUDP : MonoBehaviour
     	StartCoroutine("Waiter");
     }
 
-    IEnumerator Waiter()
+    public IEnumerator Waiter()
     {
     	yield return new WaitForSeconds(0.8f);
     	ombro = GameObject.Find("mixamorig:LeftShoulder").transform;

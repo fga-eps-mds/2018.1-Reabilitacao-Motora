@@ -77,7 +77,7 @@ public class GenerateLineChart : MonoBehaviour
 	/**
 	* Descrever aqui o que esse método realiza.
 	*/
-	void Awake()
+	void Start()
 	{
 		if(GlobalController.instance != null && 
 		   GlobalController.instance.movement != null)
@@ -130,7 +130,7 @@ public class GenerateLineChart : MonoBehaviour
 		
 	}
 
-	IEnumerator Waiter()
+	public IEnumerator Waiter()
 	{
 		yield return new WaitForSeconds(0.8f);
 		ombro = GameObject.Find("mixamorig:LeftShoulder").transform;
