@@ -132,10 +132,13 @@ public class GenerateLineChart : MonoBehaviour
 
 	public IEnumerator Waiter()
 	{
-		yield return new WaitForSeconds(0.8f);
+		yield return new WaitForSeconds(0.3f);
 		ombro = GameObject.Find("mixamorig:LeftShoulder").transform;
+		yield return new WaitForSeconds(0.3f);
 		braco = GameObject.Find("mixamorig:LeftArm").transform;
+		yield return new WaitForSeconds(0.3f);
 		cotovelo = GameObject.Find("mixamorig:LeftForeArm").transform;
+		yield return new WaitForSeconds(0.3f);
 		mao = GameObject.Find("mixamorig:LeftHand").transform;
 	}
 	/**
