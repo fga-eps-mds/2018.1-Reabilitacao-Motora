@@ -33,7 +33,7 @@ namespace Tests
 		[UnityTest]
 		public static IEnumerator TestPhysioManagerInputFields()
 		{
-			Flow.StaticNewPhysiotherapist();
+			Flow.StaticNewPhysiotherapistCommon();
 
 			yield return null;
 
@@ -59,7 +59,7 @@ namespace Tests
 		public static IEnumerator TestPhysioSaveButton()
 		{
 			Flow.StaticLogin();
-			Flow.StaticNewPhysiotherapist();
+			Flow.StaticNewPhysiotherapistCommon();
 
 			yield return null;
 			
@@ -116,7 +116,7 @@ namespace Tests
 		public static IEnumerator TestSavePhysio()
 		{
 			Flow.StaticLogin();
-			Flow.StaticNewPhysiotherapist();
+			Flow.StaticNewPhysiotherapistCommon();
 
 			yield return null;
 			
