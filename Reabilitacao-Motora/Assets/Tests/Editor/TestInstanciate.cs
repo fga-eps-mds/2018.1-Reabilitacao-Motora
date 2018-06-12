@@ -52,7 +52,7 @@ namespace Tests
 
 			var fisios = Fisioterapeuta.GetLast();
 
-			UnityEditor.SceneManagement.EditorSceneManager.OpenScene(Application.dataPath + "/Scenes/NewPhysiotherapist.unity");
+			UnityEditor.SceneManagement.EditorSceneManager.OpenScene(Application.dataPath + "/Scenes/NewPhysiotherapist Adm.unity");
 
 			var panelphysio = GameObject.Find("PanelMoves");
 			var instanciate = panelphysio.GetComponentInChildren<instanciatePhysiotherapist>();
