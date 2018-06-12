@@ -69,7 +69,7 @@ GameObject:
   - component: {fileID: 222598158433207110}
   - component: {fileID: 114226831638196150}
   - component: {fileID: 114006736068564260}
-  - component: {fileID: 114218291169914006}
+  - component: {fileID: 114312273276333650}
   m_Layer: 5
   m_Name: Physio
   m_TagString: Untagged
@@ -178,18 +178,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &114218291169914006
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1351644236381674}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c07d0b3fab19a084d8125cb485d49f1e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nextPage: {fileID: 114006736068564260}
 --- !u!114 &114226831638196150
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -269,6 +257,18 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114312273276333650
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1351644236381674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6598f1e4ff66fa4197327e29b2af990, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextPage: {fileID: 114006736068564260}
 --- !u!114 &114600296035567044
 MonoBehaviour:
   m_ObjectHideFlags: 1
