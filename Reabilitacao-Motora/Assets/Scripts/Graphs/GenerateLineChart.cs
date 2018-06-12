@@ -119,6 +119,7 @@ public class GenerateLineChart : MonoBehaviour
 				}
 			}
 
+			StartCoroutine("Waiter");
 			string[] p1 = System.IO.File.ReadAllLines(file);
 			LoadData (p1);
 		}
@@ -129,6 +130,14 @@ public class GenerateLineChart : MonoBehaviour
 		
 	}
 
+	IEnumerator Waiter()
+	{
+		yield return new WaitForSeconds(0.8f);
+		ombro = GameObject.Find("mixamorig:LeftShoulder").transform;
+		braco = GameObject.Find("mixamorig:LeftArm").transform;
+		cotovelo = GameObject.Find("mixamorig:LeftForeArm").transform;
+		mao = GameObject.Find("mixamorig:LeftHand").transform;
+	}
 	/**
 	* Descrever aqui o que esse método realiza.
 	*/

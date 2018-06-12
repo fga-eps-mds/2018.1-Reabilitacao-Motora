@@ -32,7 +32,8 @@ public class MoveByUDP : MonoBehaviour
     string rxString;
 
 
-    void Start () {
+    void Start () 
+    {
         Debug.Log("Starting Client");
         remoteEP = new IPEndPoint(IPAddress.Any, receivePort);
 
@@ -40,9 +41,20 @@ public class MoveByUDP : MonoBehaviour
         client.JoinMulticastGroup(groupIP);
 
         client.BeginReceive(new AsyncCallback(ReceiveServerInfo), null);
+    	StartCoroutine("Waiter");
     }
 
-    void ReceiveServerInfo (IAsyncResult result) {        
+    IEnumerator Waiter()
+    {
+    	yield return new WaitForSeconds(0.8f);
+    	ombro = GameObject.Find("mixamorig:LeftShoulder").transform;
+    	braco = GameObject.Find("mixamorig:LeftArm").transform;
+    	cotovelo = GameObject.Find("mixamorig:LeftForeArm").transform;
+    	mao = GameObject.Find("mixamorig:LeftHand").transform;
+    }
+
+    void ReceiveServerInfo (IAsyncResult result) 
+    {        
         //Debug.Log("Received Server Info");
         byte[] receivedBytes = client.EndReceive(result, ref remoteEP);
 

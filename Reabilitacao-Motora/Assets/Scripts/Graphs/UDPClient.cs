@@ -35,8 +35,17 @@ public class UDPClient : MonoBehaviour
         {
             Debug.Log(e);
         }
+        StartCoroutine("Waiter");
     }
 
+    IEnumerator Waiter()
+    {
+        yield return new WaitForSeconds(0.8f);
+        ombro = GameObject.Find("mixamorig:LeftShoulder").transform;
+        braco = GameObject.Find("mixamorig:LeftArm").transform;
+        cotovelo = GameObject.Find("mixamorig:LeftForeArm").transform;
+        mao = GameObject.Find("mixamorig:LeftHand").transform;
+    }
     /**
 	 * Metodo que atualiza em tempo real os valores das posições do braço do avatar e envia ao servidor
 	 */

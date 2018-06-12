@@ -78,5 +78,16 @@ public class GenerateLineChartRealTime : MonoBehaviour
 		{
 			GetMovementPoints.LoadLineRenderer(ref go, ref lineRenderer, c1, c3);
 		}
+
+		StartCoroutine("Waiter");
+	}
+
+	IEnumerator Waiter()
+	{
+		yield return new WaitForSeconds(0.8f);
+		ombro = GameObject.Find("mixamorig:LeftShoulder").transform;
+		braco = GameObject.Find("mixamorig:LeftArm").transform;
+		cotovelo = GameObject.Find("mixamorig:LeftForeArm").transform;
+		mao = GameObject.Find("mixamorig:LeftHand").transform;
 	}
 }
