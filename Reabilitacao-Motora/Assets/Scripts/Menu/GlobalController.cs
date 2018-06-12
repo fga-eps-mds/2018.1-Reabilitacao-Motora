@@ -34,91 +34,17 @@ public class GlobalController : MonoBehaviour
 	public static bool patientOrPhysio;
 	public static bool Sensor;
 	public static int choiceAvatar;
+	private static bool SuperAdm;
 
-	public Fisioterapeuta admin
-	{
-		get
-		{
-			return Admin;
-		}
-		set
-		{
-			Admin = value;
-		}
-	}
-
-	public Paciente user
-	{
-		get
-		{
-			return User;
-		}
-		set
-		{
-			User = value;
-		}
-	}
-
-	public Movimento movement
-	{
-		get
-		{
-			return Movement;
-		}
-		set
-		{
-			Movement = value;
-		}
-	}
-
-	public Sessao session
-	{
-		get
-		{
-			return Session;
-		}
-		set
-		{
-			Session = value;
-		}
-	}
-
-	public Exercicio exercise
-	{
-		get
-		{
-			return Exercise;
-		}
-		set
-		{
-			Exercise = value;
-		}
-	}
-
-	public PontosRotuloFisioterapeuta prf
-	{
-		get
-		{
-			return Prf;
-		}
-		set
-		{
-			Prf = value;
-		}
-	}
-
-	public PontosRotuloPaciente prp
-	{
-		get
-		{
-			return Prp;
-		}
-		set
-		{
-			Prp = value;
-		}
-	}
-
+	public Fisioterapeuta admin { get { return Admin;} set { Admin = value;}}
+	public Paciente user { get { return User;} set { User = value;}}
+	public Movimento movement { get { return Movement;} set { Movement = value;}}
+	public Sessao session { get { return Session;} set { Session = value;}}
+	public Exercicio exercise { get { return Exercise;} set { Exercise = value;}}
+	public PontosRotuloFisioterapeuta prf { get { return Prf;} set { Prf = value;}}
+	public PontosRotuloPaciente prp { get { return Prp;} set { Prp = value;}}
+	public static bool superAdm { get { return SuperAdm;} set { SuperAdm = value;}}
+	
 	public void Awake ()
 	{
 		if (instance != null)
@@ -143,6 +69,8 @@ public class GlobalController : MonoBehaviour
 
 	public static void Initialize()
 	{
+		superAdm = false;
+		
 		if (test == false)
 		{
 			path = "URI=file:" +  Application.streamingAssetsPath + "/fisiotech.db";

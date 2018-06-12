@@ -180,18 +180,30 @@ namespace Tests
 			Debug.Log("saindo de " + currentscene);
 		}
 
-
-
-
 		[UnityTest]
-		public static IEnumerator TestNewPhysiotherapist()
+		public static IEnumerator TestNewPhysiotherapistAdm()
 		{
-			Flow.StaticNewPhysiotherapist();
+			Flow.StaticNewPhysiotherapistAdm();
 
 			yield return null;
 
 			var currentscene = SceneManager.GetActiveScene().name;
-			var expectedscene = "NewPhysiotherapist";
+			var expectedscene = "NewPhysiotherapist Adm";
+
+			Assert.AreEqual(currentscene, expectedscene);
+			Debug.Log("saindo de " + currentscene);
+		}
+
+
+		[UnityTest]
+		public static IEnumerator TestNewPhysiotherapistCommon()
+		{
+			Flow.StaticNewPhysiotherapistCommon();
+
+			yield return null;
+
+			var currentscene = SceneManager.GetActiveScene().name;
+			var expectedscene = "NewPhysiotherapist Common";
 
 			Assert.AreEqual(currentscene, expectedscene);
 			Debug.Log("saindo de " + currentscene);
