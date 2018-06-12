@@ -18,7 +18,7 @@ using System.Data;
 */
 namespace Tests
 {
-	public class TestTableMuscle
+	public static class TestTableMuscle
 	{
 		[SetUp]
 		public static void SetUp()

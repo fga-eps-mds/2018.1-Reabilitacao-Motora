@@ -14,7 +14,6 @@ public class instanciateExercise : MonoBehaviour
 	public void ButtonSpawner(int posY, Exercicio exercise)
 	{
 		GameObject go = Instantiate(buttonPrefab, transform);
-
 		go.transform.position = new Vector3 (go.transform.position.x + 60, go.transform.position.y - posY, go.transform.position.z);
 		
 		var script = go.GetComponentInChildren<SetExerciseToButton>();

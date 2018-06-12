@@ -27,15 +27,14 @@ public class instanciateSession : MonoBehaviour
 	{
 		if (GlobalController.instance.user != null)
 		{
-			List<Sessao> sessions = Sessao.Read();
+			string query = string.Format("select * from SESSAO where idPaciente = {0}", GlobalController.instance.user.idPaciente);
+			List<Sessao> sessions = Sessao.MultiSpecificSelect(query);
 			int heightOffset = 10;
+
 			foreach (var session in sessions)
 			{
-				if (session.idPaciente == GlobalController.instance.user.idPaciente)
-				{
-					ButtonSpawner(heightOffset, session);
-					heightOffset += HEIGHT_PADDING;
-				}
+				ButtonSpawner(heightOffset, session);
+				heightOffset += HEIGHT_PADDING;
 			}
 		}
 	}

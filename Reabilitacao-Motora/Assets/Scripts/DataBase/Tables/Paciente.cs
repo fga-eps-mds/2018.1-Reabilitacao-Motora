@@ -87,6 +87,16 @@ namespace paciente
 			return patient;
 		}
 
+		public static Paciente GetLast ()
+		{
+			Object[] columns = new Object[] {0, 0, ""};
+
+			Paciente patient = DataBase.GetLast<Paciente>(TablesManager.Tables[tableId].tableName,
+				TablesManager.Tables[tableId].colName[0], columns);
+
+			return patient;
+		}
+
 		/**
 		 * Função que deleta dados cadastrados anteriormente na relação paciente.
 		 */
