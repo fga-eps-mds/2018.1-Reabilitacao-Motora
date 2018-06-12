@@ -38,7 +38,7 @@ namespace Tests
 		public static IEnumerator TestDeletePhysio()
 		{
 			Flow.StaticLogin();
-			Flow.StaticNewPhysiotherapist();
+			Flow.StaticNewPhysiotherapistAdm();
 
 			yield return null;
 			

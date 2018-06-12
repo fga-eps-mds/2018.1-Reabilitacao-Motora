@@ -84,6 +84,6 @@ public class DeletePhysioButton : MonoBehaviour
 			Directory.Delete(nomePasta, true);
 		}
 
-		Flow.StaticNewPhysiotherapist();
+		Flow.StaticNewPhysiotherapistAdm();
 	}
 }
