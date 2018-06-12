@@ -1,28 +1,29 @@
----
-name: Bug report
-about: Create a report to help us improve
+* **Estou enviando um ...**
+  - [ ] Bug
+  - [ ] Requisição de nova funcionalidade
+  - [ ] Necessitando suporte 
 
----
 
-**Describe the bug**
-A clear and concise description of what the bug is.
+* **Você quer requisitar uma *feature* ou reportar um *bug*?**
 
-**To Reproduce**
-Steps to reproduce the behavior:
-1. Go to '...'
-2. Click on '....'
-3. Scroll down to '....'
-4. See error
 
-**Expected behavior**
-A clear and concise description of what you expected to happen.
 
-**Screenshots**
-If applicable, add screenshots to help explain your problem.
+* **Qual o comportamento atual?**
 
-**Desktop (please complete the following information):**
- - OS: [e.g. Windows]
- - Version [e.g. 10]
 
-**Additional context**
-Add any other context about the problem here.
+
+* **Qual o comportamento esperado?**
+
+
+
+* **Qual é o caso de motivação / uso para mudar o comportamento?**
+
+
+
+* **Por favor, conte-nos sobre o seu ambiente:**
+
+    Versão: Unity x.y.z </br>
+    Kinect: Modelo W </br>
+    Python: x.w.z </br>
+
+* **Outras Informações** 
