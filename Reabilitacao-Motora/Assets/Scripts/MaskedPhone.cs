@@ -2,17 +2,25 @@
 using System.Collections;
 using UnityEngine.UI; // Required when Using UI elements.
 
+/*
+ * Esta classe cria a máscara de telefone.
+ */
 public class MaskedPhone : MonoBehaviour
 {
     public InputField phoneInputField;
+	public Text textOutput;
 
     public void Start()
     {
-        //Adds a listener to the main input field and invokes a method when the value changes.
+        /*
+         * Trata de ouvir as modificacoes no campo.
+         */
         phoneInputField.onValueChanged.AddListener(delegate {ValueChangeCheck(); });
     }
 
-    // Invoked when the value of the text field changes.
+    /*
+     * Esta funcao eh chamada quando se alteram os valores do campo.
+     */
     public void ValueChangeCheck()
     {
 		int index = 0 ;
@@ -36,6 +44,9 @@ public class MaskedPhone : MonoBehaviour
         if( index >= 0 )
             output = output.Substring( 0, index + 1 );
         
-		Debug.Log(output);
+		if(output=="(")
+            textOutput.text = "";
+        else
+            textOutput.text = output;
     }
 }
