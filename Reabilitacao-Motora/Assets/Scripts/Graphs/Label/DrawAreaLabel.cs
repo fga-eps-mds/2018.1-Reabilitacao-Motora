@@ -21,6 +21,7 @@ public class DrawAreaLabel : MonoBehaviour
 	protected Vector3 PosMinMouse, PosMaxMouse, PosIniMouse, origin;
 	// protected RaycastHit R;
 	bool patientOrPhysio;
+	float maxgraph;
 
 	public void Start ()
 	{
@@ -35,6 +36,7 @@ public class DrawAreaLabel : MonoBehaviour
 		}
 
 		origin = Cam.WorldToScreenPoint(originGrafico.position);
+		maxgraph = Screen.width - origin.x;
 	}
 
 	public bool ValidClick (Vector2 pos)
@@ -47,6 +49,14 @@ public class DrawAreaLabel : MonoBehaviour
 		{
 			return false;
 		}
+	}
+
+	void ScreenToWorld ()
+	{
+		float minCurrent = PosMinMouse.x - origin.x;
+		float maxCurrent = PosMaxMouse.x - origin.x;
+		PosMinMouse = new Vector3((16*minCurrent)/maxgraph, PosMinMouse.y, PosMinMouse.z);
+		PosMaxMouse = new Vector3((16*maxCurrent)/maxgraph, PosMaxMouse.y, PosMaxMouse.z);
 	}
 
 	public void Update ()
@@ -65,19 +75,14 @@ public class DrawAreaLabel : MonoBehaviour
 				{
 					PosMaxMouse.x = Input.mousePosition.x;   
 				}
-				else if (Input.mousePosition.x >= origin.x && Input.mousePosition.x < PosIniMouse.x)
+				else
 				{
 					PosMaxMouse.x = PosIniMouse.x;
 					PosMinMouse.x = Input.mousePosition.x; 
 				}
-				else if (Input.mousePosition.x < origin.x)
-				{
-					PosMaxMouse.x = PosIniMouse.x;
-					PosMinMouse.x = origin.x; 
-				}
 				
-				var max = new Vector2(((PosMaxMouse.x - origin.x) / Screen.width), 1f);
-				var min = new Vector2(((PosMinMouse.x - origin.x) / Screen.width), 0f);
+				var max = new Vector2((PosMaxMouse.x - origin.x) / maxgraph, 1f);
+				var min = new Vector2((PosMinMouse.x - origin.x) / maxgraph, 0f);
 
 				ImagemSelecao.rectTransform.anchorMax = max;
 				ImagemSelecao.rectTransform.anchorMin = min; 
@@ -85,17 +90,13 @@ public class DrawAreaLabel : MonoBehaviour
 
 			if(Input.GetMouseButtonUp(1))
 			{
-				// Physics.Raycast(Cam.ScreenPointToRay(PosMinMouse), out R);
-				PosMinMouse = Cam.ScreenToWorldPoint(PosMinMouse);
-
-				// Physics.Raycast(Cam.ScreenPointToRay(PosMaxMouse), out R);
-				PosMaxMouse = Cam.ScreenToWorldPoint(PosMaxMouse);
+				ScreenToWorld();
+				Debug.Log(PosMinMouse);
+				Debug.Log(PosMaxMouse);
 
 				popUp.SetActive(true);
 				DesactivateCanvas();
 
-				Debug.Log(PosMinMouse);
-				Debug.Log(PosMaxMouse);
 				ImagemSelecao.rectTransform.anchorMax = new Vector2(0,0);
 				ImagemSelecao.rectTransform.anchorMin = new Vector2(0,0);
 			}
