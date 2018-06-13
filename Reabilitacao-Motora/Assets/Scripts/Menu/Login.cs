@@ -21,7 +21,7 @@ public class Login : MonoBehaviour
 	protected Button nextPage;
 
 	[SerializeField]
-	protected GameObject helpPopUp, admPopUp;
+	protected GameObject helpPopUp;
 
 	bool first;
 	public void Awake ()
@@ -43,12 +43,9 @@ public class Login : MonoBehaviour
 			if (first)
 			{
 				GlobalController.superAdm = true;
-				admPopUp.SetActive(true);
 			}
-			else
-			{
-				Flow.StaticMenu();
-			}
+			
+			Flow.StaticMenu();
 		} 
 		else 
 		{

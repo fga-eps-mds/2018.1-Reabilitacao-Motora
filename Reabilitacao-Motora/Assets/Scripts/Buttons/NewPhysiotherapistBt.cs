@@ -8,13 +8,6 @@ public class NewPhysiotherapistBt : MonoBehaviour
 
 	public void Awake ()
 	{
-		if (GlobalController.superAdm)
-		{
-			nextPage.onClick.AddListener(delegate{Flow.StaticNewPhysiotherapistAdm();});
-		}
-		else
-		{
-			nextPage.onClick.AddListener(delegate{Flow.StaticNewPhysiotherapistCommon();});
-		}
+		nextPage.onClick.AddListener(delegate{Flow.StaticNewPhysiotherapistCommon();});
 	}
 }
