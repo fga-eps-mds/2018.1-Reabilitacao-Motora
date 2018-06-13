@@ -70,6 +70,7 @@ public class GlobalController : MonoBehaviour
 	public static void Initialize()
 	{
 		superAdm = false;
+		choiceAvatar = 1;
 		
 		if (test == false)
 		{

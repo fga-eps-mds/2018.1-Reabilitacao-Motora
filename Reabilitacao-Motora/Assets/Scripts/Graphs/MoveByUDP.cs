@@ -13,7 +13,8 @@ using System.Threading;
 public class MoveByUDP : MonoBehaviour
 {
 	[SerializeField]
-	protected Transform pointPrefab, mao, ombro, cotovelo, braco;
+	protected Transform pointPrefab;
+	protected Transform mao, ombro, cotovelo, braco;
 
 	Vector3 f_mao_pos, f_mao_rot, f_ombro_pos, f_ombro_rot, f_cotovelo_pos, f_cotovelo_rot, f_braco_pos, f_braco_rot;
 	float current_time_movement;
@@ -31,6 +32,53 @@ public class MoveByUDP : MonoBehaviour
 
     string rxString;
 
+    [System.Serializable]
+	public class NecessaryJoints
+	{
+		public Transform ombroAux, bracoAux, cotoveloAux, maoAux;
+	}
+
+	[SerializeField]
+	protected NecessaryJoints[] joints;
+
+	public void Assign ()
+	{
+		if (GlobalController.choiceAvatar == 1)
+		{
+			ombro = joints[0].ombroAux;
+			braco = joints[0].bracoAux;
+			cotovelo = joints[0].cotoveloAux;
+			mao = joints[0].maoAux;
+		}
+		else if (GlobalController.choiceAvatar == 2)
+		{
+			ombro = joints[1].ombroAux;
+			braco = joints[1].bracoAux;
+			cotovelo = joints[1].cotoveloAux;
+			mao = joints[1].maoAux;
+		}
+		else if (GlobalController.choiceAvatar == 3)
+		{
+			ombro = joints[2].ombroAux;
+			braco = joints[2].bracoAux;
+			cotovelo = joints[2].cotoveloAux;
+			mao = joints[2].maoAux;
+		}
+		else if (GlobalController.choiceAvatar == 4)
+		{
+			ombro = joints[3].ombroAux;
+			braco = joints[3].bracoAux;
+			cotovelo = joints[3].cotoveloAux;
+			mao = joints[3].maoAux;
+		}
+		else if (GlobalController.choiceAvatar == 5)
+		{
+			ombro = joints[4].ombroAux;
+			braco = joints[4].bracoAux;
+			cotovelo = joints[4].cotoveloAux;
+			mao = joints[4].maoAux;
+		}
+	}
 
     void Start () 
     {
@@ -41,16 +89,8 @@ public class MoveByUDP : MonoBehaviour
         client.JoinMulticastGroup(groupIP);
 
         client.BeginReceive(new AsyncCallback(ReceiveServerInfo), null);
-    	StartCoroutine("Waiter");
-    }
-
-    public IEnumerator Waiter()
-    {
-    	yield return new WaitForSeconds(0.8f);
-    	ombro = GameObject.Find("mixamorig:LeftShoulder").transform;
-    	braco = GameObject.Find("mixamorig:LeftArm").transform;
-    	cotovelo = GameObject.Find("mixamorig:LeftForeArm").transform;
-    	mao = GameObject.Find("mixamorig:LeftHand").transform;
+    	
+    	Assign();
     }
 
     void ReceiveServerInfo (IAsyncResult result) 

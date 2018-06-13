@@ -11,7 +11,29 @@ using UnityEngine.SceneManagement;
 public class GenerateLineChart : MonoBehaviour
 {
 	[SerializeField]
-	protected Transform pointPrefab, mao, ombro, cotovelo, braco;
+	protected Transform pointPrefab;
+	protected Transform mao, ombro, cotovelo, braco;
+
+	[System.Serializable]
+	public class NecessaryJoints
+	{
+		public Transform ombroAux, bracoAux, cotoveloAux, maoAux;
+	}
+
+	[SerializeField]
+	protected NecessaryJoints[] joints;
+
+	// [SerializeField]
+	// protected Transform maoAux2, ombroAux2, cotoveloAux2, bracoAux2;
+
+	// [SerializeField]
+	// protected Transform maoAux3, ombroAux3, cotoveloAux3, bracoAux3;
+
+	// [SerializeField]
+	// protected Transform maoAux4, ombroAux4, cotoveloAux4, bracoAux4;
+
+	// [SerializeField]
+	// protected Transform maoAux5, ombroAux5, cotoveloAux5, bracoAux5;
 
 	List <float> current_time;
 	List <Vector3> f_mao_pos, f_mao_rot, f_ombro_pos, f_ombro_rot, f_cotovelo_pos, f_cotovelo_rot, f_braco_pos, f_braco_rot;
@@ -102,6 +124,7 @@ public class GenerateLineChart : MonoBehaviour
 			
 			if (currentscene == "Graphs2")
 			{
+				Assign(false);
 				file = Application.dataPath + "/Movimentos/" + GlobalController.instance.movement.pontosMovimento;
 				GetMovementPoints.LoadLineRenderer(ref go, ref lineRenderer, c1, c2);
 			}
@@ -109,17 +132,18 @@ public class GenerateLineChart : MonoBehaviour
 			{
 				if (transform.root.gameObject.name == "Grafico Fisio")
 				{
+					Assign(true);
 					file = Application.dataPath + "/Movimentos/" + GlobalController.instance.movement.pontosMovimento;
 					GetMovementPoints.LoadLineRenderer(ref go, ref lineRenderer, c1, c2);
 				}
 				else
 				{
+					Assign(false);
 					file = Application.dataPath + "/Exercicios/" + GlobalController.instance.exercise.pontosExercicio;
 					GetMovementPoints.LoadLineRenderer(ref go, ref lineRenderer, c1, c3);
 				}
 			}
 
-			StartCoroutine("Waiter");
 			string[] p1 = System.IO.File.ReadAllLines(file);
 			LoadData (p1);
 		}
@@ -130,16 +154,53 @@ public class GenerateLineChart : MonoBehaviour
 		
 	}
 
-	public IEnumerator Waiter()
+	public void Assign (bool physio)
 	{
-		yield return new WaitForSeconds(0.3f);
-		ombro = GameObject.Find("mixamorig:LeftShoulder").transform;
-		yield return new WaitForSeconds(0.3f);
-		braco = GameObject.Find("mixamorig:LeftArm").transform;
-		yield return new WaitForSeconds(0.3f);
-		cotovelo = GameObject.Find("mixamorig:LeftForeArm").transform;
-		yield return new WaitForSeconds(0.3f);
-		mao = GameObject.Find("mixamorig:LeftHand").transform;
+		if (physio == true)
+		{
+			ombro = joints[0].ombroAux;
+			braco = joints[0].bracoAux;
+			cotovelo = joints[0].cotoveloAux;
+			mao = joints[0].maoAux;
+		}
+		else
+		{
+			if (GlobalController.choiceAvatar == 1)
+			{
+				ombro = joints[0].ombroAux;
+				braco = joints[0].bracoAux;
+				cotovelo = joints[0].cotoveloAux;
+				mao = joints[0].maoAux;
+			}
+			else if (GlobalController.choiceAvatar == 2)
+			{
+				ombro = joints[1].ombroAux;
+				braco = joints[1].bracoAux;
+				cotovelo = joints[1].cotoveloAux;
+				mao = joints[1].maoAux;
+			}
+			else if (GlobalController.choiceAvatar == 3)
+			{
+				ombro = joints[2].ombroAux;
+				braco = joints[2].bracoAux;
+				cotovelo = joints[2].cotoveloAux;
+				mao = joints[2].maoAux;
+			}
+			else if (GlobalController.choiceAvatar == 4)
+			{
+				ombro = joints[3].ombroAux;
+				braco = joints[3].bracoAux;
+				cotovelo = joints[3].cotoveloAux;
+				mao = joints[3].maoAux;
+			}
+			else if (GlobalController.choiceAvatar == 5)
+			{
+				ombro = joints[4].ombroAux;
+				braco = joints[4].bracoAux;
+				cotovelo = joints[4].cotoveloAux;
+				mao = joints[4].maoAux;
+			}
+		}
 	}
 	/**
 	* Descrever aqui o que esse método realiza.

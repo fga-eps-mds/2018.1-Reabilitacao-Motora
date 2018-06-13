@@ -297,6 +297,22 @@ MonoBehaviour:
   verticalMovement: 0
   smoothFactor: 5
   offsetRelativeToSensor: 0
+--- !u!4 &33475060 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400028, guid: 0ed08faf6b2c64f13ae389013c74d2d7, type: 3}
+  m_PrefabInternal: {fileID: 33475057}
+--- !u!4 &33475061 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400026, guid: 0ed08faf6b2c64f13ae389013c74d2d7, type: 3}
+  m_PrefabInternal: {fileID: 33475057}
+--- !u!4 &33475062 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400020, guid: 0ed08faf6b2c64f13ae389013c74d2d7, type: 3}
+  m_PrefabInternal: {fileID: 33475057}
+--- !u!4 &33475063 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400072, guid: 0ed08faf6b2c64f13ae389013c74d2d7, type: 3}
+  m_PrefabInternal: {fileID: 33475057}
 --- !u!1 &74571548
 GameObject:
   m_ObjectHideFlags: 0
@@ -330,10 +346,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointPrefab: {fileID: 4656512534540884, guid: a4f789d83ab98b945b53862a4ed28fb1,
     type: 2}
-  mao: {fileID: 0}
-  cotovelo: {fileID: 0}
-  ombro: {fileID: 0}
-  braco: {fileID: 0}
+  joints:
+  - ombroAux: {fileID: 33475063}
+    bracoAux: {fileID: 33475062}
+    cotoveloAux: {fileID: 33475061}
+    maoAux: {fileID: 33475060}
+  - ombroAux: {fileID: 1141014530}
+    bracoAux: {fileID: 1141014529}
+    cotoveloAux: {fileID: 1141014527}
+    maoAux: {fileID: 1141014528}
+  - ombroAux: {fileID: 1275186012}
+    bracoAux: {fileID: 1275186011}
+    cotoveloAux: {fileID: 1275186009}
+    maoAux: {fileID: 1275186010}
+  - ombroAux: {fileID: 164777450}
+    bracoAux: {fileID: 164777449}
+    cotoveloAux: {fileID: 164777447}
+    maoAux: {fileID: 164777448}
+  - ombroAux: {fileID: 441981497}
+    bracoAux: {fileID: 441981496}
+    cotoveloAux: {fileID: 441981494}
+    maoAux: {fileID: 441981495}
 --- !u!114 &74571550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -694,6 +727,22 @@ MonoBehaviour:
   verticalMovement: 0
   smoothFactor: 5
   offsetRelativeToSensor: 0
+--- !u!4 &164777447 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400022, guid: 13c1ba21205bbb3478e0dfdced6b869b, type: 3}
+  m_PrefabInternal: {fileID: 164777444}
+--- !u!4 &164777448 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400024, guid: 13c1ba21205bbb3478e0dfdced6b869b, type: 3}
+  m_PrefabInternal: {fileID: 164777444}
+--- !u!4 &164777449 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400018, guid: 13c1ba21205bbb3478e0dfdced6b869b, type: 3}
+  m_PrefabInternal: {fileID: 164777444}
+--- !u!4 &164777450 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400068, guid: 13c1ba21205bbb3478e0dfdced6b869b, type: 3}
+  m_PrefabInternal: {fileID: 164777444}
 --- !u!1 &239874822
 GameObject:
   m_ObjectHideFlags: 0
@@ -1216,9 +1265,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 2
   m_Convex: 0
-  m_CookingOptions: 14
+  m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!33 &300183116
@@ -1633,6 +1682,22 @@ MonoBehaviour:
   verticalMovement: 0
   smoothFactor: 5
   offsetRelativeToSensor: 0
+--- !u!4 &441981494 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400022, guid: f5e05f20199c880499cc033d19de1bcd, type: 3}
+  m_PrefabInternal: {fileID: 441981491}
+--- !u!4 &441981495 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400024, guid: f5e05f20199c880499cc033d19de1bcd, type: 3}
+  m_PrefabInternal: {fileID: 441981491}
+--- !u!4 &441981496 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400018, guid: f5e05f20199c880499cc033d19de1bcd, type: 3}
+  m_PrefabInternal: {fileID: 441981491}
+--- !u!4 &441981497 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400068, guid: f5e05f20199c880499cc033d19de1bcd, type: 3}
+  m_PrefabInternal: {fileID: 441981491}
 --- !u!1 &497241003
 GameObject:
   m_ObjectHideFlags: 0
@@ -1782,9 +1847,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 2
   m_Convex: 0
-  m_CookingOptions: 14
+  m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!33 &504441455
@@ -2027,9 +2092,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 2
   m_Convex: 0
-  m_CookingOptions: 14
+  m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!33 &705288948
@@ -3249,6 +3314,22 @@ MonoBehaviour:
   verticalMovement: 0
   smoothFactor: 5
   offsetRelativeToSensor: 0
+--- !u!4 &1141014527 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400022, guid: 76bccec4e57bc2345827e8acee12ea34, type: 3}
+  m_PrefabInternal: {fileID: 1141014524}
+--- !u!4 &1141014528 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400024, guid: 76bccec4e57bc2345827e8acee12ea34, type: 3}
+  m_PrefabInternal: {fileID: 1141014524}
+--- !u!4 &1141014529 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400018, guid: 76bccec4e57bc2345827e8acee12ea34, type: 3}
+  m_PrefabInternal: {fileID: 1141014524}
+--- !u!4 &1141014530 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400068, guid: 76bccec4e57bc2345827e8acee12ea34, type: 3}
+  m_PrefabInternal: {fileID: 1141014524}
 --- !u!1 &1160911028
 GameObject:
   m_ObjectHideFlags: 0
@@ -3536,6 +3617,22 @@ MonoBehaviour:
   verticalMovement: 0
   smoothFactor: 5
   offsetRelativeToSensor: 0
+--- !u!4 &1275186009 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400020, guid: 87a3d8135f4b27b43ac35ff5d28d6ca5, type: 3}
+  m_PrefabInternal: {fileID: 1275186006}
+--- !u!4 &1275186010 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400022, guid: 87a3d8135f4b27b43ac35ff5d28d6ca5, type: 3}
+  m_PrefabInternal: {fileID: 1275186006}
+--- !u!4 &1275186011 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400016, guid: 87a3d8135f4b27b43ac35ff5d28d6ca5, type: 3}
+  m_PrefabInternal: {fileID: 1275186006}
+--- !u!4 &1275186012 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400066, guid: 87a3d8135f4b27b43ac35ff5d28d6ca5, type: 3}
+  m_PrefabInternal: {fileID: 1275186006}
 --- !u!1 &1307023512
 GameObject:
   m_ObjectHideFlags: 0
@@ -4354,7 +4451,6 @@ Camera:
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -4682,9 +4778,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 2
   m_Convex: 0
-  m_CookingOptions: 14
+  m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!33 &2024492255
