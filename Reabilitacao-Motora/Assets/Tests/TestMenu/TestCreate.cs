@@ -106,7 +106,7 @@ namespace Tests
 			yield return new WaitForSeconds(0.5f);
 
 			var currentscene = SceneManager.GetActiveScene().name;
-			var expectedscene = "Login";
+			var expectedscene = "NewPhysiotherapist Common";
 
 			Assert.AreEqual(expectedscene, currentscene);
 		}
@@ -163,7 +163,7 @@ namespace Tests
 			yield return new WaitForSeconds(0.5f);
 
 			var currentscene = SceneManager.GetActiveScene().name;
-			var expectedscene = "Login";
+			var expectedscene = "NewPhysiotherapist Common";
 
 			var fisios = Fisioterapeuta.GetLast();
 
