@@ -1,21 +1,21 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI; // Required when Using UI elements.
 
 /*
- * Esta classe cria a máscara de data de nascimento.
+ * Esta classe cria a máscara de telefone.
  */
-public class MaskedInputField : MonoBehaviour
+public class MaskedPhone : MonoBehaviour
 {
-    public InputField mainInputField;
-    public Text textOutput;
+    public InputField phoneInputField;
+	public Text textOutput;
 
     public void Start()
     {
         /*
          * Trata de ouvir as modificacoes no campo.
          */
-        mainInputField.onValueChanged.AddListener(delegate {ValueChangeCheck(); });
+        phoneInputField.onValueChanged.AddListener(delegate {ValueChangeCheck(); });
     }
 
     /*
@@ -23,11 +23,11 @@ public class MaskedInputField : MonoBehaviour
      */
     public void ValueChangeCheck()
     {
-        int index = 0 ;
-        string format = "##/##/####" ;
+		int index = 0 ;
+        string format = "(##) #####-####" ;
         string output = format;
 
-        string input = mainInputField.text;
+        string input = phoneInputField.text;
         
         for( int i = 0 ; i < input.Length ; ++i )
         {
@@ -53,7 +53,7 @@ public class MaskedInputField : MonoBehaviour
         {
             output = output.Substring( 0, index + 1 );
         }
-        if(output=="#")
+		if(output=="(") 
         {
             textOutput.text = "";
         }
