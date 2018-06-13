@@ -33,20 +33,33 @@ public class MaskedInputField : MonoBehaviour
         {
             index = output.IndexOf("#");
             if( index < 0 )
+            {
                 break ;
+            }
             if( index == 0 )
+            {
                 output = input[i] + output.Substring ( 1 );
+            }
             else if( index == output.Length - 1 )
+            {
                 output = output.Substring ( 0, index ) + input[i] ;
+            }
             else
+            {
                 output = output.Substring ( 0, index ) + input[i] + output.Substring ( index + 1 );
+            }
         }
         if( index >= 0 )
+        {
             output = output.Substring( 0, index + 1 );
-        
+        }
         if(output=="#")
+        {
             textOutput.text = "";
+        }
         else
+        {
             textOutput.text = output;
+        }
     }
 }
