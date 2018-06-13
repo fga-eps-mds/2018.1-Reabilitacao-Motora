@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using System.IO;
 using System;
 using System.Linq;
+using UnityEngine.SceneManagement;
 
 using cryptpw;
 
@@ -100,7 +101,8 @@ public class createPhysiotherapist : MonoBehaviour
 			var lastPhysio = Fisioterapeuta.GetLast();
 			GlobalController.instance.admin = lastPhysio; 
 
-			Flow.StaticLogin();
+			Scene scene = SceneManager.GetActiveScene(); 
+			SceneManager.LoadScene(scene.name);
 		} 
 	}
 
