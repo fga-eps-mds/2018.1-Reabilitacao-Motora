@@ -248,6 +248,7 @@ GameObject:
   - component: {fileID: 65942746}
   - component: {fileID: 65942745}
   - component: {fileID: 65942744}
+  - component: {fileID: 65942747}
   - component: {fileID: 65942743}
   m_Layer: 5
   m_Name: DeleteBt
@@ -283,7 +284,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 65942741}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f818458612f35234cbebcfba43f9166c, type: 3}
+  m_Script: {fileID: 11500000, guid: 66f19ee13740274489512c0f8749d092, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   nextPage: {fileID: 65942744}
@@ -326,7 +327,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 817634898}
         m_MethodName: Eraser
         m_Mode: 1
         m_Arguments:
@@ -372,6 +373,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 65942741}
+--- !u!114 &65942747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 65942741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f419e8d7851df3f478cf420793f9964e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextPage: {fileID: 65942744}
 --- !u!1 &215042707
 GameObject:
   m_ObjectHideFlags: 0
@@ -1207,7 +1220,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 817634898}
         m_MethodName: Eraser
         m_Mode: 1
         m_Arguments:
@@ -2278,7 +2291,6 @@ Camera:
   m_TargetEye: 3
   m_HDR: 0
   m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10

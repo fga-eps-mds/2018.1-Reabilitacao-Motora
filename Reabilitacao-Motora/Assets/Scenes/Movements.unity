@@ -1061,6 +1061,7 @@ GameObject:
   - component: {fileID: 979581259}
   - component: {fileID: 979581258}
   - component: {fileID: 979581261}
+  - component: {fileID: 979581262}
   m_Layer: 5
   m_Name: DeleteBt
   m_TagString: Untagged
@@ -1184,6 +1185,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextPage: {fileID: 979581258}
+--- !u!114 &979581262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 979581256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc2b527bbe71f504da16e1acfe5e42e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextPage: {fileID: 979581258}
 --- !u!1 &1135921121
 GameObject:
   m_ObjectHideFlags: 0
@@ -1282,7 +1295,6 @@ Camera:
   m_TargetEye: 3
   m_HDR: 0
   m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -1969,8 +1981,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 274074964}
   m_HandleRect: {fileID: 274074963}
   m_Direction: 0
-  m_Value: 0
-  m_Size: 1
+  m_Value: 1
+  m_Size: 0.9999999
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

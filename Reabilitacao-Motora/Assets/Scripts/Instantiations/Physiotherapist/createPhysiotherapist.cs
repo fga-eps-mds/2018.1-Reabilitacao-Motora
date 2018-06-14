@@ -102,7 +102,15 @@ public class createPhysiotherapist : MonoBehaviour
 			GlobalController.instance.admin = lastPhysio; 
 
 			Scene scene = SceneManager.GetActiveScene(); 
-			SceneManager.LoadScene(scene.name);
+			
+			if (scene.name == "NewPhysiotherapist Common")
+			{
+				Flow.StaticLogin();
+			}
+			else
+			{
+				SceneManager.LoadScene(scene.name);
+			}
 		} 
 	}
 
