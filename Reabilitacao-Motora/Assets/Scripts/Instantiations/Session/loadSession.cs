@@ -12,13 +12,12 @@ using paciente;
 public class loadSession : MonoBehaviour 
 {
 	[SerializeField]
-	protected InputField date, notes;
+	protected InputField notes;
 	
 	public void Start()
 	{
 		if(GlobalController.instance.session != null)
 		{							
-			date.text = GlobalController.instance.session.dataSessao;
 			notes.text = GlobalController.instance.session.observacaoSessao;
 		}
 		else

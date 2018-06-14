@@ -20,7 +20,7 @@ public class instanciateSession : MonoBehaviour
 		aux.Session = session;
 
 		var temp = go.GetComponentInChildren<Text>();
-		temp.text = formatName (session.dataSessao, session.observacaoSessao);
+		temp.text = formatName (session.dataSessao);
 	}
 
 	public void Awake ()
@@ -39,10 +39,10 @@ public class instanciateSession : MonoBehaviour
 		}
 	}
 
-	public static string formatName (string dataSessao, string observacaoSessao)
+	public static string formatName (string dataSessao)
 	{
 		var partsBetweenDashs = dataSessao.Split('-');
-		var result = string.Format("{0}:{1} - {2}/{3}/{4}. Obs: {5}", partsBetweenDashs[3], partsBetweenDashs[4], partsBetweenDashs[2], partsBetweenDashs[1], partsBetweenDashs[0], observacaoSessao); 
+		var result = string.Format("{0}:{1} - {2}/{3}/{4}", partsBetweenDashs[3], partsBetweenDashs[4], partsBetweenDashs[2], partsBetweenDashs[1], partsBetweenDashs[0]); 
 		return result;
 	}
 }
