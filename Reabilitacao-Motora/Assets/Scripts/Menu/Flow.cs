@@ -147,7 +147,7 @@ public class Flow : MonoBehaviour
 	 */
 	public static void StaticGraphs2()
 	{
-		SceneManager.LoadScene("Graphs2");
+		SceneManager.LoadScene("GraphsMovimentoPhysio");
 	}
 
 
@@ -231,7 +231,7 @@ public class Flow : MonoBehaviour
 	 */
 	public static void StaticGraphs1()
 	{
-		SceneManager.LoadScene("Graphs1");
+		SceneManager.LoadScene("GraphsReviewDuranteSessaoPatient");
 	}
 
 	/**
@@ -239,7 +239,7 @@ public class Flow : MonoBehaviour
 	 */
 	public static void StaticGraphs3()
 	{
-		SceneManager.LoadScene("Graphs3");
+		SceneManager.LoadScene("GraphsExerciciosSalvosPatient");
 	}
 
 	/**

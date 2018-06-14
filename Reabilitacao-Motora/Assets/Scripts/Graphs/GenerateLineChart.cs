@@ -122,7 +122,7 @@ public class GenerateLineChart : MonoBehaviour
 			var currentscene = SceneManager.GetActiveScene().name;
 			var go = gameObject;
 			
-			if (currentscene == "Graphs2")
+			if (currentscene == "GraphsMovimentoPhysio")
 			{
 				Assign(false);
 				file = Application.dataPath + "/Movimentos/" + GlobalController.instance.movement.pontosMovimento;
