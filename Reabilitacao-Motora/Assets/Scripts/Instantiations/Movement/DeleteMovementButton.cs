@@ -73,9 +73,5 @@ public class DeleteMovementButton : MonoBehaviour
 		}
 
 		Movimento.DeleteValue (IdMovimento);
-
-
-		Flow.StaticMovements();
 	}
-
 }
