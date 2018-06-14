@@ -101,7 +101,7 @@ namespace Tests
 			var fisio = Fisioterapeuta.GetLast();
 			var pacient = Paciente.GetLast();
 
-			Sessao.Insert(fisio.idFisioterapeuta, pacient.idPaciente, "10-10-1990", null);
+			Sessao.Insert(fisio.idFisioterapeuta, pacient.idPaciente, "10-10-1990-15-10", null);
 
 			var sess = Sessao.GetLast();
 

@@ -19,6 +19,6 @@ public static class _Joint
 
 		float num = ux * vx + uy * vy;
 		float den = Hypot(ux, uy) * Hypot(vx, vy);
-		return (Mathf.Acos(num / den) * (180.0f / Mathf.PI));
+		return 180 - Mathf.Acos(num / den) * (180.0f / Mathf.PI);
 	}
 }

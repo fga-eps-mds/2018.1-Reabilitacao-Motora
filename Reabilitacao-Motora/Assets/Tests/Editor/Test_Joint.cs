@@ -49,7 +49,7 @@ namespace Tests
 			Vector2 d = new Vector2(10f, 0f);
 			float current1 = _Joint.Angle(a, b, c, d);
 			float expected1 = 90.0f;
-			Assert.AreEqual(expected1, current1);
+			Assert.AreEqual(expected1, 180-current1);
 
 			a = new Vector2(0f, 0f);
 			b = new Vector2(0f, 10f);
@@ -57,7 +57,7 @@ namespace Tests
 			d = new Vector2(0f, 10f);
 			current1 = _Joint.Angle(a, b, c, d);
 			expected1 = 180.0f;
-			Assert.AreEqual(expected1, current1);
+			Assert.AreEqual(expected1, 180-current1);
 
 			a = new Vector2(0f, 0f);
 			b = new Vector2(10f, 0f);
@@ -65,7 +65,7 @@ namespace Tests
 			d = new Vector2(10f, 0f);
 			current1 = _Joint.Angle(a, b, c, d);
 			expected1 = 45.0f;
-			Assert.AreEqual(expected1, current1);
+			Assert.AreEqual(expected1, 180-current1);
 		}
 	}
 }
