@@ -53,7 +53,7 @@ GameObject:
   - component: {fileID: 222800404308668048}
   - component: {fileID: 114909169785506220}
   - component: {fileID: 114557774991779414}
-  - component: {fileID: 114600266650908640}
+  - component: {fileID: 114570395857444044}
   m_Layer: 5
   m_Name: NoteButton
   m_TagString: Untagged
@@ -270,7 +270,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0, g: 0, b: 0, a: 1}
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0, g: 0, b: 0, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -303,6 +303,18 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114570395857444044
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1639927095106286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2261a0975cdfbdb4faf3aebe33884462, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  noteButton: {fileID: 114557774991779414}
 --- !u!114 &114588940746573430
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -355,18 +367,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &114600266650908640
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1639927095106286}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84e8a97d8bc1593409bd08d362cbdfd7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  deleteButton: {fileID: 114557774991779414}
 --- !u!114 &114665305891966992
 MonoBehaviour:
   m_ObjectHideFlags: 1
