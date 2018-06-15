@@ -2,6 +2,7 @@ using System.Collections;
 using System.Text;
 using System.Collections.Generic;
 using System.IO;
+using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -13,6 +14,10 @@ public class GenerateLineChartRealTime : MonoBehaviour
 	[SerializeField]
 	protected Transform pointPrefab;
 	protected Transform mao, cotovelo, ombro, braco;
+
+	[SerializeField]
+	protected GameObject popUpLabel;
+
 	float current_time_movement;
 	bool t;
 
@@ -71,7 +76,7 @@ public class GenerateLineChartRealTime : MonoBehaviour
 
 	public void Update () 
 	{
-		if (Input.GetKeyDown(KeyCode.Space)) 
+		if (popUpLabel.activeSelf == false && Input.GetKeyDown(KeyCode.Space)) 
 		{
 			t = !t;
 		}
