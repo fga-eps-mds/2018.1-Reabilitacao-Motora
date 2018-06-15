@@ -1,8 +1,9 @@
 using System.Collections;
 using UnityEngine;
 using pontosrotulofisioterapeuta;
- 
-class MoveObjectXAxisPhysio : MonoBehaviour
+using pontosrotulopaciente;
+
+class MoveObjectXAxis : MonoBehaviour
 {
 	private bool dragging;
 	private float distance;
@@ -36,19 +37,55 @@ class MoveObjectXAxisPhysio : MonoBehaviour
 		dragging = false;
 		
 		var currentObjectName = transform.name;
-		var desc = transform.parent.gameObject.GetComponentInChildren<SetLabelPhysio>();
+		var suggaDeri = transform.parent.gameObject;
+		var patientOrPhysio = transform.parent.name == "RotuloFisioterapeuta";
+
+		SetLabelPatient descPatient;
+		if (patientOrPhysio == false)
+		{
+			descPatient = suggaDeri.GetComponentInChildren<SetLabelPatient>();
+		}
+		else
+		{
+			descPatient = null;
+		}
+
+		SetLabelPhysio descPhysio;
+		if (patientOrPhysio == true)
+		{
+			descPhysio = suggaDeri.GetComponentInChildren<SetLabelPhysio>();
+		}
+		else
+		{
+			descPhysio = null;
+		}
+
 		int index = transform.GetSiblingIndex();
 
 		if (currentObjectName == "xInicial")
 		{
 			var brotherX = transform.parent.GetChild(index + 1).gameObject.transform.localPosition.x;
-			PontosRotuloFisioterapeuta.Update(desc.Prf.idRotuloFisioterapeuta, GlobalController.instance.movement.idMovimento, desc.Prf.estagioMovimentoFisio, transform.localPosition.x, brotherX);
+			if (patientOrPhysio)
+			{
+				PontosRotuloFisioterapeuta.Update(descPhysio.Prf.idRotuloFisioterapeuta, GlobalController.instance.movement.idMovimento, descPhysio.Prf.estagioMovimentoFisio, transform.localPosition.x, brotherX);
+			}
+			else
+			{
+				PontosRotuloPaciente.Update(descPatient.Prp.idRotuloPaciente, GlobalController.instance.exercise.idExercicio, descPatient.Prp.estagioMovimentoPaciente, transform.localPosition.x, brotherX);
+			}
 		}
 		
 		if (currentObjectName == "xFinal")
 		{
 			var brotherX = transform.parent.GetChild(index - 1).gameObject.transform.localPosition.x;
-			PontosRotuloFisioterapeuta.Update(desc.Prf.idRotuloFisioterapeuta, GlobalController.instance.movement.idMovimento, desc.Prf.estagioMovimentoFisio, brotherX, transform.localPosition.x);
+			if (patientOrPhysio)
+			{
+				PontosRotuloFisioterapeuta.Update(descPhysio.Prf.idRotuloFisioterapeuta, GlobalController.instance.movement.idMovimento, descPhysio.Prf.estagioMovimentoFisio, brotherX, transform.localPosition.x);
+			}
+			else
+			{
+				PontosRotuloPaciente.Update(descPatient.Prp.idRotuloPaciente, GlobalController.instance.exercise.idExercicio, descPatient.Prp.estagioMovimentoPaciente, brotherX, transform.localPosition.x);
+			}
 		}
 	}
  
