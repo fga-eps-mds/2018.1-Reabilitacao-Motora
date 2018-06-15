@@ -108,7 +108,7 @@ public class DrawAreaLabel : MonoBehaviour
 		GameObject go = Instantiate (labelPrefab) as GameObject;
 
 		go.transform.parent = gameObject.transform.parent;
-		go.transform.localPosition = new Vector3 (0f, 0f, 0f);
+		go.transform.localPosition = new Vector3 (0f, 0f, -0.15f);
 		go.transform.localScale = new Vector3 (1, 1, 1);
 		var scriptInitial = go.GetComponentInChildren<SetInitialX>();
 		var scriptFinal = go.GetComponentInChildren<SetFinalX>();

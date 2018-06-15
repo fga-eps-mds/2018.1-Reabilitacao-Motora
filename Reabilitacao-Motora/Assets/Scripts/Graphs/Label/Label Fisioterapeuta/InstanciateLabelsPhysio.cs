@@ -27,6 +27,8 @@ public class InstanciateLabelsPhysio : MonoBehaviour
 		scriptInitial.Set();
 		scriptFinal.Set();
 
+		go.transform.localPosition = new Vector3 (go.transform.localPosition.x, go.transform.localPosition.y, -0.15f);
+
 		labelName.text = prf.estagioMovimentoFisio;
 	}
 
