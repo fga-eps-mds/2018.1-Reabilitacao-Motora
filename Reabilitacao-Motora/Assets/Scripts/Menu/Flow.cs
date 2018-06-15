@@ -60,6 +60,14 @@ public class Flow : MonoBehaviour
 	}
 
 	/**
+	 * Leva para scene de detalhe de paciente.
+	 */
+	public static void StaticPhysiotherapist()
+	{
+		SceneManager.LoadScene("Physiotherapist");
+	}
+
+	/**
 	 * Leva para scene de tela de login.
 	 */
 	public static void StaticLogin()
@@ -102,6 +110,10 @@ public class Flow : MonoBehaviour
 		SceneManager.LoadScene("UpdatePatient");
 	}
 
+	public static void StaticUpdatePhysiotherapist()
+	{
+		SceneManager.LoadScene("UpdatePhysiotherapist");
+	}
 
 	/**
 	 * Leva para scene de detalhes de sessão.
@@ -135,7 +147,7 @@ public class Flow : MonoBehaviour
 	 */
 	public static void StaticGraphs2()
 	{
-		SceneManager.LoadScene("Graphs2");
+		SceneManager.LoadScene("GraphsMovimentoPhysio");
 	}
 
 
@@ -152,9 +164,14 @@ public class Flow : MonoBehaviour
 	/**
 	 * Leva para a scene de novo fisioterapeuta.
 	 */
-	public static void StaticNewPhysiotherapist()
+	public static void StaticNewPhysiotherapistAdm()
 	{
-		SceneManager.LoadScene("NewPhysiotherapist");
+		SceneManager.LoadScene("NewPhysiotherapist Adm");
+	}
+
+	public static void StaticNewPhysiotherapistCommon()
+	{
+		SceneManager.LoadScene("NewPhysiotherapist Common");
 	}
 
 
@@ -214,7 +231,7 @@ public class Flow : MonoBehaviour
 	 */
 	public static void StaticGraphs1()
 	{
-		SceneManager.LoadScene("Graphs1");
+		SceneManager.LoadScene("GraphsReviewDuranteSessaoPatient");
 	}
 
 	/**
@@ -222,7 +239,7 @@ public class Flow : MonoBehaviour
 	 */
 	public static void StaticGraphs3()
 	{
-		SceneManager.LoadScene("Graphs3");
+		SceneManager.LoadScene("GraphsExerciciosSalvosPatient");
 	}
 
 	/**
@@ -269,6 +286,13 @@ public class Flow : MonoBehaviour
         SceneManager.LoadScene("HelpMovement");
     }
     /**
+    * Leva para scene de tela de Ajuda de Rotular Movimento.
+    */
+    public static void StaticHelpMovimentsLabel()
+    {
+        SceneManager.LoadScene("HelpMovementLabel");
+    }
+    /**
 	 * Leva para scene de tela de Ajuda de Criar Sessão.
 	 */
     public static void StaticHelpSession()
@@ -281,5 +305,12 @@ public class Flow : MonoBehaviour
     public static void StaticHelpResults()
     {
         SceneManager.LoadScene("HelpResults");
+    }
+    /**
+	 * Leva para scene de tela de Ajuda de Rotular Movimento.
+	 */
+    public static void StaticHelpMovementLabel()
+    {
+        SceneManager.LoadScene("HelpMovementLabel");
     }
 }

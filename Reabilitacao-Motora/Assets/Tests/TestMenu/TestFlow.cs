@@ -120,7 +120,7 @@ namespace Tests
 			Debug.Log("saindo de " + currentscene);
 		}
 
-
+		[Ignore("Evitar problema com Travis")]
 		[UnityTest]
 		public static IEnumerator TestRealtimeGraphUDPPhysio()
 		{
@@ -180,18 +180,30 @@ namespace Tests
 			Debug.Log("saindo de " + currentscene);
 		}
 
-
-
-
 		[UnityTest]
-		public static IEnumerator TestNewPhysiotherapist()
+		public static IEnumerator TestNewPhysiotherapistAdm()
 		{
-			Flow.StaticNewPhysiotherapist();
+			Flow.StaticNewPhysiotherapistAdm();
 
 			yield return null;
 
 			var currentscene = SceneManager.GetActiveScene().name;
-			var expectedscene = "NewPhysiotherapist";
+			var expectedscene = "NewPhysiotherapist Adm";
+
+			Assert.AreEqual(currentscene, expectedscene);
+			Debug.Log("saindo de " + currentscene);
+		}
+
+
+		[UnityTest]
+		public static IEnumerator TestNewPhysiotherapistCommon()
+		{
+			Flow.StaticNewPhysiotherapistCommon();
+
+			yield return null;
+
+			var currentscene = SceneManager.GetActiveScene().name;
+			var expectedscene = "NewPhysiotherapist Common";
 
 			Assert.AreEqual(currentscene, expectedscene);
 			Debug.Log("saindo de " + currentscene);
@@ -219,7 +231,7 @@ namespace Tests
 			yield return null;
 
 			var currentscene = SceneManager.GetActiveScene().name;
-			var expectedscene = "Graphs2";
+			var expectedscene = "GraphsMovimentoPhysio";
 
 			Assert.AreEqual(currentscene, expectedscene);
 			Debug.Log("saindo de " + currentscene);
@@ -396,6 +408,19 @@ namespace Tests
 
             var currentscene = SceneManager.GetActiveScene().name;
             var expectedscene = "HelpResults";
+
+            Assert.AreEqual(currentscene, expectedscene);
+        }
+
+        [UnityTest]
+        public static IEnumerator TestHelpMovementLabel()
+        {
+            Flow.StaticHelpMovementLabel();
+
+            yield return null;
+
+            var currentscene = SceneManager.GetActiveScene().name;
+            var expectedscene = "HelpMovementLabel";
 
             Assert.AreEqual(currentscene, expectedscene);
         }

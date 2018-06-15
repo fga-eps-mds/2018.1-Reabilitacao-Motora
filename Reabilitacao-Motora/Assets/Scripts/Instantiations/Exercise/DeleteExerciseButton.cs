@@ -42,6 +42,5 @@ public class DeleteExerciseButton : MonoBehaviour
 		}
 
 		Exercicio.DeleteValue (IdExercicio);
-		Flow.StaticExercisesToReview();
 	}
 }

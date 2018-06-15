@@ -20,23 +20,29 @@ public class instanciateSession : MonoBehaviour
 		aux.Session = session;
 
 		var temp = go.GetComponentInChildren<Text>();
-		temp.text = session.dataSessao;
+		temp.text = formatName (session.dataSessao);
 	}
 
 	public void Awake ()
 	{
 		if (GlobalController.instance.user != null)
 		{
-			List<Sessao> sessions = Sessao.Read();
+			string query = string.Format("select * from SESSAO where idPaciente = {0}", GlobalController.instance.user.idPaciente);
+			List<Sessao> sessions = Sessao.MultiSpecificSelect(query);
 			int heightOffset = 10;
+
 			foreach (var session in sessions)
 			{
-				if (session.idPaciente == GlobalController.instance.user.idPaciente)
-				{
-					ButtonSpawner(heightOffset, session);
-					heightOffset += HEIGHT_PADDING;
-				}
+				ButtonSpawner(heightOffset, session);
+				heightOffset += HEIGHT_PADDING;
 			}
 		}
+	}
+
+	public static string formatName (string dataSessao)
+	{
+		var partsBetweenDashs = dataSessao.Split('-');
+		var result = string.Format("{0}:{1} - {2}/{3}/{4}", partsBetweenDashs[3], partsBetweenDashs[4], partsBetweenDashs[2], partsBetweenDashs[1], partsBetweenDashs[0]); 
+		return result;
 	}
 }

@@ -103,6 +103,16 @@ namespace fisioterapeuta
 			return physiotherapeut;
 		}
 
+		public static Fisioterapeuta GetLast ()
+		{
+			Object[] columns = new Object[] {0, 0, "", "", "", ""};
+
+			Fisioterapeuta physiotherapeut = DataBase.GetLast<Fisioterapeuta>(TablesManager.Tables[tableId].tableName,
+				TablesManager.Tables[tableId].colName[0], columns);
+
+			return physiotherapeut;
+		}
+
 		/**
 		 * Função que deleta dados cadastrados anteriormente na relação fisioterapeuta.
 		 */

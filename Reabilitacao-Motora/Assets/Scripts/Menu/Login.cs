@@ -20,9 +20,14 @@ public class Login : MonoBehaviour
 	[SerializeField]
 	protected Button nextPage;
 
+	[SerializeField]
+	protected GameObject helpPopUp;
+
+	bool first;
 	public void Awake ()
 	{
 		nextPage.onClick.AddListener(delegate{Enter();});
+		first = true;
 	}
 	/**
 	 * Salva o Fisioterapeuta no banco.
@@ -33,35 +38,42 @@ public class Login : MonoBehaviour
 
 		if (idcheck != null) 
 		{
-			ColorBlock cb = pass.colors;
-			cb.normalColor = ColorManager.success;
-			login.colors = cb;
-			pass.colors = cb;
-
 			GlobalController.instance.admin = idcheck;
+			
+			if (first)
+			{
+				GlobalController.superAdm = true;
+			}
+			
 			Flow.StaticMenu();
 		} 
 		else 
 		{
-			print("A combinação login+senha está incorreta!");
-			ColorBlock cb = pass.colors;
-			cb.normalColor = ColorManager.wrongConfirmation;
-			login.colors = cb;
-			pass.colors = cb;
+			ApplyColor (login, 0);
+			ApplyColor (pass, 0);
+
+			helpPopUp.SetActive(true);
 		}
+	}
+
+	public static void ApplyColor (InputField input, int ok)
+	{
+		input.colors = ColorManager.SetColor(input.colors, ok);
 	}
 
 	Fisioterapeuta CheckLoginPass ()
 	{
 		List<Fisioterapeuta> physiotherapists = Fisioterapeuta.Read();
-
 		foreach (var fisio in physiotherapists) 
 		{			
 			if (fisio.login == login.text && 
 				CryptPassword.Uncrypt(pass.text, fisio.senha, login.text))
 			{
+				ApplyColor (login, 1);
+				ApplyColor (pass, 1);
 				return fisio;
 			}
+			first = false;
 		}
 
 		return null;
