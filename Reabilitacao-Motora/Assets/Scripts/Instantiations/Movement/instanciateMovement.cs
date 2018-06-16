@@ -10,6 +10,12 @@ public class instanciateMovement : MonoBehaviour
 	protected GameObject buttonPrefab;
 
 	const int HEIGHT_PADDING = 55;
+	public void getMovs (string x)
+	{
+		var query = string.Format("select nomeMovimento from MOVIMENTO INNER JOIN MOVIMENTOMUSCULO ON MOVIMENTO.idMovimento = MOVIMENTOMUSCULO.idMovimento INNER JOIN MUSCULO ON MOVIMENTOMUSCULO.idMusculo = MUSCULO.idMusculo AND (MOVIMENTO.nomeMovimento LIKE '%{0}%'or MUSCULO.nomeMusculo LIKE '%{1}%')", x, x);
+		List<Movimento> movements = Database.MultiSpecificSelect<Movimento>(query);
+	}
+
 
 	public void ButtonSpawner(int posY, Movimento movement)
 	{
