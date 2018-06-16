@@ -11,16 +11,33 @@ public class instanciateMovement : MonoBehaviour
 	protected GameObject buttonPrefab;
 
 	[SerializeField]
-	public InputField searchInput;
+	protected InputField searchInput;
 
 	const int HEIGHT_PADDING = 55;
-	public void Update ()
-	{
-		if(Input.anyKey && searchInput.isFocused) 
+
+	public void Start()
+    {
+        /*
+         * Trata de ouvir as modificacoes no campo.
+         */
+        searchInput.onValueChanged.AddListener(delegate {ValueChangeCheck(); });
+    }
+
+
+	/*
+     * Esta funcao eh chamada quando se alteram os valores do campo.
+     */
+    public void ValueChangeCheck()
+    {
+		ClearScreen();
+		if(searchInput.text == "")
 		{
-			ClearScreen();
-			var query = string.Format("select nomeMovimento from MOVIMENTO INNER JOIN MOVIMENTOMUSCULO ON MOVIMENTO.idMovimento = MOVIMENTOMUSCULO.idMovimento INNER JOIN MUSCULO ON MOVIMENTOMUSCULO.idMusculo = MUSCULO.idMusculo AND (MOVIMENTO.nomeMovimento LIKE '%{0}%'or MUSCULO.nomeMusculo LIKE '%{1}%')", searchInput.text, searchInput.text);
-			List<Movimento> movements = Database.MultiSpecificSelect<Movimento>(query);
+			init();
+		}
+		else
+		{
+			var query = string.Format("select * from MOVIMENTO INNER JOIN MOVIMENTOMUSCULO ON MOVIMENTO.idMovimento = MOVIMENTOMUSCULO.idMovimento INNER JOIN MUSCULO ON MOVIMENTOMUSCULO.idMusculo = MUSCULO.idMusculo AND (MOVIMENTO.nomeMovimento LIKE '%{0}%'or MUSCULO.nomeMusculo LIKE '%{1}%')", searchInput.text, searchInput.text);
+			List<Movimento> movements = Movimento.MultiSpecificSelect(query);
 			int heightOffset = 10;
 			foreach (var movement in movements)
 			{
@@ -50,9 +67,16 @@ public class instanciateMovement : MonoBehaviour
 
 		var temp = go.GetComponentInChildren<Text>();
 		temp.text = movement.nomeMovimento;
+
+		Debug.Log(temp.text);
 	}
 
 	public void Awake ()
+	{
+		init();
+	}
+
+	public void init ()
 	{
 		List<Movimento> movements = Movimento.Read();
 		int heightOffset = 10;
