@@ -36,7 +36,7 @@ public class instanciateMovement : MonoBehaviour
 		}
 		else
 		{
-			var query = string.Format("select * from MOVIMENTO INNER JOIN MOVIMENTOMUSCULO ON MOVIMENTO.idMovimento = MOVIMENTOMUSCULO.idMovimento INNER JOIN MUSCULO ON MOVIMENTOMUSCULO.idMusculo = MUSCULO.idMusculo AND (MOVIMENTO.nomeMovimento LIKE '%{0}%'or MUSCULO.nomeMusculo LIKE '%{1}%')", searchInput.text, searchInput.text);
+			var query = string.Format("select * from MOVIMENTO INNER JOIN MOVIMENTOMUSCULO ON MOVIMENTO.idMovimento = MOVIMENTOMUSCULO.idMovimento INNER JOIN MUSCULO ON MOVIMENTOMUSCULO.idMusculo = MUSCULO.idMusculo AND (MOVIMENTO.nomeMovimento LIKE '%{0}%' or MUSCULO.nomeMusculo LIKE '%{1}%')", searchInput.text, searchInput.text);
 			List<Movimento> movements = Movimento.MultiSpecificSelect(query);
 			int heightOffset = 10;
 			foreach (var movement in movements)
