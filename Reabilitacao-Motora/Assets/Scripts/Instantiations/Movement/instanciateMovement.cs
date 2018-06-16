@@ -3,19 +3,42 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using movimento;
+using DataBaseAttributes;
 
 public class instanciateMovement : MonoBehaviour 
 {
 	[SerializeField]
 	protected GameObject buttonPrefab;
 
+	[SerializeField]
+	public InputField searchInput;
+
 	const int HEIGHT_PADDING = 55;
-	public void getMovs (string x)
+	public void Update ()
 	{
-		var query = string.Format("select nomeMovimento from MOVIMENTO INNER JOIN MOVIMENTOMUSCULO ON MOVIMENTO.idMovimento = MOVIMENTOMUSCULO.idMovimento INNER JOIN MUSCULO ON MOVIMENTOMUSCULO.idMusculo = MUSCULO.idMusculo AND (MOVIMENTO.nomeMovimento LIKE '%{0}%'or MUSCULO.nomeMusculo LIKE '%{1}%')", x, x);
-		List<Movimento> movements = Database.MultiSpecificSelect<Movimento>(query);
+		if(Input.anyKey && searchInput.isFocused) 
+		{
+			ClearScreen();
+			var query = string.Format("select nomeMovimento from MOVIMENTO INNER JOIN MOVIMENTOMUSCULO ON MOVIMENTO.idMovimento = MOVIMENTOMUSCULO.idMovimento INNER JOIN MUSCULO ON MOVIMENTOMUSCULO.idMusculo = MUSCULO.idMusculo AND (MOVIMENTO.nomeMovimento LIKE '%{0}%'or MUSCULO.nomeMusculo LIKE '%{1}%')", searchInput.text, searchInput.text);
+			List<Movimento> movements = Database.MultiSpecificSelect<Movimento>(query);
+			int heightOffset = 10;
+			foreach (var movement in movements)
+			{
+				ButtonSpawner(heightOffset, movement);
+				heightOffset += HEIGHT_PADDING;
+			}
+		}
 	}
 
+	public void ClearScreen()
+	{
+		var allMovements = GameObject.FindGameObjectsWithTag("movimentPrefab");
+		
+		foreach (var movement in allMovements)
+		{
+			Destroy(movement);
+		}
+	}
 
 	public void ButtonSpawner(int posY, Movimento movement)
 	{
@@ -38,6 +61,5 @@ public class instanciateMovement : MonoBehaviour
 			ButtonSpawner(heightOffset, movement);
 			heightOffset += HEIGHT_PADDING;
 		}
-
 	}
 }
