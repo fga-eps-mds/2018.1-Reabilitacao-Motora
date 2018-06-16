@@ -268,11 +268,6 @@ namespace Tests
 
 			yield return new WaitForSeconds(0.5f);
 
-			var currentscene = SceneManager.GetActiveScene().name;
-			var expectedscene = "Movements";
-
-			Assert.AreEqual(expectedscene, currentscene);
-
 			int IdMovimento = GlobalController.instance.movement.idMovimento;
 
 			var prfs = PontosRotuloFisioterapeuta.Read();

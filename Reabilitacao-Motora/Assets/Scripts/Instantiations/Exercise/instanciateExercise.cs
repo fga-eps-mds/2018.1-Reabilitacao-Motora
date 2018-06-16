@@ -20,7 +20,7 @@ public class instanciateExercise : MonoBehaviour
 		script.Exercise = exercise;
 
 		var temp = go.GetComponentInChildren<Text>();
-		temp.text = formatName(exercise.idExercicio, exercise.pontosExercicio);
+		temp.text = formatName(exercise.pontosExercicio);
 	}
 
 
@@ -42,12 +42,12 @@ public class instanciateExercise : MonoBehaviour
 	}
 
 
-	public static string formatName (int idExercicio, string pontosExercicio)
+	public static string formatName (string pontosExercicio)
 	{
 		var partsBetweenSlashs = pontosExercicio.Split('/');
 		var partsBetweenDashs = partsBetweenSlashs[2].Split('-');
 		var withoutUnderscores = partsBetweenDashs[0].Replace('_', ' ');
-		var result = string.Format("{0} - {1}{2}", idExercicio, partsBetweenDashs[1], withoutUnderscores); 
+		var result = string.Format("{0}{1}", partsBetweenDashs[1], withoutUnderscores); 
 		return result;
 	}
 }
