@@ -55,7 +55,7 @@
 ## 6. Retrospectiva da _Sprint_
 
 ![](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/blob/development/docs/imagens/Retrospectiva/Retrospectiva_Sprint13.png?raw=true)
- >[Link](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/blob/development/docs/imagens/Retrospectiva/Retrospectiva_Sprint12.png?raw=true)
+ >[Link](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/blob/development/docs/imagens/Retrospectiva/Retrospectiva_Sprint13.png?raw=true)
 
 ---
 
