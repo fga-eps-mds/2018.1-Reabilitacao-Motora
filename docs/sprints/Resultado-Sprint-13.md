@@ -62,7 +62,7 @@
 
 ## 7. Quadro de Conhecimento
 
-![](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/blob/development/docs/imagens/Quadro%20de%20Conhecimento/Quadro_Conhecimento_13.png?raw=true)
+<p align="justify">&emsp;&emsp; O quadro de conhecimento parou de ser atualizado pois, apesar da sua grande utilidade em se planejar os pareamentos e coordenar a distribuição do conhecimento, não enxerga-se mais a sua utilidade pois estamos no final do projeto. Considerou-se que o aproveitamento dos dados deste artefato não é mais possível e que, apesar da sua importância, não foi dada tanta atenção a ele durante os momentos nos quais era propício realizá-lo.</p>
 
 ---
 
