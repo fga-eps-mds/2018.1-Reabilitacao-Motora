@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using System.Text.RegularExpressions;
 using UnityEngine.UI;
@@ -72,6 +73,35 @@ public class createMovement : MonoBehaviour
 			}
 
 			GlobalController.patientOrPhysio = true;
+
+			
+			// Checks the sensor choice from the file
+
+			StringBuilder sensorPath = new StringBuilder();
+			sensorPath.Append("sensor.choice");
+        
+        	string choicePath = sensorPath.ToString();
+
+			if (File.Exists(choicePath)) // User has already chosen a sensor
+        	{
+				string line = File.ReadAllText(choicePath);
+				int fileValue = Convert.ToInt32(line);
+				
+				if ( fileValue.Equals(0) ) // Kinect selected
+				{
+					GlobalController.Sensor = false;
+				}
+				else if ( fileValue.Equals(1) ) // UDP selected
+				{
+					GlobalController.Sensor = true;
+				}
+        	}
+			else // Kinect is default value
+			{
+				GlobalController.Sensor = false;
+			}
+
+			// Redirects user to correct scene
 
 			if(GlobalController.Sensor == false)
 			{
