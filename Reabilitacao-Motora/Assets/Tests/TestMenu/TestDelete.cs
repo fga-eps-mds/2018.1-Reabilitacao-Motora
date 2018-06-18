@@ -192,7 +192,7 @@ namespace Tests
 			GlobalController.instance.user = pacient;
 			GlobalController.instance.admin = fisio;
 
-			Flow.StaticSessions();
+			Flow.StaticPatient();
 
 			yield return new WaitForSeconds(0.5f);
 
@@ -205,7 +205,7 @@ namespace Tests
 			yield return new WaitForSeconds(0.5f);
 
 			var currentscene = SceneManager.GetActiveScene().name;
-			var expectedscene = "Sessions";
+			var expectedscene = "Patient";
 
 			Assert.AreEqual(expectedscene, currentscene);
 
