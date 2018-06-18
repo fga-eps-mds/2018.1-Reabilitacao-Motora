@@ -10,6 +10,7 @@ public class ClipButtonToObject : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		Vector3 pos = Camera.main.WorldToScreenPoint(this.transform.position);
+		pos.y = 50;
 		objectButton.transform.position = pos;
 	}
 }
