@@ -1,4 +1,5 @@
 var class_set_initial_x =
 [
-    [ "prefab", "class_set_initial_x.html#a55c84bf4eca1f1d7556854884b1ca79d", null ]
+    [ "Set", "class_set_initial_x.html#ac85dffd9d2313dd7d88189713d46d554", null ],
+    [ "InitialX", "class_set_initial_x.html#add0a4d623568679732f4b1cb227a977c", null ]
 ];

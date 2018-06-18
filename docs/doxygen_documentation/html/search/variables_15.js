@@ -1,6 +1,8 @@
 var searchData=
 [
-  ['width',['width',['../struct_kinect_wrapper_1_1_nui_surface_desc.html#a6b46bd248de10a081e430f5fc7c5113e',1,'KinectWrapper::NuiSurfaceDesc']]],
-  ['wrist_5fleft',['Wrist_Left',['../class_cubeman_controller.html#a50f95ad09b7799eab50e436332d68290',1,'CubemanController']]],
-  ['wrist_5fright',['Wrist_Right',['../class_cubeman_controller.html#ad5d996698eb02cfdc6e638e7fc007bda',1,'CubemanController']]]
+  ['value',['Value',['../class_timed_lerp.html#a3986137427e1e7bd66bb783fb2d86b10',1,'TimedLerp']]],
+  ['verticalmovement',['verticalMovement',['../class_avatar_controller.html#ad879ee9629b94cb1c4feaacda6469ba5',1,'AvatarController']]],
+  ['vfloorclipplane',['vFloorClipPlane',['../struct_kinect_wrapper_1_1_nui_skeleton_frame.html#a23992f6462fa532b7c8a60379eb01e97',1,'KinectWrapper::NuiSkeletonFrame']]],
+  ['viewarea_5fnotused',['ViewArea_NotUsed',['../struct_kinect_wrapper_1_1_nui_image_frame.html#a466d3e02ff63647b70017313652a0fb8',1,'KinectWrapper::NuiImageFrame']]],
+  ['vnormaltogravity',['vNormalToGravity',['../struct_kinect_wrapper_1_1_nui_skeleton_frame.html#a5281e1a39eeda48cd88851cfcda6caf1',1,'KinectWrapper::NuiSkeletonFrame']]]
 ];

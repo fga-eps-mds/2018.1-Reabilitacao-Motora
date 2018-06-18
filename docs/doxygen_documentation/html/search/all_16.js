@@ -1,10 +1,10 @@
 var searchData=
 [
-  ['wave',['Wave',['../class_kinect_gestures.html#ae979f8f37dd7730c916cd84d7894a652ad911b34823c7674c292556dc56148c27',1,'KinectGestures']]],
-  ['wheel',['Wheel',['../class_kinect_gestures.html#ae979f8f37dd7730c916cd84d7894a652aa5df60ef4fc4447353769d66661d2229',1,'KinectGestures']]],
-  ['width',['width',['../struct_kinect_wrapper_1_1_nui_surface_desc.html#a6b46bd248de10a081e430f5fc7c5113e',1,'KinectWrapper::NuiSurfaceDesc']]],
-  ['wrist_5fleft',['Wrist_Left',['../class_cubeman_controller.html#a50f95ad09b7799eab50e436332d68290',1,'CubemanController']]],
-  ['wrist_5fright',['Wrist_Right',['../class_cubeman_controller.html#ad5d996698eb02cfdc6e638e7fc007bda',1,'CubemanController']]],
-  ['wristleft',['WristLeft',['../class_kinect_wrapper.html#ad73682163ab4e6f554501574ab835f1ca588e9efafd75b6a1fe22a9960c44181e',1,'KinectWrapper']]],
-  ['wristright',['WristRight',['../class_kinect_wrapper.html#ad73682163ab4e6f554501574ab835f1caa06437c22d077beaecbbe4508d9e41c8',1,'KinectWrapper']]]
+  ['validinput',['ValidInput',['../classcreate_movement.html#a42e4fa269aeeccd9711bd2c16accd2c5',1,'createMovement.ValidInput()'],['../classcreate_patient.html#ae17362814bcac7317d6fa0b587cf9e4e',1,'createPatient.ValidInput()']]],
+  ['value',['Value',['../class_timed_lerp.html#a3986137427e1e7bd66bb783fb2d86b10',1,'TimedLerp']]],
+  ['vectorbetween',['VectorBetween',['../class_kinect_helper.html#adbd205f1683d864d65067ab28e6f33b9',1,'KinectHelper']]],
+  ['verticalmovement',['verticalMovement',['../class_avatar_controller.html#ad879ee9629b94cb1c4feaacda6469ba5',1,'AvatarController']]],
+  ['vfloorclipplane',['vFloorClipPlane',['../struct_kinect_wrapper_1_1_nui_skeleton_frame.html#a23992f6462fa532b7c8a60379eb01e97',1,'KinectWrapper::NuiSkeletonFrame']]],
+  ['viewarea_5fnotused',['ViewArea_NotUsed',['../struct_kinect_wrapper_1_1_nui_image_frame.html#a466d3e02ff63647b70017313652a0fb8',1,'KinectWrapper::NuiImageFrame']]],
+  ['vnormaltogravity',['vNormalToGravity',['../struct_kinect_wrapper_1_1_nui_skeleton_frame.html#a5281e1a39eeda48cd88851cfcda6caf1',1,'KinectWrapper::NuiSkeletonFrame']]]
 ];

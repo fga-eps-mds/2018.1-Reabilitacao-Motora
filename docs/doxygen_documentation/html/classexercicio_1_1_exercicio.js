@@ -1,9 +1,10 @@
 var classexercicio_1_1_exercicio =
 [
-    [ "Exercicio", "classexercicio_1_1_exercicio.html#abc21816b2ab37fe209909f15beef51bb", null ],
-    [ "DeleteValue", "classexercicio_1_1_exercicio.html#ad32be868c8476967d8fa2866d1228db1", null ],
-    [ "Drop", "classexercicio_1_1_exercicio.html#aefe781181c8bea7af1facaa61ea623db", null ],
-    [ "Insert", "classexercicio_1_1_exercicio.html#a48d0bc783f4266d87aef980c57cb0caa", null ],
-    [ "Read", "classexercicio_1_1_exercicio.html#a47d8332c2b5d5d49c9d85a51f5a0fb16", null ],
-    [ "Update", "classexercicio_1_1_exercicio.html#a7af72bef305424929a1fa5d0bfafe959", null ]
+    [ "Exercicio", "classexercicio_1_1_exercicio.html#a69a69379b36479fb4fb25be885173de6", null ],
+    [ "descricaoExercicio", "classexercicio_1_1_exercicio.html#a4ca637985a9dfa8c3df759b143853895", null ],
+    [ "idExercicio", "classexercicio_1_1_exercicio.html#a32fc9b43a0fe5b09ce4640be43081bd3", null ],
+    [ "idMovimento", "classexercicio_1_1_exercicio.html#a23c559b40756706cee0ac9aea7b1163b", null ],
+    [ "idPaciente", "classexercicio_1_1_exercicio.html#aa6d915da04bfea5faf5b3697412904d1", null ],
+    [ "idSessao", "classexercicio_1_1_exercicio.html#a26ccffba6357e44ca622689a9e17df46", null ],
+    [ "pontosExercicio", "classexercicio_1_1_exercicio.html#aef7f8f6bfb83daf57796e80854ac4ec9", null ]
 ];

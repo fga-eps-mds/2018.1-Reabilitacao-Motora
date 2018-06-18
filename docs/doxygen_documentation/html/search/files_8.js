@@ -1,7 +1,10 @@
 var searchData=
 [
-  ['kinectgestures_2ecs',['KinectGestures.cs',['../_kinect_gestures_8cs.html',1,'']]],
-  ['kinecthelper_2ecs',['KinectHelper.cs',['../_kinect_helper_8cs.html',1,'']]],
-  ['kinectmanager_2ecs',['KinectManager.cs',['../_kinect_manager_8cs.html',1,'']]],
-  ['kinectwrapper_2ecs',['KinectWrapper.cs',['../_kinect_wrapper_8cs.html',1,'']]]
+  ['helpbt_2ecs',['HelpBt.cs',['../_help_bt_8cs.html',1,'']]],
+  ['helpexercisebt_2ecs',['HelpExerciseBt.cs',['../_help_exercise_bt_8cs.html',1,'']]],
+  ['helpmovementbt_2ecs',['HelpMovementBt.cs',['../_help_movement_bt_8cs.html',1,'']]],
+  ['helppatientbt_2ecs',['HelpPatientBt.cs',['../_help_patient_bt_8cs.html',1,'']]],
+  ['helpresultsbt_2ecs',['HelpResultsBt.cs',['../_help_results_bt_8cs.html',1,'']]],
+  ['helpsessionbt_2ecs',['HelpSessionBt.cs',['../_help_session_bt_8cs.html',1,'']]],
+  ['helpupdatebt_2ecs',['HelpUpdateBt.cs',['../_help_update_bt_8cs.html',1,'']]]
 ];
