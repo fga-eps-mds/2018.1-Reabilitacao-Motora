@@ -8,6 +8,6 @@ public class MovementsBt : MonoBehaviour
 
 	public void Awake ()
 	{
-		nextPage.onClick.AddListener(delegate{Flow.StaticCharacterMenu();});
+		nextPage.onClick.AddListener(delegate{Flow.StaticMovements();});
 	}
 }
