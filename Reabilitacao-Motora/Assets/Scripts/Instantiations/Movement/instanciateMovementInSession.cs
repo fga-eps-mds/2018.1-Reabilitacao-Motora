@@ -26,14 +26,34 @@ public class instanciateMovementInSession : MonoBehaviour
 
 	public void Awake ()
 	{
-		string query = string.Format("select * from MOVIMENTO INNER JOIN EXERCICIO ON MOVIMENTO.idMovimento = EXERCICIO.idMovimento AND idSessao = {0}", GlobalController.instance.session.idSessao);
-		List<Movimento> movements = Movimento.MultiSpecificSelect(query);
-
-		int heightOffset = 10;
-		foreach (var movement in movements)
+		if (GlobalController.instance.session != null)
 		{
-			ButtonSpawner(heightOffset, movement);
-			heightOffset += HEIGHT_PADDING;
+			string query = string.Format("select * from MOVIMENTO INNER JOIN EXERCICIO ON MOVIMENTO.idMovimento = EXERCICIO.idMovimento AND idSessao = {0}", GlobalController.instance.session.idSessao);
+			List<Movimento> movements = Movimento.MultiSpecificSelect(query);
+
+			int heightOffset = 10;
+			int movement_index, auxiliary_index;
+
+   			for(movement_index = 0; movement_index < movements.Count; movement_index++)
+			{
+    			bool not_instanciated = true;
+    			for(auxiliary_index = 0; auxiliary_index < movement_index; auxiliary_index++)
+				{
+     				if(movements[movement_index].nomeMovimento.Equals(movements[auxiliary_index].nomeMovimento))
+					{
+     			 		not_instanciated = false;
+     				}
+    			}
+    			if(not_instanciated)
+				{
+					ButtonSpawner(heightOffset, movements[movement_index]);
+					heightOffset += HEIGHT_PADDING;
+				}
+   			}
+		}
+		else
+		{
+			Debug.Log("Você violou o acesso!");
 		}
 	}
 }

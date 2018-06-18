@@ -3,6 +3,7 @@ using System.Text;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 /**
@@ -13,6 +14,9 @@ public class GenerateLineChart : MonoBehaviour
 	[SerializeField]
 	protected Transform pointPrefab;
 	protected Transform mao, ombro, cotovelo, braco;
+
+	[SerializeField]
+	protected GameObject popUpLabel;
 
 	[System.Serializable]
 	public class NecessaryJoints
@@ -122,7 +126,7 @@ public class GenerateLineChart : MonoBehaviour
 			var currentscene = SceneManager.GetActiveScene().name;
 			var go = gameObject;
 			
-			if (currentscene == "Graphs2")
+			if (currentscene == "GraphsMovimentoPhysio")
 			{
 				Assign(false);
 				file = Application.dataPath + "/Movimentos/" + GlobalController.instance.movement.pontosMovimento;
@@ -207,7 +211,7 @@ public class GenerateLineChart : MonoBehaviour
 	*/
 	void Update () 
 	{
-		if (Input.GetKeyDown(KeyCode.Space)) 
+		if (popUpLabel.activeSelf == false && Input.GetKeyDown(KeyCode.Space)) 
 		{
 			t = !t;
 			if (t == true && drawed == false) 

@@ -16,7 +16,7 @@ public class AvatarChange : MonoBehaviour
     /**
      *  Esta função permite a escolha do personagem que será apresentado na tela.
      */
-    void Start ()
+    void Awake ()
     {
         if (GlobalController.choiceAvatar==1)
         {
@@ -30,15 +30,18 @@ public class AvatarChange : MonoBehaviour
         }
         else if (GlobalController.choiceAvatar==3)
         {
-            //man3Avatar.SetActive(true);
+            man3Avatar.transform.SetSiblingIndex(man3Avatar.transform.childCount - 1);
+            man3Avatar.SetActive(true);
         }
         else if (GlobalController.choiceAvatar==4)
         {
-            //woman1Avatar.SetActive(true);
+            woman1Avatar.transform.SetSiblingIndex(woman1Avatar.transform.childCount - 1);
+            woman1Avatar.SetActive(true);
         }
         else if (GlobalController.choiceAvatar==5)
         {
-            //woman2Avatar.SetActive(true);
+            woman2Avatar.transform.SetSiblingIndex(woman2Avatar.transform.childCount - 1);
+            woman2Avatar.SetActive(true);
         }
     }
 }

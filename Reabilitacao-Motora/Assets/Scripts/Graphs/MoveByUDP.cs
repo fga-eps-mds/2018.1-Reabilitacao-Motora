@@ -5,6 +5,7 @@ using System.Net.Sockets;
 using System.Text;
 using System;
 using System.Net;
+using UnityEngine.UI;
 using System.Threading;
 
 /**
@@ -16,6 +17,9 @@ public class MoveByUDP : MonoBehaviour
 	protected Transform pointPrefab;
 	protected Transform mao, ombro, cotovelo, braco;
 
+	[SerializeField]
+	protected GameObject popUpLabel;
+	
 	Vector3 f_mao_pos, f_mao_rot, f_ombro_pos, f_ombro_rot, f_cotovelo_pos, f_cotovelo_rot, f_braco_pos, f_braco_rot;
 	float current_time_movement;
 	LineRenderer lineRenderer;
@@ -181,7 +185,7 @@ public class MoveByUDP : MonoBehaviour
 	*/
 	void Update () 
 	{
-		if (Input.GetKeyDown(KeyCode.Space)) 
+		if (popUpLabel.activeSelf == false && Input.GetKeyDown(KeyCode.Space)) 
 		{
 			t = !t;
 		}
