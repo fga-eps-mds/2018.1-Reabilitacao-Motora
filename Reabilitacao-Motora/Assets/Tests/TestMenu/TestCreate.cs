@@ -233,7 +233,7 @@ namespace Tests
 			GlobalController.instance.user = pacient;
 			GlobalController.instance.admin = fisio;
 
-			Flow.StaticSessions();
+			Flow.StaticPatient();
 
 			yield return new WaitForSeconds(0.5f);
 
