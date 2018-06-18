@@ -116,6 +116,20 @@ Para manter sempre a documentação do doxygen atualizada, rodar o script para g
 
 ---
 
+### [Card de visualizar sessão deve ter as observações](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/280)
+
+#### Descrição:
+Atualmente, o card de sessão possui apenas o seu nome (data da sessão). Além disso, deve-se adicionar as observações da sessão, escritas com fonte menor que o título, no mesmo card.
+
+
+#### Critérios de aceitação
+- Testes passando
+- Build passando
+
+**Pontos:** 3.
+
+---
+
 ### [Campo de texto com entrada de teclado duplicada](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/270)
 
 #### Descrição:
@@ -124,3 +138,104 @@ Em computadores com Ubuntu (unica distro que apresentou problemas até agora), o
 **Pontos:** 2.
 
 ---
+
+### [Não é possível visualizar corretamente os movimentos executados na sessão](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/275)
+
+#### Descrição:
+Atualmente, a cena de visualizar o movimento realizado na sessão não possui nem o gráfico apresentando o movimento realizado nem a execução do movimento em si. Além disso há dois modelos 3D que, pela falta de informações, não possuem razão para serem duplicados.
+
+#### Critérios de aceitação
+- Testes passando
+- Build passando
+
+**Pontos:** 3.
+
+---
+
+### [Escrever PlayTests para testes de aceitação](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/271)
+
+#### Descrição:
+Escrever playtests que ajam como testes de aceitação para aplicar a técnica de testes de regressão.
+
+#### Critérios de aceitação
+- Testes passando
+- Build passando
+
+**Pontos:** 3.
+
+---
+
+### [Melhorar a visualização do fisioterapeuras ja cadastrados](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/268)
+
+#### Descrição:
+Criar um card para colocar os fisioterapeutas com mais informações alem do nome como, CREFITO e telefone
+
+#### Critérios de aceitação
+- Testes passando
+- Build passando
+
+**Pontos:** 1.
+
+---
+
+### [Personagem não aparece quando não se seleciona nenhum](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/264)
+
+#### Descrição:
+Quando não há a seleção de um personagem, não há opção default e, como resultado, a tela de captação de movimento de paciente fica sem modelo 3D.
+
+#### Critérios de aceitação
+- Testes passando
+- Build passando
+
+**Pontos:** 1.
+
+---
+
+### [Melhorar README do projeto](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/256)
+
+#### Descrição:
+Para ter um projeto mais apresentavel para a R2 é interessante ajustar o README
+
+#### Critérios de aceitação
+- README não estar quebrando
+
+**Pontos:** 1.
+
+---
+
+### [Melhorar a qualidade de comentários no código](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/259)
+
+#### Descrição:
+Antes de atualizar o doxygen é interessante revisar os comentários no código e atualizar as classes que estão faltando.
+
+#### Critérios de aceitação
+- Testes passando
+- Build passando
+
+**Pontos:** 1.
+
+---
+
+### [Tutorial para Desenvolvedores](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/243)
+
+#### Descrição:
+Um documento ensinando como contribuir para o projeto, indicando o que é cada script, do que cada um depende, qual o flow mais natural entre os scripts etc
+
+#### Critérios de aceitação
+- Tornar o aprendizado do software o mais simples possível
+
+**Pontos:** 13.
+
+---
+
+### [Progress bar download (LAUNCHER)](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/235)
+
+#### Descrição:
+Para o usuário ter uma ideia de como está o andamento do download, criar uma progress bar como a porcentagem de download do arquivo.
+
+#### Critérios de aceitação
+- Build passando
+- Download sendo efetuado
+- Percentual correto do download e instalação
+
+**Pontos:** 2.
