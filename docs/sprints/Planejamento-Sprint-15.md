@@ -4,7 +4,7 @@
 
 - Melhorar ainda mais o ritmo de trabalho que foi quase constante
 - Integrar o <i>software</i> com o aplicativo de sensor
-- Arrumar o máximo de falhar encontradas nas <i>sprints</i> anteriores
+- Arrumar o máximo de falhas encontradas nas <i>sprints</i> anteriores
 - Melhorar o UX para entrega final da segunda <i>release</i>
 - Corrigir o máximo de issues possíveis
 
@@ -12,7 +12,7 @@
 ## 2. Papéis
 
 
-| <img src="https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/blob/development/docs/imagens/grupo/Vitor_Falc%C3A3o.png?raw=true" width="200" height="200"/> |  <img src="https://github.com/RomeuCarvalhoAntunes/2018.1-Reabilitacao-Motora/blob/master/docs/imagens/grupo/Lucas_Malta.png?raw=true" width="200" height="200"/> |
+| <img src="https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/development/docs/imagens/grupo/Vitor_Falc%C3%A3o.png" width="200" height="200"/> |  <img src="https://github.com/RomeuCarvalhoAntunes/2018.1-Reabilitacao-Motora/blob/master/docs/imagens/grupo/Lucas_Malta.png?raw=true" width="200" height="200"/> |
 |:--:|:--:|
 | **Scrum Master** | **Product Owner** |
 
