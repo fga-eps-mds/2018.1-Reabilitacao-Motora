@@ -35,7 +35,7 @@
 | Data de Início | 11/06/2018 |
 |:--|:--:|
 | **Data de Término** | **17/06/2018** |
-| **Pontos Planejados** | **84**|
+| **Pontos Planejados** | **76**|
 | **Duração** | **7 dias** |
 
 
@@ -349,7 +349,7 @@ Modifiquei script MoveObjectXAxis*.cs adicionando limitadores
 - Build passando
 - Sem conflitos com a Branch Development
 
-**Pontos:** 1.
+**Pontos:** 2.
 
 ---
 
