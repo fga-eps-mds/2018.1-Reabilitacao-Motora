@@ -50,13 +50,13 @@ namespace Tests
 			Pessoa.Insert("physio name1", "m", "1995-01-03", "6198732713", null);
 			Fisioterapeuta.Insert(1, "abracadabra1", "demais1", null, null);
 
-			var fisios = Fisioterapeuta.Read();
+			var fisios = Fisioterapeuta.GetLast();
 
-			UnityEditor.SceneManagement.EditorSceneManager.OpenScene(Application.dataPath + "/Scenes/NewPhysiotherapist.unity");
+			UnityEditor.SceneManagement.EditorSceneManager.OpenScene(Application.dataPath + "/Scenes/NewPhysiotherapist Adm.unity");
 
 			var panelphysio = GameObject.Find("PanelMoves");
 			var instanciate = panelphysio.GetComponentInChildren<instanciatePhysiotherapist>();
-			instanciate.ButtonSpawner(0, fisios[fisios.Count-1]);
+			instanciate.ButtonSpawner(0, fisios);
 			int countPhysios = CountGameObjectsWithSameName("PhysioPrefab(Clone)");
 
 			Assert.AreEqual(1, countPhysios);
@@ -72,20 +72,19 @@ namespace Tests
 			Movimento.Insert (1,"levantamento de peso", "asuhasu/caminhoy.com", null);
 			Sessao.Insert (1, 1, "1940-10-10", null);
 
-			var pacient = Paciente.Read();
-			var moves = Movimento.Read();
-			var sessions = Sessao.Read();
+			var pacient = Paciente.GetLast();
+			var moves = Movimento.GetLast();
+			var sessions = Sessao.GetLast();
 
-			Exercicio.Insert(pacient[pacient.Count-1].idPaciente, moves[moves.Count-1].idMovimento, sessions[sessions.Count-1].idSessao, "2-Tanto_Fazm/2018-05-30-18-33/24-Ahaha_Hahaha-182944.points", null);
+			Exercicio.Insert(pacient.idPaciente, moves.idMovimento, sessions.idSessao, "2-Tanto_Fazm/2018-05-30-18-33/24-Ahaha_Hahaha-182944.points", null);
 			
 			UnityEditor.SceneManagement.EditorSceneManager.OpenScene(Application.dataPath + "/Scenes/ExercisesToReview.unity");
 
-			var panelphysio = GameObject.Find("PanelShowMovements");
+			var panelphysio = GameObject.Find("Content");
 			var instanciate = panelphysio.GetComponentInChildren<instanciateExercise>();
 
-			var exers = Exercicio.Read();
-
-			instanciate.ButtonSpawner(60, exers[exers.Count-1]);
+			var exers = Exercicio.GetLast();
+			instanciate.ButtonSpawner(60, exers);
 			int countExers = CountGameObjectsWithSameName("Exercise da Reproduce Exercise(Clone)");
 
 			Assert.AreEqual(1, countExers);
@@ -99,18 +98,18 @@ namespace Tests
 			Fisioterapeuta.Insert(2, "abracadabra1", "demais1", null, null);
 			Paciente.Insert(1, null);
 
-			var fisio = Fisioterapeuta.Read();
-			var pacient = Paciente.Read();
+			var fisio = Fisioterapeuta.GetLast();
+			var pacient = Paciente.GetLast();
 
-			Sessao.Insert(fisio[fisio.Count-1].idFisioterapeuta, pacient[pacient.Count-1].idPaciente, "10-10-1990", null);
+			Sessao.Insert(fisio.idFisioterapeuta, pacient.idPaciente, "10-10-1990-15-10", null);
 
-			var sess = Sessao.Read();
+			var sess = Sessao.GetLast();
 
-			UnityEditor.SceneManagement.EditorSceneManager.OpenScene(Application.dataPath + "/Scenes/Sessions.unity");
+			UnityEditor.SceneManagement.EditorSceneManager.OpenScene(Application.dataPath + "/Scenes/Patient.unity");
 
 			var panelsess = GameObject.Find("PanelShowSessions");
 			var instanciate = panelsess.GetComponentInChildren<instanciateSession>();
-			instanciate.ButtonSpawner(0, sess[sess.Count-1]);
+			instanciate.ButtonSpawner(0, sess);
 			int countSess = CountGameObjectsWithSameName("SessionPrefab(Clone)");
 
 			Assert.AreEqual(1, countSess);
@@ -123,18 +122,18 @@ namespace Tests
 			Pessoa.Insert("physio name1", "m", "1995-01-01", "6198732711", null);
 			Fisioterapeuta.Insert(1, "abracadabra1", "demais1", null, null);
 
-			var fisio = Fisioterapeuta.Read();
+			var fisio = Fisioterapeuta.GetLast();
 
-			Movimento.Insert(fisio[fisio.Count-1].idFisioterapeuta, "Ascensao do Braco", "1-Davi_Golias/Ahaha_Hahaha-182944.points", null);
+			Movimento.Insert(fisio.idFisioterapeuta, "Ascensao do Braco", "1-Davi_Golias/Ahaha_Hahaha-182944.points", null);
 
 			UnityEditor.SceneManagement.EditorSceneManager.OpenScene(Application.dataPath + "/Scenes/Movements.unity");
 
 			var panelmove = GameObject.Find("Canvas");
 			var instanciate = panelmove.GetComponentInChildren<instanciateMovement>();
 
-			var moves = Movimento.Read();
+			var moves = Movimento.GetLast();
 
-			instanciate.ButtonSpawner(0, moves[moves.Count-1]);
+			instanciate.ButtonSpawner(0, moves);
 			int countMoves = CountGameObjectsWithSameName("MovimentoMovements(Clone)");
 
 			Assert.AreEqual(1, countMoves);
@@ -148,13 +147,13 @@ namespace Tests
 			Fisioterapeuta.Insert(2, "abracadabra1", "demais1", null, null);
 			Paciente.Insert(1, null);
 
-			var patients = Paciente.Read();
+			var patients = Paciente.GetLast();
 
 			UnityEditor.SceneManagement.EditorSceneManager.OpenScene(Application.dataPath + "/Scenes/NewPatient.unity");
 
 			var panelPatient = GameObject.Find("Canvas");
 			var instanciate = panelPatient.GetComponentInChildren<instanciatePatient>();
-			instanciate.ButtonSpawner(0, patients[patients.Count-1]);
+			instanciate.ButtonSpawner(0, patients);
 			int countPatients = CountGameObjectsWithSameName("PatientPrefab(Clone)");
 
 			Assert.AreEqual(1, countPatients);

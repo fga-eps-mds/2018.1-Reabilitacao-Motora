@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using System.IO;
 using System;
 using fisioterapeuta;
+using DataBaseAttributes;
 
 /**
  * Cria um novo Fisioterapeuta no banco de dados.
@@ -219,17 +220,11 @@ public static class TreatFields
 
 	public static string UniqueCrefitoRegion (string crefito, string regiao)
 	{
-		List<Fisioterapeuta> allPhysios = Fisioterapeuta.Read();
-
 		string result = "";
-
-		foreach (var fisio in allPhysios)
+		var query = string.Format("SELECT COUNT(*) FROM FISIOTERAPEUTA WHERE crefito='{0}' AND regiao='{1}'", crefito, regiao);
+		if(DataBase.CountRead(query) != 0)
 		{
-			if (fisio.regiao == regiao && fisio.crefito == crefito)
-			{
-				result += "Regiao + Crefito inválidos! (já cadastrados)";
-				break;
-			}
+			result += "Regiao + Crefito inválidos! (já cadastrados)";
 		}
 
 		return result;
@@ -237,20 +232,13 @@ public static class TreatFields
 
 	public static string UniqueLoginPassword (string login)
 	{
-		List<Fisioterapeuta> allPhysios = Fisioterapeuta.Read();
-
 		string result = "";
-
-		foreach (var fisio in allPhysios)
+		var query = string.Format("SELECT COUNT(*) FROM FISIOTERAPEUTA WHERE login='{0}'", login);
+		if(DataBase.CountRead(query) != 0)
 		{
-			if (fisio.login == login)
-			{
-				result += "Login inválido! (já cadastrado)";
-				break;
-			}
+			result += "Login inválido! (já cadastrado)";
 		}
 
 		return result;
 	}
-
 }

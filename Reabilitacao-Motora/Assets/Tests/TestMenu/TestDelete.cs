@@ -1,4 +1,5 @@
 using System;
+using System.Text.RegularExpressions;
 using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
@@ -37,7 +38,7 @@ namespace Tests
 		public static IEnumerator TestDeletePhysio()
 		{
 			Flow.StaticLogin();
-			Flow.StaticNewPhysiotherapist();
+			Flow.StaticNewPhysiotherapistAdm();
 
 			yield return null;
 			
@@ -48,9 +49,9 @@ namespace Tests
 			aux.text = "Fake Name";
 			physioManager.SetMemberValue("namePhysio", aux);
 
-			InputField aux1 = (InputField)physioManager.GetMemberValue("date");
+			Text aux1 = (Text)physioManager.GetMemberValue("outDate");
 			aux1.text = "01/01/1920";
-			physioManager.SetMemberValue("date", aux1);
+			physioManager.SetMemberValue("outDate", aux1);
 			
 			InputField aux3 = (InputField)physioManager.GetMemberValue("phone1");
 			aux3.text = "61999999";
@@ -126,21 +127,25 @@ namespace Tests
 			Movimento.Insert (1,"levantamento de peso", "asuhasu/caminhoy.com", null);
 			Sessao.Insert (1, 1, "1940-10-10", null);
 
-			var pacient = Paciente.Read();
-			var fisio = Fisioterapeuta.Read();
-			var moves = Movimento.Read();
-			var sessions = Sessao.Read();
+			var pacient = Paciente.GetLast();
+			var fisio = Fisioterapeuta.GetLast();
+			var moves = Movimento.GetLast();
+			var sessions = Sessao.GetLast();
 
-			GlobalController.instance.user = pacient[pacient.Count - 1];
-			GlobalController.instance.admin = fisio[fisio.Count - 1];
-			GlobalController.instance.movement = moves[moves.Count - 1];
-			GlobalController.instance.session = sessions[sessions.Count - 1];
+			GlobalController.instance.user = pacient;
+			GlobalController.instance.admin = fisio;
+			GlobalController.instance.movement = moves;
+			GlobalController.instance.session = sessions;
 
 			Flow.StaticMovementsToExercise();
 
 			yield return new WaitForSeconds(0.5f);
 
 			createExercise.CreateExercise();
+
+			var device = @"^(.*?(\bDevice|SDK\b)[^$]*)$";
+			Regex rgx1 = new Regex(device, RegexOptions.IgnoreCase);
+			LogAssert.Expect(LogType.Error, rgx1);
 
 			yield return new WaitForSeconds(0.5f);
 
@@ -181,13 +186,13 @@ namespace Tests
 			Fisioterapeuta.Insert(2, "abracadabra1", "demais1", null, null);
 			Paciente.Insert(1, null);
 
-			var pacient = Paciente.Read();
-			var fisio = Fisioterapeuta.Read();
+			var pacient = Paciente.GetLast();
+			var fisio = Fisioterapeuta.GetLast();
 
-			GlobalController.instance.user = pacient[pacient.Count - 1];
-			GlobalController.instance.admin = fisio[fisio.Count - 1];
+			GlobalController.instance.user = pacient;
+			GlobalController.instance.admin = fisio;
 
-			Flow.StaticSessions();
+			Flow.StaticPatient();
 
 			yield return new WaitForSeconds(0.5f);
 
@@ -200,7 +205,7 @@ namespace Tests
 			yield return new WaitForSeconds(0.5f);
 
 			var currentscene = SceneManager.GetActiveScene().name;
-			var expectedscene = "Sessions";
+			var expectedscene = "Patient";
 
 			Assert.AreEqual(expectedscene, currentscene);
 
@@ -230,9 +235,9 @@ namespace Tests
 			Pessoa.Insert("physio name1", "m", "1995-01-01", "6198732711", null);
 			Fisioterapeuta.Insert(1, "abracadabra1", "demais1", null, null);
 
-			var fisio = Fisioterapeuta.Read();
+			var fisio = Fisioterapeuta.GetLast();
 
-			GlobalController.instance.admin = fisio[fisio.Count - 1];
+			GlobalController.instance.admin = fisio;
 
 			Flow.StaticNewMovement();
 
@@ -253,16 +258,15 @@ namespace Tests
 
 			moveManager.saveMovement();
 
+			var device = @"^(.*?(\bDevice|SDK\b)[^$]*)$";
+			Regex rgx1 = new Regex(device, RegexOptions.IgnoreCase);
+			LogAssert.Expect(LogType.Error, rgx1);
+
 			yield return new WaitForSeconds(1f);
 
 			DeleteMovementButton.DeleteMovement();
 
 			yield return new WaitForSeconds(0.5f);
-
-			var currentscene = SceneManager.GetActiveScene().name;
-			var expectedscene = "Movements";
-
-			Assert.AreEqual(expectedscene, currentscene);
 
 			int IdMovimento = GlobalController.instance.movement.idMovimento;
 
@@ -305,16 +309,16 @@ namespace Tests
 
 			yield return null;
 
-			var objectPatient = GameObject.Find("PatientManager");
+			var objectPatient = GameObject.Find("Patient Manager");
 			var PatientManager = objectPatient.GetComponentInChildren<createPatient>();
 
 			InputField aux = (InputField)PatientManager.GetMemberValue("namePatient");
 			aux.text = "Fake Name";
 			PatientManager.SetMemberValue("namePatient", aux);
 
-			InputField aux1 = (InputField)PatientManager.GetMemberValue("date");
+			Text aux1 = (Text)PatientManager.GetMemberValue("outDate");
 			aux1.text = "01/01/1920";
-			PatientManager.SetMemberValue("date", aux1);
+			PatientManager.SetMemberValue("outDate", aux1);
 
 			InputField aux3 = (InputField)PatientManager.GetMemberValue("phone1");
 			aux3.text = "61999999";

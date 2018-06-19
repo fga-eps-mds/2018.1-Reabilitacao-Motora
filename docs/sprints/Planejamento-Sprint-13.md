@@ -247,10 +247,10 @@ Ao entrar na tela de seleção sensores o botão de salvar está muito pequeno c
 
 ---
 
-### [Criação dos adapters para o código do cliente](https://github.com/fga-gpp-mds/2018.1-reabilitacao-motora/issues/221)
+### [Criação do adapter para o sensor do cliente](https://github.com/fga-gpp-mds/2018.1-reabilitacao-motora/issues/221)
 
 #### Descrição:
-Criação dos adapters necessários para se acoplar o código do cliente ao projeto.
+Criação do adapter necessário para se acoplar o sensor do cliente ao projeto.
 
 #### Critérios de Aceitação:
 - Adapters criados
@@ -259,7 +259,6 @@ Criação dos adapters necessários para se acoplar o código do cliente ao proj
 #### Tarefas:
 - Estudos sobre o código
 - Criação do adapter do módulo do sensor
-- Criação do adapter do módulo de processamento
 
 **Pontos:** 8.
 

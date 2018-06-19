@@ -14,7 +14,6 @@ namespace movimento
    */
 	public class Movimento
 	{
-
 		private const int tableId = 4;
 		private int IdMovimento;
 		private int IdFisioterapeuta;
@@ -98,6 +97,34 @@ namespace movimento
 				TablesManager.Tables[tableId].colName[0], id, columns);
 
 			return movement;
+		}
+
+		public static Movimento GetLast ()
+		{
+			Object[] columns = new Object[] {0, 0, "", "", ""};
+
+			Movimento movement = DataBase.GetLast<Movimento>(TablesManager.Tables[tableId].tableName,
+				TablesManager.Tables[tableId].colName[0], columns);
+
+			return movement;
+		}
+
+		public static List<Movimento> MultiSpecificSelect(string query)
+		{
+			Object[] columns = new Object[] {0, 0, "", "", ""};
+
+			List<Movimento> movements = DataBase.MultiSpecificSelect<Movimento>(TablesManager.Tables[tableId].tableName, columns, query);
+
+			return movements;
+		}
+
+		public static Movimento SingleSpecificSelect(string query)
+		{
+			Object[] columns = new Object[] {0, 0, "", "", ""};
+
+			Movimento movements = DataBase.SingleSpecificSelect<Movimento>(TablesManager.Tables[tableId].tableName, columns, query);
+
+			return movements;
 		}
 
 		/**

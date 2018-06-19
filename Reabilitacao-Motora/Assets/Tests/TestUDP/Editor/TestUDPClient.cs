@@ -12,10 +12,10 @@ using System.Net.Sockets;
 using System.Threading;
 
 
-public class TestUDPClient {
+public static class TestUDPClient {
 
 	[Test]
-	public void TestUDPClientSimplePasses() {
+	public static void TestUDPClientSimplePasses() {
 		
 		string host = "127.0.0.1";
     	int port = 5005;

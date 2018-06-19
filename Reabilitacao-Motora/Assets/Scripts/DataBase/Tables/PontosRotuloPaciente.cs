@@ -100,6 +100,16 @@ namespace pontosrotulopaciente
 			return patientLabelPoint;
 		}
 
+		public static PontosRotuloPaciente GetLast ()
+		{
+			Object[] columns = new Object[] {0, 0, "", 0.00f, 0.00f};
+
+			PontosRotuloPaciente patientLabelPoint = DataBase.GetLast<PontosRotuloPaciente>(TablesManager.Tables[tableId].tableName,
+				TablesManager.Tables[tableId].colName[0], columns);
+
+			return patientLabelPoint;
+		}
+
 		/**
 		* Função que deleta dados cadastrados anteriormente na relação de pontosrotulopaciente.
 		 */

@@ -8,6 +8,6 @@ public class NewPhysiotherapistBt : MonoBehaviour
 
 	public void Awake ()
 	{
-		nextPage.onClick.AddListener(delegate{Flow.StaticNewPhysiotherapist();});
+		nextPage.onClick.AddListener(delegate{Flow.StaticNewPhysiotherapistCommon();});
 	}
 }

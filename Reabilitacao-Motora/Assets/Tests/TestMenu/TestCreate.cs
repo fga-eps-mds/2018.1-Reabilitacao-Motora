@@ -3,6 +3,7 @@ using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Text.RegularExpressions;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.TestTools;
@@ -32,7 +33,7 @@ namespace Tests
 		[UnityTest]
 		public static IEnumerator TestPhysioManagerInputFields()
 		{
-			Flow.StaticNewPhysiotherapist();
+			Flow.StaticNewPhysiotherapistCommon();
 
 			yield return null;
 
@@ -58,7 +59,7 @@ namespace Tests
 		public static IEnumerator TestPhysioSaveButton()
 		{
 			Flow.StaticLogin();
-			Flow.StaticNewPhysiotherapist();
+			Flow.StaticNewPhysiotherapistCommon();
 
 			yield return null;
 			
@@ -115,7 +116,7 @@ namespace Tests
 		public static IEnumerator TestSavePhysio()
 		{
 			Flow.StaticLogin();
-			Flow.StaticNewPhysiotherapist();
+			Flow.StaticNewPhysiotherapistCommon();
 
 			yield return null;
 			
@@ -126,9 +127,9 @@ namespace Tests
 			aux.text = "Fake Name";
 			physioManager.SetMemberValue("namePhysio", aux);
 
-			InputField aux1 = (InputField)physioManager.GetMemberValue("date");
+			Text aux1 = (Text)physioManager.GetMemberValue("outDate");
 			aux1.text = "01/01/1920";
-			physioManager.SetMemberValue("date", aux1);
+			physioManager.SetMemberValue("outDate", aux1);
 			
 			InputField aux3 = (InputField)physioManager.GetMemberValue("phone1");
 			aux3.text = "61999999";
@@ -164,9 +165,9 @@ namespace Tests
 			var currentscene = SceneManager.GetActiveScene().name;
 			var expectedscene = "Login";
 
-			var fisios = Fisioterapeuta.Read();
+			var fisios = Fisioterapeuta.GetLast();
 
-			Assert.AreEqual(IdFisioterapeuta, fisios[fisios.Count - 1].idFisioterapeuta);
+			Assert.AreEqual(IdFisioterapeuta, fisios.idFisioterapeuta);
 			Assert.AreEqual(expectedscene, currentscene);
 		}
 
@@ -184,31 +185,34 @@ namespace Tests
 			Movimento.Insert (1,"levantamento de peso", "asuhasu/caminhoy.com", null);
 			Sessao.Insert (1, 1, "1940-10-10", null);
 
-			var pacient = Paciente.Read();
-			var fisio = Fisioterapeuta.Read();
-			var moves = Movimento.Read();
-			var sessions = Sessao.Read();
+			var pacient = Paciente.GetLast();
+			var fisio = Fisioterapeuta.GetLast();
+			var moves = Movimento.GetLast();
+			var sessions = Sessao.GetLast();
 
-			GlobalController.instance.user = pacient[pacient.Count - 1];
-			GlobalController.instance.admin = fisio[fisio.Count - 1];
-			GlobalController.instance.movement = moves[moves.Count - 1];
-			GlobalController.instance.session = sessions[sessions.Count - 1];
+			GlobalController.instance.user = pacient;
+			GlobalController.instance.admin = fisio;
+			GlobalController.instance.movement = moves;
+			GlobalController.instance.session = sessions;
 
 			Flow.StaticMovementsToExercise();
 
 			yield return new WaitForSeconds(0.5f);
 
 			createExercise.CreateExercise();
+			var device = @"^(.*?(\bDevice|SDK\b)[^$]*)$";
+			Regex rgx1 = new Regex(device, RegexOptions.IgnoreCase);
+			LogAssert.Expect(LogType.Error, rgx1);
 
 			yield return new WaitForSeconds(0.5f);
 
 			var currentscene = SceneManager.GetActiveScene().name;
-			var expectedscene = "ChoiceSensor";
+			var expectedscene = "RealtimeGraphKinectPatient";
 
-			var exer = Exercicio.Read();
+			var exer = Exercicio.GetLast();
 
 			Assert.AreEqual(currentscene, expectedscene);
-			Assert.AreEqual(GlobalController.instance.exercise.idExercicio, exer[exer.Count - 1].idExercicio);
+			Assert.AreEqual(GlobalController.instance.exercise.idExercicio, exer.idExercicio);
 		}
 
 		[UnityTest]
@@ -223,13 +227,13 @@ namespace Tests
 			Fisioterapeuta.Insert(2, "abracadabra1", "demais1", null, null);
 			Paciente.Insert(1, null);
 
-			var pacient = Paciente.Read();
-			var fisio = Fisioterapeuta.Read();
+			var pacient = Paciente.GetLast();
+			var fisio = Fisioterapeuta.GetLast();
 
-			GlobalController.instance.user = pacient[pacient.Count - 1];
-			GlobalController.instance.admin = fisio[fisio.Count - 1];
+			GlobalController.instance.user = pacient;
+			GlobalController.instance.admin = fisio;
 
-			Flow.StaticSessions();
+			Flow.StaticPatient();
 
 			yield return new WaitForSeconds(0.5f);
 
@@ -240,10 +244,10 @@ namespace Tests
 			var currentscene = SceneManager.GetActiveScene().name;
 			var expectedscene = "NewSession";
 
-			var sess = Sessao.Read();
+			var sess = Sessao.GetLast();
 
 			Assert.AreEqual(currentscene, expectedscene);
-			Assert.AreEqual(GlobalController.instance.session.idSessao, sess[sess.Count - 1].idSessao);
+			Assert.AreEqual(GlobalController.instance.session.idSessao, sess.idSessao);
 		}
 
 
@@ -257,9 +261,9 @@ namespace Tests
 			Pessoa.Insert("physio name1", "m", "1995-01-01", "6198732711", null);
 			Fisioterapeuta.Insert(1, "abracadabra1", "demais1", null, null);
 
-			var fisio = Fisioterapeuta.Read();
+			var fisio = Fisioterapeuta.GetLast();
 
-			GlobalController.instance.admin = fisio[fisio.Count - 1];
+			GlobalController.instance.admin = fisio;
 
 			Flow.StaticNewMovement();
 
@@ -271,7 +275,7 @@ namespace Tests
 			moveManager.SetMemberValue("nomeMovimento", aux);
 
 			InputField aux1 = (InputField)moveManager.GetMemberValue("musculos");
-			aux1.text = "Deltoide";
+			aux1.text = "Bíceps;tricepts/Panceps~Seloro-Barriga";
 			moveManager.SetMemberValue("musculos", aux1);
 			
 			InputField aux3 = (InputField)moveManager.GetMemberValue("descricao");
@@ -280,15 +284,19 @@ namespace Tests
 			
 			moveManager.saveMovement();
 
+			var device = @"^(.*?(\bDevice|SDK\b)[^$]*)$";
+			Regex rgx1 = new Regex(device, RegexOptions.IgnoreCase);
+			LogAssert.Expect(LogType.Error, rgx1);
+
 			yield return new WaitForSeconds(1f);
 
 			var currentscene = SceneManager.GetActiveScene().name;
-			var expectedscene = "ChoiceSensor";
+			var expectedscene = "RealtimeGraphKinectPhysio";
 
-			var move = Movimento.Read();
+			var move = Movimento.GetLast();
 
 			Assert.AreEqual(currentscene, expectedscene);
-			Assert.AreEqual(GlobalController.instance.movement.idMovimento, move[move.Count - 1].idMovimento);
+			Assert.AreEqual(GlobalController.instance.movement.idMovimento, move.idMovimento);
 		}
 
 		[UnityTest]
@@ -299,16 +307,16 @@ namespace Tests
 
 			yield return null;
 			
-			var objectPatient = GameObject.Find("PatientManager");
+			var objectPatient = GameObject.Find("Patient Manager");
 			var PatientManager = objectPatient.GetComponentInChildren<createPatient>();
 
 			InputField aux = (InputField)PatientManager.GetMemberValue("namePatient");
 			aux.text = "Fake Name";
 			PatientManager.SetMemberValue("namePatient", aux);
 
-			InputField aux1 = (InputField)PatientManager.GetMemberValue("date");
+			Text aux1 = (Text)PatientManager.GetMemberValue("outDate");
 			aux1.text = "01/01/1920";
-			PatientManager.SetMemberValue("date", aux1);
+			PatientManager.SetMemberValue("outDate", aux1);
 			
 			InputField aux3 = (InputField)PatientManager.GetMemberValue("phone1");
 			aux3.text = "61999999";
@@ -336,9 +344,9 @@ namespace Tests
 			var currentscene = SceneManager.GetActiveScene().name;
 			var expectedscene = "NewPatient";
 
-			var patients = Paciente.Read();
+			var patients = Paciente.GetLast();
 
-			Assert.AreEqual(IdPaciente, patients[patients.Count - 1].idPaciente);
+			Assert.AreEqual(IdPaciente, patients.idPaciente);
 			Assert.AreEqual(expectedscene, currentscene);
 		}
 

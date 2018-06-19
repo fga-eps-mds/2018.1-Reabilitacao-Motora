@@ -14,14 +14,9 @@ public class SetExerciseToButton : MonoBehaviour
 	public void SelectExercise ()
 	{
 		GlobalController.instance.exercise = exercise;
-		List<Movimento> movements = Movimento.Read();
-		foreach (var mov in movements)
-		{
-			if (mov.idMovimento == exercise.idMovimento)
-			{
-				GlobalController.instance.movement = mov;
-			}
-		}
+		string query = string.Format("select * from MOVIMENTO WHERE idMovimento = {0}", exercise.idMovimento);
+		Movimento mov = Movimento.SingleSpecificSelect(query);
+		GlobalController.instance.movement = mov;
 	}
 
 	public Exercicio Exercise

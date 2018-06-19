@@ -13,8 +13,8 @@ public class CreateLabelPatient : MonoBehaviour
 	[SerializeField]
 	protected GameObject labelPrefab;
 	
-	string nameLabel = "label name";
-	string initialX = "0", finalX = "0";
+	string nameLabel = "Descrição do Rótulo";
+	string initialX = "x inicial", finalX = "x final";
 
 	/**
 	 * Descrever aqui o que esse método realiza.
@@ -55,13 +55,15 @@ public class CreateLabelPatient : MonoBehaviour
 				nameLabel = GUILayout.TextField(nameLabel, GUILayout.Width(120));
 				initialX = GUILayout.TextField(initialX, GUILayout.Width(90));
 				finalX = GUILayout.TextField(finalX, GUILayout.Width(90));
-				initialX = System.Text.RegularExpressions.Regex.Replace(initialX, "[^0-9.]", "");
-				finalX = System.Text.RegularExpressions.Regex.Replace(finalX, "[^0-9.]", "");
+				initialX = System.Text.RegularExpressions.Regex.Replace(initialX, "[^0-9.,]", "");
+				finalX = System.Text.RegularExpressions.Regex.Replace(finalX, "[^0-9.,]", "");
 			GUILayout.EndHorizontal();
 
-			if (GUILayout.Button("Apply to Chart")) 
+			if (GUILayout.Button("Salvar")) 
 			{
 				string label = nameLabel;
+				initialX = initialX.Replace(',', '.');
+				finalX = finalX.Replace(',', '.');
 				Vector2 val = new Vector2 (float.Parse(initialX), float.Parse(finalX));
 
 				if (Mathf.Abs(val.x - val.y) > 0.4)

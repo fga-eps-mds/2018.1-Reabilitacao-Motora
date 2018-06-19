@@ -53,6 +53,6 @@ public class DeleteSessionButton : MonoBehaviour
 		}
 
 		Sessao.DeleteValue (IdSessao);
-		Flow.StaticSessions();
+		Flow.StaticPatient();
 	}
 }

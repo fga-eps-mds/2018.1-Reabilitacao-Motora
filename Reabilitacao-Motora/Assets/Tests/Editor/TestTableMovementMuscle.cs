@@ -22,17 +22,17 @@ using System.Data;
 */
 namespace Tests
 {
-	public class TestTableMovementMuscle
+	public static class TestTableMovementMuscle
 	{
 		[SetUp]
-		public void SetUp()
+		public static void SetUp()
 		{
 			GlobalController.test = true;
 			GlobalController.Initialize();
 		}
 
 		[Test]
-		public void TestMovimentoMusculoCreate ()
+		public static void TestMovimentoMusculoCreate ()
 		{
 			using (var conn = new SqliteConnection(GlobalController.path))
 			{
@@ -76,7 +76,7 @@ namespace Tests
 		}
 
 		[Test]
-		public void TestMovimentoMusculoDrop ()
+		public static void TestMovimentoMusculoDrop ()
 		{
 			using (var conn = new SqliteConnection(GlobalController.path))
 			{
@@ -120,7 +120,7 @@ namespace Tests
 		}
 
 		[Test]
-		public void TestMovimentoMusculoInsert ()
+		public static void TestMovimentoMusculoInsert ()
 		{
 			using (var conn = new SqliteConnection(GlobalController.path))
 			{
@@ -192,7 +192,7 @@ namespace Tests
 		}
 
 		[Test]
-		public void TestMovimentoMusculoRead ()
+		public static void TestMovimentoMusculoRead ()
 		{
 			using (var conn = new SqliteConnection(GlobalController.path))
 			{
@@ -235,7 +235,7 @@ namespace Tests
 		}
 
 		[Test]
-		public void TestMovimentoMusculoDeleteValue ()
+		public static void TestMovimentoMusculoDeleteValue ()
 		{
 			using (var conn = new SqliteConnection(GlobalController.path))
 			{

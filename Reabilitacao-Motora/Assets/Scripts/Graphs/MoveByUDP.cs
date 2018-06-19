@@ -5,6 +5,7 @@ using System.Net.Sockets;
 using System.Text;
 using System;
 using System.Net;
+using UnityEngine.UI;
 using System.Threading;
 
 /**
@@ -13,26 +14,78 @@ using System.Threading;
 public class MoveByUDP : MonoBehaviour
 {
 	[SerializeField]
-	protected Transform pointPrefab, mao, ombro, cotovelo, braco;
+	protected Transform pointPrefab;
+	protected Transform mao, ombro, cotovelo, braco;
 
+	[SerializeField]
+	protected GameObject popUpLabel;
+	
 	Vector3 f_mao_pos, f_mao_rot, f_ombro_pos, f_ombro_rot, f_cotovelo_pos, f_cotovelo_rot, f_braco_pos, f_braco_rot;
-
+	float current_time_movement;
 	LineRenderer lineRenderer;
+	bool t;
 
 	private static readonly Color c1 = Color.black;
 	private static readonly Color c2 = Color.red;
-
-	bool t;
+	private static readonly Color c3 = Color.blue;
 
     UdpClient client;
-    public int receivePort = 5005;
+    public int receivePort = 5004;
     IPAddress groupIP = IPAddress.Parse("127.0.0.1");
     IPEndPoint remoteEP;   
 
     string rxString;
 
+    [System.Serializable]
+	public class NecessaryJoints
+	{
+		public Transform ombroAux, bracoAux, cotoveloAux, maoAux;
+	}
 
-    void Start () {
+	[SerializeField]
+	protected NecessaryJoints[] joints;
+
+	public void Assign ()
+	{
+		if (GlobalController.choiceAvatar == 1)
+		{
+			ombro = joints[0].ombroAux;
+			braco = joints[0].bracoAux;
+			cotovelo = joints[0].cotoveloAux;
+			mao = joints[0].maoAux;
+		}
+		else if (GlobalController.choiceAvatar == 2)
+		{
+			ombro = joints[1].ombroAux;
+			braco = joints[1].bracoAux;
+			cotovelo = joints[1].cotoveloAux;
+			mao = joints[1].maoAux;
+		}
+		else if (GlobalController.choiceAvatar == 3)
+		{
+			ombro = joints[2].ombroAux;
+			braco = joints[2].bracoAux;
+			cotovelo = joints[2].cotoveloAux;
+			mao = joints[2].maoAux;
+		}
+		else if (GlobalController.choiceAvatar == 4)
+		{
+			ombro = joints[3].ombroAux;
+			braco = joints[3].bracoAux;
+			cotovelo = joints[3].cotoveloAux;
+			mao = joints[3].maoAux;
+		}
+		else if (GlobalController.choiceAvatar == 5)
+		{
+			ombro = joints[4].ombroAux;
+			braco = joints[4].bracoAux;
+			cotovelo = joints[4].cotoveloAux;
+			mao = joints[4].maoAux;
+		}
+	}
+
+    void Start () 
+    {
         Debug.Log("Starting Client");
         remoteEP = new IPEndPoint(IPAddress.Any, receivePort);
 
@@ -40,14 +93,16 @@ public class MoveByUDP : MonoBehaviour
         client.JoinMulticastGroup(groupIP);
 
         client.BeginReceive(new AsyncCallback(ReceiveServerInfo), null);
+    	
+    	Assign();
     }
 
-    void ReceiveServerInfo (IAsyncResult result) {        
-        Debug.Log("Received Server Info");
+    void ReceiveServerInfo (IAsyncResult result) 
+    {        
+        //Debug.Log("Received Server Info");
         byte[] receivedBytes = client.EndReceive(result, ref remoteEP);
 
         rxString = System.Text.Encoding.UTF8.GetString(receivedBytes);
-        Debug.Log ("  with bytes: " + rxString);
         LoadData(rxString);
     }
 
@@ -95,35 +150,6 @@ public class MoveByUDP : MonoBehaviour
 		f_braco_rot = (new Vector3 (a, b, c));					
 	
 	}
-
-	public void LoadLineRenderer ()
-	{
-		lineRenderer = gameObject.AddComponent<LineRenderer>();
-		lineRenderer.material = new Material(Shader.Find("Particles/Multiply (Double)"));
-		lineRenderer.widthMultiplier = 0.2f;
-		lineRenderer.positionCount = 4000;
-		lineRenderer.sortingOrder = 5;
-		lineRenderer.positionCount = 2;
-
-	// A simple 2 color gradient with a fixed alpha of 1.0f.
-		float alpha = 1.0f;
-		Gradient gradient = new Gradient();
-		gradient.SetKeys(
-			new []
-			{
-				new GradientColorKey(c1, 0.0f), 
-				new GradientColorKey(c2, 1.0f) 
-			},
-			new [] 
-			{
-				new GradientAlphaKey(alpha, 0.0f), 
-				new GradientAlphaKey(alpha, 1.0f) 
-			}
-		);
-		lineRenderer.colorGradient = gradient;
-		lineRenderer.useWorldSpace = false;
-		lineRenderer.alignment = LineAlignment.Local;
-	}
 	
 	/**
 	* Descrever aqui o que esse método realiza.
@@ -131,11 +157,21 @@ public class MoveByUDP : MonoBehaviour
 	void Awake()
 	{
 		if(GlobalController.instance != null && 
-		   GlobalController.instance.movement != null)
+		   (GlobalController.instance.movement != null ||
+		   	GlobalController.instance.exercise != null)
+		  )
 		{
 			t = false;
-
-			LoadLineRenderer();
+			var go = gameObject;
+			current_time_movement = 0;
+			if (GlobalController.patientOrPhysio)
+			{
+				GetMovementPoints.LoadLineRenderer(ref go, ref lineRenderer, c1, c2);
+			}
+			else
+			{
+				GetMovementPoints.LoadLineRenderer(ref go, ref lineRenderer, c1, c3);
+			}
 		}
 		else
 		{
@@ -149,7 +185,7 @@ public class MoveByUDP : MonoBehaviour
 	*/
 	void Update () 
 	{
-		if (Input.GetKeyDown(KeyCode.Space)) 
+		if (popUpLabel.activeSelf == false && Input.GetKeyDown(KeyCode.Space)) 
 		{
 			t = !t;
 		}
@@ -159,25 +195,47 @@ public class MoveByUDP : MonoBehaviour
 	{
 		if (t){
 			client.BeginReceive (new AsyncCallback (ReceiveServerInfo), null);
-	        Playback();
+
+			current_time_movement += Time.fixedDeltaTime;
+
+			ombro.localPosition = f_ombro_pos;
+			ombro.localEulerAngles = f_ombro_rot;
+
+			braco.localPosition = f_braco_pos;
+			braco.localEulerAngles = f_braco_rot;
+
+			cotovelo.localPosition = f_cotovelo_pos;
+			cotovelo.localEulerAngles = f_cotovelo_rot;
+
+			mao.localPosition = f_mao_pos;
+			mao.localEulerAngles = f_mao_rot;
+
+			if (GlobalController.patientOrPhysio)
+			{
+				GetMovementPoints.SavePoints (current_time_movement,
+					"/Movimentos/", 
+					GlobalController.instance.movement.pontosMovimento,
+					mao, 
+					cotovelo,
+					ombro, 
+					braco);
+			}
+			else
+			{
+				GetMovementPoints.SavePoints (current_time_movement,
+					"/Exercicios/", 
+					GlobalController.instance.exercise.pontosExercicio,
+					mao, 
+					cotovelo,
+					ombro, 
+					braco);
+			}	
+
+			GetMovementPoints.graphSpawner(transform, pointPrefab, mao, cotovelo, ombro, current_time_movement, ref lineRenderer); 
+			if (current_time_movement > 15)
+			{
+				t = false;
+			}
 		}
-	}
-
-	public void Playback ()
-	{  
-			
-		ombro.localPosition = f_ombro_pos;
-		ombro.localEulerAngles = f_ombro_rot;
-
-		braco.localPosition = f_braco_pos;
-		braco.localEulerAngles = f_braco_rot;
-
-		cotovelo.localPosition = f_cotovelo_pos;
-		cotovelo.localEulerAngles = f_cotovelo_rot;
-
-		mao.localPosition = f_mao_pos;
-		mao.localEulerAngles = f_mao_rot;
-       
-	 
 	}
 }
