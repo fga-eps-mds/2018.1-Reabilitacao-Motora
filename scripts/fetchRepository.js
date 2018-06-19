@@ -2,7 +2,6 @@ let basicRepoInfo = {};
 const getRepoDocInfo = () => {
     axios.get(`${base_url}/macros/echo?user_content_key=FyNWg9LkaMnO14W_e0dnhTu95p7BERQMDbXdEc4Nrrbht7JFNH29JKUUeNPo5Ynm1wosRm8NvSMpR78UGMf5L_ISfh6EJ907m5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnGKFP4WoNvAgWxqvMojZ24jF3pqp3Yp2cyWA69fFqpDwSf7E4jQwwEOWwHl9XLcByOSrwyx_nfSR&lib=MNpFeaSB2qFfJBFJ1m63-3SnJ73Ww1NkL`)
         .then(function (response) {
-            console.log(response.data);
             basicRepoInfo = response.data;
             setRepoData();
         }).catch(function (error) {

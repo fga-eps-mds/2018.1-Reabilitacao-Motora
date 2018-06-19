@@ -1,9 +1,27 @@
 var searchData=
 [
-  ['value',['Value',['../class_timed_lerp.html#a3986137427e1e7bd66bb783fb2d86b10',1,'TimedLerp']]],
-  ['vectorbetween',['VectorBetween',['../class_kinect_helper.html#adbd205f1683d864d65067ab28e6f33b9',1,'KinectHelper']]],
-  ['verticalmovement',['verticalMovement',['../class_avatar_controller.html#ad879ee9629b94cb1c4feaacda6469ba5',1,'AvatarController']]],
-  ['vfloorclipplane',['vFloorClipPlane',['../struct_kinect_wrapper_1_1_nui_skeleton_frame.html#a23992f6462fa532b7c8a60379eb01e97',1,'KinectWrapper::NuiSkeletonFrame']]],
-  ['viewarea_5fnotused',['ViewArea_NotUsed',['../struct_kinect_wrapper_1_1_nui_image_frame.html#a466d3e02ff63647b70017313652a0fb8',1,'KinectWrapper::NuiImageFrame']]],
-  ['vnormaltogravity',['vNormalToGravity',['../struct_kinect_wrapper_1_1_nui_skeleton_frame.html#a5281e1a39eeda48cd88851cfcda6caf1',1,'KinectWrapper::NuiSkeletonFrame']]]
+  ['udpclient',['UDPClient',['../class_u_d_p_client.html',1,'']]],
+  ['udpclient_2ecs',['UDPClient.cs',['../_u_d_p_client_8cs.html',1,'']]],
+  ['unlockrect',['UnlockRect',['../interface_kinect_wrapper_1_1_i_nui_frame_texture.html#a51d2dd6849585641662053fc5f2ec36f',1,'KinectWrapper::INuiFrameTexture']]],
+  ['update',['Update',['../classpad_trash_can.html#a604ad99d25cd0edb6b75e88b1edad69e',1,'padTrashCan.Update()'],['../class_crefito_formatter.html#aead8a6b24b2008ad42a43610ae19ad1c',1,'CrefitoFormatter.Update()'],['../class_date_of_birth_formatter.html#ae35016ab965fa4426bc37f6cba1b311a',1,'DateOfBirthFormatter.Update()'],['../class_tab.html#ad29d7250b3e622ebde934a378a5d7164',1,'Tab.Update()'],['../classexercicio_1_1_exercicio.html#ad4ed5cad60f58f7377d156396f32cb7c',1,'exercicio.Exercicio.Update()'],['../classfisioterapeuta_1_1_fisioterapeuta.html#ad1b876ceda5be6fd81400fa4dd1d4b55',1,'fisioterapeuta.Fisioterapeuta.Update()'],['../classmovimento_1_1_movimento.html#ae5ad739332a817a69de60c1af4333de5',1,'movimento.Movimento.Update()'],['../classmusculo_1_1_musculo.html#a1dcc6220cbfd52eda9a3cd234fd7825f',1,'musculo.Musculo.Update()'],['../classpaciente_1_1_paciente.html#a3d98e91fcbe5043b97416335160628d3',1,'paciente.Paciente.Update()'],['../classpessoa_1_1_pessoa.html#a63035adbcba26fd97c80dcb99e1a82d1',1,'pessoa.Pessoa.Update()'],['../classpontosrotulofisioterapeuta_1_1_pontos_rotulo_fisioterapeuta.html#a0fda7c251bbd6ed0b1728561fb5d4ce4',1,'pontosrotulofisioterapeuta.PontosRotuloFisioterapeuta.Update()'],['../classpontosrotulopaciente_1_1_pontos_rotulo_paciente.html#a74379b34dccae19cd3d94ea1d2651261',1,'pontosrotulopaciente.PontosRotuloPaciente.Update()'],['../classsessao_1_1_sessao.html#a956be36cea533603bb8ba9ee245680a7',1,'sessao.Sessao.Update()'],['../class_generate_line_chart_real_time.html#acde9bd3864a5cde4886c71a081a37ab8',1,'GenerateLineChartRealTime.Update()'],['../class_center_text.html#a0025e89c98b7c59d4780d74814006402',1,'CenterText.Update()'],['../class_move_object_x_axis_physio.html#a3d174a25aec593008355fb2794ec04a4',1,'MoveObjectXAxisPhysio.Update()'],['../class_move_object_x_axis_patient.html#aefab5448ae1f9dce7d4bd25193c7d891',1,'MoveObjectXAxisPatient.Update()'],['../class_timer.html#ac2c16f9aa88f2d3e7df7785545578f27',1,'Timer.Update()']]],
+  ['updateavatar',['UpdateAvatar',['../class_avatar_controller.html#ac941da41d7d6f5cf78d8473b660c508a',1,'AvatarController']]],
+  ['updatefilter',['UpdateFilter',['../class_bone_orientations_filter.html#a0f170cd9ad67f29a62688afa09916560',1,'BoneOrientationsFilter.UpdateFilter()'],['../class_joint_positions_filter.html#abdef3ba9b7efe903f10c4ba628e674ed',1,'JointPositionsFilter.UpdateFilter()'],['../class_tracking_state_filter.html#a32f3730ec7efc024aa0b3776634e5126',1,'TrackingStateFilter.UpdateFilter()']]],
+  ['updatepatient',['UpdatePatient',['../class_update_patient.html',1,'UpdatePatient'],['../class_update_patient.html#a34116f8d216229228f8d302424624955',1,'UpdatePatient.updatePatient()']]],
+  ['updatepatient_2ecs',['UpdatePatient.cs',['../_update_patient_8cs.html',1,'']]],
+  ['updatepatientbt',['UpdatePatientBt',['../class_update_patient_bt.html',1,'']]],
+  ['updatepatientbt_2ecs',['UpdatePatientBt.cs',['../_update_patient_bt_8cs.html',1,'']]],
+  ['useboneorientationsconstraint',['UseBoneOrientationsConstraint',['../class_kinect_manager.html#acb96553f28871e4b8ad885fa0dab4bf8',1,'KinectManager']]],
+  ['useboneorientationsfilter',['UseBoneOrientationsFilter',['../class_kinect_manager.html#a33edc6af031dd7911da68e01f9b5afbe',1,'KinectManager']]],
+  ['useclippedlegsfilter',['UseClippedLegsFilter',['../class_kinect_manager.html#a185b7df9ffd5b4a3d87d48455a1ed5b7',1,'KinectManager']]],
+  ['user',['user',['../class_global_controller.html#a4ebe8c89870eb91e53d9ffdf73cc458f',1,'GlobalController']]],
+  ['userdetected',['UserDetected',['../interface_kinect_gestures_1_1_gesture_listener_interface.html#a7d5f8a883f6ceceac7c66349eb2dd254',1,'KinectGestures.GestureListenerInterface.UserDetected()'],['../class_simple_gesture_listener.html#a238368ecfe2e1b468fc1a9ad782f98f4',1,'SimpleGestureListener.UserDetected()']]],
+  ['userid',['userId',['../struct_kinect_gestures_1_1_gesture_data.html#a2eecc1fbd066859e74b0423a01a30afe',1,'KinectGestures::GestureData']]],
+  ['userlost',['UserLost',['../interface_kinect_gestures_1_1_gesture_listener_interface.html#a6efb826325af8b69ea7523e44d0d199e',1,'KinectGestures.GestureListenerInterface.UserLost()'],['../class_simple_gesture_listener.html#a07c561adab62aaf1c1c3400658ebdeab',1,'SimpleGestureListener.UserLost()']]],
+  ['usesaudio',['UsesAudio',['../class_kinect_wrapper.html#aa14891c91bfa8c6fe4761146055656daa5801da2f346d93f21b62eb88f9b45a07',1,'KinectWrapper']]],
+  ['usescolor',['UsesColor',['../class_kinect_wrapper.html#aa14891c91bfa8c6fe4761146055656daadee956c7b793347104622cf77f5c6f51',1,'KinectWrapper']]],
+  ['usesdepth',['UsesDepth',['../class_kinect_wrapper.html#aa14891c91bfa8c6fe4761146055656daa51ef1e7b6ba48e1f848df92605653738',1,'KinectWrapper']]],
+  ['usesdepthandplayerindex',['UsesDepthAndPlayerIndex',['../class_kinect_wrapper.html#aa14891c91bfa8c6fe4761146055656daae7cabc598437ffc860b9b07bc39e03c6',1,'KinectWrapper']]],
+  ['useselfintersectionconstraint',['UseSelfIntersectionConstraint',['../class_kinect_manager.html#a9400057e02fd653f5ae4fadaef57ed1e',1,'KinectManager']]],
+  ['useshighqualitycolor',['UsesHighQualityColor',['../class_kinect_wrapper.html#aa14891c91bfa8c6fe4761146055656daac429a251f2e406767eb281a58a6da4c0',1,'KinectWrapper']]],
+  ['usesskeleton',['UsesSkeleton',['../class_kinect_wrapper.html#aa14891c91bfa8c6fe4761146055656daa99681ce65d8d822c8342bd0a6e4c2ed9',1,'KinectWrapper']]]
 ];

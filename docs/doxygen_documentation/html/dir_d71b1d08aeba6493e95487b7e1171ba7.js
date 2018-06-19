@@ -29,8 +29,5 @@ var dir_d71b1d08aeba6493e95487b7e1171ba7 =
     ] ],
     [ "Sessao.cs", "_sessao_8cs.html", [
       [ "Sessao", "classsessao_1_1_sessao.html", "classsessao_1_1_sessao" ]
-    ] ],
-    [ "Telefone.cs", "_telefone_8cs.html", [
-      [ "Telefone", "classtelefone_1_1_telefone.html", "classtelefone_1_1_telefone" ]
     ] ]
 ];

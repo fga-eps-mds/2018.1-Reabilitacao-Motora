@@ -49,7 +49,6 @@ const getStatisticInfo = () => {
         }
     })
         .then(function (response) {
-            console.log(response.data);
             statisticInfo = response.data;
             setTopCommiter();
         }).catch(function (error) {
@@ -148,7 +147,6 @@ const getCommitPerDay = () => {
         }
     })
         .then(function (response) {
-            console.log(response.data);
             commitsPerDay = response.data;
             startChart();
         }).catch(function (error) {

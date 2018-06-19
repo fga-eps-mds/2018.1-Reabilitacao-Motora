@@ -11,7 +11,7 @@ public class instanciatePhysiotherapist : MonoBehaviour
 
 	const int HEIGHT_PADDING = 55;
 
-	void ButtonSpawner(int posY, Fisioterapeuta physiotherapist)
+	public void ButtonSpawner(int posY, Fisioterapeuta physiotherapist)
 	{
 		GameObject go = Instantiate(buttonPrefab, transform);
 

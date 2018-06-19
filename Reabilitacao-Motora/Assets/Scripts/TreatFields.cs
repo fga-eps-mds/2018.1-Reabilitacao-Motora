@@ -17,8 +17,6 @@ public static class TreatFields
 		var normalString = new System.Text.RegularExpressions.Regex("^[a-zA-Z ]*$");
 		string result = "";
 
-		int count = 0;
-
 		if(!normalString.IsMatch(name))
 		{
 			result += "Nome deve conter apenas letras!|";
@@ -26,7 +24,7 @@ public static class TreatFields
 
 		if (name.Length < 1)
 		{
-			result += "Insira nome e sobrenome!|";
+			result += "Insira o nome!|";
 		}
 
 		result += EmptyField (name);
@@ -43,16 +41,8 @@ public static class TreatFields
 			return "Data deve conter apenas números!|";
 		}
 
-		var trip = date.Split('/');
-
-		int dia = Int32.Parse(trip[0]), mes = Int32.Parse(trip[1]), ano = Int32.Parse(trip[2]);
-
-		int currentMonth = DateTime.Now.Month;
-		int currentYear = DateTime.Now.Year;
-
-		string result = "";
-
 		int count = 0;
+
 		foreach (char c in date)
 		{
 			if (c == '/')
@@ -61,24 +51,36 @@ public static class TreatFields
 			}
 		}
 
-		if (dia > 31 || (dia > 29 && mes == 2) || dia < 0)
+		if (count != 2 || date.Length != 10)
+		{
+			return "Insira uma data válida! Formato dia/mes/ano|";
+		}
+
+		var trip = date.Split('/');
+		int dia, mes, ano;
+		dia = Int32.Parse(trip[0]);
+		mes = Int32.Parse(trip[1]);
+		ano = Int32.Parse(trip[2]);
+
+		int currentMonth = DateTime.Now.Month;
+		int currentYear = DateTime.Now.Year;
+		int currentDay = DateTime.Now.Day;
+
+		string result = "";
+
+		if (dia > 31 || (dia > 29 && mes == 2) || dia < 1 ||
+		   (dia > currentDay && ano == currentYear && mes == currentMonth))
 		{
 			result += "Dia inválido!|";
 		}
-		if (mes < 0 || mes > 12 || (mes > currentMonth && ano == currentYear))
+		if (mes < 1 || mes > 12 || (mes > currentMonth && ano == currentYear))
 		{
 			result += "Mês inválido!|";
 		}
-		if (ano < 1900 || ano > currentYear)
+		if (ano < 1910 || ano > currentYear)
 		{
 			result += "Ano inválido!|";
 		}
-		if (count != 2 || date.Length != 10)
-		{
-			result += "Insira uma data válida! Formato dia/mes/ano|";
-		}
-
-		result += EmptyField (date);
 
 		return result;
 	}

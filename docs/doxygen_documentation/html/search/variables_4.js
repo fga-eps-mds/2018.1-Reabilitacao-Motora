@@ -3,6 +3,8 @@ var searchData=
   ['easeinspeed',['EaseInSpeed',['../class_timed_lerp.html#aeed2ea010b62bd529013dc9b9bcac0a7',1,'TimedLerp']]],
   ['easeoutspeed',['EaseOutSpeed',['../class_timed_lerp.html#a2a08436125e40b0c670c5fd90c7f6db9',1,'TimedLerp']]],
   ['edigitalzoom',['eDigitalZoom',['../struct_kinect_wrapper_1_1_nui_image_view_area.html#a56968a6e526e2e8700a6d0a996a039de',1,'KinectWrapper::NuiImageViewArea']]],
+  ['editortestcase',['editorTestCase',['../namespaceeditor_test__log__converter.html#a4c275cbea66e334ab1db4d8eb08073b0',1,'editorTest_log_converter']]],
+  ['editortestresult',['editorTestResult',['../namespaceeditor_test__log__converter.html#a7dca46d056217f8070c1be3ef31226a5',1,'editorTest_log_converter']]],
   ['eimagetype',['eImageType',['../struct_kinect_wrapper_1_1_nui_image_frame.html#ada24f28ab364e7e338035897c79a2336',1,'KinectWrapper::NuiImageFrame']]],
   ['elbow_5fleft',['Elbow_Left',['../class_cubeman_controller.html#aa878f156d1d0adb03e7889f0373d9f5f',1,'CubemanController']]],
   ['elbow_5fright',['Elbow_Right',['../class_cubeman_controller.html#a9f214d7876636e1769013801050c37fa',1,'CubemanController']]],

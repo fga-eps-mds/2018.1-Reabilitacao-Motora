@@ -1,9 +1,10 @@
 var classpessoa_1_1_pessoa =
 [
-    [ "Pessoa", "classpessoa_1_1_pessoa.html#a67ed5888d2ba4244e3abfe76011fdf28", null ],
-    [ "DeleteValue", "classpessoa_1_1_pessoa.html#a1f788faa0f4ebe54e4a3e109e6a612e6", null ],
-    [ "Drop", "classpessoa_1_1_pessoa.html#a53da6ce3118f76c52495fd6dbc97d0ba", null ],
-    [ "Insert", "classpessoa_1_1_pessoa.html#a067faac8f1327f39034e58a8aea5d9b1", null ],
-    [ "Read", "classpessoa_1_1_pessoa.html#aea6cf376f0d9c0698c6b5714cb836eed", null ],
-    [ "Update", "classpessoa_1_1_pessoa.html#a79d88c4bdb02d9ee160f8279122404e5", null ]
+    [ "Pessoa", "classpessoa_1_1_pessoa.html#a315b07bf4b078649cb0cd3609e5b7c4f", null ],
+    [ "dataNascimento", "classpessoa_1_1_pessoa.html#ad35d21aabe429a24b802ac0f5229ea57", null ],
+    [ "idPessoa", "classpessoa_1_1_pessoa.html#af82087692c23bfb3ce3bbd81e60687c4", null ],
+    [ "nomePessoa", "classpessoa_1_1_pessoa.html#a57a9b9734770a17da81e5ecbd7c47d9a", null ],
+    [ "sexo", "classpessoa_1_1_pessoa.html#a34bc64918e49b84cdc5c80f636d95f7f", null ],
+    [ "telefone1", "classpessoa_1_1_pessoa.html#a3db51277c469980f6a7367ecacd6f7e7", null ],
+    [ "telefone2", "classpessoa_1_1_pessoa.html#a3d85e5dcae00fa0520f3c6aa3aa389e6", null ]
 ];

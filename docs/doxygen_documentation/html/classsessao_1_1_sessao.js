@@ -1,9 +1,9 @@
 var classsessao_1_1_sessao =
 [
-    [ "Sessao", "classsessao_1_1_sessao.html#a0a80bc67e3f3544363fd98d7ff9062a1", null ],
-    [ "DeleteValue", "classsessao_1_1_sessao.html#a3e40d1585a6fd9084ed4acb90de369e4", null ],
-    [ "Drop", "classsessao_1_1_sessao.html#a76ec4fccc0c351ea4f6e907f093c4657", null ],
-    [ "Insert", "classsessao_1_1_sessao.html#a187708a32f3be7f6d7fa246e09d544a8", null ],
-    [ "Read", "classsessao_1_1_sessao.html#a95d5d31b7be5cc632801fdc54dab2ab6", null ],
-    [ "Update", "classsessao_1_1_sessao.html#a44443dd761b3a8346873616c1c2cbb53", null ]
+    [ "Sessao", "classsessao_1_1_sessao.html#af51df5db92e252031f8e1f8f53cbc1a8", null ],
+    [ "dataSessao", "classsessao_1_1_sessao.html#a2afde72d4f6c8a03e78decfcf1598f69", null ],
+    [ "idFisioterapeuta", "classsessao_1_1_sessao.html#a6664fad9d367d0d803723fa309cd97fa", null ],
+    [ "idPaciente", "classsessao_1_1_sessao.html#a5bbe51af8f149cd8b66aa8fe65db9ec5", null ],
+    [ "idSessao", "classsessao_1_1_sessao.html#ab31b83d8fef2a5fd318afbd59e5dfaee", null ],
+    [ "observacaoSessao", "classsessao_1_1_sessao.html#ac444fabbb26e4f1761ed7170ea54db48", null ]
 ];

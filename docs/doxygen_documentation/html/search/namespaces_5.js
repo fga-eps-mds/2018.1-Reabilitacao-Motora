@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['sessao',['sessao',['../namespacesessao.html',1,'']]]
+  ['fisioterapeuta',['fisioterapeuta',['../namespacefisioterapeuta.html',1,'']]]
 ];

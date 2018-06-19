@@ -1,5 +1,8 @@
 var searchData=
 [
-  ['x_5faxis',['x_axis',['../class_generate_line_chart_real_time.html#af3565be9bbb1ddcf03f105344259a89c',1,'GenerateLineChartRealTime']]],
-  ['xoffset',['xOffset',['../class_avatar_controller.html#abba3a50e1e85bebe02f1e9f9861dab6b',1,'AvatarController']]]
+  ['width',['width',['../struct_kinect_wrapper_1_1_nui_surface_desc.html#a6b46bd248de10a081e430f5fc7c5113e',1,'KinectWrapper::NuiSurfaceDesc']]],
+  ['woman1avatar',['woman1Avatar',['../class_avatar_change.html#aa91e37ef89a18c87faa68b92da412a1f',1,'AvatarChange']]],
+  ['woman2avatar',['woman2Avatar',['../class_avatar_change.html#a194e3f1456ef26f40a1c5e5506a21bbf',1,'AvatarChange']]],
+  ['wrist_5fleft',['Wrist_Left',['../class_cubeman_controller.html#a50f95ad09b7799eab50e436332d68290',1,'CubemanController']]],
+  ['wrist_5fright',['Wrist_Right',['../class_cubeman_controller.html#ad5d996698eb02cfdc6e638e7fc007bda',1,'CubemanController']]]
 ];
