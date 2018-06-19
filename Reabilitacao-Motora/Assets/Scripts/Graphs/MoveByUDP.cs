@@ -31,7 +31,6 @@ public class MoveByUDP : MonoBehaviour
 
     UdpClient client;
     public int receivePort = 5004;
-    IPAddress groupIP = IPAddress.Parse("127.0.0.1");
     IPEndPoint remoteEP;   
 
     string rxString;
@@ -90,7 +89,6 @@ public class MoveByUDP : MonoBehaviour
         remoteEP = new IPEndPoint(IPAddress.Any, receivePort);
 
         client = new UdpClient(remoteEP);
-        client.JoinMulticastGroup(groupIP);
 
         client.BeginReceive(new AsyncCallback(ReceiveServerInfo), null);
     	
@@ -238,4 +236,10 @@ public class MoveByUDP : MonoBehaviour
 			}
 		}
 	}
+
+    void OnApplicationQuit()
+    {
+        client.Close();
+    }
+
 }
