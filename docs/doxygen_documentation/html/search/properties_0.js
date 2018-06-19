@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['instance',['Instance',['../class_kinect_manager.html#a9a10cdd70f266d89669ac15c5351c7ac',1,'KinectManager']]]
+  ['admin',['admin',['../class_global_controller.html#ae96ee47bd254618180bbd077257333ee',1,'GlobalController']]]
 ];

@@ -2,7 +2,11 @@ var NAVTREE =
 [
   [ "Reabilitação Motora", "index.html", [
     [ "Packages", null, [
-      [ "Packages", "namespaces.html", "namespaces" ]
+      [ "Packages", "namespaces.html", "namespaces" ],
+      [ "Package Functions", "namespacemembers.html", [
+        [ "All", "namespacemembers.html", null ],
+        [ "Variables", "namespacemembers_vars.html", null ]
+      ] ]
     ] ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
@@ -24,9 +28,11 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"_avatar_controller_8cs.html",
-"class_kinect_manager.html#a5429e07bee4a98d43fb944944773478f",
-"classpessoa_1_1_pessoa.html"
+"___joint_8cs.html",
+"class_create_label_patient.html#a58b7c34b1b12ee1b3f9f422ef98b52f4",
+"class_kinect_manager.html#af436804eb157c64939d7c6c2e702692e",
+"class_tests_1_1_test_table_exercise.html",
+"functions_func_l.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

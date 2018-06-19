@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['label',['Label',['../class_label.html',1,'']]],
-  ['loadmainlevel',['LoadMainLevel',['../class_load_main_level.html',1,'']]]
+  ['kinectgestures',['KinectGestures',['../class_kinect_gestures.html',1,'']]],
+  ['kinecthelper',['KinectHelper',['../class_kinect_helper.html',1,'']]],
+  ['kinectmanager',['KinectManager',['../class_kinect_manager.html',1,'']]],
+  ['kinectwrapper',['KinectWrapper',['../class_kinect_wrapper.html',1,'']]]
 ];

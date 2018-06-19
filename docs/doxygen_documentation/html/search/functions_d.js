@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['newpatient',['NewPatient',['../class_flow.html#aa078f77768ac96adc9c8dd61f1a53557',1,'Flow']]],
-  ['notimplemented',['NotImplemented',['../class_flow.html#af337859873c05e46e0f1df54d5c12eda',1,'Flow']]],
   ['nuicameraelevationgetangle',['NuiCameraElevationGetAngle',['../class_kinect_wrapper.html#aaaf8d63c9fabe873fe171f3a3e5f7ec7',1,'KinectWrapper']]],
   ['nuicameraelevationsetangle',['NuiCameraElevationSetAngle',['../class_kinect_wrapper.html#ae6798571cfc956305dc31020c72bf7ce',1,'KinectWrapper']]],
   ['nuigetsensorcount',['NuiGetSensorCount',['../class_kinect_wrapper.html#a7d786c97adcf86b866e4c5233b63f5fd',1,'KinectWrapper']]],

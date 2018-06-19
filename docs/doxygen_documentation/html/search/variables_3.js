@@ -1,5 +1,7 @@
 var searchData=
 [
+  ['date',['date',['../class_date_of_birth_formatter.html#ab27f25ada1ff66b48e441e0cdb358eb2',1,'DateOfBirthFormatter.date()'],['../classload_session.html#a489b828cf983015422d9c6bb7610131b',1,'loadSession.date()']]],
+  ['deletebutton',['deleteButton',['../class_get_pop_up_manager_fisio.html#a85b8c82b222e7c4904c34ac09e60dcb2',1,'GetPopUpManagerFisio.deleteButton()'],['../class_get_pop_up_manager_patient.html#aca0088648d639efef6fbb6d2ee33a16d',1,'GetPopUpManagerPatient.deleteButton()'],['../class_get_pop_up_manager.html#a6255ef6ce3b10d646e712e74aae0b19d',1,'GetPopUpManager.deleteButton()']]],
   ['description',['Description',['../class_label.html#ac48048533c8c22f899e7e5bd4355cd8e',1,'Label']]],
   ['detectclosestuser',['DetectClosestUser',['../class_kinect_manager.html#a92e937bb385e6e5f207e977a3088a0df',1,'KinectManager']]],
   ['displaycolormap',['DisplayColorMap',['../class_kinect_manager.html#ab31b9e8dd0c28a6a83b1015b56f98c5a',1,'KinectManager']]],
