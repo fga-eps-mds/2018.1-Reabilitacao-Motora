@@ -31,7 +31,7 @@ const setEpsDocuments = () => {
       <div class="text-center document-card">
         <a class="document-text" href="${epsObj[i].url_markdown}">
           <div class="service-box mt-5 mx-auto">
-            <i class="fa fa-4x fa-file-text-o text-primary mb-3 sr-icons"></i>
+            <i class="fa fa-4x fas fa-file-code text-primary mb-3 sr-icons"></i>
             <h3 class="mb-3">${epsObj[i].name}</h3>
             <p class="text-muted mb-0">${epsObj[i].description}</p>
           </div>
@@ -51,7 +51,7 @@ const setMdsDocuments = () => {
       <div class="text-center document-card">
         <a class="document-text" href="${mdsObj[i].url_markdown}">
           <div class="service-box mt-5 mx-auto">
-            <i class="fa fa-4x fa-file-text text-primary mb-3 sr-icons"></i>
+            <i class="fa fa-4x far fa-file-code text-primary mb-3 sr-icons"></i>
             <h3 class="mb-3">${mdsObj[i].name}</h3>
             <p class="text-muted mb-0">${mdsObj[i].description}</p>
           </div>
