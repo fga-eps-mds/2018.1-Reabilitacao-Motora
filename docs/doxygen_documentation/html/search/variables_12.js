@@ -1,0 +1,26 @@
+var searchData=
+[
+  ['savebutton',['saveButton',['../class_get_pop_up_manager_fisio_validation.html#a5fe7cbf3c70fa25d36da56c68854f9d2',1,'GetPopUpManagerFisioValidation']]],
+  ['savefilepath',['saveFilePath',['../class_get_joint_position_demo.html#a6ad9df96efa58c4bd47775606df9cf68',1,'GetJointPositionDemo']]],
+  ['screenpos',['screenPos',['../struct_kinect_gestures_1_1_gesture_data.html#a4517d45cbb891529a2c92d66df20bdd7',1,'KinectGestures::GestureData']]],
+  ['secondstosave',['secondsToSave',['../class_get_joint_position_demo.html#a17dea2adb7bf2ba7f7ac9ba017f9a4a4',1,'GetJointPositionDemo']]],
+  ['sensor',['Sensor',['../class_global_controller.html#a8af2d63f54268f175d76733203013476',1,'GlobalController']]],
+  ['sensorangle',['SensorAngle',['../class_kinect_manager.html#a51cae469c515bb03dbfb2b7927e008e0',1,'KinectManager']]],
+  ['sensorheight',['SensorHeight',['../class_kinect_manager.html#ab2866c2eb8d810fb4f4011e379cacf37',1,'KinectManager']]],
+  ['shoulder_5fcenter',['Shoulder_Center',['../class_cubeman_controller.html#a9ec367ae7d6a4f3f5b916f800790b104',1,'CubemanController']]],
+  ['shoulder_5fleft',['Shoulder_Left',['../class_cubeman_controller.html#a167626134e677db40c79f3feb24797a3',1,'CubemanController']]],
+  ['shoulder_5fright',['Shoulder_Right',['../class_cubeman_controller.html#ae37497dce80b3cae3768f4311a840ccf',1,'CubemanController']]],
+  ['shoulderextend',['ShoulderExtend',['../class_self_intersection_constraint.html#aa52dfc3119a99cd2cd5ef160906dcaa5',1,'SelfIntersectionConstraint']]],
+  ['size',['size',['../struct_kinect_wrapper_1_1_nui_locked_rect.html#af9b113d7841ba06a110795fc37d600f0',1,'KinectWrapper::NuiLockedRect']]],
+  ['skeletondata',['SkeletonData',['../struct_kinect_wrapper_1_1_nui_skeleton_frame.html#ae130c1490c24b8354fb344989f556ade',1,'KinectWrapper::NuiSkeletonFrame']]],
+  ['skeletonline',['SkeletonLine',['../class_cubeman_controller.html#af2ff8f58e07e8476f11c52194f5dca98',1,'CubemanController']]],
+  ['skeletonpositions',['SkeletonPositions',['../struct_kinect_wrapper_1_1_nui_skeleton_data.html#a022c731ef5e8d0df3673a137f4d9be4a',1,'KinectWrapper::NuiSkeletonData']]],
+  ['smoothfactor',['smoothFactor',['../class_avatar_controller.html#a7a321f1989438d0a77848636a04c4bb5',1,'AvatarController']]],
+  ['smoothing',['smoothing',['../class_kinect_manager.html#af826888df34de5aee73763244f578bb7',1,'KinectManager']]],
+  ['specindex2jointmap',['specIndex2JointMap',['../class_avatar_controller.html#a8143c80aaad868c53ca674b41759d82b',1,'AvatarController']]],
+  ['specindex2mirrorjointmap',['specIndex2MirrorJointMap',['../class_avatar_controller.html#ad954ba1369590ca3534bd206eb8bd72a',1,'AvatarController']]],
+  ['spine',['Spine',['../class_avatar_controller_classic.html#a075622ff023b9e9aa3a46ceeb9282ffe',1,'AvatarControllerClassic.Spine()'],['../class_cubeman_controller.html#a3ee406ee6cfb60eaff989d75968db021',1,'CubemanController.Spine()']]],
+  ['startjoint',['startJoint',['../struct_kinect_wrapper_1_1_nui_skeleton_bone_orientation.html#a040cf3d6ae0183a745da2bc3a854cd76',1,'KinectWrapper::NuiSkeletonBoneOrientation']]],
+  ['starttrackingattime',['startTrackingAtTime',['../struct_kinect_gestures_1_1_gesture_data.html#a108cda0a71bed75455eef681344db6c4',1,'KinectGestures::GestureData']]],
+  ['state',['state',['../struct_kinect_gestures_1_1_gesture_data.html#a7f27c5e9bb6d3cd1252d2673f7688b11',1,'KinectGestures::GestureData']]]
+];
