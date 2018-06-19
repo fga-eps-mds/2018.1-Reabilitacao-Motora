@@ -105,7 +105,7 @@ namespace Tests
 
 			var sess = Sessao.GetLast();
 
-			UnityEditor.SceneManagement.EditorSceneManager.OpenScene(Application.dataPath + "/Scenes/Sessions.unity");
+			UnityEditor.SceneManagement.EditorSceneManager.OpenScene(Application.dataPath + "/Scenes/Patient.unity");
 
 			var panelsess = GameObject.Find("PanelShowSessions");
 			var instanciate = panelsess.GetComponentInChildren<instanciateSession>();
