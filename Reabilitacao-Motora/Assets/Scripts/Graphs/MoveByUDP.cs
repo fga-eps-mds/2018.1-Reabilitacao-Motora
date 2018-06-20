@@ -30,7 +30,7 @@ public class MoveByUDP : MonoBehaviour
 	private static readonly Color c3 = Color.blue;
 
     UdpClient client;
-    public int receivePort = 5004;
+    public int receivePort = 5005;
     IPEndPoint remoteEP;   
 
     string rxString;
