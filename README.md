@@ -42,7 +42,7 @@ Estas instruções vão te ajudar a ter a última versão do código em sua máq
 
 ### Pré-requisitos
 
-É necessário ter o Unity 3D instalado para que possa fazer alterações efetivas no projeto. Lembrando que a versão no qual o projeto foi constrído é a 2017.3.
+É necessário ter o Unity 3D instalado para que possa fazer alterações efetivas no projeto. Lembrando que a versão no qual o projeto foi constrído é a 2018.1.5f1.
 
 Para fazer download do Unity clique [aqui](https://store.unity.com/).
 
