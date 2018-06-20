@@ -30,9 +30,47 @@ public class MoveByUDP : MonoBehaviour
 	private static readonly Color c3 = Color.blue;
 
     UdpClient client;
-    public int receivePort = 5005;
-    IPEndPoint remoteEP;   
 
+
+    private UdpSocketManager udpSocketManager;
+    private bool isListenPortLogged = false;
+    
+    //funciona
+    /*
+    private Socket _socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
+    private const int bufSize = 1024;
+    private State state = new State();
+    private EndPoint epFrom = new IPEndPoint(IPAddress.Any, 5022);
+    private AsyncCallback recv = null;
+    
+    
+    public class State
+    {
+        public byte[] buffer = new byte[bufSize];
+    }
+
+    public void Server(string address, int port)
+    {
+        Debug.Log("Server");
+        _socket.SetSocketOption(SocketOptionLevel.IP, SocketOptionName.ReuseAddress, true);
+        _socket.Bind(new IPEndPoint(IPAddress.Parse(address), port));
+        Receive();
+    }
+
+    private void Receive()
+    {
+        Debug.Log("Receive");
+        _socket.BeginReceiveFrom(state.buffer, 0, bufSize, SocketFlags.None, ref epFrom, recv = (ar) =>
+        {
+            State so = (State)ar.AsyncState;
+            int bytes = _socket.EndReceiveFrom(ar, ref epFrom);
+            _socket.BeginReceiveFrom(so.buffer, 0, bufSize, SocketFlags.None, ref epFrom, recv, so);
+            Console.WriteLine("RECV: {0}: {1}, {2}", epFrom.ToString(), bytes, Encoding.ASCII.GetString(so.buffer, 0, bytes));
+            Debug.Log(Encoding.ASCII.GetString(so.buffer, 0, bytes));
+        }, state);
+    }
+
+    */
     string rxString;
 
     [System.Serializable]
@@ -86,24 +124,30 @@ public class MoveByUDP : MonoBehaviour
     void Start () 
     {
         Debug.Log("Starting Client");
-        remoteEP = new IPEndPoint(IPAddress.Any, receivePort);
 
-        client = new UdpClient(remoteEP);
+        udpSocketManager = new UdpSocketManager("0.0.0.0", 5018);
+        StartCoroutine(udpSocketManager.initSocket());
+        //remoteEP = new IPEndPoint(IPAddress.Any, receivePort);
 
-        client.BeginReceive(new AsyncCallback(ReceiveServerInfo), null);
-    	
+        //client = new UdpClient(remoteEP);
+        //client.JoinMulticastGroup(groupIP);
+
+        //client.BeginReceive(new AsyncCallback(ReceiveServerInfo), null);
+
+       // Server("0.0.0.0", 5022);
+
     	Assign();
     }
-
+    /*
     void ReceiveServerInfo (IAsyncResult result) 
     {        
         //Debug.Log("Received Server Info");
         byte[] receivedBytes = client.EndReceive(result, ref remoteEP);
 
         rxString = System.Text.Encoding.UTF8.GetString(receivedBytes);
-        LoadData(rxString);
+        //LoadData(rxString);
     }
-
+    */
 	/**
 	* Descrever aqui o que esse método realiza.
 	*/
@@ -191,8 +235,30 @@ public class MoveByUDP : MonoBehaviour
 
 	public void FixedUpdate()
 	{
+        if (!udpSocketManager.isInitializationCompleted())
+        {
+            Debug.Log("Initialization Completed");
+            return;
+        }
+
+        if (!isListenPortLogged)
+        {
+            Debug.Log("UdpSocketManager, listen port: " + udpSocketManager.getListenPort());
+            isListenPortLogged = true;
+        }
+
+        foreach (byte[] recPacket in udpSocketManager.receive())
+        {
+
+            string receivedMsg = Encoding.UTF8.GetString(recPacket);
+
+            Debug.Log(receivedMsg);
+
+        }
+
+        /*
 		if (t){
-			client.BeginReceive (new AsyncCallback (ReceiveServerInfo), null);
+			//client.BeginReceive (new AsyncCallback (ReceiveServerInfo), null);
 
 			current_time_movement += Time.fixedDeltaTime;
 
@@ -234,7 +300,9 @@ public class MoveByUDP : MonoBehaviour
 			{
 				t = false;
 			}
+            
 		}
+<<<<<<< Updated upstream
 	}
 
     void OnApplicationQuit()
@@ -242,4 +310,19 @@ public class MoveByUDP : MonoBehaviour
         client.Close();
     }
 
+=======
+        */
+    }
+
+    private void OnDestroy()
+    {
+
+        if (udpSocketManager != null)
+        {
+
+            udpSocketManager.closeSocketThreads();
+
+        }
+
+    }
 }
