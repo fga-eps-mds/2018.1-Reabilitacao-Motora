@@ -50,7 +50,7 @@ namespace Tests
 
 			bool response = createMovement.ValidInput(inputs);
 
-			Assert.AreEqual(response, false);
+			Assert.AreEqual(response, true);
 		}
 
 		[Test]
