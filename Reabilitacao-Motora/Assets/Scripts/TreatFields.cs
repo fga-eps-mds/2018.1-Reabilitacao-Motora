@@ -15,7 +15,7 @@ public static class TreatFields
 
 	public static string NameField (string name)
 	{
-		var normalString = new System.Text.RegularExpressions.Regex("^[a-zA-Z ]*$");
+		var normalString = new System.Text.RegularExpressions.Regex(@"^[a-zA-ZÀ-ÿ ]*$");
 		string result = "";
 
 		if(!normalString.IsMatch(name))
@@ -139,7 +139,7 @@ public static class TreatFields
 
 	public static string LoginField (string login)
 	{
-		var normalString = new System.Text.RegularExpressions.Regex("^[a-zA-Z0-9 ]*$");
+		var normalString = new System.Text.RegularExpressions.Regex(@"^[a-zA-ZÀ-ÿ0-9 ]*$");
 		string result = "";
 
 		if(!normalString.IsMatch(login))
