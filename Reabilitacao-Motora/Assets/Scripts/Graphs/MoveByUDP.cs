@@ -19,7 +19,7 @@ public class MoveByUDP : MonoBehaviour
 
 	[SerializeField]
 	protected GameObject popUpLabel;
-	
+
 	Vector3 f_mao_pos, f_mao_rot, f_ombro_pos, f_ombro_rot, f_cotovelo_pos, f_cotovelo_rot, f_braco_pos, f_braco_rot;
 	float current_time_movement;
 	LineRenderer lineRenderer;
@@ -30,6 +30,7 @@ public class MoveByUDP : MonoBehaviour
 	private static readonly Color c3 = Color.blue;
 
     UdpClient client;
+
 
 
     private UdpSocketManager udpSocketManager;
@@ -121,40 +122,24 @@ public class MoveByUDP : MonoBehaviour
 		}
 	}
 
-    void Start () 
+    void Start ()
     {
         Debug.Log("Starting Client");
 
         udpSocketManager = new UdpSocketManager("0.0.0.0", 5018);
         StartCoroutine(udpSocketManager.initSocket());
-        //remoteEP = new IPEndPoint(IPAddress.Any, receivePort);
-
-        //client = new UdpClient(remoteEP);
-        //client.JoinMulticastGroup(groupIP);
-
-        //client.BeginReceive(new AsyncCallback(ReceiveServerInfo), null);
-
-       // Server("0.0.0.0", 5022);
 
     	Assign();
     }
-    /*
-    void ReceiveServerInfo (IAsyncResult result) 
-    {        
-        //Debug.Log("Received Server Info");
-        byte[] receivedBytes = client.EndReceive(result, ref remoteEP);
 
-        rxString = System.Text.Encoding.UTF8.GetString(receivedBytes);
-        //LoadData(rxString);
-    }
-    */
+    
 	/**
 	* Descrever aqui o que esse método realiza.
 	*/
 	public void LoadData(string line)
 	{
 		var pair = line.Split(' ');
-		
+
 		float a = (float.Parse(pair[1]));
 		float b = (float.Parse(pair[2]));
 		float c = (float.Parse(pair[3]));
@@ -189,16 +174,16 @@ public class MoveByUDP : MonoBehaviour
 		a = (float.Parse(pair[22]));
 		b = (float.Parse(pair[23]));
 		c = (float.Parse(pair[24]));
-		f_braco_rot = (new Vector3 (a, b, c));					
-	
+		f_braco_rot = (new Vector3 (a, b, c));
+
 	}
-	
+
 	/**
 	* Descrever aqui o que esse método realiza.
 	*/
 	void Awake()
 	{
-		if(GlobalController.instance != null && 
+		if(GlobalController.instance != null &&
 		   (GlobalController.instance.movement != null ||
 		   	GlobalController.instance.exercise != null)
 		  )
@@ -217,17 +202,17 @@ public class MoveByUDP : MonoBehaviour
 		}
 		else
 		{
-			Debug.Log("Você violou o acesso!");	
+			Debug.Log("Você violou o acesso!");
 		}
-		
+
 	}
 
 	/**
 	* Descrever aqui o que esse método realiza.
 	*/
-	void Update () 
+	void Update ()
 	{
-		if (popUpLabel.activeSelf == false && Input.GetKeyDown(KeyCode.Space)) 
+		if (popUpLabel.activeSelf == false && Input.GetKeyDown(KeyCode.Space))
 		{
 			t = !t;
 		}
@@ -277,40 +262,38 @@ public class MoveByUDP : MonoBehaviour
 			if (GlobalController.patientOrPhysio)
 			{
 				GetMovementPoints.SavePoints (current_time_movement,
-					"/Movimentos/", 
+					"/Movimentos/",
 					GlobalController.instance.movement.pontosMovimento,
-					mao, 
+					mao,
 					cotovelo,
-					ombro, 
+					ombro,
 					braco);
 			}
 			else
 			{
 				GetMovementPoints.SavePoints (current_time_movement,
-					"/Exercicios/", 
+					"/Exercicios/",
 					GlobalController.instance.exercise.pontosExercicio,
-					mao, 
+					mao,
 					cotovelo,
-					ombro, 
+					ombro,
 					braco);
-			}	
+			}
 
-			GetMovementPoints.graphSpawner(transform, pointPrefab, mao, cotovelo, ombro, current_time_movement, ref lineRenderer); 
+			GetMovementPoints.graphSpawner(transform, pointPrefab, mao, cotovelo, ombro, current_time_movement, ref lineRenderer);
 			if (current_time_movement > 15)
 			{
 				t = false;
 			}
             
 		}
-<<<<<<< Updated upstream
+
 	}
 
     void OnApplicationQuit()
     {
         client.Close();
     }
-
-=======
         */
     }
 
@@ -326,3 +309,4 @@ public class MoveByUDP : MonoBehaviour
 
     }
 }
+
