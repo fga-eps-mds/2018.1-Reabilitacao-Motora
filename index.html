@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Reabilitação físico-motora</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="gh-pages/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+  <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/all.js" integrity="sha384-xymdQtn1n3lH2wcu0qhcdaOpQwyoarkgLVxC/wZ5q7h9gHtxICrpcaSUfygqZGOe" crossorigin="anonymous"></script>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+    rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic'
+    rel='stylesheet' type='text/css'>
+
+  <!-- Plugin CSS -->
+  <link href="gh-pages/vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="gh-pages/css/creative.css" rel="stylesheet">
+
+  <!-- Materialize -->
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+
+  <!-- Custom scripts -->
+  <script src="gh-pages/scripts/fetchData.js"></script>
+  <script src="gh-pages/scripts/fetchDocumentation.js"></script>
+  <script src="gh-pages/scripts/fetchRepository.js"></script>
+  <!-- <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script> -->
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+</head>
+
+<body id="page-top">
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger" href="#page-top">Reabilitação físico-motora</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#about">Sobre</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#services">Documentos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#portfolio">Insights</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#more">Outros</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#contact">Downloads</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <header class="masthead text-center text-white d-flex">
+    <div class="container my-auto">
+      <div class="row">
+        <div class="col-lg-10 mx-auto">
+          <h1 class="text-uppercase">
+            <strong>Fisioterapia</strong>
+          </h1>
+          <h1 class="text-uppercase">
+            <strong>Reabilitação motora</strong>
+          </h1>
+          <hr>
+        </div>
+        <div class="col-lg-8 mx-auto">
+          <p class="header-intro">
+            Este projeto propõe o desenvolvimento de uma plataforma de captura, monitoramento e avaliação de movimentos realizados em
+            sessões de fisioterapia. Os dados coletados são fornecidos ao fisioterapeuta ou a qualquer outra aplicação capaz
+            de operar o produto.
+          </p>
+          <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Saiba mais</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+
+  <section class="bg-primary" id="about">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto text-center">
+          <h2 class="section-heading text-white">Motivação</h2>
+          <hr class="light my-4">
+          <p class="text-faded mb-4">
+            O corpo humano é dividido em três partes fundamentais: cabeça, tronco e membros. Sendo os membros classificados em superiores
+            e inferiores. O movimento desses membros é algo essencial para que uma pessoa possa executar tarefas no dia a
+            dia, e ter uma vida apropriada.
+          </p>
+          <p class="text-faded mb-4">
+            Porém, existem cada vez mais pessoas sendo afetadas por algo popularmente conhecido como derrame cerebral, um problema neurológico
+            decorrente de uma obstrução ou rompimento dos vasos sanguíneos cerebrais. Essas vítimas, ao sofrerem de um AVC
+            (derrame cerebral), podem ficar com algumas sequelas motoras e/ou neurológicas, como paralisia, falta de sensibilidade,
+            dificuldade na fala, depressão e transtorno de estresse pós-traumático. Para amenizar as sequelas motoras, sessões
+            de fisioterapia são realizadas com o objetivo de devolver parte da movimentação causada pela paralisia.
+          </p>
+          <p class="text-faded mb-4">
+            Sendo assim fisioterapeutas são necessários para auxiliar na recuperação do paciente, realizando um acompanhamento para verificar
+            o ganho de amplitude de movimentos, ajudar com alongamentos e mobilizações passivas em todos os planos de movimentos.
+            Cabe ao fisioterapeuta a tarefa de analisar o progresso de seu paciente visualmente ou utilizando tecnologias
+            que provem métodos de aquisição de dados do paciente, o que não é um trabalho fácil e nem possui uma certa agilidade.
+          </p>
+          <p class="text-faded mb-4">
+            A falta de eficiência e demora das análises fisiterapêuticas são a principal motivação do projeto. Os fisioterapeutas gastam
+            muito tempo durante uma sessão para analisar os dados coletados durante a mesma, sobrando assim pouco tempo para
+            se focar no paciente. Além disso, por se tratar de um trabalho humano, a análise desses dados é muito subjetiva
+            e qualitativa.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="next-about" id="about">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto text-center">
+          <h2 class="section-heading text-white">Aplicação</h2>
+          <hr class="light my-4">
+          <img class="app-img" src="gh-pages/img/portfolio/fullsize/1.png" alt="">
+          <p class="text-faded mb-4">
+            Propomos uma aplicação multiplataforma que realiza a captura e a comparação entre movimentos, para que desse modo o fisioterapeuta
+            obtenha dados quantitativos com relação aos movimentos do paciente, e não só dados qualitativos e subjetivos
+            para acompanhar a evolução do mesmo. A ideia da aplicação é de facilitar a sessão gerenciada pelo fisioterapeuta,
+            ou seja, o processo de captura de dados através de movimentos e a análise desses dados gerados.
+          </p>
+          <img class="app-img" src="gh-pages/img/portfolio/fullsize/2.png" alt="">
+          <p class="text-faded mb-4">
+            A captura de movimento será feita através de um sensor. Como sensor base temos o Kinect, mas a aplicação é capaz de comunicar-se
+            com qualquer sensor que utiliza de uma porta TCP. Enquanto a central de processamento se conectará à aplicação
+            principal com o uso de um adapter. (Para mais informações, acesse:
+            <a href="https://fga-gpp-mds.github.io/2018.1-Reabilitacao-Motora/docs/wiki/Documento-de-Arquitetura">Documento de arquitetura</a>)
+          </p>
+          <a class="btn btn-light btn-xl js-scroll-trigger" href="#services">Documentação</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h2 class="section-heading">Documentos</h2>
+          <hr class="my-4">
+        </div>
+      </div>
+    </div>
+    <div class="document-list">
+      <div class="col-lg-12 text-center">
+        <h2 class="section-heading">EPS</h2>
+        <hr class="my-4">
+      </div>
+      <div class="row document-row" id="eps-list"></div>
+
+      <div class="col-lg-12 text-center">
+        <h2 class="section-heading">MDS</h2>
+        <hr class="my-4">
+      </div>
+      <div class="row document-row" id="mds-list"></div>
+      <div class="container">
+        <div class="col-lg-12 text-center">
+          <h2 class="section-heading">Planejamentos</h2>
+          <hr class="my-4">
+        </div>
+        <div class="planning-container">
+          <div class="row planning-row" id="release-1-planning"></div>
+          <div class="row planning-row" id="release-1-review"></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="portfolio" class="portfolio-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h2 class="section-heading">Insights </h2>
+          <hr class="my-4">
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <canvas id="commit-chart"></canvas>
+      <div class="row">
+        <div class="col-lg-3 col-md-6 text-center">
+          <div class="service-box mt-5 mx-auto">
+            <i class="fas fa-4x fa-code-branch text-primary"></i>
+            <h3 class="mb-3 portfolio-topic">Forks</h3>
+            <p class="text-muted mb-0" id="forks"></p>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 text-center">
+          <div class="service-box mt-5 mx-auto">
+            <i class="fas fa-4x fa-paper-plane text-primary"></i>
+            <h3 class="mb-3 portfolio-topic">Commits</h3>
+            <p class="text-muted mb-0" id="commits"></p>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 text-center">
+          <div class="service-box mt-5 mx-auto">
+            <i class="fa fa-4x fa-code text-primary"></i>
+            <h3 class="mb-3 portfolio-topic">Linguagem</h3>
+            <p class="text-muted mb-0" id="language"></p>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 text-center">
+          <div class="service-box mt-5 mx-auto">
+            <i class="fa fa-4x fa-bug text-primary"></i>
+            <h3 class="mb-3 portfolio-topic">Issues</h3>
+            <p class="text-muted mb-0" id="issues"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="commit-section">
+      <div class="top-commit-container">
+        <h3 class="mb-3 portfolio-topic top-committer-title">Top Committer</h3>
+        <div class="card top-commit-card">
+          <div class="card-image waves-effect waves-block waves-light">
+            <img class="activator" id="top-avatar">
+          </div>
+          <div class="card-content">
+            <span class="card-title activator grey-text text-darken-4" id="top-committer">
+            </span>
+          </div>
+          <div class="card-reveal">
+            <span class="card-title grey-text text-darken-4">Informações
+              <i class="material-icons right">close</i>
+            </span>
+            <p id="top-commit"></p>
+            <p id="top-lines"></p>
+            <a class="waves-effect waves-light btn" id="top-link">Perfil</a>
+          </div>
+        </div>
+      </div>
+      <div class="commit-list-container">
+        <h3 class="mb-3 portfolio-topic top-committer-title">Últimos commits</h3>
+        <ul class="collection commit-list" id="project-list">
+        </ul>
+      </div>
+
+  </section>
+
+  <section class="bg-dark text-white" id="more">
+    <div class="container text-center">
+      <h2 class="mb-4">Repositório - Documentos adicionais</h2>
+    </div>
+    <div class="container">
+      <div class="repo-container">
+        <div class="repo-list">
+          <h2 class="text-center">Doxygen</h2>
+          <div id="doxygen-list"></div>
+        </div>
+        <div class="repo-list">
+          <h2 class="text-center">Políticas</h2>
+          <div id="policies-list"></div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto text-center">
+          <h2 class="section-heading">Reabilitação físico-motora</h2>
+          <hr class="my-4">
+          <p>Projeto realizado para as disciplinas de:</p>
+          <p>Engenharia de Produto de Software</p>
+          <p>Métodos de Desenvolvimento de Software</p>
+          <p>da Universidade de Brasília. Para mais informações:</p>
+          <a class="github-icon" href="https://github.com/fga-gpp-mds/A-Disciplina">
+            <i class="fab fa-github fa-3x"></i>
+          </a>
+          <h2>Download da aplicação</h2>
+          <div style="display:flex; justify-content:space-around; width:40%; margin:auto;">
+            <a
+            href="https://github.com/fga-gpp-mds/Launcher/raw/master/build/distributions/launcher.zip"
+            class="github-icon" style="display:flex; flex-direction: column;">
+                .zip
+              <i class="fas fa-file-archive fa-3x" style="margin-top: 5px;"></i>
+            </a>
+            <a
+            href="https://github.com/fga-gpp-mds/Launcher/raw/master/build/distributions/launcher.tar"
+            class="github-icon" style="display:flex; flex-direction: column;">
+                .tar
+              <i class="far fa-file-archive fa-3x" style="margin-top: 5px;"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+    </div>
+  </section>
+
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="gh-pages/vendor/jquery/jquery.min.js"></script>
+  <script src="gh-pages/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="gh-pages/vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="gh-pages/vendor/scrollreveal/scrollreveal.min.js"></script>
+  <script src="gh-pages/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+
+  <!-- materialize -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+
+
+  <!-- Custom scripts for this template -->
+  <script src="gh-pages/js/creative.min.js"></script>
+
+
+</body>
+
+</html>

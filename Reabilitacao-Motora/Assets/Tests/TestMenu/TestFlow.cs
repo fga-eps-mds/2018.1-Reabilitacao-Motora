@@ -252,20 +252,6 @@ namespace Tests
 		}
 
 		[UnityTest]
-		public static IEnumerator TestSessions()
-		{
-			Flow.StaticSessions();
-
-			yield return null;
-
-			var currentscene = SceneManager.GetActiveScene().name;
-			var expectedscene = "Sessions";
-
-			Assert.AreEqual(currentscene, expectedscene);
-			Debug.Log("saindo de " + currentscene);
-		}
-
-		[UnityTest]
 		public static IEnumerator TestSession()
 		{
 			Flow.StaticSession();

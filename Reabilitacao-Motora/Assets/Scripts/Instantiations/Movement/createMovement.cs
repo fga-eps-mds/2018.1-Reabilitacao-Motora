@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using System.Text.RegularExpressions;
 using UnityEngine.UI;
@@ -65,10 +66,42 @@ public class createMovement : MonoBehaviour
 					Musculo.Insert(muscle);
 					Musculo lastMusculo = Musculo.GetLast();
 					MovimentoMusculo.Insert(lastMusculo.idMusculo, lastMovement.idMovimento);
+				} else {
+					Musculo musculoExistente = presentMuscle(muscle);
+					MovimentoMusculo.Insert(musculoExistente.idMusculo, lastMovement.idMovimento);
 				}
 			}
 
 			GlobalController.patientOrPhysio = true;
+
+			
+			// Checks the sensor choice from the file
+
+			StringBuilder sensorPath = new StringBuilder();
+			sensorPath.Append("sensor.choice");
+        
+        	string choicePath = sensorPath.ToString();
+
+			if (File.Exists(choicePath)) // User has already chosen a sensor
+        	{
+				string line = File.ReadAllText(choicePath);
+				int fileValue = Convert.ToInt32(line);
+				
+				if ( fileValue.Equals(0) ) // Kinect selected
+				{
+					GlobalController.Sensor = false;
+				}
+				else if ( fileValue.Equals(1) ) // UDP selected
+				{
+					GlobalController.Sensor = true;
+				}
+        	}
+			else // Kinect is default value
+			{
+				GlobalController.Sensor = false;
+			}
+
+			// Redirects user to correct scene
 
 			if(GlobalController.Sensor == false)
 			{
@@ -88,6 +121,14 @@ public class createMovement : MonoBehaviour
 		int count = DataBase.CountRead(query);
 		Debug.Log(count);
 		return (count != 0);
+	}
+
+	static Musculo presentMuscle (string name)
+	{
+		var query = string.Format("SELECT * FROM MUSCULO WHERE \"nomeMusculo\"=\"{0}\";", name);
+		Musculo mus = Musculo.SingleSpecificSelect(query);
+		
+		return mus;
 	}
 
 	public static bool ValidInput (List<InputField> inputs)
