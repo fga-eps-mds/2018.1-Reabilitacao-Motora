@@ -36,7 +36,7 @@ class MoveIconXAxis : MonoBehaviour
 		
 		var currentObjectName = transform.parent.name;
 		var suggaDeri = transform.parent.parent.gameObject;
-		var patientOrPhysio = transform.parent.parent.name == "RotuloFisioterapeuta";
+		var patientOrPhysio = transform.parent.parent.name == "RotuloFisioterapeuta(Clone)";
 
 		SetLabelPatient descPatient;
 		if (patientOrPhysio == false)
@@ -59,10 +59,11 @@ class MoveIconXAxis : MonoBehaviour
 		}
 		
 		int index = transform.parent.GetSiblingIndex();
-
+		Debug.Log(patientOrPhysio);
 		if (currentObjectName == "xInicial")
 		{
-			var brotherX = transform.parent.parent.GetChild(index + 1).gameObject.transform.parent.localPosition.x;
+			Debug.Log(transform.parent.parent.GetChild(index + 1).gameObject.transform.name);
+			var brotherX = transform.parent.parent.GetChild(index + 1).gameObject.transform.localPosition.x;
 			if (patientOrPhysio)
 			{
 				PontosRotuloFisioterapeuta.Update(descPhysio.Prf.idRotuloFisioterapeuta, GlobalController.instance.movement.idMovimento, descPhysio.Prf.estagioMovimentoFisio, transform.parent.localPosition.x, brotherX);
@@ -75,7 +76,8 @@ class MoveIconXAxis : MonoBehaviour
 		
 		if (currentObjectName == "xFinal")
 		{
-			var brotherX = transform.parent.parent.GetChild(index - 1).gameObject.transform.parent.localPosition.x;
+			Debug.Log(transform.parent.parent.GetChild(index - 1).gameObject.transform.name);
+			var brotherX = transform.parent.parent.GetChild(index - 1).gameObject.transform.localPosition.x;
 			if (patientOrPhysio)
 			{
 				PontosRotuloFisioterapeuta.Update(descPhysio.Prf.idRotuloFisioterapeuta, GlobalController.instance.movement.idMovimento, descPhysio.Prf.estagioMovimentoFisio, brotherX, transform.parent.localPosition.x);
@@ -94,10 +96,13 @@ class MoveIconXAxis : MonoBehaviour
 		Vector3 rayPoint = ray.GetPoint(distance);
 		var zz = Vector3.Distance(transform.parent.position, rayPoint);
 		var dist = 1.8f - zz;
-		if (dist < 1.8f && dist > 0)
+		if (dist <= 1.8f && dist >= 0)
 		{
 			icon.color = new Color(icon.color.r, icon.color.g, icon.color.b, dist/1.8f);
-			var currentObjectName = transform.parent.name;
+		}
+		else if (dist > 1.8f)
+		{
+			icon.color = new Color(icon.color.r, icon.color.g, icon.color.b, 0);
 		}
 
 		if (dragging)

@@ -38,7 +38,7 @@ class MoveObjectXAxis : MonoBehaviour
 		
 		var currentObjectName = transform.name;
 		var suggaDeri = transform.parent.gameObject;
-		var patientOrPhysio = transform.parent.name == "RotuloFisioterapeuta";
+		var patientOrPhysio = transform.parent.name == "RotuloFisioterapeuta(Clone)";
 
 		SetLabelPatient descPatient;
 		if (patientOrPhysio == false)
