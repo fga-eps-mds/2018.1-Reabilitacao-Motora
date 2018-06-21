@@ -84,7 +84,7 @@ public class UDPClient : MonoBehaviour
         {
             Debug.Log(e);
         }
-        Assign();
+        Assign(); 
     }
     /**
 	 * Metodo que atualiza em tempo real os valores das posições do braço do avatar e envia ao servidor

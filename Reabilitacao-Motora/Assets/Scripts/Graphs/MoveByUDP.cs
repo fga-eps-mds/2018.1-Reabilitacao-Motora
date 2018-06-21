@@ -14,6 +14,9 @@ using System.Threading;
 public class MoveByUDP : MonoBehaviour
 {
 	[SerializeField]
+	Text connectionInformation;
+
+	[SerializeField]
 	protected Transform pointPrefab;
 	protected Transform mao, ombro, cotovelo, braco;
 
@@ -36,42 +39,6 @@ public class MoveByUDP : MonoBehaviour
     private UdpSocketManager udpSocketManager;
     private bool isListenPortLogged = false;
     
-    //funciona
-    /*
-    private Socket _socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
-    private const int bufSize = 1024;
-    private State state = new State();
-    private EndPoint epFrom = new IPEndPoint(IPAddress.Any, 5022);
-    private AsyncCallback recv = null;
-    
-    
-    public class State
-    {
-        public byte[] buffer = new byte[bufSize];
-    }
-
-    public void Server(string address, int port)
-    {
-        Debug.Log("Server");
-        _socket.SetSocketOption(SocketOptionLevel.IP, SocketOptionName.ReuseAddress, true);
-        _socket.Bind(new IPEndPoint(IPAddress.Parse(address), port));
-        Receive();
-    }
-
-    private void Receive()
-    {
-        Debug.Log("Receive");
-        _socket.BeginReceiveFrom(state.buffer, 0, bufSize, SocketFlags.None, ref epFrom, recv = (ar) =>
-        {
-            State so = (State)ar.AsyncState;
-            int bytes = _socket.EndReceiveFrom(ar, ref epFrom);
-            _socket.BeginReceiveFrom(so.buffer, 0, bufSize, SocketFlags.None, ref epFrom, recv, so);
-            Console.WriteLine("RECV: {0}: {1}, {2}", epFrom.ToString(), bytes, Encoding.ASCII.GetString(so.buffer, 0, bytes));
-            Debug.Log(Encoding.ASCII.GetString(so.buffer, 0, bytes));
-        }, state);
-    }
-
-    */
     string rxString;
 
     [System.Serializable]
@@ -229,6 +196,7 @@ public class MoveByUDP : MonoBehaviour
         if (!isListenPortLogged)
         {
             Debug.Log("UdpSocketManager, listen port: " + udpSocketManager.getListenPort());
+			connectionInformation.text = "Listen port: " + udpSocketManager.getListenPort();
             isListenPortLogged = true;
         }
 
@@ -237,14 +205,14 @@ public class MoveByUDP : MonoBehaviour
 
             string receivedMsg = Encoding.UTF8.GetString(recPacket);
 
-            Debug.Log(receivedMsg);
+			LoadData(receivedMsg);
+
+            //Debug.Log(receivedMsg);
 
         }
 
-        /*
+        
 		if (t){
-			//client.BeginReceive (new AsyncCallback (ReceiveServerInfo), null);
-
 			current_time_movement += Time.fixedDeltaTime;
 
 			ombro.localPosition = f_ombro_pos;
@@ -293,8 +261,6 @@ public class MoveByUDP : MonoBehaviour
     void OnApplicationQuit()
     {
         client.Close();
-    }
-        */
     }
 
     private void OnDestroy()
