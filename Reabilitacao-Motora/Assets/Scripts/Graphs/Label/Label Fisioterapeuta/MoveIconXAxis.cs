@@ -36,7 +36,7 @@ class MoveIconXAxis : MonoBehaviour
 		
 		var currentObjectName = transform.parent.name;
 		var suggaDeri = transform.parent.parent.gameObject;
-		var patientOrPhysio = transform.parent.parent.name == "RotuloFisioterapeuta";
+		var patientOrPhysio = transform.parent.parent.name == "RotuloFisioterapeuta(Clone)";
 
 		SetLabelPatient descPatient;
 		if (patientOrPhysio == false)
