@@ -1,18 +1,18 @@
 //http://habrahabr.ru/post/140274/
 class KalmanFilterSimple1D
 {
-    public double X0 { get; private set; } // predicted state
-    public double P0 { get; private set; } // predicted covariance
+    public float X0 { get; private set; } // predicted state
+    public float P0 { get; private set; } // predicted covariance
 
-    public double F { get; private set; } // factor of real value to previous real value
-    public double Q { get; private set; } // measurement noise
-    public double H { get; private set; } // factor of measured value to real value
-    public double R { get; private set; } // environment noise
+    public float F { get; private set; } // factor of real value to previous real value
+    public float Q { get; private set; } // measurement noise
+    public float H { get; private set; } // factor of measured value to real value
+    public float R { get; private set; } // environment noise
 
-    public double State { get; private set; }
-    public double Covariance { get; private set; }
+    public float State { get; private set; }
+    public float Covariance { get; private set; }
 
-    public KalmanFilterSimple1D(double q, double r, double f = 1, double h = 1)
+    public KalmanFilterSimple1D(float q, float r, float f = 1, float h = 1)
     {
         Q = q;
         R = r;
@@ -20,13 +20,13 @@ class KalmanFilterSimple1D
         H = h;
     }
 
-    public void SetState(double state, double covariance)
+    public void SetState(float state, float covariance)
     {
         State = state;
         Covariance = covariance;
     }
 
-    public void Correct(double data)
+    public void Correct(float data)
     {
         //time update - prediction
         X0 = F * State;
