@@ -89,6 +89,15 @@ namespace musculo
 			return muscle;
 		}
 
+		public static Musculo SingleSpecificSelect(string query)
+		{
+			Object[] columns = new Object[] {0, ""};
+
+			Musculo mus = DataBase.SingleSpecificSelect<Musculo>(TablesManager.Tables[tableId].tableName, columns, query);
+
+			return mus;
+		}
+
 		/**
 		 * Função que deleta dados cadastrados anteriormente na relação musculo.
 		 */

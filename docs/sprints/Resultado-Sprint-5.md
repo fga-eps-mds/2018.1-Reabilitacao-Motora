@@ -5,7 +5,7 @@
 ---
 
 ## 2. Fechamento da _Sprint_
-<p align="justify">&emsp;&emsp; <p align="justify">&emsp;&emsp; A <i>Sprint</i> 05 foi fechada no dia, e com grandes conquistas realizadas durante a mesma, sendo que na <i>Sprint</i> obtivemos durante as reuniões de <i>Daily</i> 100% de presença durante 3 dias o alinhamento com o <i>Roadmap</i> ficou como pendência mas nada que o time já não tenha se mostrado capaz de realizar.  </p>
+<p align="justify">&emsp;&emsp; A <i>Sprint</i> 05 foi fechada no dia, e com grandes conquistas realizadas durante a mesma, sendo que na <i>Sprint</i> obtivemos durante as reuniões de <i>Daily</i> 100% de presença durante 3 dias o alinhamento com o <i>Roadmap</i> ficou como pendência mas nada que o time já não tenha se mostrado capaz de realizar.  </p>
 
 ### 2.1 Backlog da Sprint
 

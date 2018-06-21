@@ -2,8 +2,8 @@
 #! /bin/sh
 
 BASE_URL=http://netstorage.unity3d.com/unity
-HASH=fc1d3344e6ea
-VERSION=2017.3.1f1
+HASH=732dbf75922d
+VERSION=2018.1.5f1
 
 download() {
   file=$1
@@ -25,5 +25,5 @@ install() {
 # of available packages, where PLATFORM is `osx` or `win`
 
 install "MacEditorInstaller/Unity-$VERSION.pkg"
-install "MacEditorTargetInstaller/UnitySetup-Windows-Support-for-Editor-$VERSION.pkg"
+install "MacEditorTargetInstaller/UnitySetup-Windows-Mono-Support-for-Editor-$VERSION.pkg"
 install "MacEditorTargetInstaller/UnitySetup-Linux-Support-for-Editor-$VERSION.pkg"
