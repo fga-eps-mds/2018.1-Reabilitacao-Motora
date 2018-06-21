@@ -4,7 +4,7 @@ function reverseString(s) {
 
 const token_api = reverseString("dd5581b6590ea5d1809b1d14ab37b5e9beaf60d8");
 const github_url = "https://api.github.com"
-
+var converter = new showdown.Converter();
 
 let basicInformation = {};
 const getbasicInformation = () => {
@@ -225,8 +225,8 @@ const setReleases = () => {
     for (i in releases) {
         let releaseHtml =
         `
-            <h5>${releases[i].name} - ${releases[i].tag_name}</h5>
-            <p>${releases[i].body}</p>
+            <h4 style="text-align:center;">${releases[i].name} - ${releases[i].tag_name}</h4>
+            <p>${converter.makeHtml(releases[i].body)}</p>
         `
         let carousel = document.getElementById('main-carousel');
         let release = document.createElement('div');
@@ -236,19 +236,24 @@ const setReleases = () => {
     }
 
     $(document).ready(function () {
-        $(".owl-carousel").owlCarousel();
+        $(".owl-carousel").owlCarousel({
+            margin:10,
+            items:4
+        });
     });
+
     $('.nonloop').owlCarousel({
         center: true,
-        items: 2,
-        loop: false,
-        margin: 10,
-        responsive: {
-            600: {
-                items: 4
+        items:2,
+        loop:false,
+        margin:10,
+        responsive:{
+            600:{
+                items:4
             }
         }
     });
+
 
 }
 
