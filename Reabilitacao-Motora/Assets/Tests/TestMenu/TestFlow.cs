@@ -106,10 +106,7 @@ namespace Tests
 		[UnityTest]
 		public static IEnumerator TestRealtimeGraphUDPPatient()
 		{
-			var device = @"^(.*?(\bDevice|Socket|SDK|expected|contexto|refused\b)[^$]*)$";
-			Regex rgx1 = new Regex(device, RegexOptions.IgnoreCase);
 			Flow.StaticRealtimeGraphUDPPatient();
-			LogAssert.Expect(LogType.Exception, rgx1);
 
 			yield return null;
 
