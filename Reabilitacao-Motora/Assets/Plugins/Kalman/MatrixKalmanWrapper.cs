@@ -27,7 +27,7 @@ namespace Kalman {
 			var f = new Matrix (new[,] {{1.0, 1}, {0, 1.0}});
 			var b = new Matrix (new[,] {{0.0}, {0}});
 			var u = new Matrix (new[,] {{0.0}, {0}});
-			var r = Matrix.CreateVector (10);
+			var r = Matrix.CreateVector (2);
 			var q = new Matrix (new[,] {{0.01, 0.4}, {0.1, 0.02}});
 			var h = new Matrix (new[,] {{1.0 , 0}});
 			
