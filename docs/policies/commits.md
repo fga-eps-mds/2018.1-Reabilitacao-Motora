@@ -2,10 +2,10 @@
 
 * Os commits devem utilizar o seguinte modelo:
 ```
-[TAG] Breve descrição
+Breve descrição
 ```
 
 * Exemplo prático:
 ```
-[BUG] Corrige captura de movimento
+Corrige captura de movimento
 ```
