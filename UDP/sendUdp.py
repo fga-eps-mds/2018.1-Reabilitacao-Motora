@@ -4,7 +4,7 @@ from time import sleep
 import sys
 
 UDP_IP = "127.0.0.1"
-UDP_PORT = 5004
+UDP_PORT = 58332
 
 try:
     UDPClientSocket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
