@@ -21,7 +21,7 @@ public class instanciatePhysiotherapist : MonoBehaviour
 		script.Physiotherapist = physiotherapist;
 
 		var temp = go.GetComponentInChildren<Text>();
-		temp.text = physiotherapist.persona.nomePessoa;
+		temp.text = formatName(physiotherapist.persona.nomePessoa, physiotherapist.crefito, physiotherapist.persona.telefone1);
 	}
 
 	public void Awake ()
@@ -37,4 +37,11 @@ public class instanciatePhysiotherapist : MonoBehaviour
 		}
 
 	}
+
+    public static string formatName(string nomePessoa, string crefito, string telefone1)
+    {
+        //var partsBetweenDashs = .Split('-');
+        var result = string.Format("{0}. {1}. {2}", nomePessoa, crefito, telefone1);
+        return result;
+    }
 }
