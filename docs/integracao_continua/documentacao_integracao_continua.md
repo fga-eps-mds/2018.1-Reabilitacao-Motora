@@ -44,6 +44,20 @@ A ordem de execução dos scripts é a mesma já explicitada acima.
 
 ## Launcher
 
+### O que é ?
+Launcher é uma aplicação feita para ajudar os usuários a localizar e iniciar outros programas de computador. Um launcher de aplicativos pode fornecer atalhos para programas de computador em um local para facilitar  sua localização e execução.
+
+### Launcher Reabilitação Motora
+No contexto da nossa aplicação o launcher serve para atualizar as builds da aplicação e executada sem dar trabalho ao usuário de ter que entrar em nosso site para baixar uma nova release.
+
+### Funcionamento
+Quando executado o launcher faz uma verificação da versão mais atualizada da aplicação localizada em uma API que guarda as builds e versões, caso ele identifique que a versão guardada localmente está desatualizada ele baixa a build mais atualizada da API, faz o unzip dela e deixa preparada para execução, assim que o processo termina o botão de iniciar é desbloqueado e a versão mais atual já pode ser iniciada.
+
+![](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/docs/integracao_continua/Launcher_diagrama.png)
+
+### Dificuldades
+Um dos pontos mais críticos em relação a dificuldade do launcher foi a questão de fazer um sistema que pudesse ser utilizado em qualquer sistema operacional. Portanto foi decidido usar a linguagem de programação Java + Gradle para proporcionar esse ambiente multi plataforma. Dessa forma a aplicação do launcher ao gerar um compilado pode ser executada em qualquer computador. Outro ponto crítico interessante é o gerenciamento de permissões dentro do sistema operacional para a execução de programas pelo launcher. Dessa forma toda vez que uma nova build é atualizada e descompactada esse tratamento de permissões de execução do programa tem que ser feito, caso não ocorra corretamente o launcher não conseguiria abrir nenhum programa externo
+
 
 ## Dificuldades Encontradas
 <p align="justify">&emsp;&emsp; A principal dificuldade encontrada pelo time em primeiro momento foi, a falta de repositórios com este tipo de tecnologia, na primeira <i>release</i> foi citado a dificuldade de se implementar a integração continua em um repositório com o <i>Unity</i>, depois disso enfrentamos o problema de colocar os testes unitários e os de aceitação para que fossem rodados junto com a integração continua, feita essa parte o outro problema enfrentado foi com relação o tempo de build do <i>travis</i> visto que quanto maior a quantidade de testes maior era o tempo de execução de build, e mesmo que os testes falhassem a build continuaria rodando, a solução encontrada foi a criação do script de validação que seria responsável primeiramente para garantir que se algum teste de qualquer tipo falhasse a build seria encerrada dando um feedback mais rápido para o desenvolvedor que aguardava a integração continua.</p>
