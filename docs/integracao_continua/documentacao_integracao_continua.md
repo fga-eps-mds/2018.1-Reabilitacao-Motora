@@ -113,7 +113,7 @@ No contexto da nossa aplicação o launcher serve para atualizar as builds da ap
 ### Funcionamento
 Quando executado o launcher faz uma verificação da versão mais atualizada da aplicação localizada em uma API que guarda as builds e versões, caso ele identifique que a versão guardada localmente está desatualizada ele baixa a build mais atualizada da API, faz o unzip dela e deixa preparada para execução, assim que o processo termina o botão de iniciar é desbloqueado e a versão mais atual já pode ser iniciada.
 
-![](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/docs/integracao_continua/Launcher_diagrama.png)
+![](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/blob/travis/docs/integracao_continua/Launcher_diagrama.png)
 
 ### Dificuldades
 Um dos pontos mais críticos em relação a dificuldade do launcher foi a questão de fazer um sistema que pudesse ser utilizado em qualquer sistema operacional. Portanto foi decidido usar a linguagem de programação Java + Gradle para proporcionar esse ambiente multi plataforma. Dessa forma a aplicação do launcher ao gerar um compilado pode ser executada em qualquer computador. Outro ponto crítico interessante é o gerenciamento de permissões dentro do sistema operacional para a execução de programas pelo launcher. Dessa forma toda vez que uma nova build é atualizada e descompactada esse tratamento de permissões de execução do programa tem que ser feito, caso não ocorra corretamente o launcher não conseguiria abrir nenhum programa externo
