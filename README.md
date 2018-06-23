@@ -72,7 +72,7 @@ Estas instruções vão te ajudar a ter a última versão do código em sua máq
 > [Documento de Arquitetura](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/blob/master/docs/wiki/Documento-de-Arquitetura.md)
 
 ## Integração Contínua
-<!-- ![](IMAGEM DO CI) -->
+![](/docs/integracao_continua/Diagrama_CI.png)
 > [Integração contínua do _Unity_ com _Travis_]()
 
 ## Repositórios Paralelos
@@ -83,7 +83,7 @@ Estas instruções vão te ajudar a ter a última versão do código em sua máq
 > - [App Mobile (IMU)](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora-UDP-App-Android)
 
 ## Ferramentas Utilizadas
-<img src="docs/imagens/readme/drive.png" width="100" height="100" title="Google Drive"><img src="docs/imagens/readme/telegram.png" width="100" height="100" title="Telegram"><img src="docs/imagens/readme/git.png" width="100" height="100" title="GitHub"><img src="docs/imagens/readme/slack.png" width="100" height="100" title="Slack"><img src="docs/imagens/readme/Travis.png" width="100" height="100" title="Travis"><img src="docs/imagens/readme/Unity.png" width="220" height="100" title="Unity"><img src="docs/imagens/readme/wpp.png" width="100" height="100" title="WhatsApp"><img src="docs/imagens/readme/zenhub.png" width="100" height="100" title="ZenHub">
+<img src="docs/imagens/readme/drive.png" width="100" height="100" title="Google Drive"><img src="docs/imagens/readme/telegram.png" width="100" height="100" title="Telegram"><img src="docs/imagens/readme/git.png" width="100" height="100" title="GitHub"><img src="docs/imagens/readme/slack.png" width="100" height="100" title="Slack"><img src="docs/imagens/readme/Travis.png" width="100" height="100" title="Travis"><img src="docs/imagens/readme/Unity.png" width="225" height="82" title="Unity"><img src="docs/imagens/readme/zenhub.png" width="100" height="100" title="ZenHub">
 
 ## Licença
 
