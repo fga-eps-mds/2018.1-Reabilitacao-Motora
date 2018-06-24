@@ -1,7 +1,8 @@
 | Data | Versão | Descrição | Autor(es) |
 | :---: | :---: | --- | :---: |
 | 22/06/2018 | 1.0 | Criação do documento| Romeu Antunes/Victor Moura |
-| 23/06/2018 | 1.1 | Explicações da API de deploy, AWS e dificuldades encontradas| Victor Moura |
+| 23/06/2018 | 1.1 | Explicações da API de deploy, AWS e dificuldades encontradas | Victor Moura |
+| 23/06/2018 | 1.2 | Informações sobre o Launcher | Arthur Diniz |
 
 # Integração Contínua
 
