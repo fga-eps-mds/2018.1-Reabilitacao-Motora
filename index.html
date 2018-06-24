@@ -10,8 +10,18 @@
 
   <title>Reabilitação físico-motora</title>
 
+  <script
+  src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
+
   <!-- Bootstrap core CSS -->
   <link href="gh-pages/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="gh-pages/owlcarousel/assets/owl.carousel.min.css">
+  <link rel="stylesheet" href="gh-pages/owlcarousel/assets/owl.theme.default.min.css">
+
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
   <!-- Custom fonts for this template -->
@@ -27,11 +37,15 @@
 
   <!-- Custom styles for this template -->
   <link href="gh-pages/css/creative.css" rel="stylesheet">
+  <link href="gh-pages/owlcarousel/custom.css" rel="stylesheet">
 
   <!-- Materialize -->
   <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
 
+
+  <script src="https://cdn.rawgit.com/showdownjs/showdown/a54ed664/dist/showdown.min.js"></script>
   <!-- Custom scripts -->
   <script src="gh-pages/scripts/fetchData.js"></script>
   <script src="gh-pages/scripts/fetchDocumentation.js"></script>
@@ -39,6 +53,8 @@
   <!-- <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script> -->
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+
+    
 </head>
 
 <body id="page-top">
@@ -319,6 +335,10 @@
 
     </div>
     </div>
+    <h1 style="text-align:center;">Versões</h1>
+    <div class="owl-carousel nonloop" id="main-carousel">
+    </div>
+
   </section>
 
   <section class="bg-dark text-white" id="more">
@@ -364,9 +384,10 @@
   <!-- materialize -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
 
-
   <!-- Custom scripts for this template -->
   <script src="gh-pages/js/creative.min.js"></script>
+
+  <script src="gh-pages/owlcarousel/owl.carousel.min.js"></script>
 
 
 </body>
