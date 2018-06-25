@@ -34,10 +34,10 @@ public class MoveByUDP : MonoBehaviour
 
     UdpClient client;
 
-
-
     private UdpSocketManager udpSocketManager;
     private bool isListenPortLogged = false;
+	private bool receivedAnyMessage = false;
+	private string currentIPV4 = "";
     
     string rxString;
 
@@ -195,13 +195,33 @@ public class MoveByUDP : MonoBehaviour
 
         if (!isListenPortLogged)
         {
+			IPHostEntry hostInfo = Dns.GetHostByName(Dns.GetHostName());
+       		Console.WriteLine("Host name : " + hostInfo.HostName);
+        	Console.WriteLine("IP address List : ");
+
+        	for(int index=0; index < hostInfo.AddressList.Length; index++)
+        	{
+            	if (hostInfo.AddressList[index].AddressFamily == AddressFamily.InterNetwork)
+       			{
+            		currentIPV4 = string.Format("{0}", hostInfo.AddressList[index]);
+        		}
+        	}
+
             Debug.Log("UdpSocketManager, listen port: " + udpSocketManager.getListenPort());
-			connectionInformation.text = "Listen port: " + udpSocketManager.getListenPort();
+		    connectionInformation.text = string.Format("{1}:{0}", udpSocketManager.getListenPort(), currentIPV4);
             isListenPortLogged = true;
+            
+            GlobalController.showQrCode = true;
         }
+
+		if (receivedAnyMessage)
+		{
+			connectionInformation.text = "";
+		}
 
         foreach (byte[] recPacket in udpSocketManager.receive())
         {
+			receivedAnyMessage = true;
 
             string receivedMsg = Encoding.UTF8.GetString(recPacket);
 

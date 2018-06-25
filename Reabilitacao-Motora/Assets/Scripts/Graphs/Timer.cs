@@ -30,6 +30,6 @@ public class Timer : MonoBehaviour
 
 	public void OnGUI ()
 	{
-		GUI.Box(new Rect(10, 10, 50, 20), "" + timer.ToString("0"));
+		GUI.Box(new Rect(10, 40, 50, 20), "" + timer.ToString("0"));
 	}
 }
