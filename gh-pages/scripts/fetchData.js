@@ -4,7 +4,7 @@ function reverseString(s) {
 
 const token_api = reverseString("dd5581b6590ea5d1809b1d14ab37b5e9beaf60d8");
 const github_url = "https://api.github.com"
-
+var converter = new showdown.Converter();
 
 let basicInformation = {};
 const getbasicInformation = () => {
@@ -27,7 +27,7 @@ const setBasicDynamicData = () => {
     let forks = document.getElementById("forks");
     forks.classList.remove("loader");
     forks.innerHTML = "Número total de forks: " + basicInformation.forks_count;
-    
+
 
     //language
     let language = document.getElementById("language");
@@ -122,7 +122,7 @@ const setCommitData = () => {
                     </p>
                 </li>
             `
-            )
+        )
     }
 
     for (let i = 0; i < 5; i++) {
@@ -169,11 +169,11 @@ const startChart = () => {
         type: 'line',
         data: {
             labels: [
-                commitData[0].start.toString().substring(4, 15), 
-                commitData[1].start.toString().substring(4, 15), 
+                commitData[0].start.toString().substring(4, 15),
+                commitData[1].start.toString().substring(4, 15),
                 commitData[2].start.toString().substring(4, 15),
                 commitData[3].start.toString().substring(4, 15),
-                commitData[4].start.toString().substring(4, 15) 
+                commitData[4].start.toString().substring(4, 15)
             ],
             datasets: [{
                 label: 'Commits/Semana',
@@ -205,6 +205,59 @@ const startChart = () => {
     });
 }
 
+let releases = [];
+const getReleases = () => {
+    axios.get(`${github_url}/repos/fga-gpp-mds/2018.1-Reabilitacao-Motora/releases`, {
+        headers: {
+            Authorization: `token ${token_api}`
+        }
+    })
+        .then(function (response) {
+            releases = response.data;
+            console.log(releases);
+            setReleases();
+        }).catch(function (error) {
+            console.log(error);
+        });
+}
+
+const setReleases = () => {
+    for (i in releases) {
+        let releaseHtml =
+        `
+            <h4 style="text-align:center;">${releases[i].name} - ${releases[i].tag_name}</h4>
+            <p>${converter.makeHtml(releases[i].body)}</p>
+        `
+        let carousel = document.getElementById('main-carousel');
+        let release = document.createElement('div');
+        release.className = 'carousel';
+        release.innerHTML = releaseHtml
+        carousel.appendChild(release);
+    }
+
+    $(document).ready(function () {
+        $(".owl-carousel").owlCarousel({
+            margin:10,
+            items:4
+        });
+    });
+
+    $('.nonloop').owlCarousel({
+        center: true,
+        items:2,
+        loop:false,
+        margin:10,
+        responsive:{
+            600:{
+                items:4
+            }
+        }
+    });
+
+
+}
+
+
 window.onload = () => {
     getbasicInformation();
     getStatisticInfo();
@@ -212,6 +265,8 @@ window.onload = () => {
     getCommitPerDay();
 
     getDocumentsInfo();
-    
+
     getRepoDocInfo();
+
+    getReleases();
 }
