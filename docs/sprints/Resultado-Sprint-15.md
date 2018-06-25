@@ -9,28 +9,7 @@
 </p>
 
 ### 2.1 Backlog da Sprint
-
-| ID | Issue | Status | Pontos |
-|:--:| ------- | :----: | :----: |
-| TK | [Refatorar Telas de Ajuda](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/325) | Fechado | 1 |
-| TK | [Pesquisar movimento/exercício](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/249) | Fechado | 5 |
-| TK | [Destacar label de movimento](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/291) | Fechado | 3 |
-| TK | [Pesquisa por músculo](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/250) | Fechado | 2 |
-| TK | [Atualizar doxygen](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/260) | Fechado | 1 |
-| TK | [Card de visualizar sessão deve ter as observações](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/280) | Fechado | 3 |
-| TK | [Campo de texto com entrada de teclado duplicada](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/270) | Fechado | 2 |
-| TK | [Não é possível visualizar corretamente os movimentos executados na sessão](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/275) | Fechado | 3 |
-| TK | [Escrever PlayTests para testes de aceitação](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/271) | Fechado | 3 |
-| TK | [Melhorar a visualização do fisioterapeuras ja cadastrados](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/268) | Fechado | 1 |
-| TK | [Personagem não aparece quando não se seleciona nenhum](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/264) | Fechado | 1 |
-| TK | [Melhorar README do projeto](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/256) | Fechado | 1 |
-| TK | [Melhorar a qualidade de comentários no código](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/259) | Fechado | 1 |
-| TK | [Tutorial para Desenvolvedores](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/243) | Fechado | 13 |
-| TK | [Progress bar download (LAUNCHER)](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/issues/235) | Fechado | 2 |
-
-
-
-> O id "TK" é para *tasks* que são consideradas importantes o suficiente para serem pontuadas.
+Todas <i>tasks</i> que foram fechadas e até mesmo as que continuam em aberto se encontram neste [link](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/milestone/18) com suas devidas pontuações e situações.
 
 ### 2.3 Pontuação Final
 
