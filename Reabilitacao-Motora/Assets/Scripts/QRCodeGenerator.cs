@@ -12,8 +12,6 @@ public class QRCodeGenerator : MonoBehaviour
     string text;
     protected Texture2D myQR;
 
-
-
     private static Color32[] Encode(string textForEncoding, int width, int height) {
         var writer = new BarcodeWriter {
             Format = BarcodeFormat.QR_CODE,
@@ -35,9 +33,14 @@ public class QRCodeGenerator : MonoBehaviour
     }
 
     public void OnGUI(){
-        myQR = generateQR(screenInfo.text);
-        int w = Screen.width;
-        int h = Screen.height;
-        if (GUI.Button (new Rect (w/3.25f, h/1.35f, w/8, w/8), myQR, GUIStyle.none)) {}
+        
+        if (GlobalController.showQrCode == true && screenInfo.text != "")
+        {
+            myQR = generateQR(screenInfo.text);
+            int w = Screen.width;
+            int h = Screen.height;
+            if (GUI.Button(new Rect(w / 3.25f, h / 1.35f, w / 8, w / 8), myQR, GUIStyle.none)) { }
+        }
+        
     }
 }

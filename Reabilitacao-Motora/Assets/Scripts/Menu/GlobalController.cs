@@ -35,6 +35,7 @@ public class GlobalController : MonoBehaviour
 	public static bool Sensor;
 	public static int choiceAvatar;
 	private static bool SuperAdm;
+    public static bool showQrCode;
 
 	public Fisioterapeuta admin { get { return Admin;} set { Admin = value;}}
 	public Paciente user { get { return User;} set { User = value;}}
@@ -70,7 +71,8 @@ public class GlobalController : MonoBehaviour
 	public static void Initialize()
 	{
 		superAdm = false;
-		choiceAvatar = 1;
+        showQrCode = false;
+        choiceAvatar = 1;
 		
 		if (test == false)
 		{
