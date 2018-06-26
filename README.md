@@ -40,7 +40,7 @@
 
 ## Configuração do UDP Windows
 
-> [Link para o tutorial de configuração](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/blob/Readme/docs/wiki/tutorial_windows_udp.md)
+> [Link para o tutorial de configuração](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/blob/development/docs/wiki/tutorial_windows_udp.md)
 ---
 
 # Desenvolvedores
