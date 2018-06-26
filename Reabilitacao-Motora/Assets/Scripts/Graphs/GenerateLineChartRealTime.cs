@@ -96,7 +96,8 @@ public class GenerateLineChartRealTime : MonoBehaviour
 					mao, 
 					cotovelo,
 					ombro, 
-					braco);
+					braco,
+					false);
 			}
 			else
 			{
@@ -106,7 +107,8 @@ public class GenerateLineChartRealTime : MonoBehaviour
 					mao, 
 					cotovelo,
 					ombro, 
-					braco);
+					braco,
+					false);
 			}
 
 			if (current_time_movement >= 15f) 
@@ -127,10 +129,26 @@ public class GenerateLineChartRealTime : MonoBehaviour
 		if (GlobalController.patientOrPhysio)
 		{
 			GetMovementPoints.LoadLineRenderer(ref go, ref lineRenderer, c1, c2);
+			GetMovementPoints.SavePoints (GlobalController.choiceAvatar,
+				"/Movimentos/", 
+				GlobalController.instance.movement.pontosMovimento,
+				mao, 
+				cotovelo,
+				ombro, 
+				braco,
+				true);
 		}
 		else
 		{
 			GetMovementPoints.LoadLineRenderer(ref go, ref lineRenderer, c1, c3);
+			GetMovementPoints.SavePoints (GlobalController.choiceAvatar,
+				"/Exercicios/", 
+				GlobalController.instance.exercise.pontosExercicio,
+				mao, 
+				cotovelo,
+				ombro, 
+				braco,
+				true);
 		}
 
 		Assign();

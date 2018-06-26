@@ -10,22 +10,29 @@ using UnityEngine.SceneManagement;
  */
 public static class GetMovementPoints
 {
-	public static void SavePoints (float current_time_movement, string folder, string path, Transform mao, Transform cotovelo, Transform ombro, Transform braco) 
+	public static void SavePoints (float current_time_movement, string folder, string path, Transform mao, Transform cotovelo, Transform ombro, Transform braco, bool sensor) 
 	{
 		StringBuilder sb = new StringBuilder();
-		sb.Append(current_time_movement).Append(" ");
+		if (!sensor)
+		{
+			sb.Append(current_time_movement);
+			sb.Append(" ").Append(mao.localPosition.x).Append(" ").Append(mao.localPosition.y).Append(" ").Append(mao.localPosition.z).Append(" ");
+			sb.Append(mao.localEulerAngles.x).Append(" ").Append(mao.localEulerAngles.y).Append(" ").Append(mao.localEulerAngles.z).Append(" ");
 
-		sb.Append(mao.localPosition.x).Append(" ").Append(mao.localPosition.y).Append(" ").Append(mao.localPosition.z).Append(" ");
-		sb.Append(mao.localEulerAngles.x).Append(" ").Append(mao.localEulerAngles.y).Append(" ").Append(mao.localEulerAngles.z).Append(" ");
+			sb.Append(cotovelo.localPosition.x).Append(" ").Append(cotovelo.localPosition.y).Append(" ").Append(cotovelo.localPosition.z).Append(" ");
+			sb.Append(cotovelo.localEulerAngles.x).Append(" ").Append(cotovelo.localEulerAngles.y).Append(" ").Append(cotovelo.localEulerAngles.z).Append(" ");
 
-		sb.Append(cotovelo.localPosition.x).Append(" ").Append(cotovelo.localPosition.y).Append(" ").Append(cotovelo.localPosition.z).Append(" ");
-		sb.Append(cotovelo.localEulerAngles.x).Append(" ").Append(cotovelo.localEulerAngles.y).Append(" ").Append(cotovelo.localEulerAngles.z).Append(" ");
+			sb.Append(ombro.localPosition.x).Append(" ").Append(ombro.localPosition.y).Append(" ").Append(ombro.localPosition.z).Append(" ");
+			sb.Append(ombro.localEulerAngles.x).Append(" ").Append(ombro.localEulerAngles.y).Append(" ").Append(ombro.localEulerAngles.z).Append(" ");
 
-		sb.Append(ombro.localPosition.x).Append(" ").Append(ombro.localPosition.y).Append(" ").Append(ombro.localPosition.z).Append(" ");
-		sb.Append(ombro.localEulerAngles.x).Append(" ").Append(ombro.localEulerAngles.y).Append(" ").Append(ombro.localEulerAngles.z).Append(" ");
-
-		sb.Append(braco.localPosition.x).Append(" ").Append(braco.localPosition.y).Append(" ").Append(braco.localPosition.z).Append(" ");
-		sb.Append(braco.localEulerAngles.x).Append(" ").Append(braco.localEulerAngles.y).Append(" ").Append(braco.localEulerAngles.z).Append("\n");
+			sb.Append(braco.localPosition.x).Append(" ").Append(braco.localPosition.y).Append(" ").Append(braco.localPosition.z).Append(" ");
+			sb.Append(braco.localEulerAngles.x).Append(" ").Append(braco.localEulerAngles.y).Append(" ").Append(braco.localEulerAngles.z).Append("\n");
+		}
+		else
+		{
+			sb.Append((int)current_time_movement);
+			sb.Append("\n");
+		}
 		// /movimentos/
 		string file = Application.dataPath + folder + path;
 		File.AppendAllText(file, sb.ToString());

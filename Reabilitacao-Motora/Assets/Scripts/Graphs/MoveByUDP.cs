@@ -161,11 +161,28 @@ public class MoveByUDP : MonoBehaviour
 			if (GlobalController.patientOrPhysio)
 			{
 				GetMovementPoints.LoadLineRenderer(ref go, ref lineRenderer, c1, c2);
+				GetMovementPoints.SavePoints (GlobalController.choiceAvatar,
+					"/Movimentos/", 
+					GlobalController.instance.movement.pontosMovimento,
+					mao, 
+					cotovelo,
+					ombro, 
+					braco,
+					true);
 			}
 			else
 			{
 				GetMovementPoints.LoadLineRenderer(ref go, ref lineRenderer, c1, c3);
+				GetMovementPoints.SavePoints (GlobalController.choiceAvatar,
+					"/Exercicios/", 
+					GlobalController.instance.exercise.pontosExercicio,
+					mao, 
+					cotovelo,
+					ombro, 
+					braco,
+					true);
 			}
+
 		}
 		else
 		{
@@ -255,7 +272,8 @@ public class MoveByUDP : MonoBehaviour
 					mao,
 					cotovelo,
 					ombro,
-					braco);
+					braco,
+					false);
 			}
 			else
 			{
@@ -265,7 +283,8 @@ public class MoveByUDP : MonoBehaviour
 					mao,
 					cotovelo,
 					ombro,
-					braco);
+					braco,
+					false);
 			}
 
 			GetMovementPoints.graphSpawner(transform, pointPrefab, mao, cotovelo, ombro, current_time_movement, ref lineRenderer);
