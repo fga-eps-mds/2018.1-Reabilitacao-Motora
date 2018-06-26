@@ -25,7 +25,7 @@
 
 ## Produto
 ![](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/Readme/docs/imagens/readme/Produto.png)
-<p align="justify">&emsp;&emsp; Propomos uma aplicação multiplataforma (<a href"http://ec2-54-233-228-194.sa-east-1.compute.amazonaws.com:3000/file_objects/732/windows.zip">Windows</a>, <a href"/file_objects/733/linux.zip">Linux</a>, <a href"http://ec2-54-233-228-194.sa-east-1.compute.amazonaws.com:3000/file_objects/734/mac.zip">Mac</a>) que realiza a captura e a comparação entre movimentos, para que desse modo o fisioterapeuta obtenha dados quantitativos com relação aos movimentos do paciente, e não só dados qualitativos e subjetivos para acompanhar a evolução do mesmo. A ideia da aplicação é de facilitar a sessão gerenciada pelo fisioterapeuta, ou seja, o processo de captura de dados através de movimentos e a análise desses dados gerados.</p>
+<p align="justify">&emsp;&emsp; Propomos uma aplicação multiplataforma (<a href"http://ec2-18-231-174-28.sa-east-1.compute.amazonaws.com:3000/file_objects/732/windows.zip">Windows</a>, <a href"/file_objects/733/linux.zip">Linux</a>, <a href"http://ec2-18-231-174-28.sa-east-1.compute.amazonaws.com:3000/file_objects/734/mac.zip">Mac</a>) que realiza a captura e a comparação entre movimentos, para que desse modo o fisioterapeuta obtenha dados quantitativos com relação aos movimentos do paciente, e não só dados qualitativos e subjetivos para acompanhar a evolução do mesmo. A ideia da aplicação é de facilitar a sessão gerenciada pelo fisioterapeuta, ou seja, o processo de captura de dados através de movimentos e a análise desses dados gerados.</p>
 
 <p align="justify">&emsp;&emsp;A captura de movimento será feita através de um sensor. Como sensor base temos o Kinect, mas a aplicação é capaz de comunicar-se com qualquer sensor que utiliza de uma porta UDP. Enquanto a central de processamento se conectará à aplicação principal com o uso de um adapter.</p>
 
@@ -38,6 +38,9 @@
 - [Arquivo zip](https://github.com/arthurbdiniz/Launcher/raw/master/build/distributions/launcher.zip)
 - [Arquivo tar](https://github.com/arthurbdiniz/Launcher/raw/master/build/distributions/launcher.tar)
 
+## Configuração do UDP Windows
+
+> [Link para o tutorial de configuração](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/blob/development/docs/wiki/tutorial_windows_udp.md)
 ---
 
 # Desenvolvedores

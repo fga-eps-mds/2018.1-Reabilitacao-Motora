@@ -34,8 +34,6 @@ public class MoveByUDP : MonoBehaviour
 
     UdpClient client;
 
-
-
     private UdpSocketManager udpSocketManager;
     private bool isListenPortLogged = false;
 	private bool receivedAnyMessage = false;
@@ -210,8 +208,10 @@ public class MoveByUDP : MonoBehaviour
         	}
 
             Debug.Log("UdpSocketManager, listen port: " + udpSocketManager.getListenPort());
-			connectionInformation.text = string.Format("{1}:{0}", udpSocketManager.getListenPort(), currentIPV4);
+		    connectionInformation.text = string.Format("{1}:{0}", udpSocketManager.getListenPort(), currentIPV4);
             isListenPortLogged = true;
+            
+            GlobalController.showQrCode = true;
         }
 
 		if (receivedAnyMessage)
