@@ -76,27 +76,28 @@ Documento de Arquitetura de Software
 ## 1. Introdução
 
 ### 1.1 Finalidade
- <p align = "justify">Este documento possui como finalidade uma visão geral abrangente à implementação arquitetural do projeto Reabilitação Motora - FisioTech.
+ <p align = "justify">Este documento possui como finalidade uma visão geral abrangente à implementação arquitetural do projeto Reabilitação Motora.
 Desenvolvido pelos alunos das disciplinas de Engenharia de Produto de Software e Métodos de Desenvolvimento de Software com o intuito de ajudar no tratamento de pessoas que sofrem de paralisia do membro superior.</p>
 
 ### 1.2 Escopo
  <p align = "justify">Este artefato documenta a arquitetura a ser implementada no software e abrangendo assuntos relacionados as metas e restrições da arquitetura, visão de casos de uso, visão lógica, implementação, dados, tamanho e desempenho.</p>
 
 ### 1.3 Definições, Acrônimos e Abreviações
+
 Abreviação|Significado
-:-:|:-:
-|**ECS**| Entity Component System (em tradução livre: "sistema entidade componente")
-|**MDS**| Métodos de Desenvolvimento de Software
-|**EPS**| Engenharia de Produto de Software
-|**kB**| Kilobyte
-|**MMO**| Massive Multiplayer Online Game - Jogo Online em Massa de Multijogadores
-|**MER**| Modelo Entidade-Relacionamento
-|**DER**| Diagrama Entidade-Relacionamento
-|**OUI**| Object Ubity Interface
-|**GO**| GameObject
-|**Adapter**| Adaptador
-|**UDP**| User Datagram Protocol - Protocolo de Datagramas do Usuário
-|**TCP**|Transmission Control Protocol - Protocolo de Controle de Transmissão
+-|-
+**ECS** | Entity Component System (em tradução livre: "sistema entidade componente")
+**MDS** | Métodos de Desenvolvimento de Software
+**EPS** | Engenharia de Produto de Software
+**kB** | Kilobyte
+**MMO** | Massive Multiplayer Online Game (em tradução livre: "Jogo Online em Massa de Multijogadores")
+**MER** | Modelo Entidade-Relacionamento
+**DER** | Diagrama Entidade-Relacionamento
+**OUI** | Object Ubity Interface
+**GO** | GameObject
+**Adapter** | Adaptador
+**UDP** | User Datagram Protocol (em tradução livre: "Protocolo de Datagramas do Usuário")
+**TCP** | Transmission Control Protocol (em tradução livre: "Protocolo de Controle de Transmissão")
 
 ### 1.4 Referências
 <p align = "justify"> Este documento faz referência ao seguinte link e  documento. </p>
@@ -112,8 +113,9 @@ Abreviação|Significado
 ## 2. Representação da Arquitetura
 <p align = "justify">A arquitetura utilizada no projeto é a arquitetura denominada "Entity Component System" (ECS, "entidade-componente-sistema"), a escolha dessa arquitetura foi feita por vários motivos, dentre eles a sua facilidade de aplicação dentro do Unity 3D e também por ser a arquitetura mais utilizada em jogos eletrônicos e sistemas com interface gráfica 3D nos tempos atuais. Essa arquitetura tem como princípio a "composição ao invés de herança", o que permite uma flexibilidade maior na criação de novas entidades. Com a ECS, criamos um sistema de hierarquia entre as entidades e seus componentes, podendo assim reutilizar os componentes e dar o mesmo comportamento específico para diversas entidades que tem fins totalmente diferentes. Cada entidade consiste de um ou mais componentes que adicionam comportamento ou funcionalidade para a mesma, portanto o comportamento de uma entidade qualquer pode ser alterado durante o tempo de execução simplesmente adicionando ou removendo um componente da mesma. Isso elimina os problemas de ambiguidade que eram gerados nas hierarquias feitas por heranças profundas e vastas, que se tornam difíceis de entender, manter e estender. </p>
 
-![Entity-Component-System](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/development/docs/imagens/Arquitetura/ECS.png)
-**Figura 1**- Diagrama de classes
+
+![Entity-Component-System](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/development/docs/imagens/Arquitetura/ECS.png) </p>
+**Figura 1**- Diagrama de classes </p>
 [Clique aqui para visualizar a imagem](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/development/docs/imagens/Arquitetura/ECS.png)
 
 <p align = "justify">Adam Martin, um desenvolvedor de jogos MMO, criou a terminologia mais utilizada de jogos. Em jogos, a arquitetura trabalha com "sistemas" que seriam como funções que interagem com outras entidades que tenham componentes físicos e visíveis. Entidade é o objeto que consiste apenas de uma identificação única, Componentes são os dados brutos do aspecto do objeto e como interage com o mundo e Sistema são threads que executam ações das entidades que possuem mesmos componentes.
@@ -125,9 +127,9 @@ Abreviação|Significado
 <p align = "justify">Dentro de todo GameObject há componentes, sendo exemplos deles Transform (representa a posição, rotação e escala do objeto na scene), RigidBody (dá propriedade físicas ao GameObject), Renderers (componentes que permitem exibição dos GameObjects em cena), etc.</p><br />
 
 ![GameObject](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/development/docs/imagens/Arquitetura/unity.png)
-
-**Figura 2**- Representação de relação GameObject e Componentes
-[Clique aqui para visualizar a imagem](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/development/docs/imagens/Arquitetura/unity.png)
+</p>
+**Figura 2**- Representação de relação GameObject e Componentes </p>
+[Clique aqui para visualizar a imagem](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/development/docs/imagens/Arquitetura/unity.png) </p>
 
 Para melhor visualização da relação entre os componentes no Unity, segue um diagrama:
 ![Diagrama Componentes](http://oi64.tinypic.com/23hsntc.jpg)
@@ -145,8 +147,8 @@ A implementação do projeto será a linguagem de programação C# (C-Sharp).Ele
 
 ### 4.1 Diagrama de Casos de Uso
 
-![DiagramaCasoDeUso](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/development/docs/imagens/Arquitetura/Casos_de_uso.png)
-**Figura 3**- Diagrama de casos de uso
+![DiagramaCasoDeUso](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/development/docs/imagens/Arquitetura/Casos_de_uso.png) </p>
+**Figura 3**- Diagrama de casos de uso </p>
 [Clique aqui para visualizar a imagem](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/development/docs/imagens/Arquitetura/Casos_de_uso.png)
 
 ### 4.2 Atores de Casos de Uso
@@ -167,15 +169,16 @@ A implementação do projeto será a linguagem de programação C# (C-Sharp).Ele
 
 ## 5. Visão Lógica
 
-<p align = "justify">Em visão lógica, o Diagrama Geral da Arquitetura demonstra como será o funcionamento do projeto. Inicialmente, através de um sensor, o usuário executará um movimento para que seja capturado e através de um adapter, que deve atender as exigências de acoplamento, envia ao programa em Unity 3D. O KINECT, diferente dos outros sensores, já possui integração feita de forma nativa no software, portanto não exige o uso do adapter. </p>
+<p align = "justify">Em visão lógica, o Diagrama Geral da Arquitetura demonstra como será o funcionamento do projeto. Inicialmente, através de um sensor, o usuário executará um movimento para que seja capturado e através de um adapter, que deve atender as exigências de acoplamento, envia ao programa em Unity 3D que se pode criar cadastros e movimentos e gerencia-los. O movimento executado será exibido em uma *Scene* demostrando graficamente o movimento e os seus resultados adquiridos. </p>
 <p align = "justify"> O Módulo de Processamento (pode ser considerado um plugin que realiza processamentos externos) é uma unidade de processamento, podendo ser escrita em qualquer linguagem de programação, que receberá dados do movimento e poderá utilizá-los para realizar cálculos não abordados pelo sistema. A sua comunicação com o software também é feita por meio de um adapter. </p>
 <p align = "justify">Para a conexão com diversos sensores será usado um adapter com a capacidade de receber informações específicas para a usabilidade da aplicação através de portas UDP. A escolha das portas UDP em relação as portas TCP para uso no adapter entre o sensor-unity foi motivada pelo fato de que utilizando o protocolo UDP a transferência é feita de forma mais rápida do que utilizando o protocolo TCP, pois o TCP garante que dados são entregues integralmente, sem erros (pois ele não só envia pacote de dados, como também recebe), ao custo de ser mais lento que o UDP.</p>
 <p align = "justify">O UDP provê um serviço sem conexão não confiável, usando IP para transportar mensagens entre duas máquinas. Este protocolo, igualmente o TCP, provê um mecanismo que o transmissor usa para distinguir entre múltiplos receptores numa mesma máquina.</p>
+<p align = "justify">O KINECT, diferente dos outros sensores, já possui integração feita de forma nativa no software, portanto não exige o uso do adapter. </p>
 <p align="center">
 
 ![DiagramaGeralDeArquitetura](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/development/docs/imagens/Arquitetura/Diagrama_geral_de_arquitetura.png)
 
-**Figura 4**- Representação do diagrama da arquitetura dos adapters
+**Figura 4**- Representação do diagrama da arquitetura dos adapters </p>
 [Clique aqui para visualizar a imagem](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/development/docs/imagens/Arquitetura/Diagrama_geral_de_arquitetura.png)
 </p>
 
@@ -349,12 +352,12 @@ Um exercício gera n pontos nos eixos x e y.
 
 
 ### 6.2 DER
-![DER](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/development/docs/imagens/Arquitetura/der.png)
-**Figura 5**- Diagrama Entidade-Relacionamento
+![DER](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/development/docs/imagens/Arquitetura/der.png) </p>
+**Figura 5**- Diagrama Entidade-Relacionamento </p>
 [Clique aqui para visualizar a imagem](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/development/docs/imagens/Arquitetura/der.png)
 ### 6.3 Diagrama Lógico
-![LÓGICO](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/development/docs/imagens/Arquitetura/logico.png)
-**Figura 6**- Diagrama ME-R Lógico
+![LÓGICO](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/development/docs/imagens/Arquitetura/logico.png) </p>
+**Figura 6**- Diagrama ME-R Lógico </p>
 [Clique aqui para visualizar a imagem](https://raw.githubusercontent.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/development/docs/imagens/Arquitetura/logico.png)
 
 
