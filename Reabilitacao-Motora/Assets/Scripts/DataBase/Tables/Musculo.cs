@@ -79,6 +79,25 @@ namespace musculo
 			return muscle;
 		}
 
+		public static Musculo GetLast ()
+		{
+			Object[] columns = new Object[] {0, ""};
+
+			Musculo muscle = DataBase.GetLast<Musculo>(TablesManager.Tables[tableId].tableName,
+				TablesManager.Tables[tableId].colName[0], columns);
+
+			return muscle;
+		}
+
+		public static Musculo SingleSpecificSelect(string query)
+		{
+			Object[] columns = new Object[] {0, ""};
+
+			Musculo mus = DataBase.SingleSpecificSelect<Musculo>(TablesManager.Tables[tableId].tableName, columns, query);
+
+			return mus;
+		}
+
 		/**
 		 * Função que deleta dados cadastrados anteriormente na relação musculo.
 		 */

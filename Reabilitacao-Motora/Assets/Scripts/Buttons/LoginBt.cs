@@ -9,5 +9,6 @@ public class LoginBt : MonoBehaviour
 	public void Awake ()
 	{
 		nextPage.onClick.AddListener(delegate{Flow.StaticLogin();});
+		GlobalController.superAdm = false;
 	}
 }

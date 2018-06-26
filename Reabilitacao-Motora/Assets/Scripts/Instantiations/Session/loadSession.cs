@@ -16,8 +16,7 @@ public class loadSession : MonoBehaviour
 	
 	public void Start()
 	{
-		if(GlobalController.instance != null &&
-		   GlobalController.instance.session != null)
+		if(GlobalController.instance.session != null)
 		{							
 			date.text = GlobalController.instance.session.dataSessao;
 			notes.text = GlobalController.instance.session.observacaoSessao;

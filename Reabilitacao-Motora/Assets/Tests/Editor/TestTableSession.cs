@@ -21,7 +21,7 @@ using System.Data;
 */
 namespace Tests
 {
-	public class TestTableSession
+	public static class TestTableSession
 	{
 		[SetUp]
 		public static void SetUp()

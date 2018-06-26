@@ -99,6 +99,16 @@ namespace pontosrotulofisioterapeuta
 			return physioLabelPoint;
 		}
 
+		public static PontosRotuloFisioterapeuta GetLast ()
+		{
+			Object[] columns = new Object[] {0, 0, "", 0.00f, 0.00f};
+
+			PontosRotuloFisioterapeuta physioLabelPoint = DataBase.GetLast<PontosRotuloFisioterapeuta>(TablesManager.Tables[tableId].tableName,
+				TablesManager.Tables[tableId].colName[0], columns);
+
+			return physioLabelPoint;
+		}
+
 		/**
 		* Função que deleta dados cadastrados anteriormente na relação de pontosrotulofisioterapeuta.
 		 */

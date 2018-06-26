@@ -8,6 +8,6 @@ public class SessionsBt : MonoBehaviour
 
 	public void Awake ()
 	{
-		nextPage.onClick.AddListener(delegate{Flow.StaticSessions();});
+		nextPage.onClick.AddListener(delegate{Flow.StaticPatient(); });
 	}
 }

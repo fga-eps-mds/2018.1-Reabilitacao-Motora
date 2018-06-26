@@ -23,9 +23,11 @@ public class Login : MonoBehaviour
 	[SerializeField]
 	protected GameObject helpPopUp;
 
+	bool first;
 	public void Awake ()
 	{
 		nextPage.onClick.AddListener(delegate{Enter();});
+		first = true;
 	}
 	/**
 	 * Salva o Fisioterapeuta no banco.
@@ -37,6 +39,12 @@ public class Login : MonoBehaviour
 		if (idcheck != null) 
 		{
 			GlobalController.instance.admin = idcheck;
+			
+			if (first)
+			{
+				GlobalController.superAdm = true;
+			}
+			
 			Flow.StaticMenu();
 		} 
 		else 
@@ -56,7 +64,6 @@ public class Login : MonoBehaviour
 	Fisioterapeuta CheckLoginPass ()
 	{
 		List<Fisioterapeuta> physiotherapists = Fisioterapeuta.Read();
-
 		foreach (var fisio in physiotherapists) 
 		{			
 			if (fisio.login == login.text && 
@@ -66,6 +73,7 @@ public class Login : MonoBehaviour
 				ApplyColor (pass, 1);
 				return fisio;
 			}
+			first = false;
 		}
 
 		return null;

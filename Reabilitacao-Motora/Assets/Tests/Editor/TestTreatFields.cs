@@ -26,6 +26,8 @@ namespace Tests
 			var test_shortName = TreatFields.NameField ("aha");
 			var test_shortNonAlpha = TreatFields.NameField("a#h");
 			var test_nonAlphaWithoutSpaces = TreatFields.NameField("a#hk7%1kfa@");
+			var test_latin = TreatFields.NameField("João Zé Manê Mènä");
+			var test_dirtyLatin = TreatFields.NameField("Káká123 Faz Gol d++");
 
 			var nonalpha = "Nome deve conter apenas letras!|";
 			var shortname = "Insira o nome!|";
@@ -37,8 +39,8 @@ namespace Tests
 			Assert.AreEqual(test_shortName, "");
 			Assert.AreEqual(test_shortNonAlpha, nonalpha);
 			Assert.AreEqual(test_nonAlphaWithoutSpaces, nonalpha);
-
-			return;
+			Assert.AreEqual(test_latin, "");
+			Assert.AreEqual(test_dirtyLatin, nonalpha);
 		}
 
 		[Test]
@@ -94,8 +96,6 @@ namespace Tests
 			Assert.AreEqual(test_Today, "");
 			Assert.AreEqual(test_neutralDayMonth, invalidDay+invalidMonth);
 			Assert.AreEqual(test_Normal, "");
-
-			return;
 		}
 
 		[Test]
@@ -108,8 +108,6 @@ namespace Tests
 
 			Assert.AreEqual(test_empty, empty);
 			Assert.AreEqual(test_filled, "");
-
-			return;
 		}
 
 		[Test]
@@ -132,8 +130,6 @@ namespace Tests
 			Assert.AreEqual(test_short, shorty);
 			Assert.AreEqual(test_shortNonNumeric, unformated+shorty);
 			Assert.AreEqual(test_good, "");
-
-			return;
 		}
 
 		[Test]
@@ -158,8 +154,6 @@ namespace Tests
 			Assert.AreEqual(test_good, "");
 			Assert.AreEqual(test_short, shortbig);
 			Assert.AreEqual(test_big, shortbig);
-
-			return;
 		}
 
 		[Test]
@@ -190,8 +184,6 @@ namespace Tests
 			Assert.AreEqual(test_unCaps, unformated);
 			Assert.AreEqual(test_shortUnCaps, shortbig+unformated);
 			Assert.AreEqual(test_bigUnCaps, shortbig+unformated);
-
-			return;
 		}
 
 		[Test]
@@ -212,8 +204,6 @@ namespace Tests
 			Assert.AreEqual (test_nonAlphaNumeric, nonAlphaNumeric);
 			Assert.AreEqual (test_short, shorty);
 			Assert.AreEqual (test_good, "");
-
-			return;
 		}
 
 		[Test]
@@ -229,8 +219,6 @@ namespace Tests
 			Assert.AreEqual (test_empty, shorty+empty);
 			Assert.AreEqual (test_shorty, shorty);
 			Assert.AreEqual (test_good, "");
-
-			return;
 		}
 
 		[Test]
@@ -250,8 +238,6 @@ namespace Tests
 			Assert.AreEqual (test_bothEmpty, empty);
 			Assert.AreEqual (test_unEqual, unequal);
 			Assert.AreEqual (test_good, "");
-
-			return;
 		}
 
 		[Test]
@@ -268,8 +254,6 @@ namespace Tests
 			Assert.AreEqual (test_wrongPlus, wrong);
 			Assert.AreEqual (test_goodMale, "");
 			Assert.AreEqual (test_goodFemale, "");
-
-			return;
 		}
 
 		[Test]
@@ -278,12 +262,12 @@ namespace Tests
 			GlobalController.Initialize();
 
 			Pessoa.Insert("fake name", "m", "1930-01-01", "61235235", null);
-			List<Pessoa> pessoas = Pessoa.Read();
-			var idPessoa = pessoas[pessoas.Count - 1].idPessoa;
+			var pessoas = Pessoa.GetLast();
+			var idPessoa = pessoas.idPessoa;
 
 			Fisioterapeuta.Insert(idPessoa, "abcdefghj1", "asuihasiudh11829", "DF", "123456");
-			List<Fisioterapeuta> allPhysios = Fisioterapeuta.Read();
-			var idFisio = allPhysios[allPhysios.Count - 1].idFisioterapeuta;
+			var allPhysios = Fisioterapeuta.GetLast();
+			var idFisio = allPhysios.idFisioterapeuta;
 
 			var test_exists = TreatFields.UniqueCrefitoRegion ("123456", "DF");
 			var test_dontRegion = TreatFields.UniqueCrefitoRegion ("123456", "PE");
@@ -299,8 +283,6 @@ namespace Tests
 			Assert.AreEqual (test_dontRegion, "");
 			Assert.AreEqual (test_dontCrefito, "");
 			Assert.AreEqual (test_dont, "");
-
-			return;
 		}
 
 		[Test]
@@ -309,12 +291,12 @@ namespace Tests
 			GlobalController.Initialize();
 
 			Pessoa.Insert("fake name", "m", "1930-01-01", "61235235", null);
-			List<Pessoa> pessoas = Pessoa.Read();
-			var idPessoa = pessoas[pessoas.Count - 1].idPessoa;
+			var pessoas = Pessoa.GetLast();
+			var idPessoa = pessoas.idPessoa;
 
 			Fisioterapeuta.Insert(idPessoa, "abcdefghj1", "asuihasiudh11829", "DF", "123456");
-			List<Fisioterapeuta> allPhysios = Fisioterapeuta.Read();
-			var idFisio = allPhysios[allPhysios.Count - 1].idFisioterapeuta;
+			var allPhysios = Fisioterapeuta.GetLast();
+			var idFisio = allPhysios.idFisioterapeuta;
 
 			var test_exists = TreatFields.UniqueLoginPassword ("abcdefghj1");
 			var test_dontexist = TreatFields.UniqueLoginPassword ("oaijfo3u4194j12");
@@ -326,8 +308,6 @@ namespace Tests
 
 			Assert.AreEqual (test_exists, exists);
 			Assert.AreEqual (test_dontexist, "");
-
-			return;
 		}
 	}
 }

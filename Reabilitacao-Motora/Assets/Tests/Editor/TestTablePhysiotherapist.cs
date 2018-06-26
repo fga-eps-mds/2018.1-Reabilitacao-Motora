@@ -19,7 +19,7 @@ using System.Data;
 */
 namespace Tests
 {
-	public class TestTablePhysiotherapist
+	public static class TestTablePhysiotherapist
 	{
 		[SetUp]
 		public static void SetUp()

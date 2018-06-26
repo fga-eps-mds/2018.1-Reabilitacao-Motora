@@ -38,7 +38,7 @@ namespace Tests
 		public static IEnumerator TestDeletePhysio()
 		{
 			Flow.StaticLogin();
-			Flow.StaticNewPhysiotherapist();
+			Flow.StaticNewPhysiotherapistAdm();
 
 			yield return null;
 			
@@ -127,15 +127,15 @@ namespace Tests
 			Movimento.Insert (1,"levantamento de peso", "asuhasu/caminhoy.com", null);
 			Sessao.Insert (1, 1, "1940-10-10", null);
 
-			var pacient = Paciente.Read();
-			var fisio = Fisioterapeuta.Read();
-			var moves = Movimento.Read();
-			var sessions = Sessao.Read();
+			var pacient = Paciente.GetLast();
+			var fisio = Fisioterapeuta.GetLast();
+			var moves = Movimento.GetLast();
+			var sessions = Sessao.GetLast();
 
-			GlobalController.instance.user = pacient[pacient.Count - 1];
-			GlobalController.instance.admin = fisio[fisio.Count - 1];
-			GlobalController.instance.movement = moves[moves.Count - 1];
-			GlobalController.instance.session = sessions[sessions.Count - 1];
+			GlobalController.instance.user = pacient;
+			GlobalController.instance.admin = fisio;
+			GlobalController.instance.movement = moves;
+			GlobalController.instance.session = sessions;
 
 			Flow.StaticMovementsToExercise();
 
@@ -186,13 +186,13 @@ namespace Tests
 			Fisioterapeuta.Insert(2, "abracadabra1", "demais1", null, null);
 			Paciente.Insert(1, null);
 
-			var pacient = Paciente.Read();
-			var fisio = Fisioterapeuta.Read();
+			var pacient = Paciente.GetLast();
+			var fisio = Fisioterapeuta.GetLast();
 
-			GlobalController.instance.user = pacient[pacient.Count - 1];
-			GlobalController.instance.admin = fisio[fisio.Count - 1];
+			GlobalController.instance.user = pacient;
+			GlobalController.instance.admin = fisio;
 
-			Flow.StaticSessions();
+			Flow.StaticPatient();
 
 			yield return new WaitForSeconds(0.5f);
 
@@ -205,7 +205,7 @@ namespace Tests
 			yield return new WaitForSeconds(0.5f);
 
 			var currentscene = SceneManager.GetActiveScene().name;
-			var expectedscene = "Sessions";
+			var expectedscene = "Patient";
 
 			Assert.AreEqual(expectedscene, currentscene);
 
@@ -235,9 +235,9 @@ namespace Tests
 			Pessoa.Insert("physio name1", "m", "1995-01-01", "6198732711", null);
 			Fisioterapeuta.Insert(1, "abracadabra1", "demais1", null, null);
 
-			var fisio = Fisioterapeuta.Read();
+			var fisio = Fisioterapeuta.GetLast();
 
-			GlobalController.instance.admin = fisio[fisio.Count - 1];
+			GlobalController.instance.admin = fisio;
 
 			Flow.StaticNewMovement();
 
@@ -267,11 +267,6 @@ namespace Tests
 			DeleteMovementButton.DeleteMovement();
 
 			yield return new WaitForSeconds(0.5f);
-
-			var currentscene = SceneManager.GetActiveScene().name;
-			var expectedscene = "Movements";
-
-			Assert.AreEqual(expectedscene, currentscene);
 
 			int IdMovimento = GlobalController.instance.movement.idMovimento;
 

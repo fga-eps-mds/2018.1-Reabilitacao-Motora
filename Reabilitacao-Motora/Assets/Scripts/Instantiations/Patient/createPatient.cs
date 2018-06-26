@@ -78,16 +78,16 @@ public class createPatient : MonoBehaviour
 				_notes = notes.text;
 			}
 
-			List<Pessoa> personsList = Pessoa.Read();
-			Paciente.Insert(personsList[personsList.Count - 1].idPessoa, notes.text);
+			var lastPerson = Pessoa.GetLast();
+			Paciente.Insert(lastPerson.idPessoa, notes.text);
 
 			string namePatientUnderscored = (namePatient.text).Replace(' ', '_');
-			string pathNamePatient = Application.dataPath + string.Format("Exercicios/{0}-{1}", personsList[personsList.Count-1].idPessoa, namePatientUnderscored);
+			string pathNamePatient = Application.dataPath + string.Format("Exercicios/{0}-{1}", lastPerson.idPessoa, namePatientUnderscored);
 			Directory.CreateDirectory(pathNamePatient);
 
-			var patients = Paciente.Read();
+			var lastPatient = Paciente.GetLast();
 
-			GlobalController.instance.user = patients[patients.Count - 1];
+			GlobalController.instance.user = lastPatient;
 			Flow.StaticNewPatient();
 		}
 	}

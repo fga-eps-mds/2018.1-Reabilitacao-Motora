@@ -2,9 +2,12 @@ using System;
 using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
+using System.Text.RegularExpressions;
 using UnityEngine.UI;
-
+using System.Text;
+using DataBaseAttributes;
 using musculo;
 using movimentomusculo;
 using movimento;
@@ -34,35 +37,72 @@ public class createMovement : MonoBehaviour
 				ApplyColor (x, 1);
 			}
 
-			var muscles = musculos.text.Split(',');
+			var muscles = GetWords(musculos.text);
 
 			string movunderscored = (nomeMovimento.text).Replace(' ', '_');
 			string physiounderscored = (GlobalController.instance.admin.persona.nomePessoa).Replace(' ', '_');
 
-			string pathSave = GlobalController.instance.admin.idPessoa + "-";
+			StringBuilder path = new StringBuilder();
+			path.Append(GlobalController.instance.admin.idPessoa + "-");
+			path.Append(physiounderscored + "/");
+			path.Append(movunderscored + "-");
+			path.Append(DateTime.Now.ToString("HHmmss", System.Globalization.DateTimeFormatInfo.InvariantInfo));
+			path.Append(".points");
 
-			pathSave += physiounderscored + "/";
-			pathSave += movunderscored + "-";
-			pathSave += DateTime.Now.ToString("HHmmss", System.Globalization.DateTimeFormatInfo.InvariantInfo);
+			string pathSave = path.ToString();
 
 			Movimento.Insert (GlobalController.instance.admin.idFisioterapeuta,
-				nomeMovimento.text, pathSave + ".points", descricao.text);
+															nomeMovimento.text, 
+																	  pathSave, 
+															    descricao.text);
 
-			List<Movimento> movementsList = Movimento.Read();
+			var lastMovement = Movimento.GetLast();
+			GlobalController.instance.movement = lastMovement;
 
 			foreach (var muscle in muscles)
 			{
-				name = new string((from c in muscle where char.IsLetterOrDigit(c) select c).ToArray());
-				if (!checkMuscle(name))
+				if (!checkMuscle(muscle))
 				{
-					Musculo.Insert(name);
-					List<Musculo> musclesList = Musculo.Read();
-					MovimentoMusculo.Insert(musclesList[musclesList.Count - 1].idMusculo, movementsList[movementsList.Count - 1].idMovimento);
+					Musculo.Insert(muscle);
+					Musculo lastMusculo = Musculo.GetLast();
+					MovimentoMusculo.Insert(lastMusculo.idMusculo, lastMovement.idMovimento);
+				} else {
+					Musculo musculoExistente = presentMuscle(muscle);
+					MovimentoMusculo.Insert(musculoExistente.idMusculo, lastMovement.idMovimento);
 				}
 			}
 
 			GlobalController.patientOrPhysio = true;
-			GlobalController.instance.movement = movementsList[movementsList.Count - 1];
+
+			
+			// Checks the sensor choice from the file
+
+			StringBuilder sensorPath = new StringBuilder();
+			sensorPath.Append("sensor.choice");
+        
+        	string choicePath = sensorPath.ToString();
+
+			if (File.Exists(choicePath)) // User has already chosen a sensor
+        	{
+				string line = File.ReadAllText(choicePath);
+				int fileValue = Convert.ToInt32(line);
+				
+				if ( fileValue.Equals(0) ) // Kinect selected
+				{
+					GlobalController.Sensor = false;
+				}
+				else if ( fileValue.Equals(1) ) // UDP selected
+				{
+					GlobalController.Sensor = true;
+				}
+        	}
+			else // Kinect is default value
+			{
+				GlobalController.Sensor = false;
+			}
+
+			// Redirects user to correct scene
+
 			if(GlobalController.Sensor == false)
 			{
 				Flow.StaticRealtimeGraphKinectPhysio();
@@ -77,17 +117,18 @@ public class createMovement : MonoBehaviour
 
 	static bool checkMuscle (string name)
 	{
-		List<Musculo> musclesList = Musculo.Read();
+		var query = string.Format("SELECT count(*) FROM MUSCULO WHERE \"nomeMusculo\"=\"{0}\";", name);
+		int count = DataBase.CountRead(query);
+		Debug.Log(count);
+		return (count != 0);
+	}
 
-		foreach (var muscle in musclesList)
-		{
-			if(muscle.nomeMusculo == name)
-			{
-				return true;
-			}
-		}
-
-		return false;
+	static Musculo presentMuscle (string name)
+	{
+		var query = string.Format("SELECT * FROM MUSCULO WHERE \"nomeMusculo\"=\"{0}\";", name);
+		Musculo mus = Musculo.SingleSpecificSelect(query);
+		
+		return mus;
 	}
 
 	public static bool ValidInput (List<InputField> inputs)
@@ -118,5 +159,18 @@ public class createMovement : MonoBehaviour
 	public static void ApplyColor (InputField input, int ok)
 	{
 		input.colors = ColorManager.SetColor(input.colors, ok);
+	}
+	
+	public static List<string> GetWords (string input)
+	{
+		MatchCollection m = new Regex(@"[\p{L}\s]+").Matches(input);
+		List<string> words = new List<string>();
+		foreach (Match item in m)
+		{
+			Debug.Log(item.Value);
+		    words.Add(item.Value);
+		}
+
+		return words;
 	}
 }

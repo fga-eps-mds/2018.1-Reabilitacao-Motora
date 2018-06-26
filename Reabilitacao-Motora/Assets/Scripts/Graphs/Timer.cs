@@ -7,11 +7,11 @@ public class Timer : MonoBehaviour
 	bool started = false;
 
 	[SerializeField]
-	protected GameObject textPrefab;
+	protected GameObject textPrefab, popUpLabel;
 
 	public void Update ()
 	{
-		if (Input.GetKeyDown(KeyCode.Space)) 
+		if (popUpLabel.activeSelf == false && Input.GetKeyDown(KeyCode.Space)) 
 		{
 			started = !started;
 			textPrefab.SetActive(!started);
@@ -30,6 +30,6 @@ public class Timer : MonoBehaviour
 
 	public void OnGUI ()
 	{
-		GUI.Box(new Rect(10, 10, 50, 20), "" + timer.ToString("0"));
+		GUI.Box(new Rect(10, 40, 50, 20), "" + timer.ToString("0"));
 	}
 }

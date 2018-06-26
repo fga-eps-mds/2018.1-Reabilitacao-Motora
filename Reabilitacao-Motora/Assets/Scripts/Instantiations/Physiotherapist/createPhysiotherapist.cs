@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using System.IO;
 using System;
 using System.Linq;
+using UnityEngine.SceneManagement;
 
 using cryptpw;
 
@@ -91,16 +92,25 @@ public class createPhysiotherapist : MonoBehaviour
 
 
 			Pessoa.Insert(namePhysio.text, sex, dateFormate, phone1.text, _phone2);
-			List<Pessoa> p = Pessoa.Read();
+			var lastPerson = Pessoa.GetLast();
 
-			Fisioterapeuta.Insert(p[p.Count -1].idPessoa, login.text, encryptedPassword, _crefito, _regiao);
+			Fisioterapeuta.Insert(lastPerson.idPessoa, login.text, encryptedPassword, _regiao, _crefito);
 
-			CreateDirectoryPhysio (namePhysio.text, p[p.Count-1].idPessoa);
+			CreateDirectoryPhysio (namePhysio.text, lastPerson.idPessoa);
 
-			List<Fisioterapeuta> physios = Fisioterapeuta.Read();
-			GlobalController.instance.admin = physios[physios.Count - 1]; 
+			var lastPhysio = Fisioterapeuta.GetLast();
+			GlobalController.instance.admin = lastPhysio; 
 
-			Flow.StaticLogin();
+			Scene scene = SceneManager.GetActiveScene(); 
+			
+			if (scene.name == "NewPhysiotherapist Common")
+			{
+				Flow.StaticLogin();
+			}
+			else
+			{
+				SceneManager.LoadScene(scene.name);
+			}
 		} 
 	}
 
