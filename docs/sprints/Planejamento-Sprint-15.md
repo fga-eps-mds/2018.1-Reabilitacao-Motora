@@ -33,7 +33,7 @@
 | Data de Início | 18/06/2018 |
 |:--|:--:|
 | **Data de Término** | **24/06/2018** |
-| **Pontos Planejados** | **91**|
+| **Pontos Planejados** | **107**|
 | **Duração** | **7 dias** |
 
 

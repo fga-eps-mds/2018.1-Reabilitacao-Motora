@@ -13,15 +13,15 @@ Todas <i>tasks</i> que foram fechadas e até mesmo as que continuam em aberto se
 
 ### 2.3 Pontuação Final
 
-* **Pontuação Total:** 91
-* **Pontos Concluídos:** 65
+* **Pontuação Total:** 107
+* **Pontos Concluídos:** 80
 * **Pontos Não Agregados:** 26
 
 ---
 
 ## 3. _Burndown Chart_
 
-![](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/blob/development/docs/imagens/Burndown/Sprint_15.png?raw=true)
+![](/docs/imagens/Burndown/Sprint_15.png?raw=true)
 
 
 > O _Burndown_ se encontra disponível neste [Link](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora#reports?report=burndown&milestoneId=3431943)
@@ -37,8 +37,8 @@ Todas <i>tasks</i> que foram fechadas e até mesmo as que continuam em aberto se
 
 ## 6. Retrospectiva da _Sprint_
 
-![](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/blob/development/docs/imagens/Retrospectiva/Retrospectiva_Sprint15.png?raw=true)
- >[Link](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/blob/development/docs/imagens/Retrospectiva/Retrospectiva_Sprint15.png?raw=true)
+![](/docs/imagens/Retrospectiva/Retrospectiva_Sprint15.png?raw=true)
+ >[Link](/docs/imagens/Retrospectiva/Retrospectiva_Sprint15.png?raw=true)
 
 ---
 
@@ -51,13 +51,13 @@ Todas <i>tasks</i> que foram fechadas e até mesmo as que continuam em aberto se
 
 ## 8. Quadro de Presença Daily
 
-![](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/blob/development/docs/imagens/Daily/Sprint15.png?raw=true)
+![](/docs/imagens/Daily/Sprint15.png?raw=true)
 ---
 
 ## 9. Visão do _Scrum Master_
-<p align="justify">&emsp;&emsp; A sprint 15 foi de grande importância por ter sido feita nela os toques finais para a segunda release, porém houve menor comprometimento do time de desenvolvimento por algumas razões já vistas na retrospectiva. O time de gerência teve participação mais efetiva na área de desenvolvimento. Tivemos um burndown de entregas constantes porém abaixo do que se era esperado. O velocity da equipe aumento mesmo assim mostrando maior estabilidade técnica.</p>
+<p align="justify">&emsp;&emsp; A sprint 15 foi de grande importância por ter sido feita nela os toques finais para a segunda release, porém houve menor comprometimento do time de desenvolvimento por algumas razões já vistas na retrospectiva. O time de gerência teve participação mais efetiva na área de desenvolvimento. Tivemos um burndown de entregas constantes apesar de não ter tido 100% dos pontos queimados. O velocity da equipe aumentou consideravelmente nesta sprint.</p>
 
 ## 10. Práticas Ágeis e suas notas
 
-![](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/blob/development/docs/imagens/Quadro%20de%20Praticas%20Ageis/Quadro_de_Praticas_Ageis_Sprint15.png?raw=true)
+![](/docs/imagens/Quadro%20de%20Praticas%20Ageis/Quadro_de_Praticas_Ageis_Sprint15.png?raw=true)
 ---
