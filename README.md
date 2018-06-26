@@ -38,6 +38,9 @@
 - [Arquivo zip](https://github.com/arthurbdiniz/Launcher/raw/master/build/distributions/launcher.zip)
 - [Arquivo tar](https://github.com/arthurbdiniz/Launcher/raw/master/build/distributions/launcher.tar)
 
+## Configuração do UDP Windows
+
+> [Link para o tutorial de configuração](https://github.com/fga-gpp-mds/2018.1-Reabilitacao-Motora/blob/Readme/docs/wiki/tutorial_windows_udp.md)
 ---
 
 # Desenvolvedores
