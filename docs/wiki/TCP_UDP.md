@@ -24,7 +24,7 @@ Data|Versão|Descrição|Autor
 
 Documento de Especificação
 ------------------------------------
-## 1. Transmission Control Protocol/Internet Protocol - TCP/IP
+## 1. Transmission Control Protocol/Internet Protocol - TCP/IP (Protocolos de transmissão de dados)
 
 ### 1.1 Visão Geral
  <p align = "justify"> O TCP/IP é uma sequência de protocolos, e representa o conjunto de regras de comunicação na internet. Baseia-se no conhecimento do endereço de IP de um computador para outro e realizar o encaminhamento do pacote de dados.
@@ -46,7 +46,7 @@ Documento de Especificação
 Funcionamento das camadas do TCP/IP:
 ![imagem](http://infotecnews.com.br/wp-content/uploads/2017/01/camada-tcpip-funcionamento.jpg)
 
-## 2. Transport Control Protocol - TCP
+## 2. Transport Control Protocol - TCP - (Protocolo de controle de transporte)
 
 ### 2.1 Visão Geral
 <p align = "justify"> É um dos principais protocolos da camada de transporte do modelo TCP/IP. É um protocolo de transporte fim-a-fim, orientado à conexão, que fornece um serviço confiável de dados entre aplicações parceiras. O TCP garante que dados são entregues integralmente, sem erros, pois ele não só envia pacote de dados, como também recebe, mas isso deixa a aplicação mais lenta. É recomendada para aplicações que não necessitam de respostas em um curtíssimo espaço de tempo.
@@ -60,7 +60,7 @@ Funcionamento das camadas do TCP/IP:
 <p align = "justify"> Quando um script ou aplicação interage com o software de protocolo, ele deve especificar se é um servidor ou um cliente, e os scripts devem especificar também os dados a serem enviados (o remetente), enquanto o receptor deve especificar onde o pacote de dados recebido deve ser armazenado.
 </p>
 
-## 3. User Datagram Protocol - UDP
+## 3. User Datagram Protocol - UDP (Protocolo de datagrama de usuário)
 ### 3.1 Visão Geral
 <p align = "justify"> O UDP também é baseado no envio de pacote de informações, mas, ao contrário do UDP, preza pela velocidade ao invés da confiabilidade dos dados enviados. O UDP é voltado para a não conexão, então o fluxo de envio de pacote de dados é unidirecional. O receptor recebe os dados enviados pelo emissor sem conhecer o que foi emitido, mas conhecendo apenas o IP do emissor.
 </p>
